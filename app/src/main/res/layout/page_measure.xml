@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/space_16"
+        android:paddingTop="@dimen/page_pad_top"
+        android:paddingRight="@dimen/space_16"
+        android:paddingBottom="@dimen/page_pad_bottom">
+
+        <TextView
+            style="@style/Desk.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/page_measure" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_12"
+            android:background="@drawable/bg_row"
+            android:gravity="center_vertical"
+            android:minHeight="36dp"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/space_8">
+
+            <TextView
+                style="@style/Desk.TableHead"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="NO" />
+
+            <TextView
+                style="@style/Desk.TableHead"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.6"
+                android:gravity="start"
+                android:paddingLeft="@dimen/space_8"
+                android:text="DESC" />
+
+            <TextView
+                style="@style/Desk.TableHead"
+                android:layout_width="56dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="L" />
+
+            <TextView
+                style="@style/Desk.TableHead"
+                android:layout_width="56dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="B" />
+
+            <TextView
+                style="@style/Desk.TableHead"
+                android:layout_width="56dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="H" />
+
+            <TextView
+                style="@style/Desk.TableHead"
+                android:layout_width="44dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="UOM" />
+
+            <TextView
+                style="@style/Desk.TableHead"
+                android:layout_width="52dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="TYPE" />
+
+            <TextView
+                style="@style/Desk.TableHead"
+                android:layout_width="92dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="QTY" />
+
+            <View
+                android:layout_width="@dimen/icon_btn"
+                android:layout_height="1dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/measureEmptyBox"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/Desk.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/empty_measure" />
+
+            <TextView
+                android:id="@+id/measureCreate"
+                style="@style/Desk.Button.Accent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_24"
+                android:minWidth="220dp"
+                android:text="@string/enter_measure" />
+        </LinearLayout>
+
+        <com.paperdesk.launcher.ui.DeskRecyclerView
+            android:id="@+id/measureList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:overScrollMode="never" />
+
+        <TextView
+            android:id="@+id/measureTotal"
+            style="@style/Desk.Section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:paddingTop="@dimen/space_12"
+            android:paddingRight="56dp"
+            android:textColor="@color/accent"
+            android:textSize="@dimen/type_body"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/fabMeasure"
+        style="@style/Desk.Fab"
+        android:layout_width="@dimen/fab"
+        android:layout_height="@dimen/fab" />
+</FrameLayout>

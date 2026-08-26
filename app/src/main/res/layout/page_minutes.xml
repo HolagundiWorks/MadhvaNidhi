@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/page_pad_h"
+        android:paddingTop="@dimen/page_pad_top"
+        android:paddingRight="@dimen/page_pad_h"
+        android:paddingBottom="@dimen/page_pad_bottom">
+
+        <TextView
+            style="@style/Desk.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/page_minutes" />
+
+        <EditText
+            android:id="@+id/minutesSearch"
+            style="@style/Desk.Field"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/field_h"
+            android:layout_marginTop="@dimen/space_12"
+            android:hint="@string/search_minutes"
+            android:imeOptions="actionSearch"
+            android:inputType="text" />
+
+        <LinearLayout
+            android:id="@+id/minutesEmptyBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/Desk.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/empty_minutes" />
+
+            <TextView
+                android:id="@+id/minutesCreate"
+                style="@style/Desk.Button.Accent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_24"
+                android:minWidth="200dp"
+                android:text="@string/new_minutes" />
+        </LinearLayout>
+
+        <com.paperdesk.launcher.ui.DeskRecyclerView
+            android:id="@+id/minutesList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/space_8"
+            android:overScrollMode="never" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/fabMinutes"
+        style="@style/Desk.Fab"
+        android:layout_width="@dimen/fab"
+        android:layout_height="@dimen/fab" />
+</FrameLayout>

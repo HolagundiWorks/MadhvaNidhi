@@ -1,0 +1,42 @@
+# Acharya OS
+
+Landscape HOME launcher for Acharya OS. Kannada UI. Pages: CLOCK → SANDHYAVANDANA → MANTRAS → POOJA → HADUGALU.
+
+Package: `com.paperdesk.launcher`
+
+## Device
+
+- Samsung SM-J320M (Galaxy J2), ViperOS
+- Android 7.1.2, API 25 (`minSdk` 25)
+- Landscape 1280×720, density 2.0
+- Set this app as Home (always)
+
+Do not scrape third-party lyrics. Only texts that already ship in `app/src/main/assets` (or that you add yourself) belong in the library.
+
+## Build and install
+
+Requires JDK 17 and Android SDK. SDK path stays in `local.properties` (not committed).
+
+```powershell
+cd acharya-os
+.\gradlew.bat :app:installDebug
+adb shell am start -S -n com.paperdesk.launcher/.ui.LauncherActivity
+```
+
+USB debugging must be on. After install, choose **Acharya OS** as the Home app.
+
+## Layout
+
+| Path | Role |
+| --- | --- |
+| `app/` | Android application |
+| `tools/` | Optional scripts to rebuild mantra / pooja catalogues into assets |
+| `gradle/` | Gradle wrapper |
+
+Pager next/prev wraps: page 5 returns to page 1. Footer shows `|| ಹರಿ ಸರ್ವೋತ್ತಮ ವಾಯು ಜೀವೋತ್ತಮ ||`.
+
+Panchanga prefers SRS Mantralaya when online, then USB files, then local Chandramana calculation. USB files come from Vishwakarma OS.
+
+## Related
+
+Phone data root: `/sdcard/Vishwakarma` — see [`../vishwakarma-os/README.md`](../vishwakarma-os/README.md).

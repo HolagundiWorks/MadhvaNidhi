@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ShapeAppearance.PaperDesk" parent="ShapeAppearance.MaterialComponents">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">0dp</item>
+    </style>
+
+    <style name="Theme.PaperDesk" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="viewInflaterClass">androidx.appcompat.app.AppCompatViewInflater</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:colorBackground">@color/black</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="android:textColorHint">@color/accent</item>
+        <item name="android:editTextColor">@color/white</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="colorPrimary">@color/accent</item>
+        <item name="colorPrimaryVariant">@color/accent</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorSecondaryVariant">@color/accent</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSurface">@color/black</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorOnBackground">@color/white</item>
+        <item name="colorError">@color/accent</item>
+        <item name="colorOnError">@color/black</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/accent</item>
+        <item name="colorControlHighlight">@color/accent</item>
+        <item name="colorButtonNormal">@color/accent</item>
+        <item name="rippleColor">@color/accent</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.PaperDesk</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.PaperDesk</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.PaperDesk</item>
+        <item name="materialButtonStyle">@style/Desk.Button</item>
+        <item name="buttonStyle">@style/Desk.Button</item>
+        <item name="borderlessButtonStyle">@style/Desk.Link</item>
+        <item name="materialCardViewStyle">@style/Desk.MaterialCard</item>
+        <item name="checkboxStyle">@style/Desk.Check</item>
+        <item name="android:statusBarColor">@color/black</item>
+        <item name="android:navigationBarColor">@color/black</item>
+        <item name="android:colorBackgroundCacheHint">@color/black</item>
+        <item name="android:itemBackground">@color/black</item>
+        <item name="android:windowShowWallpaper">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowContentTransitions">false</item>
+        <item name="android:colorEdgeEffect">@color/accent</item>
+        <item name="android:alertDialogTheme">@style/Theme.PaperDesk.Dialog</item>
+        <item name="alertDialogTheme">@style/Theme.PaperDesk.Dialog</item>
+        <item name="materialAlertDialogTheme">@style/Theme.PaperDesk.Dialog</item>
+    </style>
+
+    <style name="Theme.PaperDesk.Entry" parent="Theme.PaperDesk">
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+
+    <style name="Theme.PaperDesk.Dialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@drawable/bg_dialog</item>
+        <item name="android:background">@color/black</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="colorPrimary">@color/accent</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorSurface">@color/black</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="android:colorBackground">@color/black</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.PaperDesk</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+        <item name="android:windowMinWidthMajor">72%</item>
+        <item name="android:windowMinWidthMinor">80%</item>
+    </style>
+
+    <style name="Desk.MaterialCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/black</item>
+        <item name="cardCornerRadius">0dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeColor">@color/white</item>
+        <item name="strokeWidth">@dimen/stroke_hairline</item>
+        <item name="rippleColor">@color/accent</item>
+    </style>
+
+    <style name="Desk.Check" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/bg_checkbox</item>
+    </style>
+
+    <style name="Desk">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Desk.Seek" parent="Widget.AppCompat.SeekBar">
+        <item name="android:progressDrawable">@drawable/seekbar_progress</item>
+        <item name="android:thumb">@drawable/seekbar_thumb</item>
+        <item name="android:splitTrack">false</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:minHeight">@dimen/touch</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="Desk.Title" parent="Desk">
+        <item name="android:textSize">@dimen/type_title</item>
+        <item name="android:fontWeight">600</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Desk.Title.Large" parent="Desk.Title">
+        <item name="android:textSize">@dimen/type_title_lg</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Desk.Clock" parent="Desk">
+        <item name="android:textSize">@dimen/type_clock</item>
+        <item name="android:fontWeight">600</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Desk.Section" parent="Desk">
+        <item name="android:textSize">@dimen/type_section</item>
+        <item name="android:fontWeight">500</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Desk.CardTitle" parent="Desk">
+        <item name="android:textSize">@dimen/type_card</item>
+        <item name="android:fontWeight">600</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Desk.Body" parent="Desk">
+        <item name="android:textSize">@dimen/type_body</item>
+        <item name="android:fontWeight">400</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/white_90</item>
+    </style>
+
+    <style name="Desk.Body2" parent="Desk">
+        <item name="android:textSize">@dimen/type_body2</item>
+        <item name="android:fontWeight">400</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/white_70</item>
+    </style>
+
+    <style name="Desk.Meta" parent="Desk">
+        <item name="android:textSize">@dimen/type_meta</item>
+        <item name="android:fontWeight">400</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/white_55</item>
+    </style>
+
+    <style name="Desk.Tag" parent="Desk.Meta">
+        <item name="android:textSize">@dimen/type_meta</item>
+        <item name="android:textColor">@color/white_70</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="Desk.Label" parent="Desk.Meta" />
+
+    <style name="Desk.TableHead" parent="Desk">
+        <item name="android:textSize">@dimen/type_table_head</item>
+        <item name="android:fontWeight">500</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/white_55</item>
+    </style>
+
+    <style name="Desk.Table" parent="Desk">
+        <item name="android:textSize">@dimen/type_table</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Desk.Button" parent="Desk">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/bg_btn_secondary</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minHeight">@dimen/btn_h</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:fontWeight">500</item>
+        <item name="android:textSize">@dimen/type_btn</item>
+        <item name="android:paddingLeft">@dimen/space_16</item>
+        <item name="android:paddingRight">@dimen/space_16</item>
+    </style>
+
+    <style name="Desk.Button.Accent" parent="Desk.Button">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@drawable/bg_btn_primary</item>
+        <item name="android:fontWeight">600</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Desk.Circle" parent="Widget.AppCompat.ImageButton">
+        <item name="android:layout_width">@dimen/touch</item>
+        <item name="android:layout_height">@dimen/touch</item>
+        <item name="android:background">@drawable/bg_circle_fill</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:minWidth">@dimen/touch</item>
+        <item name="android:minHeight">@dimen/touch</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:cropToPadding">false</item>
+        <item name="android:scaleType">center</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:tint">@color/white</item>
+        <item name="tint">@color/white</item>
+    </style>
+
+    <style name="Desk.CircleText" parent="Desk">
+        <item name="android:layout_width">@dimen/touch</item>
+        <item name="android:layout_height">@dimen/touch</item>
+        <item name="android:background">@drawable/bg_circle_fill</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/type_body2</item>
+        <item name="android:minWidth">@dimen/touch</item>
+        <item name="android:minHeight">@dimen/touch</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Desk.IconBtn" parent="Desk">
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minWidth">@dimen/icon_btn</item>
+        <item name="android:minHeight">@dimen/icon_btn</item>
+        <item name="android:textSize">@dimen/type_body2</item>
+        <item name="android:background">@drawable/bg_ripple</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="Desk.Link" parent="Desk.Meta">
+        <item name="android:padding">@dimen/space_8</item>
+        <item name="android:minHeight">@dimen/touch</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="Desk.Fab" parent="Desk">
+        <item name="android:layout_width">@dimen/fab</item>
+        <item name="android:layout_height">@dimen/fab</item>
+        <item name="android:layout_gravity">bottom|end</item>
+        <item name="android:layout_marginRight">@dimen/space_16</item>
+        <item name="android:layout_marginBottom">@dimen/space_24</item>
+        <item name="android:background">@drawable/bg_fab</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">+</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:minWidth">@dimen/touch</item>
+        <item name="android:minHeight">@dimen/touch</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="elevation">6dp</item>
+    </style>
+
+    <style name="Desk.Field" parent="Desk.Body">
+        <item name="android:background">@drawable/bg_input</item>
+        <item name="android:minHeight">@dimen/field_h</item>
+        <item name="android:padding">@dimen/space_12</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/accent</item>
+        <item name="android:textSize">@dimen/type_body</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="Desk.Key">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/bg_key</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/type_key</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:layout_margin">@dimen/key_gap</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="Desk.Key.Op" parent="Desk.Key">
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:background">@drawable/bg_key_op</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="Desk.Key.Accent" parent="Desk.Key">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@drawable/bg_key_eq</item>
+    </style>
+
+    <style name="Desk.Page">
+        <item name="android:background">@color/black</item>
+        <item name="android:paddingLeft">@dimen/page_pad_h</item>
+        <item name="android:paddingRight">@dimen/page_pad_h</item>
+        <item name="android:paddingTop">@dimen/page_pad_top</item>
+        <item name="android:paddingBottom">@dimen/page_pad_bottom</item>
+    </style>
+</resources>

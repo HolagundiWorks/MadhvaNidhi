@@ -1,0 +1,16 @@
+[a5paper,twoside,12pt]book
+[top=1.5cm, bottom=1.8cm, left=1.5cm, right=1.5cm]geometry
+preamble
+14pt
+4pt
+2
+document
+-0.5cm
+0.5cm
+frontmatter
+
+[Script=Devanagari,Mapping=tex-text]Sanskrit 2003
+
+nAmAvalis
+
+document

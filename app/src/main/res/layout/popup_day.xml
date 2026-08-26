@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:padding="@dimen/space_16">
+
+    <TextView
+        android:id="@+id/dayDate"
+        style="@style/Desk.Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/dayFest"
+        style="@style/Desk.Section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_8"
+        android:textColor="@color/accent"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/dayTithi"
+        style="@style/Desk.Body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_8" />
+
+    <TextView
+        android:id="@+id/dayMasa"
+        style="@style/Desk.Body2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_4" />
+
+    <TextView
+        android:id="@+id/dayNak"
+        style="@style/Desk.Meta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_4" />
+
+    <TextView
+        android:id="@+id/dayYoga"
+        style="@style/Desk.Meta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_4" />
+
+    <TextView
+        android:id="@+id/daySrc"
+        style="@style/Desk.Meta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_8"
+        android:textColor="@color/accent_70" />
+</LinearLayout>

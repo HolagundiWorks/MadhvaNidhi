@@ -1,0 +1,46 @@
+standalone
+xstring
+fontspec
+tikz
+calc
+2.5cm
+
+3
+1/A, 2/B, 3/C
+
+Square/.style=
+inner sep=0pt,
+text width=,
+minimum size=,
+draw=black,
+
+align=center
+
+[3]#1
+[1em] #2वस्त्रम्
+[-1ex]#3-मण्डलम्
+
+५. बुधःहरितमुद्ग
+३. शुक्रःश्वेतराजमाष
+४. सोमःश्वेततण्डुल
+
+६. बृहस्पतिःपीतचणक
+१. आदित्यःरक्तगोधूम
+२. अङ्गारकःरक्तआढकी
+
+९. केतुःकृष्णकुलत्थ
+७. शनैश्चरःकृष्णतिल
+८. राहुःकृष्णमाष
+
+document
+[Script=Devanagari]Sanskrit 2003
+tikzpicture[draw=black, ultra thick, x=,y=]
+
+/ in
+/ in
++(-1)
+Node
+[Square] at ($(,-)-(0.5,0.5)$) ;
+
+tikzpicture
+document

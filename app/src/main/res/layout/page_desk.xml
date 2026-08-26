@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <LinearLayout
+        android:id="@+id/deskOpen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/page_pad_h"
+        android:paddingTop="@dimen/space_8"
+        android:paddingRight="@dimen/page_pad_h"
+        android:paddingBottom="@dimen/page_pad_bottom">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.15"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.45"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/clockSam"
+                            style="@style/Desk.Section"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingBottom="@dimen/space_4"
+                            android:textColor="@color/accent" />
+
+                        <TextView
+                            android:id="@+id/clockMasaPaksha"
+                            style="@style/Desk.Body2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingBottom="@dimen/space_8" />
+
+                        <com.paperdesk.launcher.ui.ClockLockLayout
+                            android:id="@+id/clockLockArea"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <com.paperdesk.launcher.ui.AnalogClockView
+                                android:id="@+id/analogClock"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:importantForAccessibility="no" />
+                        </com.paperdesk.launcher.ui.ClockLockLayout>
+
+                        <TextView
+                            android:id="@+id/dayEvent"
+                            style="@style/Desk.Section"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingTop="@dimen/space_8"
+                            android:textColor="@color/accent"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/clockDate"
+                            style="@style/Desk.Body2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingTop="@dimen/space_4"
+                            android:paddingBottom="@dimen/space_4" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/panchangaCol"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/space_16"
+                        android:layout_weight="0.85"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/panchangaVara"
+                            style="@style/Desk.Body2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/panchangaTithi"
+                            style="@style/Desk.Section"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space_8"
+                            android:textColor="@color/accent" />
+
+                        <TextView
+                            android:id="@+id/panchangaNak"
+                            style="@style/Desk.Body2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space_8" />
+
+                        <TextView
+                            android:id="@+id/panchangaKarana"
+                            style="@style/Desk.Meta"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space_8" />
+
+                        <TextView
+                            android:id="@+id/panchangaAyana"
+                            style="@style/Desk.Meta"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space_8" />
+
+                        <TextView
+                            android:id="@+id/panchangaRitu"
+                            style="@style/Desk.Meta"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space_8" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <com.paperdesk.launcher.ui.MonthCalendarView
+                android:id="@+id/calendar"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/space_16"
+                android:layout_weight="0.95" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/chrome_bar" />
+    </LinearLayout>
+</FrameLayout>

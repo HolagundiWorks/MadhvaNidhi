@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <LinearLayout
+        android:id="@+id/readerMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/page_pad_h"
+        android:paddingTop="@dimen/page_pad_top"
+        android:paddingRight="@dimen/page_pad_h"
+        android:paddingBottom="@dimen/page_pad_bottom">
+
+        <LinearLayout
+            android:id="@+id/readerHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/space_8">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/readerTitle"
+                    style="@style/Desk.Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingRight="@dimen/space_8" />
+
+                <LinearLayout
+                    android:id="@+id/readerKalaRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <ImageButton
+                        android:id="@+id/kalaPratah"
+                        style="@style/Desk.Circle"
+                        android:contentDescription="@string/sandhya_pratah"
+                        android:src="@drawable/ic_kala_pratah" />
+
+                    <ImageButton
+                        android:id="@+id/kalaMadhya"
+                        style="@style/Desk.Circle"
+                        android:layout_marginLeft="@dimen/space_8"
+                        android:contentDescription="@string/sandhya_madhya"
+                        android:src="@drawable/ic_kala_madhya" />
+
+                    <ImageButton
+                        android:id="@+id/kalaSayam"
+                        style="@style/Desk.Circle"
+                        android:layout_marginLeft="@dimen/space_8"
+                        android:contentDescription="@string/sandhya_sayam"
+                        android:src="@drawable/ic_kala_sayam" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/readerSelect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/touch"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:minWidth="@dimen/touch"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/space_8">
+
+                    <TextView
+                        android:id="@+id/readerSelectLabel"
+                        style="@style/Desk.Body2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:importantForAccessibility="no"
+                        android:maxWidth="220dp"
+                        android:maxLines="1"
+                        android:textColor="@color/white"
+                        android:visibility="gone" />
+
+                    <ImageButton
+                        android:id="@+id/readerSelectBtn"
+                        style="@style/Desk.Circle"
+                        android:clickable="false"
+                        android:duplicateParentState="true"
+                        android:focusable="false"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_expand" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/readerCrumb"
+                style="@style/Desk.Meta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingTop="@dimen/space_4"
+                android:paddingBottom="@dimen/space_4"
+                android:textColor="@color/white_55" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/stroke_standard"
+                android:background="@drawable/bg_rule"
+                android:importantForAccessibility="no" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <com.paperdesk.launcher.ui.DeskScrollView
+                android:id="@+id/readerScroll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                android:overScrollMode="never">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/space_24">
+
+                    <TextView
+                        android:id="@+id/readerHead"
+                        style="@style/Desk.Section"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="3"
+                        android:textColor="@color/accent" />
+
+                    <TextView
+                        android:id="@+id/readerBody"
+                        style="@style/Desk.Body"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_8"
+                        android:includeFontPadding="true"
+                        android:lineSpacingExtra="0dp"
+                        android:lineSpacingMultiplier="1"
+                        android:textColor="@color/white"
+                        android:textSize="17sp" />
+                </LinearLayout>
+            </com.paperdesk.launcher.ui.DeskScrollView>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/chrome_bar" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/selectorPage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/page_pad_h"
+        android:paddingTop="@dimen/page_pad_top"
+        android:paddingRight="@dimen/page_pad_h"
+        android:paddingBottom="@dimen/page_pad_bottom"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/chrome_bar"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/selectorBack"
+                    style="@style/Desk.Circle"
+                    android:contentDescription="@string/back"
+                    android:src="@drawable/ic_nav_prev" />
+
+                <TextView
+                    android:id="@+id/selectorTitle"
+                    style="@style/Desk.Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_8"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/stroke_standard"
+                android:background="@drawable/bg_rule"
+                android:importantForAccessibility="no" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.paperdesk.launcher.ui.DeskRecyclerView
+                    android:id="@+id/selectorList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:overScrollMode="never" />
+
+                <TextView
+                    android:id="@+id/selectorEmpty"
+                    style="@style/Desk.Body"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha="0.45"
+                    android:gravity="center"
+                    android:visibility="gone" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/chrome_bar" />
+    </LinearLayout>
+</FrameLayout>

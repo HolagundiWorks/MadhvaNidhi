@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/page_pad_h"
+        android:paddingTop="@dimen/page_pad_top"
+        android:paddingRight="@dimen/page_pad_h"
+        android:paddingBottom="@dimen/page_pad_bottom">
+
+        <com.paperdesk.launcher.ui.PomodoroStripView
+            android:id="@+id/pomoStrip"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.32" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/space_16"
+            android:layout_weight="0.68"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/Desk.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/page_tasks" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_8"
+                android:overScrollMode="never"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/taskFilters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" />
+            </HorizontalScrollView>
+
+            <com.paperdesk.launcher.ui.DeskRecyclerView
+                android:id="@+id/taskList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/space_8"
+                android:overScrollMode="never" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/fabTask"
+        style="@style/Desk.Fab"
+        android:layout_width="@dimen/fab"
+        android:layout_height="@dimen/fab" />
+</FrameLayout>

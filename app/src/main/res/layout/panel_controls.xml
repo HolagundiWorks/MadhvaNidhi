@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/controlShade"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone">
+
+    <View
+        android:id="@+id/controlScrim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/scrim"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <LinearLayout
+        android:id="@+id/controlPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="@color/black"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/page_pad_h"
+        android:paddingTop="@dimen/space_12"
+        android:paddingRight="@dimen/page_pad_h"
+        android:paddingBottom="@dimen/space_12">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/controlSoundLabel"
+                style="@style/Desk.Section"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="72dp"
+                android:text="@string/sound"
+                android:textColor="@color/accent" />
+
+            <SeekBar
+                android:id="@+id/controlSound"
+                style="@style/Desk.Seek"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/touch"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/space_12"
+                android:layout_marginRight="@dimen/space_12" />
+
+            <TextView
+                android:id="@+id/controlSoundVal"
+                style="@style/Desk.Meta"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="0" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/controlAlwaysOn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/touch"
+            android:layout_marginTop="@dimen/space_8"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/controlAlwaysLabel"
+                style="@style/Desk.Section"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/always_on"
+                android:textColor="@color/accent" />
+
+            <TextView
+                android:id="@+id/controlAlwaysVal"
+                style="@style/Desk.CircleText"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="@string/off" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

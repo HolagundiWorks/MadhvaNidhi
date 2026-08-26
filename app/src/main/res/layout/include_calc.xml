@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/calcPane"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/space_8">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:columnCount="4">
+
+        <TextView style="@style/Desk.Key.Op" android:id="@+id/cClear" android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:text="C" />
+        <TextView style="@style/Desk.Key.Op" android:id="@+id/cBack" android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:text="DEL" android:textSize="@dimen/type_body2" />
+        <TextView style="@style/Desk.Key.Op" android:id="@+id/cLParen" android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:text="(" />
+        <TextView style="@style/Desk.Key.Op" android:id="@+id/cRParen" android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:text=")" />
+
+        <TextView style="@style/Desk.Key" android:id="@+id/c1" android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:text="1" />
+        <TextView style="@style/Desk.Key" android:id="@+id/c2" android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:text="2" />
+        <TextView style="@style/Desk.Key" android:id="@+id/c3" android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:text="3" />
+        <TextView style="@style/Desk.Key.Op" android:id="@+id/cDiv" android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:text="/" />
+
+        <TextView style="@style/Desk.Key" android:id="@+id/c4" android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:text="4" />
+        <TextView style="@style/Desk.Key" android:id="@+id/c5" android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:text="5" />
+        <TextView style="@style/Desk.Key" android:id="@+id/c6" android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:text="6" />
+        <TextView style="@style/Desk.Key.Op" android:id="@+id/cMul" android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:text="*" />
+
+        <TextView style="@style/Desk.Key" android:id="@+id/c7" android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:text="7" />
+        <TextView style="@style/Desk.Key" android:id="@+id/c8" android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:text="8" />
+        <TextView style="@style/Desk.Key" android:id="@+id/c9" android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:text="9" />
+        <TextView style="@style/Desk.Key.Op" android:id="@+id/cSub" android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:text="-" />
+
+        <TextView style="@style/Desk.Key" android:id="@+id/c0" android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:text="0" />
+        <TextView style="@style/Desk.Key" android:id="@+id/cDot" android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:text="." />
+        <TextView style="@style/Desk.Key.Op" android:id="@+id/cAdd" android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:text="+" />
+        <TextView style="@style/Desk.Key.Accent" android:id="@+id/cEq" android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:text="=" />
+
+        <TextView style="@style/Desk.Key.Op" android:id="@+id/cFt" android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:text="feet" android:textSize="@dimen/type_meta" />
+        <TextView style="@style/Desk.Key.Op" android:id="@+id/cIn" android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:text="inch" android:textSize="@dimen/type_meta" />
+        <View android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" />
+        <View android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" />
+    </GridLayout>
+</LinearLayout>

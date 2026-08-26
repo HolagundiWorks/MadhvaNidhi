@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="horizontal"
+    android:paddingLeft="36dp"
+    android:paddingTop="@dimen/page_pad_top"
+    android:paddingRight="@dimen/page_pad_h"
+    android:paddingBottom="@dimen/page_pad_bottom">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.38"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/sandhyaTitle"
+            style="@style/Desk.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/page_sandhya" />
+
+        <TextView
+            android:id="@+id/sandhyaMeta"
+            style="@style/Desk.Meta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_4"
+            android:text="@string/sandhya_meta" />
+
+        <LinearLayout
+            android:id="@+id/sandhyaSessionRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_8"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/sandhyaPratah"
+                style="@style/Desk.Link"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/touch"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                android:text="@string/sandhya_pratah" />
+
+            <TextView
+                android:id="@+id/sandhyaMadhya"
+                style="@style/Desk.Link"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/touch"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                android:text="@string/sandhya_madhya" />
+
+            <TextView
+                android:id="@+id/sandhyaSayam"
+                style="@style/Desk.Link"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/touch"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                android:text="@string/sandhya_sayam" />
+        </LinearLayout>
+
+        <com.paperdesk.launcher.ui.DeskRecyclerView
+            android:id="@+id/sandhyaSteps"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/space_8"
+            android:overScrollMode="never" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/space_16"
+        android:layout_weight="0.62"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/sandhyaHead"
+            style="@style/Desk.Section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/accent" />
+
+        <com.paperdesk.launcher.ui.DeskScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/space_8"
+            android:layout_weight="1"
+            android:fillViewport="true"
+            android:overScrollMode="never">
+
+            <TextView
+                android:id="@+id/sandhyaBody"
+                style="@style/Desk.Body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.25"
+                android:textColor="@color/white" />
+        </com.paperdesk.launcher.ui.DeskScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/sandhyaPrev"
+                style="@style/Desk.CircleText"
+                android:text="‹" />
+
+            <TextView
+                android:id="@+id/sandhyaNext"
+                style="@style/Desk.CircleText"
+                android:layout_marginLeft="@dimen/space_8"
+                android:background="@drawable/bg_circle_on"
+                android:text="›"
+                android:textColor="@color/accent" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

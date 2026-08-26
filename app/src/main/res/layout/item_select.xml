@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/touch"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/space_4"
+    android:paddingBottom="@dimen/space_4">
+
+    <View
+        android:id="@+id/selectMark"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:background="@drawable/bg_mark" />
+
+    <TextView
+        android:id="@+id/selectTitle"
+        style="@style/Desk.Body"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_8"
+        android:layout_weight="1"
+        android:textColor="@color/white" />
+</LinearLayout>

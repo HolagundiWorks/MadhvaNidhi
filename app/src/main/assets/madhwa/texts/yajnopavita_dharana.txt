@@ -1,0 +1,757 @@
+Yajñopavīta Dhāraṇa — ಯಜ್ಞೋಪವೀತ ಧಾರಣ
+Madhwa Sampradaya — Detailed Practice File
+
+1. Catalogue Information
+
+Field   Value
+Kannada   ಯಜ್ಞೋಪವೀತ ಧಾರಣ
+Sanskrit   यज्ञोपवीत धारण
+English   Yajñopavīta Dhāraṇa
+Category   Nitya / Samskara-related ritual
+Tradition   Madhwa Sampradaya source
+Main object   Yajñopavīta / Janivara
+Primary language   Sanskrit
+App section   Pooja / Daily Rituals
+Subsection   Yajñopavīta
+Source   Sumadhwa Seva Yagnopaveeta Dharana Vidhi
+
+2. What the Practice Is
+
+Yajñopavīta Dhāraṇa is the ritual wearing of the sacred thread.
+
+In the Madhwa-specific source used here, the procedure contains:
+
+1. Ācamana
+2. Prāṇāyāma
+3. Saṅkalpa
+4. Yajñopavīta saṃskāra / preparation
+5. Yajñopavīta prāṇa-pratiṣṭhāpana
+6. Yajñopavīta mantra viniyoga
+7. Yajñopavīta dhāraṇa
+8. Jīrṇa yajñopavīta visarjana
+9. Ācamana after visarjana
+10. Madhwa-sampradaya concluding dedication
+
+The source specifically says that if more than one yajñopavīta is worn, the same dhāraṇa mantra is recited for each one. It gives separate saṅkalpa wording for the second, third and fourth yajñopavīta. 
+
+3. Preliminary — Śarīra Śuddhi
+
+Sanskrit
+
+अपवित्रः पवित्रो वा सर्वावस्थां गतोऽपि वा ।
+यः स्मरेत् पुण्डरीकाक्षं स बाह्याभ्यन्तरः शुचिः ॥
+
+Kannada
+
+ಅಪವಿತ್ರಃ ಪವಿತ್ರೋ ವಾ ಸರ್ವಾವಸ್ಥಾಂ ಗತೋಽಪಿ ವಾ ।
+ಯಃ ಸ್ಮರೇತ್ ಪುಂಡರೀಕಾಕ್ಷಂ ಸ ಬಾಹ್ಯಾಭ್ಯಂತರಃ ಶುಚಿಃ ॥
+
+English
+
+Whether impure or pure, or in whatever condition one may be, one who remembers Puṇḍarīkākṣa becomes purified both externally and internally.
+
+4. Ācamana — ಆಚಮನ
+
+Short Madhwa-source form
+
+Sanskrit
+
+ॐ श्री केशवाय स्वाहा ।
+ॐ श्री नारायणाय स्वाहा ।
+ॐ श्री माधवाय स्वाहा ।
+
+ॐ गोविन्दाय नमः ।
+ॐ विष्णवे नमः ।
+ॐ मधुसूदनाय नमः ।
+ॐ त्रिविक्रमाय नमः ।
+ॐ वामनाय नमः ।
+ॐ श्रीधराय नमः ।
+ॐ हृषीकेशाय नमः ।
+ॐ पद्मनाभाय नमः ।
+ॐ दामोदराय नमः ।
+
+Kannada
+
+ಓಂ ಶ್ರೀ ಕೇಶವಾಯ ಸ್ವಾಹಾ ।
+ಓಂ ಶ್ರೀ ನಾರಾಯಣಾಯ ಸ್ವಾಹಾ ।
+ಓಂ ಶ್ರೀ ಮಾಧವಾಯ ಸ್ವಾಹಾ ।
+
+ಓಂ ಗೋವಿಂದಾಯ ನಮಃ ।
+ಓಂ ವಿಷ್ಣವೇ ನಮಃ ।
+ಓಂ ಮಧುಸೂದನಾಯ ನಮಃ ।
+ಓಂ ತ್ರಿವಿಕ್ರಮಾಯ ನಮಃ ।
+ಓಂ ವಾಮನಾಯ ನಮಃ ।
+ಓಂ ಶ್ರೀಧರಾಯ ನಮಃ ।
+ಓಂ ಹೃಷೀಕೇಶಾಯ ನಮಃ ।
+ಓಂ ಪದ್ಮನಾಭಾಯ ನಮಃ ।
+ಓಂ ದಾಮೋದರಾಯ ನಮಃ ।
+
+English / Transliteration
+
+Om śrī Keśavāya svāhā.  
+Om śrī Nārāyaṇāya svāhā.  
+Om śrī Mādhavāya svāhā.
+
+Om Govindāya namaḥ.  
+Om Viṣṇave namaḥ.  
+Om Madhusūdanāya namaḥ.  
+Om Trivikramāya namaḥ.  
+Om Vāmanāya namaḥ.  
+Om Śrīdharāya namaḥ.  
+Om Hṛṣīkeśāya namaḥ.  
+Om Padmanābhāya namaḥ.  
+Om Dāmodarāya namaḥ.
+
+The expanded 24-name ācamana sequence is also documented in standard Yajñopavīta Dhāraṇa references. 
+
+5. Prāṇāyāma — ಪ್ರಾಣಾಯಾಮ
+
+Viniyoga
+
+Sanskrit
+
+प्रणवस्य परब्रह्म ऋषिः ।
+परमात्मा देवता ।
+देवी गायत्री छन्दः ।
+प्राणायामे विनियोगः ॥
+
+Kannada
+
+ಪ್ರಣವಸ್ಯ ಪರಬ್ರಹ್ಮ ಋಷಿಃ ।
+ಪರಮಾತ್ಮಾ ದೇವತಾ ।
+ದೇವೀ ಗಾಯತ್ರೀ ಛಂದಃ ।
+ಪ್ರಾಣಾಯಾಮೇ ವಿನಿಯೋಗಃ ॥
+
+Mantra
+
+ॐ भूः ।
+ॐ भुवः ।
+ॐ स्वः ।
+ॐ महः ।
+ॐ जनः ।
+ॐ तपः ।
+ॐ सत्यम् ।
+
+ॐ तत्सवितुर्वरेण्यं
+भर्गो देवस्य धीमहि ।
+धियो यो नः प्रचोदयात् ॥
+
+ॐ आपो ज्योतीरसोऽमृतं ब्रह्म
+भूर्भुवस्सुवरोम् ॥
+
+Kannada
+
+ಓಂ ಭೂಃ ।
+ಓಂ ಭುವಃ ।
+ಓಂ ಸ್ವಃ ।
+ಓಂ ಮಹಃ ।
+ಓಂ ಜನಃ ।
+ಓಂ ತಪಃ ।
+ಓಂ ಸತ್ಯಮ್ ।
+
+ಓಂ ತತ್ಸವಿತುರ್ವರೇಣ್ಯಂ
+ಭರ್ಗೋ ದೇವಸ್ಯ ಧೀಮಹಿ ।
+ಧಿಯೋ ಯೋ ನಃ ಪ್ರಚೋದಯಾತ್ ॥
+
+ಓಂ ಆಪೋ ಜ್ಯೋತೀರಸೋಽಮೃತಂ ಬ್ರಹ್ಮ
+ಭೂರ್ಭುವಸ್ಸುವರೋಮ್ ॥
+
+The Madhwa-specific source places prāṇāyāma before saṅkalpa. 
+
+6. Saṅkalpa — ಸಂಕಲ್ಪ
+
+The source gives a long traditional saṅkalpa containing the cosmic time/location descriptors and a Madhwa-specific dedication.
+
+Core purpose
+
+Sanskrit / Transliteration
+
+श्री भारतीरमण मुख्यप्राणान्तर्गत
+श्री वेदव्यास प्रेरणया
+श्री वेदव्यास प्रीत्यर्थम्
+श्रौत स्मार्त कर्मानुष्ठान योग्यता सिद्ध्यर्थम्
+यज्ञोपवीतधारणमहं करिष्ये ।
+
+तदादौ यज्ञोपवीत संस्कारं करिष्ये ॥
+
+Kannada
+
+ಶ್ರೀ ಭಾರತೀರಮಣ ಮುಖ್ಯಪ್ರಾಣಾಂತರ್ಗತ
+ಶ್ರೀ ವೇದವ್ಯಾಸ ಪ್ರೇರಣಯಾ
+ಶ್ರೀ ವೇದವ್ಯಾಸ ಪ್ರೀತ್ಯರ್ಥಮ್
+ಶ್ರೌತ ಸ್ಮಾರ್ತ ಕರ್ಮಾನುಷ್ಠಾನ ಯೋಗ್ಯತಾ ಸಿದ್ಧ್ಯರ್ಥಮ್
+ಯಜ್ಞೋಪವೀತಧಾರಣಮಹಂ ಕರಿಷ್ಯೇ ।
+
+ತದಾದೌ ಯಜ್ಞೋಪವೀತ ಸಂಸ್ಕಾರಂ ಕರಿಷ್ಯೇ ॥
+
+English
+
+For the inspiration of Sri Vedavyasa, who is within Sri Bharati-Ramana and Mukhya-Prana, and for the pleasure of Sri Vedavyasa, and for attaining eligibility to perform Śrauta and Smārta rites, I shall perform the wearing of the Yajñopavīta.
+
+First, I shall perform the consecration/preparation of the Yajñopavīta.
+
+This purpose statement follows the Madhwa-specific source. 
+
+7. Yajñopavīta Saṃskāra
+
+The source places Yajñopavīta saṃskāra immediately before the actual wearing.
+
+The exact family procedure for preparing, touching, arranging or sanctifying the thread may vary. The app should therefore present this as a separate step rather than silently supplying a universal physical procedure.
+
+8. Yajñopavīta Prāṇa-Pratiṣṭhāpana
+
+Saṅkalpa
+
+Sanskrit
+
+यज्ञोपवीत प्राण प्रतिष्ठापनं करिष्ये ।
+
+Kannada
+
+ಯಜ್ಞೋಪವೀತ ಪ್ರಾಣ ಪ್ರತಿಷ್ಠಾಪನಂ ಕರಿಷ್ಯೇ ।
+
+English
+
+I shall perform the prāṇa-pratiṣṭhāpana of the Yajñopavīta.
+
+Ṛgvedic mantra
+
+Sanskrit
+
+ॐ असुनीते पुनरस्मासु चक्षुः
+पुनः प्राणमिह नो धेहि भोगम् ।
+ज्योक् पश्येम सूर्यमुच्चरन्तम्
+अनुमते मृडया नः स्वस्ति ॥
+
+ऋग्वेद 10.59.6
+
+Kannada
+
+ಓಂ ಅಸು ನೀತೇ ಪುನರಸ್ಮಾಸು ಚಕ್ಷುಃ
+ಪುನಃ ಪ್ರಾಣಮಿಹ ನೋ ಧೇಹಿ ಭೋಗಮ್ ।
+ಜ್ಯೋಕ್ ಪಶ್ಯೇಮ ಸೂರ್ಯಮುಚ್ಚರಂತಮ್
+ಅನುಮತೇ ಮೃಡಯಾ ನಃ ಸ್ವಸ್ತಿ ॥
+
+English / Transliteration
+
+Om asunīte punar asmāsu cakṣuḥ  
+punaḥ prāṇam iha no dhehi bhogam |  
+jyok paśyema sūryam uccarantam  
+anumate mṛḍayā naḥ svasti 
+
+The source identifies this as Ṛgveda 10.59.6. 
+
+Follow-up statement
+
+Sanskrit
+
+अमृतं वै प्राणाः ।
+अमृतमापः ।
+प्राणानेव यथास्थानमुपह्वयते ॥
+
+English
+
+The source follows the mantra with a statement concerning the immortal nature of prāṇa and waters and the invocation of the prāṇas to their proper place. 
+
+9. Yajñopavīta Mantra — Viniyoga
+
+Sanskrit
+
+यज्ञोपवीते तस्य मन्त्रस्य
+परमेष्ठी परब्रह्म ऋषिः ।
+परमात्मा देवता ।
+देवी गायत्री छन्दः ।
+यज्ञोपवीत धारणे विनियोगः ॥
+
+Kannada
+
+ಯಜ್ಞೋಪವೀತೇ ತಸ್ಯ ಮಂತ್ರಸ್ಯ
+ಪರಮೇಷ್ಠೀ ಪರಬ್ರಹ್ಮ ಋಷಿಃ ।
+ಪರಮಾತ್ಮಾ ದೇವತಾ ।
+ದೇವೀ ಗಾಯತ್ರೀ ಛಂದಃ ।
+ಯಜ್ಞೋಪವೀತ ಧಾರಣೇ ವಿನಿಯೋಗಃ ॥
+
+English
+
+For the Yajñopavīta mantra:
+
+- Ṛṣi: Parameṣṭhī / Parabrahma
+- Devatā: Paramātma
+- Chandas: Gāyatrī
+- Application: Yajñopavīta Dhāraṇa
+
+This viniyoga is given in the published Yajñopavīta Dhāraṇa text. 
+
+10. Main Yajñopavīta Dhāraṇa Mantra
+
+Sanskrit
+
+ॐ
+
+यज्ञोपवीतं परमं पवित्रं
+प्रजापतेर्यत्सहजं पुरस्तात् ।
+आयुष्यमग्र्यं प्रतिमुञ्च शुभ्रं
+यज्ञोपवीतं बलमस्तु तेजः ॥
+
+Kannada
+
+ಓಂ
+
+ಯಜ್ಞೋಪವೀತಂ ಪರಮಂ ಪವಿತ್ರಂ
+ಪ್ರಜಾಪತೇರ್ಯತ್ಸಹಜಂ ಪುರಸ್ತಾತ್ ।
+ಆಯುಷ್ಯಮಗ್ರ್ಯಂ ಪ್ರತಿಮುಂಚ ಶುಭ್ರಂ
+ಯಜ್ಞೋಪವೀತಂ ಬಲಮಸ್ತು ತೇಜಃ ॥
+
+Transliteration
+
+Om
+
+yajñopavītaṃ paramaṃ pavitraṃ  
+prajāpateryat-sahajaṃ purastāt |  
+āyuṣyam-agryaṃ pratimuñca śubhraṃ  
+yajñopavītaṃ balam-astu tejaḥ 
+
+English Meaning
+
+The Yajñopavīta is supremely pure, born together with Prajāpati and present from the beginning. May this pure sacred thread bestow foremost longevity, strength and spiritual radiance.
+
+The published Madhwa source instructs that this mantra is recited while wearing the janivara; it also says that the same mantra is recited for each additional Yajñopavīta. 
+
+11. Wearing More Than One Yajñopavīta
+
+The Madhwa-specific source provides distinct saṅkalpa statements.
+
+Second Yajñopavīta
+
+Sanskrit / Transliteration
+
+गृहस्थाश्रमसिद्ध्यर्थे
+द्वितीय यज्ञोपवीतधारणं करिष्ये ॥
+
+English:  
+For the accomplishment/requirements of Gṛhastha Āśrama, I shall wear the second Yajñopavīta.
+
+Third Yajñopavīta
+
+Sanskrit / Transliteration
+
+उत्तरीयार्थे
+तृतीय यज्ञोपवीत धारणं करिष्ये ॥
+
+English:  
+For the purpose of the uttarīya, I shall wear the third Yajñopavīta.
+
+Fourth Yajñopavīta
+
+Sanskrit / Transliteration
+
+सहायार्थं
+चतुर्थ यज्ञोपवीत धारणं करिष्ये ॥
+
+English:  
+For assistance/support, I shall wear the fourth Yajñopavīta.
+
+These three purposes are explicitly given in the Sumadhwa Seva source. 
+
+12. Jīrṇa Yajñopavīta Visarjana — Old Thread Removal
+
+The source instructs that the old yajñopavīta is removed separately.
+
+It also states that at least ten Gāyatrī mantras are to be chanted before the old thread is discarded. 
+
+Sanskrit
+
+उपवीतं भिन्नतन्तुं जीर्णं कश्मलदूषितम् ।
+विसृजामि परब्रह्मन्
+वर्चो दीर्घायुरस्तु मे ॥
+
+Kannada
+
+ಉಪವೀತಂ ಭಿನ್ನತಂತುಂ ಜೀರ್ಣಂ ಕಶ್ಮಲದೂಷಿತಮ್ ।
+ವಿಸೃಜಾಮಿ ಪರಬ್ರಹ್ಮನ್
+ವರ್ಚೋ ದೀರ್ಘಾಯುರಸ್ತು ಮೇ ॥
+
+Transliteration
+
+upavītaṃ bhinnatantuṃ jīrṇaṃ kaśmaladūṣitam |  
+visṛjāmi parabrahman  
+varco dīrghāyur astu me 
+
+English Meaning
+
+This old, worn and impurity-affected sacred thread, whose thread has become broken, I relinquish. May spiritual radiance and long life be mine.
+
+13. Disposal of the Old Yajñopavīta
+
+Sanskrit / Transliteration
+
+“समुद्रं गच्छ स्वाहा”
+
+samudraṃ gaccha svāhā
+
+The Madhwa-specific source gives this as the statement accompanying the disposal of the old Yajñopavīta. 
+
+Kannada
+
+“ಸಮುದ್ರಂ ಗಚ್ಛ ಸ್ವಾಹಾ”
+
+English
+
+“Go to the ocean, svāhā.”
+
+14. Punara-Ācamana — ಪುನರಾಚಮನ
+
+After disposal of the old thread, the source instructs another ācamana.
+
+The abbreviated concluding names given are:
+
+ॐ अच्युताय नमः ।
+ॐ अनन्ताय नमः ।
+ॐ गोविन्दाय नमः ॥
+
+Kannada
+
+ಓಂ ಅಚ್ಯುತಾಯ ನಮಃ ।
+ಓಂ ಅನಂತಾಯ ನಮಃ ।
+ಓಂ ಗೋವಿಂದಾಯ ನಮಃ ॥
+
+Transliteration
+
+Om Acyutāya namaḥ |  
+Om Anantāya namaḥ |  
+Om Govindāya namaḥ 
+
+The three-name form is specifically recorded in the Madhwa Yajñopavīta source. 
+
+15. Madhwa Sampradaya Closing Dedication
+
+This is especially important for the app because the source is explicitly Madhwa-oriented.
+
+Sanskrit / Transliteration
+
+अनेन यज्ञोपवीतधारणेन
+भगवान् मध्वान्तर्गत
+श्री विष्णु प्रेरणया
+श्री विष्णु प्रीत्यर्थं
+प्रीतो वरदो भवतु ।
+
+श्री कृष्णार्पणमस्तु ॥
+
+Kannada
+
+ಅನೇನ ಯಜ್ಞೋಪವೀತಧಾರಣೇನ
+ಭಗವಾನ್ ಮಧ್ವಾಂತರ್ಗತ
+ಶ್ರೀ ವಿಷ್ಣು ಪ್ರೇರಣಯಾ
+ಶ್ರೀ ವಿಷ್ಣು ಪ್ರೀತ್ಯರ್ಥಂ
+ಪ್ರೀತೋ ವರದೋ ಭವತು ।
+
+ಶ್ರೀ ಕೃಷ್ಣಾರ್ಪಣಮಸ್ತು ॥
+
+English
+
+By this Yajñopavīta Dhāraṇa, may Bhagavān, with Sri Viṣṇu within Sri Madhva as the indwelling controller, be pleased and grant His blessing for the pleasure of Sri Viṣṇu.
+
+May this be offered to Sri Krishna.
+
+The Madhwa-specific wording is documented in the Sumadhwa Seva source. 
+
+16. Alternative / Expanded Samarpana
+
+Some published Yajñopavīta Dhāraṇa versions include a general samarpana after the ritual.
+
+Sanskrit
+
+यस्य स्मृत्या च नामोक्त्या
+तपःसन्ध्यादि क्रियादिषु ।
+न्यूनं सम्पूर्णतां याति
+सद्यो वन्दे तमच्युतम् ॥
+
+मन्त्रहीनं क्रियाहीनं
+भक्तिहीनं रमापते ।
+यत्कृतं तु मया देव
+परिपूर्णं तदस्तु मे ॥
+
+Kannada
+
+ಯಸ್ಯ ಸ್ಮೃತ್ಯಾ ಚ ನಾಮೋಕ್ತ್ಯಾ
+ತಪಃಸಂಧ್ಯಾದಿ ಕ್ರಿಯದಿಷು ।
+ನ್ಯೂನಂ ಸಂಪೂರ್ಣತಾಂ ಯಾತಿ
+ಸದ್ಯೋ ವಂದೇ ತಮಚ್ಯುತಮ್ ॥
+
+ಮಂತ್ರಹೀನಂ ಕ್ರಿಯಾಹೀನಂ
+ಭಕ್ತಿಹೀನಂ ರಮಾಪತೇ ।
+ಯತ್ಕೃತಂ ತು ಮಯಾ ದೇವ
+ಪರಿಪೂರ್ಣಂ ತದಸ್ತು ಮೇ ॥
+
+English
+
+By whose remembrance and utterance of whose name deficiencies in austerity, Sandhyā and other rites become complete, I immediately bow to that Acyuta.
+
+O consort of Ramā, whatever I have performed with deficiency in mantra, ritual or devotion, may that become complete.
+
+This expanded samarpana appears in other published Yajñopavīta Dhāraṇa versions; it should therefore be marked in the app as an additional/variant closing, not silently substituted for the Madhwa-specific source wording. 
+
+17. Final Offering
+
+Sanskrit
+
+श्री कृष्णार्पणमस्तु ॥
+
+Kannada
+
+ಶ್ರೀ ಕೃಷ್ಣಾರ್ಪಣಮಸ್ತು ॥
+
+English
+
+May this be offered to Sri Krishna.
+
+18. Kāyena Vācā — Optional Final Samarpana
+
+Some published versions additionally conclude with:
+
+Sanskrit
+
+कायेन वाचा मनसेन्द्रियैर्वा
+बुद्ध्यात्मना वा प्रकृतेः स्वभावात् ।
+करोमि यद्यत् सकलं परस्मै
+श्रीमन्नारायणायेति समर्पयामि ॥
+
+Kannada
+
+ಕಾಯೇನ ವಾಚಾ ಮನಸೇಂದ್ರಿಯೈರ್ವಾ
+ಬುದ್ಧ್ಯಾತ್ಮನಾ ವಾ ಪ್ರಕೃತೇಃ ಸ್ವಭಾವಾತ್ ।
+ಕರೋಮಿ ಯದ್ಯತ್ ಸಕಲಂ ಪರಸ್ಮೈ
+ಶ್ರೀಮನ್ನಾರಾಯಣಾಯೇತಿ ಸಮರ್ಪಯಾಮಿ ॥
+
+English
+
+Whatever I perform through body, speech, mind, senses, intellect, self or according to my natural disposition, I offer all of it to the Supreme Sri Mannarayana.
+
+This is present in the expanded Yajñopavīta Dhāraṇa reference. 
+
+19. Complete App Sequence
+
+```yaml
+id: yagnopaveeta_dharana
+
+title:
+  kannada: ಯಜ್ಞೋಪವೀತ ಧಾರಣ
+  sanskrit: यज्ञोपवीत धारण
+  english: Yajñopavīta Dhāraṇa
+
+tradition: madhwa
+
+steps:
+  - id: sharira_shuddhi
+    title:
+      kannada: ಶರೀರ ಶುದ್ಧಿ
+      sanskrit: शरीरशुद्धिः
+      english: Purification
+
+  - id: achamana
+    title:
+      kannada: ಆಚಮನ
+      sanskrit: आचमनम्
+      english: Ācamana
+
+  - id: pranayama
+    title:
+      kannada: ಪ್ರಾಣಾಯಾಮ
+      sanskrit: प्राणायामः
+      english: Prāṇāyāma
+
+  - id: sankalpa
+    title:
+      kannada: ಸಂಕಲ್ಪ
+      sanskrit: सङ्कल्पः
+      english: Saṅkalpa
+
+  - id: yajnopaveeta_samskara
+    title:
+      kannada: ಯಜ್ಞೋಪವೀತ ಸಂಸ್ಕಾರ
+      sanskrit: यज्ञोपवीतसंस्कारः
+      english: Yajñopavīta Saṃskāra
+
+  - id: prana_pratishthapana
+    title:
+      kannada: ಪ್ರಾಣ ಪ್ರತಿಷ್ಠಾಪನೆ
+      sanskrit: प्राणप्रतिष्ठापनम्
+      english: Prāṇa-Pratiṣṭhāpana
+
+  - id: mantra_viniyoga
+    title:
+      kannada: ಮಂತ್ರ ವಿನಿಯೋಗ
+      sanskrit: मन्त्रविनियोगः
+      english: Mantra Viniyoga
+
+  - id: dharana
+    title:
+      kannada: ಯಜ್ಞೋಪವೀತ ಧಾರಣ
+      sanskrit: यज्ञोपवीतधारणम्
+      english: Wearing the Yajñopavīta
+
+  - id: additional_threads
+    title:
+      kannada: ಹೆಚ್ಚುವರಿ ಯಜ್ಞೋಪವೀತ
+      sanskrit: अतिरिक्त यज्ञोपवीत
+      english: Additional Yajñopavīta
+
+  - id: old_thread_removal
+    title:
+      kannada: ಜೀರ್ಣ ಯಜ್ಞೋಪವೀತ ವಿಸರ್ಜನ
+      sanskrit: जीर्णयज्ञोपवीतविसर्जनम्
+      english: Removal of Old Yajñopavīta
+
+  - id: punar_achamana
+    title:
+      kannada: ಪುನರಾಚಮನ
+      sanskrit: पुनराचमनम्
+      english: Re-Ācamana
+
+  - id: madhwa_samarpana
+    title:
+      kannada: ಮಧ್ವ ಸಂಪ್ರದಾಯ ಸಮರ್ಪಣೆ
+      sanskrit: मध्वसम्प्रदायसमर्पणम्
+      english: Madhwa Sampradaya Dedication
+
+  - id: krishna_arpana
+    title:
+      kannada: ಶ್ರೀಕೃಷ್ಣಾರ್ಪಣ
+      sanskrit: श्रीकृष्णार्पणम्
+      english: Offering to Sri Krishna
+```
+
+20. UI Behaviour for the Pooja App
+
+Main page
+
+Header
+
+Content
+
+Display one ritual step at a time.
+
+```text
+[ 1 / 12 ]
+
+ಶರೀರ ಶುದ್ಧಿ
+Śarīra Śuddhi
+
+Kannada
+────────────
+...
+
+Sanskrit
+────────────
+...
+
+English
+────────────
+...
+```
+
+Navigation
+
+- Horizontal swipe on header/footer → previous/next ritual
+- Vertical scroll → only within the current mantra/content area
+- Circular previous/next buttons
+- Play button for audio
+- Repeat button
+- Bookmark button
+- Text-size button
+- No unnecessary rectangular buttons
+
+Bottom control area
+
+```text
+      ◀       ●       ▶
+```
+
+Where:
+
+- `◀` previous step
+- `●` play/pause
+- `▶` next step
+
+21. Source and Variant Policy
+
+For the app, keep these separate:
+
+Madhwa-specific source
+
+Use the Sumadhwa Seva Yagnopaveeta Dharana Vidhi as the primary Madhwa version.
+
+It specifically contains:
+
+- Madhwa-oriented saṅkalpa
+- Sri Vedavyasa dedication
+- Additional Yajñopavīta purposes
+- Old-thread removal
+- Madhwa-specific concluding dedication
+- Sri Krishna arpaṇa
+
+General Yajñopavīta versions
+
+Other sources contain:
+
+- Expanded 24-name ācamana
+- Expanded samarpana
+- Lakshmi-Narayana dedication
+- Kāyena Vācā final offering
+
+These should be stored as variants, not merged into the Madhwa source without attribution. 
+
+22. Recommended File Structure
+
+```text
+pooja/
+└── yagnopaveeta/
+    ├── yagnopaveeta_dharana.md
+    ├── yagnopaveeta_dharana.yaml
+    ├── mantras/
+    │   ├── yajnopaveeta_dharana.md
+    │   ├── pranayama.md
+    │   └── jirna_yajnopaveeta_visarjana.md
+    └── variants/
+        └── general_yajnopaveeta_dharana.md
+```
+
+23. Source References
+
+1. Sumadhwa Seva — Yagnopaveeta Dharana Vidhi  
+   Madhwa-specific source; attributed to Vidwan Sri S. N. Ramachandrachar and collected by Narahari Sumadhwa. 
+
+2. Vaidika Vignanam — Yagnopavita Dharana  
+   Expanded Sanskrit/IAST reference including ācamana, prāṇāyāma, prāṇa-pratiṣṭhāpana, dhāraṇa, visarjana and samarpana. 
+
+3. Vedic Tithi — Yajnopavita Dharana  
+   Independent reference for the dhāraṇa mantra, viniyoga and old-thread visarjana. 
+
+24. App Content Integrity Note
+
+Do not automatically alter Sanskrit spelling, split sandhi, change mantra wording, or combine variants.
+
+For the final production database, every mantra should retain:
+
+```yaml
+source_text: true
+source_url: ""
+tradition: ""
+variant: ""
+language:
+  kannada: ""
+  devanagari: ""
+  transliteration: ""
+  english_meaning: ""
+```
+
+This allows the app to distinguish:
+
+- Source Kannada
+- Source Sanskrit
+- Roman transliteration
+- English meaning
+- Madhwa-specific wording
+- General/variant wording
+
+and prevents different ritual traditions from accidentally being merged.

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/launcherRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <com.paperdesk.launcher.ui.ZonePagerHost
+        android:id="@+id/pagerHost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@color/black" />
+    </com.paperdesk.launcher.ui.ZonePagerHost>
+
+    <LinearLayout
+        android:id="@+id/pageNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/page_pad_h"
+        android:paddingTop="8dp"
+        android:paddingRight="@dimen/page_pad_h"
+        android:paddingBottom="8dp">
+
+        <ImageButton
+            android:id="@+id/navPrev"
+            style="@style/Desk.Circle"
+            android:layout_width="@dimen/touch"
+            android:layout_height="@dimen/touch"
+            android:contentDescription="@string/prev"
+            android:src="@drawable/ic_nav_prev" />
+
+        <TextView
+            android:id="@+id/hariMotto"
+            style="@style/Desk.Section"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/space_8"
+            android:paddingRight="@dimen/space_8"
+            android:textColor="@color/accent" />
+
+        <ImageButton
+            android:id="@+id/navNext"
+            style="@style/Desk.Circle"
+            android:layout_width="@dimen/touch"
+            android:layout_height="@dimen/touch"
+            android:contentDescription="@string/next"
+            android:src="@drawable/ic_nav_next" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/shadeGuard"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_gravity="top"
+        android:background="@android:color/transparent"
+        android:clickable="true"
+        android:focusable="true"
+        android:contentDescription="@string/unlock">
+
+        <View
+            android:layout_width="48dp"
+            android:layout_height="3dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="6dp"
+            android:background="@color/white_55"
+            android:importantForAccessibility="no" />
+    </FrameLayout>
+
+    <include layout="@layout/panel_controls" />
+</FrameLayout>

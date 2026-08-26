@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/page_pad_h"
+    android:paddingTop="@dimen/page_pad_top"
+    android:paddingRight="@dimen/page_pad_h"
+    android:paddingBottom="@dimen/page_pad_bottom">
+
+    <TextView
+        android:id="@+id/themeBack"
+        style="@style/Desk.Link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/touch"
+        android:gravity="center_vertical"
+        android:text="@string/back" />
+
+    <TextView
+        style="@style/Desk.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_8"
+        android:text="@string/theme" />
+
+    <TextView
+        style="@style/Desk.Meta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_8"
+        android:text="@string/theme_summary" />
+
+    <LinearLayout
+        android:id="@+id/themeBlack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_16"
+        android:background="@drawable/bg_row"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/touch"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/space_12"
+        android:paddingBottom="@dimen/space_12">
+
+        <TextView
+            android:id="@+id/themeBlackName"
+            style="@style/Desk.CardTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/theme_black" />
+
+        <TextView
+            style="@style/Desk.Meta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_4"
+            android:text="@string/theme_black_hint" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/themePaper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_row"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/touch"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/space_12"
+        android:paddingBottom="@dimen/space_12">
+
+        <TextView
+            android:id="@+id/themePaperName"
+            style="@style/Desk.CardTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/theme_paper" />
+
+        <TextView
+            style="@style/Desk.Meta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_4"
+            android:text="@string/theme_paper_hint" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/themeAlwaysOn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_16"
+        android:background="@drawable/bg_row"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/touch"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/space_12"
+        android:paddingBottom="@dimen/space_12">
+
+        <TextView
+            android:id="@+id/themeAlwaysName"
+            style="@style/Desk.CardTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/always_on" />
+
+        <TextView
+            android:id="@+id/themeAlwaysHint"
+            style="@style/Desk.Meta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_4"
+            android:text="@string/always_on_hint" />
+    </LinearLayout>
+</LinearLayout>

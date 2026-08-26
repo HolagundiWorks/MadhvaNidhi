@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/page_pad_h"
+    android:paddingTop="@dimen/page_pad_top"
+    android:paddingRight="@dimen/page_pad_h"
+    android:paddingBottom="@dimen/page_pad_bottom">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.38"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/libTitle"
+            style="@style/Desk.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/page_mantras" />
+
+        <TextView
+            android:id="@+id/libMeta"
+            style="@style/Desk.Meta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_4" />
+
+        <EditText
+            android:id="@+id/libSearch"
+            style="@style/Desk.Field"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/field_h"
+            android:layout_marginTop="@dimen/space_8"
+            android:hint="@string/search_library"
+            android:imeOptions="actionSearch"
+            android:inputType="text" />
+
+        <com.paperdesk.launcher.ui.DeskRecyclerView
+            android:id="@+id/libList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/space_8"
+            android:overScrollMode="never" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/space_16"
+        android:layout_weight="0.62"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/libHead"
+                style="@style/Desk.Section"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/accent" />
+
+            <TextView
+                android:id="@+id/libStar"
+                android:layout_width="@dimen/icon_btn"
+                android:layout_height="@dimen/icon_btn"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="@string/star_off"
+                android:textColor="@color/white_55"
+                android:textSize="@dimen/type_title"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <com.paperdesk.launcher.ui.DeskScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/space_8"
+            android:fillViewport="true"
+            android:overScrollMode="never">
+
+            <TextView
+                android:id="@+id/libBody"
+                style="@style/Desk.Body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.25"
+                android:textColor="@color/white" />
+        </com.paperdesk.launcher.ui.DeskScrollView>
+    </LinearLayout>
+</LinearLayout>

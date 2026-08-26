@@ -1,0 +1,1581 @@
+{
+  "source": "Madhwa Festivals master catalogue",
+  "site": "https://madhwafestivals.com/",
+  "groups": [
+    {
+      "id": "stotras",
+      "kn": "ಸ್ತೋತ್ರಗಳು",
+      "sa": "स्तोत्राणि",
+      "en": "Stotras",
+      "items": [
+        {
+          "id": "nakha_stuti",
+          "kn": "ಶ್ರೀ ನರಸಿಂಹ ನಖ ಸ್ತುತಿ",
+          "sa": "श्रीनृसिंह नखस्तुतिः",
+          "en": "Sri Narasimha Nakha Stuti",
+          "type": "stotra",
+          "deity": "Narasimha",
+          "author": "ಮಧ್ವಾಚಾರ್ಯರು",
+          "file": "nakha_stuti.txt",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "kanduka_stuti",
+          "kn": "ಕಂದುಕ ಸ್ತುತಿ",
+          "sa": "कन्दुकस्तुतिः",
+          "en": "Kanduka Stuti",
+          "type": "stotra",
+          "deity": "Vayu",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "dvadasha_stotra",
+          "kn": "ದ್ವಾದಶ ಸ್ತೋತ್ರ",
+          "sa": "द्वादशस्तोत्रम्",
+          "en": "Dwadasa Stotra",
+          "type": "stotra",
+          "deity": "Hari",
+          "author": "ಮಧ್ವಾಚಾರ್ಯರು",
+          "file": "dvadasha_stotra.txt",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "avatara_traya",
+          "kn": "ಅವತಾರ ತ್ರಯ ಸ್ತೋತ್ರ",
+          "sa": "अवतारत्रयस्तोत्रम्",
+          "en": "Avatara Traya Stotra",
+          "type": "stotra",
+          "deity": "Vayu",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "madhwashtakam",
+          "kn": "ಶ್ರೀ ಮಧ್ವಾಷ್ಟಕಂ",
+          "sa": "श्रीमध्वाष्टकम्",
+          "en": "Sri Madhwashtakam",
+          "type": "stotra",
+          "deity": "Madhwacharya",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "vayu_stuti",
+          "kn": "ವಾಯು ಸ್ತುತಿ",
+          "sa": "वायुस्तुतिः",
+          "en": "Vayu Stuti",
+          "type": "stotra",
+          "deity": "Vayu",
+          "author": "ತ್ರಿವಿಕ್ರಮ ಪಂಡಿತಾಚಾರ್ಯರು",
+          "file": "hari_vayu_stuti.txt",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "laghu_vayu_stuti",
+          "kn": "ಲಘು ವಾಯು ಸ್ತುತಿ",
+          "sa": "लघुवायुस्तुतिः",
+          "en": "Laghu Vayu Stuti",
+          "type": "stotra",
+          "deity": "Vayu",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "laghu_taratamya",
+          "kn": "ಲಘು ತಾರತಮ್ಯ",
+          "sa": "लघुतारतम्यम्",
+          "en": "Laghu Taratamya",
+          "type": "stotra",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "anu_vayu_stuti",
+          "kn": "ಅಣು ವಾಯು ಸ್ತುತಿ",
+          "sa": "अणुवायुस्तुतिः",
+          "en": "Anu Vayu Stuti",
+          "type": "stotra",
+          "deity": "Vayu",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "taratamya_kalyani",
+          "kn": "ತಾರತಮ್ಯ ಸ್ತೋತ್ರ — ಕಲ್ಯಾಣಿ ದೇವಿ",
+          "sa": "तारतम्यस्तोत्रम्",
+          "en": "Taratamya Stotram — Kalyani Devi",
+          "type": "stotra",
+          "author": "ಕಲ್ಯಾಣಿ ದೇವಿ",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "yantrodharaka",
+          "kn": "ಯಂತ್ರೋದ್ಧಾರಕ ಹನುಮಾನ್ ಸ್ತೋತ್ರಂ",
+          "sa": "यन्त्रोद्धारकहनुमत्स्तोत्रम्",
+          "en": "Yantrodharaka Hanuman Stotram",
+          "type": "stotra",
+          "deity": "Hanuma",
+          "author": "ವ್ಯಾಸರಾಜರು",
+          "file": "yantrodharaka.txt",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "grantha_malika",
+          "kn": "ಗ್ರಂಥ ಮಾಲಿಕಾ ಸ್ತೋತ್ರಂ",
+          "sa": "ग्रन्थमालिकास्तोत्रम्",
+          "en": "Grantha Malika Stotram",
+          "type": "stotra",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "srinivasa_stotram",
+          "kn": "ಶ್ರೀನಿವಾಸ ಸ್ತೋತ್ರಂ",
+          "sa": "श्रीनिवासस्तोत्रम्",
+          "en": "Srinivasa Stotram",
+          "type": "stotra",
+          "deity": "Srinivasa",
+          "file": "lib:stotra/VenkateshaStotram",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "laghu_shiva_stuti",
+          "kn": "ಲಘು ಶಿವ ಸ್ತುತಿ",
+          "sa": "लघुशिवस्तुतिः",
+          "en": "Laghu Shiva Stuti",
+          "type": "stotra",
+          "deity": "Shiva",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "sripadaraja_pancha",
+          "kn": "ಶ್ರೀಪಾದರಾಜ ಪಂಚರತ್ನ ಮಾಲಿಕಾ ಸ್ತೋತ್ರ",
+          "sa": "श्रीपादराजपञ्चरत्नमालिकास्तोत्रम्",
+          "en": "Sripadaraja Pancha Ratna Malika Stotra",
+          "type": "stotra",
+          "author": "ಶ್ರೀಪಾದರಾಜರು",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "jayatirtha_stuti",
+          "kn": "ಶ್ರೀ ಜಯತೀರ್ಥ ಸ್ತುತಿ",
+          "sa": "श्रीजयतीर्थस्तुतिः",
+          "en": "Sri Jayatirtha Stuti",
+          "type": "stotra",
+          "deity": "Jayatirtha",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "vyasaraja_stotram",
+          "kn": "ಶ್ರೀ ವ್ಯಾಸರಾಜ ಸ್ತೋತ್ರಂ",
+          "sa": "श्रीव्यासराजस्तोत्रम्",
+          "en": "Sri Vyasaraja Stotram",
+          "type": "stotra",
+          "deity": "Vyasaraja",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "raghuttama_stotram",
+          "kn": "ಶ್ರೀ ರಘುತ್ತಮ ಸ್ತೋತ್ರಂ",
+          "sa": "श्रीरघुत्तमस्तोत्रम्",
+          "en": "Sri Raghuttama Stotram",
+          "type": "stotra",
+          "deity": "Raghuttama",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "dvadasha_1",
+          "kn": "ದ್ವಾದಶ ಸ್ತೋತ್ರ — ಪ್ರಥಮ ಅಧ್ಯಾಯ",
+          "sa": "द्वादशस्तोत्रम् — प्रथमाध्यायः",
+          "en": "Dwadasa Stotra — First Chapter",
+          "type": "stotra",
+          "file": "dvadasha_stotra.txt",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "dvadasha_2",
+          "kn": "ದ್ವಾದಶ ಸ್ತೋತ್ರ — ದ್ವಿತೀಯ ಅಧ್ಯಾಯ",
+          "sa": "द्वादशस्तोत्रम् — द्वितीयाध्यायः",
+          "en": "Dwadasa Stotra — Second Chapter",
+          "type": "stotra",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "dvadasha_3",
+          "kn": "ದ್ವಾದಶ ಸ್ತೋತ್ರ — ತೃತೀಯ ಅಧ್ಯಾಯ",
+          "sa": "द्वादशस्तोत्रम् — तृतीयाध्यायः",
+          "en": "Dwadasa Stotra — Third Chapter",
+          "type": "stotra",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "dvadasha_4",
+          "kn": "ದ್ವಾದಶ ಸ್ತೋತ್ರ — ಚತುರ್ಥ ಅಧ್ಯಾಯ",
+          "sa": "द्वादशस्तोत्रम् — चतुर्थाध्यायः",
+          "en": "Dwadasa Stotra — Fourth Chapter",
+          "type": "stotra",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "dvadasha_5",
+          "kn": "ದ್ವಾದಶ ಸ್ತೋತ್ರ — ಪಂಚಮ ಅಧ್ಯಾಯ",
+          "sa": "द्वादशस्तोत्रम् — पञ्चमाध्यायः",
+          "en": "Dwadasa Stotra — Fifth Chapter",
+          "type": "stotra",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "dvadasha_6",
+          "kn": "ದ್ವಾದಶ ಸ್ತೋತ್ರ — ಷಷ್ಠ ಅಧ್ಯಾಯ",
+          "sa": "द्वादशस्तोत्रम् — षष्ठाध्यायः",
+          "en": "Dwadasa Stotra — Sixth Chapter",
+          "type": "stotra",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "dvadasha_7",
+          "kn": "ದ್ವಾದಶ ಸ್ತೋತ್ರ — ಸಪ್ತಮ ಅಧ್ಯಾಯ",
+          "sa": "द्वादशस्तोत्रम् — सप्तमाध्यायः",
+          "en": "Dwadasa Stotra — Seventh Chapter",
+          "type": "stotra",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "dvadasha_8",
+          "kn": "ದ್ವಾದಶ ಸ್ತೋತ್ರ — ಅಷ್ಟಮ ಅಧ್ಯಾಯ",
+          "sa": "द्वादशस्तोत्रम् — अष्टमाध्यायः",
+          "en": "Dwadasa Stotra — Eighth Chapter",
+          "type": "stotra",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "dvadasha_9",
+          "kn": "ದ್ವಾದಶ ಸ್ತೋತ್ರ — ನವಮ ಅಧ್ಯಾಯ",
+          "sa": "द्वादशस्तोत्रम् — नवमाध्यायः",
+          "en": "Dwadasa Stotra — Ninth Chapter",
+          "type": "stotra",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "mangalashtakam",
+          "kn": "ಮಂಗಲಾಷ್ಟಕಂ",
+          "sa": "मङ्गलाष्टकम्",
+          "en": "Mangalashtakam",
+          "type": "stotra",
+          "url": "https://madhwafestivals.com/tag/sthothra/"
+        },
+        {
+          "id": "ramaa_stothram",
+          "kn": "ರಮಾ ಸ್ತೋತ್ರಂ",
+          "sa": "रमा स्तोत्रम्",
+          "en": "Ramaa Stothram",
+          "type": "stotra",
+          "deity": "Lakshmi",
+          "url": "https://madhwafestivals.com/tag/sthothra/"
+        },
+        {
+          "id": "kaveri_stotra",
+          "kn": "ಕಾವೇರಿ ಸ್ತೋತ್ರ",
+          "sa": "कावेरी स्तोत्रम्",
+          "en": "Kaveri Stotra",
+          "type": "stotra",
+          "deity": "Kaveri",
+          "file": "lib:stotra/KaveriPrarthana",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/tag/sthothra/"
+        },
+        {
+          "id": "raghavendra_stotra",
+          "kn": "ರಾಘವೇಂದ್ರ ಸ್ತೋತ್ರ",
+          "sa": "राघवेन्द्रस्तोत्रम्",
+          "en": "Raghavendra Stotra",
+          "type": "stotra",
+          "deity": "Raghavendra",
+          "file": "stotra_raghavendra.txt",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "raghavendra_mangala",
+          "kn": "ರಾಘವೇಂದ್ರ ಮಂಗಳ",
+          "sa": "राघवेन्द्र मङ्गलम्",
+          "en": "Raghavendra Mangala",
+          "type": "stotra",
+          "deity": "Raghavendra",
+          "file": "stotra_raghavendra_mangala.txt",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        },
+        {
+          "id": "dashavatara_stotra",
+          "kn": "ದಶಾವತಾರ ಸ್ತೋತ್ರ",
+          "sa": "दशावतारस्तोत्रम्",
+          "en": "Dashavatara Stotra",
+          "type": "stotra",
+          "deity": "Hari",
+          "file": "stotra_dashavatara.txt",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+        }
+      ]
+    },
+    {
+      "id": "mantras",
+      "kn": "ಮಂತ್ರಗಳು",
+      "sa": "मन्त्राः",
+      "en": "Mantras",
+      "items": [
+        {
+          "id": "nrisimha_mahamantra",
+          "kn": "ಶ್ರೀ ನರಸಿಂಹ ಮಹಾಮಂತ್ರ",
+          "sa": "श्रीनृसिंहमहामन्त्रः",
+          "en": "Sri Nrisimha Maha-mantra",
+          "type": "mantra",
+          "deity": "Narasimha",
+          "file": "nrisimha_mantra.txt",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/"
+        },
+        {
+          "id": "prahlada_nrisimha",
+          "kn": "ಪ್ರಹ್ಲಾದ ವಿರಚಿತ ನರಸಿಂಹ ಸ್ತೋತ್ರಂ",
+          "sa": "प्रह्लादविरचितनृसिंहस्तोत्रम्",
+          "en": "Prahlada's Narasimha Stotram",
+          "type": "stotra",
+          "deity": "Narasimha",
+          "file": "lib:stotra/LakshmiNrisimhaKarunarasaStotram",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/"
+        },
+        {
+          "id": "nrisimha_nakha",
+          "kn": "ನರಸಿಂಹ ನಖ ಸ್ತುತಿ",
+          "sa": "नृसिंहनखस्तुतिः",
+          "en": "Narasimha Nakha Stuti",
+          "type": "stotra",
+          "deity": "Narasimha",
+          "file": "nakha_stuti.txt",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/"
+        },
+        {
+          "id": "nrisimha_stuti_np",
+          "kn": "ನರಸಿಂಹ ಸ್ತುತಿ — ನಾರಾಯಣ ಪಂಡಿತಾಚಾರ್ಯರು",
+          "sa": "नृसिंहस्तुतिः",
+          "en": "Narasimha Stuti — Narayana Panditacharya",
+          "type": "stotra",
+          "deity": "Narasimha",
+          "author": "ನಾರಾಯಣ ಪಂಡಿತಾಚಾರ್ಯರು",
+          "url": "https://madhwafestivals.com/"
+        },
+        {
+          "id": "nrusimha_ashtakam",
+          "kn": "ಶ್ರೀ ನೃಸಿಂಹ ಅಷ್ಟಕಂ",
+          "sa": "श्रीनृसिंहाष्टकम्",
+          "en": "Sri Nrusimha Ashtakam",
+          "type": "stotra",
+          "deity": "Narasimha",
+          "url": "https://madhwafestivals.com/"
+        },
+        {
+          "id": "nrusimha_avatara",
+          "kn": "ಶ್ರೀ ನರಸಿಂಹ ಅವತಾರ ಸ್ತೋತ್ರಂ",
+          "sa": "श्रीनृसिंहावतारस्तोत्रम्",
+          "en": "Sri Nrusimha Avatara Stotram",
+          "type": "stotra",
+          "deity": "Narasimha",
+          "url": "https://madhwafestivals.com/"
+        },
+        {
+          "id": "narahariashtakam",
+          "kn": "ನರಹರ್ಯಷ್ಟಕಂ",
+          "sa": "नरहर्यष्टकम्",
+          "en": "Narahariashtakam",
+          "type": "stotra",
+          "deity": "Narasimha",
+          "url": "https://madhwafestivals.com/"
+        },
+        {
+          "id": "nrisimha_sanaischara",
+          "kn": "ನರಸಿಂಹ ಸ್ತುತಿ — ಶನೈಶ್ಚರ",
+          "sa": "नृसिंहस्तुतिः",
+          "en": "Narasimha Stuthi by Sanaischara",
+          "type": "stotra",
+          "deity": "Narasimha",
+          "url": "https://madhwafestivals.com/"
+        },
+        {
+          "id": "nrisimha_dwadasha",
+          "kn": "ನರಸಿಂಹ ದ್ವಾದಶನಾಮ ಸ್ತೋತ್ರಂ",
+          "sa": "नृसिंहद्वादशनामस्तोत्रम्",
+          "en": "Narasimha Dwadasha Nama Stotram",
+          "type": "stotra",
+          "deity": "Narasimha",
+          "file": "nrisimha_mantra.txt",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/"
+        },
+        {
+          "id": "nrisimha_prapatti",
+          "kn": "ನರಸಿಂಹ ಪ್ರಪತ್ತಿ",
+          "sa": "नृसिंहप्रपत्तिः",
+          "en": "Narasimha Prapatti",
+          "type": "stotra",
+          "deity": "Narasimha",
+          "url": "https://madhwafestivals.com/"
+        },
+        {
+          "id": "runa_vimochana",
+          "kn": "ಋಣ ವಿಮೋಚನ ಶ್ಲೋಕಂ",
+          "sa": "ऋणविमोचनश्लोकः",
+          "en": "Runa Vimochana Slokam",
+          "type": "stotra",
+          "deity": "Narasimha",
+          "url": "https://madhwafestivals.com/"
+        },
+        {
+          "id": "pratah_sankalpa",
+          "kn": "ಪ್ರಾತಃ ಸಂಕಲ್ಪ",
+          "sa": "प्रातःसङ्कल्पः",
+          "en": "Pratah Sankalpa",
+          "type": "mantra",
+          "file": "pratah_sankalpa.txt",
+          "script": "sa"
+        }
+      ]
+    },
+    {
+      "id": "namavalis",
+      "kn": "ನಾಮಾವಳಿಗಳು",
+      "sa": "नामावलयः",
+      "en": "Namavalis",
+      "items": [
+        {
+          "id": "nama_ananta",
+          "kn": "ಅನಂತ ಪದ್ಮನಾಭ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ",
+          "sa": "अनन्तपद्मनाभाष्टोत्तरशतनामावलिः",
+          "en": "Ananta Padmanabha Ashtothra Shata Namavali",
+          "type": "namavali",
+          "deity": "Vishnu",
+          "file": "lib:namavali/Vishnu_divyasthaniya_108",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/tag/index/"
+        },
+        {
+          "id": "nama_satyanarayana",
+          "kn": "ಶ್ರೀ ಸತ್ಯನಾರಾಯಣ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ",
+          "sa": "श्रीसत्यनारायणाष्टोत्तरशतनामावलिः",
+          "en": "Sri Sathya Narayana Ashtothra Shata Namavali",
+          "type": "namavali",
+          "deity": "Satyanarayana",
+          "url": "https://madhwafestivals.com/tag/index/"
+        },
+        {
+          "id": "nama_lakshmi_nrisimha",
+          "kn": "ಲಕ್ಷ್ಮೀ ನರಸಿಂಹ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ",
+          "sa": "श्रीलक्ष्मीनृसिंहाष्टोत्तरशतनामावलिः",
+          "en": "Lakshmi Narasimha Ashtothra Shata Namavali",
+          "type": "namavali",
+          "deity": "Narasimha",
+          "file": "lib:namavali/LakshmiNrisimha_108",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/tag/index/"
+        },
+        {
+          "id": "nama_rama",
+          "kn": "ರಾಮ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ",
+          "sa": "श्रीरामाष्टोत्तरशतनामावलिः",
+          "en": "Rama Ashtothra Shata Namavali",
+          "type": "namavali",
+          "deity": "Rama",
+          "file": "lib:namavali/Rama_108",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/tag/index/"
+        },
+        {
+          "id": "nama_krishna",
+          "kn": "ಕೃಷ್ಣ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ",
+          "sa": "श्रीकृष्णाष्टोत्तरशतनामावलिः",
+          "en": "Krishna Ashtothra Shata Namavali",
+          "type": "namavali",
+          "deity": "Krishna",
+          "file": "lib:namavali/Krishna_108",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/tag/index/"
+        },
+        {
+          "id": "nama_venkatesha",
+          "kn": "ಶ್ರೀ ವೆಂಕಟೇಶ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ",
+          "sa": "श्रीवेङ्कटेशाष्टोत्तरशतनामावलिः",
+          "en": "Sri Venkatesha Ashtothra Shata Namavali",
+          "type": "namavali",
+          "deity": "Venkatesha",
+          "file": "lib:namavali/Venkatesha_108",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/tag/index/"
+        },
+        {
+          "id": "nama_dhanvantari",
+          "kn": "ಧನ್ವಂತರಿ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ",
+          "sa": "श्रीधन्वन्तर्यष्टोत्तरशतनामावलिः",
+          "en": "Dhanvanthri Ashtothra Shata Namavali",
+          "type": "namavali",
+          "deity": "Dhanvantari",
+          "file": "lib:namavali/Dhanvantari_108",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/tag/index/"
+        },
+        {
+          "id": "nama_lakshmi",
+          "kn": "ಶ್ರೀ ಲಕ್ಷ್ಮೀ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ",
+          "sa": "श्रीलक्ष्म्यष्टोत्तरशतनामावलिः",
+          "en": "Sri Lakshmi Ashtothra Shata Namavali",
+          "type": "namavali",
+          "deity": "Lakshmi",
+          "file": "lib:namavali/Lakshmi_108",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/tag/index/"
+        },
+        {
+          "id": "nama_hanuma",
+          "kn": "ಹನುಮ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ",
+          "sa": "श्रीहनुमदष्टोत्तरशतनामावलिः",
+          "en": "Hanuma Ashtothra Shata Namavali",
+          "type": "namavali",
+          "deity": "Hanuma",
+          "file": "lib:namavali/Anjaneya_108",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/tag/index/"
+        },
+        {
+          "id": "nama_shiva",
+          "kn": "ಶಿವ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ",
+          "sa": "श्रीशिवाष्टोत्तरशतनामावलिः",
+          "en": "Shiva Ashtothra Shata Namavali",
+          "type": "namavali",
+          "deity": "Shiva",
+          "file": "lib:namavali/Shiva_108",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/tag/index/"
+        },
+        {
+          "id": "nama_gowri",
+          "kn": "ಗೌರಿ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ",
+          "sa": "श्रीगौर्यष्टोत्तरशतनामावलिः",
+          "en": "Gowri Ashtothra Namavali",
+          "type": "namavali",
+          "deity": "Gowri",
+          "file": "lib:stotra/GauriAshtottaraShatanamaStotram",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/tag/index/"
+        },
+        {
+          "id": "nama_ganesha",
+          "kn": "ಗಣೇಶ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ",
+          "sa": "श्रीगणेशाष्टोत्तरशतनामावलिः",
+          "en": "Ganesha Ashtothra Shata Namavali",
+          "type": "namavali",
+          "deity": "Ganesha",
+          "file": "lib:namavali/Ganesha_108",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/tag/index/"
+        },
+        {
+          "id": "nama_subrahmanya",
+          "kn": "ಸುಬ್ರಹ್ಮಣ್ಯ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ",
+          "sa": "श्रीसुब्रह्मण्याष्टोत्तरशतनामावलिः",
+          "en": "Subramanya Ashtothra Namavali",
+          "type": "namavali",
+          "deity": "Subrahmanya",
+          "file": "lib:namavali/Subrahmanya_108",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/tag/index/"
+        },
+        {
+          "id": "nama_durga",
+          "kn": "ದುರ್ಗಾ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ",
+          "sa": "श्रीदुर्गाष्टोत्तरशतनामावलिः",
+          "en": "Durga Ashtothra Shata Namavali",
+          "type": "namavali",
+          "deity": "Durga",
+          "file": "lib:namavali/Durga_108",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/tag/index/"
+        },
+        {
+          "id": "nama_saraswati",
+          "kn": "ಸರಸ್ವತಿ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ",
+          "sa": "श्रीसरस्वत्यष्टोत्तरशतनामावलिः",
+          "en": "Saraswathy Ashtothra Shata Namavali",
+          "type": "namavali",
+          "deity": "Saraswati",
+          "file": "lib:namavali/Saraswati_108",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/tag/index/"
+        },
+        {
+          "id": "nama_ganga",
+          "kn": "ಗಂಗಾ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ",
+          "sa": "श्रीगङ्गाष्टोत्तरशतनामावलिः",
+          "en": "Ganga Ashtothra Namavali",
+          "type": "namavali",
+          "deity": "Ganga",
+          "file": "lib:namavali/Ganga_108",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/tag/index/"
+        },
+        {
+          "id": "nama_kubera",
+          "kn": "ಕುಬೇರ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ",
+          "sa": "श्रीकुबेराष्टोत्तरशतनामावलिः",
+          "en": "Kubera Ashtothra Shata Namavali",
+          "type": "namavali",
+          "deity": "Kubera",
+          "file": "lib:namavali/Kubera_108",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/tag/index/"
+        },
+        {
+          "id": "nama_raghavendra",
+          "kn": "ಶ್ರೀ ರಾಘವೇಂದ್ರ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ",
+          "sa": "श्रीराघवेन्द्राष्टोत्तरशतनामावलिः",
+          "en": "Sri Raghavendra Ashtothra Shata Namavali",
+          "type": "namavali",
+          "deity": "Raghavendra",
+          "file": "stotra_raghavendra.txt",
+          "script": "sa",
+          "url": "https://madhwafestivals.com/tag/index/"
+        }
+      ]
+    },
+    {
+      "id": "dasara_padagalu",
+      "kn": "ದಾಸರ ಪದಗಳು",
+      "sa": "",
+      "en": "Dasara Padagalu",
+      "items": [
+        {
+          "id": "dasa_001",
+          "kn": "ಅಂಧಾಂತಮಸ ಪ್ರಾಪ್ತಿ",
+          "sa": "",
+          "en": "Andhantamasa prapti",
+          "type": "dasara_pada",
+          "deity": "Ekadashi",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_002",
+          "kn": "ಆ ಮಹಿಮೆಗೆ ಮಂಗಳಾರತಿ",
+          "sa": "",
+          "en": "Aa mahimege mangalaarathi",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_003",
+          "kn": "ಆ ನಮಿಪೆ ಗುರು ಸಂತತಿಗೆ ಸತತ",
+          "sa": "",
+          "en": "Aa namipe guru santathige satata",
+          "type": "dasara_pada",
+          "deity": "Guru parampara",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_004",
+          "kn": "ಆಡ ಹೋಧಲ್ಲಿ",
+          "sa": "",
+          "en": "Aada hodhalli",
+          "type": "dasara_pada",
+          "deity": "Krishna",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_005",
+          "kn": "ಆಡ ಪೋಗೋನ ಬಾರೋ",
+          "sa": "",
+          "en": "Aada pogona baaro",
+          "type": "dasara_pada",
+          "deity": "Krishna",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_006",
+          "kn": "ಆನೆ ಬಂದಿದೆ",
+          "sa": "",
+          "en": "Aane bandhidhe",
+          "type": "dasara_pada",
+          "deity": "Krishna",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_007",
+          "kn": "ಆರಂಭದಲಿ ನಮಿಪೆ",
+          "sa": "",
+          "en": "Aarambadhali namipe",
+          "type": "dasara_pada",
+          "deity": "Ganesha",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_008",
+          "kn": "ಆರತಿ ಎತ್ತಿರೆ ಕೇಶವ ನಾರಾಯಣಗೆ",
+          "sa": "",
+          "en": "Aarathi yetthire Kesava Naarayanage",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_009",
+          "kn": "ಆರಿಗೆ ವಧುವಾದೆ ಅಂಬುಜಾಕ್ಷಿ",
+          "sa": "",
+          "en": "Aarige vadhuvaade ambujaakshi",
+          "type": "dasara_pada",
+          "deity": "Mahalakshmi",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_010",
+          "kn": "ಆವ ಜನ್ಮದ ಪುಣ್ಯ",
+          "sa": "",
+          "en": "Aava janmadha punya",
+          "type": "dasara_pada",
+          "deity": "Krishna",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_011",
+          "kn": "ಆವ ಕಡೆಯಿಂದ ಬಂದೆ",
+          "sa": "",
+          "en": "Aava kadeyinda bande",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_012",
+          "kn": "ಆಚಾರವಿಲ್ಲದ ನಾಲಿಗೆ ನಿನ್ನ",
+          "sa": "",
+          "en": "Acharavillada nalige ninna",
+          "type": "dasara_pada",
+          "deity": "Miscellaneous",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_013",
+          "kn": "ಅಡ ಹೋಗೋನ ಬಾರೋ ರಂಗ",
+          "sa": "",
+          "en": "Ada hogona baro ranga",
+          "type": "dasara_pada",
+          "deity": "Krishna",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_014",
+          "kn": "ಅದದೆಲ್ಲ ಒಳಿತೇ ಆಯಿತು",
+          "sa": "",
+          "en": "Adadella olite ayitu",
+          "type": "dasara_pada",
+          "deity": "Miscellaneous",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_015",
+          "kn": "ಆಡಿದನೋ ರಂಗ ಅದ್ಭುತದಿಂದಲಿ",
+          "sa": "",
+          "en": "Adidano ranga adbutadindali",
+          "type": "dasara_pada",
+          "deity": "Krishna",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_016",
+          "kn": "ಅಜ್ಜನಿಗಳ ಕೂಡ ಅಧಿಕ",
+          "sa": "",
+          "en": "Ajjanigala kuda adhika",
+          "type": "dasara_pada",
+          "deity": "Miscellaneous",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_017",
+          "kn": "ಅಕಟಕಟ ಸಂಸಾರವನು",
+          "sa": "",
+          "en": "Akatakata samsaaravanu",
+          "type": "dasara_pada",
+          "deity": "Miscellaneous",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_018",
+          "kn": "ಅಕ್ಕ ಕೊಳಲನುದುತ",
+          "sa": "",
+          "en": "Akka kolalanudutha",
+          "type": "dasara_pada",
+          "deity": "Krishna",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_019",
+          "kn": "ಅಕ್ಷಯ ಪಾತ್ರೆ ಹಾಡು",
+          "sa": "",
+          "en": "Akshaya patre haadu",
+          "type": "dasara_pada",
+          "deity": "Nithya parayana",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_020",
+          "kn": "ಅಲ್ಲಿ ನೋಡಲು ರಾಮ",
+          "sa": "",
+          "en": "Alli nodalu Raama",
+          "type": "dasara_pada",
+          "deity": "Raama Devaru",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_021",
+          "kn": "ಅಲ್ಲಿದೆ ನಮ್ಮನೆ ಇಲ್ಲಿ ಬಂದೆ",
+          "sa": "",
+          "en": "Allide nammane illi bande",
+          "type": "dasara_pada",
+          "deity": "Miscellaneous",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_022",
+          "kn": "ಅಲ್ಪ ಮನವರಿಗಳ್ಪರಿಸ",
+          "sa": "",
+          "en": "Alpa manavarigalparisa",
+          "type": "dasara_pada",
+          "deity": "Sri Raghavendra Theertharu",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_023",
+          "kn": "ಅಲುವದ್ಯಾತಕೋ ರಂಗ",
+          "sa": "",
+          "en": "Aluvadyatako ranga attaranjipa gumma",
+          "type": "dasara_pada",
+          "deity": "Krishna",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_024",
+          "kn": "ಅಂಬ ನೀ ಹೂವ ಪಾಲಿಸೆ ವರ",
+          "sa": "",
+          "en": "Amba ni huva paalise vara",
+          "type": "dasara_pada",
+          "deity": "Gowri / Parvathi",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_025",
+          "kn": "ಅಂಬ ತನೆಯ ಹೇ ರಂಬ",
+          "sa": "",
+          "en": "Amba thaneya he ramba",
+          "type": "dasara_pada",
+          "deity": "Ganesha",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_026",
+          "kn": "ಅಂಬೆ ಕಾಲಿಕುತಲಿ",
+          "sa": "",
+          "en": "Ambe kalikuthali",
+          "type": "dasara_pada",
+          "deity": "Krishna",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_027",
+          "kn": "ಅಂಬಿಗ ನಾ ನಿನ್ನ ನಂಬಿದೆ",
+          "sa": "",
+          "en": "Ambiga na ninna nambide",
+          "type": "dasara_pada",
+          "deity": "Miscellaneous",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_028",
+          "kn": "ಅಮ್ಮ ಲಕುಮಿ ದೇವಿ",
+          "sa": "",
+          "en": "Amma lakumi devi",
+          "type": "dasara_pada",
+          "deity": "Mahalakshmi",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_029",
+          "kn": "ಅಮ್ಮ ನಿಮ್ಮ ಮನೆಗಳಲ್ಲಿ",
+          "sa": "",
+          "en": "Amma nimma manegalalli",
+          "type": "dasara_pada",
+          "deity": "Krishna",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_030",
+          "kn": "ಆನಂದ ಆನಂದ ಮತ್ತೆ ಪರಮಾನಂದ",
+          "sa": "",
+          "en": "Ananda Ananda matte paramananda",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_031",
+          "kn": "ಆನಂದ ಮಯಗೆ",
+          "sa": "",
+          "en": "Ananda mayage",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_032",
+          "kn": "ಆನೆ ಬಂತನೆ ಬಂತನೆ ಬಂತಮ್ಮ",
+          "sa": "",
+          "en": "Ane bantane bantane bantamma",
+          "type": "dasara_pada",
+          "deity": "Miscellaneous",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_033",
+          "kn": "ಅಂಗಳದೊಳು ರಾಮನಾಡಿದ",
+          "sa": "",
+          "en": "Angaladolu raamanadidha",
+          "type": "dasara_pada",
+          "deity": "Raama Devaru",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_034",
+          "kn": "ಅಂಗನಾಮಣಿ ರಂಗನಾಮಣಿ",
+          "sa": "",
+          "en": "Anganaamani ranganamani",
+          "type": "dasara_pada",
+          "deity": "Miscellaneous",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_035",
+          "kn": "ಅಂಜನೇಯ ಅಮರ ವಂದಿತ",
+          "sa": "",
+          "en": "Anjaneya amara vandhitha",
+          "type": "dasara_pada",
+          "deity": "Hanuma",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_036",
+          "kn": "ಅಂಜಿಕಿನ್ಯಾತಕಯ್ಯ ಸಜ್ಜನರಿಗೆ",
+          "sa": "",
+          "en": "Anjikinyatakayya sajjanarige",
+          "type": "dasara_pada",
+          "deity": "Hanuma",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_037",
+          "kn": "ಅನ್ನದಾನ ಮಹಿಮ ಸುಳಾದಿ",
+          "sa": "",
+          "en": "Annadana Mahima Sulaadhi",
+          "type": "dasara_pada",
+          "deity": "Miscellaneous",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_038",
+          "kn": "ಅಂತಕನ ದೂತರಿಗೆ ಕಿಂಚಿತ್ತು ದಯವಿಲ್ಲ",
+          "sa": "",
+          "en": "Antakana dutarige kincittu dayavilla",
+          "type": "dasara_pada",
+          "deity": "Miscellaneous",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_039",
+          "kn": "ಅಂತರಂಗದಲ್ಲಿ ಹರಿಯ ಕಾಣದವ",
+          "sa": "",
+          "en": "Antarangadhalli hariya kanadava",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_040",
+          "kn": "ಅಣು ಹರಿಕಥಾಮೃತ ಸಾರ",
+          "sa": "",
+          "en": "Anu Harikathaamruta Saara",
+          "type": "dasara_pada",
+          "deity": "Nithya Parayana",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": "anu_hks.txt"
+        },
+        {
+          "id": "dasa_041",
+          "kn": "ಅನುಭವದದುಗೆಯ ಮಾಡಿ",
+          "sa": "",
+          "en": "Anubhavadadugeya madi",
+          "type": "dasara_pada",
+          "deity": "Miscellaneous",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_042",
+          "kn": "ಅಪಮೃತ್ಯು ಪರಿಹರಿಸೋ",
+          "sa": "",
+          "en": "Apamrutyu parihariso",
+          "type": "dasara_pada",
+          "deity": "Hanuma",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_043",
+          "kn": "ಅಪರಾಧವೆಣಿಸದಲೆ ಕಾಯಬೇಕು",
+          "sa": "",
+          "en": "Aparadhavenisadale kayabeku",
+          "type": "dasara_pada",
+          "deity": "Sri Madhwacharyaru",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_044",
+          "kn": "ಅಪ್ಮೃತ್ಯು ನಿವಾರಣ ಸುಳಾದಿ",
+          "sa": "",
+          "en": "Apmrutyu nivarana Suladi",
+          "type": "dasara_pada",
+          "deity": "Miscellaneous",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_045",
+          "kn": "ಅಪ್ಪತ್ತು ಪರಿಹಾರಕ ಸುಳಾದಿ",
+          "sa": "",
+          "en": "Appattu pariharaka Suladi",
+          "type": "dasara_pada",
+          "deity": "Miscellaneous",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_046",
+          "kn": "ಆಪ್ತ ಮತಿದು ನಿಜ",
+          "sa": "",
+          "en": "Apta matidu nija",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_047",
+          "kn": "ಆರತಿ ಬೆಳಗ ಬನ್ನಿರೆ",
+          "sa": "",
+          "en": "Arathi belega bannire",
+          "type": "dasara_pada",
+          "deity": "Gowri / Parvathi",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_048",
+          "kn": "ಆರತಿಯ ಹೆತ್ತಮ್ಮ",
+          "sa": "",
+          "en": "Arathiya hethamma",
+          "type": "dasara_pada",
+          "deity": "Mahalakshmi",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_049",
+          "kn": "ಆರತಿ ಬೆಳಗಿರೆ ನಾರಿಯರು ಬೇಗ",
+          "sa": "",
+          "en": "Arati belagire naariyaru bega",
+          "type": "dasara_pada",
+          "deity": "Mahalakshmi",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_050",
+          "kn": "ಆರತಿಯನೆತ್ತಿರೆ ನರರೆಲ್ಲರು",
+          "sa": "",
+          "en": "Aratiyanettire narerellaru",
+          "type": "dasara_pada",
+          "deity": "Gowri / Parvathi",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_krishna_baaro",
+          "kn": "ಕೃಷ್ಣ ನೀ ಬೇಗನೆ ಬಾರೋ",
+          "sa": "",
+          "en": "Krishna nee begane baaro",
+          "type": "dasara_pada",
+          "deity": "Krishna",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_jagadodharana",
+          "kn": "ಜಗದೋದ್ಧಾರಣ",
+          "sa": "",
+          "en": "Jagadodharana",
+          "type": "dasara_pada",
+          "deity": "Krishna",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": "jagadodharana.txt"
+        },
+        {
+          "id": "dasa_bhagyada",
+          "kn": "ಭಾಗ್ಯದ ಲಕ್ಷ್ಮಿ ಬಾರಮ್ಮ",
+          "sa": "",
+          "en": "Bhagyada Lakshmi Baramma",
+          "type": "dasara_pada",
+          "deity": "Mahalakshmi",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": "bhagyada_lakshmi.txt"
+        },
+        {
+          "id": "dasa_hanuma",
+          "kn": "ಹನುಮ ಪದಗಳು",
+          "sa": "",
+          "en": "Hanuma Padagalu",
+          "type": "dasara_pada",
+          "deity": "Hanuma",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": "dasara_hanuma.txt"
+        },
+        {
+          "id": "dasa_madhwa",
+          "kn": "ಮಧ್ವ ಪದಗಳು",
+          "sa": "",
+          "en": "Madhwa Padagalu",
+          "type": "dasara_pada",
+          "deity": "Madhwacharyaru",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": "dasara_madhwa.txt"
+        },
+        {
+          "id": "dasa_venkata",
+          "kn": "ವೆಂಕಟಾಚಲ ನಿಲಯಂ",
+          "sa": "",
+          "en": "Venkataachala Nilayam",
+          "type": "dasara_pada",
+          "deity": "Srinivasa",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_mangalam_mukhya",
+          "kn": "ಮಂಗಳಂ ಮಂಗಳಂ ಮುಖ್ಯಪ್ರಾಣರಾಯಗೆ",
+          "sa": "",
+          "en": "Mangalam mangalam mukyapranarayage",
+          "type": "dasara_pada",
+          "deity": "Hanuma",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_tulasi",
+          "kn": "ಮಂಗಳಂ ಶ್ರೀ ತುಳಸಿ",
+          "sa": "",
+          "en": "Mangalam sri tulasi",
+          "type": "dasara_pada",
+          "deity": "Tulasi",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_vithala",
+          "kn": "ವಿಠಲ ನಿನ್ನ ನಂಬಿದೆ ಎನ್ನ ಕಾಯೋ",
+          "sa": "",
+          "en": "Vithala Ninna Nambide Enna Kayo",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_yenu_kaarana",
+          "kn": "ಏನು ಕಾರಣ ಬಾಯ ತೆರೆದಿಯೋ",
+          "sa": "",
+          "en": "Yenu Kaarana Baaya Theredhiyo",
+          "type": "dasara_pada",
+          "deity": "Narasimha",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_vyasa_badari",
+          "kn": "ವ್ಯಾಸ ಬದರಿ ನಿವಾಸ",
+          "sa": "",
+          "en": "Vyasa Badari Nivaasa",
+          "type": "dasara_pada",
+          "deity": "Sri Vedavyasaru",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": ""
+        },
+        {
+          "id": "dasa_index",
+          "kn": "ದಾಸರ ಪದಗಳ ಸೂಚಿ",
+          "sa": "",
+          "en": "Dasara Padagalu Index",
+          "type": "dasara_pada",
+          "deity": "Miscellaneous",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
+          "file": "dasara_index.txt"
+        }
+      ]
+    },
+    {
+      "id": "suladhigalu",
+      "kn": "ಸುಳಾದಿಗಳು",
+      "sa": "सुलादयः",
+      "en": "Suladhis",
+      "items": [
+        {
+          "id": "suladhi_index",
+          "kn": "ಸುಳಾದಿ ಸೂಚಿ",
+          "sa": "",
+          "en": "Suladhi Index",
+          "type": "suladhi",
+          "file": "suladhi_index.txt",
+          "script": "kn"
+        },
+        {
+          "id": "suladhi_nrisimha",
+          "kn": "ನರಸಿಂಹ ಸುಳಾದಿ",
+          "sa": "",
+          "en": "Nrisimha Suladhi",
+          "type": "suladhi",
+          "deity": "Narasimha",
+          "file": "suladhi_nrisimha.txt",
+          "script": "kn"
+        },
+        {
+          "id": "suladhi_hanumanta",
+          "kn": "ಹನುಮಂತ ಸುಳಾದಿ",
+          "sa": "",
+          "en": "Hanumanta Suladhi",
+          "type": "suladhi",
+          "deity": "Hanuma",
+          "file": "suladhi_hanumanta.txt",
+          "script": "kn"
+        },
+        {
+          "id": "suladhi_vayu_traya",
+          "kn": "ವಾಯುದೇವರ ಅವತಾರ ತ್ರಯ ಸುಳಾದಿ",
+          "sa": "",
+          "en": "Vayudevara Avathara Traya Suladhi",
+          "type": "suladhi",
+          "deity": "Mukhya Prana",
+          "file": "suladhi_vayu_traya.txt",
+          "script": "kn"
+        },
+        {
+          "id": "suladhi_madhwacharya",
+          "kn": "ಮಧ್ವಾಚಾರ್ಯ ಸುಳಾದಿ",
+          "sa": "",
+          "en": "Madhwacharya Suladhi",
+          "type": "suladhi",
+          "deity": "Madhwacharya",
+          "file": "suladhi_madhwacharya.txt",
+          "script": "kn"
+        },
+        {
+          "id": "suladhi_raghavendra",
+          "kn": "ರಾಘವೇಂದ್ರ ಸುಳಾದಿ",
+          "sa": "",
+          "en": "Raghavendra Suladhi",
+          "type": "suladhi",
+          "deity": "Raghavendra",
+          "file": "suladhi_raghavendra.txt",
+          "script": "kn"
+        },
+        {
+          "id": "suladhi_durga",
+          "kn": "ದುರ್ಗಾ ಸುಳಾದಿ",
+          "sa": "",
+          "en": "Durga Suladhi",
+          "type": "suladhi",
+          "deity": "Durga",
+          "file": "suladhi_durga.txt",
+          "script": "kn"
+        },
+        {
+          "id": "suladhi_hasthodhaka",
+          "kn": "ಹಸ್ತೋದಕ ಸುಳಾದಿ",
+          "sa": "",
+          "en": "Hasthodhaka Suladhi",
+          "type": "suladhi",
+          "file": "suladhi_hasthodhaka.txt",
+          "script": "kn"
+        },
+        {
+          "id": "suladhi_vivaha",
+          "kn": "ವಿವಾಹ ಸುಳಾದಿ",
+          "sa": "",
+          "en": "Vivaha Suladhi",
+          "type": "suladhi",
+          "file": "suladhi_vivaha.txt",
+          "script": "kn"
+        },
+        {
+          "id": "suladhi_pancharatna",
+          "kn": "ಪಂಚರತ್ನ ಸುಳಾದಿ",
+          "sa": "",
+          "en": "Pancharatna Suladhi",
+          "type": "suladhi",
+          "file": "suladhi_pancharatna.txt",
+          "script": "kn"
+        },
+        {
+          "id": "suladhi_madhwa_matha",
+          "kn": "ಮಧ್ವ ಮಠ ಸುಳಾದಿ",
+          "sa": "",
+          "en": "Madhwa Matha Suladhi",
+          "type": "suladhi",
+          "file": "suladhi_madhwa_matha.txt",
+          "script": "kn"
+        },
+        {
+          "id": "annadana_suladhi",
+          "kn": "ಅನ್ನದಾನ ಮಹಿಮ ಸುಳಾದಿ",
+          "sa": "",
+          "en": "Annadana Mahima Sulaadhi",
+          "type": "suladhi",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/"
+        },
+        {
+          "id": "runa_vimochana_suladi",
+          "kn": "ಋಣ ವಿಮೋಚನ ಸುಳಾದಿ",
+          "sa": "",
+          "en": "Runa Vimochana Suladi",
+          "type": "suladhi",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/"
+        },
+        {
+          "id": "moola_rama_suladhi",
+          "kn": "ಮೂಲ ರಾಮ ದೇವರು ಸುಳಾದಿ",
+          "sa": "",
+          "en": "Moola Raama Devaru Suladhi",
+          "type": "suladhi",
+          "deity": "Rama",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/"
+        }
+      ]
+    },
+    {
+      "id": "ugabhogagalu",
+      "kn": "ಉಗಾಭೋಗಗಳು",
+      "sa": "",
+      "en": "Ugabhogas",
+      "items": [
+        {
+          "id": "ugabhoga_index",
+          "kn": "ಉಗಾಭೋಗ ಸೂಚಿ",
+          "sa": "",
+          "en": "Ugabhoga Index",
+          "type": "ugabhoga",
+          "file": "ugabhoga_index.txt",
+          "script": "kn"
+        },
+        {
+          "id": "ugabhoga_sripadaraja",
+          "kn": "ಶ್ರೀಪಾದರಾಜ ಉಗಾಭೋಗ",
+          "sa": "",
+          "en": "Sripadaraja Ugabhoga",
+          "type": "ugabhoga",
+          "author": "ಶ್ರೀಪಾದರಾಜರು",
+          "file": "ugabhoga_sripadaraja.txt",
+          "script": "kn"
+        },
+        {
+          "id": "ugabhoga_favorite",
+          "kn": "ಉಗಾಭೋಗ — ಆಯ್ದ",
+          "sa": "",
+          "en": "Favorite Ugabhogas",
+          "type": "ugabhoga",
+          "file": "ugabhoga_favorite.txt",
+          "script": "kn"
+        }
+      ]
+    },
+    {
+      "id": "nithya_parayana",
+      "kn": "ನಿತ್ಯ ಪಾರಾಯಣ",
+      "sa": "नित्यपारायणम्",
+      "en": "Daily Parayana",
+      "items": [
+        {
+          "id": "kesava_nama",
+          "kn": "ಕೇಶವ ನಾಮ",
+          "sa": "",
+          "en": "Kesava Nama",
+          "type": "nithya_parayana",
+          "file": "kesava_nama.txt",
+          "script": "kn"
+        },
+        {
+          "id": "anu_hks",
+          "kn": "ಅಣು ಹರಿಕಥಾಮೃತಸಾರ",
+          "sa": "",
+          "en": "Anu Harikathaamruta Saara",
+          "type": "nithya_parayana",
+          "author": "ಜಗನ್ನಾಥದಾಸರು",
+          "file": "anu_hks.txt",
+          "script": "kn",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/"
+        },
+        {
+          "id": "hks_index",
+          "kn": "ಹರಿಕಥಾಮೃತಸಾರ ಸಂಧಿ ಸೂಚಿ",
+          "sa": "",
+          "en": "Hari Kathamruta Saara Index",
+          "type": "nithya_parayana",
+          "author": "ಜಗನ್ನಾಥದಾಸರು",
+          "file": "hks_index.txt",
+          "script": "kn"
+        },
+        {
+          "id": "hks_vigneshwara",
+          "kn": "ವಿಘ್ನೇಶ್ವರ ಸ್ತೋತ್ರ ಸಂಧಿ",
+          "sa": "",
+          "en": "Vigneshwara Sandhi",
+          "type": "nithya_parayana",
+          "author": "ಜಗನ್ನಾಥದಾಸರು",
+          "file": "hks_vigneshwara.txt",
+          "script": "kn"
+        },
+        {
+          "id": "akshaya_patre",
+          "kn": "ಅಕ್ಷಯ ಪಾತ್ರೆ ಹಾಡು",
+          "sa": "",
+          "en": "Akshaya patre haadu",
+          "type": "nithya_parayana",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/"
+        },
+        {
+          "id": "krishna_parijatha",
+          "kn": "ಕೃಷ್ಣ ಪಾರಿಜಾತ",
+          "sa": "",
+          "en": "Krishna parijatha",
+          "type": "nithya_parayana",
+          "deity": "Krishna",
+          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/"
+        }
+      ]
+    }
+  ]
+}

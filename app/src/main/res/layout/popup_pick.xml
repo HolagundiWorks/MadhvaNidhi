@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:padding="@dimen/space_8">
+
+    <EditText
+        android:id="@+id/pickSearch"
+        style="@style/Desk.Field"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/field_h"
+        android:hint="@string/search_library"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/pickList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_4"
+        android:overScrollMode="never" />
+</LinearLayout>

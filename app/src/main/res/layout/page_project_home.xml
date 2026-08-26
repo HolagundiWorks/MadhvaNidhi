@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/page_pad_h"
+    android:paddingTop="@dimen/page_pad_top"
+    android:paddingRight="@dimen/page_pad_h"
+    android:paddingBottom="@dimen/space_16">
+
+    <LinearLayout
+        android:id="@+id/cardMeasure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_row"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/touch"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/space_12"
+        android:paddingBottom="@dimen/space_12">
+
+        <TextView
+            style="@style/Desk.Section"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/page_measure" />
+
+        <TextView
+            android:id="@+id/cardMeasureCount"
+            style="@style/Desk.Meta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cardNotes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_row"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/touch"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/space_12"
+        android:paddingBottom="@dimen/space_12">
+
+        <TextView
+            style="@style/Desk.Section"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/notes" />
+
+        <TextView
+            android:id="@+id/cardNotesPhoto"
+            style="@style/Desk.Link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/photo"
+            android:textColor="@color/accent" />
+
+        <TextView
+            android:id="@+id/cardNotesCount"
+            style="@style/Desk.Meta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_8" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cardMinutes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_row"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/touch"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/space_12"
+        android:paddingBottom="@dimen/space_12">
+
+        <TextView
+            style="@style/Desk.Section"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/page_minutes" />
+
+        <TextView
+            android:id="@+id/cardMinutesCount"
+            style="@style/Desk.Meta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cardSchedule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_row"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/touch"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/space_12"
+        android:paddingBottom="@dimen/space_12">
+
+        <TextView
+            style="@style/Desk.Section"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/page_schedule" />
+
+        <TextView
+            android:id="@+id/cardScheduleCount"
+            style="@style/Desk.Meta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cardTodo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_row"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/touch"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/space_12"
+        android:paddingBottom="@dimen/space_12">
+
+        <TextView
+            style="@style/Desk.Section"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/todo_list" />
+
+        <TextView
+            android:id="@+id/cardTodoCount"
+            style="@style/Desk.Meta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

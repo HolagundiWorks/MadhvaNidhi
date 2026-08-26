@@ -1,0 +1,770 @@
+{
+  "source": "local",
+  "langs": [
+    "kn",
+    "en",
+    "sa"
+  ],
+  "items": [
+    {
+      "id": "sampradaya",
+      "category": "sampradaya",
+      "title": "माध्व सम्प्रदायः",
+      "author": "मध्वाचार्यः",
+      "note": "Hari Sarvottama. Vayu Jivottama. Tattvavada.",
+      "file": "sampradaya.txt"
+    },
+    {
+      "id": "hks_full",
+      "category": "sampradaya",
+      "title": "श्री हरिकथामृतसारः",
+      "author": "जगन्नाथदासः",
+      "note": "Kannada moola from HKS PDF. 33 sandhis.",
+      "file": "hks.txt"
+    },
+    {
+      "id": "hks_vigneshwara",
+      "category": "sampradaya",
+      "title": "विघ्नेश्वर स्तोत्र सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "Hari Kathamruta Saara. Vigneshwara sandhi. Kannada and English.",
+      "file": "hks_vigneshwara.txt"
+    },
+    {
+      "id": "anu_hks",
+      "category": "sampradaya",
+      "title": "अणु हरिकथामृतसारः",
+      "author": "जगन्नाथदासः",
+      "note": "Anu Hari Kathamruta Saara. Kannada.",
+      "file": "anu_hks.txt"
+    },
+    {
+      "id": "hks_index",
+      "category": "sampradaya",
+      "title": "हरिकथामृतसार सन्धि सूची",
+      "author": "जगन्नाथदासः",
+      "note": "Sandhi list. Kannada and English.",
+      "file": "hks_index.txt"
+    },
+    {
+      "id": "hari_vayu_stuti",
+      "category": "stotra",
+      "title": "श्री हरिवायुस्तुतिः",
+      "author": "त्रिविक्रम पण्डिताचार्यः",
+      "note": "Hari Vayu Stuti with Nakha Stuti.",
+      "file": "hari_vayu_stuti.txt"
+    },
+    {
+      "id": "nakha_stuti",
+      "category": "stotra",
+      "title": "नखस्तुतिः",
+      "author": "मध्वाचार्यः",
+      "note": "Narasimha Nakha Stuti.",
+      "file": "nakha_stuti.txt"
+    },
+    {
+      "id": "dvadasha_stotra",
+      "category": "stotra",
+      "title": "द्वादशस्तोत्रम्",
+      "author": "मध्वाचार्यः",
+      "note": "Dvadasha Stotra. First stotra.",
+      "file": "dvadasha_stotra.txt"
+    },
+    {
+      "id": "yantrodharaka",
+      "category": "stotra",
+      "title": "यन्त्रोद्धारक हनूमत्स्तोत्रम्",
+      "author": "व्यासराजः",
+      "note": "Yantrodharaka Hanuman Stotram. Local patha.",
+      "file": "yantrodharaka.txt"
+    },
+    {
+      "id": "yantrodharaka_page",
+      "category": "stotra",
+      "title": "यन्त्रोद्धारक स्तोत्रम् (कन्नड)",
+      "author": "व्यासराजः",
+      "note": "Kannada and English from the Madhwa archive.",
+      "file": "stotra_yantrodharaka_page.txt"
+    },
+    {
+      "id": "vishnu_sahasra",
+      "category": "stotra",
+      "title": "विष्णुसहस्रनामस्तोत्रम्",
+      "author": "",
+      "note": "Vishnu Sahasranama. Local library.",
+      "file": "lib:stotra/VishnuSahasranamaStotram"
+    },
+    {
+      "id": "nrisimha_ashtottara",
+      "category": "stotra",
+      "title": "नृसिंहाष्टोत्तरशतनामस्तोत्रम्",
+      "author": "",
+      "note": "Nrisimha ashtottara. Local library.",
+      "file": "lib:stotra/NrisimhaAshtottaraShatanamaStotram"
+    },
+    {
+      "id": "lakshmi_nrisimha",
+      "category": "stotra",
+      "title": "लक्ष्मीनृसिंहकरुणारसस्तोत्रम्",
+      "author": "",
+      "note": "Lakshmi Nrisimha Karunarasa. Local library.",
+      "file": "lib:stotra/LakshmiNrisimhaKarunarasaStotram"
+    },
+    {
+      "id": "venkatesha_stotra",
+      "category": "stotra",
+      "title": "वेङ्कटेशस्तोत्रम्",
+      "author": "",
+      "note": "Venkatesha Stotram. Local library.",
+      "file": "lib:stotra/VenkateshaStotram"
+    },
+    {
+      "id": "venkatesha_suprabhata",
+      "category": "stotra",
+      "title": "वेङ्कटेशसुप्रभातम्",
+      "author": "",
+      "note": "Venkatesha Suprabhatam. Local library.",
+      "file": "lib:stotra/VenkateshaSuprabhatam"
+    },
+    {
+      "id": "rama_raksha",
+      "category": "stotra",
+      "title": "रामरक्षास्तोत्रम्",
+      "author": "",
+      "note": "Rama Raksha Stotram. Local library.",
+      "file": "lib:stotra/RamarakshaStotram"
+    },
+    {
+      "id": "hanuman_chalisa",
+      "category": "stotra",
+      "title": "हनुमानचालीसा",
+      "author": "",
+      "note": "Hanuman Chalisa. Local library.",
+      "file": "lib:stotra/HanumanChalisa"
+    },
+    {
+      "id": "tulasi_ashtottara",
+      "category": "stotra",
+      "title": "तुलस्यष्टोत्तरशतनामस्तोत्रम्",
+      "author": "",
+      "note": "Tulasi ashtottara. Local library.",
+      "file": "lib:stotra/TulasiAshtottaraShatanamaStotram"
+    },
+    {
+      "id": "vyasashtakam",
+      "category": "stotra",
+      "title": "व्यासाष्टकम्",
+      "author": "",
+      "note": "Vyasashtakam. Local library.",
+      "file": "lib:stotra/Vyasashtakam"
+    },
+    {
+      "id": "nrisimha_mantra",
+      "category": "mantra",
+      "title": "श्री नृसिंह महामन्त्रः",
+      "author": "",
+      "note": "Nrisimha maha-mantra and dwadasa nama.",
+      "file": "nrisimha_mantra.txt"
+    },
+    {
+      "id": "pratah_sankalpa",
+      "category": "mantra",
+      "title": "प्रातः सङ्कल्प गद्यम्",
+      "author": "",
+      "note": "Morning sankalpa. Madhwa anushtana.",
+      "file": "pratah_sankalpa.txt"
+    },
+    {
+      "id": "sandhyavandanam",
+      "category": "mantra",
+      "title": "सन्ध्यावन्दनम्",
+      "author": "",
+      "note": "Sandhyavandanam. Local library.",
+      "file": "lib:mantras/Sandhyavandanam"
+    },
+    {
+      "id": "purusha_suktam",
+      "category": "mantra",
+      "title": "पुरुषसूक्तम्",
+      "author": "",
+      "note": "Purusha Suktam. Local library.",
+      "file": "lib:mantras/PurushaSuktam"
+    },
+    {
+      "id": "narayana_suktam",
+      "category": "mantra",
+      "title": "नारायणसूक्तम्",
+      "author": "",
+      "note": "Narayana Suktam. Local library.",
+      "file": "lib:mantras/NarayanaSuktam"
+    },
+    {
+      "id": "vishnu_suktam",
+      "category": "mantra",
+      "title": "विष्णुसूक्तम्",
+      "author": "",
+      "note": "Vishnu Suktam. Local library.",
+      "file": "lib:mantras/VishnuSuktam"
+    },
+    {
+      "id": "shri_suktam",
+      "category": "mantra",
+      "title": "श्रीसूक्तम्",
+      "author": "",
+      "note": "Shri Suktam. Local library.",
+      "file": "lib:mantras/ShriSuktam"
+    },
+    {
+      "id": "aghamarshana",
+      "category": "mantra",
+      "title": "अघमर्षणसूक्तम्",
+      "author": "",
+      "note": "Aghamarshana Suktam. Local library.",
+      "file": "lib:mantras/AghamarshanaSuktam"
+    },
+    {
+      "id": "mantra_pushpam",
+      "category": "mantra",
+      "title": "मन्त्रपुष्पम्",
+      "author": "",
+      "note": "Mantra Pushpam. Local library.",
+      "file": "lib:mantras/MantraPushpam"
+    },
+    {
+      "id": "brahmayajna",
+      "category": "mantra",
+      "title": "ब्रह्मयज्ञः",
+      "author": "",
+      "note": "Brahmayajna. Local library.",
+      "file": "lib:mantras/Brahmayajna"
+    },
+    {
+      "id": "dasara_jagadodharana",
+      "category": "dasara",
+      "title": "जगदोद्धारण",
+      "author": "पुरन्दरदासः",
+      "note": "Jagadodharana. Kannada and English.",
+      "file": "dasara_jagadodharana.txt"
+    },
+    {
+      "id": "dasara_bhagyada",
+      "category": "dasara",
+      "title": "भाग्यद लक्ष्मी बारम्मा",
+      "author": "पुरन्दरदासः",
+      "note": "Bhagyada Lakshmi Baramma. Kannada and English.",
+      "file": "dasara_bhagyada_lakshmi.txt"
+    },
+    {
+      "id": "dasara_index",
+      "category": "dasara",
+      "title": "दासरा पदगळु अनुक्रमणिका",
+      "author": "हरिदासाः",
+      "note": "Index of Dasara padagalu. Kannada and English titles.",
+      "file": "dasara_index.txt"
+    },
+    {
+      "id": "dasara_mahalakshmi",
+      "category": "dasara",
+      "title": "दासरा पदगळु — महालक्ष्मी पूजा",
+      "author": "हरिदासाः",
+      "note": "Mahalakshmi puja through Dasara padagalu. Kannada and English.",
+      "file": "puja_mahalakshmi_padagalu.txt"
+    },
+    {
+      "id": "ugabhoga_favorite",
+      "category": "ugabhoga",
+      "title": "इष्ट उगभोग सङ्ग्रहः",
+      "author": "हरिदासाः",
+      "note": "Favorite ugabhoga. Kannada and English.",
+      "file": "ugabhoga_favorite.txt"
+    },
+    {
+      "id": "ugabhoga_sripadaraja",
+      "category": "ugabhoga",
+      "title": "उगभोग — श्रीपादराजः",
+      "author": "श्रीपादराजः",
+      "note": "Ugabhoga by Sripadarajaru. Kannada and English.",
+      "file": "ugabhoga_sripadaraja.txt"
+    },
+    {
+      "id": "ugabhoga_note",
+      "category": "ugabhoga",
+      "title": "उगभोग",
+      "author": "हरिदासाः",
+      "note": "Ugabhoga nitya parayana note.",
+      "file": "ugabhoga.txt"
+    },
+    {
+      "id": "suladhi_madhwa_matha",
+      "category": "suladhi",
+      "title": "श्रीमन्माध्वमत महिमा सुळादि",
+      "author": "विजयदासः",
+      "note": "Madhwa matha mahima suladhi. Kannada and English.",
+      "file": "suladhi_madhwa_matha.txt"
+    },
+    {
+      "id": "suladhi_nrisimha",
+      "category": "suladhi",
+      "title": "नरसिंह देवर सुळादि",
+      "author": "विजयदासः",
+      "note": "Narasimha devara suladi. Kannada and English.",
+      "file": "suladhi_nrisimha.txt"
+    },
+    {
+      "id": "suladhi_durga",
+      "category": "suladhi",
+      "title": "दुर्गा सुळादि",
+      "author": "",
+      "note": "Durga suladhi. Kannada and English.",
+      "file": "suladhi_durga.txt"
+    },
+    {
+      "id": "suladhi_raghavendra",
+      "category": "suladhi",
+      "title": "राघवेन्द्र सुळादि",
+      "author": "गोपालदासः",
+      "note": "Raghavendra suladhi. Kannada and English.",
+      "file": "suladhi_raghavendra.txt"
+    },
+    {
+      "id": "suladhi_vayu_traya",
+      "category": "suladhi",
+      "title": "वायुदेव अवतारत्रय सुळादि",
+      "author": "राघवेन्द्रतीर्थः",
+      "note": "Vayu avatara traya suladhi. Kannada and English.",
+      "file": "suladhi_vayu_traya.txt"
+    },
+    {
+      "id": "suladhi_madhwacharya",
+      "category": "suladhi",
+      "title": "मध्वाचार्य सुळादि",
+      "author": "पुरन्दरदासः",
+      "note": "Madhwacharyaru suladhi. Kannada and English.",
+      "file": "suladhi_madhwacharya.txt"
+    },
+    {
+      "id": "suladhi_hanumanta",
+      "category": "suladhi",
+      "title": "हनुमन्त सुळादि",
+      "author": "पुरन्दरदासः",
+      "note": "Hanumanta suladhi. Kannada and English.",
+      "file": "suladhi_hanumanta.txt"
+    },
+    {
+      "id": "suladhi_hasthodhaka",
+      "category": "suladhi",
+      "title": "हस्तोदक सुळादि",
+      "author": "",
+      "note": "Hasthodhaka suladhi. Kannada PDF.",
+      "file": "suladhi_hasthodhaka.txt"
+    },
+    {
+      "id": "suladhi_vivaha",
+      "category": "suladhi",
+      "title": "विवाह सुळादि",
+      "author": "",
+      "note": "Vivaha suladhi. Kannada PDF.",
+      "file": "suladhi_vivaha.txt"
+    },
+    {
+      "id": "suladhi_pancharatna",
+      "category": "suladhi",
+      "title": "पञ्चरत्न सुळादिगळु",
+      "author": "विजयदासः",
+      "note": "Pancharatna suladhigalu. Kannada PDF.",
+      "file": "suladhi_pancharatna.txt"
+    },
+    {
+      "id": "suladhi_index",
+      "category": "suladhi",
+      "title": "सुळादि अनुक्रमणिका",
+      "author": "हरिदासाः",
+      "note": "Index of suladhis.",
+      "file": "suladhi_index.txt"
+    },
+    {
+      "id": "kesava_nama",
+      "category": "kesava",
+      "title": "केशवनाम",
+      "author": "",
+      "note": "Chaturvimshati nama. Nitya parayana.",
+      "file": "kesava_nama.txt"
+    },
+    {
+      "id": "kesava_nama_page",
+      "category": "kesava",
+      "title": "केशव नाम — दासर पद",
+      "author": "कनकदासः",
+      "note": "Kesava nama. Kannada and English.",
+      "file": "kesava_nama_page.txt"
+    },
+    {
+      "id": "haridasa_padagalu",
+      "category": "haridasa",
+      "title": "हरिदास साहित्य — पदगळु",
+      "author": "हरिदासाः",
+      "note": "Dasara padagalu index. Kannada and English.",
+      "file": "dasara_index.txt"
+    },
+    {
+      "id": "haridasa_ugabhoga",
+      "category": "haridasa",
+      "title": "हरिदास साहित्य — उगभोग",
+      "author": "हरिदासाः",
+      "note": "Ugabhoga collection. Kannada and English.",
+      "file": "ugabhoga_favorite.txt"
+    },
+    {
+      "id": "haridasa_suladhi",
+      "category": "haridasa",
+      "title": "हरिदास साहित्य — सुळादि",
+      "author": "विजयदासः",
+      "note": "Madhwa matha mahima suladhi. Kannada and English.",
+      "file": "suladhi_madhwa_matha.txt"
+    },
+    {
+      "id": "yathigalu",
+      "category": "yathi",
+      "title": "माध्व यतिगळु गुरुगळु",
+      "author": "",
+      "note": "Madhwa, Sripadaraja, Vyasaraja, Vadiraja, Raghavendra.",
+      "file": "yathigalu.txt"
+    },
+    {
+      "id": "festivals",
+      "category": "festival",
+      "title": "माध्व उत्सवाः",
+      "author": "",
+      "note": "Ugadi, Akshaya Tritiya, Narasimha Jayanti, Madhwa Navami.",
+      "file": "festivals.txt"
+    },
+    {
+      "id": "puja_yajnopavita",
+      "category": "puja",
+      "title": "यज्ञोपवीत धारणम्",
+      "author": "",
+      "note": "Madhwa Yajnopavita Dharana. Acamana. Sankalpa. Dharana. Visarjana.",
+      "file": "yajnopavita_dharana.txt"
+    },
+    {
+      "id": "puja_anushtana",
+      "category": "puja",
+      "title": "पूजा अनुष्ठानम्",
+      "author": "",
+      "note": "Nitya karma. Saligrama. Tulasi. Ekadasi.",
+      "file": "puja_anushtana.txt"
+    },
+    {
+      "id": "puja_mahalakshmi",
+      "category": "puja",
+      "title": "महालक्ष्मी पूजा — दासर पदगळु",
+      "author": "हरिदासाः",
+      "note": "Mahalakshmi puja through Dasara padagalu. Kannada and English.",
+      "file": "puja_mahalakshmi_padagalu.txt"
+    },
+    {
+      "id": "puja_udupi",
+      "category": "puja",
+      "title": "उडुपी कृष्ण पूजा हाडु",
+      "author": "",
+      "note": "Udupi Krishna puja haadu. English baraha.",
+      "file": "puja_udupi_krishna.txt"
+    },
+    {
+      "id": "puja_sandhya",
+      "category": "puja",
+      "title": "सन्ध्यावन्दनम्",
+      "author": "",
+      "note": "Sandhyavandanam. Local library.",
+      "file": "lib:mantras/Sandhyavandanam"
+    },
+    {
+      "id": "puja_aupasana",
+      "category": "puja",
+      "title": "औपासनम्",
+      "author": "",
+      "note": "Aupasanam. Local library.",
+      "file": "lib:mantras/Aupasanam"
+    },
+    {
+      "id": "puja_sandhya_prayoga",
+      "category": "puja",
+      "title": "सन्ध्यावन्दन प्रयोगः",
+      "author": "",
+      "note": "Sandhyavandana prayoga. Local library.",
+      "file": "lib:mantras/SandhyavandanaPrayoga"
+    },
+    {
+      "id": "books_note",
+      "category": "books",
+      "title": "माध्व ग्रन्थाः",
+      "author": "",
+      "note": "Sumadhva Vijaya, HKS, Dvadasha Stotra, MBTN.",
+      "file": "books.txt"
+    },
+    {
+      "id": "hks_01",
+      "category": "books",
+      "title": "हरिकथामृतसारः 1 — मङ्गलाचरण सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_01.txt"
+    },
+    {
+      "id": "hks_02",
+      "category": "books",
+      "title": "हरिकथामृतसारः 2 — करुणा सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_02.txt"
+    },
+    {
+      "id": "hks_03",
+      "category": "books",
+      "title": "हरिकथामृतसारः 3 — व्याप्ति सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_03.txt"
+    },
+    {
+      "id": "hks_04",
+      "category": "books",
+      "title": "हरिकथामृतसारः 4 — भोजन सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_04.txt"
+    },
+    {
+      "id": "hks_05",
+      "category": "books",
+      "title": "हरिकथामृतसारः 5 — विभूति सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_05.txt"
+    },
+    {
+      "id": "hks_06",
+      "category": "books",
+      "title": "हरिकथामृतसारः 6 — पञ्चमहायज्ञ सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_06.txt"
+    },
+    {
+      "id": "hks_07",
+      "category": "books",
+      "title": "हरिकथामृतसारः 7 — पञ्चतन्मात्र सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_07.txt"
+    },
+    {
+      "id": "hks_08",
+      "category": "books",
+      "title": "हरिकथामृतसारः 8 — मातृका सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_08.txt"
+    },
+    {
+      "id": "hks_09",
+      "category": "books",
+      "title": "हरिकथामृतसारः 9 — वर्णप्रक्रिया सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_09.txt"
+    },
+    {
+      "id": "hks_10",
+      "category": "books",
+      "title": "हरिकथामृतसारः 10 — सर्वप्रतीक सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_10.txt"
+    },
+    {
+      "id": "hks_11",
+      "category": "books",
+      "title": "हरिकथामृतसारः 11 — स्थावरजङ्गम सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_11.txt"
+    },
+    {
+      "id": "hks_12",
+      "category": "books",
+      "title": "हरिकथामृतसारः 12 — नाडीप्रकरण सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_12.txt"
+    },
+    {
+      "id": "hks_13",
+      "category": "books",
+      "title": "हरिकथामृतसारः 13 — नामस्मरण सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_13.txt"
+    },
+    {
+      "id": "hks_14",
+      "category": "books",
+      "title": "हरिकथामृतसारः 14 — पितृगण सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_14.txt"
+    },
+    {
+      "id": "hks_15",
+      "category": "books",
+      "title": "हरिकथामृतसारः 15 — श्वास सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_15.txt"
+    },
+    {
+      "id": "hks_16",
+      "category": "books",
+      "title": "हरिकथामृतसारः 16 — दत्तस्वातन्त्र्य सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_16.txt"
+    },
+    {
+      "id": "hks_17",
+      "category": "books",
+      "title": "हरिकथामृतसारः 17 — स्वगतस्वातन्त्र्य सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_17.txt"
+    },
+    {
+      "id": "hks_18",
+      "category": "books",
+      "title": "हरिकथामृतसारः 18 — क्रीडाविलास सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_18.txt"
+    },
+    {
+      "id": "hks_19",
+      "category": "books",
+      "title": "हरिकथामृतसारः 19 — बिम्बापरोक्ष सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_19.txt"
+    },
+    {
+      "id": "hks_20",
+      "category": "books",
+      "title": "हरिकथामृतसारः 20 — गुणतारतम्य सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_20.txt"
+    },
+    {
+      "id": "hks_21",
+      "category": "books",
+      "title": "हरिकथामृतसारः 21 — कर्मविमोचन सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_21.txt"
+    },
+    {
+      "id": "hks_22",
+      "category": "books",
+      "title": "हरिकथामृतसारः 22 — भक्तापराधसहिष्णु सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_22.txt"
+    },
+    {
+      "id": "hks_23",
+      "category": "books",
+      "title": "हरिकथामृतसारः 23 — बृहत्तारतम्य सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_23.txt"
+    },
+    {
+      "id": "hks_24",
+      "category": "books",
+      "title": "हरिकथामृतसारः 24 — कल्पसाधन सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_24.txt"
+    },
+    {
+      "id": "hks_25",
+      "category": "books",
+      "title": "हरिकथामृतसारः 25 — आरोहण तारतम्य सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_25.txt"
+    },
+    {
+      "id": "hks_26",
+      "category": "books",
+      "title": "हरिकथामृतसारः 26 — अवरोहण तारतम्य सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_26.txt"
+    },
+    {
+      "id": "hks_27",
+      "category": "books",
+      "title": "हरिकथामृतसारः 27 — अनुक्रमणिका तारतम्य सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_27.txt"
+    },
+    {
+      "id": "hks_28",
+      "category": "books",
+      "title": "हरिकथामृतसारः 28 — विघ्नेश्वर स्तोत्र सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_28.txt"
+    },
+    {
+      "id": "hks_29",
+      "category": "books",
+      "title": "हरिकथामृतसारः 29 — अणुतारतम्य सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_29.txt"
+    },
+    {
+      "id": "hks_30",
+      "category": "books",
+      "title": "हरिकथामृतसारः 30 — दैत्यतारतम्य सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_30.txt"
+    },
+    {
+      "id": "hks_31",
+      "category": "books",
+      "title": "हरिकथामृतसारः 31 — नैवेद्यप्रकरण सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_31.txt"
+    },
+    {
+      "id": "hks_32",
+      "category": "books",
+      "title": "हरिकथामृतसारः 32 — कक्षातारतम्य सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_32.txt"
+    },
+    {
+      "id": "hks_33",
+      "category": "books",
+      "title": "हरिकथामृतसारः 33 — फलश्रुति सन्धिः",
+      "author": "Jagannatha Dasa",
+      "note": "Kannada moola from HKS PDF.",
+      "file": "hks_33.txt"
+    }
+  ]
+}
