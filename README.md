@@ -2,6 +2,8 @@
 
 Landscape HOME launcher for Acharya OS. Kannada UI. Pages: CLOCK → SANDHYAVANDANA → MANTRAS → POOJA → HADUGALU.
 
+**Status:** active development flavor in this workspace.
+
 Package: `com.paperdesk.launcher`
 
 ## Device
@@ -10,6 +12,9 @@ Package: `com.paperdesk.launcher`
 - Android 7.1.2, API 25 (`minSdk` 25)
 - Landscape 1280×720, density 2.0
 - Set this app as Home (always)
+
+AcharyaOS is separate from the Samsung A10s VishwakarmaOS flavor. Do not apply
+the A10s lockdown or overlay scripts to this device.
 
 Do not scrape third-party lyrics. Only texts that already ship in `app/src/main/assets` (or that you add yourself) belong in the library.
 
@@ -39,4 +44,6 @@ Panchanga prefers SRS Mantralaya when online, then USB files, then local Chandra
 
 ## Related
 
-Phone data root: `/sdcard/Vishwakarma` — see [`../vishwakarma-os/README.md`](../vishwakarma-os/README.md).
+Phone data root: `/sdcard/Vishwakarma` (retained as a compatibility protocol
+name). The Windows companion currently lives beside the VishwakarmaOS device
+layer; see [`../vishwakarma-os/README.md`](../vishwakarma-os/README.md).
