@@ -4,7 +4,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VENDOR = ROOT / "vendor"
+VENDOR = ROOT.parent / "local-artifacts" / "acharya" / "upstream-sources"
 OUT = ROOT / "app" / "src" / "main" / "assets" / "library"
 
 SKIP_NAME = re.compile(

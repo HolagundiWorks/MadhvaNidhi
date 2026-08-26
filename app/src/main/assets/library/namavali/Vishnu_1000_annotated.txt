@@ -1,69 +1,11 @@
-[a5paper,twoside,12pt]book
-[top=1.5cm, bottom=1.8cm, left=1.5cm, right=1.5cm]geometry
-shloka
-wallpaper
-
-[Script=Devanagari]Sanskrit 2003
-Devanagarideva,dev2
-
-fancyhdr
-fancyplain
-28pt
-[]
-
-[]
-
-fancyplain
-
-0pt
-0pt
-
-\@startsection chapter1@
-
-10pt
-2pt
-
-\@startsection chapter1@
-10pt
-2pt
-
-secnumdepth-1
-
-[1]
-#1
-[1]
-#1
-[1]
-#1
-
-1pt
-20pt
-4pt
-
-\@startsection section1@
-
-10pt
-2pt
-
-[a5paper,bookmarks=true,bookmarksopen=true,xetex,colorlinks=true,
-linkcolor=black,
-citecolor=cyan,
-filecolor=magenta,
-urlcolor=black
-]hyperref
+2003
 
 =10000
-=10000
 
-14pt
-4pt
-document
-
-[Script=Devanagari,Mapping=tex-text]Sanskrit 2003
+2003
 
 विष्णुसहस्रनामावलिः
-multicols2
-flushleft
+
 ॐ विश्वस्मै नमः
 
 ॐ विष्णवे नमः
@@ -2063,8 +2005,5 @@ flushleft
 ॐ अक्षोभ्याय नमः
 
 ॐ सर्वप्रहरणायुधाय नमः १०००
-flushleft
-multicols
-॥इति श्रीविष्णुसहस्रनामावलिः सम्पूर्णा॥
 
-document
+॥इति श्रीविष्णुसहस्रनामावलिः सम्पूर्णा॥

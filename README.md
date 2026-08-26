@@ -18,6 +18,18 @@ the A10s lockdown or overlay scripts to this device.
 
 Do not scrape third-party lyrics. Only texts that already ship in `app/src/main/assets` (or that you add yourself) belong in the library.
 
+## Catalogue quality
+
+The runtime catalogue is checked for missing bodies, duplicate titles/content,
+unsupported scripts, and extraction noise:
+
+```powershell
+node tools\audit-catalogue.mjs
+```
+
+See [`docs/CATALOGUE_AUDIT.md`](docs/CATALOGUE_AUDIT.md) for the latest audit,
+verified sources, and maintenance commands.
+
 ## Build and install
 
 Requires JDK 17 and Android SDK. SDK path stays in `local.properties` (not committed).

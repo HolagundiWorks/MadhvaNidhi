@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "audit": "node audit-catalogue.mjs",
+    "sanitize": "node sanitize-catalogue.mjs",
+    "sanitize:online": "node sanitize-catalogue.mjs --refresh-online"
   },
   "keywords": [],
   "author": "",

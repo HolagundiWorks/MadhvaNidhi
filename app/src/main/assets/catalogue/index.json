@@ -183,16 +183,6 @@
           "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
         },
         {
-          "id": "dvadasha_1",
-          "kn": "ದ್ವಾದಶ ಸ್ತೋತ್ರ — ಪ್ರಥಮ ಅಧ್ಯಾಯ",
-          "sa": "द्वादशस्तोत्रम् — प्रथमाध्यायः",
-          "en": "Dwadasa Stotra — First Chapter",
-          "type": "stotra",
-          "file": "dvadasha_stotra.txt",
-          "script": "sa",
-          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
-        },
-        {
           "id": "dvadasha_2",
           "kn": "ದ್ವಾದಶ ಸ್ತೋತ್ರ — ದ್ವಿತೀಯ ಅಧ್ಯಾಯ",
           "sa": "द्वादशस्तोत्रम् — द्वितीयाध्यायः",
@@ -344,17 +334,6 @@
           "type": "stotra",
           "deity": "Narasimha",
           "file": "lib:stotra/LakshmiNrisimhaKarunarasaStotram",
-          "script": "sa",
-          "url": "https://madhwafestivals.com/"
-        },
-        {
-          "id": "nrisimha_nakha",
-          "kn": "ನರಸಿಂಹ ನಖ ಸ್ತುತಿ",
-          "sa": "नृसिंहनखस्तुतिः",
-          "en": "Narasimha Nakha Stuti",
-          "type": "stotra",
-          "deity": "Narasimha",
-          "file": "nakha_stuti.txt",
           "script": "sa",
           "url": "https://madhwafestivals.com/"
         },
@@ -632,17 +611,6 @@
           "type": "namavali",
           "deity": "Kubera",
           "file": "lib:namavali/Kubera_108",
-          "script": "sa",
-          "url": "https://madhwafestivals.com/tag/index/"
-        },
-        {
-          "id": "nama_raghavendra",
-          "kn": "ಶ್ರೀ ರಾಘವೇಂದ್ರ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ",
-          "sa": "श्रीराघवेन्द्राष्टोत्तरशतनामावलिः",
-          "en": "Sri Raghavendra Ashtothra Shata Namavali",
-          "type": "namavali",
-          "deity": "Raghavendra",
-          "file": "stotra_raghavendra.txt",
           "script": "sa",
           "url": "https://madhwafestivals.com/tag/index/"
         }
@@ -1092,7 +1060,7 @@
           "deity": "Nithya Parayana",
           "script": "kn",
           "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
-          "file": "anu_hks.txt"
+          "file": ""
         },
         {
           "id": "dasa_041",
@@ -1324,17 +1292,6 @@
           "script": "kn",
           "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
           "file": ""
-        },
-        {
-          "id": "dasa_index",
-          "kn": "ದಾಸರ ಪದಗಳ ಸೂಚಿ",
-          "sa": "",
-          "en": "Dasara Padagalu Index",
-          "type": "dasara_pada",
-          "deity": "Miscellaneous",
-          "script": "kn",
-          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
-          "file": "dasara_index.txt"
         }
       ]
     },
@@ -1344,15 +1301,6 @@
       "sa": "सुलादयः",
       "en": "Suladhis",
       "items": [
-        {
-          "id": "suladhi_index",
-          "kn": "ಸುಳಾದಿ ಸೂಚಿ",
-          "sa": "",
-          "en": "Suladhi Index",
-          "type": "suladhi",
-          "file": "suladhi_index.txt",
-          "script": "kn"
-        },
         {
           "id": "suladhi_nrisimha",
           "kn": "ನರಸಿಂಹ ಸುಳಾದಿ",
@@ -1482,15 +1430,6 @@
       "sa": "",
       "en": "Ugabhogas",
       "items": [
-        {
-          "id": "ugabhoga_index",
-          "kn": "ಉಗಾಭೋಗ ಸೂಚಿ",
-          "sa": "",
-          "en": "Ugabhoga Index",
-          "type": "ugabhoga",
-          "file": "ugabhoga_index.txt",
-          "script": "kn"
-        },
         {
           "id": "ugabhoga_sripadaraja",
           "kn": "ಶ್ರೀಪಾದರಾಜ ಉಗಾಭೋಗ",

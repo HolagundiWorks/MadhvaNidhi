@@ -1,7 +1,5 @@
 श्रीरुद्रनाम त्रिशती
-multicols2
-[Script=Devanagari]Siddhanta
-flushleft
+
 नमो॒ हिर॑ण्यबाहवे॒ नमः॑।
 
 से॒ना॒न्ये॑ नमः॑।
@@ -602,6 +600,4 @@ flushleft
 
 नम॑ आमीव॒त्केभ्यो॒ नमः॑। 300
 
-flushleft
-multicols
 ॥इति श्री-श्रीरुद्रनाम त्रिशती सम्पूर्णा॥

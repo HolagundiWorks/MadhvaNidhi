@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 $root = Split-Path -Parent $PSScriptRoot
-$vendor = Join-Path $root "vendor"
+$vendor = Join-Path (Split-Path -Parent $root) "local-artifacts\acharya\upstream-sources"
 $out = Join-Path $root "app\src\main\assets\library"
 
 function Get-TitleFromName([string]$stem) {

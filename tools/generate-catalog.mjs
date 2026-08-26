@@ -7,8 +7,8 @@ const TEXTS = join(ROOT, "app", "src", "main", "assets", "madhwa", "texts");
 const CATALOG = join(ROOT, "app", "src", "main", "assets", "madhwa", "catalog.json");
 
 const SANDHI = [
-  [1, "मङ्गलाचरण सन्धिः", "Jagannatha Dasa"],
-  [2, "करुणा सन्धिः", "Jagannatha Dasa"],
+  [1, "मङ्गलाचरण सन्धिः", "जगन्नाथदासः"],
+  [2, "करुणा सन्धिः", "जगन्नाथदासः"],
   [3, "व्याप्ति सन्धिः", "Jagannatha Dasa"],
   [4, "भोजन सन्धिः", "Jagannatha Dasa"],
   [5, "विभूति सन्धिः", "Jagannatha Dasa"],
@@ -119,7 +119,6 @@ const items = [
 
   item("dasara_jagadodharana", "dasara", "जगदोद्धारण", "पुरन्दरदासः", "Jagadodharana. Kannada and English.", "dasara_jagadodharana.txt"),
   item("dasara_bhagyada", "dasara", "भाग्यद लक्ष्मी बारम्मा", "पुरन्दरदासः", "Bhagyada Lakshmi Baramma. Kannada and English.", "dasara_bhagyada_lakshmi.txt"),
-  item("dasara_index", "dasara", "दासरा पदगळु अनुक्रमणिका", "हरिदासाः", "Index of Dasara padagalu. Kannada and English titles.", "dasara_index.txt"),
   item("dasara_mahalakshmi", "dasara", "दासरा पदगळु — महालक्ष्मी पूजा", "हरिदासाः", "Mahalakshmi puja through Dasara padagalu. Kannada and English.", "puja_mahalakshmi_padagalu.txt"),
 
   item("ugabhoga_favorite", "ugabhoga", "इष्ट उगभोग सङ्ग्रहः", "हरिदासाः", "Favorite ugabhoga. Kannada and English.", "ugabhoga_favorite.txt"),
@@ -136,21 +135,16 @@ const items = [
   item("suladhi_hasthodhaka", "suladhi", "हस्तोदक सुळादि", "", "Hasthodhaka suladhi. Kannada PDF.", "suladhi_hasthodhaka.txt"),
   item("suladhi_vivaha", "suladhi", "विवाह सुळादि", "", "Vivaha suladhi. Kannada PDF.", "suladhi_vivaha.txt"),
   item("suladhi_pancharatna", "suladhi", "पञ्चरत्न सुळादिगळु", "विजयदासः", "Pancharatna suladhigalu. Kannada PDF.", "suladhi_pancharatna.txt"),
-  item("suladhi_index", "suladhi", "सुळादि अनुक्रमणिका", "हरिदासाः", "Index of suladhis.", "suladhi_index.txt"),
 
   item("kesava_nama", "kesava", "केशवनाम", "", "Chaturvimshati nama. Nitya parayana.", "kesava_nama.txt"),
   item("kesava_nama_page", "kesava", "केशव नाम — दासर पद", "कनकदासः", "Kesava nama. Kannada and English.", "kesava_nama_page.txt"),
 
-  item("haridasa_padagalu", "haridasa", "हरिदास साहित्य — पदगळु", "हरिदासाः", "Dasara padagalu index. Kannada and English.", "dasara_index.txt"),
-  item("haridasa_ugabhoga", "haridasa", "हरिदास साहित्य — उगभोग", "हरिदासाः", "Ugabhoga collection. Kannada and English.", "ugabhoga_favorite.txt"),
-  item("haridasa_suladhi", "haridasa", "हरिदास साहित्य — सुळादि", "विजयदासः", "Madhwa matha mahima suladhi. Kannada and English.", "suladhi_madhwa_matha.txt"),
 
   item("yathigalu", "yathi", "माध्व यतिगळु गुरुगळु", "", "Madhwa, Sripadaraja, Vyasaraja, Vadiraja, Raghavendra.", "yathigalu.txt"),
 
   item("festivals", "festival", "माध्व उत्सवाः", "", "Ugadi, Akshaya Tritiya, Narasimha Jayanti, Madhwa Navami.", "festivals.txt"),
 
   item("puja_anushtana", "puja", "पूजा अनुष्ठानम्", "", "Nitya karma. Saligrama. Tulasi. Ekadasi.", "puja_anushtana.txt"),
-  item("puja_mahalakshmi", "puja", "महालक्ष्मी पूजा — दासर पदगळु", "हरिदासाः", "Mahalakshmi puja through Dasara padagalu. Kannada and English.", "puja_mahalakshmi_padagalu.txt"),
   item("puja_udupi", "puja", "उडुपी कृष्ण पूजा हाडु", "", "Udupi Krishna puja haadu. English baraha.", "puja_udupi_krishna.txt"),
   item("puja_sandhya", "puja", "सन्ध्यावन्दनम्", "", "Sandhyavandanam. Local library.", "lib:mantras/Sandhyavandanam"),
   item("puja_aupasana", "puja", "औपासनम्", "", "Aupasanam. Local library.", "lib:mantras/Aupasanam"),
@@ -159,11 +153,12 @@ const items = [
   item("books_note", "books", "माध्व ग्रन्थाः", "", "Sumadhva Vijaya, HKS, Dvadasha Stotra, MBTN.", "books.txt"),
 ];
 
-for (const [n, title, author] of SANDHI) {
+for (const [n, title] of SANDHI) {
   const file = `hks_${String(n).padStart(2, "0")}.txt`;
-  items.push(item(`hks_${String(n).padStart(2, "0")}`, "books", `हरिकथामृतसारः ${n} — ${title}`, author, "Kannada moola from HKS PDF.", file));
+  items.push(item(`hks_${String(n).padStart(2, "0")}`, "books", `हरिकथामृतसारः ${n} — ${title}`, "जगन्नाथदासः", "", file));
 }
 
 mkdirSync(dirname(CATALOG), { recursive: true });
-writeFileSync(CATALOG, JSON.stringify({ source: "local", langs: ["kn", "en", "sa"], items }, null, 2));
-console.log("items", items.length);
+const canonicalItems = items.filter(({ file }) => !file.startsWith("lib:"));
+writeFileSync(CATALOG, JSON.stringify({ source: "local", langs: ["kn", "en", "sa"], items: canonicalItems }, null, 2));
+console.log("items", canonicalItems.length);

@@ -1,5 +1,4 @@
 मार्गशीर्ष-कृष्ण-एकादशी-माहात्म्यम्
-sec:vrata-raja-margashirsha-krishna
 
 सूत उवाच
 
@@ -370,10 +369,7 @@ sec:vrata-raja-margashirsha-krishna
 
 ॥इति श्रीकृष्णार्जुनसंवादे मार्गशीर्षकृष्णैकादशीमाहात्म्यं सम्पूर्णम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 मार्गशीर्ष-शुक्ल-मोक्षदा-एकादशी-माहात्म्यम्
-sec:vrata-raja-margashirsha-shukla-mokshada
 
 युधिष्ठिर उवाच
 
@@ -526,10 +522,7 @@ sec:vrata-raja-margashirsha-shukla-mokshada
 
 ॥इति श्रीब्रह्माण्डपुराणे मार्गशीर्षशुक्लैकादश्या मोक्षानाम्न्या माहात्म्यं सम्पूर्णम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 पौष-कृष्ण-सफला-एकादशी-माहात्म्यम्
-sec:vrata-raja-pausha-krishna-saphala
 
 युधिष्ठिर उवाच
 
@@ -707,10 +700,7 @@ sec:vrata-raja-pausha-krishna-saphala
 
 ॥इति पौषकृष्ण-एकादश्याः सफलानाम्न्या माहात्म्यं सम्पूर्णम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 पौष-शुक्ल-पुत्रदा-एकादशी-माहात्म्यम्
-sec:vrata-raja-pausha-shukla-putrada
 
 युधिष्ठिर उवाच
 
@@ -896,10 +886,7 @@ sec:vrata-raja-pausha-shukla-putrada
 
 ॥इति श्रीभविष्योत्तरपुराणे पौषशुक्लैकादश्याः पुत्रदानाम्न्या माहात्म्यं सम्पूर्णम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 माघ-कृष्ण-षट्तिला-एकादशी-माहात्म्यम्
-sec:vrata-raja-magha-krishna-shattila
 
 दाल्भ्य उवाच
 
@@ -1074,10 +1061,7 @@ sec:vrata-raja-magha-krishna-shattila
 
 ॥इति श्रीभविष्योत्तरपुराणे माघकृष्णैकादश्याः षट्तिलानाम्न्या माहात्म्यं सम्पूर्णम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 माघ-शुक्ल-जया-एकादशी-माहात्म्यम्
-sec:vrata-raja-magha-shukla-jaya
 
 युधिष्ठिर उवाच
 
@@ -1251,10 +1235,7 @@ sec:vrata-raja-magha-shukla-jaya
 
 ॥इति श्रीभविष्योत्तरपुराणे माघशुक्क्लैकादश्या जयाया माहात्म्यं सम्पूर्णम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 फाल्गुन-कृष्ण-विजया-एकादशी-माहात्म्यम्
-sec:vrata-raja-phalguna-krishna-vijaya
 
 युधिष्ठिर उवाच
 
@@ -1396,10 +1377,7 @@ sec:vrata-raja-phalguna-krishna-vijaya
 
 ॥इति श्रीस्कन्दपुराणे फाल्गुनकृष्णैकादश्या विजयानाम्न्या माहात्म्यं सम्पूर्णम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 फाल्गुन-शुक्लामलकी-एकादशी-माहात्म्यम्
-sec:vrata-raja-phalguna-shuklamalaki
 
 मान्धातोवाच
 
@@ -1569,10 +1547,7 @@ sec:vrata-raja-phalguna-shuklamalaki
 
 ॥इति श्रीब्रह्माण्डपुराणे आमलक्याख्यफाल्गुनशुक्लैकादशीव्रतम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 चैत्र-कृष्ण-पापमोचनी-एकादशी-माहात्म्यम्
-sec:vrata-raja-chaitra-krishna-papamochani
 
 युधिष्ठिर उवाच
 
@@ -1758,10 +1733,7 @@ sec:vrata-raja-chaitra-krishna-papamochani
 
 ॥इति श्रीभविष्यपुराणे पापमोचनिकाख्यचैत्रकृष्णैकादशीमाहात्म्यं सम्पूर्णम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 चैत्र-शुक्ल-कामदा-एकादशी-माहात्म्यम्
-sec:vrata-raja-chaitra-shukla-kamada
 
 युधिष्ठिर उवाच
 
@@ -1894,10 +1866,7 @@ sec:vrata-raja-chaitra-shukla-kamada
 
 ॥इति श्रीवाराहपुराणे कामदा नाम चैत्रशुक्लैकादशीमाहात्म्यं सम्पूर्णम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 वैशाख-कृष्ण-वरूथिनी-एकादशी-माहात्म्यम्
-sec:vrata-raja-vaishakha-krishna-varuthini
 
 युधिष्ठिर उवाच
 
@@ -1985,10 +1954,7 @@ sec:vrata-raja-vaishakha-krishna-varuthini
 
 ॥इति श्रीभविष्यपुराणे वैशाखकृष्णैकादश्या वरूथिन्याख्याया माहात्म्यं सम्पूर्णम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 वैशाख-शुक्ल-मोहिनी-एकादशी-माहात्म्यम्
-sec:vrata-raja-vaishakha-shukla-mohini
 
 युधिष्ठिर उवाच
 
@@ -2121,10 +2087,7 @@ sec:vrata-raja-vaishakha-shukla-mohini
 
 ॥इति श्रीकूर्मपुराणे मोहिन्याख्यवैशाखशुक्लैकादशीमाहात्म्यं सम्पूर्णम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 ज्येष्ठ-कृष्णापरा-एकादशी-माहात्म्यम्
-sec:vrata-raja-jyeshtha-krishnapara
 
 युधिष्ठिर उवाच
 
@@ -2193,10 +2156,7 @@ sec:vrata-raja-jyeshtha-krishnapara
 
 ॥इति ब्रह्माण्डपुराणे ज्येष्ठकृष्णापराख्यकादशीमाहात्म्यं सम्पूर्णम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 ज्येष्ठ-शुक्ल-निर्जला-एकादशी-माहात्म्यम्
-sec:vrata-raja-jyeshtha-shukla-nirjala
 
 भीमसेन उवाच
 
@@ -2374,10 +2334,7 @@ sec:vrata-raja-jyeshtha-shukla-nirjala
 
 ॥इति श्रीभारतपद्मयोरुक्तं ज्येष्ठशुक्लनिर्जलैकादशीमाहात्म्यं सम्पूर्णम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 आषाढ-कृष्ण-योगिनी-एकादशी-माहात्म्यम्
-sec:vrata-raja-ashadha-krishna-yogini
 
 युधिष्ठिर उवाच
 
@@ -2505,10 +2462,7 @@ sec:vrata-raja-ashadha-krishna-yogini
 
 ॥इति श्रीब्रह्मवैवर्तपुराणे आषाढकृष्णयोगिन्याख्यैकादशीमाहात्म्यं सम्पूर्णम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 आषाढ-शुक्ल-शयनी-एकादशी-माहात्म्यम्
-sec:vrata-raja-ashadha-shukla-shayani
 
 युधिष्ठिर उवाच
 
@@ -2654,10 +2608,7 @@ sec:vrata-raja-ashadha-shukla-shayani
 
 ॥इति श्रीवाराहपुराणे आषाढशुक्लपद्माख्यैकादशीव्रतमाहात्म्यम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 आषाढ-शुक्ल-शयनी-एकादशी-माहात्म्यम् (भविष्य-पुराणम्)
-sec:vrata-raja-ashadha-shukla-shayani-bhavishya
 
 कृष्ण उवाच
 
@@ -3210,10 +3161,7 @@ sec:vrata-raja-ashadha-shukla-shayani-bhavishya
 
 ॥इति श्रीभविष्यपुराणे विष्णोः शयन्येकादशीमाहात्म्यं सम्पूर्णम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 श्रावण-कृष्ण-कामिका-एकादशी-माहात्म्यम्
-sec:vrata-raja-shravana-krishna-kamika
 
 युधिष्ठिर उवाच
 
@@ -3325,10 +3273,7 @@ sec:vrata-raja-shravana-krishna-kamika
 
 ॥इति श्रीब्रह्मवैवर्तपुराणे श्रावणकृष्णैकादश्याः कामिकाया माहात्म्यं सम्पूर्णम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 श्रावण-शुक्ल-पुत्रदा-एकादशी-माहात्म्यम्
-sec:vrata-raja-shravana-shukla-putrada
 
 युधिष्ठिर उवाच
 
@@ -3471,10 +3416,7 @@ sec:vrata-raja-shravana-shukla-putrada
 
 ॥इति श्रीभविष्योत्तरपुराणे पुत्रदाख्यश्रावणशुक्कैकादशीमाहात्म्यं सम्पूर्णम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 भाद्रपद-कृष्णाजा-एकादशी-माहात्म्यम्
-sec:vrata-raja-bhadrapada-krishnaja
 
 युधिष्ठिर उवाच
 
@@ -3551,10 +3493,7 @@ sec:vrata-raja-bhadrapada-krishnaja
 
 ॥इति श्रीब्रह्माण्डपुराणे भाद्रपदकृष्णाया अजानाम्न्या एकादश्या माहात्म्यं सम्पूर्णम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 भाद्रपद-शुक्ल-पद्मा-एकादशी-माहात्म्यम्
-sec:vrata-raja-bhadrapada-shukla-padma
 
 युधिष्ठिर उवाच
 
@@ -3691,10 +3630,7 @@ sec:vrata-raja-bhadrapada-shukla-padma
 
 ॥इति श्रीस्कन्दपुराणे भाद्रपदशुक्लायाः परिवर्तिनीनामैकादश्या माहात्म्यं सम्पूर्णम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 आश्विन-कृष्णेन्दिरा-एकादशी-माहात्म्यम्
-sec:vrata-raja-ashvina-krishnendira
 
 युधिष्ठिर उवाच
 
@@ -3821,10 +3757,7 @@ sec:vrata-raja-ashvina-krishnendira
 
 ॥इति श्रीब्रह्मवैवर्तपुराणे आश्विनकृष्णैकादश्या इन्दिरानाम्न्या माहात्म्यं सम्पूर्णम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 आश्विन-शुक्ल-पाशाङ्कुशा-एकादशी-माहात्म्यम्
-sec:vrata-raja-ashvina-shukla-pashankusha
 
 धुधिष्ठिर उवाच
 
@@ -3914,10 +3847,7 @@ sec:vrata-raja-ashvina-shukla-pashankusha
 
 ॥इति श्रीब्रह्माण्डपुराणे आश्विनशुक्लैकादश्याः पाशाङ्कुशाख्याया माहात्म्यं सम्पूर्णम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 कार्त्तिक-कृष्ण-रमा-एकादशी-माहात्म्यम्
-sec:vrata-raja-karttika-krishna-rama
 
 युधिष्ठिर उवाच
 
@@ -4103,10 +4033,7 @@ sec:vrata-raja-karttika-krishna-rama
 
 ॥इति श्रीब्रह्माण्डपुराणे कार्तिककृष्णाया रमाख्याया माहात्म्यम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 कार्त्तिक-शुक्ल-प्रबोधिनी-एकादशी-माहात्म्यम्
-sec:vrata-raja-karttika-shukla-prabodhini
 
 ब्रह्मोवाच
 
@@ -4384,10 +4311,7 @@ sec:vrata-raja-karttika-shukla-prabodhini
 
 ॥इति श्रीस्कान्दे महापुराणे कार्त्तिकशुक्लप्रबोधिन्येकादाशीमाहात्म्यं सम्पूर्णम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 पुरुषोत्तम-मासस्य शुक्ल-कमला-एकादशी-माहात्म्यम्
-sec:vrata-raja-purushottama-shukla-kamala
 
 युधिष्ठिर उवाच
 
@@ -4659,10 +4583,7 @@ sec:vrata-raja-purushottama-shukla-kamala
 
 ॥इत्यधिकमासस्य शुक्लैकादशीमाहात्म्यं सम्पूर्णम्॥
 
-[sec:ekadashi_mahatmyam_vrata_raja]
-
 पुरुषोत्तम-मासस्य कृष्ण-परमा-एकादशी-माहात्म्यम्
-sec:vrata-raja-purushottama-krishna-parama
 
 युधिष्ठिर उवाच
 
@@ -4878,5 +4799,3 @@ sec:vrata-raja-purushottama-krishna-parama
 गच्छेयुस्त्रिभुवननन्दितस्य गेहम्
 
 ॥इत्यधिककृष्णैकादश्याः परमाख्याया माहात्म्यं सम्पूर्णम्॥
-
-[sec:ekadashi_mahatmyam_vrata_raja]

@@ -1,8 +1,5 @@
-minipage
 पीठ-पूजा
 
-multicols2
-enumerate
 आधारशक्त्यै नमः
 मूलप्रकृत्यै नमः
 आदिकूर्माय नमः
@@ -17,7 +14,3 @@ enumerate
 क्षीरसमुद्राय नमः
 सितचामराभ्यां नमः
 योगपीठासनाय नमः
-enumerate
-multicols
-
-minipage

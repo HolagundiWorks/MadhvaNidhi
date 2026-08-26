@@ -39,7 +39,6 @@ const data = {
         I("jayatirtha_stuti", "ಶ್ರೀ ಜಯತೀರ್ಥ ಸ್ತುತಿ", "श्रीजयतीर्थस्तुतिः", "Sri Jayatirtha Stuti", { type: "stotra", deity: "Jayatirtha", url: STOTRA }),
         I("vyasaraja_stotram", "ಶ್ರೀ ವ್ಯಾಸರಾಜ ಸ್ತೋತ್ರಂ", "श्रीव्यासराजस्तोत्रम्", "Sri Vyasaraja Stotram", { type: "stotra", deity: "Vyasaraja", url: STOTRA }),
         I("raghuttama_stotram", "ಶ್ರೀ ರಘುತ್ತಮ ಸ್ತೋತ್ರಂ", "श्रीरघुत्तमस्तोत्रम्", "Sri Raghuttama Stotram", { type: "stotra", deity: "Raghuttama", url: STOTRA }),
-        I("dvadasha_1", "ದ್ವಾದಶ ಸ್ತೋತ್ರ — ಪ್ರಥಮ ಅಧ್ಯಾಯ", "द्वादशस्तोत्रम् — प्रथमाध्यायः", "Dwadasa Stotra — First Chapter", { type: "stotra", file: "dvadasha_stotra.txt", script: "sa", url: STOTRA }),
         I("dvadasha_2", "ದ್ವಾದಶ ಸ್ತೋತ್ರ — ದ್ವಿತೀಯ ಅಧ್ಯಾಯ", "द्वादशस्तोत्रम् — द्वितीयाध्यायः", "Dwadasa Stotra — Second Chapter", { type: "stotra", url: STOTRA }),
         I("dvadasha_3", "ದ್ವಾದಶ ಸ್ತೋತ್ರ — ತೃತೀಯ ಅಧ್ಯಾಯ", "द्वादशस्तोत्रम् — तृतीयाध्यायः", "Dwadasa Stotra — Third Chapter", { type: "stotra", url: STOTRA }),
         I("dvadasha_4", "ದ್ವಾದಶ ಸ್ತೋತ್ರ — ಚತುರ್ಥ ಅಧ್ಯಾಯ", "द्वादशस्तोत्रम् — चतुर्थाध्यायः", "Dwadasa Stotra — Fourth Chapter", { type: "stotra", url: STOTRA }),
@@ -64,7 +63,6 @@ const data = {
       items: [
         I("nrisimha_mahamantra", "ಶ್ರೀ ನರಸಿಂಹ ಮಹಾಮಂತ್ರ", "श्रीनृसिंहमहामन्त्रः", "Sri Nrisimha Maha-mantra", { type: "mantra", deity: "Narasimha", file: "nrisimha_mantra.txt", script: "sa", url: SRC }),
         I("prahlada_nrisimha", "ಪ್ರಹ್ಲಾದ ವಿರಚಿತ ನರಸಿಂಹ ಸ್ತೋತ್ರಂ", "प्रह्लादविरचितनृसिंहस्तोत्रम्", "Prahlada's Narasimha Stotram", { type: "stotra", deity: "Narasimha", file: "lib:stotra/LakshmiNrisimhaKarunarasaStotram", script: "sa", url: SRC }),
-        I("nrisimha_nakha", "ನರಸಿಂಹ ನಖ ಸ್ತುತಿ", "नृसिंहनखस्तुतिः", "Narasimha Nakha Stuti", { type: "stotra", deity: "Narasimha", file: "nakha_stuti.txt", script: "sa", url: SRC }),
         I("nrisimha_stuti_np", "ನರಸಿಂಹ ಸ್ತುತಿ — ನಾರಾಯಣ ಪಂಡಿತಾಚಾರ್ಯರು", "नृसिंहस्तुतिः", "Narasimha Stuti — Narayana Panditacharya", { type: "stotra", deity: "Narasimha", author: "ನಾರಾಯಣ ಪಂಡಿತಾಚಾರ್ಯರು", url: SRC }),
         I("nrusimha_ashtakam", "ಶ್ರೀ ನೃಸಿಂಹ ಅಷ್ಟಕಂ", "श्रीनृसिंहाष्टकम्", "Sri Nrusimha Ashtakam", { type: "stotra", deity: "Narasimha", url: SRC }),
         I("nrusimha_avatara", "ಶ್ರೀ ನರಸಿಂಹ ಅವತಾರ ಸ್ತೋತ್ರಂ", "श्रीनृसिंहावतारस्तोत्रम्", "Sri Nrusimha Avatara Stotram", { type: "stotra", deity: "Narasimha", url: SRC }),
@@ -98,8 +96,7 @@ const data = {
         I("nama_durga", "ದುರ್ಗಾ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ", "श्रीदुर्गाष्टोत्तरशतनामावलिः", "Durga Ashtothra Shata Namavali", { type: "namavali", deity: "Durga", file: "lib:namavali/Durga_108", script: "sa", url: NAMA }),
         I("nama_saraswati", "ಸರಸ್ವತಿ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ", "श्रीसरस्वत्यष्टोत्तरशतनामावलिः", "Saraswathy Ashtothra Shata Namavali", { type: "namavali", deity: "Saraswati", file: "lib:namavali/Saraswati_108", script: "sa", url: NAMA }),
         I("nama_ganga", "ಗಂಗಾ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ", "श्रीगङ्गाष्टोत्तरशतनामावलिः", "Ganga Ashtothra Namavali", { type: "namavali", deity: "Ganga", file: "lib:namavali/Ganga_108", script: "sa", url: NAMA }),
-        I("nama_kubera", "ಕುಬೇರ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ", "श्रीकुबेराष्टोत्तरशतनामावलिः", "Kubera Ashtothra Shata Namavali", { type: "namavali", deity: "Kubera", file: "lib:namavali/Kubera_108", script: "sa", url: NAMA }),
-        I("nama_raghavendra", "ಶ್ರೀ ರಾಘವೇಂದ್ರ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ", "श्रीराघवेन्द्राष्टोत्तरशतनामावलिः", "Sri Raghavendra Ashtothra Shata Namavali", { type: "namavali", deity: "Raghavendra", file: "stotra_raghavendra.txt", script: "sa", url: NAMA })
+        I("nama_kubera", "ಕುಬೇರ ಅಷ್ಟೋತ್ತರ ಶತನಾಮಾವಳಿ", "श्रीकुबेराष्टोत्तरशतनामावलिः", "Kubera Ashtothra Shata Namavali", { type: "namavali", deity: "Kubera", file: "lib:namavali/Kubera_108", script: "sa", url: NAMA })
       ]
     },
     {
@@ -115,7 +112,6 @@ const data = {
       sa: "सुलादयः",
       en: "Suladhis",
       items: [
-        I("suladhi_index", "ಸುಳಾದಿ ಸೂಚಿ", "", "Suladhi Index", { type: "suladhi", file: "suladhi_index.txt", script: "kn" }),
         I("suladhi_nrisimha", "ನರಸಿಂಹ ಸುಳಾದಿ", "", "Nrisimha Suladhi", { type: "suladhi", deity: "Narasimha", file: "suladhi_nrisimha.txt", script: "kn" }),
         I("suladhi_hanumanta", "ಹನುಮಂತ ಸುಳಾದಿ", "", "Hanumanta Suladhi", { type: "suladhi", deity: "Hanuma", file: "suladhi_hanumanta.txt", script: "kn" }),
         I("suladhi_vayu_traya", "ವಾಯುದೇವರ ಅವತಾರ ತ್ರಯ ಸುಳಾದಿ", "", "Vayudevara Avathara Traya Suladhi", { type: "suladhi", deity: "Mukhya Prana", file: "suladhi_vayu_traya.txt", script: "kn" }),
@@ -137,7 +133,6 @@ const data = {
       sa: "",
       en: "Ugabhogas",
       items: [
-        I("ugabhoga_index", "ಉಗಾಭೋಗ ಸೂಚಿ", "", "Ugabhoga Index", { type: "ugabhoga", file: "ugabhoga_index.txt", script: "kn" }),
         I("ugabhoga_sripadaraja", "ಶ್ರೀಪಾದರಾಜ ಉಗಾಭೋಗ", "", "Sripadaraja Ugabhoga", { type: "ugabhoga", author: "ಶ್ರೀಪಾದರಾಜರು", file: "ugabhoga_sripadaraja.txt", script: "kn" }),
         I("ugabhoga_favorite", "ಉಗಾಭೋಗ — ಆಯ್ದ", "", "Favorite Ugabhogas", { type: "ugabhoga", file: "ugabhoga_favorite.txt", script: "kn" })
       ]
@@ -223,13 +218,9 @@ function dasara() {
     ["dasa_tulasi", "ಮಂಗಳಂ ಶ್ರೀ ತುಳಸಿ", "Mangalam sri tulasi", "Tulasi"],
     ["dasa_vithala", "ವಿಠಲ ನಿನ್ನ ನಂಬಿದೆ ಎನ್ನ ಕಾಯೋ", "Vithala Ninna Nambide Enna Kayo", "Hari / Narayana"],
     ["dasa_yenu_kaarana", "ಏನು ಕಾರಣ ಬಾಯ ತೆರೆದಿಯೋ", "Yenu Kaarana Baaya Theredhiyo", "Narasimha"],
-    ["dasa_vyasa_badari", "ವ್ಯಾಸ ಬದರಿ ನಿವಾಸ", "Vyasa Badari Nivaasa", "Sri Vedavyasaru"],
-    ["dasa_index", "ದಾಸರ ಪದಗಳ ಸೂಚಿ", "Dasara Padagalu Index", "Miscellaneous", "dasara_index.txt"]
+    ["dasa_vyasa_badari", "ವ್ಯಾಸ ಬದರಿ ನಿವಾಸ", "Vyasa Badari Nivaasa", "Sri Vedavyasaru"]
   ];
-  const fileById = {
-    dasa_040: "anu_hks.txt",
-    dasa_019: ""
-  };
+  const fileById = {};
   const out = first.map(([id, kn, en, deity]) =>
     I(id, kn, "", en, { type: "dasara_pada", deity, script: "kn", url: DASA, file: fileById[id] || "" })
   );

@@ -1,5 +1,4 @@
 अभिश्रवण-मन्त्राः
-sec:start_abhishravana
 
 पुरुषसूक्तम्
 ३१२--१३
@@ -383,5 +382,3 @@ sec:start_abhishravana
 ये चै॑न॒त्प्राहुः॑।
 येभ्य॑श्चैन॒त्प्राहुः॑॥५६॥
 ॐ॥
-
-[sec:start_abhishravana]
