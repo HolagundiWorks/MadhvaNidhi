@@ -37,6 +37,7 @@ USB debugging must be on. After install, choose **Acharya OS** as the Home app.
 | `app/` | Android application |
 | `tools/` | Optional scripts to rebuild mantra / pooja catalogues into assets |
 | `gradle/` | Gradle wrapper |
+| `resources/reference/` | Development source documents and catalogues; not packaged automatically |
 
 Pager next/prev wraps: page 5 returns to page 1. Footer shows `|| ಹರಿ ಸರ್ವೋತ್ತಮ ವಾಯು ಜೀವೋತ್ತಮ ||`.
 
