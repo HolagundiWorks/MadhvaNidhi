@@ -63,6 +63,11 @@ class SettingsStore(context: Context) {
             obj.put("pagesRev", 8)
             dirty = true
         }
+        if (obj.optInt("pagesRev", 0) < 9) {
+            obj.put("pages", JSONArray(PAGE_IDS))
+            obj.put("pagesRev", 9)
+            dirty = true
+        }
         if (dirty) prefs.edit().putString("json", obj.toString()).apply()
         return obj
     }
@@ -100,7 +105,7 @@ class SettingsStore(context: Context) {
 
     companion object {
         const val PREFS = "paperdesk_os"
-        val PAGE_IDS = listOf("desk", "sandhya", "mantras", "puja", "hadugalu", "japa", "profile", "aayadi")
+        val PAGE_IDS = listOf("desk", "sandhya", "mantras", "puja", "hadugalu", "japa", "aayadi")
         val PAGE_LABELS = mapOf(
             "desk" to "PANCHANGA",
             "sandhya" to "SANDHYAVANDANA",
@@ -108,7 +113,6 @@ class SettingsStore(context: Context) {
             "puja" to "POOJA",
             "hadugalu" to "HADUGALU"
             ,"japa" to "JAPA"
-            ,"profile" to "PROFILE"
             ,"aayadi" to "AAYADI"
         )
 
@@ -125,7 +129,7 @@ class SettingsStore(context: Context) {
         fun defaults(): JSONObject = JSONObject()
             .put("flavor", "acharya")
             .put("pages", JSONArray(PAGE_IDS))
-            .put("pagesRev", 8)
+            .put("pagesRev", 9)
             .put("landscape", true)
             .put("theme", "black")
             .put("accent", "#FF6A00")
