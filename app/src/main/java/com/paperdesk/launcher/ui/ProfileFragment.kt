@@ -59,25 +59,34 @@ class ProfileFragment : Fragment() {
         }
         view.findViewById<View>(R.id.profileSave).setOnClickListener {
             val name = view.findViewById<EditText>(R.id.profileName).text.toString().trim()
+            val summary = view.findViewById<TextView>(R.id.profileSummary)
             if (name.isBlank()) {
-                view.findViewById<TextView>(R.id.profileSummary).apply {
+                summary.apply {
                     text = "ಹೆಸರನ್ನು ನಮೂದಿಸಿ"
                     setTextColor(requireContext().getColor(R.color.carbon_support_error))
                 }
                 return@setOnClickListener
             }
             val storedName = KannadaPhonetic.transliterate(name)
-            val saved = store.save(ProfileStore.Profile(
-                editingId, storedName,
-                view.findViewById<Spinner>(R.id.profileVeda).selectedItem.toString(),
-                view.findViewById<Spinner>(R.id.profileGotra).selectedItem.toString(),
-                view.findViewById<EditText>(R.id.profilePravara).text.toString(),
-                view.findViewById<Spinner>(R.id.profileNakshatra).selectedItem.toString()
-            ))
-            refreshProfiles(view, saved.id)
-            view.findViewById<TextView>(R.id.profileSave).apply {
-                text = "ಉಳಿಸಲಾಗಿದೆ"
-                postDelayed({ text = "ಉಳಿಸಿ ಮತ್ತು ಸಕ್ರಿಯಗೊಳಿಸಿ" }, 1800)
+            runCatching {
+                store.save(ProfileStore.Profile(
+                    editingId, storedName,
+                    view.findViewById<Spinner>(R.id.profileVeda).selectedItem?.toString().orEmpty(),
+                    view.findViewById<Spinner>(R.id.profileGotra).selectedItem?.toString().orEmpty(),
+                    view.findViewById<EditText>(R.id.profilePravara).text.toString(),
+                    view.findViewById<Spinner>(R.id.profileNakshatra).selectedItem?.toString().orEmpty()
+                ))
+            }.onSuccess { saved ->
+                refreshProfiles(view, saved.id)
+                view.findViewById<TextView>(R.id.profileSave).apply {
+                    text = "ಉಳಿಸಲಾಗಿದೆ"
+                    postDelayed({ text = "ಉಳಿಸಿ ಮತ್ತು ಸಕ್ರಿಯಗೊಳಿಸಿ" }, 1800)
+                }
+            }.onFailure {
+                summary.apply {
+                    text = "ಪ್ರೊಫೈಲ್ ಉಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
+                    setTextColor(requireContext().getColor(R.color.carbon_support_error))
+                }
             }
         }
     }
