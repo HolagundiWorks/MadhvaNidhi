@@ -1,6 +1,6 @@
 # Acharya OS
 
-Landscape HOME launcher for Acharya OS. Kannada UI. Pages: CLOCK → SANDHYAVANDANA → MANTRAS → POOJA → HADUGALU.
+Landscape HOME launcher for Acharya OS. Kannada UI. Pages: PANCHANGA → SANDHYAVANDANA → MANTRAS → POOJA → HADUGALU → JAPA → PROFILE → AAYADI.
 
 **Status:** active development flavor in this workspace.
 

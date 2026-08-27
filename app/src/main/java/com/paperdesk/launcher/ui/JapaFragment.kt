@@ -5,24 +5,32 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.paperdesk.launcher.R
 import com.paperdesk.launcher.data.JapaStore
+import com.paperdesk.launcher.data.ProfileStore
 import java.text.NumberFormat
 import java.util.Locale
 
 class JapaFragment : Fragment() {
     private lateinit var store: JapaStore
+    private lateinit var profiles: ProfileStore
+    private var selectingProfile = false
     private val countFormat = NumberFormat.getIntegerInstance(Locale("en", "IN"))
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, state: Bundle?): View =
         inflater.inflate(R.layout.page_japa, container, false)
 
     override fun onViewCreated(view: View, state: Bundle?) {
-        store = JapaStore(requireContext())
+        profiles = ProfileStore(requireContext())
+        store = JapaStore(requireContext(), profiles.active().id)
         listOf(R.id.japaTitle, R.id.japaRitualTitle).forEach { DeskType.apply(view.findViewById(it), DeskType.SEMIBOLD) }
+        bindProfiles(view)
         view.findViewById<View>(R.id.japaTap).setOnClickListener { saveConfig(view); paint(view, store.add(1)) }
         view.findViewById<View>(R.id.japa108).setOnClickListener { saveConfig(view); paint(view, store.add(108)) }
         view.findViewById<View>(R.id.japaUndo).setOnClickListener { paint(view, store.undo()) }
@@ -34,6 +42,41 @@ class JapaFragment : Fragment() {
                 .setPositiveButton("ಮರುಹೊಂದಿಸು") { _, _ -> paint(view, store.resetCurrent()) }.show()
         }
         paint(view, store.state(), initial = true)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        view?.let { bindProfiles(it) }
+    }
+
+    private fun bindProfiles(v: View) {
+        val all = profiles.profiles()
+        val spinner = v.findViewById<Spinner>(R.id.japaProfile)
+        selectingProfile = true
+        spinner.adapter = ArrayAdapter(requireContext(), R.layout.item_dropdown_selected, all.map { it.name }).also {
+            it.setDropDownViewResource(R.layout.item_dropdown)
+        }
+        spinner.setSelection(all.indexOfFirst { it.id == profiles.active().id }.coerceAtLeast(0))
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) = Unit
+            override fun onItemSelected(parent: AdapterView<*>?, selected: View?, position: Int, id: Long) {
+                if (selectingProfile) return
+                all.getOrNull(position)?.let { profile ->
+                    profiles.setActive(profile.id)
+                    store = JapaStore(requireContext(), profile.id)
+                    showProfile(v, profile)
+                    paint(v, store.state(), initial = true)
+                }
+            }
+        }
+        selectingProfile = false
+        showProfile(v, profiles.active())
+    }
+
+    private fun showProfile(v: View, p: ProfileStore.Profile) {
+        v.findViewById<TextView>(R.id.japaProfileMeta).text = "${p.gotra} ಗೋತ್ರ  ·  ${p.nakshatra} ನಕ್ಷತ್ರ"
+        v.findViewById<TextView>(R.id.japaSankalpa).text =
+            "ಸಂಕಲ್ಪ ಸೂಚನೆ  ·  ${p.name}  ·  ${p.gotra} ಗೋತ್ರ  ·  ${p.nakshatra} ನಕ್ಷತ್ರ"
     }
 
     private fun saveConfig(v: View) {

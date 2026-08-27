@@ -7,6 +7,7 @@ import android.os.Environment
 import android.os.StatFs
 import com.paperdesk.launcher.data.SettingsStore
 import com.paperdesk.launcher.data.JapaStore
+import com.paperdesk.launcher.data.ProfileStore
 import com.paperdesk.launcher.weather.WeatherClient
 import org.json.JSONArray
 import org.json.JSONObject
@@ -68,7 +69,8 @@ object OsDataService {
             .put("measurements", prefsArray(context, "paperdesk_measure"))
             .put("alarms", prefsArray(context, "paperdesk_alarms"))
             .put("calculatorHistory", prefsArray(context, "paperdesk_calc"))
-            .put("japa", JapaStore(context).exportJson())
+            .put("profiles", ProfileStore(context).exportJson())
+            .put("japaByProfile", JapaStore.exportAll(context))
         WeatherClient.storedJson(context)?.let { bundle.put("weather", it) }
         val root = rootDir()
         val out = File(root, "os-bundle.json")
@@ -102,7 +104,9 @@ object OsDataService {
         writePrefs(context, "paperdesk_measure", obj.optJSONArray("measurements"))
         writePrefs(context, "paperdesk_alarms", obj.optJSONArray("alarms"))
         writePrefs(context, "paperdesk_calc", obj.optJSONArray("calculatorHistory"))
-        obj.optJSONObject("japa")?.let { JapaStore(context).importJson(it) }
+        obj.optJSONObject("profiles")?.let { ProfileStore(context).importJson(it) }
+        obj.optJSONObject("japaByProfile")?.let { JapaStore.importAll(context, it) }
+            ?: obj.optJSONObject("japa")?.let { JapaStore(context).importJson(it) }
         obj.optJSONObject("settings")?.let {
             SettingsStore(context).save(it)
         }

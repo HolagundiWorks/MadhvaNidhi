@@ -113,13 +113,14 @@ object OsLang {
     private const val KN_DIG = "೦೧೨೩೪೫೬೭೮೯"
 
     private val EN = mapOf(
-        "desk" to "Clock",
+        "desk" to "Panchanga",
         "schedule" to "Scheduler",
         "grantha" to "Grantha",
         "sandhya" to "Sandhyavandana",
         "mantras" to "Mantras",
         "hadugalu" to "Hadugalu",
         "japa" to "Japa",
+        "profile" to "Profile",
         "aayadi" to "Aayadi",
         "stars" to "Stars",
         "done" to "Done",
@@ -187,13 +188,14 @@ object OsLang {
     )
 
     private val SA = mapOf(
-        "desk" to "घटी",
+        "desk" to "पञ्चाङ्गम्",
         "schedule" to "कार्यक्रमसूची",
         "grantha" to "ग्रन्थः",
         "sandhya" to "सन्ध्यावन्दनम्",
         "mantras" to "मन्त्राः",
         "hadugalu" to "गीतानि",
         "japa" to "जपः",
+        "profile" to "व्यक्तिविवरणम्",
         "aayadi" to "आयादि",
         "stars" to "ताराः",
         "done" to "कृतम्",
@@ -261,13 +263,14 @@ object OsLang {
     )
 
     private val KN = mapOf(
-        "desk" to "ಘಡಿಯಾರ",
+        "desk" to "ಪಂಚಾಂಗ",
         "schedule" to "ವೇಳಾಪಟ್ಟಿ",
         "grantha" to "ಗ್ರಂಥ",
         "sandhya" to "ಸಂಧ್ಯಾವಂದನೆ",
         "mantras" to "ಮಂತ್ರಗಳು",
         "hadugalu" to "ಹಾಡುಗಳು",
         "japa" to "ಜಪ",
+        "profile" to "ಪ್ರೊಫೈಲ್",
         "aayadi" to "ಆಯಾದಿ",
         "stars" to "ನಕ್ಷತ್ರಗಳು",
         "done" to "ಆಯಿತು",

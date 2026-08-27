@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Acharya OS</string>
     <string name="city_hospet">Hospet, Karnataka</string>
-    <string name="page_desk">CLOCK</string>
+    <string name="page_desk">PANCHANGA</string>
     <string name="page_tasks">TODO</string>
     <string name="page_project">PROJECT</string>
     <string name="page_tools">TOOLS</string>

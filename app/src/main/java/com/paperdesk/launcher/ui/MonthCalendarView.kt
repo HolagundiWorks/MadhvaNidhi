@@ -27,6 +27,7 @@ class MonthCalendarView @JvmOverloads constructor(
 ) : LinearLayout(context, attrs) {
 
     private val accent = ContextCompat.getColor(context, R.color.accent)
+    private val black = ContextCompat.getColor(context, R.color.black)
     private val white = ContextCompat.getColor(context, R.color.white)
     private val muted = ContextCompat.getColor(context, R.color.white_55)
     private val locale = Locale("en", "IN")
@@ -230,12 +231,14 @@ class MonthCalendarView @JvmOverloads constructor(
                 }
                 val dateTv = TextView(context).apply {
                     gravity = Gravity.CENTER
+                    textAlignment = TEXT_ALIGNMENT_CENTER
                     setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
-                    includeFontPadding = false
-                    val mark = dp(30)
+                    includeFontPadding = true
+                    setPadding(0, 0, 0, 0)
+                    val mark = dp(32)
                     minWidth = mark
                     minHeight = mark
-                    layoutParams = LayoutParams(mark, mark)
+                    layoutParams = LayoutParams(mark, mark).apply { gravity = Gravity.CENTER }
                 }
                 box.addView(dateTv)
                 if (index < offset || day > daysInMonth) {
@@ -287,10 +290,11 @@ class MonthCalendarView @JvmOverloads constructor(
                     }
                     dateTv.setTextColor(
                         when {
+                            purnima || (isSel && !isToday) -> black
                             isToday -> accent
-                            purnima || ekadasi -> white
+                            ekadasi -> white
                             amavasya || marked -> accent
-                            isSel -> white
+                            isSel -> black
                             else -> white
                         }
                     )

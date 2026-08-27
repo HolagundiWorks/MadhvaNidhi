@@ -4,7 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.paperdesk.launcher.R
@@ -19,12 +20,16 @@ class AayadiFragment : Fragment() {
 
     override fun onViewCreated(view: View, state: Bundle?) {
         listOf(R.id.aayadiTitle, R.id.aayadiResultTitle).forEach { DeskType.apply(view.findViewById(it), DeskType.SEMIBOLD) }
+        bind(view.findViewById(R.id.aayadiLengthFt), (0..500).map { it.toString() }, 30)
+        bind(view.findViewById(R.id.aayadiBreadthFt), (0..500).map { it.toString() }, 40)
+        bind(view.findViewById(R.id.aayadiLengthIn), (0..11).map { it.toString() }, 0)
+        bind(view.findViewById(R.id.aayadiBreadthIn), (0..11).map { it.toString() }, 0)
         view.findViewById<View>(R.id.aayadiCalculate).setOnClickListener { calculate(view) }
         calculate(view)
     }
 
     private fun calculate(v: View) {
-        fun number(id: Int): Double = v.findViewById<EditText>(id).text.toString().toDoubleOrNull() ?: 0.0
+        fun number(id: Int): Double = v.findViewById<Spinner>(id).selectedItem.toString().toDoubleOrNull() ?: 0.0
         val result = runCatching {
             Aayadi.calculate(number(R.id.aayadiLengthFt), number(R.id.aayadiLengthIn), number(R.id.aayadiBreadthFt), number(R.id.aayadiBreadthIn))
         }.getOrNull()
@@ -38,5 +43,12 @@ class AayadiFragment : Fragment() {
         v.findViewById<TextView>(R.id.aayadiDhana).text = fmt.format(result.dhana)
         v.findViewById<TextView>(R.id.aayadiAyush).text = fmt.format(result.ayush)
         v.findViewById<TextView>(R.id.aayadiSummary).text = result.summary
+    }
+
+    private fun bind(spinner: Spinner, values: List<String>, initial: Int) {
+        spinner.adapter = ArrayAdapter(requireContext(), R.layout.item_dropdown_selected, values).also {
+            it.setDropDownViewResource(R.layout.item_dropdown)
+        }
+        spinner.setSelection(initial.coerceIn(0, values.lastIndex))
     }
 }
