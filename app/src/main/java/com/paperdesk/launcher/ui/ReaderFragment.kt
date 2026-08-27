@@ -15,6 +15,7 @@ import com.paperdesk.launcher.data.IndicScript
 import com.paperdesk.launcher.data.MadhwaStore
 import com.paperdesk.launcher.data.OsLang
 import com.paperdesk.launcher.data.SandhyaStore
+import com.paperdesk.launcher.data.Sankalpa
 
 class ReaderFragment : Fragment() {
 
@@ -249,7 +250,9 @@ class ReaderFragment : Fragment() {
                 sessionId = "puja"
                 return Shown(
                     head = MadhwaStore.label(item, lang),
-                    body = MadhwaStore.body(requireContext(), item, lang),
+                    body = Sankalpa.injectPuja(
+                        requireContext(), MadhwaStore.body(requireContext(), item, lang), lang
+                    ),
                     label = MadhwaStore.label(item, lang)
                 )
             }

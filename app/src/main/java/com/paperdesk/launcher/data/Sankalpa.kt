@@ -2,21 +2,61 @@ package com.paperdesk.launcher.data
 
 import android.content.Context
 
-/** Live panchanga filled into sandhya sankalpa. */
+/** Live Panchanga and active-profile details used by ritual pages. */
 object Sankalpa {
 
     fun block(context: Context, sessionId: String, lang: IndicScript.Lang): String {
         val pan = PanchangaStore.forDate(context, PanchangaStore.dateKey())
-        val sa = build(pan, sessionId)
-        return IndicScript.convert(sa, lang)
+        return profileLine(context) + "\n\n" + IndicScript.convert(build(pan, kala(sessionId)), lang)
     }
 
-    private fun build(pan: PanchangaDay, sessionId: String): String {
-        val kala = when (sessionId) {
+    fun sandhyaBlock(context: Context, sessionId: String, lang: IndicScript.Lang): String {
+        val purpose = when (sessionId) {
+            SandhyaStore.PRATAH -> "प्रातः सन्ध्यावन्दनं करिष्ये।"
+            SandhyaStore.MADHYA -> "माध्याह्निक सन्ध्यावन्दनं करिष्ये।"
+            else -> "सायं सन्ध्यावन्दनं करिष्ये।"
+        }
+        return block(context, sessionId, lang) + "\n\n" + IndicScript.convert("श्रीहरिप्रीत्यर्थं $purpose", lang)
+    }
+
+    fun pujaBlock(context: Context, lang: IndicScript.Lang): String {
+        val pan = PanchangaStore.forDate(context, PanchangaStore.dateKey())
+        val body = build(pan, null) + "\n\nश्रीहरिप्रीत्यर्थं यथाशक्ति पूजां करिष्ये।"
+        return "ಇಂದಿನ ಸ್ವಯಂ ತುಂಬಿದ ಸಂಕಲ್ಪ\n${profileLine(context)}\n\n${IndicScript.convert(body, lang)}"
+    }
+
+    fun injectPuja(context: Context, body: String, lang: IndicScript.Lang): String {
+        val dynamic = pujaBlock(context, lang)
+        val lines = body.lines()
+        val heading = Regex("^(?:[0-9೦-೯]+[.)]?\\s*)?(?:ಸಂಕಲ್ಪ|ಸಙ್ಕಲ್ಪ)(?:ಂ)?(?:\\s.*)?$", RegexOption.IGNORE_CASE)
+        val numbered = Regex("^[0-9೦-೯]+[.)]\\s*\\S+")
+        val start = lines.indexOfFirst { heading.matches(it.trim()) }
+        if (start < 0) return "$dynamic\n\n$body"
+        fun nextHeading(line: String): Boolean {
+            val text = line.trim()
+            return numbered.containsMatchIn(text) ||
+                (text.length in 2..80 && (text.endsWith("–") || text.endsWith(" -")))
+        }
+        val end = (start + 1 until lines.size).firstOrNull { nextHeading(lines[it]) }
+        if (end == null) return "$dynamic\n\n$body"
+        return (lines.take(start) + listOf(dynamic, "") + lines.drop(end)).joinToString("\n").trim()
+    }
+
+    fun abhivadanaBlock(context: Context): String {
+        val p = ProfileStore(context).active()
+        val pravara = p.pravara.ifBlank { "[ಪ್ರವರವನ್ನು ಪ್ರೊಫೈಲ್‌ನಲ್ಲಿ ನಮೂದಿಸಿ]" }
+        val gotra = known(p.gotra, "[ಗೋತ್ರವನ್ನು ಆಯ್ಕೆಮಾಡಿ]")
+        val shakha = known(p.vedaShakha, "[ವೇದ ಶಾಖೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ]")
+        return "$pravara ಪ್ರವರಾನ್ವಿತ $gotra ಗೋತ್ರಃ $shakha ಅಧ್ಯಾಯೀ ${p.name} ಅಹಂ ಭೋ ಅಭಿವಾದಯೇ ||"
+    }
+
+    private fun kala(sessionId: String): String = when (sessionId) {
             SandhyaStore.PRATAH -> "प्रातः"
             SandhyaStore.MADHYA -> "माध्याह्न"
             else -> "सायं"
-        }
+    }
+
+    private fun build(pan: PanchangaDay, kala: String?): String {
         val sam = sa(pan.samvatsara)
         val ayana = sa(pan.ayana)
         val ritu = sa(pan.ritu)
@@ -27,8 +67,20 @@ object Sankalpa {
         val nak = nak(pan.nakshatra)
         val yoga = sa(pan.yoga)
         val karana = sa(pan.karana)
-        return "श्रीमद्भगवतो महापुरुषस्य विष्णोराज्ञया प्रवर्तमानस्य अद्य ब्रह्मणः द्वितीयपरार्धे श्रीश्वेतवाराहकल्पे वैवस्वतमन्वन्तरे अष्टाविंशतितमे कलियुगे कलिप्रथमचरणे जम्बूद्वीपे भारतवर्षे भरतखण्डे मेरोः दक्षिणे पार्श्वे अस्मिन् वर्तमाने व्यावहारिके चान्द्रमानेन ${sam} संवत्सरे ${ayana} अयने ${ritu} ऋतौ ${masa} मासे ${paksha} पक्षे ${tithi} तिथौ ${vara} वासरे ${nak} नक्षत्रे ${yoga} योगे ${karana} करणे ${kala} काले एवंगुणविशेषणविशिष्टायां शुभतिथौ।"
+        val kalaPart = kala?.let { "$it काले " }.orEmpty()
+        return "श्रीमद्भगवतो महापुरुषस्य विष्णोराज्ञया प्रवर्तमानस्य अद्य ब्रह्मणः द्वितीयपरार्धे श्रीश्वेतवाराहकल्पे वैवस्वतमन्वन्तरे अष्टाविंशतितमे कलियुगे कलिप्रथमचरणे जम्बूद्वीपे भारतवर्षे भरतखण्डे मेरोः दक्षिणे पार्श्वे अस्मिन् वर्तमाने व्यावहारिके चान्द्रमानेन ${sam} संवत्सरे ${ayana} अयने ${ritu} ऋतौ ${masa} मासे ${paksha} पक्षे ${tithi} तिथौ ${vara} वासरे ${nak} नक्षत्रे ${yoga} योगे ${karana} करणे ${kalaPart}एवंगुणविशेषणविशिष्टायां शुभतिथौ।"
     }
+
+    private fun profileLine(context: Context): String {
+        val p = ProfileStore(context).active()
+        val pravara = p.pravara.ifBlank { "ಪ್ರವರ ನಮೂದಿಸಿಲ್ಲ" }
+        val gotra = if (p.gotra == "ತಿಳಿಸಿಲ್ಲ" || p.gotra.isBlank()) "ಗೋತ್ರ ನಮೂದಿಸಿಲ್ಲ" else "${p.gotra} ಗೋತ್ರ"
+        val nakshatra = if (p.nakshatra == "ತಿಳಿಸಿಲ್ಲ" || p.nakshatra.isBlank()) "ನಕ್ಷತ್ರ ನಮೂದಿಸಿಲ್ಲ" else "${p.nakshatra} ನಕ್ಷತ್ರ"
+        return "ಸಾಧಕ: ${p.name}  ·  $gotra  ·  $pravara  ·  ${known(p.vedaShakha, "ವೇದ ಶಾಖೆ ನಮೂದಿಸಿಲ್ಲ")}  ·  $nakshatra"
+    }
+
+    private fun known(value: String, fallback: String): String =
+        value.takeUnless { it.isBlank() || it == "ತಿಳಿಸಿಲ್ಲ" } ?: fallback
 
     private fun vara(raw: String): String = when (raw.uppercase()) {
         "SUNDAY" -> "रवि"

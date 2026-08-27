@@ -10,7 +10,7 @@
         <TextView android:id="@+id/profileTitle" style="@style/Desk.Section" android:layout_width="match_parent"
             android:layout_height="wrap_content" android:text="ವ್ಯಕ್ತಿ ಪ್ರೊಫೈಲ್" />
         <TextView style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_marginTop="2dp" android:text="ಪ್ರತಿ ವ್ಯಕ್ತಿಯ ಜಪ ಎಣಿಕೆ ಮತ್ತು ಜೀವಮಾನ ಒಟ್ಟು ಪ್ರತ್ಯೇಕವಾಗಿ ಉಳಿಯುತ್ತದೆ." />
+            android:layout_marginTop="2dp" android:text="ಪ್ರತಿ ವ್ಯಕ್ತಿಯ ಜಪದ ಪ್ರಸ್ತುತ ಎಣಿಕೆ ಮತ್ತು ದಾಖಲಿಸಿದ ಅವಧಿಗಳು ಪ್ರತ್ಯೇಕವಾಗಿ ಉಳಿಯುತ್ತವೆ." />
         <TextView style="@style/Desk.Section" android:layout_width="match_parent" android:layout_height="wrap_content"
             android:layout_marginTop="10dp" android:text="ಸಕ್ರಿಯ ವ್ಯಕ್ತಿ" />
         <Spinner android:id="@+id/profileList" android:layout_width="match_parent" android:layout_height="44dp"
@@ -42,9 +42,16 @@
                     <Spinner android:id="@+id/profileGotra" android:layout_width="match_parent" android:layout_height="44dp" android:background="@drawable/bg_dropdown" android:popupBackground="@color/surface_2" android:spinnerMode="dropdown" />
                 </LinearLayout>
             </LinearLayout>
-            <TextView style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="ಜನ್ಮ ನಕ್ಷತ್ರ" />
-            <Spinner android:id="@+id/profileNakshatra" android:layout_width="match_parent" android:layout_height="44dp"
-                android:background="@drawable/bg_dropdown" android:popupBackground="@color/surface_2" android:spinnerMode="dropdown" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:orientation="horizontal">
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingRight="6dp">
+                    <TextView style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ಪ್ರವರ" />
+                    <EditText android:id="@+id/profilePravara" android:layout_width="match_parent" android:layout_height="44dp" android:background="@drawable/bg_input" android:hint="ಉದಾ: ಆಂಗೀರಸ…" android:padding="8dp" android:singleLine="true" android:textColor="@color/white" android:textColorHint="@color/white_55" android:textSize="18sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingLeft="6dp">
+                    <TextView style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ಜನ್ಮ ನಕ್ಷತ್ರ" />
+                    <Spinner android:id="@+id/profileNakshatra" android:layout_width="match_parent" android:layout_height="44dp" android:background="@drawable/bg_dropdown" android:popupBackground="@color/surface_2" android:spinnerMode="dropdown" />
+                </LinearLayout>
+            </LinearLayout>
             <TextView android:id="@+id/profileSave" style="@style/Desk.Button.Accent" android:layout_width="match_parent"
                 android:layout_height="44dp" android:layout_marginTop="6dp" android:gravity="center" android:text="ಉಳಿಸಿ ಮತ್ತು ಸಕ್ರಿಯಗೊಳಿಸಿ" />
         </LinearLayout>

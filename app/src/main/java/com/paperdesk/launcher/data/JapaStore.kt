@@ -13,21 +13,22 @@ class JapaStore(private val context: Context, private val profileId: String = Pr
     data class State(
         val mantra: String,
         val target: Long,
+        val targetEnabled: Boolean,
         val current: Long,
-        val lifetime: Long,
         val sessions: Long
     )
 
     fun state(): State = State(
         prefs.getString(key("mantra"), "ಓಂ ನಮೋ ನಾರಾಯಣಾಯ") ?: "",
         prefs.getLong(key("target"), 108L).coerceAtLeast(1),
+        prefs.getBoolean(key("target_enabled"), false),
         prefs.getLong(key("current"), 0L).coerceAtLeast(0),
-        prefs.getLong(key("lifetime"), 0L).coerceAtLeast(0),
         prefs.getLong(key("sessions"), 0L).coerceAtLeast(0)
     )
 
-    fun configure(mantra: String, target: Long) {
-        prefs.edit().putString(key("mantra"), mantra.trim()).putLong(key("target"), target.coerceAtLeast(1)).commit()
+    fun configure(mantra: String, target: Long, targetEnabled: Boolean) {
+        prefs.edit().putString(key("mantra"), mantra.trim()).putLong(key("target"), target.coerceAtLeast(1))
+            .putBoolean(key("target_enabled"), targetEnabled).commit()
     }
 
     fun add(delta: Long): State {
@@ -35,7 +36,6 @@ class JapaStore(private val context: Context, private val profileId: String = Pr
         val safe = delta.coerceAtLeast(0)
         prefs.edit()
             .putLong(key("current"), safeAdd(s.current, safe))
-            .putLong(key("lifetime"), safeAdd(s.lifetime, safe))
             .commit()
         return state()
     }
@@ -43,7 +43,7 @@ class JapaStore(private val context: Context, private val profileId: String = Pr
     fun undo(): State {
         val s = state()
         if (s.current == 0L) return s
-        prefs.edit().putLong(key("current"), s.current - 1).putLong(key("lifetime"), (s.lifetime - 1).coerceAtLeast(0)).commit()
+        prefs.edit().putLong(key("current"), s.current - 1).commit()
         return state()
     }
 
@@ -64,15 +64,16 @@ class JapaStore(private val context: Context, private val profileId: String = Pr
 
     fun exportJson(): JSONObject {
         val s = state()
-        return JSONObject().put("mantra", s.mantra).put("target", s.target).put("current", s.current)
-            .put("lifetime", s.lifetime).put("sessions", s.sessions).put("history", history())
+        return JSONObject().put("mantra", s.mantra).put("target", s.target)
+            .put("targetEnabled", s.targetEnabled).put("current", s.current)
+            .put("sessions", s.sessions).put("history", history())
     }
 
     fun importJson(obj: JSONObject) {
         prefs.edit().putString(key("mantra"), obj.optString("mantra", "ಓಂ ನಮೋ ನಾರಾಯಣಾಯ"))
             .putLong(key("target"), obj.optLong("target", 108).coerceAtLeast(1))
+            .putBoolean(key("target_enabled"), obj.optBoolean("targetEnabled", false))
             .putLong(key("current"), obj.optLong("current", 0).coerceAtLeast(0))
-            .putLong(key("lifetime"), obj.optLong("lifetime", 0).coerceAtLeast(0))
             .putLong(key("sessions"), obj.optLong("sessions", 0).coerceAtLeast(0))
             .putString(key("history"), obj.optJSONArray("history")?.toString() ?: "[]").commit()
     }
@@ -82,16 +83,22 @@ class JapaStore(private val context: Context, private val profileId: String = Pr
     private fun safeAdd(a: Long, b: Long): Long = if (Long.MAX_VALUE - a < b) Long.MAX_VALUE else a + b
 
     private fun migrateLegacy() {
-        if (prefs.getBoolean("profiles_migrated", false)) return
-        val activeId = ProfileStore(context).active().id
         val edit = prefs.edit()
-        listOf("mantra", "history").forEach { name ->
-            if (prefs.contains(name)) edit.putString("profile_${activeId}_$name", prefs.getString(name, null))
+        if (!prefs.getBoolean("profiles_migrated", false)) {
+            val activeId = ProfileStore(context).active().id
+            listOf("mantra", "history").forEach { name ->
+                if (prefs.contains(name)) edit.putString("profile_${activeId}_$name", prefs.getString(name, null))
+            }
+            listOf("target", "current", "sessions").forEach { name ->
+                if (prefs.contains(name)) edit.putLong("profile_${activeId}_$name", prefs.getLong(name, 0L))
+            }
+            edit.putBoolean("profiles_migrated", true)
         }
-        listOf("target", "current", "lifetime", "sessions").forEach { name ->
-            if (prefs.contains(name)) edit.putLong("profile_${activeId}_$name", prefs.getLong(name, 0L))
+        if (!prefs.getBoolean("lifetime_removed", false)) {
+            prefs.all.keys.filter { it == "lifetime" || it.endsWith("_lifetime") }.forEach { edit.remove(it) }
+            edit.putBoolean("lifetime_removed", true)
         }
-        edit.putBoolean("profiles_migrated", true).commit()
+        edit.commit()
     }
 
     companion object {

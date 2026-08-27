@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.CheckBox
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
@@ -37,9 +38,14 @@ class JapaFragment : Fragment() {
         view.findViewById<View>(R.id.japaComplete).setOnClickListener { saveConfig(view); paint(view, store.complete()) }
         view.findViewById<View>(R.id.japaReset).setOnClickListener {
             AlertDialog.Builder(requireContext()).setTitle("ಪ್ರಸ್ತುತ ಎಣಿಕೆ ಮರುಹೊಂದಿಸಬೇಕೇ?")
-                .setMessage("ಜೀವಮಾನ ಒಟ್ಟು ಅಳಿಸಲಾಗುವುದಿಲ್ಲ.")
+                .setMessage("ಈ ಕ್ರಿಯೆಯಿಂದ ಪ್ರಸ್ತುತ ಎಣಿಕೆ ಮಾತ್ರ ಶೂನ್ಯವಾಗುತ್ತದೆ; ದಾಖಲಿಸಿದ ಹಳೆಯ ಅವಧಿಗಳು ಉಳಿಯುತ್ತವೆ.")
                 .setNegativeButton("ರದ್ದು", null)
                 .setPositiveButton("ಮರುಹೊಂದಿಸು") { _, _ -> paint(view, store.resetCurrent()) }.show()
+        }
+        view.findViewById<CheckBox>(R.id.japaTargetEnabled).setOnCheckedChangeListener { _, enabled ->
+            view.findViewById<View>(R.id.japaTarget).visibility = if (enabled) View.VISIBLE else View.GONE
+            saveConfig(view)
+            paint(view, store.state())
         }
         paint(view, store.state(), initial = true)
     }
@@ -76,23 +82,27 @@ class JapaFragment : Fragment() {
     private fun showProfile(v: View, p: ProfileStore.Profile) {
         v.findViewById<TextView>(R.id.japaProfileMeta).text = "${p.gotra} ಗೋತ್ರ  ·  ${p.nakshatra} ನಕ್ಷತ್ರ"
         v.findViewById<TextView>(R.id.japaSankalpa).text =
-            "ಸಂಕಲ್ಪ ಸೂಚನೆ  ·  ${p.name}  ·  ${p.gotra} ಗೋತ್ರ  ·  ${p.nakshatra} ನಕ್ಷತ್ರ"
+            "ಸಂಕಲ್ಪ ಸೂಚನೆ  ·  ${p.name}  ·  ${p.gotra} ಗೋತ್ರ  ·  ${p.pravara.ifBlank { "ಪ್ರವರ ನಮೂದಿಸಿಲ್ಲ" }}  ·  ${p.nakshatra} ನಕ್ಷತ್ರ"
     }
 
     private fun saveConfig(v: View) {
         val mantra = v.findViewById<EditText>(R.id.japaMantra).text.toString()
         val target = v.findViewById<EditText>(R.id.japaTarget).text.toString().replace(",", "").toLongOrNull() ?: 108L
-        store.configure(mantra, target)
+        store.configure(mantra, target, v.findViewById<CheckBox>(R.id.japaTargetEnabled).isChecked)
     }
 
     private fun paint(v: View, state: JapaStore.State, initial: Boolean = false) {
         if (initial) {
             v.findViewById<EditText>(R.id.japaMantra).setText(state.mantra)
             v.findViewById<EditText>(R.id.japaTarget).setText(state.target.toString())
+            v.findViewById<CheckBox>(R.id.japaTargetEnabled).isChecked = state.targetEnabled
         }
+        v.findViewById<View>(R.id.japaTarget).visibility = if (state.targetEnabled) View.VISIBLE else View.GONE
         v.findViewById<TextView>(R.id.japaCurrent).text = countFormat.format(state.current)
-        v.findViewById<TextView>(R.id.japaProgress).text = "ಗುರಿ ${countFormat.format(state.target)}  ·  ${((state.current * 100.0 / state.target).coerceAtMost(9999.0)).toInt()}%"
-        v.findViewById<TextView>(R.id.japaLifetime).text = "ಜೀವಮಾನ  ${countFormat.format(state.lifetime)}"
+        v.findViewById<TextView>(R.id.japaProgress).apply {
+            visibility = if (state.targetEnabled) View.VISIBLE else View.GONE
+            text = if (state.targetEnabled) "ಗುರಿ ${countFormat.format(state.target)}  ·  ${((state.current * 100.0 / state.target).coerceAtMost(9999.0)).toInt()}%" else ""
+        }
         v.findViewById<TextView>(R.id.japaSessions).text = "ದಾಖಲಿಸಿದ ಅವಧಿಗಳು  ${countFormat.format(state.sessions)}"
     }
 }

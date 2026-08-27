@@ -13,13 +13,14 @@ class ProfileStore(private val context: Context) {
         val name: String,
         val vedaShakha: String,
         val gotra: String,
+        val pravara: String,
         val nakshatra: String
     )
 
     fun profiles(): List<Profile> {
         val parsed = parse(prefs.getString("items", "[]") ?: "[]")
         if (parsed.isNotEmpty()) return parsed
-        val first = Profile("default", "ಸಾಧಕ", VEDA_SHAKHAS.first(), GOTRAS.first(), NAKSHATRAS.first())
+        val first = Profile("default", "ಸಾಧಕ", VEDA_SHAKHAS.first(), GOTRAS.first(), "", NAKSHATRAS.first())
         saveItems(listOf(first))
         prefs.edit().putString("active", first.id).commit()
         return listOf(first)
@@ -41,6 +42,7 @@ class ProfileStore(private val context: Context) {
             name = profile.name.trim().ifBlank { "ಸಾಧಕ" },
             vedaShakha = profile.vedaShakha.ifBlank { VEDA_SHAKHAS.first() },
             gotra = profile.gotra.ifBlank { GOTRAS.first() },
+            pravara = profile.pravara.trim(),
             nakshatra = profile.nakshatra.ifBlank { NAKSHATRAS.first() }
         )
         val all = profiles().toMutableList()
@@ -77,6 +79,7 @@ class ProfileStore(private val context: Context) {
                     obj.optString("name", "ಸಾಧಕ"),
                     obj.optString("vedaShakha", VEDA_SHAKHAS.first()),
                     obj.optString("gotra", GOTRAS.first()),
+                    obj.optString("pravara", ""),
                     obj.optString("nakshatra", NAKSHATRAS.first())
                 )
             }
@@ -84,7 +87,7 @@ class ProfileStore(private val context: Context) {
     }.getOrElse { emptyList() }
 
     private fun toJson(p: Profile) = JSONObject().put("id", p.id).put("name", p.name)
-        .put("vedaShakha", p.vedaShakha).put("gotra", p.gotra).put("nakshatra", p.nakshatra)
+        .put("vedaShakha", p.vedaShakha).put("gotra", p.gotra).put("pravara", p.pravara).put("nakshatra", p.nakshatra)
 
     companion object {
         const val PREFS = "paperdesk_profiles"

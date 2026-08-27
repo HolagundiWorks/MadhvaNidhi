@@ -51,7 +51,9 @@ USB debugging must be on. After install, choose **Acharya OS** as the Home app.
 | `gradle/` | Gradle wrapper |
 | `resources/reference/` | Development source documents and catalogues; not packaged automatically |
 
-Pager next/prev wraps: page 5 returns to page 1. Footer shows `|| ಹರಿ ಸರ್ವೋತ್ತಮ ವಾಯು ಜೀವೋತ್ತಮ ||`.
+Pager next/prev wraps from the final page back to Panchanga. Footer shows `|| ಹರಿ ಸರ್ವೋತ್ತಮ ವಾಯು ಜೀವೋತ್ತಮ ||`.
+
+Pooja and Sandhyavandana render a live Sankalpa from the current Panchanga. The active profile supplies name, Gotra, Pravara, Veda Shakha and Nakshatra. Japa targets are optional and profile-specific; no lifetime total is maintained.
 
 Panchanga prefers SRS Mantralaya when online, then USB files, then local Chandramana calculation. USB files come from Vishwakarma OS.
 

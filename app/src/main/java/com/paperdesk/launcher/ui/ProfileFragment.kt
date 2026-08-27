@@ -41,6 +41,7 @@ class ProfileFragment : Fragment() {
             view.findViewById<EditText>(R.id.profileName).setText("")
             view.findViewById<Spinner>(R.id.profileVeda).setSelection(0)
             view.findViewById<Spinner>(R.id.profileGotra).setSelection(0)
+            view.findViewById<EditText>(R.id.profilePravara).setText("")
             view.findViewById<Spinner>(R.id.profileNakshatra).setSelection(0)
             view.findViewById<TextView>(R.id.profileEditorTitle).text = "ಹೊಸ ವ್ಯಕ್ತಿ"
             view.findViewById<EditText>(R.id.profileName).requestFocus()
@@ -55,6 +56,7 @@ class ProfileFragment : Fragment() {
                 editingId, name,
                 view.findViewById<Spinner>(R.id.profileVeda).selectedItem.toString(),
                 view.findViewById<Spinner>(R.id.profileGotra).selectedItem.toString(),
+                view.findViewById<EditText>(R.id.profilePravara).text.toString(),
                 view.findViewById<Spinner>(R.id.profileNakshatra).selectedItem.toString()
             ))
             refreshProfiles(view, saved.id)
@@ -78,8 +80,10 @@ class ProfileFragment : Fragment() {
         v.findViewById<EditText>(R.id.profileName).setText(p.name)
         select(v.findViewById(R.id.profileVeda), ProfileStore.VEDA_SHAKHAS, p.vedaShakha)
         select(v.findViewById(R.id.profileGotra), ProfileStore.GOTRAS, p.gotra)
+        v.findViewById<EditText>(R.id.profilePravara).setText(p.pravara)
         select(v.findViewById(R.id.profileNakshatra), ProfileStore.NAKSHATRAS, p.nakshatra)
-        v.findViewById<TextView>(R.id.profileSummary).text = "${p.vedaShakha}\n${p.gotra} ಗೋತ್ರ  ·  ${p.nakshatra} ನಕ್ಷತ್ರ"
+        val pravara = p.pravara.ifBlank { "ಪ್ರವರ ನಮೂದಿಸಿಲ್ಲ" }
+        v.findViewById<TextView>(R.id.profileSummary).text = "${p.vedaShakha}\n${p.gotra} ಗೋತ್ರ  ·  $pravara  ·  ${p.nakshatra} ನಕ್ಷತ್ರ"
     }
 
     private fun bindOptions(spinner: Spinner, values: List<String>) {

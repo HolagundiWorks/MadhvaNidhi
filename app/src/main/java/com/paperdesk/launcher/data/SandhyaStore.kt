@@ -71,10 +71,22 @@ object SandhyaStore {
 
     fun body(context: Context, step: Step, sessionId: String, lang: IndicScript.Lang): String {
         val core = IndicScript.convert(RitualText.tidy(step.body), lang)
-        return if ("सङ्कल्प" in step.title) {
-            Sankalpa.block(context, sessionId, lang) + "\n\n" + core
+        val dynamic = Sankalpa.sandhyaBlock(context, sessionId, lang)
+        val sankalpaSection = Regex(
+            "(?s)(ಸಂಕಲ್ಪಂ\\s*\\(ದೇಶಕಾಲ ಸಂಕೀರ್ತನಂ\\)\\s*[–-])\\s*.*?(?=\\n\\s*ಮಾರ್ಜನಂ\\s*[–-])"
+        )
+        val withSankalpa = if (sankalpaSection.containsMatchIn(core)) {
+            core.replace(sankalpaSection) { "${it.groupValues[1]}\n\n$dynamic\n" }
         } else {
-            core
+            "$dynamic\n\n$core"
+        }
+        val abhivadana = Regex(
+            "(?m)^.*(?:ಪ್ರವರಾನ್ವಿತ|प्रवरान्वित).*?(?:ಅಭಿವಾದಯೇ|अभिवादये).*?$"
+        )
+        return if (abhivadana.containsMatchIn(withSankalpa)) {
+            withSankalpa.replace(abhivadana, Sankalpa.abhivadanaBlock(context))
+        } else {
+            withSankalpa
         }
     }
 
