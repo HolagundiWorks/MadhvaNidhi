@@ -34,10 +34,9 @@
             android:maxLines="3" android:textColor="@color/white_70" android:textSize="15sp" />
 
         <LinearLayout android:layout_width="match_parent" android:layout_height="36dp" android:orientation="horizontal">
-            <EditText android:id="@+id/japaMantra" android:layout_width="0dp" android:layout_height="match_parent"
-                android:layout_weight="1" android:background="@drawable/bg_input" android:hint="ಮಂತ್ರದ ಹೆಸರು"
-                android:padding="8dp" android:singleLine="true" android:textColor="@color/white"
-                android:textColorHint="@color/white_55" android:textSize="18sp" />
+            <Spinner android:id="@+id/japaMantra" android:layout_width="0dp" android:layout_height="match_parent"
+                android:layout_weight="1" android:background="@drawable/bg_dropdown"
+                android:popupBackground="@color/surface_2" android:spinnerMode="dropdown" />
             <CheckBox android:id="@+id/japaTargetEnabled" style="@style/Desk.Check"
                 android:layout_width="132dp" android:layout_height="match_parent" android:layout_marginLeft="6dp"
                 android:gravity="center_vertical" android:text="ಗುರಿ ಸಕ್ರಿಯ" android:textColor="@color/white" android:textSize="16sp" />

@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.paperdesk.launcher.R
+import com.paperdesk.launcher.data.JapaCatalog
 import com.paperdesk.launcher.data.JapaStore
 import com.paperdesk.launcher.data.ProfileStore
 import java.text.NumberFormat
@@ -23,6 +24,7 @@ class JapaFragment : Fragment() {
     private lateinit var store: JapaStore
     private lateinit var profiles: ProfileStore
     private var selectingProfile = false
+    private var selectingJapa = false
     private val countFormat = NumberFormat.getIntegerInstance(Locale("en", "IN"))
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, state: Bundle?): View =
@@ -33,6 +35,7 @@ class JapaFragment : Fragment() {
         store = JapaStore(requireContext(), profiles.active().id)
         listOf(R.id.japaTitle, R.id.japaRitualTitle).forEach { DeskType.apply(view.findViewById(it), DeskType.SEMIBOLD) }
         bindRituals(view)
+        bindJapas(view)
         bindProfiles(view)
         view.findViewById<View>(R.id.japaTap).setOnClickListener { button ->
             button.performHapticFeedback(
@@ -92,6 +95,26 @@ class JapaFragment : Fragment() {
         }
     }
 
+    private fun bindJapas(v: View) {
+        val spinner = v.findViewById<Spinner>(R.id.japaMantra)
+        selectingJapa = true
+        spinner.adapter = ArrayAdapter(
+            requireContext(),
+            R.layout.item_dropdown_selected,
+            JapaCatalog.entries.map { "${it.label}  ·  ${it.mantra}" }
+        ).also { it.setDropDownViewResource(R.layout.item_dropdown) }
+        spinner.setSelection(JapaCatalog.indexOf(store.state().mantra))
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) = Unit
+            override fun onItemSelected(parent: AdapterView<*>?, selected: View?, position: Int, id: Long) {
+                if (selectingJapa) return
+                saveConfig(v)
+                showProfile(v, profiles.active())
+            }
+        }
+        selectingJapa = false
+    }
+
     private fun bindProfiles(v: View) {
         val all = profiles.profiles()
         val spinner = v.findViewById<Spinner>(R.id.japaProfile)
@@ -118,21 +141,29 @@ class JapaFragment : Fragment() {
 
     private fun showProfile(v: View, p: ProfileStore.Profile) {
         v.findViewById<TextView>(R.id.japaProfileMeta).text = "${p.gotra} ಗೋತ್ರ  ·  ${p.nakshatra} ನಕ್ಷತ್ರ"
+        val warning = selectedJapa(v)?.takeIf { it.requiresUpadesha }
+            ?.let { "  ·  ಗುರುಪದೇಶ ಪಡೆದವರು ಮಾತ್ರ" }.orEmpty()
         v.findViewById<TextView>(R.id.japaSankalpa).text =
-            "ಸಂಕಲ್ಪ ಸೂಚನೆ  ·  ${p.name}  ·  ${p.gotra} ಗೋತ್ರ  ·  ${p.pravara.ifBlank { "ಪ್ರವರ ನಮೂದಿಸಿಲ್ಲ" }}  ·  ${p.nakshatra} ನಕ್ಷತ್ರ"
+            "ಸಂಕಲ್ಪ ಸೂಚನೆ  ·  ${p.name}  ·  ${p.gotra} ಗೋತ್ರ  ·  ${p.pravara.ifBlank { "ಪ್ರವರ ನಮೂದಿಸಿಲ್ಲ" }}  ·  ${p.nakshatra} ನಕ್ಷತ್ರ$warning"
     }
 
     private fun saveConfig(v: View) {
-        val mantra = v.findViewById<EditText>(R.id.japaMantra).text.toString()
+        val mantra = selectedJapa(v)?.mantra ?: JapaCatalog.entries.first().mantra
         val target = v.findViewById<EditText>(R.id.japaTarget).text.toString().replace(",", "").toLongOrNull() ?: 108L
         store.configure(mantra, target, v.findViewById<CheckBox>(R.id.japaTargetEnabled).isChecked)
     }
 
+    private fun selectedJapa(v: View): JapaCatalog.Entry? =
+        JapaCatalog.entries.getOrNull(v.findViewById<Spinner>(R.id.japaMantra).selectedItemPosition)
+
     private fun paint(v: View, state: JapaStore.State, initial: Boolean = false) {
         if (initial) {
-            v.findViewById<EditText>(R.id.japaMantra).setText(state.mantra)
+            selectingJapa = true
+            v.findViewById<Spinner>(R.id.japaMantra).setSelection(JapaCatalog.indexOf(state.mantra))
+            selectingJapa = false
             v.findViewById<EditText>(R.id.japaTarget).setText(state.target.toString())
             v.findViewById<CheckBox>(R.id.japaTargetEnabled).isChecked = state.targetEnabled
+            showProfile(v, profiles.active())
         }
         v.findViewById<View>(R.id.japaTarget).visibility = if (state.targetEnabled) View.VISIBLE else View.GONE
         v.findViewById<TextView>(R.id.japaCurrent).text = countFormat.format(state.current)
