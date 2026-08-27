@@ -263,6 +263,118 @@
       "file": "festivals.txt"
     },
     {
+      "id": "festival_krishna_janmashtami",
+      "category": "festival",
+      "title": "ಶ್ರೀಕೃಷ್ಣ ಜನ್ಮಾಷ್ಟಮಿ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ಅಷ್ಟಮಿ ನಿರ್ಣಯ ಮತ್ತು ಪಾರಣೆಗೆ ಸ್ಥಳೀಯ ಮಾಧ್ವ ಮಠದ ಪಂಚಾಂಗ ಅನುಸರಿಸಿ.",
+      "file": "festival_krishna_janmashtami.txt"
+    },
+    {
+      "id": "festival_ganesha_chaturthi",
+      "category": "festival",
+      "title": "ಶ್ರೀಗಣೇಶ ಚತುರ್ಥೀ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ಎರಡು ಗಣೇಶ ಪೂಜೆ ವಿನಂತಿಗಳನ್ನು ಒಂದೇ ಸಂಪೂರ್ಣ ಕ್ರಮವಾಗಿ ಸಂಯೋಜಿಸಲಾಗಿದೆ.",
+      "file": "festival_ganesha_chaturthi.txt"
+    },
+    {
+      "id": "festival_varamahalakshmi",
+      "category": "festival",
+      "title": "ಶ್ರೀವರಮಹಾಲಕ್ಷ್ಮೀ ವ್ರತ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ಕುಟುಂಬಪರಂಪರೆಯ ವ್ರತಕ್ಕೆ ಪುರೋಹಿತರ ಮಾರ್ಗದರ್ಶನ ಅಗತ್ಯ.",
+      "file": "festival_varamahalakshmi.txt"
+    },
+    {
+      "id": "festival_deepavali",
+      "category": "festival",
+      "title": "ದೀಪಾವಳಿ ಶ್ರೀಮಹಾಲಕ್ಷ್ಮೀ–ಕುಬೇರ ಪೂಜೆ",
+      "author": "",
+      "note": "ನರಕಚತುರ್ದಶೀ ಸ್ನಾನ ಮತ್ತು ಅಮಾವಾಸ್ಯಾ ಸಂಜೆ ಪೂಜೆಯ ಸಂಕ್ಷಿಪ್ತ ಕ್ರಮ.",
+      "file": "festival_deepavali.txt"
+    },
+    {
+      "id": "festival_dasara_navaratri",
+      "category": "festival",
+      "title": "ದಸರಾ–ನವರಾತ್ರಿ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ಪ್ರತಿಪದೆಯಿಂದ ವಿಜಯದಶಮಿವರೆಗಿನ ಮಾಧ್ವ ಆಚರಣಾ ರೂಪರೇಖೆ.",
+      "file": "festival_dasara_navaratri.txt"
+    },
+    {
+      "id": "festival_saraswati_puja",
+      "category": "festival",
+      "title": "ಶ್ರೀಸರಸ್ವತೀ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ಮೂಲಾ ನಕ್ಷತ್ರದ ಆವಾಹನೆ ಮತ್ತು ವಿಜಯದಶಮಿಯ ಪುನಃಪೂಜೆ.",
+      "file": "festival_saraswati_puja.txt"
+    },
+    {
+      "id": "festival_ayudha_puja",
+      "category": "festival",
+      "title": "ಆಯುಧ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ಸಾಧನ, ವಾಹನ ಮತ್ತು ವಿದ್ಯುತ್ ಉಪಕರಣಗಳ ಸುರಕ್ಷಿತ ಪೂಜೆ.",
+      "file": "festival_ayudha_puja.txt"
+    },
+    {
+      "id": "festival_durga_puja",
+      "category": "festival",
+      "title": "ದುರ್ಗಾಷ್ಟಮಿ ಶ್ರೀದುರ್ಗಾ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ಮಾಧ್ವ ತಾರತಮ್ಯಾನುಸಾರ ಪರಿವಾರದೇವತಾ ಪೂಜೆ.",
+      "file": "festival_durga_puja.txt"
+    },
+    {
+      "id": "festival_vijayadashami",
+      "category": "festival",
+      "title": "ವಿಜಯದಶಮಿ–ಮಧ್ವಜಯಂತಿ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ಮಧ್ವಜಯಂತಿ, ಶಮೀಪೂಜೆ ಮತ್ತು ವಿದ್ಯಾರಂಭ.",
+      "file": "festival_vijayadashami.txt"
+    },
+    {
+      "id": "festival_tulasi_puja",
+      "category": "festival",
+      "title": "ಶ್ರೀತುಳಸೀ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ದೈನಂದಿನ ಮತ್ತು ಕಾರ್ತಿಕ ತುಳಸೀ ಆರಾಧನೆಗೆ ಶೋಡಶೋಪಚಾರ ಕ್ರಮ.",
+      "file": "festival_tulasi_puja.txt"
+    },
+    {
+      "id": "festival_naga_panchami",
+      "category": "festival",
+      "title": "ನಾಗರ ಚತುರ್ಥೀ–ನಾಗಪಂಚಮೀ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ನಾಗ–ಗರುಡ ಸ್ಮರಣೆಯ ಮಾಧ್ವ ಗೃಹಪೂಜಾ ಕ್ರಮ.",
+      "file": "festival_naga_panchami.txt"
+    },
+    {
+      "id": "festival_shivaratri",
+      "category": "festival",
+      "title": "ಮಹಾಶಿವರಾತ್ರಿ ರುದ್ರದೇವರ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ರುದ್ರದೇವರನ್ನು ಶ್ರೀಹರಿಯ ಪರಮಭಕ್ತನಾಗಿ ತಾರತಮ್ಯಾನುಸಾರ ಪೂಜಿಸುವ ಕ್ರಮ.",
+      "file": "festival_shivaratri.txt"
+    },
+    {
+      "id": "festival_narasimha_jayanti",
+      "category": "festival",
+      "title": "ಶ್ರೀನರಸಿಂಹ ಜಯಂತಿ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ವೈಶಾಖ ಶುಕ್ಲ ಚತುರ್ದಶಿಯ ಪೂಜೆ ಮತ್ತು ಮಾಧ್ವ ಪಾರಾಯಣಗಳು.",
+      "file": "festival_narasimha_jayanti.txt"
+    },
+    {
+      "id": "festival_satyanarayana_vrata",
+      "category": "festival",
+      "title": "ಶ್ರೀಸತ್ಯನಾರಾಯಣ ವ್ರತ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ಸರಳ ಗೃಹಪೂಜೆ; ಪೂರ್ಣ ಕಲಶವ್ರತಕ್ಕೆ ಪುರೋಹಿತರ ಮಾರ್ಗದರ್ಶನ ಪಡೆಯಿರಿ.",
+      "file": "festival_satyanarayana_vrata.txt"
+    },
+    {
       "id": "puja_yajnopavita",
       "category": "puja",
       "title": "ಯಜ್ಞೋಪವೀತ ಧಾರಣ ವಿಧಿ",

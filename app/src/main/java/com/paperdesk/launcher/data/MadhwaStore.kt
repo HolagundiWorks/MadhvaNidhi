@@ -76,7 +76,10 @@ object MadhwaStore {
         IndicScript.convert(item.note, lang)
 
     fun body(context: Context, item: MadhwaItem, lang: IndicScript.Lang): String {
-        val raw = read(context, item.file)
+        val raw = read(context, item.file).replace(
+            FESTIVAL_PUJA_TOKEN,
+            read(context, FESTIVAL_PUJA_COMMON)
+        )
         return IndicScript.convert(RitualText.tidy(raw), lang)
     }
 
@@ -102,4 +105,7 @@ object MadhwaStore {
         item.id + " " + item.title + " " + item.author + " " + item.note + " " + item.category + " " +
             IndicScript.convert(item.title, IndicScript.Lang.KN) + " " +
             IndicScript.convert(item.title, IndicScript.Lang.EN)
+
+    private const val FESTIVAL_PUJA_TOKEN = "{{FESTIVAL_PUJA_COMMON}}"
+    private const val FESTIVAL_PUJA_COMMON = "festival_puja_common.txt"
 }

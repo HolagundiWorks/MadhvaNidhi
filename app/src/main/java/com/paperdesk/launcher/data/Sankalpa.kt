@@ -19,15 +19,18 @@ object Sankalpa {
         return block(context, sessionId, lang) + "\n\n" + IndicScript.convert("श्रीहरिप्रीत्यर्थं $purpose", lang)
     }
 
-    fun pujaBlock(context: Context, lang: IndicScript.Lang): String {
+    fun pujaBlock(context: Context, lang: IndicScript.Lang, purpose: String = ""): String {
         val pan = PanchangaStore.forDate(context, PanchangaStore.dateKey())
-        val body = build(pan, null) + "\n\nश्रीहरिप्रीत्यर्थं यथाशक्ति पूजां करिष्ये।"
+        val resolvedPurpose = purpose.ifBlank { "श्रीहरिप्रीत्यर्थं यथाशक्ति पूजां करिष्ये।" }
+        val body = build(pan, null) + "\n\n$resolvedPurpose"
         return "ಇಂದಿನ ಸ್ವಯಂ ತುಂಬಿದ ಸಂಕಲ್ಪ\n${profileLine(context)}\n\n${IndicScript.convert(body, lang)}"
     }
 
     fun injectPuja(context: Context, body: String, lang: IndicScript.Lang): String {
-        val dynamic = pujaBlock(context, lang)
-        val lines = body.lines()
+        val purpose = pujaPurpose(body)
+        val cleanBody = body.replace(PURPOSE, "").replace(Regex("\n{3,}"), "\n\n").trim()
+        val dynamic = pujaBlock(context, lang, purpose)
+        val lines = cleanBody.lines()
         val heading = Regex("^(?:[0-9೦-೯]+[.)]?\\s*)?(?:ಸಂಕಲ್ಪ|ಸಙ್ಕಲ್ಪ)(?:ಂ)?(?:\\s.*)?$", RegexOption.IGNORE_CASE)
         val numbered = Regex("^[0-9೦-೯]+[.)]\\s*\\S+")
         val start = lines.indexOfFirst { heading.matches(it.trim()) }
@@ -41,6 +44,9 @@ object Sankalpa {
         if (end == null) return "$dynamic\n\n$body"
         return (lines.take(start) + listOf(dynamic, "") + lines.drop(end)).joinToString("\n").trim()
     }
+
+    internal fun pujaPurpose(body: String): String =
+        PURPOSE.find(body)?.groupValues?.getOrNull(1).orEmpty().trim()
 
     fun abhivadanaBlock(context: Context): String {
         val p = ProfileStore(context).active()
@@ -161,4 +167,8 @@ object Sankalpa {
         "TAITILA" to "तैतिल", "GARA" to "गर", "VANIJA" to "वणिज",
         "VISHTI" to "विष्टि", "KIMSTUGHNA" to "किंस्तुघ्न", "NAVAN" to "नाग"
     )
+
+    // Escape both closing braces as well: Android's ICU regex parser treats an
+    // unmatched literal `}` more strictly than the desktop JVM used by tests.
+    private val PURPOSE = Regex("(?m)^\\{\\{SANKALPA_PURPOSE:(.+)\\}\\}\\s*$")
 }
