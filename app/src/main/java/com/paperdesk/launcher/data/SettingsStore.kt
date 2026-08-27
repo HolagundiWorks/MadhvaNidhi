@@ -13,7 +13,7 @@ class SettingsStore(context: Context) {
         var dirty = false
         if (obj.optString("flavor") != "acharya") {
             obj.put("flavor", "acharya")
-            obj.put("theme", "paper")
+            obj.put("theme", "black")
             obj.put("pages", JSONArray(PAGE_IDS))
             obj.put("projectEnabled", false)
             obj.put("todoEnabled", false)
@@ -121,7 +121,7 @@ class SettingsStore(context: Context) {
             .put("pages", JSONArray(PAGE_IDS))
             .put("pagesRev", 7)
             .put("landscape", true)
-            .put("theme", "paper")
+            .put("theme", "black")
             .put("accent", "#FF6A00")
             .put("fontScale", 1.0)
             .put("clockAnalog", true)

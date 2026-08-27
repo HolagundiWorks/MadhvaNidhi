@@ -5,8 +5,8 @@
         <shape android:shape="rectangle">
             <stroke
                 android:width="@dimen/stroke_hairline"
-                android:color="@color/white_70" />
-            <solid android:color="@color/black" />
+                android:color="@color/divider" />
+            <solid android:color="@color/surface_1" />
         </shape>
     </item>
 </ripple>

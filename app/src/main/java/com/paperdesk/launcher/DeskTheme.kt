@@ -12,15 +12,20 @@ object DeskTheme {
     const val PAPER = "paper"
 
     fun current(context: Context): String {
-        val v = SettingsStore(context).json().optString("theme", BLACK)
-        return if (v == PAPER) PAPER else BLACK
+        val settings = SettingsStore(context)
+        val obj = settings.json()
+        if (obj.optString("theme") != BLACK) {
+            obj.put("theme", BLACK)
+            settings.save(obj)
+        }
+        return BLACK
     }
 
     fun apply(context: Context, name: String = current(context)) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         runCatching {
             val bmp = Bitmap.createBitmap(32, 32, Bitmap.Config.ARGB_8888)
-            bmp.eraseColor(Color.WHITE)
+            bmp.eraseColor(Color.BLACK)
             val wm = WallpaperManager.getInstance(context)
             wm.setBitmap(bmp)
             wm.setBitmap(bmp, null, false, WallpaperManager.FLAG_SYSTEM)
@@ -30,8 +35,8 @@ object DeskTheme {
 
     fun set(context: Context, name: String) {
         val obj = SettingsStore(context).json()
-        obj.put("theme", if (name == PAPER) PAPER else BLACK)
+        obj.put("theme", BLACK)
         SettingsStore(context).save(obj)
-        apply(context, name)
+        apply(context, BLACK)
     }
 }

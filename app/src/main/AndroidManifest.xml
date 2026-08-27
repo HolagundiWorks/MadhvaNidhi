@@ -74,10 +74,6 @@
             android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.PaperDesk">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            <intent-filter>
                 <action android:name="com.android.settings.action.IA_SETTINGS" />
                 <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -96,21 +92,21 @@
         <activity
             android:name=".ui.TaskEntryActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
+            android:screenOrientation="sensorLandscape"
             android:windowSoftInputMode="adjustResize"
             android:theme="@style/Theme.PaperDesk.Entry" />
 
         <activity
             android:name=".ui.MeasureEntryActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
+            android:screenOrientation="sensorLandscape"
             android:windowSoftInputMode="adjustResize"
             android:theme="@style/Theme.PaperDesk.Entry" />
 
         <activity
             android:name=".ui.ScheduleEntryActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
+            android:screenOrientation="sensorLandscape"
             android:windowSoftInputMode="adjustResize"
             android:theme="@style/Theme.PaperDesk.Entry" />
 
@@ -123,14 +119,14 @@
         <activity
             android:name=".ui.ProjectEntryActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
+            android:screenOrientation="sensorLandscape"
             android:windowSoftInputMode="adjustResize"
             android:theme="@style/Theme.PaperDesk.Entry" />
 
         <activity
             android:name=".ui.NoteEntryActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
+            android:screenOrientation="sensorLandscape"
             android:windowSoftInputMode="adjustResize"
             android:theme="@style/Theme.PaperDesk.Entry" />
 
@@ -143,7 +139,7 @@
         <activity
             android:name=".ui.MeetingEntryActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
+            android:screenOrientation="sensorLandscape"
             android:windowSoftInputMode="adjustResize"
             android:theme="@style/Theme.PaperDesk.Entry" />
 

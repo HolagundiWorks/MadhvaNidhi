@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="space_4">4dp</dimen>
-    <dimen name="space_8">4dp</dimen>
-    <dimen name="space_12">8dp</dimen>
-    <dimen name="space_16">10dp</dimen>
-    <dimen name="space_24">16dp</dimen>
-    <dimen name="space_32">20dp</dimen>
-    <dimen name="space_48">38dp</dimen>
+    <dimen name="space_8">8dp</dimen>
+    <dimen name="space_12">12dp</dimen>
+    <dimen name="space_16">16dp</dimen>
+    <dimen name="space_24">24dp</dimen>
+    <dimen name="space_32">32dp</dimen>
+    <dimen name="space_48">48dp</dimen>
 
-    <dimen name="page_pad_h">12dp</dimen>
-    <dimen name="page_pad_top">0dp</dimen>
+    <dimen name="page_pad_h">24dp</dimen>
+    <dimen name="page_pad_top">12dp</dimen>
     <dimen name="page_pad_bottom">0dp</dimen>
-    <dimen name="chrome_bar">54dp</dimen>
-    <dimen name="footer_bar">54dp</dimen>
-    <dimen name="entry_pad">12dp</dimen>
+    <dimen name="chrome_bar">64dp</dimen>
+    <dimen name="footer_bar">64dp</dimen>
+    <dimen name="entry_pad">20dp</dimen>
 
     <dimen name="radius_sm">0dp</dimen>
     <dimen name="radius_md">0dp</dimen>
@@ -25,31 +25,31 @@
     <dimen name="stroke_emphasis">1.5dp</dimen>
     <dimen name="stroke_strong">2dp</dimen>
 
-    <dimen name="touch">38dp</dimen>
-    <dimen name="btn_h">38dp</dimen>
-    <dimen name="nav_slot">38dp</dimen>
-    <dimen name="fab">38dp</dimen>
-    <dimen name="icon_btn">38dp</dimen>
-    <dimen name="icon_glyph">19dp</dimen>
-    <dimen name="icon_pad">8dp</dimen>
-    <dimen name="row_h">36dp</dimen>
+    <dimen name="touch">48dp</dimen>
+    <dimen name="btn_h">44dp</dimen>
+    <dimen name="nav_slot">48dp</dimen>
+    <dimen name="fab">48dp</dimen>
+    <dimen name="icon_btn">48dp</dimen>
+    <dimen name="icon_glyph">22dp</dimen>
+    <dimen name="icon_pad">12dp</dimen>
+    <dimen name="row_h">48dp</dimen>
     <dimen name="field_h">48dp</dimen>
     <dimen name="check">20dp</dimen>
     <dimen name="key_gap">3dp</dimen>
     <dimen name="chip_h">44dp</dimen>
     <dimen name="day_h">48dp</dimen>
 
-    <dimen name="type_clock">40sp</dimen>
-    <dimen name="type_title_lg">22sp</dimen>
-    <dimen name="type_title">18sp</dimen>
-    <dimen name="type_section">15sp</dimen>
-    <dimen name="type_card">15sp</dimen>
-    <dimen name="type_display">26sp</dimen>
-    <dimen name="type_body">14sp</dimen>
-    <dimen name="type_body2">12sp</dimen>
-    <dimen name="type_meta">11sp</dimen>
-    <dimen name="type_btn">13sp</dimen>
-    <dimen name="type_table_head">11sp</dimen>
-    <dimen name="type_table">12sp</dimen>
-    <dimen name="type_key">17sp</dimen>
+    <dimen name="type_clock">52sp</dimen>
+    <dimen name="type_title_lg">30sp</dimen>
+    <dimen name="type_title">24sp</dimen>
+    <dimen name="type_section">19sp</dimen>
+    <dimen name="type_card">18sp</dimen>
+    <dimen name="type_display">32sp</dimen>
+    <dimen name="type_body">18sp</dimen>
+    <dimen name="type_body2">16sp</dimen>
+    <dimen name="type_meta">14sp</dimen>
+    <dimen name="type_btn">16sp</dimen>
+    <dimen name="type_table_head">14sp</dimen>
+    <dimen name="type_table">15sp</dimen>
+    <dimen name="type_key">19sp</dimen>
 </resources>

@@ -25,6 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:background="@drawable/bg_nav_bar"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:gravity="center_vertical"
@@ -43,17 +44,29 @@
             android:src="@drawable/ic_nav_prev" />
 
         <TextView
-            android:id="@+id/hariMotto"
+            android:id="@+id/pageCurrent"
             style="@style/Desk.Section"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="0.34"
             android:ellipsize="end"
-            android:gravity="center"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/hariMotto"
+            style="@style/Desk.Meta"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.66"
+            android:ellipsize="end"
+            android:gravity="center_vertical|right"
             android:maxLines="1"
             android:paddingLeft="@dimen/space_8"
             android:paddingRight="@dimen/space_8"
-            android:textColor="@color/accent" />
+            android:textColor="@color/white_55" />
 
         <ImageButton
             android:id="@+id/navNext"

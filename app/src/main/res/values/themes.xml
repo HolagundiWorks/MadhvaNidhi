@@ -208,7 +208,7 @@
     <style name="Desk.Circle" parent="Widget.AppCompat.ImageButton">
         <item name="android:layout_width">@dimen/touch</item>
         <item name="android:layout_height">@dimen/touch</item>
-        <item name="android:background">@drawable/bg_circle_fill</item>
+        <item name="android:background">@drawable/bg_circle</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
         <item name="android:minWidth">@dimen/touch</item>

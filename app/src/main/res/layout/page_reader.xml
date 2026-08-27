@@ -155,10 +155,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/space_8"
                         android:includeFontPadding="true"
-                        android:lineSpacingExtra="0dp"
-                        android:lineSpacingMultiplier="1"
+                        android:lineSpacingExtra="5dp"
+                        android:lineSpacingMultiplier="1.08"
                         android:textColor="@color/white"
-                        android:textSize="17sp" />
+                        android:textSize="20sp" />
                 </LinearLayout>
             </com.paperdesk.launcher.ui.DeskScrollView>
         </LinearLayout>

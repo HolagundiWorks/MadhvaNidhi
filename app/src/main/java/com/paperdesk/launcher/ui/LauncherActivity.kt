@@ -37,6 +37,7 @@ class LauncherActivity : AppCompatActivity() {
     private lateinit var pagerHost: ZonePagerHost
     private lateinit var pageNav: View
     private lateinit var navPrev: ImageButton
+    private lateinit var pageCurrent: TextView
     private lateinit var hariMotto: TextView
     private lateinit var navNext: ImageButton
     private lateinit var controls: ControlPanel
@@ -70,6 +71,7 @@ class LauncherActivity : AppCompatActivity() {
         controls.attach()
         pageNav = findViewById(R.id.pageNav)
         navPrev = findViewById(R.id.navPrev)
+        pageCurrent = findViewById(R.id.pageCurrent)
         hariMotto = findViewById(R.id.hariMotto)
         navNext = findViewById(R.id.navNext)
         navPrev.setOnClickListener { shiftPage(-1) }
@@ -213,6 +215,9 @@ class LauncherActivity : AppCompatActivity() {
         val nextPos = (i + 1) % count
         navPrev.contentDescription = "${OsLang.ui("prev", lang)}. ${title(prevPos)}"
         navNext.contentDescription = "${OsLang.ui("next", lang)}. ${title(nextPos)}"
+        pageCurrent.text = title(i)
+        pageCurrent.contentDescription = title(i)
+        DeskType.apply(pageCurrent, DeskType.SEMIBOLD)
         navPrev.isEnabled = allow
         navNext.isEnabled = allow
         navPrev.visibility = if (selectorOpen) View.INVISIBLE else View.VISIBLE
@@ -231,14 +236,14 @@ class LauncherActivity : AppCompatActivity() {
         val lang = OsLang.get(this)
         hariMotto.text = OsLang.ui("hari_motto", lang)
         hariMotto.contentDescription = OsLang.ui("hari_motto", lang)
-        DeskType.apply(hariMotto, DeskType.SEMIBOLD)
+        DeskType.apply(hariMotto, DeskType.REGULAR)
     }
 
     fun applyShadeChrome() {
         val locked = ShadeLock.isLocked(this)
         findViewById<View>(R.id.shadeGuard)?.visibility = if (locked) View.VISIBLE else View.GONE
         com.paperdesk.launcher.bridge.OsChrome.applyShade(this, locked)
-        if (locked) DeskWindow.immersive(this) else DeskWindow.showBars(this)
+        DeskWindow.immersive(this)
         val on = SettingsStore(this).alwaysOn()
         DeskWindow.keepAwake(this, on)
     }

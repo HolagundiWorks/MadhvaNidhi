@@ -69,7 +69,7 @@ class MonthCalendarView @JvmOverloads constructor(
             gravity = Gravity.CENTER
             textAlignment = View.TEXT_ALIGNMENT_CENTER
             setTextColor(white)
-            setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
             includeFontPadding = false
             setPadding(0, dp(2), 0, dp(4))
         }
@@ -167,7 +167,7 @@ class MonthCalendarView @JvmOverloads constructor(
                 layoutParams = LayoutParams(0, LayoutParams.WRAP_CONTENT, 1f)
                 gravity = Gravity.CENTER
                 setTextColor(muted)
-                setTextSize(TypedValue.COMPLEX_UNIT_SP, 10f)
+                setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f)
                 includeFontPadding = false
                 setPadding(dp(1), dp(1), dp(1), dp(2))
                 text = OsLang.ui(key, lang)
@@ -230,9 +230,9 @@ class MonthCalendarView @JvmOverloads constructor(
                 }
                 val dateTv = TextView(context).apply {
                     gravity = Gravity.CENTER
-                    setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f)
+                    setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
                     includeFontPadding = false
-                    val mark = dp(26)
+                    val mark = dp(30)
                     minWidth = mark
                     minHeight = mark
                     layoutParams = LayoutParams(mark, mark)

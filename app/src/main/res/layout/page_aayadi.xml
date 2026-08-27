@@ -2,22 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@color/black" android:orientation="horizontal"
-    android:paddingLeft="@dimen/page_pad_h" android:paddingRight="@dimen/page_pad_h"
+    android:paddingLeft="@dimen/page_pad_h" android:paddingTop="@dimen/page_pad_top" android:paddingRight="@dimen/page_pad_h"
     android:paddingBottom="@dimen/footer_bar">
     <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.42" android:orientation="vertical" android:paddingRight="20dp">
         <TextView android:id="@+id/aayadiTitle" style="@style/Desk.Title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ಆಯಾದಿ ಗಣನೆ" />
-        <TextView style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="ಉದ್ದ ಮತ್ತು ಅಗಲವನ್ನು ಅಡಿಗಳಲ್ಲಿ ನಮೂದಿಸಿ" />
-        <TextView style="@style/Desk.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="ಉದ್ದ" />
+        <TextView style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="ಅಳತೆ — ಅಡಿ / ಇಂಚು" />
+        <TextView style="@style/Desk.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="ಉದ್ದ" />
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-            <EditText android:id="@+id/aayadiLengthFt" android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1" android:background="@drawable/bg_input" android:hint="ಅಡಿ" android:inputType="numberDecimal" android:padding="8dp" android:text="30" android:textColor="@color/white" android:textColorHint="@color/white_55" />
-            <EditText android:id="@+id/aayadiLengthIn" android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1" android:layout_marginLeft="8dp" android:background="@drawable/bg_input" android:hint="ಇಂಚು" android:inputType="numberDecimal" android:padding="8dp" android:text="0" android:textColor="@color/white" android:textColorHint="@color/white_55" />
+            <TextView style="@style/Desk.Meta" android:layout_width="40dp" android:layout_height="44dp" android:gravity="center_vertical" android:text="ಅಡಿ" />
+            <EditText android:id="@+id/aayadiLengthFt" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:background="@drawable/bg_input" android:contentDescription="ಉದ್ದ ಅಡಿ" android:inputType="numberDecimal" android:padding="8dp" android:text="30" android:textColor="@color/white" />
+            <TextView style="@style/Desk.Meta" android:layout_width="52dp" android:layout_height="44dp" android:layout_marginLeft="8dp" android:gravity="center_vertical" android:text="ಇಂಚು" />
+            <EditText android:id="@+id/aayadiLengthIn" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:background="@drawable/bg_input" android:contentDescription="ಉದ್ದ ಇಂಚು" android:inputType="numberDecimal" android:padding="8dp" android:text="0" android:textColor="@color/white" />
         </LinearLayout>
-        <TextView style="@style/Desk.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="ಅಗಲ" />
+        <TextView style="@style/Desk.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="ಅಗಲ" />
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-            <EditText android:id="@+id/aayadiBreadthFt" android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1" android:background="@drawable/bg_input" android:hint="ಅಡಿ" android:inputType="numberDecimal" android:padding="8dp" android:text="40" android:textColor="@color/white" android:textColorHint="@color/white_55" />
-            <EditText android:id="@+id/aayadiBreadthIn" android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1" android:layout_marginLeft="8dp" android:background="@drawable/bg_input" android:hint="ಇಂಚು" android:inputType="numberDecimal" android:padding="8dp" android:text="0" android:textColor="@color/white" android:textColorHint="@color/white_55" />
+            <TextView style="@style/Desk.Meta" android:layout_width="40dp" android:layout_height="44dp" android:gravity="center_vertical" android:text="ಅಡಿ" />
+            <EditText android:id="@+id/aayadiBreadthFt" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:background="@drawable/bg_input" android:contentDescription="ಅಗಲ ಅಡಿ" android:inputType="numberDecimal" android:padding="8dp" android:text="40" android:textColor="@color/white" />
+            <TextView style="@style/Desk.Meta" android:layout_width="52dp" android:layout_height="44dp" android:layout_marginLeft="8dp" android:gravity="center_vertical" android:text="ಇಂಚು" />
+            <EditText android:id="@+id/aayadiBreadthIn" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:background="@drawable/bg_input" android:contentDescription="ಅಗಲ ಇಂಚು" android:inputType="numberDecimal" android:padding="8dp" android:text="0" android:textColor="@color/white" />
         </LinearLayout>
-        <TextView android:id="@+id/aayadiCalculate" style="@style/Desk.Button.Accent" android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginTop="16dp" android:gravity="center" android:text="ಲೆಕ್ಕ ಹಾಕಿ" />
+        <TextView android:id="@+id/aayadiCalculate" style="@style/Desk.Button.Accent" android:layout_width="match_parent" android:layout_height="44dp" android:layout_marginTop="8dp" android:gravity="center" android:text="ಲೆಕ್ಕ ಹಾಕಿ" />
         <TextView android:id="@+id/aayadiError" style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="ಸರಿಯಾದ ಉದ್ದ ಮತ್ತು ಅಗಲ ನಮೂದಿಸಿ" android:textColor="@color/accent" android:visibility="gone" />
     </LinearLayout>
     <ScrollView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.58" android:fillViewport="true" android:scrollbars="none">
