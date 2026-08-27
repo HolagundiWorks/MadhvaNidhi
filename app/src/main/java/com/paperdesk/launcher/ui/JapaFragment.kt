@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.CheckBox
-import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
@@ -68,11 +66,6 @@ class JapaFragment : Fragment() {
                     .setTextColor(requireContext().getColor(R.color.white_70))
             }
             dialog.show()
-        }
-        view.findViewById<CheckBox>(R.id.japaTargetEnabled).setOnCheckedChangeListener { _, enabled ->
-            view.findViewById<View>(R.id.japaTarget).visibility = if (enabled) View.VISIBLE else View.GONE
-            saveConfig(view)
-            paint(view, store.state())
         }
         paint(view, store.state(), initial = true)
     }
@@ -175,9 +168,7 @@ class JapaFragment : Fragment() {
 
     private fun saveConfig(v: View) {
         val mantra = selectedJapa(v)?.mantra ?: JapaCatalog.entries.first().mantra
-        val target = v.findViewById<EditText>(R.id.japaTarget).text.toString()
-            .replace(",", "").toLongOrNull() ?: 108L
-        store.configure(mantra, target, v.findViewById<CheckBox>(R.id.japaTargetEnabled).isChecked)
+        store.configure(mantra, store.state().target, false)
     }
 
     private fun selectedJapa(v: View): JapaCatalog.Entry? =
@@ -188,18 +179,9 @@ class JapaFragment : Fragment() {
             selectingJapa = true
             v.findViewById<Spinner>(R.id.japaMantra).setSelection(JapaCatalog.indexOf(state.mantra))
             selectingJapa = false
-            v.findViewById<EditText>(R.id.japaTarget).setText(state.target.toString())
-            v.findViewById<CheckBox>(R.id.japaTargetEnabled).isChecked = state.targetEnabled
             updateSelectedMantra(v)
         }
-        v.findViewById<View>(R.id.japaTarget).visibility = if (state.targetEnabled) View.VISIBLE else View.GONE
         v.findViewById<TextView>(R.id.japaCurrent).text = countFormat.format(state.current)
-        v.findViewById<TextView>(R.id.japaProgress).apply {
-            visibility = if (state.targetEnabled) View.VISIBLE else View.INVISIBLE
-            text = if (state.targetEnabled) {
-                "ಗುರಿ ${countFormat.format(state.target)}  ·  ${((state.current * 100.0 / state.target).coerceAtMost(9999.0)).toInt()}%"
-            } else ""
-        }
         v.findViewById<TextView>(R.id.japaSessions).text =
             "ದಾಖಲಿಸಿದ ಅವಧಿಗಳು  ${countFormat.format(state.sessions)}"
     }
