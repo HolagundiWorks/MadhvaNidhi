@@ -59,10 +59,10 @@ class ReaderFragment : Fragment() {
         sessionId = prefs.getString("session", "").orEmpty()
         itemId = prefs.getString("item", "").orEmpty()
         if (pageId == SANDHYA) {
-            if (sessionId.isBlank() || SandhyaStore.session(sessionId) == null) {
+            if (sessionId.isBlank() || SandhyaStore.session(requireContext(), sessionId) == null) {
                 sessionId = SandhyaStore.nowId()
             }
-            val steps = SandhyaStore.session(sessionId)?.steps.orEmpty()
+            val steps = SandhyaStore.session(requireContext(), sessionId)?.steps.orEmpty()
             if (steps.none { it.id == itemId }) itemId = steps.firstOrNull()?.id.orEmpty()
         }
         if ((pageId == MANTRAS || pageId == HADUGALU) &&
@@ -102,8 +102,7 @@ class ReaderFragment : Fragment() {
     private fun selectorOpen(): Boolean =
         view?.findViewById<View>(R.id.selectorPage)?.visibility == View.VISIBLE
 
-    private fun openSelector() {
-        if (pageId == SANDHYA) return
+    fun openSelector() {
         val v = view ?: return
         v.findViewById<View>(R.id.readerMain).visibility = View.GONE
         v.findViewById<View>(R.id.selectorPage).visibility = View.VISIBLE
@@ -112,6 +111,11 @@ class ReaderFragment : Fragment() {
     }
 
     private fun pick(row: Row) {
+        if (row.section && pageId == SANDHYA) {
+            pickKala(row.group)
+            closeSelector()
+            return
+        }
         if (row.section) return
         sessionId = row.group
         itemId = row.id
@@ -124,7 +128,7 @@ class ReaderFragment : Fragment() {
     private fun pickKala(id: String) {
         if (pageId != SANDHYA) return
         sessionId = id
-        itemId = SandhyaStore.session(id)?.steps?.firstOrNull()?.id.orEmpty()
+        itemId = SandhyaStore.session(requireContext(), id)?.steps?.firstOrNull()?.id.orEmpty()
         prefs.edit().putString("session", sessionId).putString("item", itemId).apply()
         paint()
         view?.findViewById<DeskScrollView>(R.id.readerScroll)?.scrollTo(0, 0)
@@ -134,13 +138,14 @@ class ReaderFragment : Fragment() {
         val v = view ?: return
         lang = OsLang.get(requireContext())
         v.findViewById<TextView>(R.id.readerTitle).text = OsLang.ui(pageId, lang)
+        v.findViewById<View>(R.id.readerTitle).visibility = View.GONE
         v.findViewById<TextView>(R.id.selectorTitle).text = OsLang.ui("select_$pageId", lang)
         DeskType.apply(v.findViewById(R.id.readerTitle), DeskType.SEMIBOLD)
         DeskType.apply(v.findViewById(R.id.selectorTitle), DeskType.SEMIBOLD)
         val item = current()
         val sandhya = pageId == SANDHYA
-        v.findViewById<View>(R.id.readerSelect).visibility = if (sandhya) View.GONE else View.VISIBLE
-        v.findViewById<View>(R.id.readerKalaRow).visibility = if (sandhya) View.VISIBLE else View.GONE
+        v.findViewById<View>(R.id.readerSelect).visibility = View.GONE
+        v.findViewById<View>(R.id.readerKalaRow).visibility = View.GONE
         v.findViewById<View>(R.id.readerHead).visibility = if (sandhya || item?.head.isNullOrBlank()) View.GONE else View.VISIBLE
         if (sandhya) bindKala(v)
         v.findViewById<TextView>(R.id.readerHead).text = item?.head.orEmpty()
@@ -168,6 +173,7 @@ class ReaderFragment : Fragment() {
         parts += page
         when (pageId) {
             SANDHYA -> {
+                parts += SandhyaStore.vedaLabel(requireContext())
                 val kala = item?.label.orEmpty()
                 if (kala.isNotBlank() && kala != page) parts += kala
             }
@@ -215,7 +221,8 @@ class ReaderFragment : Fragment() {
     private fun current(): Shown? {
         when (pageId) {
             SANDHYA -> {
-                val session = SandhyaStore.session(sessionId) ?: SandhyaStore.session(SandhyaStore.nowId()) ?: return null
+                val session = SandhyaStore.session(requireContext(), sessionId)
+                    ?: SandhyaStore.session(requireContext(), SandhyaStore.nowId()) ?: return null
                 sessionId = session.id
                 val ctx = requireContext()
                 val body = session.steps.joinToString("\n\n") { step ->
@@ -264,7 +271,7 @@ class ReaderFragment : Fragment() {
         when (pageId) {
             SANDHYA -> {
                 val out = ArrayList<Row>()
-                SandhyaStore.sessions.forEach { session ->
+                SandhyaStore.sessions(requireContext()).forEach { session ->
                     out += Row(id = session.id, group = session.id, title = OsLang.ui(session.id, lang), section = true)
                     session.steps.forEach { step ->
                         out += Row(

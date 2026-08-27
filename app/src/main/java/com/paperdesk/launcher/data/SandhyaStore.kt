@@ -3,7 +3,7 @@ package com.paperdesk.launcher.data
 import android.content.Context
 import java.util.Calendar
 
-/** Rigveda/Ashvalayana trikala Sandhyavandana in Kannada. */
+/** Profile-aware Madhwa trikala Sandhyavandana in Kannada. */
 object SandhyaStore {
     const val PRATAH = "pratah"
     const val MADHYA = "madhya"
@@ -16,6 +16,8 @@ object SandhyaStore {
     var sessions: List<Session> = emptyList()
         private set
     private var byId: Map<String, Session> = emptyMap()
+    private var yajurSessions: List<Session> = emptyList()
+    private var yajurById: Map<String, Session> = emptyMap()
 
     @Synchronized
     fun load(context: Context) {
@@ -26,6 +28,15 @@ object SandhyaStore {
         if (rigveda.isNotBlank()) {
             sessions = parseRigveda(rigveda)
             byId = sessions.associateBy { it.id }
+        }
+        val yajurveda = runCatching {
+            context.assets.open("madhwa/texts/yajurveda_sandhyavandana.txt").bufferedReader().use { it.readText() }
+        }.getOrDefault("").trim()
+        if (yajurveda.isNotBlank()) {
+            yajurSessions = parseRigveda(yajurveda)
+            yajurById = yajurSessions.associateBy { it.id }
+        }
+        if (sessions.isNotEmpty()) {
             loaded = true
             return
         }
@@ -38,6 +49,27 @@ object SandhyaStore {
     }
 
     fun session(id: String): Session? = byId[id] ?: sessions.firstOrNull()
+
+    fun session(context: Context, id: String): Session? {
+        load(context)
+        val source = if (usesKrishnaYajurveda(context)) yajurById else byId
+        val list = if (usesKrishnaYajurveda(context)) yajurSessions else sessions
+        return source[id] ?: list.firstOrNull()
+    }
+
+    fun sessions(context: Context): List<Session> {
+        load(context)
+        return if (usesKrishnaYajurveda(context)) yajurSessions else sessions
+    }
+
+    fun vedaLabel(context: Context): String = if (usesKrishnaYajurveda(context)) {
+        "ಕೃಷ್ಣ ಯಜುರ್ವೇದ — ತೈತ್ತಿರೀಯ"
+    } else {
+        "ಋಗ್ವೇದ — ಆಶ್ವಲಾಯನ"
+    }
+
+    private fun usesKrishnaYajurveda(context: Context): Boolean =
+        ProfileStore(context).active().vedaShakha.startsWith("ಕೃಷ್ಣ ಯಜುರ್ವೇದ") && yajurSessions.isNotEmpty()
 
     fun nowId(): String {
         val h = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)

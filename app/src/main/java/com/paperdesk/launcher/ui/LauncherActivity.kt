@@ -39,10 +39,12 @@ class LauncherActivity : AppCompatActivity() {
     private lateinit var navPrev: ImageButton
     private lateinit var pageCurrent: TextView
     private lateinit var hariMotto: TextView
+    private lateinit var navAction: ImageButton
     private lateinit var navNext: ImageButton
     private lateinit var controls: ControlPanel
     private val langTick: () -> Unit = { bindLang() }
     private var selectorOpen = false
+    private var footerAction: (() -> Unit)? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,9 +75,11 @@ class LauncherActivity : AppCompatActivity() {
         navPrev = findViewById(R.id.navPrev)
         pageCurrent = findViewById(R.id.pageCurrent)
         hariMotto = findViewById(R.id.hariMotto)
+        navAction = findViewById(R.id.navAction)
         navNext = findViewById(R.id.navNext)
         navPrev.setOnClickListener { shiftPage(-1) }
         navNext.setOnClickListener { shiftPage(1) }
+        navAction.setOnClickListener { footerAction?.invoke() }
         placeContentNav()
         pager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
@@ -166,6 +170,13 @@ class LauncherActivity : AppCompatActivity() {
         bindNav()
     }
 
+    fun setFooterAction(description: String? = null, action: (() -> Unit)? = null) {
+        footerAction = action
+        if (!::navAction.isInitialized) return
+        navAction.contentDescription = description ?: ""
+        navAction.visibility = if (action == null || selectorOpen) View.GONE else View.VISIBLE
+    }
+
     private fun placeContentNav() {
         if (!::pageNav.isInitialized) return
         val lp = pageNav.layoutParams as FrameLayout.LayoutParams
@@ -211,6 +222,15 @@ class LauncherActivity : AppCompatActivity() {
         val lang = OsLang.get(this)
         val adapter = pager.adapter as? WorkspaceAdapter
         fun title(pos: Int) = OsLang.ui(adapter?.pageId(pos) ?: "desk", lang)
+        val currentId = adapter?.pageId(i) ?: "desk"
+        val readerPage = currentId in setOf("sandhya", "mantras", "puja", "hadugalu")
+        footerAction = if (readerPage) {
+            { supportFragmentManager.fragments.filterIsInstance<ReaderFragment>()
+                .firstOrNull { it.isResumed }?.openSelector() }
+        } else null
+        if (::navAction.isInitialized) {
+            navAction.contentDescription = if (readerPage) OsLang.ui("select_$currentId", lang) else ""
+        }
         val prevPos = (i - 1 + count) % count
         val nextPos = (i + 1) % count
         navPrev.contentDescription = "${OsLang.ui("prev", lang)}. ${title(prevPos)}"
@@ -222,6 +242,10 @@ class LauncherActivity : AppCompatActivity() {
         navNext.isEnabled = allow
         navPrev.visibility = if (selectorOpen) View.INVISIBLE else View.VISIBLE
         navNext.visibility = if (selectorOpen) View.INVISIBLE else View.VISIBLE
+        if (::navAction.isInitialized) {
+            navAction.visibility = if (!selectorOpen && footerAction != null) View.VISIBLE else View.GONE
+            navAction.isEnabled = allow && footerAction != null
+        }
         navPrev.alpha = if (navPrev.isEnabled) 1f else 0.4f
         navNext.alpha = if (navNext.isEnabled) 1f else 0.4f
         navPrev.importantForAccessibility =

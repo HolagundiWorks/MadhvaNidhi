@@ -2,6 +2,7 @@ package com.paperdesk.launcher.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.HapticFeedbackConstants
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
@@ -31,8 +32,16 @@ class JapaFragment : Fragment() {
         profiles = ProfileStore(requireContext())
         store = JapaStore(requireContext(), profiles.active().id)
         listOf(R.id.japaTitle, R.id.japaRitualTitle).forEach { DeskType.apply(view.findViewById(it), DeskType.SEMIBOLD) }
+        bindRituals(view)
         bindProfiles(view)
-        view.findViewById<View>(R.id.japaTap).setOnClickListener { saveConfig(view); paint(view, store.add(1)) }
+        view.findViewById<View>(R.id.japaTap).setOnClickListener { button ->
+            button.performHapticFeedback(
+                HapticFeedbackConstants.KEYBOARD_TAP,
+                HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING
+            )
+            saveConfig(view)
+            paint(view, store.add(1))
+        }
         view.findViewById<View>(R.id.japa108).setOnClickListener { saveConfig(view); paint(view, store.add(108)) }
         view.findViewById<View>(R.id.japaUndo).setOnClickListener { paint(view, store.undo()) }
         view.findViewById<View>(R.id.japaComplete).setOnClickListener { saveConfig(view); paint(view, store.complete()) }
@@ -58,6 +67,29 @@ class JapaFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         view?.let { bindProfiles(it) }
+    }
+
+    private fun bindRituals(v: View) {
+        val spinner = v.findViewById<Spinner>(R.id.japaRitual)
+        spinner.adapter = ArrayAdapter(requireContext(), R.layout.item_dropdown_selected, RITUALS.map { it.first }).also {
+            it.setDropDownViewResource(R.layout.item_dropdown)
+        }
+        val prefs = requireContext().getSharedPreferences("paperdesk_japa_ui", 0)
+        val initial = prefs.getInt("ritual", 0).coerceIn(RITUALS.indices)
+        fun show(position: Int) {
+            val ritual = RITUALS[position]
+            v.findViewById<TextView>(R.id.japaRitualTitle).text = "ಜಪ  ›  ${ritual.first}"
+            v.findViewById<TextView>(R.id.japaRitualBody).text = ritual.second
+        }
+        spinner.setSelection(initial)
+        show(initial)
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) = Unit
+            override fun onItemSelected(parent: AdapterView<*>?, selected: View?, position: Int, id: Long) {
+                show(position)
+                prefs.edit().putInt("ritual", position).apply()
+            }
+        }
     }
 
     private fun bindProfiles(v: View) {
@@ -109,5 +141,18 @@ class JapaFragment : Fragment() {
             text = if (state.targetEnabled) "ಗುರಿ ${countFormat.format(state.target)}  ·  ${((state.current * 100.0 / state.target).coerceAtMost(9999.0)).toInt()}%" else ""
         }
         v.findViewById<TextView>(R.id.japaSessions).text = "ದಾಖಲಿಸಿದ ಅವಧಿಗಳು  ${countFormat.format(state.sessions)}"
+    }
+
+    companion object {
+        private val RITUALS = listOf(
+            "೧  ಶುದ್ಧಿ ಮತ್ತು ಆಸನ" to "ಕೈ–ಕಾಲು ತೊಳೆದು ಶುದ್ಧ, ಶಾಂತ ಸ್ಥಳದಲ್ಲಿ ಗುರು ಸೂಚಿಸಿದ ದಿಕ್ಕು ಮತ್ತು ಆಸನದಲ್ಲಿ ಕುಳಿತುಕೊಳ್ಳಿ. ಬೆನ್ನು ಸಹಜವಾಗಿ ನೇರವಾಗಿರಲಿ.",
+            "೨  ಆಚಮನ" to "ಶುದ್ಧ ನೀರಿನಿಂದ ಕುಟುಂಬದ ಮಾಧ್ವ ಕ್ರಮದಂತೆ ಆಚಮನ ಮಾಡಿ. ಕೇಶವದಿಂದ ಶ್ರೀಕೃಷ್ಣವರೆಗಿನ ಚತುರ್ವಿಂಶತಿ ನಾಮಗಳನ್ನು ಕಲಿತ ಕ್ರಮದಲ್ಲೇ ಬಳಸಿ.",
+            "೩  ಶ್ರೀಹರಿ–ಗುರು ಸ್ಮರಣೆ" to "ಶ್ರೀಹರಿ, ಮುಖ್ಯಪ್ರಾಣ ದೇವರು ಮತ್ತು ಗುರುಪರಂಪರೆಯನ್ನು ಸ್ಮರಿಸಿ ನಮಸ್ಕರಿಸಿ. ಮನಸ್ಸನ್ನು ಜಪಕ್ಕೆ ಸಿದ್ಧಗೊಳಿಸಿ.",
+            "೪  ಪ್ರಾಣಾಯಾಮ" to "ಗುರುಗಳಿಂದ ಕಲಿತ ಪ್ರಾಣಾಯಾಮವನ್ನು ನಿಗದಿತ ಮಂತ್ರ ಮತ್ತು ಸಂಖ್ಯೆಯಲ್ಲಿ ಮಾಡಿ. ಉಸಿರನ್ನು ಬಲವಂತವಾಗಿ ಹಿಡಿಯಬೇಡಿ.",
+            "೫  ಸಂಕಲ್ಪ" to "ಸಾಧಕನ ಹೆಸರು, ಗೋತ್ರ, ಪ್ರವರ, ವೇದಶಾಖೆ ಮತ್ತು ನಕ್ಷತ್ರವನ್ನು ಸ್ಮರಿಸಿ. ಮಂತ್ರ ಮತ್ತು ಜಪದ ಗುರಿ ಸಂಖ್ಯೆಯನ್ನು ನಿಶ್ಚಯಿಸಿ.",
+            "೬  ನ್ಯಾಸ ಮತ್ತು ಧ್ಯಾನ" to "ವಿನಿಯೋಗ, ಋಷ್ಯಾದಿನ್ಯಾಸ, ಕರನ್ಯಾಸ, ಅಂಗನ್ಯಾಸ ಮತ್ತು ಧ್ಯಾನವನ್ನು ಆ ಮಂತ್ರಕ್ಕೆ ಗುರು ಉಪದೇಶಿಸಿದ್ದರೆ ಮಾತ್ರ ಮಾಡಿ.",
+            "೭  ಜಪ" to "ಮಂತ್ರವನ್ನು ಶುದ್ಧ ಉಚ್ಚಾರಣೆ ಮತ್ತು ಸ್ಥಿರ ಗತಿಯಲ್ಲಿ ಜಪಿಸಿ. ಮಾಲೆಯ ಮೇರು ದಾಟಬೇಡಿ. ಪ್ರತಿ ಜಪಕ್ಕೆ ಬಲದ ಕಿತ್ತಳೆ ಗುಂಡಿ ಒತ್ತಿ.",
+            "೮  ಸಮರ್ಪಣೆ ಮತ್ತು ದಾಖಲೆ" to "ಜಪದ ಫಲವನ್ನು ಶ್ರೀಮನ್ನಾರಾಯಣನಿಗೆ ಸಮರ್ಪಿಸಿ. ‘ದಾಖಲಿಸು’ ಒತ್ತಿ ಅವಧಿಯನ್ನು ಸಾಧಕನ ದಾಖಲೆಗೆ ಸೇರಿಸಿ."
+        )
     }
 }

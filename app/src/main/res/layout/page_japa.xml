@@ -1,50 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/black" android:orientation="horizontal" android:paddingLeft="@dimen/page_pad_h" android:paddingTop="@dimen/page_pad_top" android:paddingRight="@dimen/page_pad_h" android:paddingBottom="@dimen/footer_bar">
-    <ScrollView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.46" android:fillViewport="true" android:paddingRight="20dp" android:scrollbars="none">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
-            <TextView android:id="@+id/japaRitualTitle" style="@style/Desk.Title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ಜಪದ ಪೂರ್ವ ಮತ್ತು ಉತ್ತರ ಕ್ರಮ" />
-            <TextView android:id="@+id/japaSankalpa" style="@style/Desk.Body2" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:textColor="@color/accent" />
-            <TextView style="@style/Desk.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="೧  ಶುದ್ಧಿ ಮತ್ತು ಆಸನ" />
-            <TextView style="@style/Desk.Body2" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ಸ್ನಾನ ಮಾಡಿ ಅಥವಾ ಕೈ–ಕಾಲು ತೊಳೆದು, ಸ್ವಚ್ಛವಾದ ಶಾಂತ ಸ್ಥಳದಲ್ಲಿ ಕುಳಿತುಕೊಳ್ಳಿ. ಗುರು ಅಥವಾ ಮನೆಪದ್ಧತಿ ಸೂಚಿಸಿದ ದಿಕ್ಕು ಮತ್ತು ಆಸನವನ್ನು ಅನುಸರಿಸಿ. ಬೆನ್ನು ಸಹಜವಾಗಿ ನೇರವಾಗಿರಲಿ." />
-            <TextView style="@style/Desk.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="೨  ಆಚಮನ" />
-            <TextView style="@style/Desk.Body2" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ಕುಡಿಯಲು ಯೋಗ್ಯವಾದ ನೀರನ್ನು ಇಟ್ಟುಕೊಂಡು ನಿಮ್ಮ ಕುಟುಂಬದ ಮಾಧ್ವ ಕ್ರಮದಂತೆ ಆಚಮನ ಮಾಡಿ. ಕೇಶವದಿಂದ ಶ್ರೀಕೃಷ್ಣವರೆಗಿನ ಚತುರ್ವಿಂಶತಿ ನಾಮಗಳ ಕ್ರಮವನ್ನು ಕಲಿತ ರೀತಿಯಲ್ಲೇ ಬಳಸಿ." />
-            <TextView style="@style/Desk.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="೩  ಶ್ರೀಹರಿ–ಗುರು ಸ್ಮರಣೆ" />
-            <TextView style="@style/Desk.Body2" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ಶ್ರೀಹರಿ, ಮುಖ್ಯಪ್ರಾಣ ದೇವರು ಮತ್ತು ಗುರುಪರಂಪರೆಯನ್ನು ಸ್ಮರಿಸಿ ನಮಸ್ಕರಿಸಿ. ಮನಸ್ಸನ್ನು ಹೊರಗಿನ ಕೆಲಸಗಳಿಂದ ಹಿಂದಕ್ಕೆ ತಂದು ಜಪಕ್ಕೆ ಸಿದ್ಧಗೊಳಿಸಿ." />
-            <TextView style="@style/Desk.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="೪  ಪ್ರಾಣಾಯಾಮ" />
-            <TextView style="@style/Desk.Body2" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ಗುರುಗಳಿಂದ ಕಲಿತ ಪ್ರಾಣಾಯಾಮವಿದ್ದರೆ ಅದನ್ನು ನಿಗದಿತ ಮಂತ್ರ ಮತ್ತು ಸಂಖ್ಯೆಯಲ್ಲಿ ಮಾಡಿ. ಉಸಿರನ್ನು ಬಲವಂತವಾಗಿ ಹಿಡಿಯಬೇಡಿ; ಕಲಿತ ವಿಧಾನ ಇಲ್ಲದಿದ್ದರೆ ಕೆಲವು ಕ್ಷಣ ಶಾಂತವಾಗಿ ಸಹಜ ಉಸಿರನ್ನು ಗಮನಿಸಿ." />
-            <TextView style="@style/Desk.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="೫  ಸಂಕಲ್ಪ" />
-            <TextView style="@style/Desk.Body2" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ಸಕ್ರಿಯ ವ್ಯಕ್ತಿಯ ಹೆಸರು, ಗೋತ್ರ ಮತ್ತು ನಕ್ಷತ್ರವನ್ನು ಮನಸ್ಸಿನಲ್ಲಿ ಅಥವಾ ಪದ್ಧತಿಯಂತೆ ಹೇಳಿ. ಯಾವ ಮಂತ್ರವನ್ನು, ಎಷ್ಟು ಬಾರಿ ಜಪಿಸುತ್ತೀರಿ ಎಂಬುದನ್ನು ಸ್ಪಷ್ಟವಾಗಿ ನಿಶ್ಚಯಿಸಿ. ಮೇಲಿನ ಕಿತ್ತಳೆ ಸಾಲು ಆಯ್ದ ಪ್ರೊಫೈಲ್‌ನ ನೆನಪಿನ ಸೂಚನೆ." />
-            <TextView style="@style/Desk.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="೬  ನ್ಯಾಸ ಮತ್ತು ಧ್ಯಾನ" />
-            <TextView style="@style/Desk.Body2" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ವಿನಿಯೋಗ, ಋಷ್ಯಾದಿನ್ಯಾಸ, ಕರನ್ಯಾಸ, ಅಂಗನ್ಯಾಸ ಮತ್ತು ಧ್ಯಾನವನ್ನು ಆ ಮಂತ್ರಕ್ಕೆ ಗುರು ಉಪದೇಶಿಸಿದ್ದರೆ ಮಾತ್ರ ಮಾಡಿ. ಒಂದು ಮಂತ್ರದ ಕ್ರಮವನ್ನು ಮತ್ತೊಂದಕ್ಕೆ ಅನ್ವಯಿಸಬೇಡಿ." />
-            <TextView style="@style/Desk.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="೭  ಜಪ" />
-            <TextView style="@style/Desk.Body2" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ಮಂತ್ರವನ್ನು ಸರಿಯಾದ ಉಚ್ಚಾರಣೆ ಮತ್ತು ಸ್ಥಿರ ಗತಿಯಲ್ಲಿ ಜಪಿಸಿ. ಮಾಲೆ ಬಳಸಿದರೆ ಮೇರುವನ್ನು ದಾಟದೆ ಹಿಂದಿರುಗಿ; ಮಾಲೆಯನ್ನು ಗೌರವದಿಂದ ಮುಚ್ಚಿಟ್ಟುಕೊಳ್ಳಿ. ಪ್ರತಿ ಜಪಕ್ಕೆ ದೊಡ್ಡ ಕಿತ್ತಳೆ ಗುಂಡಿಯನ್ನು ಒತ್ತಿ." />
-            <TextView style="@style/Desk.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="೮  ಸಮರ್ಪಣೆ ಮತ್ತು ದಾಖಲೆ" />
-            <TextView style="@style/Desk.Body2" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ಜಪ ಮುಗಿದ ನಂತರ ಅದರ ಫಲವನ್ನು ಶ್ರೀಮನ್ನಾರಾಯಣನಿಗೆ ಸಮರ್ಪಿಸಿ. ‘ದಾಖಲಿಸು’ ಒತ್ತಿದಾಗ ಈ ಅವಧಿ ಆಯ್ದ ವ್ಯಕ್ತಿಯ ಅವಧಿಗಳ ದಾಖಲೆಗೆ ಸೇರುತ್ತದೆ ಮತ್ತು ಪ್ರಸ್ತುತ ಎಣಿಕೆ ಶೂನ್ಯವಾಗುತ್ತದೆ." />
-            <TextView style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:text="ದೀಕ್ಷಾ, ಬೀಜ ಮತ್ತು ಗುಪ್ತ ಮಂತ್ರಗಳಿಗೆ ಈ ಸಾಮಾನ್ಯ ಸೂಚನೆ ಸಾಕಾಗುವುದಿಲ್ಲ. ನಿಮ್ಮ ಗುರುಗಳ ಉಪದೇಶವೇ ಪ್ರಧಾನ." />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/black" android:orientation="horizontal"
+    android:paddingLeft="@dimen/page_pad_h" android:paddingTop="@dimen/page_pad_top"
+    android:paddingRight="@dimen/page_pad_h" android:paddingBottom="@dimen/footer_bar">
+
+    <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+        android:layout_weight="1" android:orientation="vertical" android:paddingRight="@dimen/space_16">
+
+        <TextView android:id="@+id/japaTitle" style="@style/Desk.Title"
+            android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone" />
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="36dp"
+            android:gravity="center_vertical" android:orientation="horizontal">
+            <TextView android:id="@+id/japaRitualTitle" style="@style/Desk.Meta"
+                android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+                android:gravity="center_vertical" android:text="ಜಪ  ›  ಜಪದ ಕ್ರಮ" android:textColor="@color/white_55" />
+            <Spinner android:id="@+id/japaRitual" android:layout_width="220dp" android:layout_height="36dp"
+                android:background="@drawable/bg_dropdown" android:popupBackground="@color/surface_2" android:spinnerMode="dropdown" />
+            <Spinner android:id="@+id/japaProfile" android:layout_width="200dp" android:layout_height="36dp"
+                android:layout_marginLeft="@dimen/space_8" android:background="@drawable/bg_dropdown"
+                android:popupBackground="@color/surface_2" android:spinnerMode="dropdown" />
         </LinearLayout>
-    </ScrollView>
-    <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.54" android:gravity="center_horizontal" android:orientation="vertical">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
-            <TextView android:id="@+id/japaTitle" style="@style/Desk.Section" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="ಜಪ ಎಣಿಕೆ" />
-            <Spinner android:id="@+id/japaProfile" android:layout_width="210dp" android:layout_height="44dp" android:background="@drawable/bg_dropdown" android:popupBackground="@color/surface_2" android:spinnerMode="dropdown" />
+
+        <TextView android:id="@+id/japaProfileMeta" style="@style/Desk.Meta"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone" />
+        <TextView android:id="@+id/japaSankalpa" style="@style/Desk.Body2"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_4"
+            android:ellipsize="end" android:maxLines="1" android:textColor="@color/accent" />
+        <TextView android:id="@+id/japaRitualBody" style="@style/Desk.Body2"
+            android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="@dimen/space_4"
+            android:ellipsize="end" android:gravity="center_vertical" android:lineSpacingExtra="1dp"
+            android:maxLines="3" android:textColor="@color/white_70" android:textSize="15sp" />
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="36dp" android:orientation="horizontal">
+            <EditText android:id="@+id/japaMantra" android:layout_width="0dp" android:layout_height="match_parent"
+                android:layout_weight="1" android:background="@drawable/bg_input" android:hint="ಮಂತ್ರದ ಹೆಸರು"
+                android:padding="8dp" android:singleLine="true" android:textColor="@color/white"
+                android:textColorHint="@color/white_55" android:textSize="18sp" />
+            <CheckBox android:id="@+id/japaTargetEnabled" style="@style/Desk.Check"
+                android:layout_width="132dp" android:layout_height="match_parent" android:layout_marginLeft="6dp"
+                android:gravity="center_vertical" android:text="ಗುರಿ ಸಕ್ರಿಯ" android:textColor="@color/white" android:textSize="16sp" />
+            <EditText android:id="@+id/japaTarget" android:layout_width="104dp" android:layout_height="match_parent"
+                android:layout_marginLeft="4dp" android:background="@drawable/bg_input" android:hint="ಗುರಿ"
+                android:inputType="number" android:maxLength="18" android:padding="8dp" android:singleLine="true"
+                android:textColor="@color/white" android:textColorHint="@color/white_55" android:textSize="18sp" />
         </LinearLayout>
-        <TextView android:id="@+id/japaProfileMeta" style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="end" android:visibility="gone" />
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:orientation="horizontal">
-            <EditText android:id="@+id/japaMantra" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:background="@drawable/bg_input" android:hint="ಮಂತ್ರದ ಹೆಸರು" android:padding="8dp" android:singleLine="true" android:textColor="@color/white" android:textColorHint="@color/white_55" android:textSize="18sp" />
-            <CheckBox android:id="@+id/japaTargetEnabled" style="@style/Desk.Check" android:layout_width="132dp" android:layout_height="44dp" android:layout_marginLeft="6dp" android:gravity="center_vertical" android:text="ಗುರಿ ಸಕ್ರಿಯ" android:textColor="@color/white" android:textSize="16sp" />
-            <EditText android:id="@+id/japaTarget" android:layout_width="96dp" android:layout_height="44dp" android:layout_marginLeft="4dp" android:background="@drawable/bg_input" android:hint="ಗುರಿ" android:inputType="number" android:maxLength="18" android:padding="8dp" android:singleLine="true" android:textColor="@color/white" android:textColorHint="@color/white_55" android:textSize="18sp" />
+
+        <TextView android:id="@+id/japaCurrent" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_4" android:gravity="center" android:text="೦"
+            android:textColor="@color/white" android:textSize="30sp" />
+        <TextView android:id="@+id/japaProgress" style="@style/Desk.Meta"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" />
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="36dp"
+            android:layout_marginTop="@dimen/space_4" android:orientation="horizontal">
+            <TextView android:id="@+id/japa108" style="@style/Desk.Button" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="+೧೦೮" android:textSize="18sp" />
+            <TextView android:id="@+id/japaUndo" style="@style/Desk.Button" android:layout_width="0dp" android:layout_height="match_parent" android:layout_marginLeft="4dp" android:layout_weight="1" android:contentDescription="ಒಂದು ಎಣಿಕೆ ಹಿಂದಕ್ಕೆ" android:gravity="center" android:text="−೧" android:textSize="18sp" />
+            <TextView android:id="@+id/japaComplete" style="@style/Desk.Button.Accent" android:layout_width="0dp" android:layout_height="match_parent" android:layout_marginLeft="4dp" android:layout_weight="1.4" android:contentDescription="ಜಪ ಅವಧಿ ದಾಖಲಿಸು" android:gravity="center" android:text="ದಾಖಲಿಸು" android:textSize="18sp" />
+            <TextView android:id="@+id/japaReset" style="@style/Desk.Button" android:layout_width="0dp" android:layout_height="match_parent" android:layout_marginLeft="4dp" android:layout_weight="1" android:contentDescription="ಪ್ರಸ್ತುತ ಜಪ ಎಣಿಕೆಯನ್ನು ಮರುಹೊಂದಿಸು" android:gravity="center" android:text="ಶೂನ್ಯ" android:textSize="18sp" />
         </LinearLayout>
-        <TextView android:id="@+id/japaTap" android:layout_width="52dp" android:layout_height="52dp" android:layout_marginTop="4dp" android:background="@drawable/bg_circle_fill" android:contentDescription="ಒಂದು ಜಪ ಸೇರಿಸಿ" android:gravity="center" android:text="ಜಪ +೧" android:textColor="@color/black" android:textSize="16sp" />
-        <TextView android:id="@+id/japaCurrent" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="೦" android:textColor="@color/white" android:textSize="30sp" />
-        <TextView android:id="@+id/japaProgress" style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" />
-        <LinearLayout android:layout_width="match_parent" android:layout_height="44dp" android:layout_marginTop="2dp" android:orientation="horizontal">
-            <TextView android:id="@+id/japa108" style="@style/Desk.Button" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:paddingLeft="4dp" android:paddingRight="4dp" android:singleLine="true" android:text="+೧೦೮" android:textSize="18sp" />
-            <TextView android:id="@+id/japaUndo" style="@style/Desk.Button" android:layout_width="0dp" android:layout_height="match_parent" android:layout_marginLeft="4dp" android:layout_weight="1" android:contentDescription="ಒಂದು ಎಣಿಕೆ ಹಿಂದಕ್ಕೆ" android:gravity="center" android:paddingLeft="4dp" android:paddingRight="4dp" android:singleLine="true" android:text="−೧" android:textSize="18sp" />
-            <TextView android:id="@+id/japaComplete" style="@style/Desk.Button.Accent" android:layout_width="0dp" android:layout_height="match_parent" android:layout_marginLeft="4dp" android:layout_weight="1.4" android:contentDescription="ಜಪ ಅವಧಿ ದಾಖಲಿಸು" android:gravity="center" android:paddingLeft="4dp" android:paddingRight="4dp" android:singleLine="true" android:text="ದಾಖಲಿಸು" android:textSize="18sp" />
-            <TextView android:id="@+id/japaReset" style="@style/Desk.Button" android:layout_width="0dp" android:layout_height="match_parent" android:layout_marginLeft="4dp" android:layout_weight="1" android:contentDescription="ಪ್ರಸ್ತುತ ಜಪ ಎಣಿಕೆಯನ್ನು ಮರುಹೊಂದಿಸು" android:gravity="center" android:paddingLeft="4dp" android:paddingRight="4dp" android:singleLine="true" android:text="ಶೂನ್ಯ" android:textSize="18sp" />
-        </LinearLayout>
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="horizontal">
-            <TextView android:id="@+id/japaSessions" style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="end" />
-        </LinearLayout>
+        <TextView android:id="@+id/japaSessions" style="@style/Desk.Meta"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_4" android:gravity="end" />
     </LinearLayout>
+
+    <TextView android:id="@+id/japaTap" style="@style/Desk.Button.Accent"
+        android:layout_width="220dp" android:layout_height="match_parent" android:contentDescription="ಒಂದು ಜಪ ಸೇರಿಸಿ"
+        android:gravity="center" android:text="ಜಪ\n+೧" android:textColor="@color/black" android:textSize="32sp" />
 </LinearLayout>
