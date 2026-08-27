@@ -1,69 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@color/black" android:orientation="horizontal"
-    android:paddingLeft="@dimen/page_pad_h" android:paddingTop="@dimen/page_pad_top"
-    android:paddingRight="@dimen/page_pad_h" android:paddingBottom="@dimen/footer_bar">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/page_pad_h"
+    android:paddingTop="@dimen/page_pad_top"
+    android:paddingRight="@dimen/page_pad_h"
+    android:paddingBottom="@dimen/footer_bar">
 
-    <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
-        android:layout_weight="1" android:orientation="vertical" android:paddingRight="@dimen/space_16">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.08"
+        android:orientation="vertical"
+        android:paddingRight="28dp">
 
         <TextView android:id="@+id/japaTitle" style="@style/Desk.Title"
             android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone" />
 
-        <LinearLayout android:layout_width="match_parent" android:layout_height="36dp"
-            android:gravity="center_vertical" android:orientation="horizontal">
-            <TextView android:id="@+id/japaRitualTitle" style="@style/Desk.Meta"
-                android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
-                android:gravity="center_vertical" android:text="ಜಪ  ›  ಜಪದ ಕ್ರಮ" android:textColor="@color/white_55" />
-            <Spinner android:id="@+id/japaRitual" android:layout_width="220dp" android:layout_height="36dp"
-                android:background="@drawable/bg_dropdown" android:popupBackground="@color/surface_2" android:spinnerMode="dropdown" />
-            <Spinner android:id="@+id/japaProfile" android:layout_width="200dp" android:layout_height="36dp"
-                android:layout_marginLeft="@dimen/space_8" android:background="@drawable/bg_dropdown"
-                android:popupBackground="@color/surface_2" android:spinnerMode="dropdown" />
-        </LinearLayout>
+        <TextView android:id="@+id/japaRitualTitle" style="@style/Desk.Meta"
+            android:layout_width="match_parent" android:layout_height="36dp"
+            android:gravity="center_vertical" android:text="ಜಪ  ›  ಪೂರ್ವ ಸಿದ್ಧತೆ"
+            android:textColor="@color/white_55" android:textSize="16sp" />
 
-        <TextView android:id="@+id/japaProfileMeta" style="@style/Desk.Meta"
-            android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone" />
-        <TextView android:id="@+id/japaSankalpa" style="@style/Desk.Body2"
-            android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_4"
-            android:ellipsize="end" android:maxLines="1" android:textColor="@color/accent" />
+        <TextView android:id="@+id/japaRitualStep"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" android:fontWeight="600"
+            android:textColor="@color/white" android:textSize="26sp" />
+
         <TextView android:id="@+id/japaRitualBody" style="@style/Desk.Body2"
-            android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="@dimen/space_4"
-            android:ellipsize="end" android:gravity="center_vertical" android:lineSpacingExtra="1dp"
-            android:maxLines="3" android:textColor="@color/white_70" android:textSize="15sp" />
+            android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+            android:layout_marginTop="16dp" android:lineSpacingExtra="5dp"
+            android:textColor="@color/white_70" android:textSize="19sp" />
 
-        <LinearLayout android:layout_width="match_parent" android:layout_height="36dp" android:orientation="horizontal">
-            <Spinner android:id="@+id/japaMantra" android:layout_width="0dp" android:layout_height="match_parent"
-                android:layout_weight="1" android:background="@drawable/bg_dropdown"
-                android:popupBackground="@color/surface_2" android:spinnerMode="dropdown" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="64dp"
+            android:gravity="center_vertical" android:orientation="horizontal">
+            <TextView android:id="@+id/japaRitualBack"
+                android:layout_width="56dp" android:layout_height="56dp" android:background="@drawable/bg_circle"
+                android:contentDescription="ಹಿಂದಿನ ಜಪ ಕ್ರಮ" android:gravity="center" android:text="‹"
+                android:textColor="@color/white" android:textSize="38sp" />
+            <Spinner android:id="@+id/japaRitual"
+                android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1"
+                android:layout_marginLeft="12dp" android:layout_marginRight="12dp"
+                android:background="@drawable/bg_dropdown" android:popupBackground="@color/surface_2"
+                android:spinnerMode="dropdown" />
+            <TextView android:id="@+id/japaRitualNext"
+                android:layout_width="56dp" android:layout_height="56dp" android:background="@drawable/bg_circle_fill"
+                android:contentDescription="ಮುಂದಿನ ಜಪ ಕ್ರಮ" android:gravity="center" android:text="›"
+                android:textColor="@color/black" android:textSize="38sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View android:layout_width="1dp" android:layout_height="match_parent" android:background="@color/divider" />
+
+    <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+        android:layout_weight="0.92" android:orientation="vertical" android:paddingLeft="28dp">
+
+        <TextView style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="18dp"
+            android:gravity="center_vertical" android:text="ಜಪ ಮಂತ್ರ" android:textColor="@color/white_55" />
+
+        <Spinner android:id="@+id/japaMantra" android:layout_width="match_parent" android:layout_height="32dp"
+            android:background="@drawable/bg_dropdown" android:popupBackground="@color/surface_2"
+            android:spinnerMode="dropdown" />
+
+        <TextView android:id="@+id/japaMantraName"
+            android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="4dp"
+            android:autoSizeMaxTextSize="25sp" android:autoSizeMinTextSize="14sp"
+            android:autoSizeStepGranularity="1sp" android:autoSizeTextType="uniform"
+            android:fontWeight="700" android:gravity="center_vertical" android:lineSpacingExtra="3dp"
+            android:maxLines="3" android:text="ಓಂ ನಮೋ ನಾರಾಯಣಾಯ" android:textColor="@color/white"
+            android:textSize="25sp" android:textStyle="bold" />
+
+        <TextView android:id="@+id/japaMantraNote" style="@style/Desk.Meta"
+            android:layout_width="match_parent" android:layout_height="16dp"
+            android:gravity="center_vertical" android:textColor="@color/carbon_support_warning"
+            android:textSize="13sp" android:visibility="invisible" />
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="30dp"
+            android:gravity="center_vertical" android:orientation="horizontal">
             <CheckBox android:id="@+id/japaTargetEnabled" style="@style/Desk.Check"
-                android:layout_width="132dp" android:layout_height="match_parent" android:layout_marginLeft="6dp"
-                android:gravity="center_vertical" android:text="ಗುರಿ ಸಕ್ರಿಯ" android:textColor="@color/white" android:textSize="16sp" />
-            <EditText android:id="@+id/japaTarget" android:layout_width="104dp" android:layout_height="match_parent"
-                android:layout_marginLeft="4dp" android:background="@drawable/bg_input" android:hint="ಗುರಿ"
-                android:inputType="number" android:maxLength="18" android:padding="8dp" android:singleLine="true"
+                android:layout_width="144dp" android:layout_height="match_parent" android:gravity="center_vertical"
+                android:text="ಗುರಿ ಸಕ್ರಿಯ" android:textColor="@color/white" android:textSize="16sp" />
+            <EditText android:id="@+id/japaTarget"
+                android:layout_width="124dp" android:layout_height="30dp" android:layout_marginLeft="8dp"
+                android:background="@drawable/bg_input" android:hint="ಗುರಿ" android:inputType="number"
+                android:maxLength="18" android:padding="8dp" android:singleLine="true"
                 android:textColor="@color/white" android:textColorHint="@color/white_55" android:textSize="18sp" />
         </LinearLayout>
 
-        <TextView android:id="@+id/japaCurrent" android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_4" android:gravity="center" android:text="೦"
-            android:textColor="@color/white" android:textSize="30sp" />
-        <TextView android:id="@+id/japaProgress" style="@style/Desk.Meta"
-            android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" />
+        <TextView android:id="@+id/japaWaiting"
+            android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+            android:gravity="center" android:paddingLeft="24dp" android:paddingRight="24dp"
+            android:text="ಪೂರ್ವ ಸಿದ್ಧತೆಯ ಕ್ರಮ ಮುಗಿದ ನಂತರ ಜಪ ಎಣಿಕೆ ತೆರೆದುಕೊಳ್ಳುತ್ತದೆ."
+            android:textColor="@color/white_55" android:textSize="18sp" />
 
-        <LinearLayout android:layout_width="match_parent" android:layout_height="36dp"
-            android:layout_marginTop="@dimen/space_4" android:orientation="horizontal">
-            <TextView android:id="@+id/japa108" style="@style/Desk.Button" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="+೧೦೮" android:textSize="18sp" />
-            <TextView android:id="@+id/japaUndo" style="@style/Desk.Button" android:layout_width="0dp" android:layout_height="match_parent" android:layout_marginLeft="4dp" android:layout_weight="1" android:contentDescription="ಒಂದು ಎಣಿಕೆ ಹಿಂದಕ್ಕೆ" android:gravity="center" android:text="−೧" android:textSize="18sp" />
-            <TextView android:id="@+id/japaComplete" style="@style/Desk.Button.Accent" android:layout_width="0dp" android:layout_height="match_parent" android:layout_marginLeft="4dp" android:layout_weight="1.4" android:contentDescription="ಜಪ ಅವಧಿ ದಾಖಲಿಸು" android:gravity="center" android:text="ದಾಖಲಿಸು" android:textSize="18sp" />
-            <TextView android:id="@+id/japaReset" style="@style/Desk.Button" android:layout_width="0dp" android:layout_height="match_parent" android:layout_marginLeft="4dp" android:layout_weight="1" android:contentDescription="ಪ್ರಸ್ತುತ ಜಪ ಎಣಿಕೆಯನ್ನು ಮರುಹೊಂದಿಸು" android:gravity="center" android:text="ಶೂನ್ಯ" android:textSize="18sp" />
+        <LinearLayout android:id="@+id/japaCounterPane"
+            android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+            android:gravity="center_horizontal" android:orientation="vertical" android:visibility="gone">
+            <TextView android:id="@+id/japaCurrent"
+                android:layout_width="match_parent" android:layout_height="26dp" android:gravity="center"
+                android:text="೦" android:textColor="@color/white" android:textSize="24sp" />
+            <TextView android:id="@+id/japaProgress" style="@style/Desk.Meta"
+                android:layout_width="match_parent" android:layout_height="16dp" android:gravity="center"
+                android:textSize="13sp" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="96dp"
+                android:gravity="center" android:orientation="horizontal">
+                <TextView android:id="@+id/japaTap"
+                    android:layout_width="90dp" android:layout_height="90dp" android:background="@drawable/bg_circle_fill"
+                    android:contentDescription="ಒಂದು ಜಪ ಸೇರಿಸಿ" android:fontWeight="700" android:gravity="center"
+                    android:text="ಜಪ\n+೧" android:textColor="@color/black" android:textSize="21sp" />
+                <LinearLayout android:layout_width="96dp" android:layout_height="92dp"
+                    android:layout_marginLeft="18dp" android:gravity="center" android:orientation="vertical">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="42dp"
+                        android:gravity="center" android:orientation="horizontal">
+                        <TextView android:id="@+id/japa108"
+                            android:layout_width="40dp" android:layout_height="40dp" android:background="@drawable/bg_circle"
+                            android:contentDescription="ನೂರ ಎಂಟು ಜಪ ಸೇರಿಸಿ" android:gravity="center" android:text="+೧೦೮"
+                            android:textColor="@color/white" android:textSize="11sp" />
+                        <TextView android:id="@+id/japaUndo"
+                            android:layout_width="40dp" android:layout_height="40dp" android:layout_marginLeft="10dp"
+                            android:background="@drawable/bg_circle" android:contentDescription="ಒಂದು ಎಣಿಕೆ ಹಿಂದಕ್ಕೆ"
+                            android:gravity="center" android:text="−೧" android:textColor="@color/white" android:textSize="15sp" />
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="42dp"
+                        android:layout_marginTop="6dp" android:gravity="center" android:orientation="horizontal">
+                        <TextView android:id="@+id/japaComplete"
+                            android:layout_width="40dp" android:layout_height="40dp" android:background="@drawable/bg_circle_fill"
+                            android:contentDescription="ಜಪ ಅವಧಿ ದಾಖಲಿಸು" android:gravity="center" android:text="✓"
+                            android:textColor="@color/black" android:textSize="20sp" />
+                        <TextView android:id="@+id/japaReset"
+                            android:layout_width="40dp" android:layout_height="40dp" android:layout_marginLeft="10dp"
+                            android:background="@drawable/bg_circle" android:contentDescription="ಪ್ರಸ್ತುತ ಜಪ ಎಣಿಕೆಯನ್ನು ಮರುಹೊಂದಿಸು"
+                            android:gravity="center" android:text="↺" android:textColor="@color/white" android:textSize="19sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <TextView android:id="@+id/japaSessions" style="@style/Desk.Meta"
+                android:layout_width="match_parent" android:layout_height="16dp" android:gravity="center"
+                android:textSize="13sp" />
         </LinearLayout>
-        <TextView android:id="@+id/japaSessions" style="@style/Desk.Meta"
-            android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_4" android:gravity="end" />
     </LinearLayout>
-
-    <TextView android:id="@+id/japaTap" style="@style/Desk.Button.Accent"
-        android:layout_width="220dp" android:layout_height="match_parent" android:contentDescription="ಒಂದು ಜಪ ಸೇರಿಸಿ"
-        android:gravity="center" android:text="ಜಪ\n+೧" android:textColor="@color/black" android:textSize="32sp" />
 </LinearLayout>
