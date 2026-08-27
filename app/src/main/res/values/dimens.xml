@@ -11,6 +11,8 @@
     <dimen name="page_pad_h">24dp</dimen>
     <dimen name="page_pad_top">12dp</dimen>
     <dimen name="page_pad_bottom">0dp</dimen>
+    <dimen name="japa_pad_top">20dp</dimen>
+    <dimen name="japa_pad_bottom">76dp</dimen>
     <dimen name="chrome_bar">64dp</dimen>
     <dimen name="footer_bar">64dp</dimen>
     <dimen name="entry_pad">20dp</dimen>

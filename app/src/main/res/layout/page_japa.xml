@@ -5,9 +5,9 @@
     android:background="@color/black"
     android:orientation="horizontal"
     android:paddingLeft="@dimen/page_pad_h"
-    android:paddingTop="@dimen/page_pad_top"
+    android:paddingTop="@dimen/japa_pad_top"
     android:paddingRight="@dimen/page_pad_h"
-    android:paddingBottom="@dimen/footer_bar">
+    android:paddingBottom="@dimen/japa_pad_bottom">
 
     <LinearLayout
         android:layout_width="0dp"
