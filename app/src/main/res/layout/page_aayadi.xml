@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:layout_weight="0.38"
         android:orientation="vertical"
-        android:paddingRight="24dp">
+        android:paddingRight="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,42 +48,42 @@
             style="@style/Desk.Section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:text="ಉದ್ದ" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <TextView style="@style/Desk.Meta" android:layout_width="40dp" android:layout_height="44dp" android:gravity="center_vertical" android:text="ಅಡಿ" />
-            <Spinner android:id="@+id/aayadiLengthFt" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:background="@drawable/bg_dropdown" android:contentDescription="ಉದ್ದ ಅಡಿ" android:popupBackground="@color/surface_2" android:spinnerMode="dropdown" />
-            <TextView style="@style/Desk.Meta" android:layout_width="52dp" android:layout_height="44dp" android:layout_marginLeft="8dp" android:gravity="center_vertical" android:text="ಇಂಚು" />
-            <Spinner android:id="@+id/aayadiLengthIn" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:background="@drawable/bg_dropdown" android:contentDescription="ಉದ್ದ ಇಂಚು" android:popupBackground="@color/surface_2" android:spinnerMode="dropdown" />
+            <TextView style="@style/Desk.Meta" android:layout_width="36dp" android:layout_height="40dp" android:gravity="center_vertical" android:text="ಅಡಿ" />
+            <Spinner android:id="@+id/aayadiLengthFt" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:background="@drawable/bg_dropdown" android:contentDescription="ಉದ್ದ ಅಡಿ" android:popupBackground="@color/surface_2" android:spinnerMode="dropdown" />
+            <TextView style="@style/Desk.Meta" android:layout_width="46dp" android:layout_height="40dp" android:layout_marginLeft="4dp" android:gravity="center_vertical" android:text="ಇಂಚು" />
+            <Spinner android:id="@+id/aayadiLengthIn" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:background="@drawable/bg_dropdown" android:contentDescription="ಉದ್ದ ಇಂಚು" android:popupBackground="@color/surface_2" android:spinnerMode="dropdown" />
         </LinearLayout>
 
         <TextView
             style="@style/Desk.Section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:text="ಅಗಲ" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <TextView style="@style/Desk.Meta" android:layout_width="40dp" android:layout_height="44dp" android:gravity="center_vertical" android:text="ಅಡಿ" />
-            <Spinner android:id="@+id/aayadiBreadthFt" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:background="@drawable/bg_dropdown" android:contentDescription="ಅಗಲ ಅಡಿ" android:popupBackground="@color/surface_2" android:spinnerMode="dropdown" />
-            <TextView style="@style/Desk.Meta" android:layout_width="52dp" android:layout_height="44dp" android:layout_marginLeft="8dp" android:gravity="center_vertical" android:text="ಇಂಚು" />
-            <Spinner android:id="@+id/aayadiBreadthIn" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:background="@drawable/bg_dropdown" android:contentDescription="ಅಗಲ ಇಂಚು" android:popupBackground="@color/surface_2" android:spinnerMode="dropdown" />
+            <TextView style="@style/Desk.Meta" android:layout_width="36dp" android:layout_height="40dp" android:gravity="center_vertical" android:text="ಅಡಿ" />
+            <Spinner android:id="@+id/aayadiBreadthFt" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:background="@drawable/bg_dropdown" android:contentDescription="ಅಗಲ ಅಡಿ" android:popupBackground="@color/surface_2" android:spinnerMode="dropdown" />
+            <TextView style="@style/Desk.Meta" android:layout_width="46dp" android:layout_height="40dp" android:layout_marginLeft="4dp" android:gravity="center_vertical" android:text="ಇಂಚು" />
+            <Spinner android:id="@+id/aayadiBreadthIn" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:background="@drawable/bg_dropdown" android:contentDescription="ಅಗಲ ಇಂಚು" android:popupBackground="@color/surface_2" android:spinnerMode="dropdown" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/aayadiCalculate"
             style="@style/Desk.Button.Accent"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_marginTop="12dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
             android:gravity="center"
             android:text="ಲೆಕ್ಕ ಹಾಕಿ" />
 
@@ -128,32 +128,32 @@
                 android:rowCount="2"
                 android:useDefaultMargins="true">
 
-                <LinearLayout android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:background="@drawable/bg_card" android:gravity="center_vertical" android:orientation="vertical" android:padding="16dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:background="@drawable/bg_card" android:gravity="center_vertical" android:orientation="vertical" android:padding="10dp">
                     <TextView style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ಪದಂ" />
                     <TextView android:id="@+id/aayadiPadam" style="@style/Desk.Title.Large" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" />
                 </LinearLayout>
 
-                <LinearLayout android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:background="@drawable/bg_card" android:gravity="center_vertical" android:orientation="vertical" android:padding="16dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:background="@drawable/bg_card" android:gravity="center_vertical" android:orientation="vertical" android:padding="10dp">
                     <TextView style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ಆಯ" />
                     <TextView android:id="@+id/aayadiAaya" style="@style/Desk.Title.Large" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:maxLines="2" />
                 </LinearLayout>
 
-                <LinearLayout android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:background="@drawable/bg_card" android:gravity="center_vertical" android:orientation="vertical" android:padding="16dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:background="@drawable/bg_card" android:gravity="center_vertical" android:orientation="vertical" android:padding="10dp">
                     <TextView style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ಧನ" />
                     <TextView android:id="@+id/aayadiDhana" style="@style/Desk.Title.Large" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" />
                 </LinearLayout>
 
-                <LinearLayout android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:background="@drawable/bg_card" android:gravity="center_vertical" android:orientation="vertical" android:padding="16dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:background="@drawable/bg_card" android:gravity="center_vertical" android:orientation="vertical" android:padding="10dp">
                     <TextView style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ಋಣ" />
                     <TextView android:id="@+id/aayadiRuna" style="@style/Desk.Title.Large" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" />
                 </LinearLayout>
 
-                <LinearLayout android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:background="@drawable/bg_card" android:gravity="center_vertical" android:orientation="vertical" android:padding="16dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:background="@drawable/bg_card" android:gravity="center_vertical" android:orientation="vertical" android:padding="10dp">
                     <TextView style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ಆಯುಷ್ಯ" />
                     <TextView android:id="@+id/aayadiAyush" style="@style/Desk.Title.Large" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" />
                 </LinearLayout>
 
-                <LinearLayout android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:background="@drawable/bg_card" android:gravity="center_vertical" android:orientation="vertical" android:padding="16dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="0dp" android:layout_columnWeight="1" android:layout_rowWeight="1" android:background="@drawable/bg_card" android:gravity="center_vertical" android:orientation="vertical" android:padding="10dp">
                     <TextView style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ವ್ಯಯ" />
                     <TextView android:id="@+id/aayadiVyaya" style="@style/Desk.Title.Large" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" />
                 </LinearLayout>

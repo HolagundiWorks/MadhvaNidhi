@@ -215,7 +215,18 @@ class ReaderFragment : Fragment() {
         val empty = rows.isEmpty()
         v.findViewById<View>(R.id.selectorEmpty).visibility = if (empty) View.VISIBLE else View.GONE
         v.findViewById<TextView>(R.id.selectorEmpty).text = OsLang.ui("empty_page", lang)
-        v.findViewById<View>(R.id.selectorList).visibility = if (empty) View.GONE else View.VISIBLE
+        val list = v.findViewById<RecyclerView>(R.id.selectorList)
+        list.visibility = if (empty) View.GONE else View.VISIBLE
+        if (!empty) keepSelectedRowFullyVisible(list, rows.indexOfFirst { it.id == itemId })
+    }
+
+    /** Put the active choice on a clean row instead of leaving it clipped by either edge. */
+    private fun keepSelectedRowFullyVisible(list: RecyclerView, position: Int) {
+        if (position < 0) return
+        list.post {
+            val manager = list.layoutManager as? LinearLayoutManager ?: return@post
+            manager.scrollToPositionWithOffset(position, 0)
+        }
     }
 
     private fun current(): Shown? {

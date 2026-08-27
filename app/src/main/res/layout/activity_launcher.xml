@@ -30,9 +30,9 @@
         android:clipChildren="false"
         android:clipToPadding="false"
         android:paddingLeft="@dimen/page_pad_h"
-        android:paddingTop="8dp"
+        android:paddingTop="6dp"
         android:paddingRight="@dimen/page_pad_h"
-        android:paddingBottom="8dp">
+        android:paddingBottom="6dp">
 
         <ImageButton
             android:id="@+id/navPrev"
@@ -48,9 +48,9 @@
         <TextView
             android:id="@+id/pageCurrent"
             style="@style/Desk.Section"
-            android:layout_width="180dp"
+            android:layout_width="160dp"
             android:layout_height="0dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="12dp"
             android:ellipsize="end"
             android:gravity="center_vertical"
             android:maxLines="1"
@@ -102,7 +102,7 @@
     <FrameLayout
         android:id="@+id/shadeGuard"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
+        android:layout_height="24dp"
         android:layout_gravity="top"
         android:background="@android:color/transparent"
         android:clickable="true"
@@ -112,8 +112,8 @@
         <View
             android:layout_width="48dp"
             android:layout_height="3dp"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginBottom="6dp"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="4dp"
             android:background="@color/white_55"
             android:importantForAccessibility="no" />
     </FrameLayout>

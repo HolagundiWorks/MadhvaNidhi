@@ -13,11 +13,11 @@
         android:id="@+id/nityaCrumb"
         style="@style/Desk.Meta"
         android:layout_width="match_parent"
-        android:layout_height="42dp"
+        android:layout_height="34dp"
         android:gravity="center_vertical"
         android:text="ನಿತ್ಯ ಪಾರಾಯಣ  ›  ಮಾಧ್ವ ನಿತ್ಯ ಶ್ಲೋಕಗಳು"
         android:textColor="@color/white_55"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
 
     <View
         android:layout_width="match_parent"
@@ -31,6 +31,6 @@
         android:layout_weight="1"
         android:clipToPadding="false"
         android:overScrollMode="never"
-        android:paddingBottom="24dp"
+        android:paddingBottom="16dp"
         android:scrollbars="vertical" />
 </LinearLayout>
