@@ -37,10 +37,15 @@ class JapaFragment : Fragment() {
         view.findViewById<View>(R.id.japaUndo).setOnClickListener { paint(view, store.undo()) }
         view.findViewById<View>(R.id.japaComplete).setOnClickListener { saveConfig(view); paint(view, store.complete()) }
         view.findViewById<View>(R.id.japaReset).setOnClickListener {
-            AlertDialog.Builder(requireContext()).setTitle("ಪ್ರಸ್ತುತ ಎಣಿಕೆ ಮರುಹೊಂದಿಸಬೇಕೇ?")
+            val dialog = AlertDialog.Builder(requireContext()).setTitle("ಪ್ರಸ್ತುತ ಎಣಿಕೆ ಮರುಹೊಂದಿಸಬೇಕೇ?")
                 .setMessage("ಈ ಕ್ರಿಯೆಯಿಂದ ಪ್ರಸ್ತುತ ಎಣಿಕೆ ಮಾತ್ರ ಶೂನ್ಯವಾಗುತ್ತದೆ; ದಾಖಲಿಸಿದ ಹಳೆಯ ಅವಧಿಗಳು ಉಳಿಯುತ್ತವೆ.")
                 .setNegativeButton("ರದ್ದು", null)
-                .setPositiveButton("ಮರುಹೊಂದಿಸು") { _, _ -> paint(view, store.resetCurrent()) }.show()
+                .setPositiveButton("ಮರುಹೊಂದಿಸು") { _, _ -> paint(view, store.resetCurrent()) }.create()
+            dialog.setOnShowListener {
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(requireContext().getColor(R.color.carbon_support_error))
+                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(requireContext().getColor(R.color.white_70))
+            }
+            dialog.show()
         }
         view.findViewById<CheckBox>(R.id.japaTargetEnabled).setOnCheckedChangeListener { _, enabled ->
             view.findViewById<View>(R.id.japaTarget).visibility = if (enabled) View.VISIBLE else View.GONE

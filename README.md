@@ -55,6 +55,8 @@ Pager next/prev wraps from the final page back to Panchanga. Footer shows `|| �
 
 Pooja and Sandhyavandana render a live Sankalpa from the current Panchanga. The active profile supplies name, Gotra, Pravara, Veda Shakha and Nakshatra. Japa targets are optional and profile-specific; no lifetime total is maintained.
 
+Profile names accept offline English phonetic typing and are stored in Kannada. The packaged `ದೇವಪೂಜಾ ವಿಧಾನ` contains the complete user-supplied procedure from Nirmalya Visarjana through Samapana.
+
 Panchanga prefers SRS Mantralaya when online, then USB files, then local Chandramana calculation. USB files come from Vishwakarma OS.
 
 ## Related

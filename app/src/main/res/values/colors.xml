@@ -7,9 +7,9 @@
     <color name="white_70">#B3FFFFFF</color>
     <color name="white_55">#8CFFFFFF</color>
     <color name="white_45">#73FFFFFF</color>
-    <color name="surface_1">#0D0D0D</color>
-    <color name="surface_2">#181818</color>
-    <color name="divider">#3D3D3D</color>
+    <color name="surface_1">#161616</color>
+    <color name="surface_2">#262626</color>
+    <color name="divider">#525252</color>
     <color name="accent_90">#E6FF6A00</color>
     <color name="accent_70">#B3FF6A00</color>
     <color name="scrim">#99000000</color>
@@ -20,4 +20,13 @@
     <color name="leaf_hole">#FFFFFF</color>
     <color name="moon_lit">#8A8A8A</color>
     <color name="moon_shade">#111111</color>
+    <!-- Carbon Design System support tokens for the g100 theme. Interactive blue is intentionally replaced by Acharya orange. -->
+    <color name="carbon_gray_100">#161616</color>
+    <color name="carbon_gray_90">#262626</color>
+    <color name="carbon_gray_80">#393939</color>
+    <color name="carbon_gray_70">#525252</color>
+    <color name="carbon_support_error">#FA4D56</color>
+    <color name="carbon_support_warning">#F1C21B</color>
+    <color name="carbon_support_success">#42BE65</color>
+    <color name="carbon_support_info">#FF6A00</color>
 </resources>

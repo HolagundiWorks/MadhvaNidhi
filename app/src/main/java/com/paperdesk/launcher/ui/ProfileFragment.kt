@@ -1,6 +1,8 @@
 package com.paperdesk.launcher.ui
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +11,10 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.paperdesk.launcher.R
 import com.paperdesk.launcher.data.ProfileStore
+import com.paperdesk.launcher.data.KannadaPhonetic
 
 class ProfileFragment : Fragment() {
     private lateinit var store: ProfileStore
@@ -28,6 +30,15 @@ class ProfileFragment : Fragment() {
         bindOptions(view.findViewById(R.id.profileVeda), ProfileStore.VEDA_SHAKHAS)
         bindOptions(view.findViewById(R.id.profileGotra), ProfileStore.GOTRAS)
         bindOptions(view.findViewById(R.id.profileNakshatra), ProfileStore.NAKSHATRAS)
+        view.findViewById<EditText>(R.id.profileName).addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val raw = s?.toString().orEmpty()
+                view.findViewById<TextView>(R.id.profileNamePreview).text =
+                    if (raw.any { it in 'A'..'Z' || it in 'a'..'z' }) KannadaPhonetic.transliterate(raw) else ""
+            }
+            override fun afterTextChanged(s: Editable?) = Unit
+        })
         refreshProfiles(view, store.active().id)
         view.findViewById<Spinner>(R.id.profileList).onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) = Unit
@@ -49,18 +60,25 @@ class ProfileFragment : Fragment() {
         view.findViewById<View>(R.id.profileSave).setOnClickListener {
             val name = view.findViewById<EditText>(R.id.profileName).text.toString().trim()
             if (name.isBlank()) {
-                Toast.makeText(requireContext(), "ಹೆಸರನ್ನು ನಮೂದಿಸಿ", Toast.LENGTH_SHORT).show()
+                view.findViewById<TextView>(R.id.profileSummary).apply {
+                    text = "ಹೆಸರನ್ನು ನಮೂದಿಸಿ"
+                    setTextColor(requireContext().getColor(R.color.carbon_support_error))
+                }
                 return@setOnClickListener
             }
+            val storedName = KannadaPhonetic.transliterate(name)
             val saved = store.save(ProfileStore.Profile(
-                editingId, name,
+                editingId, storedName,
                 view.findViewById<Spinner>(R.id.profileVeda).selectedItem.toString(),
                 view.findViewById<Spinner>(R.id.profileGotra).selectedItem.toString(),
                 view.findViewById<EditText>(R.id.profilePravara).text.toString(),
                 view.findViewById<Spinner>(R.id.profileNakshatra).selectedItem.toString()
             ))
             refreshProfiles(view, saved.id)
-            Toast.makeText(requireContext(), "ಪ್ರೊಫೈಲ್ ಉಳಿಸಲಾಗಿದೆ", Toast.LENGTH_SHORT).show()
+            view.findViewById<TextView>(R.id.profileSave).apply {
+                text = "ಉಳಿಸಲಾಗಿದೆ"
+                postDelayed({ text = "ಉಳಿಸಿ ಮತ್ತು ಸಕ್ರಿಯಗೊಳಿಸಿ" }, 1800)
+            }
         }
     }
 
@@ -83,7 +101,10 @@ class ProfileFragment : Fragment() {
         v.findViewById<EditText>(R.id.profilePravara).setText(p.pravara)
         select(v.findViewById(R.id.profileNakshatra), ProfileStore.NAKSHATRAS, p.nakshatra)
         val pravara = p.pravara.ifBlank { "ಪ್ರವರ ನಮೂದಿಸಿಲ್ಲ" }
-        v.findViewById<TextView>(R.id.profileSummary).text = "${p.vedaShakha}\n${p.gotra} ಗೋತ್ರ  ·  $pravara  ·  ${p.nakshatra} ನಕ್ಷತ್ರ"
+        v.findViewById<TextView>(R.id.profileSummary).apply {
+            text = "${p.vedaShakha}\n${p.gotra} ಗೋತ್ರ  ·  $pravara  ·  ${p.nakshatra} ನಕ್ಷತ್ರ"
+            setTextColor(requireContext().getColor(R.color.white_70))
+        }
     }
 
     private fun bindOptions(spinner: Spinner, values: List<String>) {

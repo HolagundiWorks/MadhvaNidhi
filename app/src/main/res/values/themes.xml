@@ -24,14 +24,14 @@
         <item name="colorSurface">@color/black</item>
         <item name="colorOnSurface">@color/white</item>
         <item name="colorOnBackground">@color/white</item>
-        <item name="colorError">@color/accent</item>
+        <item name="colorError">@color/carbon_support_error</item>
         <item name="colorOnError">@color/black</item>
         <item name="colorPrimaryDark">@color/black</item>
         <item name="colorAccent">@color/accent</item>
         <item name="colorControlNormal">@color/white</item>
         <item name="colorControlActivated">@color/accent</item>
         <item name="colorControlHighlight">@color/accent</item>
-        <item name="colorButtonNormal">@color/accent</item>
+        <item name="colorButtonNormal">@color/carbon_gray_80</item>
         <item name="rippleColor">@color/accent</item>
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.PaperDesk</item>
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.PaperDesk</item>
@@ -52,6 +52,7 @@
         <item name="android:windowAnimationStyle">@null</item>
         <item name="android:windowContentTransitions">false</item>
         <item name="android:colorEdgeEffect">@color/accent</item>
+        <item name="android:textColorHighlight">@color/accent_70</item>
         <item name="android:alertDialogTheme">@style/Theme.PaperDesk.Dialog</item>
         <item name="alertDialogTheme">@style/Theme.PaperDesk.Dialog</item>
         <item name="materialAlertDialogTheme">@style/Theme.PaperDesk.Dialog</item>
@@ -74,11 +75,28 @@
         <item name="colorOnSurface">@color/white</item>
         <item name="android:colorBackground">@color/black</item>
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.PaperDesk</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Desk.DialogButton.Positive</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Desk.DialogButton.Negative</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Desk.DialogButton.Negative</item>
         <item name="android:windowIsFloating">true</item>
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:backgroundDimAmount">0.6</item>
         <item name="android:windowMinWidthMajor">72%</item>
         <item name="android:windowMinWidthMinor">80%</item>
+    </style>
+
+    <style name="Desk.DialogButton" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:background">@color/black</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Desk.DialogButton.Positive" parent="Desk.DialogButton">
+        <item name="android:textColor">@color/accent</item>
+    </style>
+
+    <style name="Desk.DialogButton.Negative" parent="Desk.DialogButton">
+        <item name="android:textColor">@color/white_70</item>
     </style>
 
     <style name="Desk.MaterialCard" parent="Widget.MaterialComponents.CardView">

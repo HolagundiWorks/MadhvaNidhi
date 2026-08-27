@@ -27,10 +27,12 @@
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
             <TextView android:id="@+id/profileEditorTitle" style="@style/Desk.Section" android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:text="ವೈಯಕ್ತಿಕ ವಿವರಗಳು" />
-            <TextView style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:layout_marginTop="4dp" android:text="ಹೆಸರು" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:orientation="horizontal">
+                <TextView style="@style/Desk.Meta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ಹೆಸರು — English → ಕನ್ನಡ" />
+                <TextView android:id="@+id/profileNamePreview" style="@style/Desk.Meta" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginLeft="12dp" android:layout_weight="1" android:ellipsize="end" android:gravity="end" android:maxLines="1" android:textColor="@color/accent" />
+            </LinearLayout>
             <EditText android:id="@+id/profileName" android:layout_width="match_parent" android:layout_height="44dp"
-                android:background="@drawable/bg_input" android:hint="ವ್ಯಕ್ತಿಯ ಹೆಸರು" android:padding="10dp"
+                android:background="@drawable/bg_input" android:hint="ಉದಾ: vishwaabhiraama" android:padding="10dp"
                 android:singleLine="true" android:textColor="@color/white" android:textColorHint="@color/white_55" android:textSize="18sp" />
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:orientation="horizontal">
                 <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingRight="6dp">
