@@ -3,7 +3,7 @@ package com.paperdesk.launcher.data
 import android.content.Context
 import java.util.Calendar
 
-/** Krishna Yajurveda trikala sandhyavandana, stepped like UM Sandhyavandanam. */
+/** Rigveda/Ashvalayana trikala Sandhyavandana in Kannada. */
 object SandhyaStore {
     const val PRATAH = "pratah"
     const val MADHYA = "madhya"
@@ -20,6 +20,19 @@ object SandhyaStore {
     @Synchronized
     fun load(context: Context) {
         if (loaded) return
+        val rigveda = runCatching {
+            context.assets.open("madhwa/texts/rigveda_sandhyavandana.txt").bufferedReader().use { it.readText() }
+        }.getOrDefault("").trim()
+        if (rigveda.isNotBlank()) {
+            sessions = listOf(
+                Session(PRATAH, "ಪ್ರಾತಃ ಸಂಧ್ಯಾ", listOf(Step("rigveda_pratah", 1, "ಋಗ್ವೇದೀಯ ತ್ರಿಕಾಲ ಸಂಧ್ಯಾವಂದನೆ — ಪ್ರಾತಃ ಭಾಗ", rigveda))),
+                Session(MADHYA, "ಮಾಧ್ಯಾಹ್ನಿಕ", listOf(Step("rigveda_madhya", 1, "ಋಗ್ವೇದೀಯ ತ್ರಿಕಾಲ ಸಂಧ್ಯಾವಂದನೆ — ಮಾಧ್ಯಾಹ್ನಿಕ ಭಾಗ", rigveda))),
+                Session(SAYAM, "ಸಾಯಂ ಸಂಧ್ಯಾ", listOf(Step("rigveda_sayam", 1, "ಋಗ್ವೇದೀಯ ತ್ರಿಕಾಲ ಸಂಧ್ಯಾವಂದನೆ — ಸಾಯಂ ಭಾಗ", rigveda)))
+            )
+            byId = sessions.associateBy { it.id }
+            loaded = true
+            return
+        }
         val raw = runCatching {
             context.assets.open("library/mantras/Sandhyavandanam.txt").bufferedReader().use { it.readText() }
         }.getOrDefault("")

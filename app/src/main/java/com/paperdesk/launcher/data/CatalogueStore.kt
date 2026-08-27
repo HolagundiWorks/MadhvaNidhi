@@ -160,6 +160,16 @@ object CatalogueStore {
     }
 
     private fun augment(context: Context) {
+        val rigveda = setOf(
+            "AghamarshanaSuktam", "AyushyaSuktam", "BhagyaSuktam", "BhuSuktam",
+            "PurushaSuktam", "ShriSuktam", "VarunaSuktam", "VishnuSuktam"
+        )
+        if (groups.none { it.id == "rigveda_suktas" }) {
+            groups = groups + CatalogueGroup("rigveda_suktas", "ಋಗ್ವೇದ ಸೂಕ್ತಗಳು", "ऋग्वेदसूक्तानि", "Rigveda Suktas")
+        }
+        if (groups.none { it.id == "sanskrit_parayana" }) {
+            groups = groups + CatalogueGroup("sanskrit_parayana", "ಸಂಸ್ಕೃತ ಪಾರಾಯಣ", "संस्कृतपारायणम्", "Sanskrit Parayana")
+        }
         val skip = setOf(
             "Sandhyavandanam", "SandhyavandanaPrayoga", "SandhyavandanaMantrah",
             "SandhyopasthanaMantrah", "Aupasanam", "MahaNyasah", "LaghuNyasah",
@@ -173,7 +183,7 @@ object CatalogueStore {
             if (items.any { it.file == file || it.id == lib.id || it.id == "lib_${lib.id}" }) return@forEach
             extra += CatalogueItem(
                 id = "lib_${lib.id}",
-                group = "mantras",
+                group = if (lib.id in rigveda) "rigveda_suktas" else "mantras",
                 kn = IndicScript.convert(lib.title, IndicScript.Lang.KN),
                 sa = lib.title,
                 en = IndicScript.convert(lib.title, IndicScript.Lang.EN),
@@ -183,6 +193,21 @@ object CatalogueStore {
                 file = file,
                 script = "sa",
                 url = ""
+            )
+        }
+        val requestedStotras = setOf(
+            "VishnuSahasranamaStotram", "VenkateshaSuprabhatam", "AdityaHrdayam",
+            "LakshmiNrisimhaKarunarasaStotram", "LakshmiNrisimhaPancharatnam"
+        )
+        LibraryStore.load(context, LibraryStore.STOTRA).forEach { lib ->
+            if (lib.id !in requestedStotras) return@forEach
+            val file = "lib:stotra/${lib.id}"
+            if (items.any { it.file == file }) return@forEach
+            extra += CatalogueItem(
+                id = "lib_${lib.id}", group = "sanskrit_parayana",
+                kn = IndicScript.convert(lib.title, IndicScript.Lang.KN), sa = lib.title,
+                en = IndicScript.convert(lib.title, IndicScript.Lang.EN), type = "stotra",
+                deity = "", author = "", file = file, script = "sa", url = ""
             )
         }
         if (extra.isEmpty()) return

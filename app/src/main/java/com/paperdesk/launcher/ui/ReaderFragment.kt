@@ -71,7 +71,7 @@ class ReaderFragment : Fragment() {
             sessionId = CatalogueStore.item(itemId)?.group.orEmpty()
         }
         if (pageId == PUJA) {
-            val list = MadhwaStore.inCategory("puja")
+            val list = pujaItems()
             if (list.none { it.id == itemId }) itemId = list.firstOrNull()?.id.orEmpty()
             sessionId = "puja"
         }
@@ -243,7 +243,7 @@ class ReaderFragment : Fragment() {
                 )
             }
             PUJA -> {
-                val list = MadhwaStore.inCategory("puja")
+                val list = pujaItems()
                 val item = list.firstOrNull { it.id == itemId } ?: list.firstOrNull() ?: return null
                 itemId = item.id
                 sessionId = "puja"
@@ -295,7 +295,7 @@ class ReaderFragment : Fragment() {
                 return out
             }
             PUJA -> {
-                return MadhwaStore.inCategory("puja").map { item ->
+                return pujaItems().map { item ->
                     Row(id = item.id, group = "puja", title = MadhwaStore.label(item, lang), section = false)
                 }
             }
@@ -304,6 +304,8 @@ class ReaderFragment : Fragment() {
     }
 
     private fun gate(): LauncherActivity? = activity as? LauncherActivity
+
+    private fun pujaItems() = MadhwaStore.inCategory("puja") + MadhwaStore.inCategory("festival")
 
     private data class Shown(val head: String, val body: String, val label: String)
     data class Row(val id: String, val group: String, val title: String, val section: Boolean)
