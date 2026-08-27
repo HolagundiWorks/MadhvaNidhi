@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/surface_1"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/aayadiInfoTitle"
+        style="@style/Desk.Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ಆಯಾದಿ ಎಂದರೇನು?" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_marginTop="12dp"
+        android:fadeScrollbars="false"
+        android:scrollbars="vertical">
+        <TextView
+            android:id="@+id/aayadiInfoBody"
+            style="@style/Desk.Body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="5dp"
+            android:text="ಆಯಾದಿ ಎಂಬುದು ಕಟ್ಟಡದ ಉದ್ದ ಮತ್ತು ಅಗಲದಿಂದ ಕೆಲವು ಸಾಂಪ್ರದಾಯಿಕ ಅನುಪಾತ ಫಲಗಳನ್ನು ಕಂಡುಹಿಡಿಯುವ ವಾಸ್ತು ಗಣನಾ ವಿಧಾನ. ಈ ಪರದೆಯ ಪದಂ ಎಂದರೆ ಉದ್ದ × ಅಗಲ.&#10;&#10;ಈ ಆವೃತ್ತಿಯಲ್ಲಿ ಬಳಸಿರುವ ಕಾರ್ಯಸೂತ್ರಗಳು&#10;&#10;ಪದಂ = ಉದ್ದ × ಅಗಲ&#10;ಆಯ = (ಪದಂ × 9) ÷ 8 ರ ಶೇಷ&#10;ಧನ = (ಪದಂ × 8) ÷ 12 ರ ಶೇಷ&#10;ಋಣ = (ಪದಂ × 3) ÷ 8 ರ ಶೇಷ&#10;ಆಯುಷ್ಯ = (ಪದಂ × 9) ÷ 120 ರ ಶೇಷ&#10;ವ್ಯಯ = (ಉದ್ದ × 9) ÷ 10 ರ ಶೇಷ&#10;&#10;ಆಯದ ಶೇಷಗಳಿಗೆ ಧ್ವಜ, ಧೂಮ, ಸಿಂಹ, ಶ್ವಾನ, ವೃಷಭ, ಖರ, ಗಜ ಮತ್ತು ಕಾಕ ಎಂಬ ಹೆಸರುಗಳನ್ನು ಕ್ರಮವಾಗಿ ನೀಡಲಾಗುತ್ತದೆ.&#10;&#10;ಇದು ಕರ್ನಾಟಕ ನವವರ್ಗದ ಕಾರ್ಯಪದ್ಧತಿಯ ಉಲ್ಲೇಖ ಗಣನೆ. ಸೂತ್ರಗಳು ಪರಂಪರೆ ಮತ್ತು ಸ್ಥಪತಿಯ ವಿಧಾನಕ್ಕೆ ಅನುಗುಣವಾಗಿ ಬದಲಾಗಬಹುದು. ನೈಜ ನಿರ್ಮಾಣದ ಮೊದಲು ಅರ್ಹ ಸ್ಥಪತಿ ಅಥವಾ ಗುರುವಿನ ಸಲಹೆ ಪಡೆಯಿರಿ." />
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/aayadiInfoClose"
+        style="@style/Desk.Button.Accent"
+        android:layout_width="160dp"
+        android:layout_height="44dp"
+        android:layout_gravity="right"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="ಮುಚ್ಚಿ" />
+</LinearLayout>

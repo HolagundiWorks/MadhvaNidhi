@@ -1,5 +1,6 @@
 package com.paperdesk.launcher.ui
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,7 +26,16 @@ class AayadiFragment : Fragment() {
         bind(view.findViewById(R.id.aayadiLengthIn), (0..11).map { it.toString() }, 0)
         bind(view.findViewById(R.id.aayadiBreadthIn), (0..11).map { it.toString() }, 0)
         view.findViewById<View>(R.id.aayadiCalculate).setOnClickListener { calculate(view) }
+        view.findViewById<View>(R.id.aayadiInfo).setOnClickListener { showInfo() }
         calculate(view)
+    }
+
+    private fun showInfo() {
+        val dialog = Dialog(requireContext(), R.style.Theme_PaperDesk_Dialog)
+        dialog.setContentView(R.layout.dialog_aayadi_info)
+        dialog.findViewById<TextView>(R.id.aayadiInfoTitle)?.let { DeskType.apply(it, DeskType.SEMIBOLD) }
+        dialog.findViewById<View>(R.id.aayadiInfoClose).setOnClickListener { dialog.dismiss() }
+        DeskDialogs.show(dialog, 0.72f)
     }
 
     private fun calculate(v: View) {
