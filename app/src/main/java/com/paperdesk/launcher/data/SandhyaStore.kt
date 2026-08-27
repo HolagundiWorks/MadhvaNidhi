@@ -24,11 +24,7 @@ object SandhyaStore {
             context.assets.open("madhwa/texts/rigveda_sandhyavandana.txt").bufferedReader().use { it.readText() }
         }.getOrDefault("").trim()
         if (rigveda.isNotBlank()) {
-            sessions = listOf(
-                Session(PRATAH, "ಪ್ರಾತಃ ಸಂಧ್ಯಾ", listOf(Step("rigveda_pratah", 1, "ಋಗ್ವೇದೀಯ ತ್ರಿಕಾಲ ಸಂಧ್ಯಾವಂದನೆ — ಪ್ರಾತಃ ಭಾಗ", rigveda))),
-                Session(MADHYA, "ಮಾಧ್ಯಾಹ್ನಿಕ", listOf(Step("rigveda_madhya", 1, "ಋಗ್ವೇದೀಯ ತ್ರಿಕಾಲ ಸಂಧ್ಯಾವಂದನೆ — ಮಾಧ್ಯಾಹ್ನಿಕ ಭಾಗ", rigveda))),
-                Session(SAYAM, "ಸಾಯಂ ಸಂಧ್ಯಾ", listOf(Step("rigveda_sayam", 1, "ಋಗ್ವೇದೀಯ ತ್ರಿಕಾಲ ಸಂಧ್ಯಾವಂದನೆ — ಸಾಯಂ ಭಾಗ", rigveda)))
-            )
+            sessions = parseRigveda(rigveda)
             byId = sessions.associateBy { it.id }
             loaded = true
             return
@@ -72,14 +68,7 @@ object SandhyaStore {
     fun body(context: Context, step: Step, sessionId: String, lang: IndicScript.Lang): String {
         val core = IndicScript.convert(RitualText.tidy(step.body), lang)
         val dynamic = Sankalpa.sandhyaBlock(context, sessionId, lang)
-        val sankalpaSection = Regex(
-            "(?s)(ಸಂಕಲ್ಪಂ\\s*\\(ದೇಶಕಾಲ ಸಂಕೀರ್ತನಂ\\)\\s*[–-])\\s*.*?(?=\\n\\s*ಮಾರ್ಜನಂ\\s*[–-])"
-        )
-        val withSankalpa = if (sankalpaSection.containsMatchIn(core)) {
-            core.replace(sankalpaSection) { "${it.groupValues[1]}\n\n$dynamic\n" }
-        } else {
-            "$dynamic\n\n$core"
-        }
+        val withSankalpa = if (step.title.contains("ಸಂಕಲ್ಪ")) dynamic else core
         val abhivadana = Regex(
             "(?m)^.*(?:ಪ್ರವರಾನ್ವಿತ|प्रवरान्वित).*?(?:ಅಭಿವಾದಯೇ|अभिवादये).*?$"
         )
@@ -88,6 +77,73 @@ object SandhyaStore {
         } else {
             withSankalpa
         }
+    }
+
+    /** Turns the authoritative trikala source into readable, time-correct ritual sections. */
+    internal fun parseRigveda(raw: String): List<Session> = listOf(
+        PRATAH to "ಪ್ರಾತಃ ಸಂಧ್ಯಾ",
+        MADHYA to "ಮಾಧ್ಯಾಹ್ನಿಕ",
+        SAYAM to "ಸಾಯಂ ಸಂಧ್ಯಾ"
+    ).map { (id, title) ->
+        val steps = splitRigveda(raw).mapIndexedNotNull { index, section ->
+            val body = selectKala(section.second, id)
+            body.takeIf { it.isNotBlank() }?.let {
+                Step("rigveda_${id}_${index + 1}", index + 1, section.first, it)
+            }
+        }
+        Session(id, title, steps.mapIndexed { index, step -> step.copy(n = index + 1) })
+    }
+
+    private fun splitRigveda(raw: String): List<Pair<String, String>> {
+        val sections = ArrayList<Pair<String, String>>()
+        var title = "ಆರಂಭ ಮತ್ತು ಸೂಚನೆ"
+        val body = StringBuilder()
+
+        fun flush() {
+            val clean = body.toString().trim()
+            if (clean.isNotBlank()) sections += title to clean
+            body.setLength(0)
+        }
+
+        raw.lineSequence().forEachIndexed { index, source ->
+            val line = source.trimEnd()
+            val heading = Regex("^(.{2,80}?)\\s*[–—]\\s*$").matchEntire(line.trim())
+            if (heading != null) {
+                flush()
+                title = heading.groupValues[1].trim()
+            } else if (index > 1 && !line.startsWith("ಆಧಾರ:") && !line.startsWith("http")) {
+                body.append(line).append('\n')
+            }
+        }
+        flush()
+        return sections
+    }
+
+    private fun selectKala(raw: String, sessionId: String): String {
+        var selected: String? = null
+        val out = StringBuilder()
+        raw.lineSequence().forEach { line ->
+            val marker = when (line.trim()) {
+                "(ಪ್ರಾತಃ ಕಾಲೇ)" -> PRATAH
+                "(ಮಧ್ಯಾಹ್ನ ಕಾಲೇ)" -> MADHYA
+                "(ಸಾಯಂ ಕಾಲೇ)" -> SAYAM
+                else -> null
+            }
+            if (marker != null) {
+                selected = marker
+            } else if (selected == null || selected == sessionId) {
+                out.append(line).append('\n')
+            }
+        }
+        val kala = when (sessionId) {
+            PRATAH -> "ಪ್ರಾತಃ"
+            MADHYA -> "ಮಾಧ್ಯಾಹ್ನಿಕ"
+            else -> "ಸಾಯಂ"
+        }
+        return out.toString()
+            .replace("ಪ್ರಾತಃ/ಮಾಧ್ಯಾಹ್ನಿಕ/ಸಾಯಂ", kala)
+            .replace(Regex("\\n{3,}"), "\n\n")
+            .trim()
     }
 
     private val SESSION = mapOf(

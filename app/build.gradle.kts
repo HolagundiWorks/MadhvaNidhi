@@ -11,8 +11,8 @@ android {
         applicationId = "com.paperdesk.launcher"
         minSdk = 25
         targetSdk = 33
-        versionCode = 10
-        versionName = "2.6.1"
+        versionCode = 11
+        versionName = "2.7.0"
     }
 
     buildTypes {
