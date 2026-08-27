@@ -1190,7 +1190,7 @@
           "en": "Jagadodharana",
           "type": "dasara_pada",
           "deity": "Krishna",
-          "script": "kn",
+          "script": "sa",
           "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
           "file": "jagadodharana.txt"
         },
@@ -1201,7 +1201,7 @@
           "en": "Bhagyada Lakshmi Baramma",
           "type": "dasara_pada",
           "deity": "Mahalakshmi",
-          "script": "kn",
+          "script": "sa",
           "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
           "file": "bhagyada_lakshmi.txt"
         },
@@ -1473,7 +1473,7 @@
           "en": "Kesava Nama",
           "type": "nithya_parayana",
           "file": "kesava_nama.txt",
-          "script": "kn"
+          "script": "sa"
         },
         {
           "id": "anu_hks",

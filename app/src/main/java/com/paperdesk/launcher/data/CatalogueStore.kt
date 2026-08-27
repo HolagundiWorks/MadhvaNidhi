@@ -125,14 +125,17 @@ object CatalogueStore {
         val tidy = RitualText.tidy(raw, kannada = item.script == "kn")
         return if (item.script == "kn") {
             when (lang) {
-                IndicScript.Lang.KN -> tidy
+                // Some imported Kannada catalogue files contain Devanagari lines.
+                // Normalising the whole body keeps mixed-script texts consistent.
+                IndicScript.Lang.KN -> IndicScript.convert(tidy, IndicScript.Lang.KN)
                 IndicScript.Lang.EN -> IndicScript.convert(tidy, IndicScript.Lang.EN)
                 IndicScript.Lang.SA -> ""
             }
         } else {
             when (lang) {
+                IndicScript.Lang.KN -> IndicScript.convert(tidy, IndicScript.Lang.KN)
                 IndicScript.Lang.EN -> IndicScript.convert(tidy, IndicScript.Lang.EN)
-                else -> IndicScript.convert(tidy, IndicScript.Lang.SA)
+                IndicScript.Lang.SA -> IndicScript.convert(tidy, IndicScript.Lang.SA)
             }
         }
     }
