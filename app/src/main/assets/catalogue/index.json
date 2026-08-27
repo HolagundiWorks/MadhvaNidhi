@@ -1458,6 +1458,15 @@
       "en": "Daily Parayana",
       "items": [
         {
+          "id": "nitya_parayana_shlokas",
+          "kn": "ನಿತ್ಯ ಪಾರಾಯಣ ಶ್ಲೋಕಾಃ",
+          "sa": "नित्यपारायणश्लोकाः",
+          "en": "Daily Parayana Verses",
+          "type": "nithya_parayana",
+          "file": "nitya_parayana_shlokas.txt",
+          "script": "kn"
+        },
+        {
           "id": "kesava_nama",
           "kn": "ಕೇಶವ ನಾಮ",
           "sa": "",
