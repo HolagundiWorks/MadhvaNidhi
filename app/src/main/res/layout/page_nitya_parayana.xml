@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/page_pad_h"
+    android:paddingTop="@dimen/japa_pad_top"
+    android:paddingRight="@dimen/page_pad_h"
+    android:paddingBottom="@dimen/japa_pad_bottom">
+
+    <TextView
+        android:id="@+id/nityaCrumb"
+        style="@style/Desk.Meta"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:gravity="center_vertical"
+        android:text="ನಿತ್ಯ ಪಾರಾಯಣ  ›  ಮಾಧ್ವ ನಿತ್ಯ ಶ್ಲೋಕಗಳು"
+        android:textColor="@color/white_55"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/nityaList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:paddingBottom="24dp"
+        android:scrollbars="vertical" />
+</LinearLayout>

@@ -31,6 +31,7 @@ class WorkspaceAdapter(activity: FragmentActivity) : FragmentStateAdapter(activi
 
     override fun createFragment(position: Int): Fragment = when (pages.getOrNull(position)) {
         "sandhya" -> ReaderFragment.create(ReaderFragment.SANDHYA)
+        "nitya" -> NityaParayanaFragment()
         "mantras" -> ReaderFragment.create(ReaderFragment.MANTRAS)
         "puja" -> ReaderFragment.create(ReaderFragment.PUJA)
         "hadugalu" -> ReaderFragment.create(ReaderFragment.HADUGALU)
