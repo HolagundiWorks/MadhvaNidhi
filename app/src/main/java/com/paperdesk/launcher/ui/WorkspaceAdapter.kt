@@ -37,6 +37,7 @@ class WorkspaceAdapter(activity: FragmentActivity) : FragmentStateAdapter(activi
         "hadugalu" -> ReaderFragment.create(ReaderFragment.HADUGALU)
         "japa" -> JapaFragment()
         "aayadi" -> AayadiFragment()
+        "settings" -> SettingsFragment()
         else -> DeskFragment()
     }
 }

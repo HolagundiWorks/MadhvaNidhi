@@ -73,6 +73,11 @@ class SettingsStore(context: Context) {
             obj.put("pagesRev", 10)
             dirty = true
         }
+        if (obj.optInt("pagesRev", 0) < 11) {
+            if (insertPage(obj, "settings", after = "aayadi")) dirty = true
+            obj.put("pagesRev", 11)
+            dirty = true
+        }
         if (dirty) prefs.edit().putString("json", obj.toString()).apply()
         return obj
     }
@@ -127,7 +132,7 @@ class SettingsStore(context: Context) {
         const val VEDA_RIGVEDA = "rigveda_ashvalayana"
         const val VEDA_KRISHNA_YAJURVEDA = "krishna_yajurveda_taittiriya"
         val VEDA_IDS = listOf(VEDA_RIGVEDA, VEDA_KRISHNA_YAJURVEDA)
-        val PAGE_IDS = listOf("desk", "sandhya", "nitya", "mantras", "puja", "hadugalu", "japa", "aayadi")
+        val PAGE_IDS = listOf("desk", "sandhya", "nitya", "mantras", "puja", "hadugalu", "japa", "aayadi", "settings")
         val PAGE_LABELS = mapOf(
             "desk" to "PANCHANGA",
             "sandhya" to "SANDHYAVANDANA",
@@ -137,6 +142,7 @@ class SettingsStore(context: Context) {
             "hadugalu" to "HADUGALU"
             ,"japa" to "JAPA"
             ,"aayadi" to "AAYADI"
+            ,"settings" to "SETTINGS"
         )
 
         private fun insertPage(obj: JSONObject, id: String, after: String): Boolean {
@@ -152,7 +158,7 @@ class SettingsStore(context: Context) {
         fun defaults(): JSONObject = JSONObject()
             .put("flavor", "madhvanidhi")
             .put("pages", JSONArray(PAGE_IDS))
-            .put("pagesRev", 10)
+            .put("pagesRev", 11)
             .put("veda", VEDA_RIGVEDA)
             .put("panchangaTradition", PanchangaTraditions.SRS)
             .put("landscape", true)

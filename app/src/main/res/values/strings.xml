@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MadhvaNidhi</string>
-    <string name="settings_title">SETTINGS</string>
-    <string name="settings_summary">Choose the tradition used by Sandhyavandana and Panchanga.</string>
-    <string name="settings_veda">VEDA AND SHAKHA</string>
-    <string name="settings_veda_hint">Changes the complete Trikala Sandhyavandana text.</string>
-    <string name="settings_panchanga">PANCHANGA TRADITION</string>
-    <string name="settings_panchanga_live">Official daily data is available online. Offline calculation is used when unavailable.</string>
-    <string name="settings_panchanga_reference">Tradition selected. Until an official daily feed is available, values are clearly marked as local calculation.</string>
-    <string name="brand_developer">Developed by Human Centric Works · hcworks.in</string>
-    <string name="brand_made_in">Made with love in Hospet</string>
+    <string name="settings_title">ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
+    <string name="settings_summary">ಸಂಧ್ಯಾವಂದನೆಗೆ ವೇದಶಾಖೆ ಮತ್ತು ಪಂಚಾಂಗಕ್ಕೆ ಮಠದ ಪರಂಪರೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ.</string>
+    <string name="settings_veda">ವೇದ ಮತ್ತು ಶಾಖೆ</string>
+    <string name="settings_veda_hint">ತ್ರಿಕಾಲ ಸಂಧ್ಯಾವಂದನೆಯ ಸಂಪೂರ್ಣ ಪಠ್ಯವನ್ನು ಈ ಆಯ್ಕೆ ಬದಲಾಯಿಸುತ್ತದೆ.</string>
+    <string name="settings_panchanga">ಪಂಚಾಂಗ ಪರಂಪರೆ</string>
+    <string name="settings_panchanga_live">ಅಧಿಕೃತ ದೈನಂದಿನ ಮಾಹಿತಿ ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ಲಭ್ಯವಿದೆ. ಅದು ಲಭ್ಯವಿಲ್ಲದಿದ್ದರೆ ಸ್ಥಳೀಯ ಗಣನೆಯನ್ನು ಬಳಸಲಾಗುತ್ತದೆ.</string>
+    <string name="settings_panchanga_reference">ಆಯ್ಕೆಮಾಡಿದ ಪರಂಪರೆಗೆ ಅಧಿಕೃತ ದೈನಂದಿನ ಮಾಹಿತಿ ಲಭ್ಯವಾಗುವವರೆಗೆ ಮೌಲ್ಯಗಳನ್ನು ಸ್ಥಳೀಯ ಗಣನೆ ಎಂದು ಸ್ಪಷ್ಟವಾಗಿ ತೋರಿಸಲಾಗುತ್ತದೆ.</string>
+    <string name="brand_developer">ಅಭಿವೃದ್ಧಿ: Human Centric Works · hcworks.in</string>
+    <string name="brand_made_in">ಹೊಸಪೇಟೆಯಲ್ಲಿ ಪ್ರೀತಿಯಿಂದ ನಿರ್ಮಿಸಲಾಗಿದೆ</string>
     <string name="settings_version">MadhvaNidhi %1$s</string>
     <string name="city_hospet">Hospet, Karnataka</string>
     <string name="page_desk">PANCHANGA</string>
