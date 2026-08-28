@@ -341,10 +341,11 @@ class ReaderFragment : Fragment() {
                 item ?: return null
                 itemId = item.id
                 sessionId = item.group
+                val label = CatalogueStore.label(item, lang)
                 return Shown(
-                    head = CatalogueStore.label(item, lang),
-                    body = CatalogueStore.body(requireContext(), item, lang),
-                    label = CatalogueStore.label(item, lang)
+                    head = label,
+                    body = withoutRepeatedHeading(CatalogueStore.body(requireContext(), item, lang), label),
+                    label = label
                 )
             }
             PUJA -> {
@@ -408,6 +409,16 @@ class ReaderFragment : Fragment() {
         item ?: return false
         if (item.group !in CatalogueStore.groupsFor(pageId).map { it.id }) return false
         return pageId != MANTRAS || CatalogueStore.belongsToSubpage(item, subpageId)
+    }
+
+    private fun withoutRepeatedHeading(body: String, heading: String): String {
+        val lines = body.lines()
+        val first = lines.indexOfFirst { it.isNotBlank() }
+        if (first < 0) return body
+        fun comparable(value: String) = value.lowercase()
+            .replace(Regex("[\\s·:।॥|—–_-]+"), "")
+        if (comparable(lines[first]) != comparable(heading)) return body
+        return lines.filterIndexed { index, _ -> index != first }.joinToString("\n").trimStart()
     }
 
     private fun pujaItems() = MadhwaStore.inCategory("puja") + MadhwaStore.inCategory("festival")

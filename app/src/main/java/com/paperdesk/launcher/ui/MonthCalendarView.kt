@@ -25,10 +25,10 @@ class MonthCalendarView @JvmOverloads constructor(context: Context, attrs: Attri
     private val accent = ContextCompat.getColor(context, R.color.accent)
     private val white = ContextCompat.getColor(context, R.color.white)
     private val muted = ContextCompat.getColor(context, R.color.white_55)
-    private val titleTv = label(12f, white, Gravity.CENTER)
+    private val titleTv = label(13.6f, white, Gravity.CENTER)
     private val tithiRow = LinearLayout(context)
-    private val shuklaLabel = label(10f, accent, Gravity.START)
-    private val krishnaLabel = label(10f, accent, Gravity.START)
+    private val shuklaLabel = label(10.4f, accent, Gravity.START)
+    private val krishnaLabel = label(10.4f, accent, Gravity.START)
     private val shuklaRow = LinearLayout(context)
     private val krishnaRow = LinearLayout(context)
 
@@ -109,7 +109,7 @@ class MonthCalendarView @JvmOverloads constructor(context: Context, attrs: Attri
     private fun bindTithiHeader(lang: IndicScript.Lang) {
         tithiRow.removeAllViews()
         repeat(15) { index ->
-            val heading = label(10f, if (index == 14) accent else muted, Gravity.CENTER).apply {
+            val heading = label(9.6f, if (index == 14) accent else muted, Gravity.CENTER).apply {
                 text = tithiShort(index, lang)
                 setBackgroundResource(R.drawable.bg_tithi_grid)
                 if (index == 14) DeskType.apply(this, DeskType.SEMIBOLD)
@@ -127,7 +127,7 @@ class MonthCalendarView @JvmOverloads constructor(context: Context, attrs: Attri
                 setPadding(dp(1), dp(1), dp(1), dp(1))
                 setBackgroundResource(R.drawable.bg_tithi_grid)
             }
-            val date = label(12f, white, Gravity.CENTER).apply {
+            val date = label(13.2f, white, Gravity.CENTER).apply {
                 text = key?.let { OsLang.digits(PanchangaStore.parse(it).get(Calendar.DAY_OF_MONTH), IndicScript.Lang.KN) } ?: "—"
             }
             cell.addView(date, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT))

@@ -98,7 +98,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:textSize="@dimen/type_subpage" />
 
                 <TextView
                     android:id="@+id/subpageStotras"
@@ -106,7 +107,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:textSize="@dimen/type_subpage" />
 
                 <TextView
                     android:id="@+id/subpageSuktas"
@@ -114,7 +116,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:textSize="@dimen/type_subpage" />
             </LinearLayout>
 
             <TextView
@@ -126,7 +129,8 @@
                 android:maxLines="1"
                 android:paddingTop="@dimen/ui_grid_1"
                 android:paddingBottom="@dimen/ui_grid_1"
-                android:textColor="@color/white_55" />
+                android:textColor="@color/white_55"
+                android:textSize="@dimen/type_breadcrumb" />
 
             <View
                 android:layout_width="match_parent"
@@ -169,10 +173,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/ui_grid_1"
                         android:includeFontPadding="true"
-                        android:lineSpacingExtra="2.4dp"
-                        android:lineSpacingMultiplier="1.08"
+                        android:lineSpacingExtra="3.2dp"
+                        android:lineSpacingMultiplier="1.12"
                         android:textColor="@color/white"
-                        android:textSize="14.4sp" />
+                        android:textSize="@dimen/type_reader_body" />
                 </LinearLayout>
             </com.paperdesk.launcher.ui.DeskScrollView>
         </LinearLayout>

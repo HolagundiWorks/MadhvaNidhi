@@ -43,16 +43,21 @@
     <dimen name="day_h">35.2dp</dimen>
 
     <dimen name="type_clock">35.2sp</dimen>
-    <dimen name="type_title_lg">20.8sp</dimen>
-    <dimen name="type_title">17.6sp</dimen>
-    <dimen name="type_section">14.4sp</dimen>
-    <dimen name="type_card">13.6sp</dimen>
+    <!-- Six-level reading hierarchy: display, page, section, body, secondary, metadata. -->
+    <dimen name="type_title_lg">22.4sp</dimen>
+    <dimen name="type_title">18.4sp</dimen>
+    <dimen name="type_section">15.2sp</dimen>
+    <dimen name="type_card">14.4sp</dimen>
     <dimen name="type_display">22.4sp</dimen>
-    <dimen name="type_body">13.6sp</dimen>
-    <dimen name="type_body2">12sp</dimen>
-    <dimen name="type_meta">10.4sp</dimen>
-    <dimen name="type_btn">12sp</dimen>
-    <dimen name="type_table_head">10.4sp</dimen>
-    <dimen name="type_table">11.2sp</dimen>
-    <dimen name="type_key">13.6sp</dimen>
+    <dimen name="type_body">14.4sp</dimen>
+    <dimen name="type_body2">12.8sp</dimen>
+    <dimen name="type_meta">11.2sp</dimen>
+    <dimen name="type_btn">12.8sp</dimen>
+    <dimen name="type_table_head">11.2sp</dimen>
+    <dimen name="type_table">12sp</dimen>
+    <dimen name="type_key">14.4sp</dimen>
+
+    <dimen name="type_reader_body">15.2sp</dimen>
+    <dimen name="type_subpage">13.6sp</dimen>
+    <dimen name="type_breadcrumb">11.2sp</dimen>
 </resources>
