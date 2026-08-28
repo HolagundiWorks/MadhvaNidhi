@@ -118,7 +118,10 @@ class DeskFragment : Fragment() {
             cal.set(parts[0].toInt(), parts[1].toInt() - 1, parts[2].toInt())
         }
         val lang = OsLang.get(requireContext())
-        v.findViewById<TextView>(R.id.clockDate)?.text = OsLang.dateLine(cal, lang)
+        val day = OsLang.digits(cal.get(java.util.Calendar.DAY_OF_MONTH), lang)
+        val year = OsLang.digits(cal.get(java.util.Calendar.YEAR), lang)
+        v.findViewById<TextView>(R.id.todayWeek)?.text = OsLang.weekday(cal, lang)
+        v.findViewById<TextView>(R.id.clockDate)?.text = "$day ${OsLang.month(cal, lang)} $year"
         val clock = v.findViewById<AnalogClockView>(R.id.analogClock)
         val hour = java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY)
         val min = java.util.Calendar.getInstance().get(java.util.Calendar.MINUTE)

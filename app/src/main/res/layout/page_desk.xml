@@ -22,20 +22,16 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.9"
+                android:layout_weight="0.75"
                 android:background="@drawable/bg_card"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:padding="@dimen/space_8">
 
-                <TextView android:id="@+id/clockSam" style="@style/Desk.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:textColor="@color/accent" />
-                <TextView android:id="@+id/clockMasaPaksha" style="@style/Desk.Body2" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" />
-
                 <com.paperdesk.launcher.ui.ClockLockLayout
                     android:id="@+id/clockLockArea"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
+                    android:layout_height="match_parent"
                     android:gravity="center"
                     android:orientation="vertical">
                     <com.paperdesk.launcher.ui.AnalogClockView
@@ -43,11 +39,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:importantForAccessibility="no"
-                        android:scaleX="0.78"
-                        android:scaleY="0.78" />
+                        android:scaleX="0.92"
+                        android:scaleY="0.92" />
                 </com.paperdesk.launcher.ui.ClockLockLayout>
-
-                <TextView android:id="@+id/clockDate" style="@style/Desk.Body2" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" />
             </LinearLayout>
 
             <LinearLayout
@@ -55,11 +49,14 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/space_8"
-                android:layout_weight="1.1"
+                android:layout_weight="1.35"
                 android:background="@drawable/bg_card"
                 android:gravity="center_vertical"
                 android:orientation="vertical"
-                android:padding="@dimen/space_16">
+                android:paddingLeft="@dimen/space_16"
+                android:paddingTop="@dimen/space_8"
+                android:paddingRight="@dimen/space_16"
+                android:paddingBottom="@dimen/space_8">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -70,9 +67,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1.2"
                         android:orientation="vertical">
+                        <TextView android:id="@+id/clockSam" style="@style/Desk.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/accent" />
+                        <TextView android:id="@+id/clockMasaPaksha" style="@style/Desk.Body2" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_4" />
                         <TextView android:id="@+id/panchangaVara" style="@style/Desk.Body2" android:layout_width="match_parent" android:layout_height="wrap_content" />
                         <TextView android:id="@+id/panchangaTithi" style="@style/Desk.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_4" android:textColor="@color/accent" />
-                        <TextView android:id="@+id/panchangaNak" style="@style/Desk.Body2" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_4" />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="0dp"
@@ -80,9 +78,10 @@
                         android:layout_marginLeft="@dimen/space_8"
                         android:layout_weight="0.8"
                         android:orientation="vertical">
-                        <TextView android:id="@+id/panchangaKarana" style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" />
-                        <TextView android:id="@+id/panchangaAyana" style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_8" />
-                        <TextView android:id="@+id/panchangaRitu" style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_8" />
+                        <TextView android:id="@+id/panchangaNak" style="@style/Desk.Body2" android:layout_width="match_parent" android:layout_height="wrap_content" />
+                        <TextView android:id="@+id/panchangaKarana" style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_4" />
+                        <TextView android:id="@+id/panchangaAyana" style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_4" />
+                        <TextView android:id="@+id/panchangaRitu" style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_4" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -91,16 +90,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/space_8"
-                android:layout_weight="0.85"
+                android:layout_weight="0.9"
                 android:background="@drawable/bg_card"
                 android:gravity="center_vertical"
                 android:orientation="vertical"
                 android:padding="@dimen/space_16">
                 <TextView
+                    android:id="@+id/todayWeek"
+                    style="@style/Desk.Section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white" />
+                <TextView
+                    android:id="@+id/clockDate"
+                    style="@style/Desk.Body2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_4" />
+                <TextView
                     android:id="@+id/todayEventsTitle"
                     style="@style/Desk.Meta"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_8"
                     android:textColor="@color/white_70" />
                 <TextView
                     android:id="@+id/dayEvent"
