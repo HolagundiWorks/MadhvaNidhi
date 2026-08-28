@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +26,7 @@ class ReaderFragment : Fragment() {
     private var sessionId = ""
     private var itemId = ""
     private lateinit var adapter: SelectAdapter
+    private var bindingKala = false
     private val langTick: () -> Unit = { paint() }
 
     private val prefs by lazy {
@@ -53,9 +56,7 @@ class ReaderFragment : Fragment() {
         view.findViewById<View>(R.id.readerSelectBtn).setOnClickListener { openSelector() }
         view.findViewById<View>(R.id.readerSelectLabel).setOnClickListener { openSelector() }
         view.findViewById<View>(R.id.selectorBack).setOnClickListener { closeSelector() }
-        view.findViewById<View>(R.id.kalaPratah).setOnClickListener { pickKala(SandhyaStore.PRATAH) }
-        view.findViewById<View>(R.id.kalaMadhya).setOnClickListener { pickKala(SandhyaStore.MADHYA) }
-        view.findViewById<View>(R.id.kalaSayam).setOnClickListener { pickKala(SandhyaStore.SAYAM) }
+        if (pageId == SANDHYA) setupKalaDropdown(view)
         sessionId = prefs.getString("session", "").orEmpty()
         itemId = prefs.getString("item", "").orEmpty()
         if (pageId == SANDHYA) {
@@ -127,8 +128,12 @@ class ReaderFragment : Fragment() {
 
     private fun pickKala(id: String) {
         if (pageId != SANDHYA) return
+        val currentTitle = SandhyaStore.session(requireContext(), sessionId)
+            ?.steps?.firstOrNull { it.id == itemId }?.title
         sessionId = id
-        itemId = SandhyaStore.session(requireContext(), id)?.steps?.firstOrNull()?.id.orEmpty()
+        val next = SandhyaStore.session(requireContext(), id)
+        itemId = next?.steps?.firstOrNull { it.title == currentTitle }?.id
+            ?: next?.steps?.firstOrNull()?.id.orEmpty()
         prefs.edit().putString("session", sessionId).putString("item", itemId).apply()
         paint()
         view?.findViewById<DeskScrollView>(R.id.readerScroll)?.scrollTo(0, 0)
@@ -145,8 +150,8 @@ class ReaderFragment : Fragment() {
         val item = current()
         val sandhya = pageId == SANDHYA
         v.findViewById<View>(R.id.readerSelect).visibility = View.GONE
-        v.findViewById<View>(R.id.readerKalaRow).visibility = View.GONE
-        v.findViewById<View>(R.id.readerHead).visibility = if (sandhya || item?.head.isNullOrBlank()) View.GONE else View.VISIBLE
+        v.findViewById<View>(R.id.readerKala).visibility = if (sandhya) View.VISIBLE else View.GONE
+        v.findViewById<View>(R.id.readerHead).visibility = if (item?.head.isNullOrBlank()) View.GONE else View.VISIBLE
         if (sandhya) bindKala(v)
         v.findViewById<TextView>(R.id.readerHead).text = item?.head.orEmpty()
         v.findViewById<TextView>(R.id.readerBody).text = item?.body.orEmpty()
@@ -174,8 +179,10 @@ class ReaderFragment : Fragment() {
         when (pageId) {
             SANDHYA -> {
                 parts += SandhyaStore.vedaLabel(requireContext())
-                val kala = item?.label.orEmpty()
-                if (kala.isNotBlank() && kala != page) parts += kala
+                val kala = SandhyaStore.session(requireContext(), sessionId)?.title.orEmpty()
+                if (kala.isNotBlank()) parts += SandhyaStore.label(kala, lang)
+                val section = item?.label.orEmpty()
+                if (section.isNotBlank() && section != page) parts += section
             }
             MANTRAS, HADUGALU -> {
                 val cat = CatalogueStore.item(itemId)
@@ -193,17 +200,31 @@ class ReaderFragment : Fragment() {
         return parts.distinct().joinToString("  ›  ")
     }
 
-    private fun bindKala(v: View) {
-        fun chip(id: Int, key: String, on: Boolean) {
-            val btn = v.findViewById<ImageButton>(id)
-            btn.setBackgroundResource(if (on) R.drawable.bg_circle_fill else R.drawable.bg_circle)
-            btn.imageAlpha = if (on) 255 else 200
-            btn.contentDescription =
-                if (on) "${OsLang.ui(key, lang)}. ${OsLang.ui("selected", lang)}" else OsLang.ui(key, lang)
+    private fun setupKalaDropdown(v: View) {
+        val spinner = v.findViewById<Spinner>(R.id.readerKala)
+        spinner.visibility = View.VISIBLE
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) = Unit
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                if (bindingKala) return
+                val selected = SandhyaStore.sessions(requireContext()).getOrNull(position)?.id ?: return
+                if (selected != sessionId) pickKala(selected)
+            }
         }
-        chip(R.id.kalaPratah, "pratah", sessionId == SandhyaStore.PRATAH)
-        chip(R.id.kalaMadhya, "madhya", sessionId == SandhyaStore.MADHYA)
-        chip(R.id.kalaSayam, "sayam", sessionId == SandhyaStore.SAYAM)
+    }
+
+    private fun bindKala(v: View) {
+        val sessions = SandhyaStore.sessions(requireContext())
+        val labels = sessions.map { SandhyaStore.label(it.title, lang) }
+        val spinner = v.findViewById<Spinner>(R.id.readerKala)
+        bindingKala = true
+        spinner.adapter = ArrayAdapter(requireContext(), R.layout.item_dropdown_selected, labels).also {
+            it.setDropDownViewResource(R.layout.item_dropdown)
+        }
+        spinner.setSelection(sessions.indexOfFirst { it.id == sessionId }.coerceAtLeast(0), false)
+        spinner.contentDescription = "ಸಂಧ್ಯಾ ಕಾಲ ಆಯ್ಕೆ. ${labels.getOrNull(spinner.selectedItemPosition).orEmpty()}"
+        bindingKala = false
     }
 
     private fun bindSelector() {
@@ -235,16 +256,13 @@ class ReaderFragment : Fragment() {
                 val session = SandhyaStore.session(requireContext(), sessionId)
                     ?: SandhyaStore.session(requireContext(), SandhyaStore.nowId()) ?: return null
                 sessionId = session.id
-                val ctx = requireContext()
-                val body = session.steps.joinToString("\n\n") { step ->
-                    val head = SandhyaStore.label(step.title, lang)
-                    val text = SandhyaStore.body(ctx, step, session.id, lang)
-                    "$head\n\n$text"
-                }
+                val step = session.steps.firstOrNull { it.id == itemId }
+                    ?: session.steps.firstOrNull() ?: return null
+                itemId = step.id
                 return Shown(
-                    head = "",
-                    body = body,
-                    label = OsLang.ui(session.id, lang)
+                    head = SandhyaStore.label(step.title, lang),
+                    body = SandhyaStore.body(requireContext(), step, session.id, lang),
+                    label = SandhyaStore.label(step.title, lang)
                 )
             }
             MANTRAS, HADUGALU -> {
@@ -281,19 +299,15 @@ class ReaderFragment : Fragment() {
     private fun rows(): List<Row> {
         when (pageId) {
             SANDHYA -> {
-                val out = ArrayList<Row>()
-                SandhyaStore.sessions(requireContext()).forEach { session ->
-                    out += Row(id = session.id, group = session.id, title = OsLang.ui(session.id, lang), section = true)
-                    session.steps.forEach { step ->
-                        out += Row(
-                            id = step.id,
-                            group = session.id,
-                            title = SandhyaStore.label(step.title, lang),
-                            section = false
-                        )
-                    }
+                val session = SandhyaStore.session(requireContext(), sessionId) ?: return emptyList()
+                return session.steps.map { step ->
+                    Row(
+                        id = step.id,
+                        group = session.id,
+                        title = "${OsLang.digits(step.n, lang)}. ${SandhyaStore.label(step.title, lang)}",
+                        section = false
+                    )
                 }
-                return out
             }
             MANTRAS, HADUGALU -> {
                 val out = ArrayList<Row>()

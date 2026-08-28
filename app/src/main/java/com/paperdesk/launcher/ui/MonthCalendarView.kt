@@ -70,7 +70,7 @@ class MonthCalendarView @JvmOverloads constructor(
             gravity = Gravity.CENTER
             textAlignment = View.TEXT_ALIGNMENT_CENTER
             setTextColor(white)
-            setTextSize(TypedValue.COMPLEX_UNIT_SP, 15f)
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
             includeFontPadding = false
             setPadding(0, dp(2), 0, dp(4))
         }
@@ -168,7 +168,7 @@ class MonthCalendarView @JvmOverloads constructor(
                 layoutParams = LayoutParams(0, LayoutParams.WRAP_CONTENT, 1f)
                 gravity = Gravity.CENTER
                 setTextColor(muted)
-                setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f)
+                setTextSize(TypedValue.COMPLEX_UNIT_SP, 10.4f)
                 includeFontPadding = false
                 setPadding(dp(1), dp(1), dp(1), dp(2))
                 text = OsLang.ui(key, lang)
@@ -211,7 +211,7 @@ class MonthCalendarView @JvmOverloads constructor(
         val offset = (firstDow + 5) % 7
         val daysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH)
         val weekCount = 6
-        val rowH = (pageH / weekCount).coerceAtLeast(dp(16))
+        val rowH = (pageH / weekCount).coerceAtLeast(dp(13))
         val extra = (pageH - rowH * weekCount).coerceAtLeast(0)
         val today = Calendar.getInstance()
         var day = 1
@@ -232,10 +232,10 @@ class MonthCalendarView @JvmOverloads constructor(
                 val dateTv = TextView(context).apply {
                     gravity = Gravity.CENTER
                     textAlignment = TEXT_ALIGNMENT_CENTER
-                    setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f)
+                    setTextSize(TypedValue.COMPLEX_UNIT_SP, 11.2f)
                     includeFontPadding = true
                     setPadding(0, 0, 0, 0)
-                    val mark = dp(28)
+                    val mark = dp(22)
                     minWidth = mark
                     minHeight = mark
                     layoutParams = LayoutParams(mark, mark).apply { gravity = Gravity.CENTER }

@@ -120,7 +120,7 @@ object SandhyaStore {
         val steps = splitRigveda(raw).mapIndexedNotNull { index, section ->
             val body = selectKala(section.second, id)
             body.takeIf { it.isNotBlank() }?.let {
-                Step("rigveda_${id}_${index + 1}", index + 1, section.first, it)
+                Step("rigveda_${id}_${index + 1}", index + 1, cleanSectionTitle(section.first), it)
             }
         }
         Session(id, title, steps.mapIndexed { index, step -> step.copy(n = index + 1) })
@@ -142,7 +142,9 @@ object SandhyaStore {
             val heading = Regex("^(.{2,80}?)\\s*[–—]\\s*$").matchEntire(line.trim())
             if (heading != null) {
                 flush()
-                title = heading.groupValues[1].trim()
+                title = cleanSectionTitle(heading.groupValues[1])
+            } else if (line.trim() in SOURCE_MARKERS) {
+                // Keep the optional rite but omit print-only source brackets.
             } else if (index > 1 && !line.startsWith("ಆಧಾರ:") && !line.startsWith("http")) {
                 body.append(line).append('\n')
             }
@@ -150,6 +152,13 @@ object SandhyaStore {
         flush()
         return sections
     }
+
+    private fun cleanSectionTitle(raw: String): String = raw
+        .replace(Regex("^\\[\\*?\\s*"), "")
+        .replace(Regex("\\*?]$"), "")
+        .trim()
+
+    private val SOURCE_MARKERS = setOf("[*", "*]", "[", "]")
 
     private fun selectKala(raw: String, sessionId: String): String {
         var selected: String? = null

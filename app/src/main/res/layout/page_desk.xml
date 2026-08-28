@@ -70,7 +70,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center"
-                                android:importantForAccessibility="no" />
+                                android:importantForAccessibility="no"
+                                android:scaleX="0.8"
+                                android:scaleY="0.8" />
                         </com.paperdesk.launcher.ui.ClockLockLayout>
 
                         <TextView

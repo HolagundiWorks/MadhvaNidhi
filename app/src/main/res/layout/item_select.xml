@@ -10,8 +10,8 @@
 
     <View
         android:id="@+id/selectMark"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
         android:background="@drawable/bg_mark" />
 
     <TextView

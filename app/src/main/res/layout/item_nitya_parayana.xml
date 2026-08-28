@@ -3,10 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingLeft="8dp"
-    android:paddingTop="16dp"
-    android:paddingRight="8dp"
-    android:paddingBottom="14dp">
+    android:paddingLeft="6.4dp"
+    android:paddingTop="12.8dp"
+    android:paddingRight="6.4dp"
+    android:paddingBottom="11.2dp">
 
     <TextView
         android:id="@+id/nityaPageTitle"
@@ -15,23 +15,23 @@
         android:layout_height="wrap_content"
         android:fontWeight="600"
         android:textColor="@color/accent"
-        android:textSize="23sp" />
+        android:textSize="18.4sp" />
 
     <TextView
         android:id="@+id/nityaPageBody"
         style="@style/Desk.Body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:includeFontPadding="true"
-        android:lineSpacingExtra="4dp"
+        android:lineSpacingExtra="3.2dp"
         android:lineSpacingMultiplier="1.08"
         android:textColor="@color/white"
-        android:textSize="19sp" />
+        android:textSize="15.2sp" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12.8dp"
         android:background="@color/divider" />
 </LinearLayout>

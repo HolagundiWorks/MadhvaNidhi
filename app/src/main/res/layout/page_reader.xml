@@ -40,34 +40,15 @@
                     android:maxLines="1"
                     android:paddingRight="@dimen/space_8" />
 
-                <LinearLayout
-                    android:id="@+id/readerKalaRow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:visibility="gone">
-
-                    <ImageButton
-                        android:id="@+id/kalaPratah"
-                        style="@style/Desk.Circle"
-                        android:contentDescription="@string/sandhya_pratah"
-                        android:src="@drawable/ic_kala_pratah" />
-
-                    <ImageButton
-                        android:id="@+id/kalaMadhya"
-                        style="@style/Desk.Circle"
-                        android:layout_marginLeft="@dimen/space_8"
-                        android:contentDescription="@string/sandhya_madhya"
-                        android:src="@drawable/ic_kala_madhya" />
-
-                    <ImageButton
-                        android:id="@+id/kalaSayam"
-                        style="@style/Desk.Circle"
-                        android:layout_marginLeft="@dimen/space_8"
-                        android:contentDescription="@string/sandhya_sayam"
-                        android:src="@drawable/ic_kala_sayam" />
-                </LinearLayout>
+                <Spinner
+                    android:id="@+id/readerKala"
+                    android:layout_width="176dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_dropdown"
+                    android:contentDescription="ಸಂಧ್ಯಾ ಕಾಲ ಆಯ್ಕೆ"
+                    android:popupBackground="@color/surface_2"
+                    android:spinnerMode="dropdown"
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:id="@+id/readerSelect"
@@ -87,7 +68,7 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:importantForAccessibility="no"
-                        android:maxWidth="220dp"
+                        android:maxWidth="176dp"
                         android:maxLines="1"
                         android:textColor="@color/white"
                         android:visibility="gone" />
@@ -155,10 +136,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/space_8"
                         android:includeFontPadding="true"
-                        android:lineSpacingExtra="3dp"
+                        android:lineSpacingExtra="2.4dp"
                         android:lineSpacingMultiplier="1.08"
                         android:textColor="@color/white"
-                        android:textSize="18sp" />
+                        android:textSize="14.4sp" />
                 </LinearLayout>
             </com.paperdesk.launcher.ui.DeskScrollView>
         </LinearLayout>

@@ -43,4 +43,19 @@ class SandhyaStoreTest {
             assertTrue(session.steps.joinToString("\n") { it.body }.contains("ಸಾಮಾನ್ಯ ಆಚಮನ"))
         }
     }
+
+    @Test fun cleansPrintMarkersFromSectionCatalogue() {
+        val marked = """
+            ಋಗ್ವೇದೀಯ ತ್ರಿಕಾಲ ಸಂಧ್ಯಾವಂದನೆ
+
+            [* ತರ್ಪಣಂ –
+            ಐಚ್ಛಿಕ ತರ್ಪಣ
+            *]
+        """.trimIndent()
+
+        SandhyaStore.parseRigveda(marked).forEach { session ->
+            assertEquals("ತರ್ಪಣಂ", session.steps.single().title)
+            assertFalse(session.steps.single().body.contains("*]"))
+        }
+    }
 }
