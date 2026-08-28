@@ -1,6 +1,6 @@
 # AcharyaOS catalogue audit
 
-Audit date: 2026-08-26
+Audit date: 2026-08-28
 
 ## Scope
 
@@ -41,8 +41,25 @@ either Kannada or Devanagari source characters.
 | Tamil-only bodies | 1 | 0 |
 | Bodies containing known extraction noise | 130 | 0 |
 
-The lower final body count is intentional: aliases and invalid build artifacts
-were removed, not unique devotional texts.
+The lower 2026-08-26 body count was intentional: aliases and invalid build
+artifacts were removed, not unique devotional texts. Subsequent verified imports
+bring the 2026-08-28 catalogue to 576 indexed bodies, with zero missing files,
+orphans, duplicate bodies, duplicate titles, non-Indic bodies, or extraction-noise
+findings in `tools/audit-catalogue.mjs`.
+
+## Devotional reader collections
+
+The reader catalogue exposes the bundled source bodies without copying them into
+new files. The 2026-08-28 navigation audit added dedicated collections for Rama
+Raksha, Narasimha stotras, Vishnu Sahasranama, Venkatesha Suprabhata, Krishna
+stotras, Ashtottara Shatanama stotras, and all 56 bundled namavalis. Every exposed
+entry resolves to a non-empty local body and no source identifier is duplicated.
+
+The Rigveda section is intentionally recension-aware. It contains the four
+bundled texts identifiable as core Rigveda or Rigveda-khila material: Purusha,
+Shri, Varuna, and Vishnu Suktas. Aghamarshana, Bhagya, Bhu and the other files
+whose own headings identify Taittiriya sources remain under general mantras; they
+are not relabelled as Rigveda merely because individual verses also occur there.
 
 ## Sources and maintenance
 

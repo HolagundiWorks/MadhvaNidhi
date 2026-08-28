@@ -190,8 +190,23 @@ object CatalogueStore {
     }
 
     private fun augment(context: Context) {
+        val requestedGroups = listOf(
+            CatalogueGroup("rama_raksha", "ಶ್ರೀ ರಾಮರಕ್ಷಾ ಸ್ತೋತ್ರ", "श्रीरामरक्षास्तोत्रम्", "Rama Raksha Stotra"),
+            CatalogueGroup("narasimha_stotras", "ಶ್ರೀ ನರಸಿಂಹ ಸ್ತೋತ್ರಗಳು", "श्रीनृसिंहस्तोत्राणि", "Narasimha Stotras"),
+            CatalogueGroup("vishnu_sahasranama", "ಶ್ರೀ ವಿಷ್ಣು ಸಹಸ್ರನಾಮ", "श्रीविष्णुसहस्रनाम", "Vishnu Sahasranama"),
+            CatalogueGroup("suprabhatams", "ಸುಪ್ರಭಾತಗಳು", "सुप्रभातानि", "Suprabhatams"),
+            CatalogueGroup("krishna_stotras", "ಶ್ರೀ ಕೃಷ್ಣ ಸ್ತೋತ್ರಗಳು", "श्रीकृष्णस्तोत्राणि", "Krishna Stotras"),
+            CatalogueGroup("ashtottara_stotras", "ಅಷ್ಟೋತ್ತರ ಶತನಾಮ ಸ್ತೋತ್ರಗಳು", "अष्टोत्तरशतनामस्तोत्राणि", "Ashtottara Shatanama Stotras")
+        )
+        requestedGroups.forEach { group ->
+            if (groups.none { it.id == group.id }) groups = groups + group
+        }
+        if (groups.none { it.id == "namavalis" }) {
+            groups = groups + CatalogueGroup("namavalis", "ನಾಮಾವಳಿಗಳು", "नामावलयः", "Namavalis")
+        }
         val rigveda = setOf(
-            "AghamarshanaSuktam", "AyushyaSuktam", "BhagyaSuktam", "BhuSuktam",
+            // Core Rigveda or Rigveda-khila texts in the bundled source. Suktas whose
+            // files explicitly identify a Yajurveda source remain in the general mantra group.
             "PurushaSuktam", "ShriSuktam", "VarunaSuktam", "VishnuSuktam"
         )
         if (groups.none { it.id == "rigveda_suktas" }) {
@@ -199,6 +214,11 @@ object CatalogueStore {
         }
         if (groups.none { it.id == "sanskrit_parayana" }) {
             groups = groups + CatalogueGroup("sanskrit_parayana", "ಸಂಸ್ಕೃತ ಪಾರಾಯಣ", "संस्कृतपारायणम्", "Sanskrit Parayana")
+        }
+        items = items.map { item ->
+            if (item.type.equals("stotra", true) && item.deity.contains("Narasimha", true) && item.file.isNotBlank()) {
+                item.copy(group = "narasimha_stotras")
+            } else item
         }
         val skip = setOf(
             "Sandhyavandanam", "SandhyavandanaPrayoga", "SandhyavandanaMantrah",
@@ -225,16 +245,31 @@ object CatalogueStore {
                 url = ""
             )
         }
-        val requestedStotras = setOf(
-            "VishnuSahasranamaStotram", "VenkateshaSuprabhatam", "AdityaHrdayam",
-            "LakshmiNrisimhaKarunarasaStotram", "LakshmiNrisimhaPancharatnam"
-        )
-        LibraryStore.load(context, LibraryStore.STOTRA).forEach { lib ->
-            if (lib.id !in requestedStotras) return@forEach
-            val file = "lib:stotra/${lib.id}"
-            if (items.any { it.file == file }) return@forEach
+        LibraryStore.load(context, LibraryStore.NAMAVALI).forEach { lib ->
+            val file = "lib:namavali/${lib.id}"
+            if (items.any { it.file == file } || extra.any { it.file == file }) return@forEach
             extra += CatalogueItem(
-                id = "lib_${lib.id}", group = "sanskrit_parayana",
+                id = "lib_namavali_${lib.id}", group = "namavalis",
+                kn = IndicScript.convert(lib.title, IndicScript.Lang.KN), sa = lib.title,
+                en = IndicScript.convert(lib.title, IndicScript.Lang.EN), type = "namavali",
+                deity = "", author = "", file = file, script = "sa", url = ""
+            )
+        }
+        LibraryStore.load(context, LibraryStore.STOTRA).forEach { lib ->
+            val targetGroup = when {
+                lib.id == "RamarakshaStotram" -> "rama_raksha"
+                lib.id.contains("Nrisimha", true) || lib.id.contains("Narasimha", true) -> "narasimha_stotras"
+                lib.id == "VishnuSahasranamaStotram" -> "vishnu_sahasranama"
+                lib.id == "VenkateshaSuprabhatam" -> "suprabhatams"
+                lib.section.equals("krishna", true) -> "krishna_stotras"
+                lib.id.contains("Ashtottara", true) -> "ashtottara_stotras"
+                lib.id == "AdityaHrdayam" -> "sanskrit_parayana"
+                else -> return@forEach
+            }
+            val file = "lib:stotra/${lib.id}"
+            if (items.any { it.file == file } || extra.any { it.file == file }) return@forEach
+            extra += CatalogueItem(
+                id = "lib_stotra_${lib.id}", group = targetGroup,
                 kn = IndicScript.convert(lib.title, IndicScript.Lang.KN), sa = lib.title,
                 en = IndicScript.convert(lib.title, IndicScript.Lang.EN), type = "stotra",
                 deity = "", author = "", file = file, script = "sa", url = ""
