@@ -11,8 +11,8 @@ class SettingsStore(context: Context) {
         val raw = prefs.getString("json", "") ?: ""
         val obj = if (raw.isBlank()) defaults() else runCatching { JSONObject(raw) }.getOrElse { defaults() }
         var dirty = false
-        if (obj.optString("flavor") != "acharya") {
-            obj.put("flavor", "acharya")
+        if (obj.optString("flavor") != "madhvanidhi") {
+            obj.put("flavor", "madhvanidhi")
             obj.put("theme", "black")
             obj.put("pages", JSONArray(PAGE_IDS))
             obj.put("projectEnabled", false)
@@ -108,8 +108,25 @@ class SettingsStore(context: Context) {
         save(obj)
     }
 
+    fun veda(): String = json().optString("veda", VEDA_RIGVEDA)
+
+    fun setVeda(id: String) {
+        val value = if (id in VEDA_IDS) id else VEDA_RIGVEDA
+        save(json().put("veda", value))
+    }
+
+    fun panchangaTradition(): String =
+        json().optString("panchangaTradition", PanchangaTraditions.SRS)
+
+    fun setPanchangaTradition(id: String) {
+        save(json().put("panchangaTradition", PanchangaTraditions.find(id).id))
+    }
+
     companion object {
         const val PREFS = "paperdesk_os"
+        const val VEDA_RIGVEDA = "rigveda_ashvalayana"
+        const val VEDA_KRISHNA_YAJURVEDA = "krishna_yajurveda_taittiriya"
+        val VEDA_IDS = listOf(VEDA_RIGVEDA, VEDA_KRISHNA_YAJURVEDA)
         val PAGE_IDS = listOf("desk", "sandhya", "nitya", "mantras", "puja", "hadugalu", "japa", "aayadi")
         val PAGE_LABELS = mapOf(
             "desk" to "PANCHANGA",
@@ -133,9 +150,11 @@ class SettingsStore(context: Context) {
         }
 
         fun defaults(): JSONObject = JSONObject()
-            .put("flavor", "acharya")
+            .put("flavor", "madhvanidhi")
             .put("pages", JSONArray(PAGE_IDS))
             .put("pagesRev", 10)
+            .put("veda", VEDA_RIGVEDA)
+            .put("panchangaTradition", PanchangaTraditions.SRS)
             .put("landscape", true)
             .put("theme", "black")
             .put("accent", "#FF6A00")

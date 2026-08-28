@@ -40,8 +40,13 @@ class ControlPanel(private val host: Activity) {
         audio = host.getSystemService(AudioManager::class.java)
         DeskType.apply(host.findViewById(R.id.controlSoundLabel), DeskType.SEMIBOLD)
         DeskType.apply(host.findViewById(R.id.controlAlwaysLabel), DeskType.SEMIBOLD)
+        DeskType.apply(host.findViewById(R.id.controlSettingsLabel), DeskType.SEMIBOLD)
         host.findViewById<View>(R.id.shadeGuard).setOnClickListener { toggle() }
         host.findViewById<View>(R.id.controlAlwaysOn).setOnClickListener { toggleAlwaysOn() }
+        host.findViewById<View>(R.id.controlSettings).setOnClickListener {
+            close()
+            host.startActivity(Intent(host, AppSettingsActivity::class.java))
+        }
         bindAlways()
         bindLang()
         scrim.setOnClickListener {
@@ -134,6 +139,7 @@ class ControlPanel(private val host: Activity) {
         val lang = OsLang.get(host)
         host.findViewById<TextView>(R.id.controlSoundLabel).text = OsLang.ui("sound", lang)
         host.findViewById<TextView>(R.id.controlAlwaysLabel).text = OsLang.ui("always_on", lang)
+        host.findViewById<TextView>(R.id.controlSettingsLabel).text = host.getString(R.string.settings_title)
         bindAlways()
     }
 }

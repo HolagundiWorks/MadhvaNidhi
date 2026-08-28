@@ -5,20 +5,43 @@ plugins {
 
 android {
     namespace = "com.paperdesk.launcher"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.paperdesk.launcher"
+        applicationId = "in.hcworks.madhvanidhi"
         minSdk = 25
-        targetSdk = 33
-        versionCode = 33
-        versionName = "2.20.0"
+        targetSdk = 36
+        versionCode = 1
+        versionName = "1.0.0"
+    }
+
+    val uploadStoreFile = providers.gradleProperty("MADHVANIDHI_UPLOAD_STORE_FILE")
+    val uploadStorePassword = providers.gradleProperty("MADHVANIDHI_UPLOAD_STORE_PASSWORD")
+    val uploadKeyAlias = providers.gradleProperty("MADHVANIDHI_UPLOAD_KEY_ALIAS")
+    val uploadKeyPassword = providers.gradleProperty("MADHVANIDHI_UPLOAD_KEY_PASSWORD")
+    val uploadSigningReady = listOf(
+        uploadStoreFile,
+        uploadStorePassword,
+        uploadKeyAlias,
+        uploadKeyPassword
+    ).all { it.isPresent }
+
+    signingConfigs {
+        if (uploadSigningReady) {
+            create("upload") {
+                storeFile = file(uploadStoreFile.get())
+                storePassword = uploadStorePassword.get()
+                keyAlias = uploadKeyAlias.get()
+                keyPassword = uploadKeyPassword.get()
+            }
+        }
     }
 
     buildTypes {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
+            if (uploadSigningReady) signingConfig = signingConfigs.getByName("upload")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"

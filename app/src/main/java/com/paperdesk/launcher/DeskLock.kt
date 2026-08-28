@@ -11,7 +11,7 @@ object DeskLock {
     const val UNLOCK_KEY = KeyEvent.KEYCODE_VOLUME_DOWN
 
     fun isLocked(context: Context): Boolean =
-        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).getBoolean("locked", true)
+        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).getBoolean("locked", false)
 
     fun setLocked(context: Context, locked: Boolean) {
         context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)

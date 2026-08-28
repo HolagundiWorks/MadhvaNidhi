@@ -276,7 +276,7 @@ class MonthCalendarView @JvmOverloads constructor(context: Context, attrs: Attri
             dlg.findViewById<TextView>(R.id.dayMasa).text = OsLang.script(listOf(pan.masa, pan.samvatsara, pan.ayana).filter { it.isNotBlank() }.joinToString("  ·  "), lang)
             dlg.findViewById<TextView>(R.id.dayNak).text = if (pan.nakshatra.isBlank()) "" else OsLang.script("${pan.nakshatra} NAKSHATRA", lang)
             dlg.findViewById<TextView>(R.id.dayYoga).text = OsLang.script(listOf(pan.yoga, pan.karana).filter { it.isNotBlank() }.joinToString("  ·  "), lang)
-            dlg.findViewById<TextView>(R.id.daySrc).apply { visibility = if (pan.source.contains("SRS", true)) View.VISIBLE else View.GONE; text = OsLang.script("SRS MANTRALAYA", lang) }
+            dlg.findViewById<TextView>(R.id.daySrc).apply { visibility = if (pan.source.isBlank()) View.GONE else View.VISIBLE; text = pan.source }
             DeskType.apply(dlg.findViewById(R.id.dayDate), DeskType.SEMIBOLD)
             DeskType.apply(dlg.findViewById(R.id.dayFest), DeskType.SEMIBOLD)
             DeskDialogs.show(dlg, 0.52f)

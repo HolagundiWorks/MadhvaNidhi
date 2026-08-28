@@ -176,6 +176,7 @@ class DeskFragment : Fragment() {
             line(v, R.id.panchangaKarana, OsLang.script(day.karana, lang))
             line(v, R.id.panchangaAyana, OsLang.script(day.ayana, lang))
             line(v, R.id.panchangaRitu, OsLang.script(day.ritu, lang))
+            line(v, R.id.panchangaSource, day.source)
             DeskType.apply(v.findViewById(R.id.clockSam), DeskType.SEMIBOLD)
             DeskType.apply(v.findViewById(R.id.panchangaTithi), DeskType.SEMIBOLD)
         }

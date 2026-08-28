@@ -69,7 +69,7 @@ object SandhyaStore {
     }
 
     private fun usesKrishnaYajurveda(context: Context): Boolean =
-        ProfileStore(context).active().vedaShakha.startsWith("ಕೃಷ್ಣ ಯಜುರ್ವೇದ") && yajurSessions.isNotEmpty()
+        SettingsStore(context).veda() == SettingsStore.VEDA_KRISHNA_YAJURVEDA && yajurSessions.isNotEmpty()
 
     fun nowId(): String {
         val h = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)

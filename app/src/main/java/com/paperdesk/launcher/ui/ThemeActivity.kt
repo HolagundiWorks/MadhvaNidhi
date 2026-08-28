@@ -24,9 +24,6 @@ class ThemeActivity : AppCompatActivity() {
             val s = com.paperdesk.launcher.data.SettingsStore(this)
             s.setAlwaysOn(!s.alwaysOn())
             DeskWindow.keepAwake(this, s.alwaysOn())
-            runCatching {
-                com.paperdesk.launcher.bridge.OsRadios.apply(this, s.json())
-            }
             paint()
         }
         paint()

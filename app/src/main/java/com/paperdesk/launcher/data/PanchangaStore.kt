@@ -2,7 +2,6 @@ package com.paperdesk.launcher.data
 
 import android.content.Context
 import org.json.JSONObject
-import java.io.File
 import java.net.HttpURLConnection
 import java.net.URL
 import java.util.Calendar
@@ -25,7 +24,7 @@ data class PanchangaDay(
     val source: String
 )
 
-/** SRS Matha Mantralaya panchanga. Prefers SRS, then USB, then local calculation. */
+/** Tradition-aware Panchanga. Official live data is used only where a provider exposes it. */
 object PanchangaStore {
     private const val PREFS = "paperdesk_panchanga"
     private const val SRS = "https://srsmatha.org/panchanga.php?pdate="
@@ -33,16 +32,15 @@ object PanchangaStore {
     fun today(context: Context): PanchangaDay = forDate(context, dateKey())
 
     fun forDate(context: Context, date: String): PanchangaDay {
-        ingestUsb(context)
-        cached(context, date)?.let { if (it.source.contains("SRS", ignoreCase = true)) return it }
-        fetchSrs(date)?.let {
-            save(context, it)
-            return it
+        val tradition = PanchangaTraditions.find(SettingsStore(context).panchangaTradition())
+        cached(context, date, tradition.id)?.let { return it }
+        if (tradition.liveDailyData) {
+            fetchSrs(date)?.copy(source = "${tradition.kn} · ಅಧಿಕೃತ")?.let {
+                save(context, it, tradition.id)
+                return it
+            }
         }
-        cached(context, date)?.let {
-            if (it.date == date && it.source.isNotBlank() && !it.source.equals("CHANDRAMANA", true)) return it
-        }
-        return local(date).copy(source = "")
+        return local(date).copy(source = "${tradition.kn} · ಸ್ಥಳೀಯ ಗಣನೆ")
     }
 
     fun local(date: String): PanchangaDay = compute(date)
@@ -70,24 +68,14 @@ object PanchangaStore {
         }
     }
 
-    fun ingestUsb(context: Context): Boolean {
-        val root = File(android.os.Environment.getExternalStorageDirectory(), "Vishwakarma")
-        val src = listOf(File(root, "inbox/panchanga.json"), File(root, "panchanga.json"))
-            .firstOrNull { it.exists() } ?: return false
-        val raw = runCatching { src.readText() }.getOrNull() ?: return false
-        val day = parseJson(raw) ?: return false
-        save(context, day)
-        return true
-    }
-
-    private fun cached(context: Context, date: String = dateKey()): PanchangaDay? {
+    private fun cached(context: Context, date: String, tradition: String): PanchangaDay? {
         val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
-        val raw = prefs.getString("json_$date", null) ?: prefs.getString("json", null) ?: return null
+        val raw = prefs.getString("json_${tradition}_$date", null) ?: return null
         val day = parseJson(raw) ?: return null
         return if (day.date == date) day else null
     }
 
-    private fun save(context: Context, day: PanchangaDay) {
+    private fun save(context: Context, day: PanchangaDay, tradition: String) {
         val obj = JSONObject()
             .put("date", day.date)
             .put("samvatsara", day.samvatsara)
@@ -103,12 +91,8 @@ object PanchangaStore {
             .put("source", day.source)
         context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
             .edit()
-            .putString("json", obj.toString())
-            .putString("json_${day.date}", obj.toString())
+            .putString("json_${tradition}_${day.date}", obj.toString())
             .apply()
-        val root = File(android.os.Environment.getExternalStorageDirectory(), "Vishwakarma")
-        root.mkdirs()
-        runCatching { File(root, "panchanga.json").writeText(obj.toString(2)) }
     }
 
     private fun fetchSrs(date: String): PanchangaDay? {
@@ -118,7 +102,7 @@ object PanchangaStore {
             conn.connectTimeout = 12000
             conn.readTimeout = 15000
             conn.instanceFollowRedirects = true
-            conn.setRequestProperty("User-Agent", "AcharyaOS")
+            conn.setRequestProperty("User-Agent", "MadhvaNidhi/1.0 (hcworks.in)")
             if (conn.responseCode != 200) return null
             val html = conn.inputStream.bufferedReader().use { it.readText() }
             parseSrs(html, date)

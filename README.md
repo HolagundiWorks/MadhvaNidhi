@@ -1,70 +1,70 @@
-# Acharya OS
+# MadhvaNidhi
 
-Landscape HOME launcher for Acharya OS. Kannada UI. Pages: PANCHANGA → SANDHYAVANDANA → MANTRAS → POOJA → HADUGALU → JAPA → PROFILE → AAYADI.
+MadhvaNidhi is a priest-friendly landscape Android app for Madhva-sampradaya daily practice. It brings Panchanga, Veda-specific Sandhyavandana, mantras, stotras, suktas, pooja procedures, songs, japa and Aayadi into one large-text interface.
 
-**Status:** active development flavor in this workspace.
+Developed by **Human Centric Works** — [hcworks.in](https://hcworks.in). Made with love in Hospet.
 
-Package: `com.paperdesk.launcher`
+## Application
 
-## Device
+- Android application ID: `in.hcworks.madhvanidhi`
+- Version: `1.0.0` (`versionCode 1`)
+- Minimum Android: 7.1 / API 25
+- Target Android API: 36
+- Primary layout: landscape, designed for smaller Samsung displays and larger text
+- Languages/content: Kannada-first devotional library with supported Sanskrit source transliteration
 
-- Samsung SM-J320M (Galaxy J2), ViperOS
-- Android 7.1.2, API 25 (`minSdk` 25)
-- Landscape 1280×720, density 2.0
-- Set this app as Home (always)
+MadhvaNidhi is a normal launcher application, not a replacement Android ROM or HOME launcher. It does not disable system navigation, radios, accounts or device security.
 
-AcharyaOS is separate from the Samsung A10s VishwakarmaOS flavor. Do not apply
-the A10s lockdown or overlay scripts to this device.
+## Settings
 
-Do not scrape third-party lyrics. Only texts that already ship in `app/src/main/assets` (or that you add yourself) belong in the library.
+The in-app Settings screen selects:
+
+- Rigveda — Ashvalayana Sandhyavandana
+- Krishna Yajurveda — Taittiriya Sandhyavandana
+- Sri Raghavendra Swamy Matha (Mantralaya)
+- Sri Uttaradi Matha
+- all eight Udupi Sri Krishna Mathas: Palimaru, Adamaru, Krishnapura, Puttige, Shirur, Sodhe, Kaniyooru and Pejavara
+
+The selected Veda controls Sandhyavandana content. The selected Matha labels the Panchanga tradition throughout the app. Sri Raghavendra Swamy Matha uses its official daily page when reachable; other choices currently use the bundled local Chandramana calculation and are explicitly labelled as local calculation until an official machine-readable feed is available.
 
 ## Catalogue quality
 
-The runtime catalogue is checked for missing bodies, duplicate titles/content,
-unsupported scripts, and extraction noise:
+The bundled catalogue is checked for missing bodies, duplicate titles/content, unsupported scripts and extraction noise:
 
 ```powershell
 node tools\audit-catalogue.mjs
 ```
 
-See [`docs/CATALOGUE_AUDIT.md`](docs/CATALOGUE_AUDIT.md) for the latest audit,
-verified sources, and maintenance commands.
+See [`docs/CATALOGUE_AUDIT.md`](docs/CATALOGUE_AUDIT.md) for the audit, sources and maintenance commands.
 
-## Build and install
+## Build
 
-Requires JDK 17 and Android SDK. SDK path stays in `local.properties` (not committed).
+Requires JDK 17 and Android SDK. The local SDK path belongs in `local.properties` and is not committed.
 
 ```powershell
-cd acharya-os
-.\gradlew.bat :app:installDebug
-adb shell am start -S -n com.paperdesk.launcher/.ui.LauncherActivity
+.\gradlew.bat testDebugUnitTest assembleDebug bundleRelease
 ```
 
-USB debugging must be on. After install, choose **Acharya OS** as the Home app.
+Install a development build:
 
-## Layout
+```powershell
+.\gradlew.bat :app:installDebug
+adb shell am start -S -n in.hcworks.madhvanidhi/com.paperdesk.launcher.ui.LauncherActivity
+```
+
+## Play Store preparation
+
+The `playstore/` directory contains the store listing, release notes, privacy policy, Data safety answers and launch checklist. A private upload key and final Play Console declarations/assets are intentionally not stored in this repository.
+
+## Repository layout
 
 | Path | Role |
 | --- | --- |
 | `app/` | Android application |
-| `tools/` | Optional scripts to rebuild mantra / pooja catalogues into assets |
-| `gradle/` | Gradle wrapper |
-| `resources/reference/` | Development source documents and catalogues; not packaged automatically |
+| `app/src/main/assets/` | bundled devotional catalogue |
+| `docs/` | catalogue and interface documentation |
+| `playstore/` | Play Store launch copy and checklist |
+| `tools/` | catalogue audit and import utilities |
+| `resources/reference/` | development reference documents; not packaged automatically |
 
-Pager next/prev wraps from the final page back to Panchanga. Footer shows `|| ಹರಿ ಸರ್ವೋತ್ತಮ ವಾಯು ಜೀವೋತ್ತಮ ||`.
-
-Pooja and Sandhyavandana render a live Sankalpa from the current Panchanga. The active profile supplies name, Gotra, Pravara, Veda Shakha and Nakshatra. Japa targets are optional and profile-specific; no lifetime total is maintained.
-
-Rigveda Sandhyavandana follows the complete Ashvalayana trikala source. Morning,
-midday, and evening are rendered as ordered ritual sections with only the
-mantrachamana, arghya, and tarpana passages for the selected time.
-
-Profile names accept offline English phonetic typing and are stored in Kannada. The packaged `ದೇವಪೂಜಾ ವಿಧಾನ` contains the complete user-supplied procedure from Nirmalya Visarjana through Samapana.
-
-Panchanga prefers SRS Mantralaya when online, then USB files, then local Chandramana calculation. USB files come from Vishwakarma OS.
-
-## Related
-
-Phone data root: `/sdcard/Vishwakarma` (retained as a compatibility protocol
-name). The Windows companion currently lives beside the VishwakarmaOS device
-layer; see [`../vishwakarma-os/README.md`](../vishwakarma-os/README.md).
+Pooja and Sandhyavandana generate Sankalpa details from the current Panchanga. No personal profile is required and no user data is sent to Human Centric Works.

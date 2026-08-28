@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "AcharyaOS"
+rootProject.name = "MadhvaNidhi"
 include(":app")

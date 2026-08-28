@@ -1,17 +1,12 @@
 package com.paperdesk.launcher.ui
 
 import android.Manifest
-import android.app.AlarmManager
 import android.content.res.ColorStateList
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.Environment
-import android.provider.Settings
-import android.media.AudioManager
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
@@ -19,21 +14,16 @@ import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.paperdesk.launcher.data.GitaAudio
 import com.paperdesk.launcher.data.OsLang
 import com.paperdesk.launcher.data.SettingsStore
 import androidx.viewpager2.widget.ViewPager2
 import com.paperdesk.launcher.DeskLock
 import com.paperdesk.launcher.DeskWindow
-import com.paperdesk.launcher.LockGuard
 import com.paperdesk.launcher.R
-import com.paperdesk.launcher.ShadeLock
 import com.paperdesk.launcher.alarm.AlarmScheduler
 
 class LauncherActivity : AppCompatActivity() {
 
-    private var askedManage = false
-    private var askedExact = false
     private lateinit var pager: ViewPager2
     private lateinit var pagerHost: ZonePagerHost
     private lateinit var pageNav: View
@@ -50,7 +40,6 @@ class LauncherActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        LockGuard.apply(this)
         com.paperdesk.launcher.DeskTheme.apply(this)
         val settings = com.paperdesk.launcher.data.SettingsStore(this)
         requestedOrientation = if (settings.landscape()) {
@@ -97,61 +86,22 @@ class LauncherActivity : AppCompatActivity() {
         bindLang()
         applyLockChrome()
         applyShadeChrome()
-        if (!DeskLock.isLocked(this)) requestRuntimePerms()
+        requestRuntimePerms()
     }
 
     private fun requestRuntimePerms() {
         val need = mutableListOf<String>()
-        if (Build.VERSION.SDK_INT < 30) {
-            arrayOf(
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE
-            ).forEach { if (checkSelfPermission(it) != PackageManager.PERMISSION_GRANTED) need += it }
-        }
         if (Build.VERSION.SDK_INT >= 33 &&
             checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
         ) {
             need += Manifest.permission.POST_NOTIFICATIONS
         }
         if (need.isNotEmpty()) requestPermissions(need.toTypedArray(), 42)
-        else runCatching { com.paperdesk.launcher.bridge.OsDataService.ensureLayout(this) }
-    }
-
-    private fun requestSpecialAccess() {
-        if (Build.VERSION.SDK_INT >= 30 && !Environment.isExternalStorageManager()) {
-            if (!askedManage) {
-                askedManage = true
-                runCatching {
-                    startActivity(
-                        Intent(
-                            Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION,
-                            Uri.parse("package:$packageName")
-                        )
-                    )
-                }
-            }
-            return
-        }
-        if (Build.VERSION.SDK_INT >= 31) {
-            val am = getSystemService(AlarmManager::class.java)
-            if (am != null && !am.canScheduleExactAlarms() && !askedExact) {
-                askedExact = true
-                runCatching {
-                    startActivity(
-                        Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM).setData(Uri.parse("package:$packageName"))
-                    )
-                }
-                return
-            }
-        }
-        runCatching { com.paperdesk.launcher.bridge.OsDataService.ensureLayout(this) }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == 42) {
-            runCatching { com.paperdesk.launcher.bridge.OsDataService.ensureLayout(this) }
-        }
+        // No special-access or broad storage permission is required by MadhvaNidhi.
     }
 
     fun applyLockChrome() {
@@ -279,36 +229,13 @@ class LauncherActivity : AppCompatActivity() {
     }
 
     fun applyShadeChrome() {
-        val locked = ShadeLock.isLocked(this)
-        findViewById<View>(R.id.shadeGuard)?.visibility = if (locked) View.VISIBLE else View.GONE
-        com.paperdesk.launcher.bridge.OsChrome.applyShade(this, locked)
+        findViewById<View>(R.id.shadeGuard)?.visibility = View.VISIBLE
         DeskWindow.immersive(this)
         val on = SettingsStore(this).alwaysOn()
         DeskWindow.keepAwake(this, on)
     }
 
     override fun dispatchKeyEvent(event: KeyEvent): Boolean {
-        if (event.action == KeyEvent.ACTION_DOWN && ShadeLock.isVolumeKey(event.keyCode)) {
-            if (GitaAudio.isPlaying() || controls.isOpen()) {
-                val dir = if (event.keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
-                    AudioManager.ADJUST_RAISE
-                } else {
-                    AudioManager.ADJUST_LOWER
-                }
-                val flags = if (controls.isOpen()) 0 else AudioManager.FLAG_SHOW_UI
-                getSystemService(AudioManager::class.java)
-                    ?.adjustStreamVolume(AudioManager.STREAM_MUSIC, dir, flags)
-            }
-            if (ShadeLock.onVolume()) {
-                ShadeLock.toggle(this)
-                applyShadeChrome()
-            }
-            return true
-        }
-        if (event.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_HOME) {
-            goHome()
-            return true
-        }
         if (event.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_BACK) {
             if (controls.isOpen()) {
                 controls.close()
@@ -338,16 +265,10 @@ class LauncherActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         OsLang.addListener(langTick)
-        LockGuard.apply(this)
         applyShadeChrome()
-        runCatching {
-            val s = com.paperdesk.launcher.data.SettingsStore(this).json()
-            com.paperdesk.launcher.bridge.OsRadios.apply(this, s)
-        }
         applyLockChrome()
         applyAlwaysOn()
         placeContentNav()
-        if (!DeskLock.isLocked(this)) requestSpecialAccess()
     }
 
     override fun onPause() {
@@ -364,9 +285,6 @@ class LauncherActivity : AppCompatActivity() {
     fun applyAlwaysOn() {
         val on = SettingsStore(this).alwaysOn()
         DeskWindow.keepAwake(this, on)
-        runCatching {
-            com.paperdesk.launcher.bridge.OsRadios.apply(this, SettingsStore(this).json())
-        }
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -383,6 +301,10 @@ class LauncherActivity : AppCompatActivity() {
         val closed = supportFragmentManager.fragments.filterIsInstance<ReaderFragment>().any { it.closeSelector() }
         if (closed) return
         if (DeskLock.isLocked(this)) return
-        if (pager.currentItem != 0) goHome()
+        if (pager.currentItem != 0) {
+            goHome()
+        } else {
+            super.onBackPressed()
+        }
     }
 }

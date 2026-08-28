@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Acharya OS</string>
+    <string name="app_name">MadhvaNidhi</string>
+    <string name="settings_title">SETTINGS</string>
+    <string name="settings_summary">Choose the tradition used by Sandhyavandana and Panchanga.</string>
+    <string name="settings_veda">VEDA AND SHAKHA</string>
+    <string name="settings_veda_hint">Changes the complete Trikala Sandhyavandana text.</string>
+    <string name="settings_panchanga">PANCHANGA TRADITION</string>
+    <string name="settings_panchanga_live">Official daily data is available online. Offline calculation is used when unavailable.</string>
+    <string name="settings_panchanga_reference">Tradition selected. Until an official daily feed is available, values are clearly marked as local calculation.</string>
+    <string name="brand_developer">Developed by Human Centric Works · hcworks.in</string>
+    <string name="brand_made_in">Made with love in Hospet</string>
+    <string name="settings_version">MadhvaNidhi %1$s</string>
     <string name="city_hospet">Hospet, Karnataka</string>
     <string name="page_desk">PANCHANGA</string>
     <string name="page_tasks">TODO</string>
@@ -79,6 +89,9 @@
     <string name="from">From</string>
     <string name="to">To</string>
     <string name="alarm_label_hint">Label - sandhya, puja, muhurta</string>
+    <string name="alarm_channel_name">MadhvaNidhi alarms</string>
+    <string name="alarm_channel_description">Reminders for Sandhyavandana, pooja and other observances</string>
+    <string name="alarm_notification_title">MadhvaNidhi reminder</string>
     <string name="due">Due</string>
     <string name="empty_events">NO EVENTS</string>
     <string name="weather_unavailable">WEATHER UNAVAILABLE</string>
