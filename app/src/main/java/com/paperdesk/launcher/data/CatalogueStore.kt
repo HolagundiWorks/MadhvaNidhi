@@ -101,9 +101,36 @@ object CatalogueStore {
         return mine.firstOrNull { it.file.isNotBlank() } ?: mine.firstOrNull()
     }
 
+    fun firstReadable(page: String, subpage: String): CatalogueItem? {
+        val allowed = groupsFor(page).map { it.id }.toSet()
+        val mine = items.filter { it.group in allowed && subpageFor(it) == subpage }
+        return mine.firstOrNull { it.file.isNotBlank() } ?: mine.firstOrNull()
+    }
+
+    fun groupsForSubpage(page: String, subpage: String): List<CatalogueGroup> {
+        val allowed = groupsFor(page)
+        return allowed.filter { group ->
+            items.any { it.group == group.id && it.file.isNotBlank() && subpageFor(it) == subpage }
+        }
+    }
+
     fun inGroup(group: String): List<CatalogueItem> {
         val base = if (group.isBlank()) items else items.filter { it.group == group }
         return base.filter { it.file.isNotBlank() }
+    }
+
+    fun inGroup(group: String, subpage: String): List<CatalogueItem> =
+        inGroup(group).filter { subpageFor(it) == subpage }
+
+    fun belongsToSubpage(item: CatalogueItem, subpage: String): Boolean = subpageFor(item) == subpage
+
+    private fun subpageFor(item: CatalogueItem): String {
+        val searchable = "${item.id} ${item.kn} ${item.sa} ${item.en}".lowercase()
+        return when {
+            item.group == "rigveda_suktas" || "sukta" in searchable || "सूक्त" in searchable || "ಸೂಕ್ತ" in searchable -> "suktas"
+            item.type.equals("stotra", true) || item.group == "stotras" || item.group == "sanskrit_parayana" -> "stotra"
+            else -> "mantras"
+        }
     }
 
     fun groupLabel(group: CatalogueGroup, lang: IndicScript.Lang): String = when (lang) {

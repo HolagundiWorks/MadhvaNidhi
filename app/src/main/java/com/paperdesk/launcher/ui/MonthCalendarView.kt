@@ -23,7 +23,6 @@ class MonthCalendarView @JvmOverloads constructor(context: Context, attrs: Attri
     LinearLayout(context, attrs) {
 
     private val accent = ContextCompat.getColor(context, R.color.accent)
-    private val black = ContextCompat.getColor(context, R.color.black)
     private val white = ContextCompat.getColor(context, R.color.white)
     private val muted = ContextCompat.getColor(context, R.color.white_55)
     private val titleTv = label(12f, white, Gravity.CENTER)
@@ -112,11 +111,10 @@ class MonthCalendarView @JvmOverloads constructor(context: Context, attrs: Attri
         repeat(15) { index ->
             val heading = label(10f, if (index == 14) accent else muted, Gravity.CENTER).apply {
                 text = tithiShort(index, lang)
+                setBackgroundResource(R.drawable.bg_tithi_grid)
                 if (index == 14) DeskType.apply(this, DeskType.SEMIBOLD)
             }
-            tithiRow.addView(heading, LayoutParams(0, LayoutParams.MATCH_PARENT, 1f).apply {
-                if (index > 0) marginStart = dp(2)
-            })
+            tithiRow.addView(heading, LayoutParams(0, LayoutParams.MATCH_PARENT, 1f))
         }
     }
 
@@ -127,7 +125,7 @@ class MonthCalendarView @JvmOverloads constructor(context: Context, attrs: Attri
                 orientation = VERTICAL
                 gravity = Gravity.CENTER
                 setPadding(dp(1), dp(1), dp(1), dp(1))
-                setBackgroundResource(R.drawable.bg_cell)
+                setBackgroundResource(R.drawable.bg_tithi_grid)
             }
             val date = label(12f, white, Gravity.CENTER).apply {
                 text = key?.let { OsLang.digits(PanchangaStore.parse(it).get(Calendar.DAY_OF_MONTH), IndicScript.Lang.KN) } ?: "—"
@@ -141,13 +139,10 @@ class MonthCalendarView @JvmOverloads constructor(context: Context, attrs: Attri
                 val selected = key == selectedKey
                 val today = key == PanchangaStore.dateKey()
                 val marked = FestivalStore.has(key) || MadhwaDays.isMarked(pan.masa, pan.paksha, pan.tithi)
-                when {
-                    selected -> { cell.setBackgroundResource(R.drawable.bg_cell_on); date.setTextColor(black) }
-                    PanchangaStore.isPurnima(pan.tithi) -> { cell.setBackgroundResource(R.drawable.bg_date_fill); date.setTextColor(black) }
-                    PanchangaStore.isAmavasya(pan.tithi) -> { cell.setBackgroundResource(R.drawable.bg_date_outline); date.setTextColor(accent) }
-                    PanchangaStore.isEkadasi(pan.tithi) -> cell.setBackgroundResource(R.drawable.bg_date_circle)
-                    marked -> date.setTextColor(accent)
-                }
+                cell.setBackgroundResource(if (today) R.drawable.bg_tithi_today else R.drawable.bg_tithi_grid)
+                if (selected || PanchangaStore.isPurnima(pan.tithi) || PanchangaStore.isAmavasya(pan.tithi) ||
+                    PanchangaStore.isEkadasi(pan.tithi) || marked
+                ) date.setTextColor(accent)
                 if (today) date.paintFlags = date.paintFlags or Paint.UNDERLINE_TEXT_FLAG
                 DeskType.apply(date, if (selected || today || marked) DeskType.SEMIBOLD else DeskType.REGULAR)
                 val cal = PanchangaStore.parse(key)
@@ -156,7 +151,7 @@ class MonthCalendarView @JvmOverloads constructor(context: Context, attrs: Attri
                 cell.setOnClickListener { select(key, false) }
                 cell.setOnLongClickListener { select(key, true); true }
             }
-            row.addView(cell, LayoutParams(0, LayoutParams.MATCH_PARENT, 1f).apply { if (index > 0) marginStart = dp(2) })
+            row.addView(cell, LayoutParams(0, LayoutParams.MATCH_PARENT, 1f))
         }
     }
 

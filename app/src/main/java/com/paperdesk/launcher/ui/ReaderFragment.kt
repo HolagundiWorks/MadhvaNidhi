@@ -30,6 +30,7 @@ class ReaderFragment : Fragment() {
     private var lang = IndicScript.Lang.KN
     private var sessionId = ""
     private var itemId = ""
+    private var subpageId = MANTRA_SUBPAGE
     private lateinit var adapter: SelectAdapter
     private var bindingKala = false
     private val langTick: () -> Unit = { paint() }
@@ -64,8 +65,10 @@ class ReaderFragment : Fragment() {
         view.findViewById<View>(R.id.readerSelectLabel).setOnClickListener { openSelector() }
         view.findViewById<View>(R.id.selectorBack).setOnClickListener { closeSelector() }
         if (pageId == SANDHYA) setupKalaDropdown(view)
+        if (pageId == MANTRAS) setupSubpages(view)
         sessionId = prefs.getString("session", "").orEmpty()
         itemId = prefs.getString("item", "").orEmpty()
+        subpageId = prefs.getString("subpage", MANTRA_SUBPAGE).orEmpty().takeIf { it in SUBPAGES } ?: MANTRA_SUBPAGE
         if (pageId == SANDHYA) {
             if (sessionId.isBlank() || SandhyaStore.session(requireContext(), sessionId) == null) {
                 sessionId = SandhyaStore.nowId()
@@ -73,10 +76,9 @@ class ReaderFragment : Fragment() {
             val steps = SandhyaStore.session(requireContext(), sessionId)?.steps.orEmpty()
             if (steps.none { it.id == itemId }) itemId = steps.firstOrNull()?.id.orEmpty()
         }
-        if ((pageId == MANTRAS || pageId == HADUGALU) &&
-            (CatalogueStore.item(itemId) == null || CatalogueStore.item(itemId)?.group !in CatalogueStore.groupsFor(pageId).map { it.id })
-        ) {
-            itemId = CatalogueStore.firstReadable(pageId)?.id.orEmpty()
+        if ((pageId == MANTRAS || pageId == HADUGALU) && !catalogueItemAllowed(CatalogueStore.item(itemId))) {
+            itemId = if (pageId == MANTRAS) CatalogueStore.firstReadable(pageId, subpageId)?.id.orEmpty()
+            else CatalogueStore.firstReadable(pageId)?.id.orEmpty()
             sessionId = CatalogueStore.item(itemId)?.group.orEmpty()
         }
         if (pageId == PUJA) {
@@ -144,6 +146,23 @@ class ReaderFragment : Fragment() {
         view?.findViewById<DeskScrollView>(R.id.readerScroll)?.scrollTo(0, 0)
     }
 
+    private fun setupSubpages(v: View) {
+        v.findViewById<View>(R.id.readerSubpages).visibility = View.VISIBLE
+        v.findViewById<View>(R.id.subpageMantras).setOnClickListener { pickSubpage(MANTRA_SUBPAGE) }
+        v.findViewById<View>(R.id.subpageStotras).setOnClickListener { pickSubpage(STOTRA_SUBPAGE) }
+        v.findViewById<View>(R.id.subpageSuktas).setOnClickListener { pickSubpage(SUKTA_SUBPAGE) }
+    }
+
+    private fun pickSubpage(id: String) {
+        if (pageId != MANTRAS || id !in SUBPAGES || id == subpageId) return
+        subpageId = id
+        itemId = CatalogueStore.firstReadable(MANTRAS, subpageId)?.id.orEmpty()
+        sessionId = CatalogueStore.item(itemId)?.group.orEmpty()
+        prefs.edit().putString("subpage", subpageId).putString("session", sessionId).putString("item", itemId).apply()
+        paint()
+        view?.findViewById<DeskScrollView>(R.id.readerScroll)?.scrollTo(0, 0)
+    }
+
     private fun paint() {
         val v = view ?: return
         lang = OsLang.get(requireContext())
@@ -154,6 +173,8 @@ class ReaderFragment : Fragment() {
         DeskType.apply(v.findViewById(R.id.selectorTitle), DeskType.SEMIBOLD)
         val item = current()
         val sandhya = pageId == SANDHYA
+        v.findViewById<View>(R.id.readerSubpages).visibility = if (pageId == MANTRAS) View.VISIBLE else View.GONE
+        if (pageId == MANTRAS) bindSubpages(v)
         v.findViewById<View>(R.id.readerSelect).visibility = View.GONE
         v.findViewById<View>(R.id.readerKala).visibility = if (sandhya) View.VISIBLE else View.GONE
         v.findViewById<View>(R.id.readerHead).visibility = if (item?.head.isNullOrBlank()) View.GONE else View.VISIBLE
@@ -193,6 +214,7 @@ class ReaderFragment : Fragment() {
                 val group = CatalogueStore.groupsFor(pageId).firstOrNull { it.id == (cat?.group ?: sessionId) }
                 val section = group?.let { CatalogueStore.groupLabel(it, lang) }.orEmpty()
                 val name = item?.label.orEmpty()
+                if (pageId == MANTRAS) parts += OsLang.ui(subpageId, lang)
                 if (section.isNotBlank() && section != page) parts += section
                 if (name.isNotBlank() && name != section) parts += name
             }
@@ -229,6 +251,24 @@ class ReaderFragment : Fragment() {
         spinner.setSelection(sessions.indexOfFirst { it.id == sessionId }.coerceAtLeast(0), false)
         spinner.contentDescription = "ಸಂಧ್ಯಾ ಕಾಲ ಆಯ್ಕೆ. ${labels.getOrNull(spinner.selectedItemPosition).orEmpty()}"
         bindingKala = false
+    }
+
+    private fun bindSubpages(v: View) {
+        val tabs = listOf(
+            Triple(R.id.subpageMantras, MANTRA_SUBPAGE, OsLang.ui("mantras", lang)),
+            Triple(R.id.subpageStotras, STOTRA_SUBPAGE, OsLang.ui("stotra", lang)),
+            Triple(R.id.subpageSuktas, SUKTA_SUBPAGE, OsLang.ui("suktas", lang))
+        )
+        tabs.forEach { (viewId, id, title) ->
+            v.findViewById<TextView>(viewId).apply {
+                text = title
+                contentDescription = title
+                val active = id == subpageId
+                setBackgroundResource(if (active) R.drawable.bg_subpage_on else R.drawable.bg_subpage)
+                setTextColor(requireContext().getColor(if (active) R.color.accent else R.color.white))
+                DeskType.apply(this, if (active) DeskType.SEMIBOLD else DeskType.REGULAR)
+            }
+        }
     }
 
     private fun bindSelector() {
@@ -291,11 +331,14 @@ class ReaderFragment : Fragment() {
                 )
             }
             MANTRAS, HADUGALU -> {
-                val groups = CatalogueStore.groupsFor(pageId)
+                val groups = if (pageId == MANTRAS) CatalogueStore.groupsForSubpage(pageId, subpageId)
+                else CatalogueStore.groupsFor(pageId)
                 val allowed = groups.map { it.id }.toSet()
-                val item = CatalogueStore.item(itemId)?.takeIf { it.group in allowed }
-                    ?: CatalogueStore.firstReadable(pageId)
-                    ?: return null
+                val item = CatalogueStore.item(itemId)?.takeIf {
+                    it.group in allowed && (pageId != MANTRAS || CatalogueStore.belongsToSubpage(it, subpageId))
+                } ?: if (pageId == MANTRAS) CatalogueStore.firstReadable(pageId, subpageId)
+                else CatalogueStore.firstReadable(pageId)
+                item ?: return null
                 itemId = item.id
                 sessionId = item.group
                 return Shown(
@@ -328,14 +371,18 @@ class ReaderFragment : Fragment() {
             }
             MANTRAS, HADUGALU -> {
                 val out = ArrayList<Row>()
-                CatalogueStore.groupsFor(pageId).forEach { group ->
+                val groups = if (pageId == MANTRAS) CatalogueStore.groupsForSubpage(pageId, subpageId)
+                else CatalogueStore.groupsFor(pageId)
+                groups.forEach { group ->
                     out += Row(
                         id = group.id,
                         group = group.id,
                         title = CatalogueStore.groupLabel(group, lang),
                         section = true
                     )
-                    CatalogueStore.inGroup(group.id).forEach { item ->
+                    val entries = if (pageId == MANTRAS) CatalogueStore.inGroup(group.id, subpageId)
+                    else CatalogueStore.inGroup(group.id)
+                    entries.forEach { item ->
                         out += Row(
                             id = item.id,
                             group = group.id,
@@ -356,6 +403,12 @@ class ReaderFragment : Fragment() {
     }
 
     private fun gate(): LauncherActivity? = activity as? LauncherActivity
+
+    private fun catalogueItemAllowed(item: com.paperdesk.launcher.data.CatalogueItem?): Boolean {
+        item ?: return false
+        if (item.group !in CatalogueStore.groupsFor(pageId).map { it.id }) return false
+        return pageId != MANTRAS || CatalogueStore.belongsToSubpage(item, subpageId)
+    }
 
     private fun pujaItems() = MadhwaStore.inCategory("puja") + MadhwaStore.inCategory("festival")
 
@@ -419,6 +472,10 @@ class ReaderFragment : Fragment() {
         const val MANTRAS = "mantras"
         const val PUJA = "puja"
         const val HADUGALU = "hadugalu"
+        private const val MANTRA_SUBPAGE = "mantras"
+        private const val STOTRA_SUBPAGE = "stotra"
+        private const val SUKTA_SUBPAGE = "suktas"
+        private val SUBPAGES = setOf(MANTRA_SUBPAGE, STOTRA_SUBPAGE, SUKTA_SUBPAGE)
         private const val ARG_ID = "page_id"
 
         fun create(id: String): ReaderFragment {

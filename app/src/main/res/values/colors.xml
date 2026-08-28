@@ -7,9 +7,9 @@
     <color name="white_70">#B3FFFFFF</color>
     <color name="white_55">#8CFFFFFF</color>
     <color name="white_45">#73FFFFFF</color>
-    <color name="surface_1">#2A211B</color>
-    <color name="surface_2">#3A2D24</color>
-    <color name="divider">#806B5A</color>
+    <color name="surface_1">#3A3027</color>
+    <color name="surface_2">#4A3D31</color>
+    <color name="divider">#A58B73</color>
     <color name="accent_90">#E6C96F45</color>
     <color name="accent_70">#B3C96F45</color>
     <color name="scrim">#99000000</color>

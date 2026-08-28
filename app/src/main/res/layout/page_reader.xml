@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black">
+    android:background="@color/earth_canvas_desk">
 
     <LinearLayout
         android:id="@+id/readerMain"
@@ -84,6 +84,39 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/readerSubpages"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginTop="@dimen/ui_grid_1"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/subpageMantras"
+                    style="@style/Desk.Meta"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/subpageStotras"
+                    style="@style/Desk.Meta"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/subpageSuktas"
+                    style="@style/Desk.Meta"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+            </LinearLayout>
+
             <TextView
                 android:id="@+id/readerCrumb"
                 style="@style/Desk.Meta"
@@ -153,7 +186,7 @@
         android:id="@+id/selectorPage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black"
+        android:background="@color/earth_canvas_desk"
         android:orientation="vertical"
         android:paddingLeft="@dimen/page_pad_h"
         android:paddingTop="@dimen/page_pad_top"
