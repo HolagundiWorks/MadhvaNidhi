@@ -22,7 +22,7 @@
             android:clipToPadding="false"
             android:gravity="center_vertical"
             android:orientation="vertical"
-            android:paddingTop="@dimen/ui_grid_1">
+            android:paddingTop="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -127,8 +127,8 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:paddingTop="@dimen/ui_grid_1"
-                android:paddingBottom="@dimen/ui_grid_1"
+                android:paddingTop="@dimen/space_4"
+                android:paddingBottom="@dimen/space_4"
                 android:textColor="@color/white_55"
                 android:textSize="@dimen/type_breadcrumb" />
 

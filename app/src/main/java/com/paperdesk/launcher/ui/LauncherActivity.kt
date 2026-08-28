@@ -39,7 +39,11 @@ class LauncherActivity : AppCompatActivity() {
     private var footerAction: (() -> Unit)? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        // The workspace page order changed during the ROM-to-app migration. Restoring
+        // framework-owned ViewPager fragments can pair an old fragment with a new footer
+        // title after an in-place update. Reader selections are already persisted by each
+        // page, so rebuild the lightweight page shell deterministically.
+        super.onCreate(null)
         com.paperdesk.launcher.DeskTheme.apply(this)
         val settings = com.paperdesk.launcher.data.SettingsStore(this)
         requestedOrientation = if (settings.landscape()) {

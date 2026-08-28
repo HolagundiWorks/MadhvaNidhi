@@ -10,9 +10,9 @@
 
     <!-- Compact landscape scale for the Galaxy A10s (about 837 x 397 dp usable). -->
     <dimen name="page_pad_h">16dp</dimen>
-    <dimen name="page_pad_top">8dp</dimen>
+    <dimen name="page_pad_top">4dp</dimen>
     <dimen name="page_pad_bottom">0dp</dimen>
-    <dimen name="japa_pad_top">8dp</dimen>
+    <dimen name="japa_pad_top">4dp</dimen>
     <dimen name="japa_pad_bottom">60dp</dimen>
     <dimen name="chrome_bar">60dp</dimen>
     <dimen name="footer_bar">60dp</dimen>
