@@ -19,22 +19,22 @@
     <dimen name="ui_rounded_safe">8dp</dimen>
 
     <!-- Near-black earthen canvases preserve Carbon g100 contrast. -->
-    <color name="earth_canvas_desk">#100D0A</color>
-    <color name="earth_canvas_sandhya">#121008</color>
-    <color name="earth_canvas_nitya">#120E0B</color>
-    <color name="earth_canvas_mantras">#130D0A</color>
-    <color name="earth_canvas_puja">#140B0B</color>
-    <color name="earth_canvas_hadugalu">#101108</color>
-    <color name="earth_canvas_japa">#140E09</color>
-    <color name="earth_canvas_aayadi">#12100C</color>
-    <color name="earth_accent_desk">#D0845A</color>
-    <color name="earth_accent_sandhya">#D6A64A</color>
-    <color name="earth_accent_nitya">#B88A65</color>
-    <color name="earth_accent_mantras">#C97A5B</color>
-    <color name="earth_accent_puja">#C15F58</color>
-    <color name="earth_accent_hadugalu">#A9AA62</color>
-    <color name="earth_accent_japa">#D4773D</color>
-    <color name="earth_accent_aayadi">#B89A68</color>
-    <color name="earth_footer_base">#241A13</color>
-    <color name="earth_footer_shadow">#120D09</color>
+    <color name="earth_canvas_desk">#140F0C</color>
+    <color name="earth_canvas_sandhya">#140F0C</color>
+    <color name="earth_canvas_nitya">#140F0C</color>
+    <color name="earth_canvas_mantras">#140F0C</color>
+    <color name="earth_canvas_puja">#140F0C</color>
+    <color name="earth_canvas_hadugalu">#140F0C</color>
+    <color name="earth_canvas_japa">#140F0C</color>
+    <color name="earth_canvas_aayadi">#140F0C</color>
+    <color name="earth_accent_desk">#C96F45</color>
+    <color name="earth_accent_sandhya">#C96F45</color>
+    <color name="earth_accent_nitya">#C96F45</color>
+    <color name="earth_accent_mantras">#C96F45</color>
+    <color name="earth_accent_puja">#C96F45</color>
+    <color name="earth_accent_hadugalu">#C96F45</color>
+    <color name="earth_accent_japa">#C96F45</color>
+    <color name="earth_accent_aayadi">#C96F45</color>
+    <color name="earth_footer_base">#2A211B</color>
+    <color name="earth_footer_shadow">#000000</color>
 </resources>

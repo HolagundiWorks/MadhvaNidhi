@@ -21,6 +21,19 @@
             android:background="@color/black" />
     </com.paperdesk.launcher.ui.ZonePagerHost>
 
+    <TextView
+        android:id="@+id/topMotto"
+        style="@style/Desk.Meta"
+        android:layout_width="wrap_content"
+        android:layout_height="26dp"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="6dp"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingLeft="@dimen/ui_grid_2"
+        android:paddingRight="@dimen/ui_grid_2"
+        android:textColor="@color/white_70" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/pageNav"
         android:layout_width="match_parent"
@@ -53,13 +66,14 @@
             android:gravity="center_vertical"
             android:maxLines="1"
             android:textColor="@color/white"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/navPrev"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/hariMotto"
-            style="@style/Desk.Meta"
+            style="@style/Desk.Section"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/ui_footer_motto_height"
             android:ellipsize="end"

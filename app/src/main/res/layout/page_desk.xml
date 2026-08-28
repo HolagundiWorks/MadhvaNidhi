@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black">
+    android:background="@color/earth_canvas_desk">
 
     <LinearLayout
         android:id="@+id/deskOpen"
@@ -11,8 +11,7 @@
         android:orientation="vertical"
         android:paddingLeft="@dimen/page_pad_h"
         android:paddingTop="@dimen/space_8"
-        android:paddingRight="@dimen/page_pad_h"
-        android:paddingBottom="@dimen/page_pad_bottom">
+        android:paddingRight="@dimen/page_pad_h">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,142 +22,103 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.15"
-                android:orientation="vertical">
+                android:layout_weight="0.9"
+                android:background="@drawable/bg_card"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="@dimen/space_8">
 
-                <LinearLayout
+                <TextView android:id="@+id/clockSam" style="@style/Desk.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:textColor="@color/accent" />
+                <TextView android:id="@+id/clockMasaPaksha" style="@style/Desk.Body2" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" />
+
+                <com.paperdesk.launcher.ui.ClockLockLayout
+                    android:id="@+id/clockLockArea"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <com.paperdesk.launcher.ui.AnalogClockView
+                        android:id="@+id/analogClock"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:importantForAccessibility="no"
+                        android:scaleX="0.78"
+                        android:scaleY="0.78" />
+                </com.paperdesk.launcher.ui.ClockLockLayout>
+
+                <TextView android:id="@+id/clockDate" style="@style/Desk.Body2" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/panchangaCol"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/space_8"
+                android:layout_weight="1.1"
+                android:background="@drawable/bg_card"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="@dimen/space_16">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
-
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1.45"
-                        android:gravity="center_horizontal"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
                         android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/clockSam"
-                            style="@style/Desk.Section"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:paddingBottom="@dimen/space_4"
-                            android:textColor="@color/accent" />
-
-                        <TextView
-                            android:id="@+id/clockMasaPaksha"
-                            style="@style/Desk.Body2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:paddingBottom="@dimen/space_8" />
-
-                        <com.paperdesk.launcher.ui.ClockLockLayout
-                            android:id="@+id/clockLockArea"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <com.paperdesk.launcher.ui.AnalogClockView
-                                android:id="@+id/analogClock"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center"
-                                android:importantForAccessibility="no"
-                                android:scaleX="0.8"
-                                android:scaleY="0.8" />
-                        </com.paperdesk.launcher.ui.ClockLockLayout>
-
-                        <TextView
-                            android:id="@+id/dayEvent"
-                            style="@style/Desk.Section"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:paddingTop="@dimen/space_8"
-                            android:textColor="@color/accent"
-                            android:visibility="gone" />
-
-                        <TextView
-                            android:id="@+id/clockDate"
-                            style="@style/Desk.Body2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:paddingTop="@dimen/space_4"
-                            android:paddingBottom="@dimen/space_4" />
+                        <TextView android:id="@+id/panchangaVara" style="@style/Desk.Body2" android:layout_width="match_parent" android:layout_height="wrap_content" />
+                        <TextView android:id="@+id/panchangaTithi" style="@style/Desk.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_4" android:textColor="@color/accent" />
+                        <TextView android:id="@+id/panchangaNak" style="@style/Desk.Body2" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_4" />
                     </LinearLayout>
-
                     <LinearLayout
-                        android:id="@+id/panchangaCol"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/space_16"
-                        android:layout_weight="0.85"
-                        android:gravity="center_vertical"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/space_8"
+                        android:layout_weight="0.8"
                         android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/panchangaVara"
-                            style="@style/Desk.Body2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:id="@+id/panchangaTithi"
-                            style="@style/Desk.Section"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/space_8"
-                            android:textColor="@color/accent" />
-
-                        <TextView
-                            android:id="@+id/panchangaNak"
-                            style="@style/Desk.Body2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/space_8" />
-
-                        <TextView
-                            android:id="@+id/panchangaKarana"
-                            style="@style/Desk.Meta"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/space_8" />
-
-                        <TextView
-                            android:id="@+id/panchangaAyana"
-                            style="@style/Desk.Meta"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/space_8" />
-
-                        <TextView
-                            android:id="@+id/panchangaRitu"
-                            style="@style/Desk.Meta"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/space_8" />
+                        <TextView android:id="@+id/panchangaKarana" style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" />
+                        <TextView android:id="@+id/panchangaAyana" style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_8" />
+                        <TextView android:id="@+id/panchangaRitu" style="@style/Desk.Meta" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_8" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
-            <com.paperdesk.launcher.ui.MonthCalendarView
-                android:id="@+id/calendar"
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/space_16"
-                android:layout_weight="0.95" />
+                android:layout_marginLeft="@dimen/space_8"
+                android:layout_weight="0.85"
+                android:background="@drawable/bg_card"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="@dimen/space_16">
+                <TextView
+                    android:id="@+id/todayEventsTitle"
+                    style="@style/Desk.Meta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white_70" />
+                <TextView
+                    android:id="@+id/dayEvent"
+                    style="@style/Desk.Section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:textColor="@color/accent" />
+            </LinearLayout>
         </LinearLayout>
 
-        <View
+        <com.paperdesk.launcher.ui.MonthCalendarView
+            android:id="@+id/calendar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/chrome_bar" />
+            android:layout_height="176dp"
+            android:layout_marginTop="@dimen/space_8"
+            android:background="@drawable/bg_card" />
+
+        <View android:layout_width="match_parent" android:layout_height="@dimen/chrome_bar" />
     </LinearLayout>
 </FrameLayout>

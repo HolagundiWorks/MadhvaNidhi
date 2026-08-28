@@ -68,6 +68,42 @@ object DeskWindow {
         }
         ViewCompat.requestApplyInsets(root)
     }
+
+    /**
+     * Keep the black canvas and decorative chrome beneath the teardrop while moving only
+     * readable content and controls into the safe region.
+     */
+    fun wrapCutout(root: View, content: View, footer: View, roundedCornerSafeDp: Int = 8) {
+        val density = root.resources.displayMetrics.density
+        val roundedSafe = (roundedCornerSafeDp * density).toInt()
+        val footerInset = (16 * density).toInt()
+        val mottoInset = (28 * density).toInt()
+        ViewCompat.setOnApplyWindowInsetsListener(root) { _, insets ->
+            val bars = insets.getInsets(
+                WindowInsetsCompat.Type.displayCutout() or WindowInsetsCompat.Type.systemBars()
+            )
+            root.setPadding(0, 0, 0, 0)
+            content.setPadding(0, 0, 0, 0)
+            content.findViewById<View?>(R.id.pager)?.let { pager ->
+                val params = pager.layoutParams as android.widget.FrameLayout.LayoutParams
+                params.setMargins(
+                    bars.left + roundedSafe,
+                    bars.top + roundedSafe + mottoInset,
+                    bars.right + roundedSafe,
+                    bars.bottom + roundedSafe
+                )
+                pager.layoutParams = params
+            }
+            footer.setPadding(
+                bars.left + roundedSafe + footerInset,
+                0,
+                bars.right + roundedSafe + footerInset,
+                0
+            )
+            insets
+        }
+        ViewCompat.requestApplyInsets(root)
+    }
 }
 
 object OsRuntime {

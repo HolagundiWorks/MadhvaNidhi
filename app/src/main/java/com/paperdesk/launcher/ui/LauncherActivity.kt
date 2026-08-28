@@ -40,6 +40,7 @@ class LauncherActivity : AppCompatActivity() {
     private lateinit var navPrev: ImageButton
     private lateinit var pageCurrent: TextView
     private lateinit var hariMotto: TextView
+    private lateinit var topMotto: TextView
     private lateinit var navAction: ImageButton
     private lateinit var navNext: ImageButton
     private lateinit var controls: ControlPanel
@@ -58,7 +59,6 @@ class LauncherActivity : AppCompatActivity() {
             ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
         }
         setContentView(R.layout.activity_launcher)
-        DeskWindow.padCutout(findViewById(R.id.launcherRoot))
         applyShadeChrome()
         AlarmScheduler.rescheduleAll(this)
 
@@ -76,8 +76,10 @@ class LauncherActivity : AppCompatActivity() {
         navPrev = findViewById(R.id.navPrev)
         pageCurrent = findViewById(R.id.pageCurrent)
         hariMotto = findViewById(R.id.hariMotto)
+        topMotto = findViewById(R.id.topMotto)
         navAction = findViewById(R.id.navAction)
         navNext = findViewById(R.id.navNext)
+        DeskWindow.wrapCutout(findViewById(R.id.launcherRoot), pagerHost, pageNav)
         navPrev.setOnClickListener { shiftPage(-1) }
         navNext.setOnClickListener { shiftPage(1) }
         navAction.setOnClickListener { footerAction?.invoke() }
@@ -247,10 +249,10 @@ class LauncherActivity : AppCompatActivity() {
         val nextPos = (i + 1) % count
         navPrev.contentDescription = "${OsLang.ui("prev", lang)}. ${title(prevPos)}"
         navNext.contentDescription = "${OsLang.ui("next", lang)}. ${title(nextPos)}"
-        pageCurrent.text = title(i)
-        pageCurrent.contentDescription = title(i)
-        pageCurrent.setTextColor(earthAccent)
-        DeskType.apply(pageCurrent, DeskType.SEMIBOLD)
+        pageCurrent.visibility = View.GONE
+        hariMotto.text = title(i)
+        hariMotto.contentDescription = title(i)
+        DeskType.apply(hariMotto, DeskType.SEMIBOLD)
         navPrev.isEnabled = allow
         navNext.isEnabled = allow
         navPrev.visibility = if (selectorOpen) View.INVISIBLE else View.VISIBLE
@@ -269,11 +271,11 @@ class LauncherActivity : AppCompatActivity() {
     }
 
     private fun bindMotto() {
-        if (!::hariMotto.isInitialized) return
+        if (!::topMotto.isInitialized) return
         val lang = OsLang.get(this)
-        hariMotto.text = OsLang.ui("hari_motto", lang)
-        hariMotto.contentDescription = OsLang.ui("hari_motto", lang)
-        DeskType.apply(hariMotto, DeskType.REGULAR)
+        topMotto.text = OsLang.ui("hari_motto", lang)
+        topMotto.contentDescription = OsLang.ui("hari_motto", lang)
+        DeskType.apply(topMotto, DeskType.REGULAR)
     }
 
     fun applyShadeChrome() {

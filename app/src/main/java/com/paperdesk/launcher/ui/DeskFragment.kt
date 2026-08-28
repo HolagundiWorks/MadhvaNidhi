@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import com.paperdesk.launcher.DeskLock
 import com.paperdesk.launcher.R
 import com.paperdesk.launcher.data.FestivalStore
+import com.paperdesk.launcher.data.IndicScript
 import com.paperdesk.launcher.data.OsLang
 import com.paperdesk.launcher.weather.WeatherClient
 import kotlinx.coroutines.Dispatchers
@@ -90,6 +91,12 @@ class DeskFragment : Fragment() {
     }
 
     fun bindLang() {
+        val v = view ?: return
+        v.findViewById<TextView>(R.id.todayEventsTitle)?.text = when (OsLang.get(requireContext())) {
+            IndicScript.Lang.KN -> "ಇಂದಿನ ವಿಶೇಷಗಳು"
+            IndicScript.Lang.SA -> "अद्यतन विशेषाः"
+            IndicScript.Lang.EN -> "TODAY'S EVENTS"
+        }
     }
 
     private fun bindClockLock(target: ClockLockLayout?) {
@@ -140,8 +147,8 @@ class DeskFragment : Fragment() {
             }
             val event = v.findViewById<TextView>(R.id.dayEvent)
             if (fest.isBlank()) {
-                event.visibility = View.GONE
-                event.text = ""
+                event.visibility = View.VISIBLE
+                event.text = "—"
             } else {
                 event.visibility = View.VISIBLE
                 event.text = OsLang.script(fest, lang)

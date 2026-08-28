@@ -6,12 +6,10 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.Gravity
-import android.view.MotionEvent
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.core.widget.NestedScrollView
 import com.paperdesk.launcher.R
 import com.paperdesk.launcher.data.FestivalStore
 import com.paperdesk.launcher.data.IndicScript
@@ -19,366 +17,220 @@ import com.paperdesk.launcher.data.MadhwaDays
 import com.paperdesk.launcher.data.OsLang
 import com.paperdesk.launcher.data.PanchangaStore
 import java.util.Calendar
-import java.util.Locale
 
-class MonthCalendarView @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null
-) : LinearLayout(context, attrs) {
+/** A lunar calendar: one 15-tithi row for each paksha, anchored around the selected date. */
+class MonthCalendarView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
+    LinearLayout(context, attrs) {
 
     private val accent = ContextCompat.getColor(context, R.color.accent)
     private val black = ContextCompat.getColor(context, R.color.black)
     private val white = ContextCompat.getColor(context, R.color.white)
     private val muted = ContextCompat.getColor(context, R.color.white_55)
-    private val locale = Locale("en", "IN")
+    private val titleTv = label(12f, white, Gravity.CENTER)
+    private val tithiRow = LinearLayout(context)
+    private val shuklaLabel = label(10f, accent, Gravity.START)
+    private val krishnaLabel = label(10f, accent, Gravity.START)
+    private val shuklaRow = LinearLayout(context)
+    private val krishnaRow = LinearLayout(context)
 
     var year: Int
     var month: Int
     var selectedDay: Int
         private set
-
     var onDaySelected: ((year: Int, month: Int, day: Int) -> Unit)? = null
     var onDayOpened: ((year: Int, month: Int, day: Int) -> Unit)? = null
     var locked: Boolean = false
-        set(value) {
-            field = value
-            bind(jumpToMonth = false)
-        }
-
-    private val titleTv: TextView
-    private val headRow: LinearLayout
-    private val scroller: NestedScrollView
-    private val host: LinearLayout
-    private val monthRoots = ArrayList<View>(12)
-    private var fittedH = 0
-    private var headerMonth = -1
-    private var headerYear = -1
-    private var binding = false
+        set(value) { field = value; bind() }
 
     init {
-        orientation = VERTICAL
-        clipChildren = true
-        clipToPadding = true
-        FestivalStore.load(context)
         val now = Calendar.getInstance()
         year = now.get(Calendar.YEAR)
         month = now.get(Calendar.MONTH)
         selectedDay = now.get(Calendar.DAY_OF_MONTH)
-
-        titleTv = TextView(context).apply {
-            layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
-            gravity = Gravity.CENTER
-            textAlignment = View.TEXT_ALIGNMENT_CENTER
-            setTextColor(white)
-            setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
-            includeFontPadding = false
-            setPadding(0, dp(2), 0, dp(4))
-        }
-        DeskType.apply(titleTv, DeskType.SEMIBOLD)
-        addView(titleTv)
-
-        headRow = LinearLayout(context).apply {
-            orientation = HORIZONTAL
-            layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
-        }
-        addView(headRow)
-
-        host = LinearLayout(context).apply {
-            orientation = VERTICAL
-            layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
-        }
-        scroller = object : NestedScrollView(context) {
-            override fun onInterceptTouchEvent(ev: MotionEvent): Boolean {
-                if (ev.actionMasked == MotionEvent.ACTION_DOWN) {
-                    parent.requestDisallowInterceptTouchEvent(true)
-                }
-                return super.onInterceptTouchEvent(ev)
-            }
-
-            override fun onTouchEvent(ev: MotionEvent): Boolean {
-                if (ev.actionMasked == MotionEvent.ACTION_DOWN) {
-                    parent.requestDisallowInterceptTouchEvent(true)
-                }
-                return super.onTouchEvent(ev)
-            }
-        }.apply {
-            layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, 0, 1f)
-            isFillViewport = true
-            overScrollMode = OVER_SCROLL_NEVER
-            isVerticalScrollBarEnabled = false
-            importantForAccessibility = IMPORTANT_FOR_ACCESSIBILITY_YES
-            addView(host)
-            setOnScrollChangeListener { _, _, scrollY, _, _ ->
-                if (!binding) applyHeader(monthAt(scrollY))
-            }
-        }
-        addView(scroller)
-        bindHeaderLabels()
-        applyHeader(month)
-    }
-
-    fun show(y: Int, m: Int, day: Int) {
-        year = y
-        month = m
-        selectedDay = day
-        bind(jumpToMonth = true)
-    }
-
-    fun refresh() {
-        bindHeaderLabels()
-        bind(jumpToMonth = false)
-    }
-
-    override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
-        super.onLayout(changed, l, t, r, b)
-        if (binding) return
-        val gridH = (height - titleTv.measuredHeight - headRow.measuredHeight).coerceAtLeast(0)
-        if (gridH <= 0 || (gridH == fittedH && monthRoots.isNotEmpty())) return
-        fittedH = gridH
-        post { bind(jumpToMonth = true) }
-    }
-
-    private fun bind(jumpToMonth: Boolean = true) {
-        if (fittedH <= 0) return
-        val keepY = scroller.scrollY
-        val lang = OsLang.get(context)
-        binding = true
-        host.removeAllViews()
-        monthRoots.clear()
+        orientation = VERTICAL
+        gravity = Gravity.CENTER_VERTICAL
+        setPadding(dp(8), dp(6), dp(8), dp(6))
         FestivalStore.load(context)
-        val pageH = fittedH
-        repeat(12) { m ->
-            val block = monthBlock(year, m, lang, pageH)
-            monthRoots += block
-            host.addView(block)
-        }
-        post {
-            if (jumpToMonth) scrollToMonth(month)
-            else scroller.scrollTo(0, keepY)
-            applyHeader(monthAt(scroller.scrollY))
-            binding = false
-        }
+        titleTv.setPadding(0, 0, 0, dp(3))
+        DeskType.apply(titleTv, DeskType.SEMIBOLD)
+        addView(titleTv, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT))
+        configureRow(tithiRow)
+        addView(tithiRow, LayoutParams(LayoutParams.MATCH_PARENT, dp(25)))
+        addView(shuklaLabel, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT))
+        configureRow(shuklaRow)
+        addView(shuklaRow, LayoutParams(LayoutParams.MATCH_PARENT, 0, 1f))
+        krishnaLabel.setPadding(0, dp(3), 0, 0)
+        addView(krishnaLabel, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT))
+        configureRow(krishnaRow)
+        addView(krishnaRow, LayoutParams(LayoutParams.MATCH_PARENT, 0, 1f))
+        bind()
     }
 
-    private fun bindHeaderLabels() {
+    fun show(y: Int, m: Int, day: Int) { year = y; month = m; selectedDay = day; bind() }
+    fun refresh() = bind()
+
+    private fun configureRow(row: LinearLayout) {
+        row.orientation = HORIZONTAL
+        row.gravity = Gravity.CENTER_VERTICAL
+    }
+
+    private fun bind() {
         val lang = OsLang.get(context)
-        headRow.removeAllViews()
-        HEAD_KEYS.forEach { key ->
-            headRow.addView(TextView(context).apply {
-                layoutParams = LayoutParams(0, LayoutParams.WRAP_CONTENT, 1f)
-                gravity = Gravity.CENTER
-                setTextColor(muted)
-                setTextSize(TypedValue.COMPLEX_UNIT_SP, 10.4f)
-                includeFontPadding = false
-                setPadding(dp(1), dp(1), dp(1), dp(2))
-                text = OsLang.ui(key, lang)
+        val selected = Calendar.getInstance().apply { set(year, month, selectedDay) }
+        val selectedKey = PanchangaStore.dateKey(selected)
+        val dates = lunarCycle(selectedKey)
+        val masa = PanchangaStore.local(selectedKey).masa
+        titleTv.text = OsLang.script("$masa · TITHI", lang)
+        shuklaLabel.text = "${OsLang.ui("shukla", lang)}   ${OsLang.script("PRATIPADA → PURNIMA", lang)}"
+        krishnaLabel.text = "${OsLang.ui("krishna", lang)}   ${OsLang.script("PRATIPADA → AMAVASYA", lang)}"
+        bindTithiHeader(lang)
+        bindRow(shuklaRow, dates.first, lang, selectedKey)
+        bindRow(krishnaRow, dates.second, lang, selectedKey)
+    }
+
+    private fun lunarCycle(anchor: String): Pair<Array<String?>, Array<String?>> {
+        var probe = if (PanchangaStore.isAmavasya(PanchangaStore.local(anchor).tithi)) PanchangaStore.shiftKey(anchor, -1) else anchor
+        var attempts = 0
+        while (!PanchangaStore.isAmavasya(PanchangaStore.local(probe).tithi) && attempts++ < 40) {
+            probe = PanchangaStore.shiftKey(probe, -1)
+        }
+        val shukla = arrayOfNulls<String>(15)
+        val krishna = arrayOfNulls<String>(15)
+        var key = PanchangaStore.shiftKey(probe, 1)
+        repeat(36) {
+            val pan = PanchangaStore.local(key)
+            val idx = tithiIndex(pan.tithi)
+            val target = if (pan.paksha.contains("SHUKLA", true) || PanchangaStore.isPurnima(pan.tithi)) shukla else krishna
+            if (idx >= 0 && target[idx] == null) target[idx] = key
+            key = PanchangaStore.shiftKey(key, 1)
+        }
+        return shukla to krishna
+    }
+
+    private fun bindTithiHeader(lang: IndicScript.Lang) {
+        tithiRow.removeAllViews()
+        repeat(15) { index ->
+            val heading = label(10f, if (index == 14) accent else muted, Gravity.CENTER).apply {
+                text = tithiShort(index, lang)
+                if (index == 14) DeskType.apply(this, DeskType.SEMIBOLD)
+            }
+            tithiRow.addView(heading, LayoutParams(0, LayoutParams.MATCH_PARENT, 1f).apply {
+                if (index > 0) marginStart = dp(2)
             })
         }
     }
 
-    private fun scrollToMonth(m: Int) {
-        val child = monthRoots.getOrNull(m) ?: return
-        scroller.scrollTo(0, child.top)
-    }
-
-    private fun monthAt(scrollY: Int): Int {
-        if (monthRoots.isEmpty() || fittedH <= 0) return month
-        val idx = ((scrollY + fittedH / 2) / fittedH).coerceIn(0, monthRoots.lastIndex)
-        return idx
-    }
-
-    private fun applyHeader(m: Int) {
-        if (m == headerMonth && year == headerYear) return
-        headerMonth = m
-        headerYear = year
-        val cal = Calendar.getInstance()
-        cal.set(year, m, 1)
-        val lang = OsLang.get(context)
-        val label = "${OsLang.month(cal, lang)} ${OsLang.digits(year, IndicScript.Lang.KN)}"
-        titleTv.text = label
-        titleTv.contentDescription = label
-        scroller.contentDescription = label
-    }
-
-    private fun monthBlock(y: Int, m: Int, lang: IndicScript.Lang, pageH: Int): View {
-        val wrap = LinearLayout(context).apply {
-            orientation = VERTICAL
-            layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, pageH)
-        }
-        val cal = Calendar.getInstance()
-        cal.set(y, m, 1)
-        val firstDow = cal.get(Calendar.DAY_OF_WEEK)
-        val offset = (firstDow + 5) % 7
-        val daysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH)
-        val weekCount = 6
-        val rowH = (pageH / weekCount).coerceAtLeast(dp(13))
-        val extra = (pageH - rowH * weekCount).coerceAtLeast(0)
-        val today = Calendar.getInstance()
-        var day = 1
-        repeat(weekCount) { r ->
-            val h = if (r == weekCount - 1) rowH + extra else rowH
-            val row = LinearLayout(context).apply {
-                orientation = HORIZONTAL
-                layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, h)
+    private fun bindRow(row: LinearLayout, dates: Array<String?>, lang: IndicScript.Lang, selectedKey: String) {
+        row.removeAllViews()
+        dates.forEachIndexed { index, key ->
+            val cell = LinearLayout(context).apply {
+                orientation = VERTICAL
+                gravity = Gravity.CENTER
+                setPadding(dp(1), dp(1), dp(1), dp(1))
+                setBackgroundResource(R.drawable.bg_cell)
             }
-            repeat(7) { col ->
-                val index = r * 7 + col
-                val box = LinearLayout(context).apply {
-                    orientation = VERTICAL
-                    gravity = Gravity.CENTER
-                    layoutParams = LayoutParams(0, LayoutParams.MATCH_PARENT, 1f)
-                    setPadding(dp(1), dp(1), dp(1), dp(1))
-                }
-                val dateTv = TextView(context).apply {
-                    gravity = Gravity.CENTER
-                    textAlignment = TEXT_ALIGNMENT_CENTER
-                    setTextSize(TypedValue.COMPLEX_UNIT_SP, 11.2f)
-                    includeFontPadding = true
-                    setPadding(0, 0, 0, 0)
-                    val mark = dp(22)
-                    minWidth = mark
-                    minHeight = mark
-                    layoutParams = LayoutParams(mark, mark).apply { gravity = Gravity.CENTER }
-                }
-                box.addView(dateTv)
-                if (index < offset || day > daysInMonth) {
-                    dateTv.text = ""
-                    box.tag = 0
-                    box.isClickable = false
-                    box.alpha = 0.28f
-                    box.importantForAccessibility = IMPORTANT_FOR_ACCESSIBILITY_NO
-                    box.setBackgroundResource(R.drawable.bg_cell)
-                } else {
-                    val d = day
-                    val key = String.format(locale, "%04d-%02d-%02d", y, m + 1, d)
-                    val pan = PanchangaStore.local(key)
-                    val purnima = PanchangaStore.isPurnima(pan.tithi)
-                    val amavasya = PanchangaStore.isAmavasya(pan.tithi)
-                    val ekadasi = PanchangaStore.isEkadasi(pan.tithi)
-                    val marked = FestivalStore.has(key) ||
-                        PanchangaStore.isMarked(pan.tithi) ||
-                        MadhwaDays.isMarked(pan.masa, pan.paksha, pan.tithi)
-                    dateTv.text = OsLang.digits(d, IndicScript.Lang.KN)
-                    box.tag = d
-                    box.isClickable = !locked
-                    val isToday = today.get(Calendar.YEAR) == y &&
-                        today.get(Calendar.MONTH) == m &&
-                        today.get(Calendar.DAY_OF_MONTH) == d
-                    val isSel = y == year && m == month && d == selectedDay
-                    box.alpha = 1f
-                    when {
-                        purnima -> {
-                            box.setBackgroundResource(R.drawable.bg_cell)
-                            dateTv.setBackgroundResource(R.drawable.bg_date_fill)
-                        }
-                        amavasya -> {
-                            box.setBackgroundResource(R.drawable.bg_cell)
-                            dateTv.setBackgroundResource(R.drawable.bg_date_outline)
-                        }
-                        ekadasi -> {
-                            box.setBackgroundResource(R.drawable.bg_cell)
-                            dateTv.setBackgroundResource(R.drawable.bg_date_circle)
-                        }
-                        isSel && !isToday -> {
-                            box.setBackgroundResource(R.drawable.bg_cell_on)
-                            dateTv.setBackgroundResource(R.drawable.bg_cell)
-                        }
-                        else -> {
-                            box.setBackgroundResource(R.drawable.bg_cell)
-                            dateTv.setBackgroundResource(R.drawable.bg_cell)
-                        }
-                    }
-                    dateTv.setTextColor(
-                        when {
-                            purnima || (isSel && !isToday) -> black
-                            isToday -> accent
-                            ekadasi -> white
-                            amavasya || marked -> accent
-                            isSel -> black
-                            else -> white
-                        }
-                    )
-                    DeskType.apply(dateTv, if (isSel || isToday || marked) DeskType.SEMIBOLD else DeskType.REGULAR)
-                    dateTv.paintFlags = if (isToday) {
-                        dateTv.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-                    } else {
-                        dateTv.paintFlags and Paint.UNDERLINE_TEXT_FLAG.inv()
-                    }
-                    box.contentDescription = "${OsLang.digits(d, lang)} ${OsLang.month(cal, lang)}"
-                    if (isSel) box.contentDescription = "${box.contentDescription}, ${OsLang.ui("date", lang)}"
-                    box.setOnClickListener {
-                        if (locked) return@setOnClickListener
-                        year = y
-                        month = m
-                        selectedDay = d
-                        onDaySelected?.invoke(y, m, d)
-                        bind(jumpToMonth = false)
-                    }
-                    box.setOnLongClickListener {
-                        if (locked) return@setOnLongClickListener false
-                        year = y
-                        month = m
-                        selectedDay = d
-                        onDaySelected?.invoke(y, m, d)
-                        onDayOpened?.invoke(y, m, d)
-                        bind(jumpToMonth = false)
-                        true
-                    }
-                    day++
-                }
-                row.addView(box)
+            val date = label(12f, white, Gravity.CENTER).apply {
+                text = key?.let { OsLang.digits(PanchangaStore.parse(it).get(Calendar.DAY_OF_MONTH), IndicScript.Lang.KN) } ?: "—"
             }
-            wrap.addView(row)
+            cell.addView(date, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT))
+            if (key == null) {
+                cell.alpha = 0.35f
+                cell.isEnabled = false
+            } else {
+                val pan = PanchangaStore.local(key)
+                val selected = key == selectedKey
+                val today = key == PanchangaStore.dateKey()
+                val marked = FestivalStore.has(key) || MadhwaDays.isMarked(pan.masa, pan.paksha, pan.tithi)
+                when {
+                    selected -> { cell.setBackgroundResource(R.drawable.bg_cell_on); date.setTextColor(black) }
+                    PanchangaStore.isPurnima(pan.tithi) -> { cell.setBackgroundResource(R.drawable.bg_date_fill); date.setTextColor(black) }
+                    PanchangaStore.isAmavasya(pan.tithi) -> { cell.setBackgroundResource(R.drawable.bg_date_outline); date.setTextColor(accent) }
+                    PanchangaStore.isEkadasi(pan.tithi) -> cell.setBackgroundResource(R.drawable.bg_date_circle)
+                    marked -> date.setTextColor(accent)
+                }
+                if (today) date.paintFlags = date.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+                DeskType.apply(date, if (selected || today || marked) DeskType.SEMIBOLD else DeskType.REGULAR)
+                val cal = PanchangaStore.parse(key)
+                cell.contentDescription = "${OsLang.script(pan.tithi, lang)}, ${OsLang.dateLine(cal, lang)}"
+                cell.isClickable = !locked
+                cell.setOnClickListener { select(key, false) }
+                cell.setOnLongClickListener { select(key, true); true }
+            }
+            row.addView(cell, LayoutParams(0, LayoutParams.MATCH_PARENT, 1f).apply { if (index > 0) marginStart = dp(2) })
         }
-        return wrap
     }
 
-    private fun dp(v: Int) = (v * resources.displayMetrics.density).toInt()
+    private fun select(key: String, open: Boolean) {
+        if (locked) return
+        val cal = PanchangaStore.parse(key)
+        year = cal.get(Calendar.YEAR); month = cal.get(Calendar.MONTH); selectedDay = cal.get(Calendar.DAY_OF_MONTH)
+        onDaySelected?.invoke(year, month, selectedDay)
+        if (open) onDayOpened?.invoke(year, month, selectedDay)
+        bind()
+    }
+
+    private fun tithiIndex(value: String): Int {
+        val t = value.uppercase()
+        return when {
+            PanchangaStore.isPurnima(t) || PanchangaStore.isAmavasya(t) -> 14
+            "CHATURDASH" in t -> 13
+            "TRAYODASH" in t -> 12
+            "DWADASH" in t || "DVADASH" in t -> 11
+            "EKADASH" in t || "EKADAS" in t -> 10
+            "DASHAM" in t || "DASAM" in t -> 9
+            "NAVAM" in t -> 8
+            "ASHTAM" in t -> 7
+            "SAPTAM" in t -> 6
+            "SHASHTH" in t || "SASHTH" in t -> 5
+            "PANCHAM" in t -> 4
+            "CHATURTH" in t -> 3
+            "TRITI" in t -> 2
+            "DWITI" in t || "DVITI" in t -> 1
+            "PRATIP" in t -> 0
+            else -> -1
+        }
+    }
+
+    private fun tithiShort(index: Int, lang: IndicScript.Lang): String {
+        return when (lang) {
+            IndicScript.Lang.KN -> KN_SHORT[index]
+            IndicScript.Lang.SA -> SA_SHORT[index]
+            IndicScript.Lang.EN -> EN_SHORT[index]
+        }
+    }
+
+    private fun label(size: Float, color: Int, gravityValue: Int) = TextView(context).apply {
+        gravity = gravityValue
+        textAlignment = if (gravityValue == Gravity.CENTER) View.TEXT_ALIGNMENT_CENTER else View.TEXT_ALIGNMENT_VIEW_START
+        setTextColor(color)
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, size)
+        includeFontPadding = false
+    }
+
+    private fun dp(value: Int) = (value * resources.displayMetrics.density).toInt()
 
     companion object {
-        private val HEAD_KEYS = arrayOf("mon_s", "tue_s", "wed_s", "thu_s", "fri_s", "sat_s", "sun_s")
+        private val TITHIS = arrayOf("PRATIPADA", "DWITIYA", "TRITIYA", "CHATURTHI", "PANCHAMI", "SHASHTHI", "SAPTAMI", "ASHTAMI", "NAVAMI", "DASHAMI", "EKADASHI", "DWADASHI", "TRAYODASHI", "CHATURDASHI", "PURNIMA")
+        private val KN_SHORT = arrayOf("ಪ್ರ", "ದ್ವಿ", "ತೃ", "ಚ", "ಪಂ", "ಷ", "ಸ", "ಅ", "ನ", "ದ", "ಏ", "ದ್ವಾ", "ತ್ರ", "ಚತು", "ಪೂ / ಅಮಾ")
+        private val SA_SHORT = arrayOf("प्र", "द्वि", "तृ", "च", "पं", "ष", "स", "अ", "न", "द", "ए", "द्वा", "त्र", "चतु", "पू / अमा")
+        private val EN_SHORT = arrayOf("PR", "D2", "TR", "C4", "P5", "S6", "S7", "A8", "N9", "D10", "E11", "D12", "T13", "C14", "FULL / NEW")
 
         fun showDay(context: Context, y: Int, m: Int, d: Int) {
-            val cal = Calendar.getInstance()
-            cal.set(y, m, d)
+            val cal = Calendar.getInstance().apply { set(y, m, d) }
             val lang = OsLang.get(context)
             val pan = PanchangaStore.forDate(context, PanchangaStore.dateKey(cal))
             FestivalStore.load(context)
             val key = PanchangaStore.dateKey(cal)
-            val fest = FestivalStore.label(key, lang).ifBlank {
-                MadhwaDays.name(pan.masa, pan.paksha, pan.tithi)
-            }
+            val fest = FestivalStore.label(key, lang).ifBlank { MadhwaDays.name(pan.masa, pan.paksha, pan.tithi) }
             val dlg = Dialog(context, R.style.Theme_PaperDesk_Dialog)
             dlg.setContentView(R.layout.popup_day)
             dlg.findViewById<TextView>(R.id.dayDate).text = OsLang.dateLine(cal, lang)
-            val festTv = dlg.findViewById<TextView>(R.id.dayFest)
-            if (fest.isBlank()) {
-                festTv.visibility = View.GONE
-            } else {
-                festTv.visibility = View.VISIBLE
-                festTv.text = OsLang.script(fest, lang)
-            }
-            dlg.findViewById<TextView>(R.id.dayTithi).text = OsLang.script(
-                listOf(pan.tithi, pan.paksha).filter { it.isNotBlank() }.joinToString("  ·  "),
-                lang
-            )
-            dlg.findViewById<TextView>(R.id.dayMasa).text = OsLang.script(
-                listOf(pan.masa, pan.samvatsara, pan.ayana).filter { it.isNotBlank() }.joinToString("  ·  "),
-                lang
-            )
-            dlg.findViewById<TextView>(R.id.dayNak).text =
-                if (pan.nakshatra.isBlank()) "" else OsLang.script("${pan.nakshatra} NAKSHATRA", lang)
-            dlg.findViewById<TextView>(R.id.dayYoga).text = OsLang.script(
-                listOf(pan.yoga, pan.karana).filter { it.isNotBlank() }.joinToString("  ·  "),
-                lang
-            )
-            val srcTv = dlg.findViewById<TextView>(R.id.daySrc)
-            if (pan.source.contains("SRS", ignoreCase = true)) {
-                srcTv.visibility = View.VISIBLE
-                srcTv.text = OsLang.script("SRS MANTRALAYA", lang)
-            } else {
-                srcTv.visibility = View.GONE
-            }
+            dlg.findViewById<TextView>(R.id.dayFest).apply { visibility = if (fest.isBlank()) View.GONE else View.VISIBLE; text = OsLang.script(fest, lang) }
+            dlg.findViewById<TextView>(R.id.dayTithi).text = OsLang.script(listOf(pan.tithi, pan.paksha).filter { it.isNotBlank() }.joinToString("  ·  "), lang)
+            dlg.findViewById<TextView>(R.id.dayMasa).text = OsLang.script(listOf(pan.masa, pan.samvatsara, pan.ayana).filter { it.isNotBlank() }.joinToString("  ·  "), lang)
+            dlg.findViewById<TextView>(R.id.dayNak).text = if (pan.nakshatra.isBlank()) "" else OsLang.script("${pan.nakshatra} NAKSHATRA", lang)
+            dlg.findViewById<TextView>(R.id.dayYoga).text = OsLang.script(listOf(pan.yoga, pan.karana).filter { it.isNotBlank() }.joinToString("  ·  "), lang)
+            dlg.findViewById<TextView>(R.id.daySrc).apply { visibility = if (pan.source.contains("SRS", true)) View.VISIBLE else View.GONE; text = OsLang.script("SRS MANTRALAYA", lang) }
             DeskType.apply(dlg.findViewById(R.id.dayDate), DeskType.SEMIBOLD)
             DeskType.apply(dlg.findViewById(R.id.dayFest), DeskType.SEMIBOLD)
             DeskDialogs.show(dlg, 0.52f)
