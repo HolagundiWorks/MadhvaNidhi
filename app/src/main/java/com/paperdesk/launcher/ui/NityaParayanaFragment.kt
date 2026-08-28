@@ -16,6 +16,7 @@ class NityaParayanaFragment : Fragment() {
         inflater.inflate(R.layout.page_nitya_parayana, container, false)
 
     override fun onViewCreated(view: View, state: Bundle?) {
+        PagePalette.apply(view, "nitya")
         val sections = NityaParayanaStore.load(requireContext())
         view.findViewById<RecyclerView>(R.id.nityaList).apply {
             layoutManager = LinearLayoutManager(requireContext())

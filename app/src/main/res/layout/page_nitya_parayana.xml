@@ -13,7 +13,7 @@
         android:id="@+id/nityaCrumb"
         style="@style/Desk.Meta"
         android:layout_width="match_parent"
-        android:layout_height="27.2dp"
+        android:layout_height="@dimen/ui_grid_4"
         android:gravity="center_vertical"
         android:text="ನಿತ್ಯ ಪಾರಾಯಣ  ›  ಮಾಧ್ವ ನಿತ್ಯ ಶ್ಲೋಕಗಳು"
         android:textColor="@color/white_55"
@@ -31,6 +31,6 @@
         android:layout_weight="1"
         android:clipToPadding="false"
         android:overScrollMode="never"
-        android:paddingBottom="12.8dp"
+        android:paddingBottom="@dimen/ui_grid_2"
         android:scrollbars="vertical" />
 </LinearLayout>

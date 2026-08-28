@@ -22,7 +22,7 @@
             android:clipToPadding="false"
             android:gravity="center_vertical"
             android:orientation="vertical"
-            android:paddingTop="@dimen/space_8">
+            android:paddingTop="@dimen/ui_grid_1">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,7 +38,7 @@
                     android:layout_weight="1"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:paddingRight="@dimen/space_8" />
+                    android:paddingRight="@dimen/ui_grid_1" />
 
                 <Spinner
                     android:id="@+id/readerKala"
@@ -59,7 +59,7 @@
                     android:gravity="center_vertical"
                     android:minWidth="@dimen/touch"
                     android:orientation="horizontal"
-                    android:paddingLeft="@dimen/space_8">
+                    android:paddingLeft="@dimen/ui_grid_1">
 
                     <TextView
                         android:id="@+id/readerSelectLabel"
@@ -91,8 +91,8 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:paddingTop="@dimen/space_4"
-                android:paddingBottom="@dimen/space_4"
+                android:paddingTop="@dimen/ui_grid_1"
+                android:paddingBottom="@dimen/ui_grid_1"
                 android:textColor="@color/white_55" />
 
             <View
@@ -119,7 +119,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingBottom="@dimen/space_24">
+                    android:paddingBottom="@dimen/ui_grid_3">
 
                     <TextView
                         android:id="@+id/readerHead"
@@ -134,7 +134,7 @@
                         style="@style/Desk.Body"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/space_8"
+                        android:layout_marginTop="@dimen/ui_grid_1"
                         android:includeFontPadding="true"
                         android:lineSpacingExtra="2.4dp"
                         android:lineSpacingMultiplier="1.08"
@@ -186,7 +186,7 @@
                     style="@style/Desk.Title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/space_8"
+                    android:layout_marginLeft="@dimen/ui_grid_1"
                     android:layout_weight="1" />
             </LinearLayout>
 

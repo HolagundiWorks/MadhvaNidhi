@@ -1,6 +1,11 @@
 package com.paperdesk.launcher.ui
 
 import android.os.Bundle
+import android.graphics.Typeface
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,6 +48,8 @@ class ReaderFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        PagePalette.apply(view, pageId)
+        view.findViewById<View>(R.id.selectorPage).setBackgroundColor(PagePalette.surface(requireContext(), pageId))
         if (pageId == SANDHYA) SandhyaStore.load(requireContext())
         if (pageId == MANTRAS || pageId == HADUGALU) CatalogueStore.load(requireContext())
         if (pageId == PUJA) MadhwaStore.load(requireContext())
@@ -104,6 +111,7 @@ class ReaderFragment : Fragment() {
         view?.findViewById<View>(R.id.selectorPage)?.visibility == View.VISIBLE
 
     fun openSelector() {
+        if (pageId == SANDHYA) return
         val v = view ?: return
         v.findViewById<View>(R.id.readerMain).visibility = View.GONE
         v.findViewById<View>(R.id.selectorPage).visibility = View.VISIBLE
@@ -128,12 +136,9 @@ class ReaderFragment : Fragment() {
 
     private fun pickKala(id: String) {
         if (pageId != SANDHYA) return
-        val currentTitle = SandhyaStore.session(requireContext(), sessionId)
-            ?.steps?.firstOrNull { it.id == itemId }?.title
         sessionId = id
         val next = SandhyaStore.session(requireContext(), id)
-        itemId = next?.steps?.firstOrNull { it.title == currentTitle }?.id
-            ?: next?.steps?.firstOrNull()?.id.orEmpty()
+        itemId = next?.steps?.firstOrNull()?.id.orEmpty()
         prefs.edit().putString("session", sessionId).putString("item", itemId).apply()
         paint()
         view?.findViewById<DeskScrollView>(R.id.readerScroll)?.scrollTo(0, 0)
@@ -143,7 +148,7 @@ class ReaderFragment : Fragment() {
         val v = view ?: return
         lang = OsLang.get(requireContext())
         v.findViewById<TextView>(R.id.readerTitle).text = OsLang.ui(pageId, lang)
-        v.findViewById<View>(R.id.readerTitle).visibility = View.GONE
+        v.findViewById<View>(R.id.readerTitle).visibility = if (pageId == SANDHYA) View.INVISIBLE else View.GONE
         v.findViewById<TextView>(R.id.selectorTitle).text = OsLang.ui("select_$pageId", lang)
         DeskType.apply(v.findViewById(R.id.readerTitle), DeskType.SEMIBOLD)
         DeskType.apply(v.findViewById(R.id.selectorTitle), DeskType.SEMIBOLD)
@@ -154,7 +159,8 @@ class ReaderFragment : Fragment() {
         v.findViewById<View>(R.id.readerHead).visibility = if (item?.head.isNullOrBlank()) View.GONE else View.VISIBLE
         if (sandhya) bindKala(v)
         v.findViewById<TextView>(R.id.readerHead).text = item?.head.orEmpty()
-        v.findViewById<TextView>(R.id.readerBody).text = item?.body.orEmpty()
+        v.findViewById<TextView>(R.id.readerHead).setTextColor(PagePalette.accent(requireContext(), pageId))
+        v.findViewById<TextView>(R.id.readerBody).text = item?.body ?: ""
         v.findViewById<TextView>(R.id.readerSelectLabel).text =
             item?.label ?: OsLang.ui("empty_page", lang)
         v.findViewById<TextView>(R.id.readerSelectLabel).visibility = View.GONE
@@ -181,8 +187,6 @@ class ReaderFragment : Fragment() {
                 parts += SandhyaStore.vedaLabel(requireContext())
                 val kala = SandhyaStore.session(requireContext(), sessionId)?.title.orEmpty()
                 if (kala.isNotBlank()) parts += SandhyaStore.label(kala, lang)
-                val section = item?.label.orEmpty()
-                if (section.isNotBlank() && section != page) parts += section
             }
             MANTRAS, HADUGALU -> {
                 val cat = CatalogueStore.item(itemId)
@@ -256,13 +260,34 @@ class ReaderFragment : Fragment() {
                 val session = SandhyaStore.session(requireContext(), sessionId)
                     ?: SandhyaStore.session(requireContext(), SandhyaStore.nowId()) ?: return null
                 sessionId = session.id
-                val step = session.steps.firstOrNull { it.id == itemId }
-                    ?: session.steps.firstOrNull() ?: return null
-                itemId = step.id
+                itemId = session.steps.firstOrNull()?.id.orEmpty()
+                val completeRitual = SpannableStringBuilder()
+                session.steps.forEachIndexed { index, step ->
+                    if (index > 0) completeRitual.append("\n\n")
+                    val number = OsLang.digits(step.n, lang)
+                    val title = SandhyaStore.label(step.title, lang)
+                    val body = SandhyaStore.body(requireContext(), step, session.id, lang).trim()
+                    val headingStart = completeRitual.length
+                    completeRitual.append("$number. $title")
+                    val headingEnd = completeRitual.length
+                    completeRitual.setSpan(
+                        ForegroundColorSpan(PagePalette.accent(requireContext(), SANDHYA)),
+                        headingStart,
+                        headingEnd,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+                    completeRitual.setSpan(
+                        StyleSpan(Typeface.BOLD),
+                        headingStart,
+                        headingEnd,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+                    completeRitual.append("\n$body")
+                }
                 return Shown(
-                    head = SandhyaStore.label(step.title, lang),
-                    body = SandhyaStore.body(requireContext(), step, session.id, lang),
-                    label = SandhyaStore.label(step.title, lang)
+                    head = "",
+                    body = completeRitual,
+                    label = SandhyaStore.label(session.title, lang)
                 )
             }
             MANTRAS, HADUGALU -> {
@@ -299,15 +324,7 @@ class ReaderFragment : Fragment() {
     private fun rows(): List<Row> {
         when (pageId) {
             SANDHYA -> {
-                val session = SandhyaStore.session(requireContext(), sessionId) ?: return emptyList()
-                return session.steps.map { step ->
-                    Row(
-                        id = step.id,
-                        group = session.id,
-                        title = "${OsLang.digits(step.n, lang)}. ${SandhyaStore.label(step.title, lang)}",
-                        section = false
-                    )
-                }
+                return emptyList()
             }
             MANTRAS, HADUGALU -> {
                 val out = ArrayList<Row>()
@@ -342,7 +359,7 @@ class ReaderFragment : Fragment() {
 
     private fun pujaItems() = MadhwaStore.inCategory("puja") + MadhwaStore.inCategory("festival")
 
-    private data class Shown(val head: String, val body: String, val label: String)
+    private data class Shown(val head: String, val body: CharSequence, val label: String)
     data class Row(val id: String, val group: String, val title: String, val section: Boolean)
 
     private class SelectAdapter(

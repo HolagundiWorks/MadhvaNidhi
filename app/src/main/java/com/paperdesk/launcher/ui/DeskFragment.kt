@@ -43,6 +43,7 @@ class DeskFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        PagePalette.apply(view, "desk")
         bindClockLock(view.findViewById(R.id.clockLockArea))
         view.findViewById<MonthCalendarView>(R.id.calendar).onDaySelected = { y, m, d ->
             val c = java.util.Calendar.getInstance()

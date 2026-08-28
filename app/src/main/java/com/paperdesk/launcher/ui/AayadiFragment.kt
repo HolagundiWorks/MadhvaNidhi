@@ -20,6 +20,7 @@ class AayadiFragment : Fragment() {
         inflater.inflate(R.layout.page_aayadi, container, false)
 
     override fun onViewCreated(view: View, state: Bundle?) {
+        PagePalette.apply(view, "aayadi")
         listOf(R.id.aayadiTitle, R.id.aayadiResultTitle).forEach { DeskType.apply(view.findViewById(it), DeskType.SEMIBOLD) }
         bind(view.findViewById(R.id.aayadiLengthFt), (0..500).map { it.toString() }, 30)
         bind(view.findViewById(R.id.aayadiBreadthFt), (0..500).map { it.toString() }, 40)

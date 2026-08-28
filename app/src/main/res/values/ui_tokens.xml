@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Acharya composition tokens: content geometry follows an 8dp unit. -->
+    <dimen name="ui_grid_1">8dp</dimen>
+    <dimen name="ui_grid_2">16dp</dimen>
+    <dimen name="ui_grid_3">24dp</dimen>
+    <dimen name="ui_grid_4">32dp</dimen>
+    <dimen name="ui_grid_5">40dp</dimen>
+    <dimen name="ui_grid_6">48dp</dimen>
+    <dimen name="ui_grid_7">56dp</dimen>
+    <dimen name="ui_grid_8">64dp</dimen>
+    <dimen name="ui_content_inset">16dp</dimen>
+    <dimen name="ui_section_gap">16dp</dimen>
+    <dimen name="ui_component_gap">8dp</dimen>
+    <dimen name="ui_footer_height">48dp</dimen>
+    <dimen name="ui_footer_control">40dp</dimen>
+
+    <!-- Near-black earthen canvases preserve Carbon g100 contrast. -->
+    <color name="earth_canvas_desk">#100D0A</color>
+    <color name="earth_canvas_sandhya">#121008</color>
+    <color name="earth_canvas_nitya">#120E0B</color>
+    <color name="earth_canvas_mantras">#130D0A</color>
+    <color name="earth_canvas_puja">#140B0B</color>
+    <color name="earth_canvas_hadugalu">#101108</color>
+    <color name="earth_canvas_japa">#140E09</color>
+    <color name="earth_canvas_aayadi">#12100C</color>
+    <color name="earth_accent_desk">#D0845A</color>
+    <color name="earth_accent_sandhya">#D6A64A</color>
+    <color name="earth_accent_nitya">#B88A65</color>
+    <color name="earth_accent_mantras">#C97A5B</color>
+    <color name="earth_accent_puja">#C15F58</color>
+    <color name="earth_accent_hadugalu">#A9AA62</color>
+    <color name="earth_accent_japa">#D4773D</color>
+    <color name="earth_accent_aayadi">#B89A68</color>
+    <color name="earth_footer_base">#241A13</color>
+    <color name="earth_footer_shadow">#120D09</color>
+</resources>

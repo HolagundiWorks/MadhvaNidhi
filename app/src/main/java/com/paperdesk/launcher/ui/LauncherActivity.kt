@@ -223,7 +223,12 @@ class LauncherActivity : AppCompatActivity() {
         val adapter = pager.adapter as? WorkspaceAdapter
         fun title(pos: Int) = OsLang.ui(adapter?.pageId(pos) ?: "desk", lang)
         val currentId = adapter?.pageId(i) ?: "desk"
-        val readerPage = currentId in setOf("sandhya", "mantras", "puja", "hadugalu")
+        val readerPage = currentId in setOf("mantras", "puja", "hadugalu")
+        val earthAccent = PagePalette.accent(this, currentId)
+        pageNav.background = SareeFooterDrawable(this, earthAccent)
+        navPrev.background = FooterMedallionDrawable(this, earthAccent)
+        navAction.background = FooterMedallionDrawable(this, earthAccent)
+        navNext.background = FooterMedallionDrawable(this, earthAccent)
         footerAction = if (readerPage) {
             { supportFragmentManager.fragments.filterIsInstance<ReaderFragment>()
                 .firstOrNull { it.isResumed }?.openSelector() }
@@ -237,6 +242,7 @@ class LauncherActivity : AppCompatActivity() {
         navNext.contentDescription = "${OsLang.ui("next", lang)}. ${title(nextPos)}"
         pageCurrent.text = title(i)
         pageCurrent.contentDescription = title(i)
+        pageCurrent.setTextColor(earthAccent)
         DeskType.apply(pageCurrent, DeskType.SEMIBOLD)
         navPrev.isEnabled = allow
         navNext.isEnabled = allow

@@ -3,10 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingLeft="6.4dp"
-    android:paddingTop="12.8dp"
-    android:paddingRight="6.4dp"
-    android:paddingBottom="11.2dp">
+    android:paddingLeft="@dimen/ui_grid_1"
+    android:paddingTop="@dimen/ui_grid_2"
+    android:paddingRight="@dimen/ui_grid_1"
+    android:paddingBottom="@dimen/ui_grid_1">
 
     <TextView
         android:id="@+id/nityaPageTitle"
@@ -32,6 +32,6 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="12.8dp"
+        android:layout_marginTop="@dimen/ui_grid_2"
         android:background="@color/divider" />
 </LinearLayout>

@@ -24,21 +24,19 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/pageNav"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/ui_footer_height"
         android:layout_gravity="bottom"
         android:background="@drawable/bg_nav_bar"
         android:clipChildren="false"
         android:clipToPadding="false"
-        android:paddingLeft="@dimen/page_pad_h"
-        android:paddingTop="4.8dp"
-        android:paddingRight="@dimen/page_pad_h"
-        android:paddingBottom="4.8dp">
+        android:paddingLeft="@dimen/ui_content_inset"
+        android:paddingRight="@dimen/ui_content_inset">
 
         <ImageButton
             android:id="@+id/navPrev"
             style="@style/Desk.Circle"
-            android:layout_width="@dimen/touch"
-            android:layout_height="@dimen/touch"
+            android:layout_width="@dimen/ui_footer_control"
+            android:layout_height="@dimen/ui_footer_control"
             android:contentDescription="@string/prev"
             android:src="@drawable/ic_nav_prev"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -50,7 +48,7 @@
             style="@style/Desk.Section"
             android:layout_width="128dp"
             android:layout_height="0dp"
-            android:layout_marginLeft="9.6dp"
+            android:layout_marginLeft="@dimen/ui_grid_1"
             android:ellipsize="end"
             android:gravity="center_vertical"
             android:maxLines="1"
@@ -78,8 +76,8 @@
         <ImageButton
             android:id="@+id/navAction"
             style="@style/Desk.Circle"
-            android:layout_width="@dimen/touch"
-            android:layout_height="@dimen/touch"
+            android:layout_width="@dimen/ui_footer_control"
+            android:layout_height="@dimen/ui_footer_control"
             android:contentDescription="ಆಯ್ಕೆಪಟ್ಟಿ ತೆರೆಯಿರಿ"
             android:src="@drawable/ic_expand"
             android:visibility="gone"
@@ -90,8 +88,8 @@
         <ImageButton
             android:id="@+id/navNext"
             style="@style/Desk.Circle"
-            android:layout_width="@dimen/touch"
-            android:layout_height="@dimen/touch"
+            android:layout_width="@dimen/ui_footer_control"
+            android:layout_height="@dimen/ui_footer_control"
             android:contentDescription="@string/next"
             android:src="@drawable/ic_nav_next"
             app:layout_constraintBottom_toBottomOf="parent"

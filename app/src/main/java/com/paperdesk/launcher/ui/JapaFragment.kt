@@ -27,6 +27,7 @@ class JapaFragment : Fragment() {
         inflater.inflate(R.layout.page_japa, container, false)
 
     override fun onViewCreated(view: View, state: Bundle?) {
+        PagePalette.apply(view, "japa")
         store = JapaStore(requireContext())
         listOf(R.id.japaTitle, R.id.japaRitualTitle, R.id.japaRitualStep, R.id.japaMantraName).forEach {
             DeskType.apply(view.findViewById(it), DeskType.SEMIBOLD)
