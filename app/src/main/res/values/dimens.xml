@@ -13,9 +13,9 @@
     <dimen name="page_pad_top">8dp</dimen>
     <dimen name="page_pad_bottom">0dp</dimen>
     <dimen name="japa_pad_top">8dp</dimen>
-    <dimen name="japa_pad_bottom">48dp</dimen>
-    <dimen name="chrome_bar">48dp</dimen>
-    <dimen name="footer_bar">48dp</dimen>
+    <dimen name="japa_pad_bottom">60dp</dimen>
+    <dimen name="chrome_bar">60dp</dimen>
+    <dimen name="footer_bar">60dp</dimen>
     <dimen name="entry_pad">16dp</dimen>
 
     <dimen name="radius_sm">0dp</dimen>

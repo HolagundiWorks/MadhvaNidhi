@@ -2,6 +2,7 @@ package com.paperdesk.launcher.ui
 
 import android.Manifest
 import android.app.AlarmManager
+import android.content.res.ColorStateList
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
@@ -225,10 +226,16 @@ class LauncherActivity : AppCompatActivity() {
         val currentId = adapter?.pageId(i) ?: "desk"
         val readerPage = currentId in setOf("mantras", "puja", "hadugalu")
         val earthAccent = PagePalette.accent(this, currentId)
-        pageNav.background = SareeFooterDrawable(this, earthAccent)
+        pageNav.background = SareeFooterDrawable(this, earthAccent, currentId)
         navPrev.background = FooterMedallionDrawable(this, earthAccent)
         navAction.background = FooterMedallionDrawable(this, earthAccent)
         navNext.background = FooterMedallionDrawable(this, earthAccent)
+        val iconTint = ColorStateList.valueOf(getColor(R.color.white))
+        navPrev.imageTintList = iconTint
+        navAction.imageTintList = iconTint
+        navNext.imageTintList = iconTint
+        hariMotto.background = FooterMottoDrawable(this, earthAccent)
+        hariMotto.setTextColor(earthAccent)
         footerAction = if (readerPage) {
             { supportFragmentManager.fragments.filterIsInstance<ReaderFragment>()
                 .firstOrNull { it.isResumed }?.openSelector() }

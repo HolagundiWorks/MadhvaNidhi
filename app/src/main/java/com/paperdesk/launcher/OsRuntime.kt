@@ -50,12 +50,20 @@ object DeskWindow {
         }
     }
 
-    fun padCutout(root: View) {
+    fun padCutout(root: View, roundedCornerSafeDp: Int = 8) {
+        val roundedSafe = (roundedCornerSafeDp * root.resources.displayMetrics.density).toInt()
         ViewCompat.setOnApplyWindowInsetsListener(root) { v, insets ->
             val bars = insets.getInsets(
                 WindowInsetsCompat.Type.displayCutout() or WindowInsetsCompat.Type.systemBars()
             )
-            v.setPadding(bars.left, bars.top, bars.right, bars.bottom)
+            // The A10s reports its teardrop cutout but not the physical curved-corner loss.
+            // Keep every interactive/content edge inside both regions in either landscape direction.
+            v.setPadding(
+                bars.left + roundedSafe,
+                bars.top + roundedSafe,
+                bars.right + roundedSafe,
+                bars.bottom + roundedSafe
+            )
             insets
         }
         ViewCompat.requestApplyInsets(root)

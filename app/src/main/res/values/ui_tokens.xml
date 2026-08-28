@@ -12,8 +12,11 @@
     <dimen name="ui_content_inset">16dp</dimen>
     <dimen name="ui_section_gap">16dp</dimen>
     <dimen name="ui_component_gap">8dp</dimen>
-    <dimen name="ui_footer_height">48dp</dimen>
-    <dimen name="ui_footer_control">40dp</dimen>
+    <!-- 1.25x treatment of the original 48dp border and 40dp medallions. -->
+    <dimen name="ui_footer_height">60dp</dimen>
+    <dimen name="ui_footer_control">50dp</dimen>
+    <dimen name="ui_footer_motto_height">40dp</dimen>
+    <dimen name="ui_rounded_safe">8dp</dimen>
 
     <!-- Near-black earthen canvases preserve Carbon g100 contrast. -->
     <color name="earth_canvas_desk">#100D0A</color>
