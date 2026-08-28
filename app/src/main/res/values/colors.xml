@@ -3,6 +3,9 @@
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
     <color name="accent">#C96F45</color>
+    <color name="calendar_month_previous">#B8A38F</color>
+    <color name="calendar_month_current">#FFFFFF</color>
+    <color name="calendar_month_next">#E09A78</color>
     <color name="white_90">#E6FFFFFF</color>
     <color name="white_70">#B3FFFFFF</color>
     <color name="white_55">#8CFFFFFF</color>

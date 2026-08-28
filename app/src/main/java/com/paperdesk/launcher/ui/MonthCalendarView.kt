@@ -2,7 +2,6 @@ package com.paperdesk.launcher.ui
 
 import android.app.Dialog
 import android.content.Context
-import android.graphics.Paint
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.Gravity
@@ -25,7 +24,11 @@ class MonthCalendarView @JvmOverloads constructor(context: Context, attrs: Attri
     private val accent = ContextCompat.getColor(context, R.color.accent)
     private val white = ContextCompat.getColor(context, R.color.white)
     private val muted = ContextCompat.getColor(context, R.color.white_55)
+    private val previousMonth = ContextCompat.getColor(context, R.color.calendar_month_previous)
+    private val currentMonth = ContextCompat.getColor(context, R.color.calendar_month_current)
+    private val nextMonth = ContextCompat.getColor(context, R.color.calendar_month_next)
     private val titleTv = label(13.6f, white, Gravity.CENTER)
+    private val monthLegend = LinearLayout(context)
     private val tithiRow = LinearLayout(context)
     private val shuklaLabel = label(10.4f, accent, Gravity.START)
     private val krishnaLabel = label(10.4f, accent, Gravity.START)
@@ -53,6 +56,9 @@ class MonthCalendarView @JvmOverloads constructor(context: Context, attrs: Attri
         titleTv.setPadding(0, 0, 0, dp(3))
         DeskType.apply(titleTv, DeskType.SEMIBOLD)
         addView(titleTv, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT))
+        configureRow(monthLegend)
+        monthLegend.gravity = Gravity.CENTER
+        addView(monthLegend, LayoutParams(LayoutParams.MATCH_PARENT, dp(21)))
         configureRow(tithiRow)
         addView(tithiRow, LayoutParams(LayoutParams.MATCH_PARENT, dp(25)))
         addView(shuklaLabel, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT))
@@ -80,11 +86,45 @@ class MonthCalendarView @JvmOverloads constructor(context: Context, attrs: Attri
         val dates = lunarCycle(selectedKey)
         val masa = PanchangaStore.local(selectedKey).masa
         titleTv.text = OsLang.script("$masa · TITHI", lang)
+        bindMonthLegend(lang)
         shuklaLabel.text = "${OsLang.ui("shukla", lang)}   ${OsLang.script("PRATIPADA → PURNIMA", lang)}"
         krishnaLabel.text = "${OsLang.ui("krishna", lang)}   ${OsLang.script("PRATIPADA → AMAVASYA", lang)}"
         bindTithiHeader(lang)
         bindRow(shuklaRow, dates.first, lang, selectedKey)
         bindRow(krishnaRow, dates.second, lang, selectedKey)
+    }
+
+    private fun bindMonthLegend(lang: IndicScript.Lang) {
+        monthLegend.removeAllViews()
+        val anchor = Calendar.getInstance().apply { set(year, month, 1) }
+        listOf(-1, 0, 1).forEach { offset ->
+            val cal = (anchor.clone() as Calendar).apply { add(Calendar.MONTH, offset) }
+            val relation = when (offset) {
+                -1 -> when (lang) {
+                    IndicScript.Lang.KN -> "ಹಿಂದಿನ ತಿಂಗಳು"
+                    IndicScript.Lang.SA -> "पूर्वमासः"
+                    IndicScript.Lang.EN -> "PREVIOUS"
+                }
+                0 -> when (lang) {
+                    IndicScript.Lang.KN -> "ಈ ತಿಂಗಳು"
+                    IndicScript.Lang.SA -> "अयं मासः"
+                    IndicScript.Lang.EN -> "THIS MONTH"
+                }
+                else -> when (lang) {
+                    IndicScript.Lang.KN -> "ಮುಂದಿನ ತಿಂಗಳು"
+                    IndicScript.Lang.SA -> "अग्रिममासः"
+                    IndicScript.Lang.EN -> "NEXT"
+                }
+            }
+            val colour = monthColour(offset)
+            val monthName = OsLang.month(cal, lang)
+            val legend = label(9.8f, colour, Gravity.CENTER).apply {
+                text = "$monthName · $relation"
+                contentDescription = "$monthName, $relation"
+                DeskType.apply(this, if (offset == 0) DeskType.SEMIBOLD else DeskType.REGULAR)
+            }
+            monthLegend.addView(legend, LayoutParams(0, LayoutParams.MATCH_PARENT, 1f))
+        }
     }
 
     private fun lunarCycle(anchor: String): Pair<Array<String?>, Array<String?>> {
@@ -139,13 +179,12 @@ class MonthCalendarView @JvmOverloads constructor(context: Context, attrs: Attri
                 val selected = key == selectedKey
                 val today = key == PanchangaStore.dateKey()
                 val marked = FestivalStore.has(key) || MadhwaDays.isMarked(pan.masa, pan.paksha, pan.tithi)
+                val special = PanchangaStore.isPurnima(pan.tithi) ||
+                    PanchangaStore.isAmavasya(pan.tithi) || PanchangaStore.isEkadasi(pan.tithi)
                 cell.setBackgroundResource(if (today) R.drawable.bg_tithi_today else R.drawable.bg_tithi_grid)
-                if (selected || PanchangaStore.isPurnima(pan.tithi) || PanchangaStore.isAmavasya(pan.tithi) ||
-                    PanchangaStore.isEkadasi(pan.tithi) || marked
-                ) date.setTextColor(accent)
-                if (today) date.paintFlags = date.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-                DeskType.apply(date, if (selected || today || marked) DeskType.SEMIBOLD else DeskType.REGULAR)
                 val cal = PanchangaStore.parse(key)
+                date.setTextColor(monthColour(monthDistance(cal)))
+                DeskType.apply(date, if (selected || today || marked || special) DeskType.SEMIBOLD else DeskType.REGULAR)
                 cell.contentDescription = "${OsLang.script(pan.tithi, lang)}, ${OsLang.dateLine(cal, lang)}"
                 cell.isClickable = !locked
                 cell.setOnClickListener { select(key, false) }
@@ -153,6 +192,18 @@ class MonthCalendarView @JvmOverloads constructor(context: Context, attrs: Attri
             }
             row.addView(cell, LayoutParams(0, LayoutParams.MATCH_PARENT, 1f))
         }
+    }
+
+    private fun monthDistance(cal: Calendar): Int {
+        val anchorIndex = year * 12 + month
+        val dateIndex = cal.get(Calendar.YEAR) * 12 + cal.get(Calendar.MONTH)
+        return dateIndex - anchorIndex
+    }
+
+    private fun monthColour(distance: Int): Int = when {
+        distance < 0 -> previousMonth
+        distance > 0 -> nextMonth
+        else -> currentMonth
     }
 
     private fun select(key: String, open: Boolean) {
