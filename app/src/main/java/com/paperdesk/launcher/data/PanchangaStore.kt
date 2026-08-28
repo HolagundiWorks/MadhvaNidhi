@@ -202,7 +202,7 @@ object PanchangaStore {
 
     fun isPurnima(tithi: String): Boolean {
         val t = tithi.uppercase(Locale.US)
-        return "PURNIMA" in t || "POORNIMA" in t || "POURNA" in t
+        return "PURNIMA" in t || "POORNIMA" in t || "POURNA" in t || "HUNNIME" in t
     }
 
     fun isAmavasya(tithi: String): Boolean {
