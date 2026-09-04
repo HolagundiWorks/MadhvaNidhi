@@ -18,15 +18,15 @@
     <dimen name="ui_footer_motto_height">40dp</dimen>
     <dimen name="ui_rounded_safe">8dp</dimen>
 
-    <!-- Near-black earthen canvases preserve Carbon g100 contrast. -->
-    <color name="earth_canvas_desk">#2A211B</color>
-    <color name="earth_canvas_sandhya">#2A211B</color>
-    <color name="earth_canvas_nitya">#2A211B</color>
-    <color name="earth_canvas_mantras">#2A211B</color>
-    <color name="earth_canvas_puja">#2A211B</color>
-    <color name="earth_canvas_hadugalu">#2A211B</color>
-    <color name="earth_canvas_japa">#2A211B</color>
-    <color name="earth_canvas_aayadi">#2A211B</color>
+    <!-- Warm white paper canvas with restrained earthen accents. -->
+    <color name="earth_canvas_desk">#FFFDF8</color>
+    <color name="earth_canvas_sandhya">#FFFDF8</color>
+    <color name="earth_canvas_nitya">#FFFDF8</color>
+    <color name="earth_canvas_mantras">#FFFDF8</color>
+    <color name="earth_canvas_puja">#FFFDF8</color>
+    <color name="earth_canvas_hadugalu">#FFFDF8</color>
+    <color name="earth_canvas_japa">#FFFDF8</color>
+    <color name="earth_canvas_aayadi">#FFFDF8</color>
     <color name="earth_accent_desk">#C96F45</color>
     <color name="earth_accent_sandhya">#C96F45</color>
     <color name="earth_accent_nitya">#C96F45</color>
@@ -35,6 +35,6 @@
     <color name="earth_accent_hadugalu">#C96F45</color>
     <color name="earth_accent_japa">#C96F45</color>
     <color name="earth_accent_aayadi">#C96F45</color>
-    <color name="earth_footer_base">#3A3027</color>
-    <color name="earth_footer_shadow">#000000</color>
+    <color name="earth_footer_base">#F1E6DB</color>
+    <color name="earth_footer_shadow">#211A16</color>
 </resources>

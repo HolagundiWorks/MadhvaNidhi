@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:background="@color/earth_canvas_desk" />
+            android:background="@android:color/transparent" />
     </com.paperdesk.launcher.ui.ZonePagerHost>
 
     <TextView

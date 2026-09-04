@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#000000</color>
-    <color name="white">#FFFFFF</color>
-    <color name="accent">#FF6A00</color>
-    <color name="white_90">#E6FFFFFF</color>
-    <color name="white_70">#B3FFFFFF</color>
-    <color name="white_55">#8CFFFFFF</color>
-    <color name="white_45">#73FFFFFF</color>
-    <color name="accent_90">#E6FF6A00</color>
-    <color name="accent_70">#B3FF6A00</color>
+    <color name="black">#FFFDF8</color>
+    <color name="white">#211A16</color>
+    <color name="accent">#C96F45</color>
+    <color name="white_90">#E6211A16</color>
+    <color name="white_70">#B3211A16</color>
+    <color name="white_55">#8C211A16</color>
+    <color name="white_45">#73211A16</color>
+    <color name="accent_90">#E6C96F45</color>
+    <color name="accent_70">#B3C96F45</color>
     <color name="scrim">#99000000</color>
-    <color name="clock_face">#000000</color>
-    <color name="clock_ink">#FFFFFF</color>
-    <color name="leaf">#000000</color>
-    <color name="leaf_fibre">#FFFFFF</color>
-    <color name="leaf_hole">#000000</color>
-    <color name="moon_lit">#FFFFFF</color>
-    <color name="moon_shade">#000000</color>
+    <color name="clock_face">#FFFDF8</color>
+    <color name="clock_ink">#211A16</color>
+    <color name="leaf">#FFFDF8</color>
+    <color name="leaf_fibre">#211A16</color>
+    <color name="leaf_hole">#211A16</color>
+    <color name="moon_lit">#D8C8BA</color>
+    <color name="moon_shade">#6D5D51</color>
 </resources>

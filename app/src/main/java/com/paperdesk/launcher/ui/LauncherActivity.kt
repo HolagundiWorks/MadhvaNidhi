@@ -52,6 +52,7 @@ class LauncherActivity : AppCompatActivity() {
             ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
         }
         setContentView(R.layout.activity_launcher)
+        findViewById<View>(R.id.launcherRoot).background = WovenCanvasDrawable(this, "app")
         applyShadeChrome()
         AlarmScheduler.rescheduleAll(this)
 

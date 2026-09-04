@@ -23,8 +23,91 @@ object PagePalette {
     fun accent(context: Context, pageId: String): Int = context.getColor(R.color.earth_accent_desk)
 
     fun apply(view: View, pageId: String) {
-        view.setBackgroundColor(surface(view.context, pageId))
+        view.background = WovenCanvasDrawable(view.context, pageId)
     }
+}
+
+/**
+ * Quiet app-wide canvas inspired by the diamond weave used in the footer.
+ * The motif deliberately stays below content contrast so long Kannada passages
+ * remain comfortable to read while the pages no longer feel like empty black panels.
+ */
+class WovenCanvasDrawable(
+    context: Context,
+    pageId: String
+) : Drawable() {
+    private val density = context.resources.displayMetrics.density
+    private val base = context.getColor(R.color.earth_canvas_desk)
+    private val accent = PagePalette.accent(context, pageId)
+    private val fibre = context.getColor(R.color.calendar_month_previous)
+    private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val path = Path()
+    private val phase = ((pageId.hashCode() and 0x7fffffff) % 3) * 8f * density
+    private var drawableAlpha = 255
+
+    override fun draw(canvas: Canvas) {
+        val b = bounds
+        paint.style = Paint.Style.FILL
+        paint.color = withAlpha(base, drawableAlpha)
+        canvas.drawRect(b, paint)
+
+        val halfWidth = 24f * density
+        val halfHeight = 16f * density
+        val repeatX = halfWidth * 2f
+        val repeatY = halfHeight * 2f
+
+        paint.style = Paint.Style.STROKE
+        paint.strokeWidth = 0.65f * density
+        paint.color = withAlpha(accent, (drawableAlpha * 0.12f).toInt())
+        var row = 0
+        var cy = b.top.toFloat() - repeatY + phase
+        while (cy < b.bottom + repeatY) {
+            var cx = b.left.toFloat() - repeatX + if (row % 2 == 0) 0f else halfWidth
+            while (cx < b.right + repeatX) {
+                path.reset()
+                path.moveTo(cx, cy - halfHeight)
+                path.lineTo(cx + halfWidth, cy)
+                path.lineTo(cx, cy + halfHeight)
+                path.lineTo(cx - halfWidth, cy)
+                path.close()
+                canvas.drawPath(path, paint)
+                cx += repeatX
+            }
+            cy += repeatY
+            row++
+        }
+
+        paint.style = Paint.Style.FILL
+        paint.color = withAlpha(fibre, (drawableAlpha * 0.10f).toInt())
+        val dot = 0.8f * density
+        var dotY = b.top.toFloat() + halfHeight + phase
+        var dotRow = 0
+        while (dotY < b.bottom) {
+            var dotX = b.left.toFloat() + if (dotRow % 2 == 0) halfWidth else repeatX
+            while (dotX < b.right) {
+                canvas.drawCircle(dotX, dotY, dot, paint)
+                dotX += repeatX
+            }
+            dotY += repeatY
+            dotRow++
+        }
+    }
+
+    override fun setAlpha(alpha: Int) {
+        drawableAlpha = alpha
+        invalidateSelf()
+    }
+
+    override fun setColorFilter(colorFilter: ColorFilter?) {
+        paint.colorFilter = colorFilter
+        invalidateSelf()
+    }
+
+    @Deprecated("Deprecated in Android")
+    override fun getOpacity(): Int = PixelFormat.OPAQUE
+
+    private fun withAlpha(color: Int, alpha: Int): Int =
+        Color.argb(alpha.coerceIn(0, 255), Color.red(color), Color.green(color), Color.blue(color))
 }
 
 /** Scaled diamond repeats restore the traditional geometric saree border. */

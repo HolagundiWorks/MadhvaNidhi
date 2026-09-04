@@ -48,7 +48,7 @@
             <TextView android:id="@+id/japaRitualNext"
                 android:layout_width="@dimen/ui_grid_5" android:layout_height="@dimen/ui_grid_5" android:background="@drawable/bg_circle_fill"
                 android:contentDescription="ಮುಂದಿನ ಜಪ ಕ್ರಮ" android:gravity="center" android:text="›"
-                android:textColor="@color/black" android:textSize="25.6sp" />
+                android:textColor="@color/white" android:textSize="25.6sp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -95,7 +95,7 @@
                 <TextView android:id="@+id/japaTap"
                     android:layout_width="@dimen/ui_grid_8" android:layout_height="@dimen/ui_grid_8" android:background="@drawable/bg_circle_fill"
                     android:contentDescription="ಒಂದು ಜಪ ಸೇರಿಸಿ" android:fontWeight="700" android:gravity="center"
-                    android:text="ಜಪ\n+೧" android:textColor="@color/black" android:textSize="15.2sp" />
+                    android:text="ಜಪ\n+೧" android:textColor="@color/white" android:textSize="15.2sp" />
                 <LinearLayout android:layout_width="72dp" android:layout_height="72dp"
                     android:layout_marginLeft="@dimen/ui_grid_1" android:gravity="center" android:orientation="vertical">
                     <LinearLayout android:layout_width="match_parent" android:layout_height="@dimen/ui_grid_4"
@@ -114,7 +114,7 @@
                         <TextView android:id="@+id/japaComplete"
                             android:layout_width="@dimen/ui_grid_4" android:layout_height="@dimen/ui_grid_4" android:background="@drawable/bg_circle_fill"
                             android:contentDescription="ಜಪ ಅವಧಿ ದಾಖಲಿಸು" android:gravity="center" android:text="✓"
-                            android:textColor="@color/black" android:textSize="16sp" />
+                            android:textColor="@color/white" android:textSize="16sp" />
                         <TextView android:id="@+id/japaReset"
                             android:layout_width="@dimen/ui_grid_4" android:layout_height="@dimen/ui_grid_4" android:layout_marginLeft="@dimen/ui_grid_1"
                             android:background="@drawable/bg_circle" android:contentDescription="ಪ್ರಸ್ತುತ ಜಪ ಎಣಿಕೆಯನ್ನು ಮರುಹೊಂದಿಸು"

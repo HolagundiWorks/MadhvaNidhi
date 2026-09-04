@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#000000</color>
-    <color name="white">#FFFFFF</color>
+    <!-- Legacy names now map to the light canvas and dark ink respectively. -->
+    <color name="black">#FFFDF8</color>
+    <color name="white">#211A16</color>
     <color name="accent">#C96F45</color>
-    <color name="calendar_month_previous">#B8A38F</color>
-    <color name="calendar_month_current">#FFFFFF</color>
-    <color name="calendar_month_next">#E09A78</color>
-    <color name="white_90">#E6FFFFFF</color>
-    <color name="white_70">#B3FFFFFF</color>
-    <color name="white_55">#8CFFFFFF</color>
-    <color name="white_45">#73FFFFFF</color>
-    <color name="surface_1">#3A3027</color>
-    <color name="surface_2">#4A3D31</color>
-    <color name="divider">#A58B73</color>
+    <color name="calendar_month_previous">#8A7767</color>
+    <color name="calendar_month_current">#211A16</color>
+    <color name="calendar_month_next">#B85F3A</color>
+    <color name="white_90">#E6211A16</color>
+    <color name="white_70">#B3211A16</color>
+    <color name="white_55">#8C211A16</color>
+    <color name="white_45">#73211A16</color>
+    <color name="surface_1">#F5EEE7</color>
+    <color name="surface_2">#EADFD4</color>
+    <color name="divider">#A98D77</color>
     <color name="accent_90">#E6C96F45</color>
     <color name="accent_70">#B3C96F45</color>
     <color name="scrim">#99000000</color>
-    <color name="clock_face">#000000</color>
-    <color name="clock_ink">#FFFFFF</color>
-    <color name="leaf">#000000</color>
-    <color name="leaf_fibre">#FFFFFF</color>
-    <color name="leaf_hole">#FFFFFF</color>
-    <color name="moon_lit">#8A8A8A</color>
-    <color name="moon_shade">#111111</color>
+    <color name="clock_face">#FFFDF8</color>
+    <color name="clock_ink">#211A16</color>
+    <color name="leaf">#FFFDF8</color>
+    <color name="leaf_fibre">#211A16</color>
+    <color name="leaf_hole">#211A16</color>
+    <color name="moon_lit">#D8C8BA</color>
+    <color name="moon_shade">#6D5D51</color>
     <!-- Carbon Design System support tokens for the g100 theme. Interactive blue is intentionally replaced by Acharya orange. -->
-    <color name="carbon_gray_100">#161616</color>
-    <color name="carbon_gray_90">#262626</color>
-    <color name="carbon_gray_80">#393939</color>
-    <color name="carbon_gray_70">#525252</color>
+    <color name="carbon_gray_100">#211A16</color>
+    <color name="carbon_gray_90">#3A302A</color>
+    <color name="carbon_gray_80">#E8DDD2</color>
+    <color name="carbon_gray_70">#9B8674</color>
     <color name="carbon_support_error">#FA4D56</color>
     <color name="carbon_support_warning">#F1C21B</color>
     <color name="carbon_support_success">#42BE65</color>
