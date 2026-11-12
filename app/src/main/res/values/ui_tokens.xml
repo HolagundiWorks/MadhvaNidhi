@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Aliases only — every value resolves to Carbon spacing / colour tokens. -->
 <resources>
-    <!-- Geometry follows Carbon 8dp spacing (carbon_spacing_*). -->
     <dimen name="ui_grid_1">@dimen/carbon_spacing_03</dimen>
     <dimen name="ui_grid_2">@dimen/carbon_spacing_05</dimen>
     <dimen name="ui_grid_3">@dimen/carbon_spacing_06</dimen>
     <dimen name="ui_grid_4">@dimen/carbon_spacing_07</dimen>
     <dimen name="ui_grid_5">@dimen/carbon_spacing_08</dimen>
     <dimen name="ui_grid_6">@dimen/carbon_spacing_09</dimen>
-    <dimen name="ui_grid_7">56dp</dimen>
+    <dimen name="ui_grid_7">@dimen/carbon_spacing_09</dimen>
     <dimen name="ui_grid_8">@dimen/carbon_spacing_10</dimen>
     <dimen name="ui_content_inset">@dimen/carbon_spacing_05</dimen>
     <dimen name="ui_section_gap">@dimen/carbon_spacing_05</dimen>
     <dimen name="ui_component_gap">@dimen/carbon_spacing_03</dimen>
-    <dimen name="ui_footer_height">60dp</dimen>
-    <dimen name="ui_footer_control">50dp</dimen>
-    <dimen name="ui_footer_motto_height">40dp</dimen>
+    <dimen name="ui_footer_height">@dimen/carbon_spacing_10</dimen>
+    <dimen name="ui_footer_control">@dimen/carbon_layout_size_height_lg</dimen>
+    <dimen name="ui_footer_motto_height">@dimen/carbon_layout_size_height_md</dimen>
     <dimen name="ui_rounded_safe">@dimen/carbon_corner_radius</dimen>
 
-    <!-- Earth aliases → Carbon surfaces / interactive -->
     <color name="earth_canvas_desk">@color/carbon_background</color>
     <color name="earth_canvas_sandhya">@color/carbon_background</color>
     <color name="earth_canvas_nitya">@color/carbon_background</color>
@@ -26,14 +25,14 @@
     <color name="earth_canvas_hadugalu">@color/carbon_background</color>
     <color name="earth_canvas_japa">@color/carbon_background</color>
     <color name="earth_canvas_aayadi">@color/carbon_background</color>
-    <color name="earth_accent_desk">@color/carbon_button_primary</color>
-    <color name="earth_accent_sandhya">@color/carbon_button_primary</color>
-    <color name="earth_accent_nitya">@color/carbon_button_primary</color>
-    <color name="earth_accent_mantras">@color/carbon_button_primary</color>
-    <color name="earth_accent_puja">@color/carbon_button_primary</color>
-    <color name="earth_accent_hadugalu">@color/carbon_button_primary</color>
-    <color name="earth_accent_japa">@color/carbon_button_primary</color>
-    <color name="earth_accent_aayadi">@color/carbon_button_primary</color>
+    <color name="earth_accent_desk">@color/carbon_interactive</color>
+    <color name="earth_accent_sandhya">@color/carbon_interactive</color>
+    <color name="earth_accent_nitya">@color/carbon_interactive</color>
+    <color name="earth_accent_mantras">@color/carbon_interactive</color>
+    <color name="earth_accent_puja">@color/carbon_interactive</color>
+    <color name="earth_accent_hadugalu">@color/carbon_interactive</color>
+    <color name="earth_accent_japa">@color/carbon_interactive</color>
+    <color name="earth_accent_aayadi">@color/carbon_interactive</color>
     <color name="earth_footer_base">@color/carbon_layer</color>
     <color name="earth_footer_shadow">@color/carbon_text</color>
 </resources>

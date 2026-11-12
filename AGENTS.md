@@ -48,7 +48,13 @@ MadhvaNidhi is landscape-exclusive on mockup and device.
 
 ## Design system
 
-**Authority: IBM Carbon Design System** for visuals. Android may use Material primitives under Carbon colours, spacing, square corners (`0`), and type.
+**Authority: IBM Carbon Design System only** — colours, spacing, type, hierarchy, and components.
+
+- Use `carbon_*` tokens and `Widget.Carbon.*` / `TextAppearance.Carbon.*` styles only
+- Material widgets are allowed **only** as the Android host under Carbon tokens (no Material3 style names in layouts)
+- No custom components, Desk chrome, GhostOutlined, or inventing non-Carbon colours / radii / paddings
+- Interactive brand maps to Carbon interactive slot (`#BA4E00`); corners stay `0` (productive)
+- Mockups: `cds--*` / `--cds-*` only (moon glyph `border-radius: 50%` is the sole domain exception)
 
 ## Workflow
 

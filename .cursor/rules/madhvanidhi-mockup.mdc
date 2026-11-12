@@ -1,0 +1,38 @@
+---
+description: MadhvaNidhi authorized Android port from Carbon mockups — landscape, freeze contracts
+alwaysApply: true
+---
+
+# MadhvaNidhi implementation rule
+
+`MOCKUP_ONLY = false` (authorized full-shell Android port). Full policy: [AGENTS.md](../../AGENTS.md).
+
+## Scope
+
+- **Write:** `app/**`, freeze docs under `docs/`, mockup freeze marks under `prototypes/**`, `AGENTS.md`, `CLAUDE.md`, this rule
+- **Allowed tooling:** `gradlew`, `adb`, debug install
+- UI source of truth = frozen mockups; implement in Android
+
+## Studio (mockup)
+
+- Chrome = landscape screen-size selector + live iframe preview only
+- Presets landscape only; custom `width > height`
+
+## Design (Carbon only)
+
+- IBM Carbon tokens/visuals/components only; square corners; `$spacing-05` tile padding
+- Android: `Widget.Carbon.*` + `carbon_*` only — Material host OK, no Material3/custom style names in layouts
+- No custom components, Desk chrome, or non-Carbon colours/radii/paddings
+- Mockup: `cds--*` / `--cds-*` only (moon glyph circle is the sole domain exception)
+
+## Frozen screens (no redesign without new design pass)
+
+- Panchanga — `docs/frozen-panchanga-shell.md`
+- User profile — `docs/frozen-user-profile.md`
+- Nitya Sandhya — `docs/frozen-nitya-sandhya.md`
+- Nitya Japa — `docs/frozen-nitya-japa.md`
+- Nitya Puja — `docs/frozen-nitya-puja.md`
+
+## Landscape-only
+
+Never portrait presets or layouts on mockup or device.

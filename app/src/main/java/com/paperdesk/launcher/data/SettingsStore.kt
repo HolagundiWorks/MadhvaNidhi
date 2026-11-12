@@ -204,7 +204,7 @@ class SettingsStore(context: Context) {
             .put("panchangaTradition", PanchangaTraditions.SRS)
             .put("landscape", true)
             .put("theme", "black")
-            .put("accent", "#FF6A00")
+            .put("accent", "#BA4E00")
             .put("fontScale", 1.0)
             .put("clockAnalog", true)
             .put("calcScientific", false)

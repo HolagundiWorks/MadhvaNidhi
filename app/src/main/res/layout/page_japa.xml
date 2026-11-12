@@ -31,7 +31,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/japaSkip"
-            style="@style/Widget.Carbon.Button.GhostOutlined"
+            style="@style/Widget.Carbon.Button.Tertiary.Icon"
             android:layout_width="@dimen/carbon_layout_size_height_lg"
             android:layout_height="@dimen/carbon_layout_size_height_lg"
             android:layout_marginStart="@dimen/carbon_spacing_05"
@@ -49,7 +49,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/japaComplete"
-            style="@style/Widget.Carbon.Button.GhostOutlined"
+            style="@style/Widget.Carbon.Button.Tertiary.Icon"
             android:layout_width="@dimen/carbon_layout_size_height_lg"
             android:layout_height="@dimen/carbon_layout_size_height_lg"
             android:layout_marginStart="@dimen/carbon_spacing_03"
@@ -168,7 +168,7 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/japaGoal11"
-                        style="@style/Widget.Carbon.Button.GhostOutlined"
+                        style="@style/Widget.Carbon.Button.Tertiary.Icon"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/carbon_layout_size_height_lg"
                         android:layout_columnWeight="1"
@@ -182,7 +182,7 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/japaGoal101"
-                        style="@style/Widget.Carbon.Button.GhostOutlined"
+                        style="@style/Widget.Carbon.Button.Tertiary.Icon"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/carbon_layout_size_height_lg"
                         android:layout_columnWeight="1"
@@ -195,7 +195,7 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/japaGoal1001"
-                        style="@style/Widget.Carbon.Button.GhostOutlined"
+                        style="@style/Widget.Carbon.Button.Tertiary.Icon"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/carbon_layout_size_height_lg"
                         android:layout_columnWeight="1"
@@ -208,7 +208,7 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/japaReset"
-                        style="@style/Widget.Carbon.Button.GhostOutlined"
+                        style="@style/Widget.Carbon.Button.Tertiary.Icon"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/carbon_layout_size_height_lg"
                         android:layout_columnWeight="1"

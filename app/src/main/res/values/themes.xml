@@ -1,20 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Theme maps Material 3 primitives onto IBM Carbon tokens only. No Desk / custom chrome. -->
 <resources>
     <style name="Theme.PaperDesk" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:fontFamily">sans</item>
-        <item name="android:statusBarColor">?attr/colorSurface</item>
-        <item name="android:navigationBarColor">?attr/colorSurface</item>
-        <item name="android:windowBackground">?attr/colorSurface</item>
+        <item name="android:statusBarColor">@color/carbon_background</item>
+        <item name="android:navigationBarColor">@color/carbon_background</item>
+        <item name="android:windowBackground">@color/carbon_background</item>
         <item name="android:windowSoftInputMode">adjustResize</item>
-        <item name="colorPrimary">@color/carbon_orange</item>
-        <item name="colorOnPrimary">@color/carbon_on_accent</item>
-        <item name="colorPrimaryContainer">@color/carbon_orange_container</item>
-        <item name="colorOnPrimaryContainer">@color/carbon_on_orange_container</item>
-        <item name="colorSecondary">@color/carbon_orange</item>
-        <item name="colorOnSecondary">@color/carbon_background</item>
+        <item name="colorPrimary">@color/carbon_interactive</item>
+        <item name="colorOnPrimary">@color/carbon_text_on_color</item>
+        <item name="colorPrimaryContainer">@color/carbon_layer_selected</item>
+        <item name="colorOnPrimaryContainer">@color/carbon_text_primary</item>
+        <item name="colorSecondary">@color/carbon_interactive</item>
+        <item name="colorOnSecondary">@color/carbon_text_on_color</item>
         <item name="colorSecondaryContainer">@color/carbon_layer_high</item>
-        <item name="colorOnSecondaryContainer">@color/carbon_orange</item>
-        <item name="colorTertiary">@color/carbon_orange</item>
-        <item name="colorOnTertiary">@color/carbon_background</item>
+        <item name="colorOnSecondaryContainer">@color/carbon_interactive</item>
+        <item name="colorTertiary">@color/carbon_interactive</item>
+        <item name="colorOnTertiary">@color/carbon_text_on_color</item>
         <item name="colorSurface">@color/carbon_background</item>
         <item name="colorOnSurface">@color/carbon_text</item>
         <item name="colorSurfaceVariant">@color/carbon_layer</item>
@@ -27,24 +29,24 @@
         <item name="colorOutline">@color/carbon_outline</item>
         <item name="colorOutlineVariant">@color/carbon_border</item>
         <item name="colorError">@color/carbon_error</item>
-        <item name="colorOnError">@color/carbon_background</item>
+        <item name="colorOnError">@color/carbon_text_on_color</item>
         <item name="colorErrorContainer">@color/carbon_error_container</item>
         <item name="colorOnErrorContainer">@color/carbon_text</item>
         <item name="android:colorBackground">@color/carbon_background</item>
         <item name="android:textColorPrimary">@color/carbon_text</item>
         <item name="android:textColorSecondary">@color/carbon_text_secondary</item>
-        <item name="materialAlertDialogTheme">@style/ThemeOverlay.MadhvaNidhi.CarbonDialog</item>
-        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.MadhvaNidhi.Four</item>
-        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.MadhvaNidhi.Four</item>
-        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.MadhvaNidhi.Four</item>
-        <item name="shapeAppearanceCornerExtraSmall">@style/ShapeAppearance.MadhvaNidhi.Four</item>
-        <item name="shapeAppearanceCornerSmall">@style/ShapeAppearance.MadhvaNidhi.Four</item>
-        <item name="shapeAppearanceCornerMedium">@style/ShapeAppearance.MadhvaNidhi.Four</item>
-        <item name="shapeAppearanceCornerLarge">@style/ShapeAppearance.MadhvaNidhi.Four</item>
-        <item name="shapeAppearanceCornerExtraLarge">@style/ShapeAppearance.MadhvaNidhi.Four</item>
-        <item name="buttonBarPositiveButtonStyle">@style/Widget.MadhvaNidhi.DialogButton</item>
-        <item name="buttonBarNegativeButtonStyle">@style/Widget.MadhvaNidhi.DialogButton</item>
-        <item name="buttonBarNeutralButtonStyle">@style/Widget.MadhvaNidhi.DialogButton</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.Carbon.Dialog</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Carbon.Square</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Carbon.Square</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Carbon.Square</item>
+        <item name="shapeAppearanceCornerExtraSmall">@style/ShapeAppearance.Carbon.Square</item>
+        <item name="shapeAppearanceCornerSmall">@style/ShapeAppearance.Carbon.Square</item>
+        <item name="shapeAppearanceCornerMedium">@style/ShapeAppearance.Carbon.Square</item>
+        <item name="shapeAppearanceCornerLarge">@style/ShapeAppearance.Carbon.Square</item>
+        <item name="shapeAppearanceCornerExtraLarge">@style/ShapeAppearance.Carbon.Square</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.Carbon.Button.Ghost</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.Carbon.Button.Ghost</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Widget.Carbon.Button.Ghost</item>
         <item name="materialButtonStyle">@style/Widget.Carbon.Button.Primary</item>
         <item name="materialButtonOutlinedStyle">@style/Widget.Carbon.Button.Tertiary</item>
         <item name="borderlessButtonStyle">@style/Widget.Carbon.Button.Ghost</item>
@@ -52,18 +54,19 @@
         <item name="textInputStyle">@style/Widget.Carbon.TextInput</item>
         <item name="elevationOverlayEnabled">false</item>
     </style>
+
     <style name="Theme.PaperDesk.Entry" parent="Theme.PaperDesk" />
     <style name="Theme.PaperDesk.Dialog" parent="Theme.Material3.DayNight.Dialog.Alert">
-        <item name="colorPrimary">@color/carbon_orange</item>
-        <item name="colorOnPrimary">@color/carbon_on_accent</item>
-        <item name="colorPrimaryContainer">@color/carbon_orange_container</item>
-        <item name="colorOnPrimaryContainer">@color/carbon_on_orange_container</item>
-        <item name="colorSecondary">@color/carbon_orange</item>
-        <item name="colorOnSecondary">@color/carbon_background</item>
+        <item name="colorPrimary">@color/carbon_interactive</item>
+        <item name="colorOnPrimary">@color/carbon_text_on_color</item>
+        <item name="colorPrimaryContainer">@color/carbon_layer_selected</item>
+        <item name="colorOnPrimaryContainer">@color/carbon_text_primary</item>
+        <item name="colorSecondary">@color/carbon_interactive</item>
+        <item name="colorOnSecondary">@color/carbon_text_on_color</item>
         <item name="colorSecondaryContainer">@color/carbon_layer_high</item>
-        <item name="colorOnSecondaryContainer">@color/carbon_orange</item>
-        <item name="colorTertiary">@color/carbon_orange</item>
-        <item name="colorOnTertiary">@color/carbon_background</item>
+        <item name="colorOnSecondaryContainer">@color/carbon_interactive</item>
+        <item name="colorTertiary">@color/carbon_interactive</item>
+        <item name="colorOnTertiary">@color/carbon_text_on_color</item>
         <item name="colorSurface">@color/carbon_background</item>
         <item name="colorOnSurface">@color/carbon_text</item>
         <item name="colorSurfaceVariant">@color/carbon_layer</item>
@@ -76,142 +79,132 @@
         <item name="colorOutline">@color/carbon_outline</item>
         <item name="colorOutlineVariant">@color/carbon_border</item>
         <item name="colorError">@color/carbon_error</item>
-        <item name="colorOnError">@color/carbon_background</item>
+        <item name="colorOnError">@color/carbon_text_on_color</item>
         <item name="colorErrorContainer">@color/carbon_error_container</item>
         <item name="colorOnErrorContainer">@color/carbon_text</item>
-        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.MadhvaNidhi.Four</item>
-        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.MadhvaNidhi.Four</item>
-        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.MadhvaNidhi.Four</item>
-        <item name="shapeAppearanceCornerExtraSmall">@style/ShapeAppearance.MadhvaNidhi.Four</item>
-        <item name="shapeAppearanceCornerSmall">@style/ShapeAppearance.MadhvaNidhi.Four</item>
-        <item name="shapeAppearanceCornerMedium">@style/ShapeAppearance.MadhvaNidhi.Four</item>
-        <item name="shapeAppearanceCornerLarge">@style/ShapeAppearance.MadhvaNidhi.Four</item>
-        <item name="shapeAppearanceCornerExtraLarge">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Carbon.Square</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Carbon.Square</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Carbon.Square</item>
+        <item name="shapeAppearanceCornerExtraSmall">@style/ShapeAppearance.Carbon.Square</item>
+        <item name="shapeAppearanceCornerSmall">@style/ShapeAppearance.Carbon.Square</item>
+        <item name="shapeAppearanceCornerMedium">@style/ShapeAppearance.Carbon.Square</item>
+        <item name="shapeAppearanceCornerLarge">@style/ShapeAppearance.Carbon.Square</item>
+        <item name="shapeAppearanceCornerExtraLarge">@style/ShapeAppearance.Carbon.Square</item>
     </style>
-    <style name="ShapeAppearance.PaperDesk" parent="ShapeAppearance.Material3.MediumComponent" />
-    <style name="Desk.DialogButton" parent="Widget.Material3.Button" />
-    <style name="Desk.DialogButton.Positive" parent="Widget.Material3.Button" />
-    <style name="Desk.DialogButton.Negative" parent="Widget.Material3.Button" />
-    <style name="Desk.MaterialCard" parent="Widget.Material3.CardView.Elevated" />
-    <style name="Desk.Check" parent="Widget.Material3.CompoundButton.CheckBox" />
-    <style name="Desk" parent="TextAppearance.Material3.BodyLarge" />
-    <style name="Desk.Seek" parent="Widget.AppCompat.SeekBar" />
-    <style name="Desk.Title" parent="TextAppearance.Material3.TitleLarge" />
-    <style name="Desk.Title.Large" parent="TextAppearance.Material3.HeadlineMedium" />
-    <style name="Desk.Clock" parent="TextAppearance.Material3.HeadlineMedium" />
-    <style name="Desk.Section" parent="TextAppearance.Material3.TitleMedium" />
-    <style name="Desk.CardTitle" parent="TextAppearance.Material3.TitleLarge" />
-    <style name="Desk.Body" parent="TextAppearance.Material3.BodyLarge" />
-    <style name="Desk.Body2" parent="TextAppearance.Material3.BodyLarge" />
-    <style name="Desk.Meta" parent="TextAppearance.Material3.LabelLarge" />
-    <style name="Desk.Tag" parent="TextAppearance.Material3.LabelLarge" />
-    <style name="Desk.Label" parent="TextAppearance.Material3.LabelLarge" />
-    <style name="Desk.TableHead" parent="TextAppearance.Material3.LabelLarge" />
-    <style name="Desk.Table" parent="TextAppearance.Material3.BodyLarge" />
-    <style name="Desk.Button" parent="Widget.Material3.Button" />
-    <style name="Desk.Button.Accent" parent="Widget.Material3.Button" />
-    <style name="Desk.Circle" parent="Widget.Material3.Button" />
-    <style name="Desk.CircleText" parent="Widget.Material3.Button" />
-    <style name="Desk.IconBtn" parent="Widget.Material3.Button" />
-    <style name="Desk.Link" parent="TextAppearance.Material3.LabelLarge" />
-    <style name="Desk.Fab" parent="Widget.Material3.Button" />
-    <style name="Desk.Field" parent="Widget.Material3.TextInputEditText.FilledBox" />
-    <style name="Desk.Key" parent="Widget.Material3.Button" />
-    <style name="Desk.Key.Op" parent="Widget.Material3.Button" />
-    <style name="Desk.Key.Accent" parent="Widget.Material3.Button" />
-    <style name="Desk.Page" parent="TextAppearance.Material3.BodyLarge" />
-    <style name="ThemeOverlay.MadhvaNidhi.AccessibleDatePicker" parent="ThemeOverlay.MadhvaNidhi.Calendar">
-        <item name="materialCalendarHeaderSelection">@style/Widget.MadhvaNidhi.DateSelection</item>
-    </style>
-    <style name="Widget.MadhvaNidhi.DateSelection" parent="Widget.Material3.MaterialCalendar.HeaderSelection">
-        <item name="android:textAppearance">@style/TextAppearance.Material3.TitleMedium</item>
-        <item name="autoSizeMinTextSize">16sp</item>
-        <item name="autoSizeMaxTextSize">20sp</item>
-    </style>
-    <style name="ShapeAppearance.MadhvaNidhi.Four" parent="ShapeAppearance.Material3.Corner.ExtraSmall">
+
+    <!-- Carbon productive surfaces: 0 corner (cds border-radius) -->
+    <style name="ShapeAppearance.Carbon.Square" parent="ShapeAppearance.Material3.Corner.None">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">@dimen/carbon_corner_radius</item>
     </style>
-    <style name="ShapeAppearanceOverlay.MadhvaNidhi.Four" parent="ShapeAppearance.Material3.Corner.ExtraSmall">
+    <style name="ShapeAppearanceOverlay.Carbon.Square" parent="ShapeAppearance.Material3.Corner.None">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">@dimen/carbon_corner_radius</item>
     </style>
-    <style name="ThemeOverlay.MadhvaNidhi.CarbonDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MadhvaNidhi.Four</item>
-        <item name="buttonBarPositiveButtonStyle">@style/Widget.MadhvaNidhi.DialogButton.Primary</item>
-        <item name="buttonBarNegativeButtonStyle">@style/Widget.MadhvaNidhi.DialogButton</item>
-        <item name="buttonBarNeutralButtonStyle">@style/Widget.MadhvaNidhi.DialogButton</item>
+
+    <!-- Legacy name aliases → Carbon square (keep refs compiling) -->
+    <style name="ShapeAppearance.MadhvaNidhi.Four" parent="ShapeAppearance.Carbon.Square" />
+    <style name="ShapeAppearanceOverlay.MadhvaNidhi.Four" parent="ShapeAppearanceOverlay.Carbon.Square" />
+
+    <style name="ThemeOverlay.Carbon.Dialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Carbon.Square</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.Carbon.Button.Primary</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.Carbon.Button.Ghost</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Widget.Carbon.Button.Ghost</item>
     </style>
-    <style name="Widget.MadhvaNidhi.DialogButton" parent="Widget.Material3.Button.TextButton">
-        <item name="cornerRadius">@dimen/carbon_corner_radius</item>
-    </style>
-    <style name="Widget.MadhvaNidhi.PakshaChoice" parent="Widget.Material3.Button.TextButton">
-        <item name="android:minHeight">48dp</item>
+    <style name="ThemeOverlay.MadhvaNidhi.CarbonDialog" parent="ThemeOverlay.Carbon.Dialog" />
+
+    <!-- Content switcher choice (Panchanga paksha) — Carbon pattern on Material button -->
+    <style name="Widget.Carbon.ContentSwitcher.Item" parent="Widget.Carbon.Button.Ghost">
+        <item name="android:minHeight">@dimen/carbon_layout_size_height_lg</item>
         <item name="android:minWidth">0dp</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="android:paddingStart">16dp</item>
-        <item name="android:paddingEnd">16dp</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:paddingStart">@dimen/carbon_spacing_05</item>
+        <item name="android:paddingEnd">@dimen/carbon_spacing_05</item>
+        <item name="android:textAppearance">@style/TextAppearance.Carbon.Label01</item>
         <item name="android:textColor">@color/carbon_text</item>
         <item name="backgroundTint">@null</item>
         <item name="android:background">@drawable/bg_paksha_choice</item>
-        <item name="cornerRadius">0dp</item>
-        <item name="strokeWidth">0dp</item>
-        <item name="iconPadding">8dp</item>
-        <item name="iconTint">@color/carbon_text</item>
+        <item name="iconPadding">@dimen/carbon_spacing_03</item>
+        <item name="iconTint">@color/carbon_icon_primary</item>
         <item name="rippleColor">@color/carbon_layer_high</item>
     </style>
-    <style name="ThemeOverlay.MadhvaNidhi.Calendar" parent="ThemeOverlay.Material3.MaterialCalendar">
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MadhvaNidhi.Four</item>
-        <item name="materialCalendarHeaderConfirmButton">@style/Widget.MadhvaNidhi.DialogButton</item>
-        <item name="materialCalendarHeaderCancelButton">@style/Widget.MadhvaNidhi.CalendarCancel</item>
-        <item name="materialCalendarMonthNavigationButton">@style/Widget.MadhvaNidhi.CalendarMonth</item>
-        <item name="materialCalendarYearNavigationButton">@style/Widget.MadhvaNidhi.CalendarYearNavigation</item>
-        <item name="materialCalendarStyle">@style/Widget.MadhvaNidhi.Calendar</item>
-        <item name="buttonBarPositiveButtonStyle">@style/Widget.MadhvaNidhi.DialogButton</item>
-        <item name="buttonBarNegativeButtonStyle">@style/Widget.MadhvaNidhi.DialogButton</item>
-        <item name="buttonBarNeutralButtonStyle">@style/Widget.MadhvaNidhi.DialogButton</item>
+    <style name="Widget.MadhvaNidhi.PakshaChoice" parent="Widget.Carbon.ContentSwitcher.Item" />
+
+    <style name="ThemeOverlay.Carbon.Calendar" parent="ThemeOverlay.Material3.MaterialCalendar">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Carbon.Square</item>
+        <item name="materialCalendarHeaderConfirmButton">@style/Widget.Carbon.Button.Ghost</item>
+        <item name="materialCalendarHeaderCancelButton">@style/Widget.Carbon.Calendar.Cancel</item>
+        <item name="materialCalendarMonthNavigationButton">@style/Widget.Carbon.Calendar.MonthNav</item>
+        <item name="materialCalendarYearNavigationButton">@style/Widget.Carbon.Calendar.YearNav</item>
+        <item name="materialCalendarStyle">@style/Widget.Carbon.Calendar</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.Carbon.Button.Ghost</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.Carbon.Button.Ghost</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Widget.Carbon.Button.Ghost</item>
     </style>
-    <style name="Widget.MadhvaNidhi.CalendarCancel" parent="Widget.Material3.MaterialCalendar.HeaderCancelButton">
+    <style name="ThemeOverlay.MadhvaNidhi.Calendar" parent="ThemeOverlay.Carbon.Calendar" />
+    <style name="ThemeOverlay.MadhvaNidhi.AccessibleDatePicker" parent="ThemeOverlay.Carbon.Calendar">
+        <item name="materialCalendarHeaderSelection">@style/Widget.Carbon.Calendar.HeaderSelection</item>
+    </style>
+
+    <style name="Widget.Carbon.Calendar.HeaderSelection" parent="Widget.Material3.MaterialCalendar.HeaderSelection">
+        <item name="android:textAppearance">@style/TextAppearance.Carbon.HeadingCompact01</item>
+    </style>
+    <style name="Widget.MadhvaNidhi.DateSelection" parent="Widget.Carbon.Calendar.HeaderSelection" />
+
+    <style name="Widget.Carbon.Calendar.Cancel" parent="Widget.Material3.MaterialCalendar.HeaderCancelButton">
         <item name="cornerRadius">@dimen/carbon_corner_radius</item>
     </style>
-    <style name="Widget.MadhvaNidhi.CalendarMonth" parent="Widget.Material3.MaterialCalendar.MonthNavigationButton">
+    <style name="Widget.Carbon.Calendar.MonthNav" parent="Widget.Material3.MaterialCalendar.MonthNavigationButton">
         <item name="cornerRadius">@dimen/carbon_corner_radius</item>
     </style>
-    <style name="Widget.MadhvaNidhi.CalendarYearNavigation" parent="Widget.Material3.MaterialCalendar.YearNavigationButton">
+    <style name="Widget.Carbon.Calendar.YearNav" parent="Widget.Material3.MaterialCalendar.YearNavigationButton">
         <item name="cornerRadius">@dimen/carbon_corner_radius</item>
     </style>
-    <style name="Widget.MadhvaNidhi.Calendar" parent="Widget.Material3.MaterialCalendar">
-        <item name="shapeAppearance">@style/ShapeAppearance.MadhvaNidhi.Four</item>
-        <item name="dayStyle">@style/Widget.MadhvaNidhi.CalendarDay</item>
-        <item name="daySelectedStyle">@style/Widget.MadhvaNidhi.CalendarDaySelected</item>
-        <item name="dayTodayStyle">@style/Widget.MadhvaNidhi.CalendarDayToday</item>
-        <item name="dayInvalidStyle">@style/Widget.MadhvaNidhi.CalendarDayInvalid</item>
-        <item name="yearStyle">@style/Widget.MadhvaNidhi.CalendarYear</item>
-        <item name="yearSelectedStyle">@style/Widget.MadhvaNidhi.CalendarYearSelected</item>
-        <item name="yearTodayStyle">@style/Widget.MadhvaNidhi.CalendarYearToday</item>
+    <style name="Widget.MadhvaNidhi.CalendarCancel" parent="Widget.Carbon.Calendar.Cancel" />
+    <style name="Widget.MadhvaNidhi.CalendarMonth" parent="Widget.Carbon.Calendar.MonthNav" />
+    <style name="Widget.MadhvaNidhi.CalendarYearNavigation" parent="Widget.Carbon.Calendar.YearNav" />
+
+    <style name="Widget.Carbon.Calendar" parent="Widget.Material3.MaterialCalendar">
+        <item name="shapeAppearance">@style/ShapeAppearance.Carbon.Square</item>
+        <item name="dayStyle">@style/Widget.Carbon.Calendar.Day</item>
+        <item name="daySelectedStyle">@style/Widget.Carbon.Calendar.DaySelected</item>
+        <item name="dayTodayStyle">@style/Widget.Carbon.Calendar.DayToday</item>
+        <item name="dayInvalidStyle">@style/Widget.Carbon.Calendar.DayInvalid</item>
+        <item name="yearStyle">@style/Widget.Carbon.Calendar.Year</item>
+        <item name="yearSelectedStyle">@style/Widget.Carbon.Calendar.YearSelected</item>
+        <item name="yearTodayStyle">@style/Widget.Carbon.Calendar.YearToday</item>
     </style>
-    <style name="Widget.MadhvaNidhi.CalendarDay" parent="Widget.Material3.MaterialCalendar.Day">
-        <item name="itemShapeAppearance">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+    <style name="Widget.MadhvaNidhi.Calendar" parent="Widget.Carbon.Calendar" />
+
+    <style name="Widget.Carbon.Calendar.Day" parent="Widget.Material3.MaterialCalendar.Day">
+        <item name="itemShapeAppearance">@style/ShapeAppearance.Carbon.Square</item>
     </style>
-    <style name="Widget.MadhvaNidhi.CalendarDaySelected" parent="Widget.Material3.MaterialCalendar.Day.Selected">
-        <item name="itemShapeAppearance">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+    <style name="Widget.Carbon.Calendar.DaySelected" parent="Widget.Material3.MaterialCalendar.Day.Selected">
+        <item name="itemShapeAppearance">@style/ShapeAppearance.Carbon.Square</item>
     </style>
-    <style name="Widget.MadhvaNidhi.CalendarDayToday" parent="Widget.Material3.MaterialCalendar.Day.Today">
-        <item name="itemShapeAppearance">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+    <style name="Widget.Carbon.Calendar.DayToday" parent="Widget.Material3.MaterialCalendar.Day.Today">
+        <item name="itemShapeAppearance">@style/ShapeAppearance.Carbon.Square</item>
     </style>
-    <style name="Widget.MadhvaNidhi.CalendarDayInvalid" parent="Widget.Material3.MaterialCalendar.Day.Invalid">
-        <item name="itemShapeAppearance">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+    <style name="Widget.Carbon.Calendar.DayInvalid" parent="Widget.Material3.MaterialCalendar.Day.Invalid">
+        <item name="itemShapeAppearance">@style/ShapeAppearance.Carbon.Square</item>
     </style>
-    <style name="Widget.MadhvaNidhi.CalendarYear" parent="Widget.Material3.MaterialCalendar.Year">
-        <item name="itemShapeAppearance">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+    <style name="Widget.Carbon.Calendar.Year" parent="Widget.Material3.MaterialCalendar.Year">
+        <item name="itemShapeAppearance">@style/ShapeAppearance.Carbon.Square</item>
     </style>
-    <style name="Widget.MadhvaNidhi.CalendarYearSelected" parent="Widget.Material3.MaterialCalendar.Year.Selected">
-        <item name="itemShapeAppearance">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+    <style name="Widget.Carbon.Calendar.YearSelected" parent="Widget.Material3.MaterialCalendar.Year.Selected">
+        <item name="itemShapeAppearance">@style/ShapeAppearance.Carbon.Square</item>
     </style>
-    <style name="Widget.MadhvaNidhi.CalendarYearToday" parent="Widget.Material3.MaterialCalendar.Year.Today">
-        <item name="itemShapeAppearance">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+    <style name="Widget.Carbon.Calendar.YearToday" parent="Widget.Material3.MaterialCalendar.Year.Today">
+        <item name="itemShapeAppearance">@style/ShapeAppearance.Carbon.Square</item>
     </style>
+    <style name="Widget.MadhvaNidhi.CalendarDay" parent="Widget.Carbon.Calendar.Day" />
+    <style name="Widget.MadhvaNidhi.CalendarDaySelected" parent="Widget.Carbon.Calendar.DaySelected" />
+    <style name="Widget.MadhvaNidhi.CalendarDayToday" parent="Widget.Carbon.Calendar.DayToday" />
+    <style name="Widget.MadhvaNidhi.CalendarDayInvalid" parent="Widget.Carbon.Calendar.DayInvalid" />
+    <style name="Widget.MadhvaNidhi.CalendarYear" parent="Widget.Carbon.Calendar.Year" />
+    <style name="Widget.MadhvaNidhi.CalendarYearSelected" parent="Widget.Carbon.Calendar.YearSelected" />
+    <style name="Widget.MadhvaNidhi.CalendarYearToday" parent="Widget.Carbon.Calendar.YearToday" />
+
+    <style name="Widget.MadhvaNidhi.DialogButton" parent="Widget.Carbon.Button.Ghost" />
     <style name="Widget.MadhvaNidhi.DialogButton.Primary" parent="Widget.Carbon.Button.Primary" />
 </resources>

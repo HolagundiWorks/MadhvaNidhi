@@ -66,7 +66,7 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/todayDate"
-                        style="@style/Widget.Material3.Button.TextButton"
+                        style="@style/Widget.Carbon.Button.Ghost"
                         android:layout_width="@dimen/shell_control_size"
                         android:layout_height="@dimen/shell_control_size"
                         android:contentDescription="Return to today"
@@ -322,7 +322,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/eventDetails"
-                style="@style/Widget.Material3.Button.TextButton"
+                style="@style/Widget.Carbon.Button.Ghost"
                 android:layout_width="@dimen/shell_control_size"
                 android:layout_height="@dimen/shell_control_size"
                 android:contentDescription="Event details and significance"
@@ -372,7 +372,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/calendarPrevious"
-                style="@style/Widget.MadhvaNidhi.PakshaChoice"
+                style="@style/Widget.Carbon.ContentSwitcher.Item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checkable="true"
@@ -388,7 +388,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/calendarNext"
-                style="@style/Widget.MadhvaNidhi.PakshaChoice"
+                style="@style/Widget.Carbon.ContentSwitcher.Item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checkable="true"

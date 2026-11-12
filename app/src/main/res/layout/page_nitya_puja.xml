@@ -37,7 +37,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/pujaSkip"
-                style="@style/Widget.Carbon.Button.GhostOutlined"
+                style="@style/Widget.Carbon.Button.Tertiary.Icon"
                 android:layout_width="@dimen/carbon_layout_size_height_lg"
                 android:layout_height="@dimen/carbon_layout_size_height_lg"
                 android:layout_marginStart="@dimen/carbon_spacing_05"
@@ -55,7 +55,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/pujaComplete"
-                style="@style/Widget.Carbon.Button.GhostOutlined"
+                style="@style/Widget.Carbon.Button.Tertiary.Icon"
                 android:layout_width="@dimen/carbon_layout_size_height_lg"
                 android:layout_height="@dimen/carbon_layout_size_height_lg"
                 android:layout_marginStart="@dimen/carbon_spacing_03"
@@ -155,7 +155,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/pujaPrev"
-            style="@style/Widget.Carbon.Button.GhostOutlined"
+            style="@style/Widget.Carbon.Button.Tertiary.Icon"
             android:layout_width="@dimen/carbon_layout_size_height_lg"
             android:layout_height="@dimen/carbon_layout_size_height_lg"
             android:insetTop="0dp"
@@ -177,7 +177,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/pujaNext"
-            style="@style/Widget.Carbon.Button.GhostOutlined"
+            style="@style/Widget.Carbon.Button.Tertiary.Icon"
             android:layout_width="@dimen/carbon_layout_size_height_lg"
             android:layout_height="@dimen/carbon_layout_size_height_lg"
             android:insetTop="0dp"

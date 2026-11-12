@@ -76,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/carbon_spacing_05"
-                android:minHeight="48dp"
+                android:minHeight="@dimen/carbon_layout_size_height_lg"
                 android:visibility="gone"
                 app:cornerRadius="@dimen/carbon_corner_radius" />
         </LinearLayout>

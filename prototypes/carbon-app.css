@@ -1,5 +1,7 @@
 /* Shared Carbon productive app chrome — all mockup screens.
-   Square corners, spacing-scale padding, Carbon border rules. */
+   Carbon-only: cds--* components + --cds-* tokens.
+   Square corners, spacing-scale padding, Carbon border rules.
+   Sole domain exception: .moon glyphs may use border-radius 50%. */
 
 :root {
   --cds-border-radius: 0;

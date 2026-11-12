@@ -39,19 +39,19 @@
     <color name="carbon_icon_secondary">#525252</color>
     <color name="carbon_icon_on_color">#FFFFFF</color>
 
-    <!-- Interactive / brand (orange replaces Carbon blue) -->
+    <!-- Interactive / brand — orange on Carbon interactive slots (frozen contract) -->
     <color name="carbon_interactive">#BA4E00</color>
-    <color name="carbon_orange">#BA4E00</color>
-    <color name="carbon_button_primary">#BA4E00</color>
+    <color name="carbon_orange">@color/carbon_interactive</color>
+    <color name="carbon_button_primary">@color/carbon_interactive</color>
     <color name="carbon_button_primary_hover">#9E4200</color>
     <color name="carbon_button_primary_active">#8A3800</color>
-    <color name="carbon_button_tertiary">#0F62FE</color>
-    <color name="carbon_button_tertiary_hover">#0043CE</color>
-    <color name="carbon_link_primary">#BA4E00</color>
+    <color name="carbon_button_tertiary">@color/carbon_interactive</color>
+    <color name="carbon_button_tertiary_hover">#9E4200</color>
+    <color name="carbon_link_primary">@color/carbon_interactive</color>
     <color name="carbon_link_primary_hover">#8A3800</color>
-    <color name="carbon_orange_container">#E0E0E0</color>
-    <color name="carbon_on_orange_container">#161616</color>
-    <color name="carbon_on_accent">#FFFFFF</color>
+    <color name="carbon_orange_container">@color/carbon_layer_selected</color>
+    <color name="carbon_on_orange_container">@color/carbon_text_primary</color>
+    <color name="carbon_on_accent">@color/carbon_text_on_color</color>
 
     <!-- Support -->
     <color name="carbon_error">#DA1E28</color>
