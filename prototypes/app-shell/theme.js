@@ -23,9 +23,23 @@
     }
   }
 
+  function syncSystemChrome() {
+    const bg = getComputedStyle(document.documentElement).getPropertyValue('--cds-background').trim() || '#161616';
+    let meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.name = 'theme-color';
+      document.head.appendChild(meta);
+    }
+    meta.content = bg;
+    document.documentElement.style.backgroundColor = bg;
+    if (document.body) document.body.style.backgroundColor = bg;
+  }
+
   function apply(theme, persist = false) {
     document.documentElement.dataset.theme = valid(theme) ? theme : 'g100';
     syncControl();
+    syncSystemChrome();
     if (persist) {
       try {
         localStorage.setItem(key, document.documentElement.dataset.theme);

@@ -68,7 +68,8 @@
     <color name="carbon_overlay">#80000000</color>
     <color name="carbon_shadow">#4D000000</color>
 
-    <dimen name="carbon_corner_radius">4dp</dimen>
+    <dimen name="carbon_corner_radius">0dp</dimen>
+    <dimen name="carbon_border_width">1dp</dimen>
     <dimen name="carbon_layout_size_height_sm">32dp</dimen>
     <dimen name="carbon_layout_size_height_md">40dp</dimen>
     <dimen name="carbon_layout_size_height_lg">48dp</dimen>

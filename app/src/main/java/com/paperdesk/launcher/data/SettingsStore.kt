@@ -94,6 +94,11 @@ class SettingsStore(context: Context) {
             obj.put("pagesRev", 13)
             dirty = true
         }
+        if (obj.optInt("pagesRev", 0) < 14) {
+            obj.put("pages", JSONArray(PAGE_IDS))
+            obj.put("pagesRev", 14)
+            dirty = true
+        }
         if (dirty) prefs.edit().putString("json", obj.toString()).apply()
         return obj
     }
@@ -154,6 +159,7 @@ class SettingsStore(context: Context) {
             "grantha", "nitya", "stotra", "suktas", "mantras", "namavali",
             "sangeeta", "hadugalu", "playlists",
             "samskruti", "aayadi", "rangavalli", "recipes",
+            "user",
             "settings"
         )
         val PAGE_LABELS = mapOf(
@@ -176,6 +182,7 @@ class SettingsStore(context: Context) {
             "aayadi" to "AAYADI",
             "rangavalli" to "RANGAVALLI",
             "recipes" to "RECIPES",
+            "user" to "USER",
             "settings" to "SETTINGS"
         )
 

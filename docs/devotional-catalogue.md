@@ -1,4 +1,4 @@
-# AcharyaOS devotional catalogue
+# MadhvaNidhi devotional catalogue
 
 ## Tradition labels
 

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -28,16 +29,28 @@ class ShellHubFragment : Fragment() {
             "samskruti" -> "ಆಯಾದಿ, ರಂಗವಲ್ಲಿ ಮತ್ತು ನೈವೇದ್ಯ / ಪಾಕ"
             else -> ""
         }
-        val children = view.findViewById<LinearLayout>(R.id.hubChildren)
+        val children = view.findViewById<GridLayout>(R.id.hubChildren)
         children.removeAllViews()
         val inflater = layoutInflater
-        for (child in childrenFor(hubId)) {
+        val gap = resources.getDimensionPixelSize(R.dimen.carbon_spacing_03)
+        val list = childrenFor(hubId)
+        list.forEachIndexed { index, child ->
             val button = inflater.inflate(R.layout.item_hub_child, children, false) as MaterialButton
             button.text = OsLang.ui(child, lang)
             button.contentDescription = button.text
             button.setIconResource(FrozenShell.iconFor(child))
             button.setOnClickListener { (activity as? LauncherActivity)?.navigateTo(child) }
-            children.addView(button)
+            val col = index % 2
+            val row = index / 2
+            val params = GridLayout.LayoutParams(
+                GridLayout.spec(row, GridLayout.FILL, 1f),
+                GridLayout.spec(col, GridLayout.FILL, 1f)
+            ).apply {
+                width = 0
+                height = GridLayout.LayoutParams.WRAP_CONTENT
+                setMargins(if (col == 0) 0 else gap / 2, 0, if (col == 0) gap / 2 else 0, gap)
+            }
+            children.addView(button, params)
         }
         val empties = view.findViewById<LinearLayout>(R.id.hubEmptyStates)
         empties.removeAllViews()
@@ -75,6 +88,6 @@ class ShellHubFragment : Fragment() {
 
         fun emptyMessages(hub: String): List<String> = emptyList()
 
-        val RAIL_IDS = listOf("dashboard", "desk", "nityakarma", "grantha", "sangeeta", "samskruti", "settings")
+        val RAIL_IDS = listOf("dashboard", "desk", "nityakarma", "grantha", "sangeeta", "samskruti", "user", "settings")
     }
 }

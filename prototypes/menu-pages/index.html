@@ -2,218 +2,29 @@
 <html lang="en" data-theme="g100">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Remaining menu pages · design studio</title>
-<link rel="stylesheet" href="./carbon-theme.css">
-<style>
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  background: var(--cds-background);
-  color: var(--cds-text-primary);
-  font: 14px/1.5 system-ui, sans-serif;
-}
-header {
-  padding: var(--cds-spacing-05) var(--cds-spacing-06);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--cds-border-subtle-00);
-  gap: var(--cds-spacing-05);
-}
-h1 { font-size: 20px; font-weight: 500; margin: 0; }
-header p { margin: var(--cds-spacing-02) 0 0; color: var(--cds-text-secondary); font-size: 12px; }
-.workspace {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  min-height: calc(100vh - 85px);
-}
-aside {
-  background: var(--cds-layer-01);
-  padding: var(--cds-spacing-06);
-  border-right: 1px solid var(--cds-border-subtle-00);
-  overflow: auto;
-}
-h2 { font-size: 16px; font-weight: 500; margin: 0 0 var(--cds-spacing-04); }
-label { display: block; margin: var(--cds-spacing-05) 0 var(--cds-spacing-03); color: var(--cds-text-secondary); }
-select, button {
-  font: inherit;
-  border-radius: var(--cds-border-radius);
-  border: 1px solid var(--cds-border-strong-01);
-  color: var(--cds-text-primary);
-  background: var(--cds-field-01);
-}
-select { width: 100%; padding: 10px; min-height: var(--cds-layout-size-height-lg); }
-button {
-  padding: 10px var(--cds-spacing-05);
-  cursor: pointer;
-  min-height: var(--cds-layout-size-height-lg);
-}
-button:hover { background: var(--cds-layer-hover-01); }
-.cds--btn--primary {
-  background: var(--cds-button-primary);
-  color: var(--cds-text-on-color);
-  border: 0;
-}
-.cds--btn--primary:hover { background: var(--cds-button-primary-hover); }
-hr { border: 0; border-top: 1px solid var(--cds-border-subtle-00); margin: var(--cds-spacing-06) 0; }
-p.hint { font-size: 12px; color: var(--cds-text-secondary); }
-main { min-width: 0; padding: var(--cds-spacing-06); }
-.previewbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--cds-spacing-05);
-  margin-bottom: var(--cds-spacing-05);
-}
-.previewbar span { color: var(--cds-text-secondary); font-size: 12px; }
-.stage {
-  width: 100%;
-  overflow: auto;
-  background: var(--cds-background);
-  padding: var(--cds-spacing-05);
-  min-height: 420px;
-  border: 1px solid var(--cds-border-subtle-00);
-}
-iframe {
-  display: block;
-  border: 0;
-  outline: 1px solid var(--cds-border-strong-01);
-  background: var(--cds-background);
-  border-radius: var(--cds-border-radius);
-}
-.dest-list { display: grid; gap: var(--cds-spacing-02); }
-.dest-list button { text-align: left; width: 100%; font-size: 13px; }
-.dest-list .group {
-  margin-top: var(--cds-spacing-04);
-  color: var(--cds-text-secondary);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: .04em;
-}
-.actions {
-  display: flex;
-  gap: var(--cds-spacing-03);
-  flex-wrap: wrap;
-  margin-top: var(--cds-spacing-05);
-}
-a { color: var(--cds-link-primary-hover); }
-button:focus-visible, select:focus-visible {
-  outline: 2px solid var(--cds-focus);
-  outline-offset: 3px;
-}
-@media (max-width: 900px) {
-  .workspace { grid-template-columns: 1fr; }
-  aside { border-right: 0; border-bottom: 1px solid var(--cds-border-subtle-00); }
-}
-</style>
-<header>
-  <div>
-    <h1>Remaining menu pages</h1>
-    <p>HTML mockups for Nitya Karma, Grantha, Sangeeta, Samskruti, Settings · Panchanga stays in app-shell</p>
+<title>MadhvaNidhi · Menu Pages Mockup</title>
+<link rel="stylesheet" href="../ibm-plex.css">
+<link rel="stylesheet" href="../app-shell/carbon-theme.css">
+<link rel="stylesheet" href="../carbon-app.css?v=edge-chrome">
+<link rel="stylesheet" href="../studio.css?v=edge-chrome">
+<body>
+  <div class="studio-bar" role="region" aria-label="Preview size">
+    <label for="viewport">Screen size</label>
+    <select id="viewport" aria-label="Landscape preview size"></select>
+    <div id="custom-fields">
+      <label for="custom-w">W</label>
+      <input id="custom-w" type="number" min="321" step="1" aria-label="Custom width">
+      <label for="custom-h">H</label>
+      <input id="custom-h" type="number" min="240" step="1" aria-label="Custom height">
+    </div>
+    <span id="viewport-error" class="error" hidden></span>
+    <span id="dimensions" class="dims" aria-live="polite"></span>
   </div>
-  <a href="../app-shell/">← Carbon shell studio</a>
-</header>
-<div class="workspace">
-  <aside>
-    <h2>Preview</h2>
-    <label for="viewport">Screen</label>
-    <select id="viewport">
-      <option value="1560,720" selected>SM-M115F landscape · 1560 × 720</option>
-      <option value="1495,694">SM-M115F app area · 1495 × 694</option>
-      <option value="720,1560">SM-M115F portrait · 720 × 1560</option>
-      <option value="1280,800">Tablet · 1280 × 800</option>
-      <option value="1024,640">Mid landscape · 1024 × 640</option>
-      <option value="800,480">Phone landscape · 800 × 480</option>
-      <option value="640,360">Small landscape · 640 × 360</option>
-    </select>
-    <label for="theme">Theme</label>
-    <select id="theme">
-      <option value="g100">Gray 100</option>
-      <option value="g90">Gray 90</option>
-      <option value="g10">Gray 10</option>
-      <option value="white">White</option>
-    </select>
-    <hr>
-    <h2>Destinations</h2>
-    <div class="dest-list">
-      <div class="group">Nitya Karma</div>
-      <button type="button" data-page="nityakarma">Hub</button>
-      <button type="button" data-page="sandhya">Sandhyavandana</button>
-      <button type="button" data-page="japa">Japa</button>
-      <button type="button" data-page="puja">Pooja</button>
-      <div class="group">Grantha</div>
-      <button type="button" data-page="grantha">Hub</button>
-      <button type="button" data-page="nitya">Nitya Parayana</button>
-      <button type="button" data-page="stotra">Stotras</button>
-      <button type="button" data-page="suktas">Suktas</button>
-      <button type="button" data-page="mantras">Mantras</button>
-      <button type="button" data-page="namavali">Namavali</button>
-      <div class="group">Bhakti Sangeeta</div>
-      <button type="button" data-page="sangeeta">Hub</button>
-      <button type="button" data-page="hadugalu">Hadugalu</button>
-      <button type="button" data-page="playlists">Playlists (empty)</button>
-      <div class="group">Gruha Samskruti</div>
-      <button type="button" data-page="samskruti">Hub</button>
-      <button type="button" data-page="aayadi">Aayadi</button>
-      <button type="button" data-page="rangavalli">Rangavalli (empty)</button>
-      <button type="button" data-page="recipes">Recipes (empty)</button>
-      <div class="group">Shell</div>
-      <button type="button" data-page="settings">Settings</button>
+  <div class="stage">
+    <div class="frame-wrap">
+      <iframe src="./pages.html" title="Menu pages live preview" id="preview"></iframe>
     </div>
-    <div class="actions">
-      <button type="button" class="cds--btn--primary" id="open">Open full-size</button>
-    </div>
-    <p class="hint">Carbon tokens + icons only · 56px rail · 48px targets. Dashboard / Panchanga: use app-shell.</p>
-  </aside>
-  <main>
-    <div class="previewbar">
-      <span id="status">nityakarma</span>
-      <span>Sample copy only</span>
-    </div>
-    <div class="stage">
-      <iframe id="frame" title="Menu pages preview" src="./pages.html?page=nityakarma"></iframe>
-    </div>
-  </main>
-</div>
-<script>
-(() => {
-  const frame = document.getElementById('frame');
-  const status = document.getElementById('status');
-  const viewport = document.getElementById('viewport');
-  const theme = document.getElementById('theme');
-
-  function sizeFrame() {
-    const [w, h] = viewport.value.split(',').map(Number);
-    frame.style.width = w + 'px';
-    frame.style.height = h + 'px';
-  }
-
-  function post(msg) {
-    try { frame.contentWindow.postMessage(msg, '*'); } catch {}
-  }
-
-  theme.addEventListener('change', () => {
-    document.documentElement.dataset.theme = theme.value;
-    post({ type: 'menu-design', design: { theme: theme.value } });
-  });
-  viewport.addEventListener('change', sizeFrame);
-  document.querySelectorAll('[data-page]').forEach((button) => {
-    button.addEventListener('click', () => {
-      status.textContent = button.dataset.page;
-      post({ type: 'menu-navigate', page: button.dataset.page });
-    });
-  });
-  document.getElementById('open').addEventListener('click', () => {
-    window.open('./pages.html?page=' + encodeURIComponent(status.textContent), '_blank');
-  });
-  frame.addEventListener('load', () => {
-    post({ type: 'menu-design', design: { theme: theme.value } });
-  });
-  window.addEventListener('message', (event) => {
-    if (event.data && event.data.type === 'menu-page') status.textContent = event.data.page;
-  });
-  sizeFrame();
-})();
-</script>
+  </div>
+  <script src="../studio.js" data-storage="madhva-menu-pages-viewport-v1"></script>
 </body>
 </html>

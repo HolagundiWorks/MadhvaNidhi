@@ -1,64 +1,154 @@
-# Frozen Panchanga and application shell — 12 November 2026
+# Frozen Panchanga and application shell — finalized 12 November 2026
 
-This is the approved visual contract for the Panchanga calendar. Future screens reuse the shell and semantic tokens. Panchanga layout changes require a new design iteration. The HTML calendar reference is `prototypes/panchanga/panchanga.html`; the Carbon shell destination map is `prototypes/app-shell/`. Android uses stock Material Components and stock Android layouts, not a WebView or app-defined View classes.
+This is the **approved web-mockup contract** for the Panchanga calendar (`MOCKUP_ONLY`). Future screens reuse the shell and Carbon semantic tokens. Panchanga layout changes require a new design iteration.
 
-Primary rail destinations: Dashboard, Panchanga, Nitya Karma, Grantha, Bhakti Sangeeta, Gruha Samskruti, Settings. Child features open from hub pages. PaperDesk scheduler/todo/notes/projects/Gita/tools are not destinations.
+| Artifact | Path |
+| --- | --- |
+| Live calendar mockup | `prototypes/panchanga/panchanga.html` |
+| Studio preview | `prototypes/panchanga/index.html` |
+| Shell destination map | `prototypes/app-shell/` |
+| Shared chrome | `prototypes/carbon-app.css` |
+| Theme tokens | `prototypes/*/carbon-theme.css` (synced copies) |
+| Machine tokens | `docs/frozen-design-tokens.json` |
+| Carbon audit | `docs/carbon-mockup-audit.md` |
 
-Machine-readable export: `frozen-design-tokens.json`. Android dimensions are in `values/panchanga_shell.xml`; both theme palettes are qualified resources.
+Android native sources under `app/` remain **read-only** until explicitly authorized to implement this mockup. Android may later map these visuals onto Material primitives; the mockup itself stays IBM Carbon.
+
+Primary rail destinations: Dashboard, Panchanga, Nitya Karma, Grantha, Bhakti Sangeeta, Gruha Samskruti, User, Settings. Child features open from hub pages. PaperDesk scheduler/todo/notes/projects/Gita/tools are not destinations.
 
 ## Shell and spacing tokens
 
-| Token | Web | Android | Role |
-|---|---|---|---|
-| rail width | 56px | 56dp | Collapsed navigation |
-| expanded panel | 224px | 224dp | Overlay; content does not shift |
-| toolbar | 48px | 48dp | Calendar, text size, appearance |
-| action target | 48px | 48dp | Toolbar and navigation |
-| page inset | 16px | 16dp | Main content |
-| corner | 4px | 4dp | Tiles, dialogs, controls |
-| context/calendar | 30:70 | 30:70 | Minimum context width 208px/dp where space allows |
-| spacing scale | 2,4,8,12,16,24,32,40,48px | Same in dp | Carbon spacing rhythm |
-| tile columns | 5 | 5 | One complete 15-tithi paksha; normally three rows |
-| tile gap | 4px | 4dp | Shared-date groups span adjacent columns |
-| tile marker | 24px / compact 15px | 24dp / compact 15dp | Top right, 1.5× original |
+| Token | Web | Role |
+| --- | --- | --- |
+| rail width | 56px | Collapsed navigation |
+| expanded panel | 224px | Overlay; content does not shift |
+| toolbar / header | 48px min control | Header row; no search / theme icons in toolbar |
+| action target | 48px (`$button-height`) | Icon buttons and nav items |
+| page inset | 24px (`$spacing-06`) | Main content horizontal inset |
+| corner | **0** (`--cds-border-radius`) | Square productive surfaces |
+| border stroke | 1px (`--cds-border-width`) | Subtle / strong / tile tokens only |
+| focus | 2px `$focus` outline | Not a layout border |
+| context / calendar | **30:70** | Panchanga screen only · Min context width ~208px where space allows · other destinations are full-width |
+| spacing scale | 2–64px | Carbon `$spacing-01`…`$spacing-10` |
+| tile columns | 5 | One complete 15-tithi paksha |
+| tile gap | `$spacing-03` (8px) | Between day tiles |
+| tile padding | `$spacing-05` (16px) | Carbon tile content inset |
+| tile marker | 16px (1rem) | Top-right inside tile padding |
 
-The selected date and Today action lead the left panel, followed by tithi/weekday, separator, Shaka/samvatsara, masa and paksha on one line, then Rashi/Nakshatra/Bhava/Karana. Labels are regular; supplied values are semibold; pending values are regular. A separator introduces unboxed daily events. Events scroll vertically with no visible scrollbar. The right panel has the two-button paksha selector and moon progression, without a repeated paksha heading. Tiles show date number (1.5× base and semibold), weekday, then regular-weight tithi, with separate line spacing. Selected tiles have orange outlines and neutral selected fill. Ekadashi is yellow independently of selection.
+## Panchanga screen layout (final)
 
-## Semantic colour tokens
+### Header
 
-| Role | Carbon White | Carbon Gray 100 |
-|---|---|---|
-| background | #FFFFFF | #161616 |
-| layer 01 | #F4F4F4 | #262626 |
-| selected layer | #E0E0E0 | #393939 |
-| text primary | #161616 | #F4F4F4 |
-| text secondary | #525252 | #C6C6C6 |
-| subtle border on layer | #C6C6C6 | #525252 |
-| outline | #8D8D8D | #8D8D8D |
-| orange accent | #BA4E00 | #FF832B |
-| text on accent | #FFFFFF | #161616 |
-| Ekadashi | #684E00 | #F1C21B |
-| error text | #DA1E28 | #FF8389 |
+- **Left:** screen title `ಪಂಚಾಂಗ`
+- **Right:** civil date · tithi (`header-date`)
+- No search, theme switcher, or text-size controls in the header. Theme / display prefs live under **Settings** (SettingsAdjust). Profile / tradition fields live under **User** (UserSettings).
 
-Orange is the MadhvaNidhi brand override to Carbon's default blue. Yellow is reserved for Ekadashi. Full web interaction roles remain in `carbon-theme.css`; Android semantic resources are in `values/carbon_colors.xml` and `values-night/carbon_colors.xml`. The appearance preference persists across restarts. Dark is the initial default.
+### Left column (~30%) — context
+
+1. **Era block** (three width-fitted lines; snap to Carbon heading-compact-01 / -02 / heading-03 only)
+   - Line 1: Shaka era (`ಶ್ರೀ ಶಾಲಿವಾಹನ ಗತಶಕೆ-…`) — primary
+   - Line 2: Samvatsara — secondary
+   - **Masa row** between subtle top/bottom rules: `ಮಾಸ` + ` | ` + Carbon **Sunny** weather glyph
+2. **Facts list** (not cards): single-column definition list
+   - ರಾಶಿ · ನಕ್ಷತ್ರ · ಭಾವ · ಕರಣ
+   - Label left (`$text-secondary` / label-01); value right (`$text-primary` when present, `$text-helper` when pending)
+   - Row dividers: 1px `$border-subtle-00`; transparent background (no layer tiles)
+3. Subtle rule
+4. **ದಿನದ ವಿಶೇಷ** — unboxed event title + summary; vertical scroll with **no visible scrollbar**; Carbon **Launch** opens details dialog
+
+### Right column (~70%) — calendar
+
+1. **Month bar**
+   - Lead: paksha moon cycle (`○ → ◐ → ●`) · vertical separator · **Choose date** calendar icon
+   - Trailing: Carbon content-switcher paksha toggle (ಶುಕ್ಲಪಕ್ಷ / ಕೃಷ್ಣಪಕ್ಷ)
+2. **Day tiles** — borderless Carbon layer tiles
+   - Content order: tithi name, civil date number, weekday
+   - Selected: `$layer-selected` fill only — **no** selection outline / border / highlight stroke
+   - Ekadashi: top **Yellow 30** alert strip (`$support-warning-inverse`); tithi text uses `$support-warning-text` (Yellow 30 dark / Yellow 20 `#684E00` on light); marker = Carbon **WatsonHealthStatusPartialFail**
+   - Pournima / Amavasya: filled / outlined moon markers
+
+### Date picker dialog
+
+- Month / year controls + 7-column grid
+- Outside-month days: `$text-disabled`
+- Selected day: brand interactive fill + on-color text (Carbon date-picker pattern)
+- **ಇಂದು** / cancel / confirm actions
+
+### Date details dialog
+
+- Same definition-list pattern as context facts (label | value rows)
+- Includes ವಾರ / ಪಕ್ಷ / ತಿಥಿ / ಮಾಸ / ರಾಶಿ / ನಕ್ಷತ್ರ / ಭಾವ / ಕರಣ + event block
+
+## State colours (Carbon)
+
+| State | Token | Use |
+| --- | --- | --- |
+| Active / selected | `$layer-selected-01` + `$border-interactive` inset | Nav current, paksha / content switcher |
+| Active (day tile) | `$layer-selected-01` only | Calendar selection |
+| Inactive | `$text-secondary` | Unselected switcher / nav |
+| Disabled | `$text-disabled` / `$icon-disabled` | Outside-month, disabled controls |
+| Alert strip / icon | `$support-warning` / inverse (Yellow 30 `#F1C21B`) | Ekadashi bar + marker |
+| Alert text | `$support-warning-text` | Readable labels (Yellow 30 dark / Yellow 20 light) |
+| Brand accent | `$interactive` / `$border-interactive` | Orange brand override of Carbon blue |
+
+Orange is the MadhvaNidhi brand override. Yellow is reserved for Ekadashi alerts. Full interaction roles: `carbon-theme.css` (G100 / G90 / G10 / White). Dark (G100) is the initial default; preference persists.
 
 ## Icon contract
 
 | Use | Icon |
-|---|---|
-| Light/dark action | Carbon `ColorSwitch` (`color-switch`) |
-| Side panel open/close | Carbon `OpenPanelFilledLeft` (`open-panel--filled--left`) |
-| Ekadashi corner | Carbon `AppleDash` (`apple--dash`), yellow |
+| --- | --- |
+| Side panel open/close | Carbon `OpenPanelFilledLeft` |
+| Ekadashi corner | Carbon `WatsonHealthStatusPartialFail` (Yellow 30) |
+| Masa weather | Carbon `Sunny` |
+| Event details | Carbon `Launch` |
+| Choose date | Carbon calendar glyph |
 | Pournima corner | Filled circle |
 | Amavasya corner | Outlined circle |
 | Paksha selector | Outlined Shukla / filled Krishna circle |
-| Top calendar | Material calendar date picker |
-| Calendar beside date | Return to actual local Today |
-| Text size | A− / A+ |
-| Settings | Side navigation only |
+| Name / gotra / marital / rashi / nakshatra / veda / matha / diksha | User destination (frozen · see `docs/frozen-user-profile.md`) |
+| Theme / language / text size | Settings destination only (not Panchanga header) |
 
-Carbon SVG paths come from https://github.com/carbon-design-system/carbon/tree/main/packages/icons/src/svg/32 and are distributed under Apache-2.0; see `prototypes/panchanga/CARBON-ICONS-LICENSE.txt`. Corner markers are decorative; each tile's accessible description names its tithi and civil date. Navigation and theme controls have action descriptions and standard touch targets. The MadhvaNidhi book logo remains unchanged.
+Carbon SVG paths: Apache-2.0 — see `prototypes/panchanga/CARBON-ICONS-LICENSE.txt`. Markers are decorative; each tile’s accessible name includes tithi and civil date.
 
 ## Data and interaction contract
 
-The web fixture is illustrative. Android retains real PanchangaStore and FestivalStore data, date-dependent headers, all supplied civil dates, and explicit shared-date merging. Missing sunrise tithis are retained as disabled tiles with a missing-date state. Rashi and Bhava are pending because the current model does not supply them; Yoga is displayed in details as Yoga, never relabeled as Bhava. A tile opens details for its selected date; multi-date tiles offer a date choice first. A top calendar action opens the standard Material month-calendar picker. Settings and the remaining app sections remain accessible from the side panel. Device system insets remain outside the app shell.
+The web fixture is **illustrative**. Pending fields (ರಾಶಿ / ನಕ್ಷತ್ರ / ಭಾವ / ಕರಣ) show `ಜೋಡಣೆ ಬಾಕಿ` with helper colour until data is wired. Do not relabel Yoga as Bhava. Tile press updates context + events; multi-date tiles may prompt for a civil date. Choose-date opens the in-mockup month picker (Today jumps to local today). Standalone preview includes rail + header; shell embed (`?embed=1`) hides them and syncs theme from the parent shell.
+
+## Edge-to-edge display (no app border)
+
+The app has **no device frame / outer border**. It draws edge-to-edge and **merges with the mobile system chrome** (status bar, navigation bar, notch / teardrop / punch-hole cutouts):
+
+| Surface | Colour |
+| --- | --- |
+| Status / navigation / cutout backdrop | `$background` (`--cds-system-chrome`) |
+| App canvas | `$background` |
+| Studio preview iframe | No outline / shadow / radius — same theme background |
+
+- Web mockup: `viewport-fit=cover`, `theme-color` synced to `$background`, `env(safe-area-inset-*)` padding on `#app`
+- Android (when authorized): edge-to-edge window; status/nav bar colours = Carbon `$background` for the active theme; content uses WindowInsets for cutouts — never a contrasting letterbox border around the app
+
+This is especially important on phones with notches or teardrops in landscape: the cutout region should read as part of the app theme, not a black/white system slab.
+
+## Landscape-only + responsive density
+
+All studio presets are landscape (`width > height`). No portrait layouts or rotation. See `AGENTS.md` for preset sizes.
+
+Reference polish size: **960×540**. On the Panchanga screen, all landscape sizes keep the same **30:70** structure and scale chrome + tiles via:
+
+`--density = clamp(0.55, min(vw/960, vh/540), 1.75)`
+
+| Size | Density | Notes |
+| --- | --- | --- |
+| 640×360 | ~0.67 | Compact phone |
+| 960×540 | 1.00 | Reference polish |
+| 1560×720 (SM-M115F) | ~1.33 | Same proportions, scaled up |
+
+| Token | Scales with density |
+| --- | --- |
+| `--page-inset` / `--pane-gap` | 24px × density |
+| `--control-size` / rail | 48px / 56px × density |
+| Day tile side | capped at **110px × density** (fills smaller phones; does not balloon on 1560×720) |
+| `--tile-pad` | ~14.5% of tile / 16px × density |
+| Type (label / body / title) | 12 / 14 / 16px × density |
+
+Do **not** stack context above calendar on narrow landscape widths. Tile grid stays centered in the calendar pane when capped.

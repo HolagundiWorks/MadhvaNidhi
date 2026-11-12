@@ -1,4 +1,4 @@
-# AcharyaOS catalogue audit
+# MadhvaNidhi catalogue audit
 
 Audit date: 2026-08-28
 
@@ -8,7 +8,7 @@ The audit covers the runtime catalogue under `app/src/main/assets/library`, the
 Madhwa collection under `app/src/main/assets/madhwa`, and the curated navigation
 index under `app/src/main/assets/catalogue`.
 
-Devanagari source text is valid: AcharyaOS converts it to Kannada at runtime via
+Devanagari source text is valid: MadhvaNidhi converts it to Kannada at runtime via
 `IndicScript`. A body is therefore considered Kannada-capable when it contains
 either Kannada or Devanagari source characters.
 
@@ -74,7 +74,7 @@ are not relabelled as Rigveda merely because individual verses also occur there.
 - Sumadhwa Seva — Yagnopaveeta Dharana Vidhi:
   <https://www.sumadhwaseva.com/wp-content/uploads/2009/08/yagnopaveeta-dharana-english1.pdf>
 
-Run the maintained checks from `acharya-os`:
+Run the maintained checks from the repo root:
 
 ```powershell
 node tools/audit-catalogue.mjs

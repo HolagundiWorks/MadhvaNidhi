@@ -35,7 +35,7 @@
     <style name="Widget.Carbon.Button.Tertiary" parent="Widget.Material3.Button.OutlinedButton">
         <item name="cornerRadius">@dimen/carbon_corner_radius</item>
         <item name="strokeColor">@color/carbon_button_primary</item>
-        <item name="strokeWidth">1dp</item>
+        <item name="strokeWidth">@dimen/carbon_border_width</item>
         <item name="android:textColor">@color/carbon_button_primary</item>
         <item name="iconTint">@color/carbon_button_primary</item>
         <item name="rippleColor">@color/carbon_background_hover</item>
@@ -53,6 +53,48 @@
         <item name="iconPadding">0dp</item>
         <item name="iconGravity">textStart</item>
         <item name="iconTint">@color/carbon_icon_primary</item>
+    </style>
+
+    <!-- Icon FAB with subtle border (Nitya chrome · Carbon tertiary-ish) -->
+    <style name="Widget.Carbon.Button.GhostOutlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="cornerRadius">@dimen/carbon_corner_radius</item>
+        <item name="strokeColor">@color/carbon_border</item>
+        <item name="strokeWidth">@dimen/carbon_border_width</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="android:textColor">@color/carbon_text</item>
+        <item name="iconTint">@color/carbon_icon_primary</item>
+        <item name="rippleColor">@color/carbon_background_hover</item>
+        <item name="android:minWidth">@dimen/carbon_layout_size_height_lg</item>
+        <item name="android:minHeight">@dimen/carbon_layout_size_height_lg</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="iconPadding">0dp</item>
+        <item name="iconGravity">textStart</item>
+        <item name="android:textAppearance">@style/TextAppearance.Carbon.BodyCompact01</item>
+    </style>
+
+    <!-- Contained / default tab strip -->
+    <style name="Widget.Carbon.TabLayout" parent="Widget.Material3.TabLayout">
+        <item name="android:background">@color/carbon_layer</item>
+        <item name="tabIndicatorColor">@color/carbon_interactive</item>
+        <item name="tabIndicatorFullWidth">true</item>
+        <item name="tabIndicatorHeight">@dimen/carbon_spacing_01</item>
+        <item name="tabSelectedTextColor">@color/carbon_text</item>
+        <item name="tabTextColor">@color/carbon_text_secondary</item>
+        <item name="tabRippleColor">@color/carbon_background_hover</item>
+        <item name="tabTextAppearance">@style/TextAppearance.Carbon.BodyCompact01</item>
+    </style>
+
+    <!-- Exposed select (square · Carbon field) -->
+    <style name="Widget.Carbon.TextInput.ExposedDropdown" parent="Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="boxCornerRadiusTopStart">@dimen/carbon_corner_radius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/carbon_corner_radius</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/carbon_corner_radius</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/carbon_corner_radius</item>
+        <item name="boxStrokeColor">@color/carbon_border_strong</item>
+        <item name="hintTextColor">@color/carbon_text_helper</item>
+        <item name="android:textColorHint">@color/carbon_text_placeholder</item>
     </style>
 
     <!-- Side rail destination -->

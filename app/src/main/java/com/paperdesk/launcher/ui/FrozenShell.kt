@@ -121,6 +121,7 @@ class FrozenShell(private val activity: LauncherActivity, private val pager: Vie
             "nitya", "stotra", "suktas", "mantras", "namavali", "grantha" -> "grantha"
             "hadugalu", "playlists", "sangeeta" -> "sangeeta"
             "aayadi", "rangavalli", "recipes", "samskruti" -> "samskruti"
+            "user" -> "user"
             "settings" -> "settings"
             else -> pageId
         }
@@ -134,6 +135,7 @@ class FrozenShell(private val activity: LauncherActivity, private val pager: Vie
             "grantha", "nitya", "stotra", "suktas", "mantras", "namavali", "puja" -> R.drawable.ic_book
             "sangeeta", "hadugalu", "playlists" -> R.drawable.ic_music
             "samskruti", "aayadi", "rangavalli", "recipes" -> R.drawable.ic_image
+            "user" -> R.drawable.ic_user
             "settings" -> R.drawable.ic_settings
             else -> R.drawable.ic_information
         }

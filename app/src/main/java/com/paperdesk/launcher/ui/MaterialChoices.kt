@@ -30,4 +30,6 @@ object MaterialChoices {
         view.setText(view.adapter?.getItem(safe)?.toString().orEmpty(), false)
     }
     fun position(view: MaterialAutoCompleteTextView): Int = view.tag as? Int ?: 0
+    fun value(view: MaterialAutoCompleteTextView): String =
+        view.adapter?.getItem(position(view))?.toString().orEmpty().ifBlank { view.text?.toString().orEmpty() }
 }

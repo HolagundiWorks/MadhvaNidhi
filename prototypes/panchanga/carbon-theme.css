@@ -1,7 +1,8 @@
 /* Carbon themes from @carbon/themes token snapshot.
    Brand orange is mapped onto Carbon interactive / button-primary slots
    (frozen contract: orange replaces default Carbon blue).
-   Ekadashi uses --cds-support-warning (Yellow 30 / Yellow 20 by theme).
+   Alert: --cds-support-warning (Yellow 30 icon/strip),
+   --cds-support-warning-text (Yellow 30 dark / Yellow 20 light labels).
    Reference: https://carbondesignsystem.com/elements/color/overview/ */
 
 :root,
@@ -18,12 +19,15 @@
   --cds-layer-active-01: #525252;
   --cds-layer-selected-01: #393939;
   --cds-layer-selected-hover-01: #474747;
+  --cds-layer-accent-01: #393939;
+  --cds-layer-accent-hover-01: #474747;
   --cds-field-01: #262626;
   --cds-field-02: #393939;
   --cds-field-hover-01: #333333;
   --cds-field-hover-02: #474747;
   --cds-border-subtle-00: #393939;
   --cds-border-subtle-01: #525252;
+  --cds-border-tile-01: #525252;
   --cds-border-strong-01: #6f6f6f;
   --cds-border-strong-02: #8d8d8d;
   --cds-border-interactive: #ff832b;
@@ -39,14 +43,19 @@
   --cds-icon-primary: #f4f4f4;
   --cds-icon-secondary: #c6c6c6;
   --cds-icon-on-color: #161616;
+  --cds-icon-disabled: rgba(244, 244, 244, 0.25);
   --cds-support-error: #fa4d56;
   --cds-support-success: #42be65;
-  --cds-support-warning: #f1c21b;
+  --cds-support-warning: #f1c21b; /* Yellow 30 — icon / strip */
+  --cds-support-warning-inverse: #f1c21b;
+  --cds-support-warning-text: #f1c21b; /* alert labels on dark */
+  --cds-support-info: #4589ff;
   --cds-link-primary: #ff832b;
   --cds-link-primary-hover: #ffb784;
   --cds-button-primary: #ff832b;
   --cds-button-primary-hover: #fa6800;
   --cds-button-primary-active: #eb6200;
+  --cds-button-disabled: #525252;
   --cds-button-tertiary: #ffffff;
   --cds-button-tertiary-hover: #f4f4f4;
   --cds-focus: #ffffff;
@@ -63,7 +72,9 @@
   --cds-spacing-08: 40px;
   --cds-spacing-09: 48px;
   --cds-spacing-10: 64px;
-  --cds-border-radius: 4px; /* Carbon border-radius-04 */
+  --cds-border-radius: 0; /* square corners — productive app surfaces */
+  --cds-border-width: 1px; /* Carbon stroke weight */
+  --cds-focus-width: 2px; /* Carbon focus */
   --cds-layout-size-height-sm: 32px;
   --cds-layout-size-height-md: 40px;
   --cds-layout-size-height-lg: 48px;
@@ -82,12 +93,15 @@
   --cds-layer-active-01: #6f6f6f;
   --cds-layer-selected-01: #525252;
   --cds-layer-selected-hover-01: #636363;
+  --cds-layer-accent-01: #525252;
+  --cds-layer-accent-hover-01: #636363;
   --cds-field-01: #393939;
   --cds-field-02: #525252;
   --cds-field-hover-01: #474747;
   --cds-field-hover-02: #636363;
   --cds-border-subtle-00: #525252;
   --cds-border-subtle-01: #6f6f6f;
+  --cds-border-tile-01: #6f6f6f;
   --cds-border-strong-01: #8d8d8d;
   --cds-border-strong-02: #a8a8a8;
   --cds-border-interactive: #ff832b;
@@ -103,14 +117,19 @@
   --cds-icon-primary: #f4f4f4;
   --cds-icon-secondary: #c6c6c6;
   --cds-icon-on-color: #161616;
+  --cds-icon-disabled: rgba(244, 244, 244, 0.25);
   --cds-support-error: #ff8389;
   --cds-support-success: #42be65;
   --cds-support-warning: #f1c21b;
+  --cds-support-warning-inverse: #f1c21b;
+  --cds-support-warning-text: #f1c21b;
+  --cds-support-info: #4589ff;
   --cds-link-primary: #ff832b;
   --cds-link-primary-hover: #ffb784;
   --cds-button-primary: #ff832b;
   --cds-button-primary-hover: #fa6800;
   --cds-button-primary-active: #eb6200;
+  --cds-button-disabled: #6f6f6f;
   --cds-button-tertiary: #ffffff;
   --cds-button-tertiary-hover: #f4f4f4;
   --cds-focus: #ffffff;
@@ -132,12 +151,15 @@
   --cds-layer-active-01: #c6c6c6;
   --cds-layer-selected-01: #e0e0e0;
   --cds-layer-selected-hover-01: #d1d1d1;
+  --cds-layer-accent-01: #e0e0e0;
+  --cds-layer-accent-hover-01: #d1d1d1;
   --cds-field-01: #ffffff;
   --cds-field-02: #f4f4f4;
   --cds-field-hover-01: #e8e8e8;
   --cds-field-hover-02: #e8e8e8;
   --cds-border-subtle-00: #e0e0e0;
   --cds-border-subtle-01: #c6c6c6;
+  --cds-border-tile-01: #a8a8a8;
   --cds-border-strong-01: #8d8d8d;
   --cds-border-strong-02: #8d8d8d;
   --cds-border-interactive: #ba4e00;
@@ -153,17 +175,23 @@
   --cds-icon-primary: #161616;
   --cds-icon-secondary: #525252;
   --cds-icon-on-color: #ffffff;
+  --cds-icon-disabled: rgba(22, 22, 22, 0.25);
   --cds-support-error: #da1e28;
   --cds-support-success: #198038;
-  --cds-support-warning: #684e00;
+  --cds-support-warning: #f1c21b; /* Yellow 30 — icon / strip */
+  --cds-support-warning-inverse: #f1c21b;
+  --cds-support-warning-text: #684e00; /* Yellow 20 — readable alert text on light */
+  --cds-support-info: #0043ce;
   --cds-link-primary: #ba4e00;
   --cds-link-primary-hover: #8a3800;
   --cds-button-primary: #ba4e00;
   --cds-button-primary-hover: #9e4200;
   --cds-button-primary-active: #8a3800;
-  --cds-button-tertiary: #0f62fe;
-  --cds-button-tertiary-hover: #0043ce;
-  --cds-focus: #0f62fe;
+  --cds-button-disabled: #c6c6c6;
+  /* Brand orange replaces Carbon blue on interactive / focus / tertiary */
+  --cds-button-tertiary: #ba4e00;
+  --cds-button-tertiary-hover: #8a3800;
+  --cds-focus: #ba4e00;
   --cds-focus-inset: #ffffff;
   --cds-overlay: rgba(0, 0, 0, 0.5);
   --cds-interactive: #ba4e00;
@@ -182,12 +210,15 @@
   --cds-layer-active-01: #c6c6c6;
   --cds-layer-selected-01: #e0e0e0;
   --cds-layer-selected-hover-01: #d1d1d1;
+  --cds-layer-accent-01: #e0e0e0;
+  --cds-layer-accent-hover-01: #d1d1d1;
   --cds-field-01: #f4f4f4;
   --cds-field-02: #ffffff;
   --cds-field-hover-01: #e8e8e8;
   --cds-field-hover-02: #e8e8e8;
   --cds-border-subtle-00: #e0e0e0;
   --cds-border-subtle-01: #c6c6c6;
+  --cds-border-tile-01: #c6c6c6;
   --cds-border-strong-01: #8d8d8d;
   --cds-border-strong-02: #8d8d8d;
   --cds-border-interactive: #ba4e00;
@@ -203,18 +234,59 @@
   --cds-icon-primary: #161616;
   --cds-icon-secondary: #525252;
   --cds-icon-on-color: #ffffff;
+  --cds-icon-disabled: rgba(22, 22, 22, 0.25);
   --cds-support-error: #da1e28;
   --cds-support-success: #198038;
-  --cds-support-warning: #684e00;
+  --cds-support-warning: #f1c21b;
+  --cds-support-warning-inverse: #f1c21b;
+  --cds-support-warning-text: #684e00;
+  --cds-support-info: #0043ce;
   --cds-link-primary: #ba4e00;
   --cds-link-primary-hover: #8a3800;
   --cds-button-primary: #ba4e00;
   --cds-button-primary-hover: #9e4200;
   --cds-button-primary-active: #8a3800;
-  --cds-button-tertiary: #0f62fe;
-  --cds-button-tertiary-hover: #0043ce;
-  --cds-focus: #0f62fe;
+  --cds-button-disabled: #c6c6c6;
+  --cds-button-tertiary: #ba4e00;
+  --cds-button-tertiary-hover: #8a3800;
+  --cds-focus: #ba4e00;
   --cds-focus-inset: #ffffff;
   --cds-overlay: rgba(0, 0, 0, 0.5);
   --cds-interactive: #ba4e00;
+}
+
+/* Shared type + layout tokens (Carbon productive) */
+:root {
+  --cds-font-sans: "IBM Plex Sans", "Kannada", system-ui, sans-serif;
+  --cds-font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  /* Utility */
+  --cds-label-01-size: 0.75rem;           /* 12px */
+  --cds-label-01-lh: 1.33333;             /* 16px */
+  --cds-helper-text-01-size: 0.75rem;     /* 12px */
+  --cds-helper-text-01-lh: 1.33333;       /* 16px */
+  /* Body */
+  --cds-body-compact-01-size: 0.875rem;   /* 14px */
+  --cds-body-compact-01-lh: 1.28572;      /* 18px */
+  --cds-body-01-size: 0.875rem;           /* 14px */
+  --cds-body-01-lh: 1.42857;              /* 20px */
+  /* Headings */
+  --cds-heading-compact-01-size: 0.875rem; /* 14px */
+  --cds-heading-compact-01-lh: 1.28572;    /* 18px */
+  --cds-heading-compact-01-weight: 600;
+  --cds-heading-compact-02-size: 1rem;     /* 16px */
+  --cds-heading-compact-02-lh: 1.375;      /* 22px */
+  --cds-heading-compact-02-weight: 600;
+  --cds-heading-01-size: 0.875rem;         /* 14px */
+  --cds-heading-01-lh: 1.42857;            /* 20px */
+  --cds-heading-01-weight: 600;
+  --cds-heading-02-size: 1rem;             /* 16px */
+  --cds-heading-02-lh: 1.5;                /* 24px */
+  --cds-heading-02-weight: 600;
+  --cds-heading-03-size: 1.25rem;          /* 20px */
+  --cds-heading-03-lh: 1.4;                /* 28px */
+  --cds-heading-03-weight: 400;
+  /* Control heights (Carbon components) */
+  --cds-button-height: 3rem;               /* 48px */
+  --cds-button-height-sm: 2rem;            /* 32px */
+  --cds-content-switcher-height: 2.5rem;   /* 40px */
 }

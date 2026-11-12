@@ -121,7 +121,9 @@ class LauncherActivity : AppCompatActivity() {
         toolbar.menu.findItem(R.id.themeSwitch)?.title = if(DeskTheme.current(this)==DeskTheme.BLACK) "Switch to light theme" else "Switch to dark theme"
         val page = adapter.pageId(pager.currentItem)
         findViewById<View>(R.id.contentControlsHost).visibility =
-            if (page == "desk" || page == "dashboard" || page in ShellHubFragment.RAIL_IDS) View.GONE else View.VISIBLE
+            if (page == "desk" || page == "dashboard" || page == "user" || page in ShellHubFragment.RAIL_IDS ||
+                page == "sandhya" || page == "japa" || page == "puja" || page == "nityakarma"
+            ) View.GONE else View.VISIBLE
         pager.post {
             val current = supportFragmentManager.fragments.firstOrNull { it.isResumed }?.view
             if (current != null) ScreenPages.attachControls(current, findViewById(R.id.contentControlsHost))
@@ -142,16 +144,36 @@ class LauncherActivity : AppCompatActivity() {
     fun navigateTo(pageId: String) {
         if (!::pager.isInitialized) return
         val adapter = pager.adapter as? WorkspaceAdapter ?: return
-        val index = adapter.indexOf(pageId)
+        val nityaTab = when (pageId) {
+            "sandhya", "japa", "puja" -> pageId
+            "nityakarma" -> "sandhya"
+            else -> null
+        }
+        val targetId = if (nityaTab != null) {
+            listOf("nityakarma", pageId).firstOrNull { adapter.indexOf(it) >= 0 } ?: pageId
+        } else pageId
+        val index = adapter.indexOf(targetId)
         if (index < 0) return
         if (pager.currentItem == index) {
+            if (nityaTab != null) {
+                supportFragmentManager.fragments.filterIsInstance<NityaKarmaFragment>()
+                    .firstOrNull { it.isResumed || it.isVisible }
+                    ?.selectTab(nityaTab)
+            }
             bindNavigation()
             return
         }
         pager.setCurrentItem(index, false)
         // ViewPager2 updates currentItem synchronously for smoothScroll=false, but
         // fragment resume/layout can lag — refresh chrome after the next frame.
-        pager.post { bindNavigation() }
+        pager.post {
+            if (nityaTab != null) {
+                supportFragmentManager.fragments.filterIsInstance<NityaKarmaFragment>()
+                    .firstOrNull { it.isAdded }
+                    ?.selectTab(nityaTab)
+            }
+            bindNavigation()
+        }
     }
     fun goHome() {
         supportFragmentManager.fragments.filterIsInstance<ReaderFragment>().forEach { it.closeSelector() }

@@ -17,7 +17,12 @@ data class Profile(
     val rashi: String,
     val nakshatra: String,
     val yearOfBirth: Int,
-    val placeOfBirth: String
+    val placeOfBirth: String,
+    val marital: String = "married",
+    val matha: String = "",
+    val dikshaMantras: List<String> = emptyList(),
+    /** mantraId → Pair(daily, major) */
+    val japaTargets: Map<String, Pair<Long, Long>> = emptyMap()
 )
 
 /**
@@ -96,7 +101,11 @@ class ProfileStore(context: Context) {
             rashi = profile.rashi.ifBlank { RASHIS.first() },
             nakshatra = profile.nakshatra.ifBlank { NAKSHATRAS.first() },
             yearOfBirth = profile.yearOfBirth.coerceAtLeast(0),
-            placeOfBirth = profile.placeOfBirth.trim()
+            placeOfBirth = profile.placeOfBirth.trim(),
+            marital = profile.marital.ifBlank { "married" },
+            matha = profile.matha.trim(),
+            dikshaMantras = profile.dikshaMantras.map { it.trim() }.filter { it.isNotEmpty() }.distinct(),
+            japaTargets = profile.japaTargets
         )
         val all = profiles().toMutableList()
         val index = all.indexOfFirst { it.id == safe.id }
@@ -156,7 +165,18 @@ class ProfileStore(context: Context) {
                     rashi = obj.optString("rashi", RASHIS.first()),
                     nakshatra = obj.optString("nakshatra", NAKSHATRAS.first()),
                     yearOfBirth = obj.optInt("yearOfBirth", 0),
-                    placeOfBirth = obj.optString("placeOfBirth", "")
+                    placeOfBirth = obj.optString("placeOfBirth", ""),
+                    marital = obj.optString("marital", "married"),
+                    matha = obj.optString("matha", ""),
+                    dikshaMantras = obj.optJSONArray("dikshaMantras")?.let { arr ->
+                        (0 until arr.length()).mapNotNull { arr.optString(it).takeIf { s -> s.isNotBlank() } }
+                    }.orEmpty(),
+                    japaTargets = obj.optJSONObject("japaTargets")?.let { jt ->
+                        jt.keys().asSequence().associateWith { key ->
+                            val row = jt.optJSONObject(key)
+                            Pair(row?.optLong("daily", 101L) ?: 101L, row?.optLong("major", 10001L) ?: 10001L)
+                        }
+                    }.orEmpty()
                 )
             }
         }
@@ -172,6 +192,14 @@ class ProfileStore(context: Context) {
         .put("nakshatra", p.nakshatra)
         .put("yearOfBirth", p.yearOfBirth)
         .put("placeOfBirth", p.placeOfBirth)
+        .put("marital", p.marital)
+        .put("matha", p.matha)
+        .put("dikshaMantras", JSONArray(p.dikshaMantras))
+        .put("japaTargets", JSONObject().also { jt ->
+            p.japaTargets.forEach { (k, v) ->
+                jt.put(k, JSONObject().put("daily", v.first).put("major", v.second))
+            }
+        })
 
     companion object {
         private const val PREFS_PLAIN = "paperdesk_profiles"
@@ -233,6 +261,18 @@ class ProfileStore(context: Context) {
             "ಕುಂಭ",
             "ಮೀನ"
         )
+
+        val MATHAS = listOf(
+            "Sri Raghavendra Swamy Matha",
+            "Uttaradi Matha",
+            "Vyasaraja Matha",
+            "Other / ಇತರೆ"
+        )
+
+        val MARITAL = listOf("married" to "Married · ವಿವಾಹಿತ", "unmarried" to "Unmarried · ಅವಿವಾಹಿತ")
+
+        val DAILY_GOALS = listOf(11L, 101L, 1001L, 5001L)
+        val MAJOR_GOALS = listOf(5001L, 10001L, 50001L, 100001L, 1000001L)
 
         val NAKSHATRAS = listOf(
             "ತಿಳಿಸಿಲ್ಲ",

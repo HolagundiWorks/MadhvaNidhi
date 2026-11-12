@@ -8,9 +8,6 @@ import kotlin.math.floor
 /** Reflows stock GridLayouts using usable width and the actual configured text size. */
 object MaterialLayouts {
     fun bind(root: View) {
-        configure(root, R.id.japaRitualActionsGrid, 150f, 2, gapToken = R.dimen.carbon_spacing_03)
-        configure(root, R.id.japaGrid, 340f, 2)
-        configure(root, R.id.japaActionsGrid, 110f, 3, gapToken = R.dimen.carbon_spacing_03)
         configure(root, R.id.aayadiGrid, 360f, 1)
         configure(root, R.id.aayadiInputsGrid, 150f, 2, gapToken = R.dimen.carbon_spacing_03)
         configure(root, R.id.aayadiResultsGrid, 156f, 3, gapToken = R.dimen.carbon_spacing_03)

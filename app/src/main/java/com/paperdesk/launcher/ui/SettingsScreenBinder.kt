@@ -15,7 +15,8 @@ object SettingsScreenBinder {
         val settings = SettingsStore(context)
         refreshProfileSummary(root, context)
         root.findViewById<View>(R.id.settingsOpenProfile).setOnClickListener {
-            context.startActivity(ProfileRegisterActivity.intent(context))
+            (context as? LauncherActivity)?.navigateTo("user")
+                ?: context.startActivity(ProfileRegisterActivity.intent(context))
         }
         root.findViewById<View>(R.id.settingsBack).apply {
             visibility = if (showBack) View.VISIBLE else View.GONE

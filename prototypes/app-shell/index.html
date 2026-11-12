@@ -1,224 +1,31 @@
 <!doctype html>
 <html lang="en" data-theme="g100">
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Carbon shell design studio</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#161616">
+<title>MadhvaNidhi Mockup</title>
+<link rel="stylesheet" href="../ibm-plex.css">
 <link rel="stylesheet" href="./carbon-theme.css">
-<style>
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--cds-background); color: var(--cds-text-primary); font: 14px/1.5 system-ui, sans-serif; }
-header { padding: var(--cds-spacing-05) var(--cds-spacing-06); display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--cds-border-subtle-00); gap: var(--cds-spacing-05); }
-h1 { font-size: 20px; font-weight: 500; margin: 0; }
-header p { margin: var(--cds-spacing-02) 0 0; color: var(--cds-text-secondary); font-size: 12px; }
-.workspace { display: grid; grid-template-columns: 280px 1fr; min-height: calc(100vh - 85px); }
-aside { background: var(--cds-layer-01); padding: var(--cds-spacing-06); border-right: 1px solid var(--cds-border-subtle-00); }
-h2 { font-size: 16px; font-weight: 500; margin: 0 0 var(--cds-spacing-05); }
-label { display: block; margin: var(--cds-spacing-05) 0 var(--cds-spacing-03); color: var(--cds-text-secondary); }
-select, button, textarea { font: inherit; border-radius: var(--cds-border-radius); border: 1px solid var(--cds-border-strong-01); color: var(--cds-text-primary); background: var(--cds-field-01); }
-select { width: 100%; padding: 10px; }
-button { padding: 10px var(--cds-spacing-05); cursor: pointer; min-height: var(--cds-layout-size-height-lg); }
-button:hover { background: var(--cds-layer-hover-01); }
-button.primary { background: var(--cds-button-primary); color: var(--cds-text-on-color); border: 0; }
-button.primary:hover { background: var(--cds-button-primary-hover); }
-input[type=range] { width: 100%; accent-color: var(--cds-interactive); }
-output { float: right; color: var(--cds-text-primary); }
-hr { border: 0; border-top: 1px solid var(--cds-border-subtle-00); margin: var(--cds-spacing-06) 0; }
-p.hint { font-size: 12px; color: var(--cds-text-secondary); }
-main { min-width: 0; padding: var(--cds-spacing-06); }
-.previewbar { display: flex; align-items: center; justify-content: space-between; gap: var(--cds-spacing-05); margin-bottom: var(--cds-spacing-05); }
-.previewbar span { color: var(--cds-text-secondary); font-size: 12px; }
-.stage { width: 100%; overflow: auto; background: var(--cds-background); padding: var(--cds-spacing-05); min-height: 420px; border: 1px solid var(--cds-border-subtle-00); }
-.frame-wrap { margin: auto; transform-origin: top left; }
-iframe { display: block; border: 0; outline: 1px solid var(--cds-border-strong-01); background: var(--cds-background); border-radius: var(--cds-border-radius); transform-origin: top left; }
-.actions { display: flex; gap: var(--cds-spacing-03); flex-wrap: wrap; }
-textarea { display: block; width: 100%; min-height: 96px; padding: var(--cds-spacing-04); resize: vertical; }
-#status { color: var(--cds-link-primary-hover); font-size: 12px; min-height: 20px; }
-button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--cds-focus); outline-offset: 3px; }
-a { color: var(--cds-link-primary-hover); }
-.notes { margin-top: var(--cds-spacing-06); max-width: 800px; }
-.dest-list { display: grid; gap: var(--cds-spacing-03); }
-.dest-list button { text-align: left; width: 100%; }
-@media (max-width: 900px) {
-  .workspace { grid-template-columns: 1fr; }
-  aside { border-right: 0; border-bottom: 1px solid var(--cds-border-subtle-00); }
-  main { padding: var(--cds-spacing-05); }
-  header { padding: var(--cds-spacing-05); }
-  .stage { padding: var(--cds-spacing-03); }
-}
-</style>
-<header>
-  <div>
-    <h1>Carbon shell design studio</h1>
-    <p>HTML preview · Header, rail, dashboard, and frozen Panchanga embed before Android work · <a href="../menu-pages/">Remaining menu mockups</a></p>
+<link rel="stylesheet" href="../carbon-app.css?v=edge-chrome">
+<link rel="stylesheet" href="../studio.css?v=edge-chrome">
+<body>
+  <div class="studio-bar" role="region" aria-label="Preview size">
+    <label for="viewport">Screen size</label>
+    <select id="viewport" aria-label="Landscape preview size"></select>
+    <div id="custom-fields">
+      <label for="custom-w">W</label>
+      <input id="custom-w" type="number" min="321" step="1" aria-label="Custom width">
+      <label for="custom-h">H</label>
+      <input id="custom-h" type="number" min="240" step="1" aria-label="Custom height">
+    </div>
+    <span id="viewport-error" class="error" hidden></span>
+    <span id="dimensions" class="dims" aria-live="polite"></span>
   </div>
-  <button id="export" class="primary">Save design settings</button>
-</header>
-<div class="workspace">
-  <aside>
-    <h2>Design controls</h2>
-    <div>
-      <label for="viewport">Preview screen</label>
-      <select id="viewport">
-        <option value="1560,720">SM-M115F landscape · 1560 × 720</option>
-        <option value="1495,694">SM-M115F app area · 1495 × 694</option>
-        <option value="720,1560">SM-M115F portrait · 720 × 1560</option>
-        <option value="1280,800">Tablet · 1280 × 800</option>
-        <option value="1024,640">Mid landscape · 1024 × 640 (840–1099)</option>
-        <option value="800,480">Phone landscape · 800 × 480 (&lt;840)</option>
-        <option value="640,360">Small landscape · 640 × 360</option>
-      </select>
+  <div class="stage">
+    <div class="frame-wrap">
+      <iframe src="./shell.html" title="MadhvaNidhi live preview" id="preview"></iframe>
     </div>
-    <div>
-      <label for="scale">Text size <output id="scale-value"></output></label>
-      <input id="scale" type="range" min="1" max="1.5" step=".25">
-    </div>
-    <div>
-      <label for="theme">Carbon theme</label>
-      <select id="theme">
-        <option value="g100">Gray 100 (default)</option>
-        <option value="g90">Gray 90</option>
-        <option value="g10">Gray 10</option>
-        <option value="white">White</option>
-      </select>
-    </div>
-    <hr>
-    <h2>Destinations</h2>
-    <div class="dest-list">
-      <button type="button" data-dest="dashboard">Dashboard · ಮುಖಪುಟ</button>
-      <button type="button" data-dest="panchanga">Panchanga · ಪಂಚಾಂಗ</button>
-      <button type="button" data-dest="nityakarma">Nitya Karma · ನಿತ್ಯಕರ್ಮ</button>
-      <button type="button" data-dest="grantha">Grantha · ಗ್ರಂಥ</button>
-      <button type="button" data-dest="sangeeta">Bhakti Sangeeta</button>
-      <button type="button" data-dest="samskruti">Gruha Samskruti</button>
-      <button type="button" data-dest="settings">Settings</button>
-    </div>
-    <div class="bottom">
-      <hr>
-      <p class="hint">Orange accent · 4px corners · PaperDesk todo/notes/projects/Gita stay out of the rail. Practice counts are labeled sample data.</p>
-      <div class="actions">
-        <button id="reset">Reset</button>
-        <button id="open">Open full-size preview</button>
-      </div>
-      <p id="status" role="status"></p>
-    </div>
-  </aside>
-  <main>
-    <div class="previewbar">
-      <h2 style="margin:0">Live shell</h2>
-      <span id="dimensions"></span>
-    </div>
-    <div class="stage">
-      <div class="frame-wrap">
-        <iframe src="./shell.html" title="Carbon shell preview" id="preview"></iframe>
-      </div>
-    </div>
-    <section class="notes">
-      <h2>Iteration notes</h2>
-      <label for="notes">What should change next?</label>
-      <textarea id="notes" placeholder="For example: widen the context pane, tighten dashboard cards…"></textarea>
-      <p class="hint">Controls and notes save in this browser. “Save design settings” downloads JSON for the later Android implementation. Frozen Panchanga calendar behavior is unchanged.</p>
-    </section>
-  </main>
-</div>
-<script>
-(() => {
-  const defaults = { scale: 1, theme: 'g100' };
-  const frame = document.getElementById('preview');
-  let design = { ...defaults };
-  let notes = '';
-  let viewport = '1560,720';
-
-  try {
-    const saved = JSON.parse(localStorage.getItem('shell-design-v1'));
-    if (saved) {
-      design = { ...defaults, ...saved.design };
-      notes = saved.notes || '';
-      viewport = saved.viewport || viewport;
-    }
-  } catch {}
-
-  document.getElementById('notes').value = notes;
-  document.getElementById('viewport').value = viewport;
-
-  function save() {
-    try {
-      localStorage.setItem('shell-design-v1', JSON.stringify({
-        design,
-        notes: document.getElementById('notes').value,
-        viewport: document.getElementById('viewport').value
-      }));
-    } catch {}
-  }
-
-  function fit() {
-    const [w, h] = document.getElementById('viewport').value.split(',').map(Number);
-    const available = document.querySelector('.stage').clientWidth - 34;
-    const zoom = Math.min(1, available / w);
-    frame.style.width = w + 'px';
-    frame.style.height = h + 'px';
-    frame.style.transform = `scale(${zoom})`;
-    const wrap = frame.parentElement;
-    wrap.style.width = (w * zoom) + 'px';
-    wrap.style.height = (h * zoom) + 'px';
-    document.getElementById('dimensions').textContent =
-      `${w} × ${h} · ${Math.round(zoom * 100)}% preview zoom`;
-  }
-
-  function update() {
-    document.getElementById('scale').value = design.scale;
-    document.getElementById('scale-value').textContent = Math.round(design.scale * 100) + '%';
-    document.getElementById('theme').value = design.theme;
-    frame.contentWindow.postMessage({ type: 'shell-design', design }, '*');
-    save();
-  }
-
-  document.getElementById('scale').oninput = (e) => {
-    design.scale = Number(e.target.value);
-    update();
-  };
-  document.getElementById('theme').onchange = (e) => {
-    design.theme = e.target.value;
-    update();
-  };
-  document.getElementById('viewport').onchange = () => {
-    fit();
-    save();
-  };
-  document.getElementById('notes').oninput = save;
-  document.getElementById('reset').onclick = () => {
-    design = { ...defaults };
-    update();
-  };
-  document.getElementById('export').onclick = () => {
-    const data = {
-      version: 1,
-      screen: 'app-shell',
-      radius: 4,
-      accent: getComputedStyle(document.documentElement).getPropertyValue('--cds-button-primary').trim(),
-      ...design,
-      viewport: document.getElementById('viewport').value,
-      notes: document.getElementById('notes').value
-    };
-    const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }));
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'app-shell-design.json';
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-    document.getElementById('status').textContent = 'Design settings saved.';
-  };
-  document.getElementById('open').onclick = () => window.open('./shell.html', '_blank', 'noopener');
-  document.querySelectorAll('[data-dest]').forEach((button) => {
-    button.onclick = () => frame.contentWindow.postMessage({ type: 'shell-navigate', dest: button.dataset.dest }, '*');
-  });
-
-  frame.onload = () => {
-    fit();
-    update();
-  };
-  new ResizeObserver(fit).observe(document.querySelector('.stage'));
-  fit();
-  update();
-})();
-</script>
+  </div>
+  <script src="../studio.js" data-storage="madhva-app-shell-viewport-v1"></script>
+</body>
 </html>

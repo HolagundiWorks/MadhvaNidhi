@@ -75,9 +75,51 @@
   return dates.map(date=>weekdays[new Date(date+'T00:00:00Z').getUTCDay()]).join('–');
  }
  function name(tithi,phase) {return tithi===15?(phase==='shukla'?'ಪೌರ್ಣಿಮಾ':'ಅಮಾವಾಸ್ಯೆ'):names[tithi-1];}
+ function syncPakshaCycle() {
+  const cycle=byId('paksha-cycle');
+  if(!cycle)return;
+  const shukla=state.page===0;
+  const start=cycle.querySelector('[data-cycle="start"]');
+  const mid=cycle.querySelector('[data-cycle="mid"]');
+  const end=cycle.querySelector('[data-cycle="end"]');
+  if(start)start.className='moon'+(shukla?'':' full');
+  if(mid)mid.className='moon '+(shukla?'half':'wane');
+  if(end)end.className='moon'+(shukla?' full':'');
+  cycle.setAttribute('aria-label',shukla?'ಶುಕ್ಲಪಕ್ಷ · ಅಮಾವಾಸ್ಯೆ to ಹುಣ್ಣಿಮೆ':'ಕೃಷ್ಣಪಕ್ಷ · ಹುಣ್ಣಿಮೆ to ಅಮಾವಾಸ್ಯೆ');
+ }
+ function measureLineWidth(el) {
+  const range=document.createRange();
+  range.selectNodeContents(el);
+  return range.getBoundingClientRect().width;
+ }
+ function fitEraLines() {
+  const targets=[byId('era-shaka-line'),byId('era-samvat-line'),byId('era-masa-line')].filter(Boolean);
+  const measures=[byId('era-shaka-line'),byId('era-samvat-line'),byId('era-masa-row')||byId('era-masa-line')].filter(Boolean);
+  const copy=document.querySelector('.era-copy');
+  if(!targets.length||!copy)return;
+  const width=copy.clientWidth;
+  if(width<=0)return;
+  /* Carbon productive sizes only: heading-compact-01 (14), -02 (16), heading-03 (20). */
+  const steps=[
+   {px:20,type:'heading-03'},
+   {px:16,type:'heading-compact-02'},
+   {px:14,type:'heading-compact-01'}
+  ];
+  let chosen=steps[steps.length-1];
+  for(const step of steps){
+   for(const el of targets){el.style.fontSize=step.px+'px';el.dataset.type=step.type;}
+   const needed=Math.max(...measures.map(measureLineWidth));
+   if(needed>0&&needed<=width*0.98){chosen=step;break;}
+  }
+  for(const el of targets){el.style.fontSize=chosen.px+'px';el.dataset.type=chosen.type;}
+ }
  function render() {
   const unavailable=state.unsupportedDate;
-  app.classList.toggle('no-date-data',!!unavailable);byId('calendar-empty').hidden=!unavailable;byId('missing-context').hidden=!unavailable;byId('era-text').hidden=!!unavailable;
+  app.classList.toggle('no-date-data',!!unavailable);byId('calendar-empty').hidden=!unavailable;byId('missing-context').hidden=!unavailable;
+  const eraLines=[byId('era-shaka-line'),byId('era-samvat-line'),byId('era-masa'),byId('era-masa-line')];
+  for(const el of eraLines){if(el)el.hidden=!!unavailable;}
+  const eraText=byId('era-text');if(eraText)eraText.hidden=true;
+  requestAnimationFrame(fitEraLines);
   app.style.setProperty('--tile-side',state.side+'px');
   app.classList.toggle('tight-tiles',state.side<112);
   app.classList.toggle('micro-tiles',state.side<80);
@@ -105,12 +147,14 @@
      const marker=document.createElementNS('http://www.w3.org/2000/svg','svg');
      const ekadashi=g.tithis.includes(11);
      marker.classList.add('tile-marker');
-     marker.dataset.icon=ekadashi?'AppleDash':phase==='shukla'?'full-moon':'new-moon';
+     marker.dataset.icon=ekadashi?'WatsonHealthStatusPartialFail':phase==='shukla'?'full-moon':'new-moon';
      marker.setAttribute('viewBox','0 0 32 32');
      marker.setAttribute('aria-hidden','true');
      marker.setAttribute('focusable','false');
-     // Carbon AppleDash, IBM, Apache-2.0; see CARBON-ICONS-LICENSE.txt.
-     marker.innerHTML=ekadashi?`<path d="M7.0825,11.6714l-1.6748-1.0928c-.9062,1.3887-1.3928,3.2305-1.4072,5.3267l2,.0137c.0117-1.7119,.3857-3.1807,1.082-4.2476Z"/><path d="M6.0852,17.8164l-1.9907,.1934c.1887,1.938,.6592,3.6738,1.3982,5.1592l1.7905-.8911c-.6301-1.2661-1.0332-2.7676-1.198-4.4614Z"/><path d="M8.2378,23.7964l-1.5688,1.2402c1.333,1.6865,3.0972,2.7573,4.8396,2.9375l.2061-1.9893c-1.1912-.1235-2.491-.9414-3.4768-2.1885Z"/><path d="M16,25c-.7334,0-1.4783,.271-2.1987,.5332-.1809,.0654-.3635,.1318-.5469,.1943l.6426,1.894c.197-.0669,.3936-.1382,.5879-.209,.5576-.2026,1.134-.4126,1.5151-.4126,.3809,0,.9575,.21,1.5149,.4121,.1809,.0659,.3635,.1323,.5466,.1953l.6479-1.8926c-.1711-.0586-.3418-.1206-.511-.1821-.7205-.2617-1.4653-.5327-2.1985-.5327Z"/><path d="M20.2546,25.9878l.1855,1.9917c1.7456-.1631,3.5178-1.2227,4.8621-2.9072l-1.5632-1.2476c-.9924,1.2437-2.2949,2.0522-3.4844,2.1631Z"/><path d="M24.7004,22.3115l1.7871,.8975c.7449-1.4834,1.2205-3.2178,1.4138-5.1558l-1.9902-.1987c-.1689,1.6938-.5762,3.1934-1.2107,4.457Z"/><path d="M28,15.9492c-.0076-2.0938-.4854-3.9365-1.3818-5.3311l-1.6821,1.082c.6897,1.0728,1.0576,2.5444,1.064,4.2559l2-.0068Z"/><path d="M20,4h-1c-1.1046,0-2,.8954-2,2v1h1c1.1046,0,2-.8954,2-2v-1Z"/><path d="M23.8125,10.5308l1.1035-1.668c-.8655-.5728-1.8467-.8628-2.916-.8628-1.4155,0-2.4175,.2881-3.3013,.542-.5764,.1655-1.1362,.3203-1.7979,.4004-.502-2.8047-2.9541-4.9424-5.9009-4.9424v2c1.8223,0,3.3464,1.2319,3.8274,2.9014-.5442-.0864-1.031-.2173-1.5261-.3594-.8838-.2539-1.8857-.542-3.3013-.542-1.0693,0-2.0505,.29-2.916,.8628l1.1035,1.668c.5325-.3521,1.1423-.5308,1.8125-.5308,1.134,0,1.9185,.2256,2.7488,.4639,.917,.2637,1.8652,.5361,3.2512,.5361s2.3342-.2725,3.2512-.5361c.8303-.2383,1.6147-.4639,2.7488-.4639,.6702,0,1.28,.1787,1.8125,.5308Z"/>`:`<circle cx="16" cy="16" r="11" fill="${phase==='shukla'?'currentColor':'none'}" stroke="currentColor" stroke-width="2"/>`;
+     // Carbon WatsonHealthStatusPartialFail, IBM, Apache-2.0; see CARBON-ICONS-LICENSE.txt.
+     marker.innerHTML=ekadashi
+      ? '<path d="M25.14 23.764l1.532 1.285a13.976 13.976 0 0 0 2.441-4.182l-1.878-.683a11.973 11.973 0 0 1-2.094 3.58z"/><path d="M18 27.81l.413 1.968a13.889 13.889 0 0 0 4.541-1.638L22 26.409a12.52 12.52 0 0 1-4 1.401z"/><path d="M10 26.409L9 28.14a14.14 14.14 0 0 0 4.587 1.638l.347-1.967A12.152 12.152 0 0 1 10 26.409z"/><path d="M4.765 20.184l-1.878.683a13.976 13.976 0 0 0 2.44 4.182l1.532-1.285a11.973 11.973 0 0 1-2.094-3.58z"/><path d="M16 22a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 16 22z"/><path d="M15 8h2v11h-2z"/><path d="M30 16h-2a12 12 0 0 0-24 0H2a14 14 0 0 1 28 0z"/>'
+      : `<circle cx="16" cy="16" r="11" fill="${phase==='shukla'?'currentColor':'none'}" stroke="currentColor" stroke-width="2"/>`;
      b.classList.add('has-marker');
      b.append(marker);
     }
@@ -153,41 +197,59 @@
   }
   byId('selected-weekday').textContent=weekdayLabel(selectedDates,innerHeight>420);
   byId('selected-date-label').textContent=selectedDates.length===1&&selectedDates[0]===localToday()?'ಇಂದಿನ ದಿನಾಂಕ':'ಆಯ್ದ ದಿನಾಂಕ';
-  byId('today-date').disabled=selectedDates.length===1&&selectedDates[0]===localToday();
   byId('missing-date-text').textContent=unavailable?`${dateLabel(selectedDates)} ${year} · ಪಂಚಾಂಗ ದತ್ತಾಂಶ ಜೋಡಣೆ ಬಾಕಿ`:'';
-  byId('selected-tithi').textContent=unavailable?'ತಿಥಿ ಜೋಡಣೆ ಬಾಕಿ':selected.tithis.map(t=>name(t,state.selected.phase)).join(' + ');
+  const headerDate = byId('header-date-value');
+  const headerTithi = byId('header-tithi');
+  if (headerDate) headerDate.textContent = `${dateLabel(selectedDates)} ${year}`;
+  if (headerTithi) headerTithi.textContent = unavailable ? 'ತಿಥಿ ಜೋಡಣೆ ಬಾಕಿ' : selected.tithis.map(t => name(t, state.selected.phase)).join(' + ');
+  byId('selected-tithi').textContent = unavailable ? 'ತಿಥಿ ಜೋಡಣೆ ಬಾಕಿ' : selected.tithis.map(t => name(t, state.selected.phase)).join(' + ');
   byId('range').textContent=state.paged?titles[phases[state.page]]:'1–15 / 15';
   byId('range').setAttribute('aria-label',state.paged?`${titles[phases[state.page]]}, all 15 tithis, page ${state.page+1} of 2`:'Both pakshas, all 15 tithis');
   byId('previous').setAttribute('aria-label','Shukla paksha');byId('previous').setAttribute('aria-pressed',String(state.page===0&&!unavailable));
   byId('next').setAttribute('aria-label','Krishna paksha');byId('next').setAttribute('aria-pressed',String(state.page===1&&!unavailable));
   byId('previous').disabled=false;
   byId('next').disabled=false;
-  byId('smaller').disabled=state.scale<=1;byId('larger').disabled=state.scale>=1.5;
-  byId('size-value').textContent=`${Math.round(state.scale*100)}%`;
-  byId('text-size').value=String(state.scale);
+  syncPakshaCycle();
+  const textSize=byId('text-size');
+  if(textSize) textSize.value=String(state.scale);
  }
  function layout(keepSelection=false) {
-  app.classList.toggle('compact',innerHeight<400 || (innerHeight<=500 && state.scale>1.25));
+  /* Same proportions as 960×540: scale chrome + tiles together (640…1560+) */
+  const density=Math.min(1.75,Math.max(0.55,Math.min(innerWidth/960,innerHeight/540)));
+  app.style.setProperty('--density',String(density));
+  app.classList.toggle('compact',innerHeight<400 || innerWidth<=700 || (innerHeight<=500 && state.scale>1.25));
   const phaseBox=document.querySelector('.phases');
   const width=phaseBox.clientWidth;
-  const gap=parseFloat(getComputedStyle(byId(phases[state.page]||'shukla')).columnGap)||4;
-  const heading=Math.max(...[...document.querySelectorAll('.phase-head')].map(el=>el.getBoundingClientRect().height||Math.max(parseFloat(getComputedStyle(el).minHeight),parseFloat(getComputedStyle(el.querySelector('h3')).lineHeight))));
-  const innerGap=parseFloat(getComputedStyle(document.querySelector('.phase')).rowGap)||0;
+  const gapRaw=parseFloat(getComputedStyle(byId(phases[state.page]||'shukla')).columnGap);
+  const gap=Number.isFinite(gapRaw)?gapRaw:Math.max(2,Math.round(8*density));
+  const heading=Math.max(0,...[...document.querySelectorAll('.phase-head')].map(el=>{
+   if(getComputedStyle(el).display==='none')return 0;
+   return el.getBoundingClientRect().height||Math.max(parseFloat(getComputedStyle(el).minHeight)||0,parseFloat(getComputedStyle(el.querySelector('h3'))?.lineHeight)||0);
+  }));
+  const phaseEl=document.querySelector('.phase');
+  const innerGap=phaseEl?parseFloat(getComputedStyle(phaseEl).rowGap)||0:0;
   state.paged=true;state.columns=5;state.gap=gap;
   app.classList.add('paksha-pages');
   if(keepSelection)state.page=phases.indexOf(state.selected.phase);
   const rows=Math.max(...phases.map(p=>placements(p,5).at(-1).row+1));
   const widthSide=(width-gap*4)/5;
   const heightSide=(phaseBox.clientHeight-heading-innerGap-(rows-1)*gap)/rows;
-  state.side=Math.max(1,Math.min(widthSide,heightSide));
+  const fillSide=Math.max(1,Math.min(widthSide,heightSide));
+  /* Cap tile growth to ~110px × density so 1560×720 keeps 960×540 proportions */
+  const proportionSide=110*density;
+  state.side=Math.max(1,Math.min(fillSide,proportionSide));
+  const tilePad=Math.max(4,Math.round(Math.min(state.side*0.145,16*density)));
+  app.style.setProperty('--tile-side',state.side+'px');
+  app.style.setProperty('--tile-pad',tilePad+'px');
+  app.style.setProperty('--tile-gap',gap+'px');
   for(const phase of phases)byId(phase).style.width=(state.side*5+gap*4)+'px';
   render();
  }
  function scale(value) {state.scale=Math.max(1,Math.min(1.5,value));app.style.setProperty('--scale',state.scale);layout(true);}
- byId('smaller').onclick=()=>scale(state.scale-.25);byId('larger').onclick=()=>scale(state.scale+.25);
- byId('text-size').onchange=e=>scale(Number(e.target.value));
+ 
+ try {
+ byId('text-size')&&(byId('text-size').onchange=e=>scale(Number(e.target.value)));
  byId('previous').onclick=()=>changePhase(0);byId('next').onclick=()=>changePhase(1);
- byId('today-date').onclick=()=>selectDate(localToday());
  byId('show-sample').onclick=()=>{state.unsupportedDate=null;state.selected={phase:'shukla',tithi:11};state.page=0;render();layout(true);};
  byId('settings').onclick=()=>{toggleNavigation(false);byId('preferences').showModal();};byId('close-settings').onclick=()=>byId('preferences').close();
  function toggleNavigation(open){
@@ -261,10 +323,14 @@
  };
  byId('selected-date-details').onclick=()=>byId('date-dialog').showModal();byId('close-date').onclick=()=>byId('date-dialog').close();
  byId('event-details').onclick=()=>byId('event-dialog').showModal();byId('close-event').onclick=()=>byId('event-dialog').close();
- const resize=new ResizeObserver(()=>layout());resize.observe(document.querySelector('.phases'));
- layout(true);
+ const phasesEl=document.querySelector('.phases');
+ if(phasesEl){const resize=new ResizeObserver(()=>layout());resize.observe(phasesEl);}
+ const eraCopy=document.querySelector('.era-copy');
+ if(eraCopy){const eraResize=new ResizeObserver(()=>fitEraLines());eraResize.observe(eraCopy);}
+ try{layout(true);}catch(err){console.error('panchanga layout failed',err);window.__panchangaBootError=String(err&&err.stack||err);}
+ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>fitEraLines());
  // Inspection hooks for the prototype's independent browser checks.
- window.panchangaPreview={groups,state,placements,layout,scale,changePhase};
+ window.panchangaPreview={groups,state,placements,layout,scale,changePhase,fitEraLines};
  function applyDesign(d){
   window.previewDesign=d;
   const bounded=(n,min,max)=>Math.min(max,Math.max(min,Number(n)||min));
@@ -277,4 +343,8 @@
   applyDesign(e.data.design);
  });
  if(window===parent){try{const saved=JSON.parse(localStorage.getItem('panchanga-design-v1'));if(saved?.design)applyDesign(saved.design);}catch{}}
+ } catch (err) {
+  console.error('panchanga boot failed', err);
+  window.__panchangaBootError = String(err && err.stack || err);
+ }
 })();

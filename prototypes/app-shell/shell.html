@@ -1,9 +1,13 @@
 <!doctype html>
 <html lang="kn" data-theme="g100">
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#161616">
+<meta name="color-scheme" content="dark light">
 <title>MadhvaNidhi · Carbon shell preview</title>
+<link rel="stylesheet" href="../ibm-plex.css">
 <link rel="stylesheet" href="./carbon-theme.css">
+<link rel="stylesheet" href="../carbon-app.css?v=puja-sandhya-layout">
 <link rel="stylesheet" href="./shell.css">
 <script src="./theme.js"></script>
 <body>
@@ -14,7 +18,8 @@
     </button>
     <nav id="nav-links" class="nav-links">
       <button type="button" class="nav-button" data-dest="dashboard" aria-current="page" aria-label="ಮುಖಪುಟ · Dashboard">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M24,21h2v5h-2z"/><path d="M20,16h2v10h-2z"/><path d="M11,26a5.0059,5.0059,0,0,1-5-5H8a3,3,0,1,0,3-3V16a5,5,0,0,1,0,10z"/><path d="M28,2H4A2.002,2.002,0,0,0,2,4V28a2.0023,2.0023,0,0,0,2,2H28a2.0027,2.0027,0,0,0,2-2V4A2.0023,2.0023,0,0,0,28,2Zm0,9H14V4H28ZM12,4v7H4V4ZM4,28V13h24.0007L28.002,28Z"/></svg>
+        <!-- Carbon Template — Apache-2.0 -->
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M26 6v4H6V6zm0-2H6a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2M10 16v10H6V16zm0-2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V16a2 2 0 0 0-2-2m16 2v10H16V16zm0-2H16a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V16a2 2 0 0 0-2-2" fill="currentColor" stroke="none"/></svg>
         <span class="nav-label">ಮುಖಪುಟ</span>
       </button>
       <button type="button" class="nav-button" data-dest="panchanga" aria-label="ಪಂಚಾಂಗ · Panchanga">
@@ -37,44 +42,32 @@
         <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19,14a3,3,0,1,0-3-3A3,3,0,0,0,19,14Zm0-4a1,1,0,1,1-1,1A1,1,0,0,1,19,10Z"/><path d="M26,4H6A2,2,0,0,0,4,6V26a2,2,0,0,0,2,2H26a2,2,0,0,0,2-2V6A2,2,0,0,0,26,4ZM26,26H6V20l5-5,5.59,5.59a2,2,0,0,0,2.82,0L21,19l5,5ZM26,21.17l-3.59-3.59a2,2,0,0,0-2.82,0L18,19.17l-5.59-5.59a2,2,0,0,0-2.82,0L6,17.17V6H26Z"/></svg>
         <span class="nav-label">ಗೃಹ ಸಂಸ್ಕೃತಿ</span>
       </button>
+      <button type="button" class="nav-button" data-dest="user" aria-label="ಬಳಕೆದಾರ · User">
+        <!-- Carbon UserSettings — Apache-2.0 -->
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M30 10V8H27.8989a4.9678 4.9678 0 00-.7319-1.7529l1.49-1.49-1.414-1.414-1.49 1.49A4.9678 4.9678 0 0024 4.1011V2H22V4.1011a4.9678 4.9678 0 00-1.7529.7319l-1.49-1.49-1.414 1.414 1.49 1.49A4.9678 4.9678 0 0018.1011 8H16v2h2.1011a4.9678 4.9678 0 00.7319 1.7529l-1.49 1.49 1.414 1.414 1.49-1.49A4.9678 4.9678 0 0022 13.8989V16h2V13.8989a4.9678 4.9678 0 001.7529-.7319l1.49 1.49 1.414-1.414-1.49-1.49A4.9678 4.9678 0 0027.8989 10zm-7 2a3 3 0 113-3A3.0033 3.0033 0 0123 12zM16 30H14V25a3.0033 3.0033 0 00-3-3H7a3.0033 3.0033 0 00-3 3v5H2V25a5.0059 5.0059 0 015-5h4a5.0059 5.0059 0 015 5zM9 10a3 3 0 11-3 3 3 3 0 013-3M9 8a5 5 0 105 5A5 5 0 009 8z" fill="currentColor" stroke="none"/></svg>
+        <span class="nav-label">ಬಳಕೆದಾರ</span>
+      </button>
       <button type="button" class="nav-button" data-dest="settings" aria-label="ಸೆಟ್ಟಿಂಗ್‌ಗಳು · Settings">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M27,16.76c0-.25,0-.5,0-.76s0-.51,0-.76l1.92-1.68A2,2,0,0,0,29.3,11L25.14,4a2,2,0,0,0-.73-.63,2,2,0,0,0-1-.22,2,2,0,0,0-.67.12l-2.42.91a11.05,11.05,0,0,0-1.49-.87l-.36-2.54A2,2,0,0,0,16.84,0H15.16a2,2,0,0,0-2,.7l-.36,2.54a11.05,11.05,0,0,0-1.49.87l-2.42-.91A2,2,0,0,0,7.59,3.15,2,2,0,0,0,6.86,3.78L2.7,11a2,2,0,0,0,.41,2.52L5.07,15.24c0,.25,0,.5,0,.76s0,.51,0,.76L3.11,18.44A2,2,0,0,0,2.7,21L6.86,28a2,2,0,0,0,.73.63,2,2,0,0,0,1,.22,2,2,0,0,0,.67-.12l2.42-.91a11.05,11.05,0,0,0,1.49.87l.36,2.54a2,2,0,0,0,.7,1.74A2,2,0,0,0,15.16,32h1.68a2,2,0,0,0,2-.7l.36-2.54a11.05,11.05,0,0,0,1.49-.87l2.42.91A2,2,0,0,0,24.41,28.85,2,2,0,0,0,25.14,28.22L29.3,21a2,2,0,0,0-.41-2.52ZM16,22a6,6,0,1,1,6-6A6,6,0,0,1,16,22Z"/></svg>
+        <!-- Carbon SettingsAdjust — Apache-2.0 -->
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M30 8h-4.1c-.5-2.3-2.5-4-4.9-4s-4.4 1.7-4.9 4H2v2h14.1c.5 2.3 2.5 4 4.9 4s4.4-1.7 4.9-4H30V8zM21 12c-1.7 0-3-1.3-3-3s1.3-3 3-3 3 1.3 3 3S22.7 12 21 12zM2 24h4.1c.5 2.3 2.5 4 4.9 4s4.4-1.7 4.9-4H30v-2H15.9c-.5-2.3-2.5-4-4.9-4s-4.4 1.7-4.9 4H2V24zM11 20c1.7 0 3 1.3 3 3s-1.3 3-3 3-3-1.3-3-3S9.3 20 11 20z" fill="currentColor" stroke="none"/></svg>
         <span class="nav-label">ಸೆಟ್ಟಿಂಗ್‌ಗಳು</span>
       </button>
     </nav>
-    <div class="brand" aria-label="Home">
-      <!-- Carbon home 32 -->
-      <svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><path d="M16.6123,2.2138a1.01,1.01,0,0,0-1.2427,0L1,13.4194l1.2427,1.5717L4,13.6209V26a2.0041,2.0041,0,0,0,2,2H26a2.0037,2.0037,0,0,0,2-2V13.63L29.7573,15,31,13.4282ZM18,26H14V18h4Zm2,0V18a2.0023,2.0023,0,0,0-2-2H14a2.002,2.002,0,0,0-2,2v8H6V12.0615l10-7.79,10,7.8005V26Z"/></svg>
-    </div>
   </aside>
   <button type="button" id="nav-backdrop" class="nav-backdrop" aria-label="Close navigation" hidden></button>
 
   <header class="app-header">
-    <div class="header-brand">
-      <!-- Carbon home 32 — no custom brand mark in shell chrome -->
-      <svg class="header-logo" viewBox="0 0 32 32" aria-hidden="true"><path d="M16.6123,2.2138a1.01,1.01,0,0,0-1.2427,0L1,13.4194l1.2427,1.5717L4,13.6209V26a2.0041,2.0041,0,0,0,2,2H26a2.0037,2.0037,0,0,0,2-2V13.63L29.7573,15,31,13.4282ZM18,26H14V18h4Zm2,0V18a2.0023,2.0023,0,0,0-2-2H14a2.002,2.002,0,0,0-2,2v8H6V12.0615l10-7.79,10,7.8005V26Z"/></svg>
-      <div>
-        <h1 id="page-title">ಮುಖಪುಟ</h1>
-        <div class="header-date" id="header-date">ಭಾನುವಾರ · ೧೨ ನವೆಂಬರ್ ೨೦೨೬</div>
-      </div>
-    </div>
-    <div class="tools">
-      <label class="search-field" for="search">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M29,27.5859l-7.5521-7.5521a11.0177,11.0177,0,1,0-1.4141,1.4141L27.5859,29ZM4,13a9,9,0,1,1,9,9A9.01,9.01,0,0,1,4,13Z"/></svg>
-        <span class="sr">Search</span>
-        <input id="search" type="search" placeholder="ಹುಡುಕಿ · Search" autocomplete="off">
-      </label>
-      <button type="button" class="icon" id="smaller" aria-label="Decrease text size">A−</button>
-      <span id="size-value" class="size-value">100%</span>
-      <button type="button" class="icon" id="larger" aria-label="Increase text size">A+</button>
-      <button type="button" id="theme-cycle" class="theme-switch" aria-label="Switch theme">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M26,4H6A2.0025,2.0025,0,0,0,4,6V26a2.0025,2.0025,0,0,0,2,2H26a2.0025,2.0025,0,0,0,2-2V6A2.0025,2.0025,0,0,0,26,4ZM6,26,26,6V26Z"/></svg>
-      </button>
-    </div>
+    <h1 id="page-title">ಮುಖಪುಟ</h1>
+    <p class="header-date" id="header-date">
+      <span id="header-date-value">೧೨ ನವೆಂಬರ್ ೨೦೨೬</span>
+      <span aria-hidden="true"> · </span>
+      <span id="header-tithi">ಏಕಾದಶಿ</span>
+    </p>
   </header>
 
-  <div id="workspace" class="workspace">
-    <aside id="context-pane" class="context-pane" aria-label="Panchanga context">
+  <div id="workspace" class="workspace full-content">
+    <!-- Shell context pane reserved; 30:70 lives only inside Panchanga embed -->
+    <aside id="context-pane" class="context-pane" aria-label="Panchanga context" hidden>
       <div>
         <span class="context-label">ಆಯ್ದ ದಿನಾಂಕ · Selected date</span>
         <h2 id="context-date">೧೨ ನವೆಂಬರ್ ೨೦೨೬</h2>
@@ -107,15 +100,15 @@
             <p class="sample-badge">Sample data</p>
             <div class="stat-row">
               <div>
-                <div class="stat-value" id="japa-count">108</div>
+                <div class="stat-value" id="dash-japa-count">108</div>
                 <div class="stat-unit">repetitions today · ೧೦೮</div>
               </div>
               <div class="stat-unit">1 mala · goal 2</div>
             </div>
             <div class="action-row">
-              <button type="button" class="primary" id="japa-inc" aria-label="Increment japa">+1</button>
-              <button type="button" id="japa-undo" aria-label="Undo last japa count">Undo</button>
-              <button type="button" class="ghost" data-dest="nityakarma" data-child="japa">Open Japa</button>
+              <button type="button" class="cds--btn cds--btn--primary" id="dash-japa-inc" aria-label="Increment japa">+1</button>
+              <button type="button" class="cds--btn cds--btn--tertiary" id="dash-japa-undo" aria-label="Undo last japa count">Undo</button>
+              <button type="button" class="cds--btn cds--btn--ghost" data-dest="nityakarma" data-child="japa">Open Japa</button>
             </div>
             <p class="streak-line">Japa streak · <strong>5 days</strong> · best 21</p>
           </article>
@@ -182,25 +175,173 @@
 
       <!-- Panchanga embed -->
       <section id="view-panchanga" class="view panchanga-view" data-view="panchanga">
-        <iframe id="panchanga-frame" class="panchanga-frame" title="Frozen Panchanga calendar" src="../panchanga/panchanga.html?embed=1"></iframe>
+        <iframe id="panchanga-frame" class="panchanga-frame" title="Frozen Panchanga calendar" src="../panchanga/panchanga.html?embed=1&v=responsive-density"></iframe>
       </section>
 
-      <!-- Nitya Karma -->
+      <!-- Nitya Karma · Carbon tabs for child destinations -->
       <section id="view-nityakarma" class="view" data-view="nityakarma">
-        <div class="dashboard-grid">
-          <article class="panel">
-            <h3>Child destinations</h3>
-            <ul class="child-list">
-              <li class="child-item"><button type="button" class="ghost" data-child-show="sandhya">ಸಂಧ್ಯಾವಂದನೆ</button><span>Sandhyavandana</span></li>
-              <li class="child-item"><button type="button" class="ghost" data-child-show="japa">ಜಪ</button><span>Japa</span></li>
-              <li class="child-item"><button type="button" class="ghost" data-child-show="puja">ಪೂಜೆ</button><span>Pooja</span></li>
-            </ul>
-          </article>
-          <article class="panel" id="nitya-detail">
-            <h3 id="nitya-detail-title">ಸಂಧ್ಯಾವಂದನೆ</h3>
-            <p id="nitya-detail-body">Select a child destination. Reader content comes from the Android catalogue in the later build.</p>
-            <p class="sample-badge">Live feature · layout preview only</p>
-          </article>
+        <div class="nitya-tabs-shell" data-nitya-tabs>
+          <div class="cds--tabs cds--tabs--contained">
+            <div class="cds--tab-list" role="tablist" aria-label="ನಿತ್ಯಕರ್ಮ children">
+              <button type="button" class="cds--tabs__nav-link" role="tab" id="nitya-tab-sandhya" data-nitya-tab="sandhya" aria-controls="nitya-panel-sandhya" aria-selected="true" tabindex="0">ಸಂಧ್ಯಾವಂದನೆ</button>
+              <button type="button" class="cds--tabs__nav-link" role="tab" id="nitya-tab-japa" data-nitya-tab="japa" aria-controls="nitya-panel-japa" aria-selected="false" tabindex="-1">ಜಪ</button>
+              <button type="button" class="cds--tabs__nav-link" role="tab" id="nitya-tab-puja" data-nitya-tab="puja" aria-controls="nitya-panel-puja" aria-selected="false" tabindex="-1">ಪೂಜೆ</button>
+            </div>
+          </div>
+
+          <div class="cds--tab-content sandhya-panel" role="tabpanel" id="nitya-panel-sandhya" data-nitya-panel="sandhya" data-frozen="nitya-sandhya" aria-labelledby="nitya-tab-sandhya" data-sandhya-root>
+            <div class="sandhya-chrome">
+              <div class="nitya-panel-toolbar">
+                <div class="nitya-kala-actions" role="group" aria-label="Kala · morning noon evening">
+                  <button type="button" class="cds--btn cds--btn--tertiary nitya-fab" data-kala="pratah" aria-pressed="true" aria-label="ಪ್ರಾತಃ · Morning" title="ಪ್ರಾತಃ · Morning">
+                    <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M2 27h28v2H2zm14-7a4.005 4.005 0 0 1 4 4h2a6 6 0 0 0-12 0h2a4.005 4.005 0 0 1 4-4zm9 2h5v2h-5z"/><path fill="currentColor" d="M21.668 14.854h4.958v2h-4.958z" transform="rotate(-45 24.146 15.854)"/><path fill="currentColor" d="M16 4 11 9l1.41 1.41L15 7.83V15h2V7.83l2.59 2.58L21 9l-5-5z"/><path fill="currentColor" d="M6.854 13.374h2v4.958h-2z" transform="rotate(-45 7.854 15.854)"/><path fill="currentColor" d="M2 22h5v2H2z"/></svg>
+                  </button>
+                  <button type="button" class="cds--btn cds--btn--tertiary nitya-fab" data-kala="madhyahna" aria-pressed="false" aria-label="ಮಧ್ಯಾಹ್ನ · Noon" title="ಮಧ್ಯಾಹ್ನ · Noon">
+                    <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 12a4 4 0 1 1-4 4 4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6 6 6 0 0 0-6-6z"/><path fill="currentColor" d="M6.854 5.375h2v4.958h-2z" transform="rotate(-45 7.86 7.856)"/><path fill="currentColor" d="M2 15h5v2H2z"/><path fill="currentColor" d="M5.375 23.147h4.958v2H5.375z" transform="rotate(-45 7.86 24.149)"/><path fill="currentColor" d="M15 25h2v5h-2z"/><path fill="currentColor" d="M23.147 21.668h2v4.958h-2z" transform="rotate(-45 24.152 24.149)"/><path fill="currentColor" d="M25 15h5v2h-5z"/><path fill="currentColor" d="M21.668 6.854h4.958v2h-4.958z" transform="rotate(-45 24.152 7.856)"/><path fill="currentColor" d="M15 2h2v5h-2z"/></svg>
+                  </button>
+                  <button type="button" class="cds--btn cds--btn--tertiary nitya-fab" data-kala="sayam" aria-pressed="false" aria-label="ಸಾಯಂ · Evening" title="ಸಾಯಂ · Evening">
+                    <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M2 27h28v2H2z"/><path fill="currentColor" d="M16 20a4.005 4.005 0 0 1 4 4h2a6 6 0 0 0-12 0h2a4.005 4.005 0 0 1 4-4z"/><path fill="currentColor" d="M25 22h5v2h-5z"/><path fill="currentColor" d="M21.668 14.854h4.958v2h-4.958z" transform="rotate(-45 24.152 15.856)"/><path fill="currentColor" d="m19.59 9.595-2.59 2.58V4h-2v8.175l-2.59-2.58L11 11l5 5 5-5-1.41-1.405z"/><path fill="currentColor" d="M6.854 13.374h2v4.958h-2z" transform="rotate(-45 7.86 15.856)"/><path fill="currentColor" d="M2 22h5v2H2z"/></svg>
+                  </button>
+                </div>
+                <div class="nitya-day-actions" role="group" aria-label="Today · ಸಂಧ್ಯಾವಂದನೆ">
+                  <button type="button" class="cds--btn cds--btn--tertiary nitya-fab" data-day-action="skip" aria-pressed="false" aria-label="Skip today" title="Skip today">
+                    <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M5 28a1 1 0 0 1-1-1V5a1 1 0 0 1 .5-.87 1 1 0 0 1 1 0l19 11a1 1 0 0 1 0 1.74l-19 11A1 1 0 0 1 5 28M6 6.73v18.54L22 16zM28 4h2v24h-2z"/></svg>
+                  </button>
+                  <button type="button" class="cds--btn cds--btn--tertiary nitya-fab" data-day-action="complete" aria-pressed="false" aria-label="Completed for today" title="Completed for today">
+                    <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="m13 24-9-9 1.414-1.414L13 21.171 26.586 7.586 28 9z"/></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="sandhya-progress-row">
+                <h3 class="cds--heading-compact-02 sandhya-pathy" data-sandhya-pathy id="shell-sandhya-progress-label">ಆಚಮನ</h3>
+                <div class="japa-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="25" aria-labelledby="shell-sandhya-progress-label" data-sandhya-progressbar>
+                  <div class="japa-progress__bar" data-sandhya-progress style="width:25%"></div>
+                </div>
+              </div>
+              <hr class="sandhya-rule" aria-hidden="true">
+            </div>
+            <div class="sandhya-scroll">
+              <div class="sandhya-reader__main">
+                <p class="cds--form__helper-text" data-sandhya-crumb>ನಿತ್ಯಕರ್ಮ · ಸಂಧ್ಯಾವಂದನೆ · ಪ್ರಾತಃ · ಆಚಮನ</p>
+                <p class="cds--body-01 reader-body-sample" data-sandhya-body>ಓಂ ಕೇಶವಾಯ ಸ್ವಾಹಾ ।
+ಓಂ ನಾರಾಯಣಾಯ ಸ್ವಾಹಾ ।
+ಓಂ ಮಾಧವಾಯ ಸ್ವಾಹಾ ।
+
+Sample reading surface. Catalogue text binds later.</p>
+              </div>
+              <div class="sandhya-reader__nav" role="group" aria-label="Pathya navigation">
+                <button type="button" class="cds--btn cds--btn--tertiary nitya-fab sandhya-nav" data-sandhya-prev aria-label="Previous pathya" title="Previous pathya" disabled>
+                  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M10 16 20 6l1.4 1.4L12.8 16l8.6 8.6L20 26z"/></svg>
+                </button>
+                <button type="button" class="cds--btn cds--btn--tertiary nitya-fab sandhya-nav" data-sandhya-next aria-label="Next pathya" title="Next pathya">
+                  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="m22 16-10 10-1.4-1.4L19.2 16 10.6 7.4 12 6z"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="cds--tab-content" role="tabpanel" id="nitya-panel-japa" data-nitya-panel="japa" data-frozen="nitya-japa" aria-labelledby="nitya-tab-japa" data-japa-root hidden>
+            <div class="nitya-panel-toolbar japa-toolbar">
+              <div class="cds--form-item japa-toolbar__mantra">
+                <label class="cds--label cds--visually-hidden" for="shell-japa-mantra">Japa name · ಜಪ</label>
+                <div class="cds--select">
+                  <select class="cds--select-input" id="shell-japa-mantra" data-japa-mantra aria-label="Select japa">
+                    <option value="gayatri">ಗಾಯತ್ರೀ</option>
+                  </select>
+                </div>
+              </div>
+              <div class="nitya-day-actions" role="group" aria-label="Today · ಜಪ">
+                <button type="button" class="cds--btn cds--btn--tertiary nitya-fab" data-day-action="skip" aria-pressed="false" aria-label="Skip today" title="Skip today">
+                  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M5 28a1 1 0 0 1-1-1V5a1 1 0 0 1 .5-.87 1 1 0 0 1 1 0l19 11a1 1 0 0 1 0 1.74l-19 11A1 1 0 0 1 5 28M6 6.73v18.54L22 16zM28 4h2v24h-2z"/></svg>
+                </button>
+                <button type="button" class="cds--btn cds--btn--tertiary nitya-fab" data-day-action="complete" aria-pressed="false" aria-label="Completed for today" title="Completed for today">
+                  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="m13 24-9-9 1.414-1.414L13 21.171 26.586 7.586 28 9z"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="japa-layout">
+              <div class="japa-pane japa-pane--anga" data-japa-anga-tabs>
+                <div class="cds--tabs cds--tabs--contained japa-anga-tabs">
+                  <div class="cds--tab-list cds--tabs__nav" role="tablist" aria-label="ಪೂರ್ವಾಂಗ / ಉತ್ತರಾಂಗ">
+                    <button type="button" class="cds--tabs__nav-link" role="tab" id="shell-japa-tab-poorvanga" data-japa-step="poorvanga" aria-controls="shell-japa-panel-poorvanga" aria-selected="true" tabindex="0">ಪೂರ್ವಾಂಗ</button>
+                    <button type="button" class="cds--tabs__nav-link" role="tab" id="shell-japa-tab-uttaranga" data-japa-step="uttaranga" aria-controls="shell-japa-panel-uttaranga" aria-selected="false" tabindex="-1">ಉತ್ತರಾಂಗ</button>
+                  </div>
+                </div>
+                <div class="cds--tab-content japa-anga-panel" role="tabpanel" id="shell-japa-panel-poorvanga" data-japa-anga-panel="poorvanga" aria-labelledby="shell-japa-tab-poorvanga">
+                  <p class="cds--body-01" data-japa-step-body>Sankalpa and preparatory angas before the main mantra count. Sample text — catalogue binding later.</p>
+                </div>
+                <div class="cds--tab-content japa-anga-panel" role="tabpanel" id="shell-japa-panel-uttaranga" data-japa-anga-panel="uttaranga" aria-labelledby="shell-japa-tab-uttaranga" hidden>
+                  <p class="cds--body-01">Closing angas after the main count. Mark complete when the day’s japa is finished.</p>
+                </div>
+              </div>
+              <div class="japa-pane japa-pane--counter" data-japa-counter>
+                <div class="japa-pad">
+                  <div class="cds--tile japa-count-tile" data-japa-count aria-live="polite"><span class="japa-count-tile__done">01</span><span class="japa-count-tile__sep">/</span><span class="japa-count-tile__target">101</span></div>
+                  <div class="japa-pad__row">
+                    <div class="japa-pad__goals" role="group" aria-label="Goal add and reset">
+                      <button type="button" class="cds--tile cds--tile--clickable japa-goal-tile" data-japa-goal-add="11" aria-label="Add 11 to daily goal">11</button>
+                      <button type="button" class="cds--tile cds--tile--clickable japa-goal-tile" data-japa-goal-add="101" aria-label="Add 101 to daily goal">101</button>
+                      <button type="button" class="cds--tile cds--tile--clickable japa-goal-tile" data-japa-goal-add="1001" aria-label="Add 1,001 to daily goal">1,001</button>
+                      <button type="button" class="cds--tile cds--tile--clickable japa-goal-tile" data-japa-reset aria-label="Reset daily goal" title="Reset daily goal">
+                        <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M12 10H6.78A11 11 0 0 1 27 16h2A13 13 0 0 0 6 7.68V4L2 8l4 4zm10 10h5.22A11 11 0 0 1 5 16H3a13 13 0 0 0 23 8.32V28l4-4-4-4z"/></svg>
+                      </button>
+                    </div>
+                    <button type="button" class="cds--tile cds--tile--clickable japa-tap-tile" data-japa-inc aria-label="Japa +1">+</button>
+                  </div>
+                  <p class="cds--form__helper-text japa-status" data-japa-status role="status" aria-live="polite"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cds--tab-content sandhya-panel puja-panel" role="tabpanel" id="nitya-panel-puja" data-nitya-panel="puja" data-frozen="nitya-puja" aria-labelledby="nitya-tab-puja" data-puja-root hidden>
+            <div class="sandhya-chrome">
+              <div class="nitya-panel-toolbar">
+                <div class="cds--form-item japa-toolbar__mantra">
+                  <label class="cds--label cds--visually-hidden" for="shell-puja-item">ಪೂಜಾ ಕ್ರಮ</label>
+                  <div class="cds--select">
+                    <select class="cds--select-input" id="shell-puja-item" data-puja-rite aria-label="ಪೂಜಾ ಕ್ರಮ">
+                      <option value="nitya">ನಿತ್ಯ ಪೂಜೆ</option>
+                      <option value="vishnu">ವಿಷ್ಣು ಪೂಜೆ</option>
+                      <option value="ganapati">ಗಣಪತಿ ಪೂಜೆ</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="nitya-day-actions" role="group" aria-label="Today · ಪೂಜೆ">
+                  <button type="button" class="cds--btn cds--btn--tertiary nitya-fab" data-day-action="skip" aria-pressed="false" aria-label="Skip today" title="Skip today">
+                    <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M5 28a1 1 0 0 1-1-1V5a1 1 0 0 1 .5-.87 1 1 0 0 1 1 0l19 11a1 1 0 0 1 0 1.74l-19 11A1 1 0 0 1 5 28M6 6.73v18.54L22 16zM28 4h2v24h-2z"/></svg>
+                  </button>
+                  <button type="button" class="cds--btn cds--btn--tertiary nitya-fab" data-day-action="complete" aria-pressed="false" aria-label="Completed for today" title="Completed for today">
+                    <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="m13 24-9-9 1.414-1.414L13 21.171 26.586 7.586 28 9z"/></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="sandhya-progress-row">
+                <h3 class="cds--heading-compact-02 sandhya-pathy" data-puja-step id="shell-puja-progress-label">ಸಂಕಲ್ಪ</h3>
+                <div class="japa-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="25" aria-labelledby="shell-puja-progress-label" data-puja-progressbar>
+                  <div class="japa-progress__bar" data-puja-progress style="width:25%"></div>
+                </div>
+              </div>
+              <hr class="sandhya-rule" aria-hidden="true">
+            </div>
+            <div class="sandhya-scroll">
+              <div class="sandhya-reader__main">
+                <p class="cds--form__helper-text" data-puja-crumb>ನಿತ್ಯಕರ್ಮ · ಪೂಜೆ · ನಿತ್ಯ ಪೂಜೆ · ಸಂಕಲ್ಪ</p>
+                <p class="cds--body-01 reader-body-sample" data-puja-body>ಶ್ರೀಮದ್ ಭಾರತವರ್ಷೇ ಭರತಖಂಡೇ …
+ಶ್ರೀ ಶಾಲಿವಾಹನ ಶಕೇ ೧೯೪೮ ಪರಾಭವ ನಾಮ ಸಂವತ್ಸರೇ ಕಾರ್ತಿಕ ಮಾಸೇ ಶುಕ್ಲಪಕ್ಷೇ ತೃತೀಯಾಯಾಂ …
+
+Sample sankalpa. Masa / paksha / tithi bind from Panchanga later.</p>
+              </div>
+              <div class="sandhya-reader__nav" role="group" aria-label="Puja step navigation">
+                <button type="button" class="cds--btn cds--btn--tertiary nitya-fab sandhya-nav" data-puja-prev aria-label="Previous step" title="Previous step" disabled>
+                  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M10 16 20 6l1.4 1.4L12.8 16l8.6 8.6L20 26z"/></svg>
+                </button>
+                <button type="button" class="cds--btn cds--btn--tertiary nitya-fab sandhya-nav" data-puja-next aria-label="Next step" title="Next step">
+                  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="m22 16-10 10-1.4-1.4L19.2 16 10.6 7.4 12 6z"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -266,53 +407,287 @@
         </div>
       </section>
 
-      <!-- Settings -->
+      <!-- User profile · FROZEN 2026-11-12 · contract: docs/frozen-user-profile.md -->
+      <section id="view-user" class="view" data-view="user" data-frozen="user-profile">
+        <article class="panel">
+          <h3>ಬಳಕೆದಾರ · User</h3>
+          <p class="cds--form__helper-text">Encrypted on this device. Read-only until Edit · Save. Backup accordion for new-phone migrate.</p>
+          <form class="cds--form form-masonry" id="user-form" autocomplete="off">
+            <div class="user-profile-view form-masonry__wide" id="user-profile-view" data-profile-view>
+              <div class="form-masonry user-profile-grid">
+                <div class="cds--form-item"><span class="cds--label">Name · ಹೆಸರು</span><p class="cds--body-compact-01 user-profile-view__value" data-view-field="name">—</p></div>
+                <div class="cds--form-item"><span class="cds--label">Gotra · ಗೋತ್ರ</span><p class="cds--body-compact-01 user-profile-view__value" data-view-field="gotra">—</p></div>
+                <div class="cds--form-item"><span class="cds--label">Marital status · ವೈವಾಹಿಕ ಸ್ಥಿತಿ</span><p class="cds--body-compact-01 user-profile-view__value" data-view-field="marital">—</p></div>
+                <div class="cds--form-row form-masonry__wide">
+                  <div class="cds--form-item"><span class="cds--label">Rashi · ರಾಶಿ</span><p class="cds--body-compact-01 user-profile-view__value" data-view-field="rashi">—</p></div>
+                  <div class="cds--form-item"><span class="cds--label">Nakshatra · ನಕ್ಷತ್ರ</span><p class="cds--body-compact-01 user-profile-view__value" data-view-field="nakshatra">—</p></div>
+                </div>
+                <div class="cds--form-row form-masonry__wide">
+                  <div class="cds--form-item"><span class="cds--label">Veda · ವೇದ</span><p class="cds--body-compact-01 user-profile-view__value" data-view-field="veda">—</p></div>
+                  <div class="cds--form-item"><span class="cds--label">Matha / Panchanga · ಮಠ</span><p class="cds--body-compact-01 user-profile-view__value" data-view-field="matha">—</p></div>
+                </div>
+                <div class="cds--form-item form-masonry__wide"><span class="cds--label">Japa / diksha mantras · ಜಪ ದೀಕ್ಷಾ ಮಂತ್ರಗಳು</span><p class="cds--body-compact-01 user-profile-view__value" data-view-field="dikshaMantras">—</p></div>
+                <div class="cds--form-item form-masonry__wide">
+                  <span class="cds--label">Japa targets · ಜಪ ಗುರಿ</span>
+                  <div class="user-profile-view__value" data-view-japa-targets>—</div>
+                </div>
+              </div>
+            </div>
+            <fieldset class="user-profile-fields form-masonry__wide" id="user-profile-fields" hidden>
+            <div class="form-masonry user-profile-grid">
+            <div class="cds--form-item">
+              <label class="cds--label" for="user-name">Name · ಹೆಸರು</label>
+              <div class="cds--text-input-wrapper">
+                <input class="cds--text-input" type="text" name="name" id="user-name" autocomplete="name" placeholder="ಉದಾ. ರಾಮಚಂದ್ರ">
+              </div>
+            </div>
+            <div class="cds--form-item">
+              <label class="cds--label" for="user-gotra">Gotra · ಗೋತ್ರ</label>
+              <div class="cds--select">
+                <select class="cds--select-input" name="gotra" id="user-gotra">
+                  <option>ಭಾರದ್ವಾಜ</option>
+                  <option>ಕಶ್ಯಪ</option>
+                  <option>ವಸಿಷ್ಠ</option>
+                  <option>ವಿಶ್ವಾಮಿತ್ರ</option>
+                  <option>ಅತ್ರಿ</option>
+                  <option>ಗೌತಮ</option>
+                  <option>ಜಮದಗ್ನಿ</option>
+                </select>
+              </div>
+            </div>
+            <div class="cds--form-item">
+              <label class="cds--label" for="user-marital">Marital status · ವೈವಾಹಿಕ ಸ್ಥಿತಿ</label>
+              <div class="cds--select">
+                <select class="cds--select-input" name="marital" id="user-marital">
+                  <option value="married">Married · ವಿವಾಹಿತ</option>
+                  <option value="unmarried">Unmarried · ಅವಿವಾಹಿತ</option>
+                </select>
+              </div>
+            </div>
+            <div class="cds--form-row form-masonry__wide">
+              <div class="cds--form-item">
+                <label class="cds--label" for="user-rashi">Rashi · ರಾಶಿ</label>
+                <div class="cds--select">
+                  <select class="cds--select-input" name="rashi" id="user-rashi">
+                    <option>ಮೇಷ</option>
+                    <option>ವೃಷಭ</option>
+                    <option>ಮಿಥುನ</option>
+                    <option>ಕರ್ಕಾಟಕ</option>
+                    <option>ಸಿಂಹ</option>
+                    <option>ಕನ್ಯಾ</option>
+                    <option>ತುಲಾ</option>
+                    <option>ವೃಶ್ಚಿಕ</option>
+                    <option>ಧನು</option>
+                    <option>ಮಕರ</option>
+                    <option>ಕುಂಭ</option>
+                    <option>ಮೀನ</option>
+                  </select>
+                </div>
+              </div>
+              <div class="cds--form-item">
+                <label class="cds--label" for="user-nakshatra">Nakshatra · ನಕ್ಷತ್ರ</label>
+                <div class="cds--select">
+                  <select class="cds--select-input" name="nakshatra" id="user-nakshatra">
+                    <option>ಅಶ್ವಿನಿ</option>
+                    <option>ಭರಣಿ</option>
+                    <option>ಕೃತ್ತಿಕಾ</option>
+                    <option>ರೋಹಿಣಿ</option>
+                    <option>ಮೃಗಶಿರ</option>
+                    <option>ಆರ್ದ್ರಾ</option>
+                    <option>ಪುನರ್ವಸು</option>
+                    <option>ಪುಷ್ಯ</option>
+                    <option>ಆಶ್ಲೇಷಾ</option>
+                    <option>ಮಘಾ</option>
+                    <option>ಪೂರ್ವ ಫಲ್ಗುಣಿ</option>
+                    <option>ಉತ್ತರ ಫಲ್ಗುಣಿ</option>
+                    <option>ಹಸ್ತ</option>
+                    <option>ಚಿತ್ರಾ</option>
+                    <option>ಸ್ವಾತಿ</option>
+                    <option>ವಿಶಾಖಾ</option>
+                    <option>ಅನುರಾಧಾ</option>
+                    <option>ಜ್ಯೇಷ್ಠ</option>
+                    <option>ಮೂಲ</option>
+                    <option>ಪೂರ್ವಾಷಾಢಾ</option>
+                    <option>ಉತ್ತರಾಷಾಢಾ</option>
+                    <option>ಶ್ರವಣ</option>
+                    <option>ಧನಿಷ್ಠಾ</option>
+                    <option>ಶತಭಿಷಾ</option>
+                    <option>ಪೂರ್ವ ಭಾದ್ರಪದಾ</option>
+                    <option>ಉತ್ತರ ಭಾದ್ರಪದಾ</option>
+                    <option>ರೇವತಿ</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="cds--form-row form-masonry__wide">
+              <div class="cds--form-item">
+                <label class="cds--label" for="user-veda">Veda · ವೇದ</label>
+                <div class="cds--select">
+                  <select class="cds--select-input" name="veda" id="user-veda">
+                    <option>Rigveda — Ashvalayana</option>
+                    <option>Krishna Yajurveda — Taittiriya</option>
+                  </select>
+                </div>
+              </div>
+              <div class="cds--form-item">
+                <label class="cds--label" for="user-matha">Matha / Panchanga · ಮಠ</label>
+                <div class="cds--select">
+                  <select class="cds--select-input" name="matha" id="user-matha">
+                    <option>Sri Raghavendra Swamy Matha</option>
+                    <option>Sri Uttaradi Matha</option>
+                    <option>Palimaru</option>
+                    <option>Adamaru</option>
+                    <option>Krishnapura</option>
+                    <option>Puttige</option>
+                    <option>Shirur</option>
+                    <option>Sodhe</option>
+                    <option>Kaniyooru</option>
+                    <option>Pejavara</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="cds--form-item form-masonry__wide">
+              <div class="cds--list-box__wrapper cds--list-box__wrapper--fluid cds--multi-select__wrapper" data-fluid-multiselect="diksha">
+                <label class="cds--label" id="user-diksha-label" for="user-diksha-field">Japa / diksha mantras · ಜಪ ದೀಕ್ಷಾ ಮಂತ್ರಗಳು</label>
+                <div class="cds--multi-select cds--list-box" data-fluid-box>
+                  <div
+                    class="cds--list-box__field"
+                    id="user-diksha-field"
+                    role="combobox"
+                    tabindex="0"
+                    aria-expanded="false"
+                    aria-haspopup="listbox"
+                    aria-controls="user-diksha-menu"
+                    aria-labelledby="user-diksha-label"
+                    data-fluid-trigger
+                  >
+                    <span class="cds--list-box__label" data-fluid-placeholder>Choose mantras for japa</span>
+                    <div class="cds--list-box__selection cds--tag cds--tag--filter cds--tag--high-contrast" data-fluid-count hidden>
+                      <span data-fluid-count-value>0</span>
+                      <span class="cds--visually-hidden">items selected</span>
+                    </div>
+                    <div class="cds--list-box__menu-icon" aria-hidden="true">
+                      <svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="16" height="16" viewBox="0 0 16 16"><path d="M8 11L3 6l.7-.7L8 9.6l4.3-4.3.7.7z"></path></svg>
+                    </div>
+                  </div>
+                  <ul class="cds--list-box__menu" id="user-diksha-menu" role="listbox" aria-multiselectable="true" aria-labelledby="user-diksha-label" data-fluid-menu hidden>
+                    <li class="cds--list-box__menu-item" role="option" data-value="gayatri"><div class="cds--list-box__menu-item__option"><div class="cds--form-item cds--checkbox-wrapper"><input type="checkbox" class="cds--checkbox" id="diksha-gayatri" name="dikshaMantras" value="gayatri"><label class="cds--checkbox__label" for="diksha-gayatri"><span class="cds--checkbox__label-text">ಗಾಯತ್ರೀ · Gayatri</span></label></div></div></li>
+                    <li class="cds--list-box__menu-item" role="option" data-value="narasimha"><div class="cds--list-box__menu-item__option"><div class="cds--form-item cds--checkbox-wrapper"><input type="checkbox" class="cds--checkbox" id="diksha-narasimha" name="dikshaMantras" value="narasimha"><label class="cds--checkbox__label" for="diksha-narasimha"><span class="cds--checkbox__label-text">ನರಸಿಂಹ · Narasimha</span></label></div></div></li>
+                    <li class="cds--list-box__menu-item" role="option" data-value="rama"><div class="cds--list-box__menu-item__option"><div class="cds--form-item cds--checkbox-wrapper"><input type="checkbox" class="cds--checkbox" id="diksha-rama" name="dikshaMantras" value="rama"><label class="cds--checkbox__label" for="diksha-rama"><span class="cds--checkbox__label-text">ರಾಮ · Rama</span></label></div></div></li>
+                    <li class="cds--list-box__menu-item" role="option" data-value="krishna"><div class="cds--list-box__menu-item__option"><div class="cds--form-item cds--checkbox-wrapper"><input type="checkbox" class="cds--checkbox" id="diksha-krishna" name="dikshaMantras" value="krishna"><label class="cds--checkbox__label" for="diksha-krishna"><span class="cds--checkbox__label-text">ಕೃಷ್ಣ · Krishna</span></label></div></div></li>
+                    <li class="cds--list-box__menu-item" role="option" data-value="hanuman"><div class="cds--list-box__menu-item__option"><div class="cds--form-item cds--checkbox-wrapper"><input type="checkbox" class="cds--checkbox" id="diksha-hanuman" name="dikshaMantras" value="hanuman"><label class="cds--checkbox__label" for="diksha-hanuman"><span class="cds--checkbox__label-text">ಹನುಮಾನ್ · Hanuman</span></label></div></div></li>
+                    <li class="cds--list-box__menu-item" role="option" data-value="mrityunjaya"><div class="cds--list-box__menu-item__option"><div class="cds--form-item cds--checkbox-wrapper"><input type="checkbox" class="cds--checkbox" id="diksha-mrityunjaya" name="dikshaMantras" value="mrityunjaya"><label class="cds--checkbox__label" for="diksha-mrityunjaya"><span class="cds--checkbox__label-text">ಮೃತ್ಯುಂಜಯ · Mrityunjaya</span></label></div></div></li>
+                    <li class="cds--list-box__menu-item" role="option" data-value="venkatesha"><div class="cds--list-box__menu-item__option"><div class="cds--form-item cds--checkbox-wrapper"><input type="checkbox" class="cds--checkbox" id="diksha-venkatesha" name="dikshaMantras" value="venkatesha"><label class="cds--checkbox__label" for="diksha-venkatesha"><span class="cds--checkbox__label-text">ವೆಂಕಟೇಶ · Venkatesha</span></label></div></div></li>
+                    <li class="cds--list-box__menu-item" role="option" data-value="raghavendra"><div class="cds--list-box__menu-item__option"><div class="cds--form-item cds--checkbox-wrapper"><input type="checkbox" class="cds--checkbox" id="diksha-raghavendra" name="dikshaMantras" value="raghavendra"><label class="cds--checkbox__label" for="diksha-raghavendra"><span class="cds--checkbox__label-text">ರಾಘವೇಂದ್ರ · Raghavendra</span></label></div></div></li>
+                    <li class="cds--list-box__menu-item" role="option" data-value="sudarshana"><div class="cds--list-box__menu-item__option"><div class="cds--form-item cds--checkbox-wrapper"><input type="checkbox" class="cds--checkbox" id="diksha-sudarshana" name="dikshaMantras" value="sudarshana"><label class="cds--checkbox__label" for="diksha-sudarshana"><span class="cds--checkbox__label-text">ಸುದರ್ಶನ · Sudarshana</span></label></div></div></li>
+                    <li class="cds--list-box__menu-item" role="option" data-value="hayagriva"><div class="cds--list-box__menu-item__option"><div class="cds--form-item cds--checkbox-wrapper"><input type="checkbox" class="cds--checkbox" id="diksha-hayagriva" name="dikshaMantras" value="hayagriva"><label class="cds--checkbox__label" for="diksha-hayagriva"><span class="cds--checkbox__label-text">ಹಯಗ್ರೀವ · Hayagriva</span></label></div></div></li>
+                  </ul>
+                </div>
+                <div class="cds--form__helper-text" id="user-diksha-help">Fluid multi-select · selected mantras unlock japa</div>
+              </div>
+            </div>
+            <div class="cds--form-item form-masonry__wide" data-japa-targets-block>
+              <span class="cds--label" id="user-japa-targets-label">Japa targets · ಜಪ ಗುರಿ</span>
+              <div class="cds--data-table-container">
+                <table class="cds--data-table cds--data-table--sm" aria-labelledby="user-japa-targets-label">
+                  <thead>
+                    <tr>
+                      <th scope="col">Japa · ಜಪ</th>
+                      <th scope="col">Daily · ದೈನಂದಿನ</th>
+                      <th scope="col">Major · ಸಂಚಿತ</th>
+                    </tr>
+                  </thead>
+                  <tbody data-japa-targets-body></tbody>
+                </table>
+              </div>
+              <div class="cds--form__helper-text">Daily: 11 · 101 · 1,001 · 5,001 · Major: 5,001 · 10,001 · 50,001 · 1,00,001 · 10,00,001</div>
+            </div>
+            </div>
+            </fieldset>
+            <div class="cds--btn-set form-masonry__wide user-profile-actions" role="group" aria-label="Profile edit actions">
+              <button type="button" class="cds--btn cds--btn--tertiary" id="user-edit-btn">Edit</button>
+              <button type="button" class="cds--btn cds--btn--primary" id="user-save-btn" hidden>Save</button>
+              <button type="button" class="cds--btn cds--btn--ghost" id="user-cancel-btn" hidden>Cancel</button>
+            </div>
+          </form>
+
+          <ul class="cds--accordion user-vault" data-accordion>
+            <li class="cds--accordion__item" data-accordion-item>
+              <button type="button" class="cds--accordion__heading" id="user-vault-heading" aria-expanded="false" aria-controls="user-vault-panel" data-accordion-heading>
+                <svg class="cds--accordion__arrow" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M11 8 6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z" fill="currentColor"/></svg>
+                <div class="cds--accordion__title">Backup · Restore</div>
+              </button>
+              <div id="user-vault-panel" class="cds--accordion__wrapper" role="region" aria-labelledby="user-vault-heading" data-accordion-panel hidden>
+                <div class="cds--accordion__content">
+                  <p class="cds--form__helper-text">Passphrase protects the portable file. Local copy stays AES-GCM encrypted on device.</p>
+                  <form class="cds--form" id="user-vault-form" autocomplete="off" onsubmit="return false;">
+                    <div class="cds--form-item">
+                      <label class="cds--label" for="user-backup-passphrase">Backup passphrase · ಬ್ಯಾಕಪ್ ಪಾಸ್‌ಫ್ರೇಸ್</label>
+                      <div class="cds--text-input-wrapper">
+                        <input class="cds--text-input" type="password" id="user-backup-passphrase" name="passphrase" autocomplete="new-password" minlength="4" placeholder="Min 4 characters">
+                      </div>
+                    </div>
+                  </form>
+                  <div class="cds--btn-set user-vault-actions">
+                    <button type="button" class="cds--btn cds--btn--primary" id="user-backup-btn">Create backup file</button>
+                    <button type="button" class="cds--btn cds--btn--ghost" id="user-restore-btn">Restore from file</button>
+                    <input type="file" id="user-restore-file" accept=".mnbackup,application/json" hidden>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <p class="user-vault-status" id="user-vault-status" role="status" aria-live="polite"></p>
+        </article>
+      </section>
+
+      <!-- Settings · appearance only -->
       <section id="view-settings" class="view" data-view="settings">
         <article class="panel">
           <h3>ಸೆಟ್ಟಿಂಗ್‌ಗಳು · Settings</h3>
-          <form class="settings-form" id="settings-form">
-            <label>
-              Appearance · ಪ್ರದರ್ಶನ
-              <select id="theme-select" name="theme">
-                <option value="g100">Gray 100 (default)</option>
-                <option value="g90">Gray 90</option>
-                <option value="g10">Gray 10</option>
-                <option value="white">White</option>
-              </select>
-            </label>
-            <label>
-              Text size · ಅಕ್ಷರ ಗಾತ್ರ <span id="settings-scale-label">100%</span>
+          <form class="cds--form" id="settings-form">
+            <fieldset class="settings-theme">
+              <legend>Appearance · Light / Dark</legend>
+              <div class="cds--content-switcher" role="group" aria-label="Light or dark theme">
+                <button type="button" id="theme-dark" aria-pressed="true">Dark · ಗಾಢ</button>
+                <button type="button" id="theme-light" aria-pressed="false">Light · ತಿಳಿ</button>
+              </div>
+              <div class="cds--form-item">
+                <label class="cds--label" for="theme-select">Carbon theme</label>
+                <div class="cds--select">
+                  <select class="cds--select-input" id="theme-select" name="theme">
+                    <option value="g100">Gray 100 (dark)</option>
+                    <option value="g90">Gray 90 (dark)</option>
+                    <option value="g10">Gray 10 (light)</option>
+                    <option value="white">White (light)</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+            <div class="cds--form-item">
+              <label class="cds--label" for="settings-lang">Language · ಭಾಷೆ</label>
+              <div class="cds--select">
+                <select class="cds--select-input" id="settings-lang" name="lang">
+                  <option value="ಕನ್ನಡ">ಕನ್ನಡ</option>
+                  <option value="संस्कृतम्">संस्कृतम्</option>
+                  <option value="English">English</option>
+                </select>
+              </div>
+            </div>
+            <div class="cds--form-item">
+              <label class="cds--label" for="settings-scale">Text size · ಅಕ್ಷರ ಗಾತ್ರ <span id="settings-scale-label">100%</span></label>
               <input id="settings-scale" type="range" min="1" max="1.5" step="0.25" value="1">
-            </label>
-            <label>
-              Veda · ವೇದ
-              <select name="veda">
-                <option>Rigveda — Ashvalayana</option>
-                <option>Krishna Yajurveda — Taittiriya</option>
-              </select>
-            </label>
-            <label>
-              Matha / Panchanga tradition · ಮಠ
-              <select name="matha">
-                <option>Sri Raghavendra Swamy Matha</option>
-                <option>Sri Uttaradi Matha</option>
-                <option>Palimaru</option>
-                <option>Adamaru</option>
-                <option>Krishnapura</option>
-                <option>Puttige</option>
-                <option>Shirur</option>
-                <option>Sodhe</option>
-                <option>Kaniyooru</option>
-                <option>Pejavara</option>
-              </select>
-            </label>
+            </div>
           </form>
-          <p class="sample-badge">PaperDesk scheduler, todo, notes, projects, Gita, and tools are out of this shell</p>
+          <p class="cds--form__helper-text">User profile (name, gotra, tradition, diksha) is frozen under ಬಳಕೆದಾರ · User.</p>
         </article>
       </section>
     </main>
   </div>
 </div>
-<script src="./shell.js"></script>
+<script src="../user-vault.js"></script>
+<script src="../japa-session.js"></script>
+<script src="./shell.js?v=puja-sandhya-layout"></script>
 </body>
 </html>

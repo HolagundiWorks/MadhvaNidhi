@@ -26,12 +26,14 @@
             android:textAppearance="@style/TextAppearance.Carbon.Body01"
             android:textColor="@color/carbon_text_secondary" />
 
-        <LinearLayout
+        <GridLayout
             android:id="@+id/hubChildren"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/carbon_spacing_05"
-            android:orientation="vertical" />
+            android:columnCount="2"
+            android:alignmentMode="alignBounds"
+            android:useDefaultMargins="false" />
 
         <LinearLayout
             android:id="@+id/hubEmptyStates"
