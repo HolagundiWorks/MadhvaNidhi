@@ -5,11 +5,9 @@ import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
+import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import androidx.fragment.app.Fragment
 import com.paperdesk.launcher.R
 import com.paperdesk.launcher.data.JapaCatalog
@@ -24,12 +22,13 @@ class JapaFragment : Fragment() {
     private val countFormat = NumberFormat.getIntegerInstance(Locale("en", "IN"))
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, state: Bundle?): View =
-        inflater.inflate(R.layout.page_japa, container, false)
+        ScreenPages.wrap(inflater.inflate(R.layout.page_japa, container, false))
 
     override fun onViewCreated(view: View, state: Bundle?) {
         PagePalette.apply(view, "japa")
+        MaterialLayouts.bind(view)
         store = JapaStore(requireContext())
-        listOf(R.id.japaTitle, R.id.japaRitualTitle, R.id.japaRitualStep, R.id.japaMantraName).forEach {
+        listOf(R.id.japaTitle, R.id.japaRitualStep).forEach {
             DeskType.apply(view.findViewById(it), DeskType.SEMIBOLD)
         }
         bindRituals(view)
@@ -54,51 +53,35 @@ class JapaFragment : Fragment() {
             selectRitual(view, COMPLETION_STEP)
         }
         view.findViewById<View>(R.id.japaReset).setOnClickListener {
-            val dialog = AlertDialog.Builder(requireContext())
+            val dialog = MaterialAlertDialogBuilder(requireContext())
                 .setTitle("ಪ್ರಸ್ತುತ ಎಣಿಕೆ ಮರುಹೊಂದಿಸಬೇಕೇ?")
                 .setMessage("ಈ ಕ್ರಿಯೆಯಿಂದ ಪ್ರಸ್ತುತ ಎಣಿಕೆ ಮಾತ್ರ ಶೂನ್ಯವಾಗುತ್ತದೆ; ದಾಖಲಿಸಿದ ಹಳೆಯ ಅವಧಿಗಳು ಉಳಿಯುತ್ತವೆ.")
                 .setNegativeButton("ರದ್ದು", null)
                 .setPositiveButton("ಮರುಹೊಂದಿಸು") { _, _ -> paint(view, store.resetCurrent()) }
                 .create()
-            dialog.setOnShowListener {
-                dialog.getButton(AlertDialog.BUTTON_POSITIVE)
-                    .setTextColor(requireContext().getColor(R.color.carbon_support_error))
-                dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
-                    .setTextColor(requireContext().getColor(R.color.white_70))
-            }
             dialog.show()
         }
         paint(view, store.state(), initial = true)
     }
 
     private fun bindRituals(v: View) {
-        val spinner = v.findViewById<Spinner>(R.id.japaRitual)
-        spinner.adapter = ArrayAdapter(
-            requireContext(),
-            R.layout.item_dropdown_selected,
-            RITUALS.map { it.first }
-        ).also { it.setDropDownViewResource(R.layout.item_dropdown) }
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) = Unit
-            override fun onItemSelected(parent: AdapterView<*>?, selected: View?, position: Int, id: Long) {
-                if (!selectingRitual) showRitual(v, position)
-            }
-        }
+        val spinner = v.findViewById<MaterialAutoCompleteTextView>(R.id.japaRitual)
+        MaterialChoices.bind(spinner, RITUALS.map { it.first }) { showRitual(v, it) }
         val prefs = requireContext().getSharedPreferences("paperdesk_japa_ui", 0)
         val initial = prefs.getInt("ritual", 0).coerceIn(RITUALS.indices)
         selectRitual(v, initial)
         v.findViewById<View>(R.id.japaRitualBack).setOnClickListener {
-            selectRitual(v, spinner.selectedItemPosition - 1)
+            selectRitual(v, MaterialChoices.position(spinner) - 1)
         }
         v.findViewById<View>(R.id.japaRitualNext).setOnClickListener {
-            selectRitual(v, spinner.selectedItemPosition + 1)
+            selectRitual(v, MaterialChoices.position(spinner) + 1)
         }
     }
 
     private fun selectRitual(v: View, requested: Int) {
         val position = requested.coerceIn(RITUALS.indices)
         selectingRitual = true
-        v.findViewById<Spinner>(R.id.japaRitual).setSelection(position)
+        MaterialChoices.select(v.findViewById(R.id.japaRitual), position)
         selectingRitual = false
         showRitual(v, position)
     }
@@ -111,9 +94,21 @@ class JapaFragment : Fragment() {
             else -> "ಜಪ  ›  ಪೂರ್ವ ಸಿದ್ಧತೆ"
         }
         v.findViewById<TextView>(R.id.japaRitualStep).text = ritual.first
-        v.findViewById<TextView>(R.id.japaRitualBody).text = ritual.second
+        v.findViewById<TextView>(R.id.japaRitualBody).apply {
+            text = ritual.second
+            DeskType.reading(this, 20f)
+        }
 
         val counting = position == JAPA_STEP
+        listOf(R.id.japaComplete, R.id.japaReset).forEach { id ->
+            v.findViewById<View>(id).visibility = if (counting) View.VISIBLE else View.GONE
+        }
+        val nextButton = v.findViewById<com.google.android.material.button.MaterialButton>(R.id.japaRitualNext)
+        nextButton.backgroundTintList = android.content.res.ColorStateList.valueOf(
+            if (counting) android.graphics.Color.TRANSPARENT else requireContext().getColor(R.color.carbon_orange))
+        nextButton.setTextColor(requireContext().getColor(if (counting) R.color.carbon_orange else R.color.carbon_background))
+        nextButton.strokeWidth = if (counting) resources.getDimensionPixelSize(R.dimen.carbon_spacing_01) / 2 else 0
+        nextButton.strokeColor = android.content.res.ColorStateList.valueOf(requireContext().getColor(R.color.carbon_border))
         v.findViewById<View>(R.id.japaCounterPane).visibility = if (counting) View.VISIBLE else View.GONE
         v.findViewById<TextView>(R.id.japaWaiting).apply {
             visibility = if (counting) View.GONE else View.VISIBLE
@@ -137,32 +132,20 @@ class JapaFragment : Fragment() {
     }
 
     private fun bindJapas(v: View) {
-        val spinner = v.findViewById<Spinner>(R.id.japaMantra)
-        selectingJapa = true
-        spinner.adapter = ArrayAdapter(
-            requireContext(),
-            R.layout.item_dropdown_selected,
-            JapaCatalog.entries.map { it.label }
-        ).also { it.setDropDownViewResource(R.layout.item_dropdown) }
-        spinner.setSelection(JapaCatalog.indexOf(store.state().mantra))
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) = Unit
-            override fun onItemSelected(parent: AdapterView<*>?, selected: View?, position: Int, id: Long) {
-                if (selectingJapa) return
-                updateSelectedMantra(v)
-                saveConfig(v)
-                paint(v, store.state())
-            }
+        val spinner = v.findViewById<MaterialAutoCompleteTextView>(R.id.japaMantra)
+        MaterialChoices.bind(spinner, JapaCatalog.entries.map { it.label }, JapaCatalog.indexOf(store.state().mantra)) {
+            updateSelectedMantra(v)
+            saveConfig(v)
+            paint(v, store.state())
         }
-        selectingJapa = false
         updateSelectedMantra(v)
     }
 
     private fun updateSelectedMantra(v: View) {
         val item = selectedJapa(v) ?: JapaCatalog.entries.first()
-        v.findViewById<TextView>(R.id.japaMantraName).text = item.mantra
+        v.findViewById<TextView>(R.id.japaMantraName).apply { text = item.mantra; DeskType.reading(this) }
         v.findViewById<TextView>(R.id.japaMantraNote).apply {
-            visibility = if (item.requiresUpadesha) View.VISIBLE else View.INVISIBLE
+            visibility = if (item.requiresUpadesha) View.VISIBLE else View.GONE
             text = if (item.requiresUpadesha) "ಗುರು ಉಪದೇಶ ಪಡೆದವರು ಮಾತ್ರ" else ""
         }
     }
@@ -173,12 +156,12 @@ class JapaFragment : Fragment() {
     }
 
     private fun selectedJapa(v: View): JapaCatalog.Entry? =
-        JapaCatalog.entries.getOrNull(v.findViewById<Spinner>(R.id.japaMantra).selectedItemPosition)
+        JapaCatalog.entries.getOrNull(MaterialChoices.position(v.findViewById(R.id.japaMantra)))
 
     private fun paint(v: View, state: JapaStore.State, initial: Boolean = false) {
         if (initial) {
             selectingJapa = true
-            v.findViewById<Spinner>(R.id.japaMantra).setSelection(JapaCatalog.indexOf(state.mantra))
+            MaterialChoices.select(v.findViewById(R.id.japaMantra), JapaCatalog.indexOf(state.mantra))
             selectingJapa = false
             updateSelectedMantra(v)
         }

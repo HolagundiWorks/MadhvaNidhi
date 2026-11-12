@@ -1,334 +1,217 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="ShapeAppearance.PaperDesk" parent="ShapeAppearance.MaterialComponents">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">0dp</item>
-    </style>
-
-    <style name="Theme.PaperDesk" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="viewInflaterClass">androidx.appcompat.app.AppCompatViewInflater</item>
-        <item name="android:windowBackground">@color/black</item>
-        <item name="android:colorBackground">@color/black</item>
-        <item name="android:textColorPrimary">@color/white</item>
-        <item name="android:textColorSecondary">@color/white</item>
-        <item name="android:textColorHint">@color/accent</item>
-        <item name="android:editTextColor">@color/white</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="colorPrimary">@color/accent</item>
-        <item name="colorPrimaryVariant">@color/accent</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="colorSecondary">@color/accent</item>
-        <item name="colorSecondaryVariant">@color/accent</item>
-        <item name="colorOnSecondary">@color/white</item>
-        <item name="colorSurface">@color/black</item>
-        <item name="colorOnSurface">@color/white</item>
-        <item name="colorOnBackground">@color/white</item>
-        <item name="colorError">@color/carbon_support_error</item>
-        <item name="colorOnError">@color/white</item>
-        <item name="colorPrimaryDark">@color/black</item>
-        <item name="colorAccent">@color/accent</item>
-        <item name="colorControlNormal">@color/white</item>
-        <item name="colorControlActivated">@color/accent</item>
-        <item name="colorControlHighlight">@color/accent</item>
-        <item name="colorButtonNormal">@color/carbon_gray_80</item>
-        <item name="rippleColor">@color/accent</item>
-        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.PaperDesk</item>
-        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.PaperDesk</item>
-        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.PaperDesk</item>
-        <item name="materialButtonStyle">@style/Desk.Button</item>
-        <item name="buttonStyle">@style/Desk.Button</item>
-        <item name="borderlessButtonStyle">@style/Desk.Link</item>
-        <item name="materialCardViewStyle">@style/Desk.MaterialCard</item>
-        <item name="checkboxStyle">@style/Desk.Check</item>
-        <item name="android:statusBarColor">@color/black</item>
-        <item name="android:navigationBarColor">@color/black</item>
-        <item name="android:colorBackgroundCacheHint">@color/black</item>
-        <item name="android:itemBackground">@color/black</item>
-        <item name="android:windowShowWallpaper">false</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowAnimationStyle">@null</item>
-        <item name="android:windowContentTransitions">false</item>
-        <item name="android:colorEdgeEffect">@color/accent</item>
-        <item name="android:textColorHighlight">@color/accent_70</item>
-        <item name="android:alertDialogTheme">@style/Theme.PaperDesk.Dialog</item>
-        <item name="alertDialogTheme">@style/Theme.PaperDesk.Dialog</item>
-        <item name="materialAlertDialogTheme">@style/Theme.PaperDesk.Dialog</item>
-    </style>
-
-    <style name="Theme.PaperDesk.Entry" parent="Theme.PaperDesk">
-        <item name="android:windowFullscreen">false</item>
+    <style name="Theme.PaperDesk" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:statusBarColor">?attr/colorSurface</item>
+        <item name="android:navigationBarColor">?attr/colorSurface</item>
+        <item name="android:windowBackground">?attr/colorSurface</item>
         <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="colorPrimary">@color/carbon_orange</item>
+        <item name="colorOnPrimary">@color/carbon_on_accent</item>
+        <item name="colorPrimaryContainer">@color/carbon_orange_container</item>
+        <item name="colorOnPrimaryContainer">@color/carbon_on_orange_container</item>
+        <item name="colorSecondary">@color/carbon_orange</item>
+        <item name="colorOnSecondary">@color/carbon_background</item>
+        <item name="colorSecondaryContainer">@color/carbon_layer_high</item>
+        <item name="colorOnSecondaryContainer">@color/carbon_orange</item>
+        <item name="colorTertiary">@color/carbon_orange</item>
+        <item name="colorOnTertiary">@color/carbon_background</item>
+        <item name="colorSurface">@color/carbon_background</item>
+        <item name="colorOnSurface">@color/carbon_text</item>
+        <item name="colorSurfaceVariant">@color/carbon_layer</item>
+        <item name="colorOnSurfaceVariant">@color/carbon_text_secondary</item>
+        <item name="colorSurfaceContainerLowest">@color/carbon_background</item>
+        <item name="colorSurfaceContainerLow">@color/carbon_layer</item>
+        <item name="colorSurfaceContainer">@color/carbon_layer</item>
+        <item name="colorSurfaceContainerHigh">@color/carbon_layer_high</item>
+        <item name="colorSurfaceContainerHighest">@color/carbon_layer_high</item>
+        <item name="colorOutline">@color/carbon_outline</item>
+        <item name="colorOutlineVariant">@color/carbon_border</item>
+        <item name="colorError">@color/carbon_error</item>
+        <item name="colorOnError">@color/carbon_background</item>
+        <item name="colorErrorContainer">@color/carbon_error_container</item>
+        <item name="colorOnErrorContainer">@color/carbon_text</item>
+        <item name="android:colorBackground">@color/carbon_background</item>
+        <item name="android:textColorPrimary">@color/carbon_text</item>
+        <item name="android:textColorSecondary">@color/carbon_text_secondary</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.MadhvaNidhi.CarbonDialog</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+        <item name="shapeAppearanceCornerExtraSmall">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+        <item name="shapeAppearanceCornerSmall">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+        <item name="shapeAppearanceCornerMedium">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+        <item name="shapeAppearanceCornerLarge">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+        <item name="shapeAppearanceCornerExtraLarge">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.MadhvaNidhi.DialogButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.MadhvaNidhi.DialogButton</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Widget.MadhvaNidhi.DialogButton</item>
+        <item name="materialButtonStyle">@style/Widget.Carbon.Button.Primary</item>
+        <item name="materialButtonOutlinedStyle">@style/Widget.Carbon.Button.Tertiary</item>
+        <item name="borderlessButtonStyle">@style/Widget.Carbon.Button.Ghost</item>
+        <item name="materialCardViewStyle">@style/Widget.Carbon.Tile</item>
+        <item name="textInputStyle">@style/Widget.Carbon.TextInput</item>
+        <item name="elevationOverlayEnabled">false</item>
     </style>
-
-    <style name="Theme.PaperDesk.Dialog" parent="Theme.AppCompat.Dialog">
-        <item name="android:windowBackground">@drawable/bg_dialog</item>
-        <item name="android:background">@color/black</item>
-        <item name="android:textColorPrimary">@color/white</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="colorAccent">@color/accent</item>
-        <item name="colorPrimary">@color/accent</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="colorSurface">@color/black</item>
-        <item name="colorOnSurface">@color/white</item>
-        <item name="android:colorBackground">@color/black</item>
-        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.PaperDesk</item>
-        <item name="buttonBarPositiveButtonStyle">@style/Desk.DialogButton.Positive</item>
-        <item name="buttonBarNegativeButtonStyle">@style/Desk.DialogButton.Negative</item>
-        <item name="buttonBarNeutralButtonStyle">@style/Desk.DialogButton.Negative</item>
-        <item name="android:windowIsFloating">true</item>
-        <item name="android:backgroundDimEnabled">true</item>
-        <item name="android:backgroundDimAmount">0.6</item>
-        <item name="android:windowMinWidthMajor">72%</item>
-        <item name="android:windowMinWidthMinor">80%</item>
+    <style name="Theme.PaperDesk.Entry" parent="Theme.PaperDesk" />
+    <style name="Theme.PaperDesk.Dialog" parent="Theme.Material3.DayNight.Dialog.Alert">
+        <item name="colorPrimary">@color/carbon_orange</item>
+        <item name="colorOnPrimary">@color/carbon_on_accent</item>
+        <item name="colorPrimaryContainer">@color/carbon_orange_container</item>
+        <item name="colorOnPrimaryContainer">@color/carbon_on_orange_container</item>
+        <item name="colorSecondary">@color/carbon_orange</item>
+        <item name="colorOnSecondary">@color/carbon_background</item>
+        <item name="colorSecondaryContainer">@color/carbon_layer_high</item>
+        <item name="colorOnSecondaryContainer">@color/carbon_orange</item>
+        <item name="colorTertiary">@color/carbon_orange</item>
+        <item name="colorOnTertiary">@color/carbon_background</item>
+        <item name="colorSurface">@color/carbon_background</item>
+        <item name="colorOnSurface">@color/carbon_text</item>
+        <item name="colorSurfaceVariant">@color/carbon_layer</item>
+        <item name="colorOnSurfaceVariant">@color/carbon_text_secondary</item>
+        <item name="colorSurfaceContainerLowest">@color/carbon_background</item>
+        <item name="colorSurfaceContainerLow">@color/carbon_layer</item>
+        <item name="colorSurfaceContainer">@color/carbon_layer</item>
+        <item name="colorSurfaceContainerHigh">@color/carbon_layer_high</item>
+        <item name="colorSurfaceContainerHighest">@color/carbon_layer_high</item>
+        <item name="colorOutline">@color/carbon_outline</item>
+        <item name="colorOutlineVariant">@color/carbon_border</item>
+        <item name="colorError">@color/carbon_error</item>
+        <item name="colorOnError">@color/carbon_background</item>
+        <item name="colorErrorContainer">@color/carbon_error_container</item>
+        <item name="colorOnErrorContainer">@color/carbon_text</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+        <item name="shapeAppearanceCornerExtraSmall">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+        <item name="shapeAppearanceCornerSmall">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+        <item name="shapeAppearanceCornerMedium">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+        <item name="shapeAppearanceCornerLarge">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+        <item name="shapeAppearanceCornerExtraLarge">@style/ShapeAppearance.MadhvaNidhi.Four</item>
     </style>
-
-    <style name="Desk.DialogButton" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
-        <item name="android:background">@color/black</item>
+    <style name="ShapeAppearance.PaperDesk" parent="ShapeAppearance.Material3.MediumComponent" />
+    <style name="Desk.DialogButton" parent="Widget.Material3.Button" />
+    <style name="Desk.DialogButton.Positive" parent="Widget.Material3.Button" />
+    <style name="Desk.DialogButton.Negative" parent="Widget.Material3.Button" />
+    <style name="Desk.MaterialCard" parent="Widget.Material3.CardView.Elevated" />
+    <style name="Desk.Check" parent="Widget.Material3.CompoundButton.CheckBox" />
+    <style name="Desk" parent="TextAppearance.Material3.BodyLarge" />
+    <style name="Desk.Seek" parent="Widget.AppCompat.SeekBar" />
+    <style name="Desk.Title" parent="TextAppearance.Material3.TitleLarge" />
+    <style name="Desk.Title.Large" parent="TextAppearance.Material3.HeadlineMedium" />
+    <style name="Desk.Clock" parent="TextAppearance.Material3.HeadlineMedium" />
+    <style name="Desk.Section" parent="TextAppearance.Material3.TitleMedium" />
+    <style name="Desk.CardTitle" parent="TextAppearance.Material3.TitleLarge" />
+    <style name="Desk.Body" parent="TextAppearance.Material3.BodyLarge" />
+    <style name="Desk.Body2" parent="TextAppearance.Material3.BodyLarge" />
+    <style name="Desk.Meta" parent="TextAppearance.Material3.LabelLarge" />
+    <style name="Desk.Tag" parent="TextAppearance.Material3.LabelLarge" />
+    <style name="Desk.Label" parent="TextAppearance.Material3.LabelLarge" />
+    <style name="Desk.TableHead" parent="TextAppearance.Material3.LabelLarge" />
+    <style name="Desk.Table" parent="TextAppearance.Material3.BodyLarge" />
+    <style name="Desk.Button" parent="Widget.Material3.Button" />
+    <style name="Desk.Button.Accent" parent="Widget.Material3.Button" />
+    <style name="Desk.Circle" parent="Widget.Material3.Button" />
+    <style name="Desk.CircleText" parent="Widget.Material3.Button" />
+    <style name="Desk.IconBtn" parent="Widget.Material3.Button" />
+    <style name="Desk.Link" parent="TextAppearance.Material3.LabelLarge" />
+    <style name="Desk.Fab" parent="Widget.Material3.Button" />
+    <style name="Desk.Field" parent="Widget.Material3.TextInputEditText.FilledBox" />
+    <style name="Desk.Key" parent="Widget.Material3.Button" />
+    <style name="Desk.Key.Op" parent="Widget.Material3.Button" />
+    <style name="Desk.Key.Accent" parent="Widget.Material3.Button" />
+    <style name="Desk.Page" parent="TextAppearance.Material3.BodyLarge" />
+    <style name="ThemeOverlay.MadhvaNidhi.AccessibleDatePicker" parent="ThemeOverlay.MadhvaNidhi.Calendar">
+        <item name="materialCalendarHeaderSelection">@style/Widget.MadhvaNidhi.DateSelection</item>
+    </style>
+    <style name="Widget.MadhvaNidhi.DateSelection" parent="Widget.Material3.MaterialCalendar.HeaderSelection">
+        <item name="android:textAppearance">@style/TextAppearance.Material3.TitleMedium</item>
+        <item name="autoSizeMinTextSize">16sp</item>
+        <item name="autoSizeMaxTextSize">20sp</item>
+    </style>
+    <style name="ShapeAppearance.MadhvaNidhi.Four" parent="ShapeAppearance.Material3.Corner.ExtraSmall">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/carbon_corner_radius</item>
+    </style>
+    <style name="ShapeAppearanceOverlay.MadhvaNidhi.Four" parent="ShapeAppearance.Material3.Corner.ExtraSmall">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/carbon_corner_radius</item>
+    </style>
+    <style name="ThemeOverlay.MadhvaNidhi.CarbonDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MadhvaNidhi.Four</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.MadhvaNidhi.DialogButton.Primary</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.MadhvaNidhi.DialogButton</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Widget.MadhvaNidhi.DialogButton</item>
+    </style>
+    <style name="Widget.MadhvaNidhi.DialogButton" parent="Widget.Material3.Button.TextButton">
+        <item name="cornerRadius">@dimen/carbon_corner_radius</item>
+    </style>
+    <style name="Widget.MadhvaNidhi.PakshaChoice" parent="Widget.Material3.Button.TextButton">
         <item name="android:minHeight">48dp</item>
-        <item name="android:textSize">18sp</item>
-    </style>
-
-    <style name="Desk.DialogButton.Positive" parent="Desk.DialogButton">
-        <item name="android:textColor">@color/accent</item>
-    </style>
-
-    <style name="Desk.DialogButton.Negative" parent="Desk.DialogButton">
-        <item name="android:textColor">@color/white_70</item>
-    </style>
-
-    <style name="Desk.MaterialCard" parent="Widget.MaterialComponents.CardView">
-        <item name="cardBackgroundColor">@color/black</item>
-        <item name="cardCornerRadius">0dp</item>
-        <item name="cardElevation">0dp</item>
-        <item name="strokeColor">@color/white</item>
-        <item name="strokeWidth">@dimen/stroke_hairline</item>
-        <item name="rippleColor">@color/accent</item>
-    </style>
-
-    <style name="Desk.Check" parent="Widget.AppCompat.CompoundButton.CheckBox">
-        <item name="android:button">@drawable/bg_checkbox</item>
-    </style>
-
-    <style name="Desk">
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
-
-    <style name="Desk.Seek" parent="Widget.AppCompat.SeekBar">
-        <item name="android:progressDrawable">@drawable/seekbar_progress</item>
-        <item name="android:thumb">@drawable/seekbar_thumb</item>
-        <item name="android:splitTrack">false</item>
-        <item name="android:paddingStart">8dp</item>
-        <item name="android:paddingEnd">8dp</item>
-        <item name="android:minHeight">@dimen/touch</item>
-        <item name="android:background">@null</item>
-    </style>
-
-    <style name="Desk.Title" parent="Desk">
-        <item name="android:textSize">@dimen/type_title</item>
-        <item name="android:fontWeight">600</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
-
-    <style name="Desk.Title.Large" parent="Desk.Title">
-        <item name="android:textSize">@dimen/type_title_lg</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
-
-    <style name="Desk.Clock" parent="Desk">
-        <item name="android:textSize">@dimen/type_clock</item>
-        <item name="android:fontWeight">600</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
-
-    <style name="Desk.Section" parent="Desk">
-        <item name="android:textSize">@dimen/type_section</item>
-        <item name="android:fontWeight">500</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
-
-    <style name="Desk.CardTitle" parent="Desk">
-        <item name="android:textSize">@dimen/type_card</item>
-        <item name="android:fontWeight">600</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
-
-    <style name="Desk.Body" parent="Desk">
-        <item name="android:textSize">@dimen/type_body</item>
-        <item name="android:fontWeight">400</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textColor">@color/white_90</item>
-    </style>
-
-    <style name="Desk.Body2" parent="Desk">
-        <item name="android:textSize">@dimen/type_body2</item>
-        <item name="android:fontWeight">400</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textColor">@color/white_70</item>
-    </style>
-
-    <style name="Desk.Meta" parent="Desk">
-        <item name="android:textSize">@dimen/type_meta</item>
-        <item name="android:fontWeight">400</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textColor">@color/white_55</item>
-    </style>
-
-    <style name="Desk.Tag" parent="Desk.Meta">
-        <item name="android:textSize">@dimen/type_meta</item>
-        <item name="android:textColor">@color/white_70</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:ellipsize">end</item>
-    </style>
-
-    <style name="Desk.Label" parent="Desk.Meta" />
-
-    <style name="Desk.TableHead" parent="Desk">
-        <item name="android:textSize">@dimen/type_table_head</item>
-        <item name="android:fontWeight">500</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textColor">@color/white_55</item>
-    </style>
-
-    <style name="Desk.Table" parent="Desk">
-        <item name="android:textSize">@dimen/type_table</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
-
-    <style name="Desk.Button" parent="Desk">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:background">@drawable/bg_btn_secondary</item>
-        <item name="android:gravity">center</item>
-        <item name="android:minHeight">@dimen/btn_h</item>
-        <item name="android:clickable">true</item>
-        <item name="android:focusable">true</item>
-        <item name="android:fontWeight">500</item>
-        <item name="android:textSize">@dimen/type_btn</item>
-        <item name="android:paddingLeft">@dimen/space_16</item>
-        <item name="android:paddingRight">@dimen/space_16</item>
-    </style>
-
-    <style name="Desk.Button.Accent" parent="Desk.Button">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:background">@drawable/bg_btn_primary</item>
-        <item name="android:fontWeight">600</item>
-        <item name="android:textStyle">normal</item>
-    </style>
-
-    <style name="Desk.Circle" parent="Widget.AppCompat.ImageButton">
-        <item name="android:layout_width">@dimen/touch</item>
-        <item name="android:layout_height">@dimen/touch</item>
-        <item name="android:background">@drawable/bg_circle</item>
-        <item name="android:clickable">true</item>
-        <item name="android:focusable">true</item>
-        <item name="android:minWidth">@dimen/touch</item>
-        <item name="android:minHeight">@dimen/touch</item>
-        <item name="android:padding">0dp</item>
-        <item name="android:cropToPadding">false</item>
-        <item name="android:scaleType">center</item>
-        <item name="android:adjustViewBounds">true</item>
-        <item name="android:tint">@color/white</item>
-        <item name="tint">@color/white</item>
-    </style>
-
-    <style name="Desk.CircleText" parent="Desk">
-        <item name="android:layout_width">@dimen/touch</item>
-        <item name="android:layout_height">@dimen/touch</item>
-        <item name="android:background">@drawable/bg_circle_fill</item>
-        <item name="android:gravity">center</item>
-        <item name="android:clickable">true</item>
-        <item name="android:focusable">true</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">@dimen/type_body2</item>
-        <item name="android:minWidth">@dimen/touch</item>
-        <item name="android:minHeight">@dimen/touch</item>
-        <item name="android:includeFontPadding">false</item>
-    </style>
-
-    <style name="Desk.IconBtn" parent="Desk">
-        <item name="android:textColor">@color/accent</item>
-        <item name="android:gravity">center</item>
-        <item name="android:minWidth">@dimen/icon_btn</item>
-        <item name="android:minHeight">@dimen/icon_btn</item>
-        <item name="android:textSize">@dimen/type_body2</item>
-        <item name="android:background">@drawable/bg_ripple</item>
-        <item name="android:clickable">true</item>
-        <item name="android:focusable">true</item>
-    </style>
-
-    <style name="Desk.Link" parent="Desk.Meta">
-        <item name="android:padding">@dimen/space_8</item>
-        <item name="android:minHeight">@dimen/touch</item>
-        <item name="android:gravity">center</item>
-        <item name="android:clickable">true</item>
-        <item name="android:focusable">true</item>
-    </style>
-
-    <style name="Desk.Fab" parent="Desk">
-        <item name="android:layout_width">@dimen/fab</item>
-        <item name="android:layout_height">@dimen/fab</item>
-        <item name="android:layout_gravity">bottom|end</item>
-        <item name="android:layout_marginRight">@dimen/space_16</item>
-        <item name="android:layout_marginBottom">@dimen/space_24</item>
-        <item name="android:background">@drawable/bg_fab</item>
-        <item name="android:gravity">center</item>
-        <item name="android:text">+</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:minWidth">@dimen/touch</item>
-        <item name="android:minHeight">@dimen/touch</item>
-        <item name="android:clickable">true</item>
-        <item name="android:focusable">true</item>
-        <item name="elevation">6dp</item>
-    </style>
-
-    <style name="Desk.Field" parent="Desk.Body">
-        <item name="android:background">@drawable/bg_input</item>
-        <item name="android:minHeight">@dimen/field_h</item>
-        <item name="android:padding">@dimen/space_12</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textColorHint">@color/accent</item>
-        <item name="android:textSize">@dimen/type_body</item>
-        <item name="android:gravity">center_vertical</item>
-    </style>
-
-    <style name="Desk.Key">
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:background">@drawable/bg_key</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textSize">@dimen/type_key</item>
-        <item name="android:minHeight">0dp</item>
         <item name="android:minWidth">0dp</item>
-        <item name="android:layout_margin">@dimen/key_gap</item>
-        <item name="android:clickable">true</item>
-        <item name="android:focusable">true</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/carbon_text</item>
+        <item name="backgroundTint">@null</item>
+        <item name="android:background">@drawable/bg_paksha_choice</item>
+        <item name="cornerRadius">0dp</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="iconPadding">8dp</item>
+        <item name="iconTint">@color/carbon_text</item>
+        <item name="rippleColor">@color/carbon_layer_high</item>
     </style>
-
-    <style name="Desk.Key.Op" parent="Desk.Key">
-        <item name="android:textColor">@color/accent</item>
-        <item name="android:background">@drawable/bg_key_op</item>
-        <item name="android:textSize">20sp</item>
+    <style name="ThemeOverlay.MadhvaNidhi.Calendar" parent="ThemeOverlay.Material3.MaterialCalendar">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MadhvaNidhi.Four</item>
+        <item name="materialCalendarHeaderConfirmButton">@style/Widget.MadhvaNidhi.DialogButton</item>
+        <item name="materialCalendarHeaderCancelButton">@style/Widget.MadhvaNidhi.CalendarCancel</item>
+        <item name="materialCalendarMonthNavigationButton">@style/Widget.MadhvaNidhi.CalendarMonth</item>
+        <item name="materialCalendarYearNavigationButton">@style/Widget.MadhvaNidhi.CalendarYearNavigation</item>
+        <item name="materialCalendarStyle">@style/Widget.MadhvaNidhi.Calendar</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.MadhvaNidhi.DialogButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.MadhvaNidhi.DialogButton</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Widget.MadhvaNidhi.DialogButton</item>
     </style>
-
-    <style name="Desk.Key.Accent" parent="Desk.Key">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:background">@drawable/bg_key_eq</item>
+    <style name="Widget.MadhvaNidhi.CalendarCancel" parent="Widget.Material3.MaterialCalendar.HeaderCancelButton">
+        <item name="cornerRadius">@dimen/carbon_corner_radius</item>
     </style>
-
-    <style name="Desk.Page">
-        <item name="android:background">@color/black</item>
-        <item name="android:paddingLeft">@dimen/page_pad_h</item>
-        <item name="android:paddingRight">@dimen/page_pad_h</item>
-        <item name="android:paddingTop">@dimen/page_pad_top</item>
-        <item name="android:paddingBottom">@dimen/page_pad_bottom</item>
+    <style name="Widget.MadhvaNidhi.CalendarMonth" parent="Widget.Material3.MaterialCalendar.MonthNavigationButton">
+        <item name="cornerRadius">@dimen/carbon_corner_radius</item>
     </style>
+    <style name="Widget.MadhvaNidhi.CalendarYearNavigation" parent="Widget.Material3.MaterialCalendar.YearNavigationButton">
+        <item name="cornerRadius">@dimen/carbon_corner_radius</item>
+    </style>
+    <style name="Widget.MadhvaNidhi.Calendar" parent="Widget.Material3.MaterialCalendar">
+        <item name="shapeAppearance">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+        <item name="dayStyle">@style/Widget.MadhvaNidhi.CalendarDay</item>
+        <item name="daySelectedStyle">@style/Widget.MadhvaNidhi.CalendarDaySelected</item>
+        <item name="dayTodayStyle">@style/Widget.MadhvaNidhi.CalendarDayToday</item>
+        <item name="dayInvalidStyle">@style/Widget.MadhvaNidhi.CalendarDayInvalid</item>
+        <item name="yearStyle">@style/Widget.MadhvaNidhi.CalendarYear</item>
+        <item name="yearSelectedStyle">@style/Widget.MadhvaNidhi.CalendarYearSelected</item>
+        <item name="yearTodayStyle">@style/Widget.MadhvaNidhi.CalendarYearToday</item>
+    </style>
+    <style name="Widget.MadhvaNidhi.CalendarDay" parent="Widget.Material3.MaterialCalendar.Day">
+        <item name="itemShapeAppearance">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+    </style>
+    <style name="Widget.MadhvaNidhi.CalendarDaySelected" parent="Widget.Material3.MaterialCalendar.Day.Selected">
+        <item name="itemShapeAppearance">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+    </style>
+    <style name="Widget.MadhvaNidhi.CalendarDayToday" parent="Widget.Material3.MaterialCalendar.Day.Today">
+        <item name="itemShapeAppearance">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+    </style>
+    <style name="Widget.MadhvaNidhi.CalendarDayInvalid" parent="Widget.Material3.MaterialCalendar.Day.Invalid">
+        <item name="itemShapeAppearance">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+    </style>
+    <style name="Widget.MadhvaNidhi.CalendarYear" parent="Widget.Material3.MaterialCalendar.Year">
+        <item name="itemShapeAppearance">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+    </style>
+    <style name="Widget.MadhvaNidhi.CalendarYearSelected" parent="Widget.Material3.MaterialCalendar.Year.Selected">
+        <item name="itemShapeAppearance">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+    </style>
+    <style name="Widget.MadhvaNidhi.CalendarYearToday" parent="Widget.Material3.MaterialCalendar.Year.Today">
+        <item name="itemShapeAppearance">@style/ShapeAppearance.MadhvaNidhi.Four</item>
+    </style>
+    <style name="Widget.MadhvaNidhi.DialogButton.Primary" parent="Widget.Carbon.Button.Primary" />
 </resources>

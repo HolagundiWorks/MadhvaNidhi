@@ -1,12 +1,11 @@
 package com.paperdesk.launcher.ui
 
-import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Spinner
+import com.google.android.material.textfield.MaterialAutoCompleteTextView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.paperdesk.launcher.R
@@ -17,30 +16,34 @@ class AayadiFragment : Fragment() {
     private val fmt = DecimalFormat("0.##")
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, state: Bundle?): View =
-        inflater.inflate(R.layout.page_aayadi, container, false)
+        ScreenPages.wrap(inflater.inflate(R.layout.page_aayadi, container, false))
 
     override fun onViewCreated(view: View, state: Bundle?) {
         PagePalette.apply(view, "aayadi")
+        MaterialLayouts.bind(view)
         listOf(R.id.aayadiTitle, R.id.aayadiResultTitle).forEach { DeskType.apply(view.findViewById(it), DeskType.SEMIBOLD) }
-        bind(view.findViewById(R.id.aayadiLengthFt), (0..500).map { it.toString() }, 30)
-        bind(view.findViewById(R.id.aayadiBreadthFt), (0..500).map { it.toString() }, 40)
+        view.findViewById<TextView>(R.id.aayadiLengthFt).text = "30"
+        view.findViewById<TextView>(R.id.aayadiBreadthFt).text = "40"
         bind(view.findViewById(R.id.aayadiLengthIn), (0..11).map { it.toString() }, 0)
         bind(view.findViewById(R.id.aayadiBreadthIn), (0..11).map { it.toString() }, 0)
-        view.findViewById<View>(R.id.aayadiCalculate).setOnClickListener { calculate(view) }
+        view.findViewById<View>(R.id.aayadiCalculate).setOnClickListener {
+            calculate(view)
+            ScreenPages.reveal(view, if (view.findViewById<View>(R.id.aayadiResults).visibility == View.VISIBLE) R.id.aayadiResults else R.id.aayadiError)
+        }
         view.findViewById<View>(R.id.aayadiInfo).setOnClickListener { showInfo() }
         calculate(view)
     }
 
     private fun showInfo() {
-        val dialog = Dialog(requireContext(), R.style.Theme_PaperDesk_Dialog)
-        dialog.setContentView(R.layout.dialog_aayadi_info)
-        dialog.findViewById<TextView>(R.id.aayadiInfoTitle)?.let { DeskType.apply(it, DeskType.SEMIBOLD) }
-        dialog.findViewById<View>(R.id.aayadiInfoClose).setOnClickListener { dialog.dismiss() }
-        DeskDialogs.show(dialog, 0.72f)
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("ಆಯಾದಿ ಮಾಹಿತಿ")
+            .setMessage(R.string.aayadi_information)
+            .setPositiveButton(android.R.string.ok, null)
+            .show()
     }
 
     private fun calculate(v: View) {
-        fun number(id: Int): Double = v.findViewById<Spinner>(id).selectedItem.toString().toDoubleOrNull() ?: 0.0
+        fun number(id: Int): Double = v.findViewById<TextView>(id).text.toString().toDoubleOrNull() ?: 0.0
         val result = runCatching {
             Aayadi.calculate(number(R.id.aayadiLengthFt), number(R.id.aayadiLengthIn), number(R.id.aayadiBreadthFt), number(R.id.aayadiBreadthIn))
         }.getOrNull()
@@ -56,10 +59,7 @@ class AayadiFragment : Fragment() {
         v.findViewById<TextView>(R.id.aayadiSummary).text = result.summary
     }
 
-    private fun bind(spinner: Spinner, values: List<String>, initial: Int) {
-        spinner.adapter = ArrayAdapter(requireContext(), R.layout.item_dropdown_selected, values).also {
-            it.setDropDownViewResource(R.layout.item_dropdown)
-        }
-        spinner.setSelection(initial.coerceIn(0, values.lastIndex))
+    private fun bind(spinner: MaterialAutoCompleteTextView, values: List<String>, initial: Int) {
+        MaterialChoices.bind(spinner, values, initial.coerceIn(0, values.lastIndex))
     }
 }

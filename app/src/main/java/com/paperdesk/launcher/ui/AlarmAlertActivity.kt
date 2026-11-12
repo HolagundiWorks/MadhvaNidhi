@@ -14,6 +14,10 @@ import com.paperdesk.launcher.R
 import com.paperdesk.launcher.alarm.AlarmScheduler
 
 class AlarmAlertActivity : AppCompatActivity() {
+    override fun attachBaseContext(newBase: android.content.Context) {
+        super.attachBaseContext(AppTextSize.wrap(newBase))
+    }
+
 
     private var ringtone: Ringtone? = null
     private var vibrator: Vibrator? = null

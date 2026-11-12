@@ -13,6 +13,7 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0.0"
+        testInstrumentationRunner = providers.gradleProperty("uiTestRunner").getOrElse("com.paperdesk.launcher.ui.ResponsiveUiInstrumentation")
     }
 
     val uploadStoreFile = providers.gradleProperty("MADHVANIDHI_UPLOAD_STORE_FILE")
@@ -69,6 +70,7 @@ dependencies {
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.fragment:fragment-ktx:1.6.2")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+    implementation("androidx.security:security-crypto:1.1.0-alpha06")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
     testImplementation("junit:junit:4.13.2")
 }

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Carbon chevron right 32 — Apache-2.0, see assets/licenses/carbon-icons.txt -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="32dp"
+    android:height="32dp"
+    android:viewportWidth="32"
+    android:viewportHeight="32">
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M22,16 L12,26 L10.6,24.6 L19.2,16 L10.6,7.4 L12,6 Z" />
+</vector>

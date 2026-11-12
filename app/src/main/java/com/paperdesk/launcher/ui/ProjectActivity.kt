@@ -63,6 +63,7 @@ class ProjectActivity : AppCompatActivity() {
     }
 
     @Deprecated("Deprecated in Java")
+    @Suppress("MissingSuperCall")
     override fun onBackPressed() {
         goBack()
     }

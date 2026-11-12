@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Carbon Design System — White theme (cds white).
+     Brand orange maps onto interactive / button-primary (frozen contract).
+     Ekadashi uses support-warning. -->
+<resources>
+    <!-- Core surfaces -->
+    <color name="carbon_background">#FFFFFF</color>
+    <color name="carbon_background_hover">#1F8D8D8D</color>
+    <color name="carbon_layer">#F4F4F4</color>
+    <color name="carbon_layer_01">#F4F4F4</color>
+    <color name="carbon_layer_02">#FFFFFF</color>
+    <color name="carbon_layer_03">#F4F4F4</color>
+    <color name="carbon_layer_high">#E0E0E0</color>
+    <color name="carbon_layer_selected">#E0E0E0</color>
+    <color name="carbon_layer_hover">#E8E8E8</color>
+    <color name="carbon_layer_active">#C6C6C6</color>
+    <color name="carbon_field">#F4F4F4</color>
+    <color name="carbon_field_02">#FFFFFF</color>
+
+    <!-- Borders -->
+    <color name="carbon_border">#C6C6C6</color>
+    <color name="carbon_border_subtle">#E0E0E0</color>
+    <color name="carbon_border_strong">#8D8D8D</color>
+    <color name="carbon_outline">#8D8D8D</color>
+    <color name="carbon_border_interactive">#BA4E00</color>
+    <color name="carbon_border_disabled">#C6C6C6</color>
+
+    <!-- Text / icon -->
+    <color name="carbon_text">#161616</color>
+    <color name="carbon_text_primary">#161616</color>
+    <color name="carbon_text_secondary">#525252</color>
+    <color name="carbon_text_helper">#6F6F6F</color>
+    <color name="carbon_text_inverse">#FFFFFF</color>
+    <color name="carbon_text_disabled">#40161616</color>
+    <color name="carbon_text_placeholder">#66161616</color>
+    <color name="carbon_text_error">#DA1E28</color>
+    <color name="carbon_text_on_color">#FFFFFF</color>
+    <color name="carbon_icon_primary">#161616</color>
+    <color name="carbon_icon_secondary">#525252</color>
+    <color name="carbon_icon_on_color">#FFFFFF</color>
+
+    <!-- Interactive / brand (orange replaces Carbon blue) -->
+    <color name="carbon_interactive">#BA4E00</color>
+    <color name="carbon_orange">#BA4E00</color>
+    <color name="carbon_button_primary">#BA4E00</color>
+    <color name="carbon_button_primary_hover">#9E4200</color>
+    <color name="carbon_button_primary_active">#8A3800</color>
+    <color name="carbon_button_tertiary">#0F62FE</color>
+    <color name="carbon_button_tertiary_hover">#0043CE</color>
+    <color name="carbon_link_primary">#BA4E00</color>
+    <color name="carbon_link_primary_hover">#8A3800</color>
+    <color name="carbon_orange_container">#E0E0E0</color>
+    <color name="carbon_on_orange_container">#161616</color>
+    <color name="carbon_on_accent">#FFFFFF</color>
+
+    <!-- Support -->
+    <color name="carbon_error">#DA1E28</color>
+    <color name="carbon_error_container">#FFF1F1</color>
+    <color name="carbon_support_error">#DA1E28</color>
+    <color name="carbon_support_success">#198038</color>
+    <color name="carbon_support_warning">#684E00</color>
+    <color name="carbon_support_info">#BA4E00</color>
+    <color name="carbon_ekadashi">#684E00</color>
+
+    <!-- Focus / overlay -->
+    <color name="carbon_focus">#0F62FE</color>
+    <color name="carbon_focus_inset">#FFFFFF</color>
+    <color name="carbon_overlay">#80000000</color>
+    <color name="carbon_shadow">#4D000000</color>
+
+    <dimen name="carbon_corner_radius">4dp</dimen>
+    <dimen name="carbon_layout_size_height_sm">32dp</dimen>
+    <dimen name="carbon_layout_size_height_md">40dp</dimen>
+    <dimen name="carbon_layout_size_height_lg">48dp</dimen>
+</resources>

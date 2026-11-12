@@ -81,8 +81,11 @@ object Sankalpa {
         val p = ProfileStore(context).active()
         val pravara = p.pravara.ifBlank { "ಪ್ರವರ ನಮೂದಿಸಿಲ್ಲ" }
         val gotra = if (p.gotra == "ತಿಳಿಸಿಲ್ಲ" || p.gotra.isBlank()) "ಗೋತ್ರ ನಮೂದಿಸಿಲ್ಲ" else "${p.gotra} ಗೋತ್ರ"
+        val rashi = if (p.rashi == "ತಿಳಿಸಿಲ್ಲ" || p.rashi.isBlank()) "ರಾಶಿ ನಮೂದಿಸಿಲ್ಲ" else "${p.rashi} ರಾಶಿ"
         val nakshatra = if (p.nakshatra == "ತಿಳಿಸಿಲ್ಲ" || p.nakshatra.isBlank()) "ನಕ್ಷತ್ರ ನಮೂದಿಸಿಲ್ಲ" else "${p.nakshatra} ನಕ್ಷತ್ರ"
-        return "ಸಾಧಕ: ${p.name}  ·  $gotra  ·  $pravara  ·  ${known(p.vedaShakha, "ವೇದ ಶಾಖೆ ನಮೂದಿಸಿಲ್ಲ")}  ·  $nakshatra"
+        val yob = if (p.yearOfBirth > 0) "ಜನನ ${p.yearOfBirth}" else "ಜನನ ವರ್ಷ ನಮೂದಿಸಿಲ್ಲ"
+        val pob = p.placeOfBirth.ifBlank { "ಜನ್ಮಸ್ಥಳ ನಮೂದಿಸಿಲ್ಲ" }
+        return "ಸಾಧಕ: ${p.name}  ·  $gotra  ·  $pravara  ·  ${known(p.vedaShakha, "ವೇದ ಶಾಖೆ ನಮೂದಿಸಿಲ್ಲ")}  ·  $rashi  ·  $nakshatra  ·  $yob  ·  $pob"
     }
 
     private fun known(value: String, fallback: String): String =

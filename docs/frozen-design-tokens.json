@@ -1,0 +1,106 @@
+{
+  "status": "frozen",
+  "date": "2026-11-12",
+  "units": {
+    "web": "CSS px",
+    "android": "dp; text in sp"
+  },
+  "shell": {
+    "railWidth": 56,
+    "drawerWidth": 224,
+    "toolbarHeight": 48,
+    "controlSize": 48,
+    "pageInset": 16,
+    "cornerRadius": 4,
+    "contextMinimumWidth": 208,
+    "contextFraction": 0.3,
+    "calendarFraction": 0.7,
+    "spacing": [
+      2,
+      4,
+      8,
+      12,
+      16,
+      24,
+      32,
+      40,
+      48,
+      64
+    ]
+  },
+  "panchanga": {
+    "columns": 5,
+    "tithiCount": 15,
+    "tileGap": 4,
+    "markerSize": 24,
+    "compactMarkerSize": 15,
+    "tileOrder": [
+      "date",
+      "weekday",
+      "tithi"
+    ],
+    "dateSizeRatio": 1.5,
+    "tithiWeight": 400,
+    "labelWeight": 400,
+    "valueWeight": 600
+  },
+  "colors": {
+    "light": {
+      "carbon_background": "#FFFFFF",
+      "carbon_layer": "#F4F4F4",
+      "carbon_layer_high": "#E0E0E0",
+      "carbon_border": "#C6C6C6",
+      "carbon_outline": "#8D8D8D",
+      "carbon_text": "#161616",
+      "carbon_text_secondary": "#525252",
+      "carbon_orange": "#BA4E00",
+      "carbon_orange_container": "#E0E0E0",
+      "carbon_on_orange_container": "#161616",
+      "carbon_error": "#DA1E28",
+      "carbon_error_container": "#FFF1F1",
+      "carbon_ekadashi": "#684E00",
+      "carbon_on_accent": "#FFFFFF"
+    },
+    "dark": {
+      "carbon_background": "#161616",
+      "carbon_layer": "#262626",
+      "carbon_layer_high": "#393939",
+      "carbon_border": "#525252",
+      "carbon_outline": "#8D8D8D",
+      "carbon_text": "#F4F4F4",
+      "carbon_text_secondary": "#C6C6C6",
+      "carbon_orange": "#FF832B",
+      "carbon_orange_container": "#5E2900",
+      "carbon_on_orange_container": "#FFD9BE",
+      "carbon_error": "#FF8389",
+      "carbon_error_container": "#750E13",
+      "carbon_ekadashi": "#F1C21B",
+      "carbon_on_accent": "#161616"
+    }
+  },
+  "icons": {
+    "theme": {
+      "component": "ColorSwitch",
+      "android": "ic_color_switch",
+      "carbon": "color-switch"
+    },
+    "panel": {
+      "component": "OpenPanelFilledLeft",
+      "android": "ic_open_panel_filled_left",
+      "carbon": "open-panel--filled--left"
+    },
+    "ekadashi": {
+      "component": "AppleDash",
+      "android": "ic_apple_dash",
+      "carbon": "apple--dash"
+    },
+    "pournima": {
+      "android": "ic_full_moon",
+      "shape": "filled-circle"
+    },
+    "amavasya": {
+      "android": "ic_new_moon",
+      "shape": "outlined-circle"
+    }
+  }
+}

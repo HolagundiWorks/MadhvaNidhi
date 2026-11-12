@@ -1,315 +1,187 @@
 package com.paperdesk.launcher.ui
 
 import android.Manifest
-import android.content.res.ColorStateList
 import android.content.Intent
-import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.view.Gravity
-import android.view.KeyEvent
+import android.view.Menu
 import android.view.View
-import android.widget.FrameLayout
-import android.widget.ImageButton
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.paperdesk.launcher.data.OsLang
-import com.paperdesk.launcher.data.SettingsStore
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.appbar.MaterialToolbar
 import com.paperdesk.launcher.DeskLock
+import com.paperdesk.launcher.DeskTheme
 import com.paperdesk.launcher.DeskWindow
 import com.paperdesk.launcher.R
 import com.paperdesk.launcher.alarm.AlarmScheduler
+import com.paperdesk.launcher.data.OsLang
+import com.paperdesk.launcher.data.SettingsStore
 
 class LauncherActivity : AppCompatActivity() {
+    override fun attachBaseContext(newBase: android.content.Context) {
+        super.attachBaseContext(AppTextSize.wrap(newBase))
+    }
 
     private lateinit var pager: ViewPager2
-    private lateinit var pagerHost: ZonePagerHost
-    private lateinit var pageNav: View
-    private lateinit var navPrev: ImageButton
-    private lateinit var pageCurrent: TextView
-    private lateinit var hariMotto: TextView
-    private lateinit var topMotto: TextView
-    private lateinit var navAction: ImageButton
-    private lateinit var navNext: ImageButton
-    private lateinit var controls: ControlPanel
-    private val langTick: () -> Unit = { bindLang() }
+    private lateinit var toolbar: MaterialToolbar
+    private lateinit var shell: FrozenShell
     private var selectorOpen = false
     private var footerAction: (() -> Unit)? = null
+    private val langTick: () -> Unit = { bindNavigation() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // The workspace page order changed during the ROM-to-app migration. Restoring
-        // framework-owned ViewPager fragments can pair an old fragment with a new footer
-        // title after an in-place update. Reader selections are already persisted by each
-        // page, so rebuild the lightweight page shell deterministically.
-        super.onCreate(null)
-        com.paperdesk.launcher.DeskTheme.apply(this)
-        val settings = com.paperdesk.launcher.data.SettingsStore(this)
-        requestedOrientation = if (settings.landscape()) {
-            ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
-        } else {
-            ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+        DeskTheme.apply(this)
+        // Stable page IDs let Android restore the selected page and its view state.
+        super.onCreate(savedInstanceState)
+        androidx.core.view.WindowCompat.setDecorFitsSystemWindows(window, false)
+        val dark = resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK == android.content.res.Configuration.UI_MODE_NIGHT_YES
+        androidx.core.view.WindowInsetsControllerCompat(window, window.decorView).apply {
+            isAppearanceLightStatusBars = !dark
+            isAppearanceLightNavigationBars = !dark
         }
-        setContentView(R.layout.activity_launcher)
-        findViewById<View>(R.id.launcherRoot).background = WovenCanvasDrawable(this, "app")
-        applyShadeChrome()
-        AlarmScheduler.rescheduleAll(this)
-
-        pagerHost = findViewById(R.id.pagerHost)
+        setContentView(R.layout.frozen_launcher)
+        toolbar = findViewById(R.id.toolbar)
+        toolbar.setTitleTextAppearance(this, R.style.TextAppearance_Carbon_Label02)
+        toolbar.setTitleTextColor(getColor(R.color.carbon_text_secondary))
         pager = findViewById(R.id.pager)
-        pager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-
+        val content = findViewById<View>(R.id.materialContent)
+        androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(content) { v, insets ->
+            val safe = insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars() or
+                androidx.core.view.WindowInsetsCompat.Type.displayCutout() or androidx.core.view.WindowInsetsCompat.Type.ime())
+            v.setPadding(safe.left, safe.top, safe.right, safe.bottom)
+            insets
+        }
+        androidx.core.view.ViewCompat.requestApplyInsets(content)
         pager.adapter = WorkspaceAdapter(this)
-        pager.offscreenPageLimit = 4
+        shell = FrozenShell(this, pager)
+        pager.offscreenPageLimit = 1
         pager.isUserInputEnabled = false
-        pager.setCurrentItem(0, false)
-        controls = ControlPanel(this)
-        controls.attach()
-        pageNav = findViewById(R.id.pageNav)
-        navPrev = findViewById(R.id.navPrev)
-        pageCurrent = findViewById(R.id.pageCurrent)
-        hariMotto = findViewById(R.id.hariMotto)
-        topMotto = findViewById(R.id.topMotto)
-        navAction = findViewById(R.id.navAction)
-        navNext = findViewById(R.id.navNext)
-        DeskWindow.wrapCutout(findViewById(R.id.launcherRoot), pagerHost, pageNav)
-        navPrev.setOnClickListener { shiftPage(-1) }
-        navNext.setOnClickListener { shiftPage(1) }
-        navAction.setOnClickListener { footerAction?.invoke() }
-        placeContentNav()
+        val count = pager.adapter!!.itemCount
+        val requested = intent?.getStringExtra("page")
+        val start = when {
+            !requested.isNullOrBlank() -> (pager.adapter as WorkspaceAdapter).indexOf(requested).takeIf { it >= 0 }
+            savedInstanceState != null -> savedInstanceState.getInt("page")
+            else -> null
+        }
+        pager.setCurrentItem((start ?: 0).coerceIn(0, count - 1), false)
+        listOf(Triple(R.id.toolbarDate, R.drawable.ic_calendar, "ದಿನಾಂಕ ಆಯ್ಕೆಮಾಡಿ"),
+            Triple(R.id.textSmaller, R.drawable.ic_text_smaller, "ಅಕ್ಷರ ಗಾತ್ರ ಕಡಿಮೆ ಮಾಡಿ"),
+            Triple(R.id.textLarger, R.drawable.ic_text_larger, "ಅಕ್ಷರ ಗಾತ್ರ ಹೆಚ್ಚಿಸಿ"),
+            Triple(R.id.themeSwitch, R.drawable.ic_color_switch, "Switch color theme")).forEachIndexed { index, (id, icon, label) ->
+            toolbar.menu.add(Menu.NONE, id, index * 2, label).apply {
+                setIcon(icon)
+                setShowAsAction(android.view.MenuItem.SHOW_AS_ACTION_ALWAYS)
+            }
+        }
+        toolbar.menu.add(Menu.NONE, R.id.textScaleLabel, 3, "Text size").apply {
+            actionView = com.google.android.material.textview.MaterialTextView(this@LauncherActivity).apply {
+                text = "${(AppTextSize.scale(this@LauncherActivity)*100).toInt()}%"
+                setTextColor(getColor(R.color.carbon_text_secondary))
+                setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX,12*resources.displayMetrics.density)
+                gravity=android.view.Gravity.CENTER
+                layoutParams=android.view.ViewGroup.LayoutParams((44*resources.displayMetrics.density).toInt(),-1)
+                contentDescription="App text size $text"
+            }
+            setShowAsAction(android.view.MenuItem.SHOW_AS_ACTION_ALWAYS)
+        }
+        val iconColor = com.google.android.material.color.MaterialColors.getColor(toolbar, com.google.android.material.R.attr.colorOnSurface)
+        for (index in 0 until toolbar.menu.size()) toolbar.menu.getItem(index).icon?.mutate()?.setTint(iconColor)
+        toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.textSmaller -> resizeText(-0.25f)
+                R.id.textLarger -> resizeText(0.25f)
+                R.id.toolbarDate -> supportFragmentManager.fragments.filterIsInstance<DeskFragment>().firstOrNull()?.showDatePicker()
+                R.id.themeSwitch -> DeskTheme.set(this, if(DeskTheme.current(this)==DeskTheme.BLACK) DeskTheme.PAPER else DeskTheme.BLACK)
+            }
+            true
+        }
         pager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
-                supportFragmentManager.fragments.filterIsInstance<ReaderFragment>().forEach { it.closeSelector() }
-                if (position != 0 && DeskLock.isLocked(this@LauncherActivity)) {
-                    pager.setCurrentItem(0, false)
-                    return
-                }
-                bindNav()
+                supportFragmentManager.fragments.forEach { it.view?.let { root -> MaterialChoices.dismiss(root) } }
+                bindNavigation()
             }
         })
-        bindLang()
-        applyLockChrome()
-        applyShadeChrome()
-        requestRuntimePerms()
-    }
-
-    private fun requestRuntimePerms() {
-        val need = mutableListOf<String>()
-        if (Build.VERSION.SDK_INT >= 33 &&
-            checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
-        ) {
-            need += Manifest.permission.POST_NOTIFICATIONS
+        bindNavigation()
+        AlarmScheduler.rescheduleAll(this)
+        if (Build.VERSION.SDK_INT >= 33 && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS), 42)
         }
-        if (need.isNotEmpty()) requestPermissions(need.toTypedArray(), 42)
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        // No special-access or broad storage permission is required by MadhvaNidhi.
+    private fun bindNavigation() {
+        if (!::pager.isInitialized) return
+        val adapter = pager.adapter as WorkspaceAdapter
+        val lang = OsLang.get(this)
+        toolbar.title = if (resources.configuration.fontScale > 1.5f) "" else OsLang.ui(adapter.pageId(pager.currentItem), lang)
+        if (::shell.isInitialized) shell.bind()
+        toolbar.menu.findItem(R.id.textSmaller)?.isEnabled = AppTextSize.scale(this) > 1f
+        toolbar.menu.findItem(R.id.textLarger)?.isEnabled = AppTextSize.scale(this) < 2f
+        toolbar.menu.findItem(R.id.toolbarDate)?.isVisible = adapter.pageId(pager.currentItem) == "desk"
+        toolbar.menu.findItem(R.id.themeSwitch)?.title = if(DeskTheme.current(this)==DeskTheme.BLACK) "Switch to light theme" else "Switch to dark theme"
+        val page = adapter.pageId(pager.currentItem)
+        findViewById<View>(R.id.contentControlsHost).visibility =
+            if (page == "desk" || page == "dashboard" || page in ShellHubFragment.RAIL_IDS) View.GONE else View.VISIBLE
+        pager.post {
+            val current = supportFragmentManager.fragments.firstOrNull { it.isResumed }?.view
+            if (current != null) ScreenPages.attachControls(current, findViewById(R.id.contentControlsHost))
+        }
+
     }
 
-    fun applyLockChrome() {
-        val locked = DeskLock.isLocked(this)
-        applyPagerGate()
-        if (locked) pager.setCurrentItem(0, false)
-        findViewById<View>(R.id.pageNav).visibility =
-            if (locked) View.GONE else View.VISIBLE
-        bindNav()
-        supportFragmentManager.fragments.filterIsInstance<DeskFragment>().forEach { it.applyLockState() }
-        applyShadeChrome()
+    private fun resizeText(delta: Float) {
+        AppTextSize.save(this, (AppTextSize.scale(this) + delta).coerceIn(1f, 2f))
+        recreate()
     }
 
-    fun setSelectorOpen(open: Boolean) {
-        selectorOpen = open
-        applyPagerGate()
-        findViewById<View>(R.id.pageNav).visibility =
-            if (DeskLock.isLocked(this)) View.GONE else View.VISIBLE
-        bindNav()
-    }
-
+    fun setSelectorOpen(open: Boolean) { selectorOpen = open; bindNavigation() }
     fun setFooterAction(description: String? = null, action: (() -> Unit)? = null) {
         footerAction = action
-        if (!::navAction.isInitialized) return
-        navAction.contentDescription = description ?: ""
-        navAction.visibility = if (action == null || selectorOpen) View.GONE else View.VISIBLE
-    }
 
-    private fun placeContentNav() {
-        if (!::pageNav.isInitialized) return
-        val lp = pageNav.layoutParams as FrameLayout.LayoutParams
-        lp.gravity = Gravity.BOTTOM
-        lp.height = FrameLayout.LayoutParams.WRAP_CONTENT
-        lp.bottomMargin = 0
-        pageNav.layoutParams = lp
     }
-
-    private fun applyPagerGate() {
-        if (::pagerHost.isInitialized) pagerHost.pageSwipeAllowed = false
-        if (::pager.isInitialized) pager.isUserInputEnabled = false
-        bindNav()
+    fun navigateTo(pageId: String) {
+        if (!::pager.isInitialized) return
+        val adapter = pager.adapter as? WorkspaceAdapter ?: return
+        val index = adapter.indexOf(pageId)
+        if (index < 0) return
+        if (pager.currentItem == index) {
+            bindNavigation()
+            return
+        }
+        pager.setCurrentItem(index, false)
+        // ViewPager2 updates currentItem synchronously for smoothScroll=false, but
+        // fragment resume/layout can lag — refresh chrome after the next frame.
+        pager.post { bindNavigation() }
     }
-
     fun goHome() {
-        if (::controls.isInitialized && controls.isOpen()) controls.close()
         supportFragmentManager.fragments.filterIsInstance<ReaderFragment>().forEach { it.closeSelector() }
-        if (!::pager.isInitialized) return
-        pager.post {
+        navigateTo("dashboard")
+        if ((pager.adapter as WorkspaceAdapter).indexOf("dashboard") < 0) {
             pager.setCurrentItem(0, false)
-            applyLockChrome()
+            bindNavigation()
         }
     }
-
-    private fun shiftPage(delta: Int) {
-        if (DeskLock.isLocked(this) || selectorOpen) return
-        if (!::pager.isInitialized) return
-        val count = (pager.adapter?.itemCount ?: 1).coerceAtLeast(1)
-        val from = pager.currentItem
-        val next = (from + delta % count + count) % count
-        if (next == from) return
-        val wrap = (delta > 0 && from == count - 1) || (delta < 0 && from == 0)
-        pager.setCurrentItem(next, !wrap)
-        bindNav()
+    fun applyLockChrome() {
+        if (DeskLock.isLocked(this@LauncherActivity)) pager.setCurrentItem(0, false)
+        bindNavigation()
     }
+    fun applyShadeChrome() = Unit
+    fun applyAlwaysOn() = DeskWindow.keepAwake(this, SettingsStore(this).alwaysOn())
 
-    private fun bindNav() {
-        if (!::navPrev.isInitialized || !::navNext.isInitialized || !::pager.isInitialized) return
-        val allow = !DeskLock.isLocked(this) && !selectorOpen
-        val count = (pager.adapter?.itemCount ?: 1).coerceAtLeast(1)
-        val i = pager.currentItem
-        val lang = OsLang.get(this)
-        val adapter = pager.adapter as? WorkspaceAdapter
-        fun title(pos: Int) = OsLang.ui(adapter?.pageId(pos) ?: "desk", lang)
-        val currentId = adapter?.pageId(i) ?: "desk"
-        val readerPage = currentId in setOf("mantras", "puja", "hadugalu")
-        val earthAccent = PagePalette.accent(this, currentId)
-        pageNav.background = SareeFooterDrawable(this, earthAccent, currentId)
-        navPrev.background = FooterMedallionDrawable(this, earthAccent)
-        navAction.background = FooterMedallionDrawable(this, earthAccent)
-        navNext.background = FooterMedallionDrawable(this, earthAccent)
-        val iconTint = ColorStateList.valueOf(getColor(R.color.white))
-        navPrev.imageTintList = iconTint
-        navAction.imageTintList = iconTint
-        navNext.imageTintList = iconTint
-        hariMotto.background = FooterMottoDrawable(this, earthAccent)
-        hariMotto.setTextColor(earthAccent)
-        footerAction = if (readerPage) {
-            { supportFragmentManager.fragments.filterIsInstance<ReaderFragment>()
-                .firstOrNull { it.isResumed }?.openSelector() }
-        } else null
-        if (::navAction.isInitialized) {
-            navAction.contentDescription = if (readerPage) OsLang.ui("select_$currentId", lang) else ""
-        }
-        val prevPos = (i - 1 + count) % count
-        val nextPos = (i + 1) % count
-        navPrev.contentDescription = "${OsLang.ui("prev", lang)}. ${title(prevPos)}"
-        navNext.contentDescription = "${OsLang.ui("next", lang)}. ${title(nextPos)}"
-        pageCurrent.visibility = View.GONE
-        hariMotto.text = title(i)
-        hariMotto.contentDescription = title(i)
-        DeskType.apply(hariMotto, DeskType.SEMIBOLD)
-        navPrev.isEnabled = allow
-        navNext.isEnabled = allow
-        navPrev.visibility = if (selectorOpen) View.INVISIBLE else View.VISIBLE
-        navNext.visibility = if (selectorOpen) View.INVISIBLE else View.VISIBLE
-        if (::navAction.isInitialized) {
-            navAction.visibility = if (!selectorOpen && footerAction != null) View.VISIBLE else View.GONE
-            navAction.isEnabled = allow && footerAction != null
-        }
-        navPrev.alpha = if (navPrev.isEnabled) 1f else 0.4f
-        navNext.alpha = if (navNext.isEnabled) 1f else 0.4f
-        navPrev.importantForAccessibility =
-            if (navPrev.isEnabled) View.IMPORTANT_FOR_ACCESSIBILITY_YES else View.IMPORTANT_FOR_ACCESSIBILITY_NO
-        navNext.importantForAccessibility =
-            if (navNext.isEnabled) View.IMPORTANT_FOR_ACCESSIBILITY_YES else View.IMPORTANT_FOR_ACCESSIBILITY_NO
-        bindMotto()
-    }
-
-    private fun bindMotto() {
-        if (!::topMotto.isInitialized) return
-        val lang = OsLang.get(this)
-        topMotto.text = OsLang.ui("hari_motto", lang)
-        topMotto.contentDescription = OsLang.ui("hari_motto", lang)
-        DeskType.apply(topMotto, DeskType.REGULAR)
-    }
-
-    fun applyShadeChrome() {
-        findViewById<View>(R.id.shadeGuard)?.visibility = View.VISIBLE
-        DeskWindow.immersive(this)
-        val on = SettingsStore(this).alwaysOn()
-        DeskWindow.keepAwake(this, on)
-    }
-
-    override fun dispatchKeyEvent(event: KeyEvent): Boolean {
-        if (event.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_BACK) {
-            if (controls.isOpen()) {
-                controls.close()
-                return true
-            }
-            if (supportFragmentManager.fragments.filterIsInstance<ReaderFragment>().any { it.closeSelector() }) {
-                return true
-            }
-        }
-        if (DeskLock.isLocked(this) && event.action == KeyEvent.ACTION_DOWN) {
-            if (event.keyCode == KeyEvent.KEYCODE_BACK) return true
-        }
-        return super.dispatchKeyEvent(event)
-    }
-
+    override fun onResume() { super.onResume(); OsLang.addListener(langTick); applyAlwaysOn(); applyLockChrome() }
+    override fun onPause() { OsLang.removeListener(langTick); super.onPause() }
+    override fun onSaveInstanceState(outState: Bundle) { outState.putInt("page", pager.currentItem); super.onSaveInstanceState(outState) }
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
-        goHome()
+        val page = intent.getStringExtra("page")
+        if (!page.isNullOrBlank()) navigateTo(page) else goHome()
     }
-
-    override fun onRestart() {
-        super.onRestart()
-        if (intent.action == Intent.ACTION_MAIN) goHome()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        OsLang.addListener(langTick)
-        applyShadeChrome()
-        applyLockChrome()
-        applyAlwaysOn()
-        placeContentNav()
-    }
-
-    override fun onPause() {
-        OsLang.removeListener(langTick)
-        super.onPause()
-    }
-
-    private fun bindLang() {
-        supportFragmentManager.fragments.filterIsInstance<DeskFragment>().forEach { it.bindLang() }
-        if (::controls.isInitialized) controls.bindLang()
-        bindNav()
-    }
-
-    fun applyAlwaysOn() {
-        val on = SettingsStore(this).alwaysOn()
-        DeskWindow.keepAwake(this, on)
-    }
-
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
-        if (hasFocus) applyShadeChrome()
-    }
-
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-        if (controls.isOpen()) {
-            controls.close()
-            return
-        }
-        val closed = supportFragmentManager.fragments.filterIsInstance<ReaderFragment>().any { it.closeSelector() }
-        if (closed) return
-        if (DeskLock.isLocked(this)) return
-        if (pager.currentItem != 0) {
-            goHome()
-        } else {
-            super.onBackPressed()
-        }
+        if (::shell.isInitialized && shell.close()) return
+        if (supportFragmentManager.fragments.filterIsInstance<ReaderFragment>().any { it.closeSelector() }) return
+        if (DeskLock.isLocked(this@LauncherActivity)) return
+        if (pager.currentItem != 0) goHome() else super.onBackPressed()
     }
 }

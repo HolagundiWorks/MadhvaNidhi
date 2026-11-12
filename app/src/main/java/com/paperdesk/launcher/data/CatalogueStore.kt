@@ -84,8 +84,17 @@ object CatalogueStore {
 
     fun groupsFor(page: String): List<CatalogueGroup> {
         val songs = setOf("dasara_padagalu", "suladhigalu", "ugabhogagalu")
-        return if (page == "hadugalu") groups.filter { it.id in songs }
-        else groups.filter { it.id !in songs }
+        return when (page) {
+            "hadugalu" -> groups.filter { it.id in songs }
+            "stotra" -> groups.filter { group ->
+                items.any { it.group == group.id && it.file.isNotBlank() && subpageFor(it) == "stotra" }
+            }
+            "suktas" -> groups.filter { group ->
+                items.any { it.group == group.id && it.file.isNotBlank() && subpageFor(it) == "suktas" }
+            }
+            "namavali" -> groups.filter { it.id == "namavalis" }
+            else -> groups.filter { it.id !in songs }
+        }
     }
 
     fun item(id: String): CatalogueItem? = byId[id]
@@ -127,8 +136,13 @@ object CatalogueStore {
     private fun subpageFor(item: CatalogueItem): String {
         val searchable = "${item.id} ${item.kn} ${item.sa} ${item.en}".lowercase()
         return when {
+            item.type.equals("namavali", true) || item.group == "namavalis" -> "namavali"
             item.group == "rigveda_suktas" || "sukta" in searchable || "सूक्त" in searchable || "ಸೂಕ್ತ" in searchable -> "suktas"
-            item.type.equals("stotra", true) || item.group == "stotras" || item.group == "sanskrit_parayana" -> "stotra"
+            item.type.equals("stotra", true) || item.group == "stotras" || item.group == "sanskrit_parayana" ||
+                item.group in setOf(
+                    "rama_raksha", "narasimha_stotras", "vishnu_sahasranama",
+                    "suprabhatams", "krishna_stotras", "ashtottara_stotras"
+                ) -> "stotra"
             else -> "mantras"
         }
     }

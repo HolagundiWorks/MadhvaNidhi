@@ -1,36 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/black"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/page_pad_h"
-    android:paddingTop="@dimen/japa_pad_top"
-    android:paddingRight="@dimen/page_pad_h"
-    android:paddingBottom="@dimen/japa_pad_bottom">
-
-    <TextView
-        android:id="@+id/nityaCrumb"
-        style="@style/Desk.Meta"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/ui_grid_4"
-        android:gravity="center_vertical"
-        android:text="ನಿತ್ಯ ಪಾರಾಯಣ  ›  ಮಾಧ್ವ ನಿತ್ಯ ಶ್ಲೋಕಗಳು"
-        android:textColor="@color/white_55"
-        android:textSize="11.2sp" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/divider" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/nityaList"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:clipToPadding="false"
-        android:overScrollMode="never"
-        android:paddingBottom="@dimen/ui_grid_2"
-        android:scrollbars="vertical" />
-</LinearLayout>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/carbon_spacing_04">
+        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="ನಿತ್ಯ ಪಾರಾಯಣ" style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu" app:boxCornerRadiusTopStart="4dp" app:boxCornerRadiusTopEnd="4dp" app:boxCornerRadiusBottomStart="4dp" app:boxCornerRadiusBottomEnd="4dp">
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@+id/nityaSection" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="none" android:maxLines="2" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textview.MaterialTextView android:id="@+id/nityaReading" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Carbon.Body02" android:lineSpacingMultiplier="1.5" android:layout_marginTop="@dimen/carbon_spacing_03" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

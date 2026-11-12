@@ -13,39 +13,24 @@ import com.paperdesk.launcher.data.NityaParayanaStore
 
 class NityaParayanaFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, state: Bundle?): View =
-        inflater.inflate(R.layout.page_nitya_parayana, container, false)
+        ScreenPages.wrap(inflater.inflate(R.layout.page_nitya_parayana, container, false))
 
     override fun onViewCreated(view: View, state: Bundle?) {
         PagePalette.apply(view, "nitya")
         val sections = NityaParayanaStore.load(requireContext())
-        view.findViewById<RecyclerView>(R.id.nityaList).apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = SectionAdapter(sections)
-            setHasFixedSize(false)
+        val prefs = requireContext().getSharedPreferences("madhvanidhi_nitya", 0)
+        val selected = prefs.getInt("section", 0).coerceIn(0, (sections.size - 1).coerceAtLeast(0))
+        fun show(index: Int) {
+            view.findViewById<TextView>(R.id.nityaReading).apply {
+                text = sections.getOrNull(index)?.body.orEmpty()
+                DeskType.reading(this)
+            }
+            prefs.edit().putInt("section", index).apply()
+            ScreenPages.first(view)
         }
-    }
-
-    private class SectionAdapter(
-        private val data: List<NityaParayanaStore.Section>
-    ) : RecyclerView.Adapter<SectionViewHolder>() {
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SectionViewHolder =
-            SectionViewHolder(
-                LayoutInflater.from(parent.context).inflate(R.layout.item_nitya_parayana, parent, false)
-            )
-
-        override fun getItemCount(): Int = data.size
-
-        override fun onBindViewHolder(holder: SectionViewHolder, position: Int) {
-            val section = data[position]
-            holder.title.text = section.title
-            holder.body.text = section.body
-            DeskType.apply(holder.title, DeskType.SEMIBOLD)
-            DeskType.apply(holder.body, DeskType.REGULAR)
+        if (sections.isNotEmpty()) {
+            MaterialChoices.bind(view.findViewById(R.id.nityaSection), sections.map { it.title }, selected) { show(it) }
+            show(selected)
         }
-    }
-
-    private class SectionViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val title: TextView = view.findViewById(R.id.nityaPageTitle)
-        val body: TextView = view.findViewById(R.id.nityaPageBody)
     }
 }

@@ -1,0 +1,51 @@
+<resources>
+    <dimen name="carbon_spacing_01">2dp</dimen>
+    <dimen name="carbon_spacing_02">4dp</dimen>
+    <dimen name="carbon_spacing_03">8dp</dimen>
+    <dimen name="carbon_spacing_04">12dp</dimen>
+    <dimen name="carbon_spacing_05">16dp</dimen>
+    <dimen name="carbon_spacing_06">24dp</dimen>
+    <dimen name="carbon_spacing_07">32dp</dimen>
+    <dimen name="carbon_spacing_08">40dp</dimen>
+    <dimen name="carbon_spacing_09">48dp</dimen>
+    <dimen name="carbon_spacing_10">64dp</dimen>
+    <style name="TextAppearance.Carbon.Label01" parent="TextAppearance.Material3.LabelSmall">
+        <item name="android:textSize">12sp</item><item name="lineHeight">16sp</item>
+        <item name="android:textStyle">normal</item><item name="android:textColor">@color/carbon_text_secondary</item>
+    </style>
+    <style name="TextAppearance.Carbon.Label02" parent="TextAppearance.Carbon.Label01">
+        <item name="android:textSize">14sp</item><item name="lineHeight">18sp</item>
+    </style>
+    <style name="TextAppearance.Carbon.Body01" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textSize">14sp</item><item name="lineHeight">20sp</item>
+        <item name="android:textColor">@color/carbon_text</item>
+    </style>
+    <style name="TextAppearance.Carbon.BodyCompact01" parent="TextAppearance.Carbon.Body01">
+        <item name="lineHeight">18sp</item>
+    </style>
+    <style name="TextAppearance.Carbon.Body02" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:textSize">16sp</item><item name="lineHeight">24sp</item>
+        <item name="android:textColor">@color/carbon_text</item>
+    </style>
+    <style name="TextAppearance.Carbon.HeadingCompact01" parent="TextAppearance.Carbon.Body02">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">22sp</item>
+    </style>
+    <style name="TextAppearance.Carbon.Heading01" parent="TextAppearance.Carbon.Body01">
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="TextAppearance.Carbon.Heading02" parent="TextAppearance.Carbon.Body02">
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="TextAppearance.Carbon.Heading03" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textSize">20sp</item><item name="lineHeight">28sp</item>
+        <item name="android:textStyle">normal</item><item name="android:textColor">@color/carbon_text</item>
+    </style>
+    <style name="TextAppearance.Carbon.Heading04" parent="TextAppearance.Carbon.Heading03">
+        <item name="android:textSize">28sp</item><item name="lineHeight">36sp</item>
+    </style>
+    <style name="TextAppearance.Carbon.Heading05" parent="TextAppearance.Carbon.Heading03">
+        <item name="android:textSize">32sp</item><item name="lineHeight">40sp</item>
+    </style>
+</resources>

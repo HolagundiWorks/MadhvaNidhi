@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="kn" data-theme="g100">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MadhvaNidhi · Carbon shell preview</title>
+<link rel="stylesheet" href="./carbon-theme.css">
+<link rel="stylesheet" href="./shell.css">
+<script src="./theme.js"></script>
+<body>
+<div id="app">
+  <aside id="side-nav" class="side-nav" aria-label="App navigation">
+    <button type="button" id="nav-toggle" class="icon" aria-expanded="false" aria-controls="nav-links" aria-label="Expand navigation">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M28,4H4A2,2,0,0,0,2,6V26a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V6A2,2,0,0,0,28,4Zm0,22H12V6H28Z"/></svg>
+    </button>
+    <nav id="nav-links" class="nav-links">
+      <button type="button" class="nav-button" data-dest="dashboard" aria-current="page" aria-label="ಮುಖಪುಟ · Dashboard">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M24,21h2v5h-2z"/><path d="M20,16h2v10h-2z"/><path d="M11,26a5.0059,5.0059,0,0,1-5-5H8a3,3,0,1,0,3-3V16a5,5,0,0,1,0,10z"/><path d="M28,2H4A2.002,2.002,0,0,0,2,4V28a2.0023,2.0023,0,0,0,2,2H28a2.0027,2.0027,0,0,0,2-2V4A2.0023,2.0023,0,0,0,28,2Zm0,9H14V4H28ZM12,4v7H4V4ZM4,28V13h24.0007L28.002,28Z"/></svg>
+        <span class="nav-label">ಮುಖಪುಟ</span>
+      </button>
+      <button type="button" class="nav-button" data-dest="panchanga" aria-label="ಪಂಚಾಂಗ · Panchanga">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M26,4h-4V2h-2v2h-8V2h-2v2H6C4.9,4,4,4.9,4,6v20c0,1.1,0.9,2,2,2h20c1.1,0,2-0.9,2-2V6C28,4.9,27.1,4,26,4z M26,26H6V12h20V26z M26,10H6V6h4v2h2V6h8v2h2V6h4V10z"/></svg>
+        <span class="nav-label">ಪಂಚಾಂಗ</span>
+      </button>
+      <button type="button" class="nav-button" data-dest="nityakarma" aria-label="ನಿತ್ಯಕರ್ಮ · Nitya Karma">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16,12a4,4,0,1,1-4,4,4.0045,4.0045,0,0,1,4-4m0-2a6,6,0,1,0,6,6,6,6,0,0,0-6-6Z"/><path d="M16,4a1,1,0,0,0-1,1v2a1,1,0,0,0,2,0V5A1,1,0,0,0,16,4Z"/><path d="M16,24a1,1,0,0,0-1,1v2a1,1,0,1,0,2,0V25A1,1,0,0,0,16,24Z"/><path d="M8.22,7.51a1,1,0,0,0-1.41,0l-1.42,1.41a1,1,0,0,0,1.42,1.42L8.22,8.93A1,1,0,0,0,8.22,7.51Z"/><path d="M26.61,22.66a1,1,0,0,0-1.41,0l-1.42,1.41a1,1,0,1,0,1.42,1.42l1.41-1.42A1,1,0,0,0,26.61,22.66Z"/><path d="M4,15H6a1,1,0,0,1,0,2H4a1,1,0,0,1,0-2Z"/><path d="M26,15h2a1,1,0,0,1,0,2H26a1,1,0,0,1,0-2Z"/><path d="M8.22,24.49l-1.41,1.41a1,1,0,1,0,1.41,1.42l1.42-1.42a1,1,0,0,0-1.42-1.41Z"/><path d="M26.61,9.34,25.2,7.93a1,1,0,0,0-1.42,1.42l1.42,1.41a1,1,0,0,0,1.41-1.42Z"/></svg>
+        <span class="nav-label">ನಿತ್ಯಕರ್ಮ</span>
+      </button>
+      <button type="button" class="nav-button" data-dest="grantha" aria-label="ಗ್ರಂಥ · Grantha">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19,10h7v2h-7z"/><path d="M19,15h7v2h-7z"/><path d="M19,20h7v2h-7z"/><path d="M6,10h7v2H6z"/><path d="M6,15h7v2H6z"/><path d="M6,20h7v2H6z"/><path d="M28,5H4A2.002,2.002,0,0,0,2,7V25a2.002,2.002,0,0,0,2,2H28a2.002,2.002,0,0,0,2-2V7A2.002,2.002,0,0,0,28,5ZM4,7H15V25H4ZM17,25V7H28V25Z"/></svg>
+        <span class="nav-label">ಗ್ರಂಥ</span>
+      </button>
+      <button type="button" class="nav-button" data-dest="sangeeta" aria-label="ಭಕ್ತಿ ಸಂಗೀತ · Bhakti Sangeeta">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M25,4H10A2.002,2.002,0,0,0,8,6V20.5563A3.9551,3.9551,0,0,0,6,20a4,4,0,1,0,4,4V12H25v8.5562A3.9545,3.9545,0,0,0,23,20a4,4,0,1,0,4,4V6A2.0023,2.0023,0,0,0,25,4ZM6,26a2,2,0,1,1,2-2A2.0023,2.0023,0,0,1,6,26ZM23,26a2,2,0,1,1,2-2A2.0027,2.0027,0,0,1,23,26ZM10,6H25v4H10Z"/></svg>
+        <span class="nav-label">ಭಕ್ತಿ ಸಂಗೀತ</span>
+      </button>
+      <button type="button" class="nav-button" data-dest="samskruti" aria-label="ಗೃಹ ಸಂಸ್ಕೃತಿ · Gruha Samskruti">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19,14a3,3,0,1,0-3-3A3,3,0,0,0,19,14Zm0-4a1,1,0,1,1-1,1A1,1,0,0,1,19,10Z"/><path d="M26,4H6A2,2,0,0,0,4,6V26a2,2,0,0,0,2,2H26a2,2,0,0,0,2-2V6A2,2,0,0,0,26,4ZM26,26H6V20l5-5,5.59,5.59a2,2,0,0,0,2.82,0L21,19l5,5ZM26,21.17l-3.59-3.59a2,2,0,0,0-2.82,0L18,19.17l-5.59-5.59a2,2,0,0,0-2.82,0L6,17.17V6H26Z"/></svg>
+        <span class="nav-label">ಗೃಹ ಸಂಸ್ಕೃತಿ</span>
+      </button>
+      <button type="button" class="nav-button" data-dest="settings" aria-label="ಸೆಟ್ಟಿಂಗ್‌ಗಳು · Settings">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M27,16.76c0-.25,0-.5,0-.76s0-.51,0-.76l1.92-1.68A2,2,0,0,0,29.3,11L25.14,4a2,2,0,0,0-.73-.63,2,2,0,0,0-1-.22,2,2,0,0,0-.67.12l-2.42.91a11.05,11.05,0,0,0-1.49-.87l-.36-2.54A2,2,0,0,0,16.84,0H15.16a2,2,0,0,0-2,.7l-.36,2.54a11.05,11.05,0,0,0-1.49.87l-2.42-.91A2,2,0,0,0,7.59,3.15,2,2,0,0,0,6.86,3.78L2.7,11a2,2,0,0,0,.41,2.52L5.07,15.24c0,.25,0,.5,0,.76s0,.51,0,.76L3.11,18.44A2,2,0,0,0,2.7,21L6.86,28a2,2,0,0,0,.73.63,2,2,0,0,0,1,.22,2,2,0,0,0,.67-.12l2.42-.91a11.05,11.05,0,0,0,1.49.87l.36,2.54a2,2,0,0,0,.7,1.74A2,2,0,0,0,15.16,32h1.68a2,2,0,0,0,2-.7l.36-2.54a11.05,11.05,0,0,0,1.49-.87l2.42.91A2,2,0,0,0,24.41,28.85,2,2,0,0,0,25.14,28.22L29.3,21a2,2,0,0,0-.41-2.52ZM16,22a6,6,0,1,1,6-6A6,6,0,0,1,16,22Z"/></svg>
+        <span class="nav-label">ಸೆಟ್ಟಿಂಗ್‌ಗಳು</span>
+      </button>
+    </nav>
+    <div class="brand" aria-label="Home">
+      <!-- Carbon home 32 -->
+      <svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><path d="M16.6123,2.2138a1.01,1.01,0,0,0-1.2427,0L1,13.4194l1.2427,1.5717L4,13.6209V26a2.0041,2.0041,0,0,0,2,2H26a2.0037,2.0037,0,0,0,2-2V13.63L29.7573,15,31,13.4282ZM18,26H14V18h4Zm2,0V18a2.0023,2.0023,0,0,0-2-2H14a2.002,2.002,0,0,0-2,2v8H6V12.0615l10-7.79,10,7.8005V26Z"/></svg>
+    </div>
+  </aside>
+  <button type="button" id="nav-backdrop" class="nav-backdrop" aria-label="Close navigation" hidden></button>
+
+  <header class="app-header">
+    <div class="header-brand">
+      <!-- Carbon home 32 — no custom brand mark in shell chrome -->
+      <svg class="header-logo" viewBox="0 0 32 32" aria-hidden="true"><path d="M16.6123,2.2138a1.01,1.01,0,0,0-1.2427,0L1,13.4194l1.2427,1.5717L4,13.6209V26a2.0041,2.0041,0,0,0,2,2H26a2.0037,2.0037,0,0,0,2-2V13.63L29.7573,15,31,13.4282ZM18,26H14V18h4Zm2,0V18a2.0023,2.0023,0,0,0-2-2H14a2.002,2.002,0,0,0-2,2v8H6V12.0615l10-7.79,10,7.8005V26Z"/></svg>
+      <div>
+        <h1 id="page-title">ಮುಖಪುಟ</h1>
+        <div class="header-date" id="header-date">ಭಾನುವಾರ · ೧೨ ನವೆಂಬರ್ ೨೦೨೬</div>
+      </div>
+    </div>
+    <div class="tools">
+      <label class="search-field" for="search">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M29,27.5859l-7.5521-7.5521a11.0177,11.0177,0,1,0-1.4141,1.4141L27.5859,29ZM4,13a9,9,0,1,1,9,9A9.01,9.01,0,0,1,4,13Z"/></svg>
+        <span class="sr">Search</span>
+        <input id="search" type="search" placeholder="ಹುಡುಕಿ · Search" autocomplete="off">
+      </label>
+      <button type="button" class="icon" id="smaller" aria-label="Decrease text size">A−</button>
+      <span id="size-value" class="size-value">100%</span>
+      <button type="button" class="icon" id="larger" aria-label="Increase text size">A+</button>
+      <button type="button" id="theme-cycle" class="theme-switch" aria-label="Switch theme">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M26,4H6A2.0025,2.0025,0,0,0,4,6V26a2.0025,2.0025,0,0,0,2,2H26a2.0025,2.0025,0,0,0,2-2V6A2.0025,2.0025,0,0,0,26,4ZM6,26,26,6V26Z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div id="workspace" class="workspace">
+    <aside id="context-pane" class="context-pane" aria-label="Panchanga context">
+      <div>
+        <span class="context-label">ಆಯ್ದ ದಿನಾಂಕ · Selected date</span>
+        <h2 id="context-date">೧೨ ನವೆಂಬರ್ ೨೦೨೬</h2>
+        <p class="context-meta"><strong id="context-tithi">ಏಕಾದಶಿ</strong> · <span id="context-weekday">ಭಾನುವಾರ</span></p>
+        <p class="context-meta">ನಕ್ಷತ್ರ · <strong id="context-nakshatra">ರೋಹಿಣಿ</strong></p>
+        <p class="context-meta ekadashi-text" id="context-observance">ಉತ್ಪನ್ನ ಏಕಾದಶಿ</p>
+      </div>
+      <button type="button" class="primary" id="open-panchanga">ಪೂರ್ಣ ಪಂಚಾಂಗ · Open calendar</button>
+      <p class="sample-badge">Sample practice data · ಮಾದರಿ ಅಭ್ಯಾಸ ದತ್ತಾಂಶ</p>
+    </aside>
+
+    <main id="primary-content" class="primary-content" aria-live="polite">
+      <!-- Dashboard -->
+      <section id="view-dashboard" class="view is-active" data-view="dashboard">
+        <div class="dashboard-grid">
+          <article class="panel wide" id="dash-date-card">
+            <p class="tile-label">ಆಯ್ದ ದಿನಾಂಕ · Selected date</p>
+            <h3 id="dash-date">ಗುರುವಾರ · ೧೨ ನವೆಂಬರ್ ೨೦೨೬</h3>
+            <p id="dash-tithi">ತೃತೀಯಾ · ಶುಕ್ಲ</p>
+            <p class="secondary" id="dash-nakshatra">ನಕ್ಷತ್ರ · ಜ್ಯೇಷ್ಠ</p>
+            <p class="observance" id="dash-observance" hidden></p>
+            <div class="action-row">
+              <button type="button" class="primary cds--btn cds--btn--primary" id="dash-open-panchanga" data-dest="panchanga">ಪೂರ್ಣ ಪಂಚಾಂಗ · Open calendar</button>
+            </div>
+            <p class="sample-badge">Live panchanga · opens desk</p>
+          </article>
+
+          <article class="panel">
+            <h3>ಜಪ · Japa</h3>
+            <p class="sample-badge">Sample data</p>
+            <div class="stat-row">
+              <div>
+                <div class="stat-value" id="japa-count">108</div>
+                <div class="stat-unit">repetitions today · ೧೦೮</div>
+              </div>
+              <div class="stat-unit">1 mala · goal 2</div>
+            </div>
+            <div class="action-row">
+              <button type="button" class="primary" id="japa-inc" aria-label="Increment japa">+1</button>
+              <button type="button" id="japa-undo" aria-label="Undo last japa count">Undo</button>
+              <button type="button" class="ghost" data-dest="nityakarma" data-child="japa">Open Japa</button>
+            </div>
+            <p class="streak-line">Japa streak · <strong>5 days</strong> · best 21</p>
+          </article>
+
+          <article class="panel">
+            <h3>ಸಂಧ್ಯಾವಂದನೆ · Sandhyavandana</h3>
+            <p class="sample-badge">Sample data</p>
+            <ul class="session-list">
+              <li class="session-item">
+                <input type="checkbox" id="sandhya-pratah" checked>
+                <label for="sandhya-pratah">ಪ್ರಾತಃ · Pratah</label>
+              </li>
+              <li class="session-item">
+                <input type="checkbox" id="sandhya-madhyahna">
+                <label for="sandhya-madhyahna">ಮಧ್ಯಾಹ್ನ · Madhyahna</label>
+              </li>
+              <li class="session-item">
+                <input type="checkbox" id="sandhya-sayam">
+                <label for="sandhya-sayam">ಸಾಯಂ · Sayam</label>
+              </li>
+            </ul>
+            <p class="streak-line">Sandhya streak · <strong>2 days</strong> · best 14</p>
+            <button type="button" class="ghost" data-dest="nityakarma" data-child="sandhya">Open Sandhyavandana</button>
+          </article>
+
+          <article class="panel wide">
+            <h3>ಸ್ತೋತ್ರ · Stotra</h3>
+            <p class="sample-badge">Sample data · opening a text does not mark complete</p>
+            <ul class="stotra-list">
+              <li class="stotra-item">
+                <input type="checkbox" id="stotra-1" checked>
+                <label for="stotra-1">ಹರಿ ವಾಯು ಸ್ತುತಿ · Hari Vayu Stuti</label>
+                <button type="button" class="ghost" data-dest="grantha" data-child="stotra">Open</button>
+              </li>
+              <li class="stotra-item">
+                <input type="checkbox" id="stotra-2">
+                <label for="stotra-2">ರಾಮ ದ್ವಾದಶ ನಾಮ · Rama Dwadasha Nama</label>
+                <button type="button" class="ghost" data-dest="grantha" data-child="stotra">Open</button>
+              </li>
+            </ul>
+            <p class="streak-line">Stotra streak · <strong>1 day</strong> · best 7</p>
+          </article>
+
+          <article class="panel wide">
+            <h3>ವಾರದ ಅವಲೋಕನ · Weekly overview</h3>
+            <p class="sample-badge">Separate streaks · not a combined score</p>
+            <div class="week-strip" role="group" aria-label="Seven-day practice overview">
+              <div class="week-day done" title="Mon complete"><span>ಸೋ</span><span>✓</span></div>
+              <div class="week-day done" title="Tue complete"><span>ಮಂ</span><span>✓</span></div>
+              <div class="week-day" title="Wed incomplete"><span>ಬು</span><span>—</span></div>
+              <div class="week-day done" title="Thu complete"><span>ಗು</span><span>✓</span></div>
+              <div class="week-day done" title="Fri complete"><span>ಶು</span><span>✓</span></div>
+              <div class="week-day" title="Sat incomplete"><span>ಶ</span><span>—</span></div>
+              <div class="week-day today" title="Sun today"><span>ಭಾ</span><span>·</span></div>
+            </div>
+            <div class="action-row">
+              <button type="button" class="primary" data-dest="grantha">Resume reading</button>
+              <button type="button" id="quick-panchanga">Open calendar</button>
+              <button type="button" class="ghost">History</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Panchanga embed -->
+      <section id="view-panchanga" class="view panchanga-view" data-view="panchanga">
+        <iframe id="panchanga-frame" class="panchanga-frame" title="Frozen Panchanga calendar" src="../panchanga/panchanga.html?embed=1"></iframe>
+      </section>
+
+      <!-- Nitya Karma -->
+      <section id="view-nityakarma" class="view" data-view="nityakarma">
+        <div class="dashboard-grid">
+          <article class="panel">
+            <h3>Child destinations</h3>
+            <ul class="child-list">
+              <li class="child-item"><button type="button" class="ghost" data-child-show="sandhya">ಸಂಧ್ಯಾವಂದನೆ</button><span>Sandhyavandana</span></li>
+              <li class="child-item"><button type="button" class="ghost" data-child-show="japa">ಜಪ</button><span>Japa</span></li>
+              <li class="child-item"><button type="button" class="ghost" data-child-show="puja">ಪೂಜೆ</button><span>Pooja</span></li>
+            </ul>
+          </article>
+          <article class="panel" id="nitya-detail">
+            <h3 id="nitya-detail-title">ಸಂಧ್ಯಾವಂದನೆ</h3>
+            <p id="nitya-detail-body">Select a child destination. Reader content comes from the Android catalogue in the later build.</p>
+            <p class="sample-badge">Live feature · layout preview only</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Grantha -->
+      <section id="view-grantha" class="view" data-view="grantha">
+        <div class="dashboard-grid">
+          <article class="panel">
+            <h3>ಗ್ರಂಥ · Reading</h3>
+            <ul class="child-list">
+              <li class="child-item"><button type="button" class="ghost" data-child-show="parayana">ನಿತ್ಯ ಪಾರಾಯಣ</button><span>Nitya Parayana</span></li>
+              <li class="child-item"><button type="button" class="ghost" data-child-show="stotra">ಸ್ತೋತ್ರಗಳು</button><span>Stotras</span></li>
+              <li class="child-item"><button type="button" class="ghost" data-child-show="sukta">ಸೂಕ್ತಗಳು</button><span>Suktas</span></li>
+              <li class="child-item"><button type="button" class="ghost" data-child-show="mantra">ಮಂತ್ರಗಳು</button><span>Mantras</span></li>
+            </ul>
+          </article>
+          <article class="panel" id="grantha-detail">
+            <h3 id="grantha-detail-title">ನಿತ್ಯ ಪಾರಾಯಣ</h3>
+            <p>Wide reading surface placeholder. Verse navigation, bookmarks, and text size follow the Carbon shell. Kannada uses Noto Sans Kannada.</p>
+            <p class="sample-badge">Live feature · layout preview only</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Bhakti Sangeeta -->
+      <section id="view-sangeeta" class="view" data-view="sangeeta">
+        <div class="dashboard-grid">
+          <article class="panel">
+            <h3>ಹಾಡುಗಳು · Hadugalu</h3>
+            <p>Dasara padagalu and bhajans from the existing catalogue.</p>
+            <p class="sample-badge">Live feature · layout preview only</p>
+            <button type="button" class="primary">Open Hadugalu</button>
+          </article>
+          <article class="panel">
+            <div class="empty-state">
+              <strong>Playlists</strong>
+              Playlists are specified for a later phase. No sample playlist content here.
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Gruha Samskruti -->
+      <section id="view-samskruti" class="view" data-view="samskruti">
+        <div class="dashboard-grid">
+          <article class="panel">
+            <h3>ಆಯಾದಿ · Aayadi</h3>
+            <p>Live Aayadi measurement screen from the current app, grouped here under home traditions.</p>
+            <p class="sample-badge">Live feature · layout preview only</p>
+            <button type="button" class="primary">Open Aayadi</button>
+          </article>
+          <article class="panel">
+            <div class="empty-state">
+              <strong>ರಂಗವಲ್ಲಿ · Rangavalli</strong>
+              Empty until content packs land. No decorative placeholder patterns.
+            </div>
+          </article>
+          <article class="panel">
+            <div class="empty-state">
+              <strong>Recipes / Naivedya</strong>
+              Empty until content packs land.
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Settings -->
+      <section id="view-settings" class="view" data-view="settings">
+        <article class="panel">
+          <h3>ಸೆಟ್ಟಿಂಗ್‌ಗಳು · Settings</h3>
+          <form class="settings-form" id="settings-form">
+            <label>
+              Appearance · ಪ್ರದರ್ಶನ
+              <select id="theme-select" name="theme">
+                <option value="g100">Gray 100 (default)</option>
+                <option value="g90">Gray 90</option>
+                <option value="g10">Gray 10</option>
+                <option value="white">White</option>
+              </select>
+            </label>
+            <label>
+              Text size · ಅಕ್ಷರ ಗಾತ್ರ <span id="settings-scale-label">100%</span>
+              <input id="settings-scale" type="range" min="1" max="1.5" step="0.25" value="1">
+            </label>
+            <label>
+              Veda · ವೇದ
+              <select name="veda">
+                <option>Rigveda — Ashvalayana</option>
+                <option>Krishna Yajurveda — Taittiriya</option>
+              </select>
+            </label>
+            <label>
+              Matha / Panchanga tradition · ಮಠ
+              <select name="matha">
+                <option>Sri Raghavendra Swamy Matha</option>
+                <option>Sri Uttaradi Matha</option>
+                <option>Palimaru</option>
+                <option>Adamaru</option>
+                <option>Krishnapura</option>
+                <option>Puttige</option>
+                <option>Shirur</option>
+                <option>Sodhe</option>
+                <option>Kaniyooru</option>
+                <option>Pejavara</option>
+              </select>
+            </label>
+          </form>
+          <p class="sample-badge">PaperDesk scheduler, todo, notes, projects, Gita, and tools are out of this shell</p>
+        </article>
+      </section>
+    </main>
+  </div>
+</div>
+<script src="./shell.js"></script>
+</body>
+</html>

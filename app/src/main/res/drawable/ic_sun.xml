@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Carbon sun 32 — Apache-2.0, see assets/licenses/carbon-icons.txt -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="32dp"
+    android:height="32dp"
+    android:viewportWidth="32"
+    android:viewportHeight="32">
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M16,12a4,4 0,1 1,-4 4,4.0045 4.0045,0 0,1 4,-4m0,-2a6,6 0,1 0,6 6,6 6,0 0,0 -6,-6Z" />
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M16,4a1,1 0,0 0,-1 1v2a1,1 0,0 0,2 0V5A1,1 0,0 0,16 4Z" />
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M16,24a1,1 0,0 0,-1 1v2a1,1 0,1 0,2 0V25A1,1 0,0 0,16 24Z" />
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M8.22,7.51a1,1 0,0 0,-1.41 0L5.39,8.92a1,1 0,0 0,1.42 1.42L8.22,8.93A1,1 0,0 0,8.22 7.51Z" />
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M26.61,22.66a1,1 0,0 0,-1.41 0l-1.42,1.41a1,1 0,1 0,1.42 1.42l1.41,-1.42A1,1 0,0 0,26.61 22.66Z" />
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M4,15H6a1,1 0,0 1,0 2H4a1,1 0,0 1,0 -2Z" />
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M26,15h2a1,1 0,0 1,0 2H26a1,1 0,0 1,0 -2Z" />
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M8.22,24.49l-1.41,1.41a1,1 0,1 0,1.41 1.42l1.42,-1.42a1,1 0,0 0,-1.42 -1.41Z" />
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M26.61,9.34L25.2,7.93a1,1 0,0 0,-1.42 1.42l1.42,1.41a1,1 0,0 0,1.41 -1.42Z" />
+</vector>

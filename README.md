@@ -1,6 +1,6 @@
 # MadhvaNidhi
 
-MadhvaNidhi is a priest-friendly landscape Android app for Madhva-sampradaya daily practice. It brings Panchanga, Veda-specific Sandhyavandana, mantras, stotras, suktas, pooja procedures, songs, japa and Aayadi into one large-text interface.
+MadhvaNidhi is a priest-friendly landscape Android app for Madhva-sampradaya daily practice. It brings Panchanga, Veda-specific Sandhyavandana, mantras, stotras, suktas, pooja procedures, songs, japa and Aayadi into a Carbon-inspired shell with a daily Dashboard.
 
 Developed by **Human Centric Works** — [hcworks.in](https://hcworks.in). Made with love in Hospet.
 
@@ -10,8 +10,11 @@ Developed by **Human Centric Works** — [hcworks.in](https://hcworks.in). Made 
 - Version: `1.0.0` (`versionCode 1`)
 - Minimum Android: 7.1 / API 25
 - Target Android API: 36
-- Primary layout: landscape, designed for smaller Samsung displays and larger text
+- Layout: landscape Carbon shell (header + side rail), system font scaling and 100–200% app text-size controls
+- Design: Material components with Carbon spacing/type roles, Gray 100 layers, Orange 40 accents and 4dp corners
+- Home: Dashboard with Panchanga context and daily practice panels; full Panchanga remains the calendar destination
 - Languages/content: Kannada-first devotional library with supported Sanskrit source transliteration
+- HTML shell preview: `prototypes/app-shell/`
 
 MadhvaNidhi is a normal launcher application, not a replacement Android ROM or HOME launcher. It does not disable system navigation, radios, accounts or device security.
 

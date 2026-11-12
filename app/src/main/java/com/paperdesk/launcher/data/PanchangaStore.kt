@@ -45,6 +45,18 @@ object PanchangaStore {
 
     fun local(date: String): PanchangaDay = compute(date)
 
+    fun samvatsaraFor(day: PanchangaDay): String =
+        SAMVAT.firstOrNull { name -> Regex("\\b$name\\b", RegexOption.IGNORE_CASE).containsMatchIn(day.samvatsara) }
+            ?: local(day.date).samvatsara
+
+    fun shakaYear(day: PanchangaDay): Int {
+        val year = parse(day.date).get(Calendar.YEAR)
+        val index = SAMVAT.indexOf(samvatsaraFor(day))
+        val previous = ((year - 1 - 1987) % 60 + 60) % 60
+        return year - if (index == previous) 79 else 78
+    }
+
+
     fun shortTithi(tithi: String): String {
         val t = tithi.uppercase(Locale.US)
         return when {

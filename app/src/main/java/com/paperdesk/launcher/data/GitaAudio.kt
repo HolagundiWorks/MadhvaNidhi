@@ -77,7 +77,7 @@ object GitaAudio {
             )
             val speaker = am.getDevices(AudioManager.GET_DEVICES_OUTPUTS)
                 .firstOrNull { it.type == AudioDeviceInfo.TYPE_BUILTIN_SPEAKER }
-            if (speaker != null) mp.setPreferredDevice(speaker)
+            if (android.os.Build.VERSION.SDK_INT >= 28 && speaker != null) mp.setPreferredDevice(speaker)
             mp.setVolume(1f, 1f)
             mp.setDataSource(file.absolutePath)
             mp.setOnCompletionListener {

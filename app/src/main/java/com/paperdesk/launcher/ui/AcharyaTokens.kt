@@ -16,15 +16,11 @@ import kotlin.math.min
 
 /** Page palettes and woven chrome are kept here so layouts consume one coherent token system. */
 object PagePalette {
-    @ColorInt
-    fun surface(context: Context, pageId: String): Int = context.getColor(R.color.earth_canvas_desk)
-
-    @ColorInt
-    fun accent(context: Context, pageId: String): Int = context.getColor(R.color.earth_accent_desk)
-
-    fun apply(view: View, pageId: String) {
-        view.background = WovenCanvasDrawable(view.context, pageId)
-    }
+    @ColorInt fun surface(context: Context, pageId: String): Int =
+        com.google.android.material.color.MaterialColors.getColor(context, com.google.android.material.R.attr.colorSurface, 0)
+    @ColorInt fun accent(context: Context, pageId: String): Int =
+        com.google.android.material.color.MaterialColors.getColor(context, com.google.android.material.R.attr.colorPrimary, 0)
+    fun apply(view: View, pageId: String) { view.setBackgroundColor(surface(view.context, pageId)) }
 }
 
 /**
@@ -37,9 +33,9 @@ class WovenCanvasDrawable(
     pageId: String
 ) : Drawable() {
     private val density = context.resources.displayMetrics.density
-    private val base = context.getColor(R.color.earth_canvas_desk)
+    private val base = context.getColor(R.color.carbon_background)
     private val accent = PagePalette.accent(context, pageId)
-    private val fibre = context.getColor(R.color.calendar_month_previous)
+    private val fibre = context.getColor(R.color.carbon_text_helper)
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val path = Path()
     private val phase = ((pageId.hashCode() and 0x7fffffff) % 3) * 8f * density
@@ -117,8 +113,8 @@ class SareeFooterDrawable(
     pageId: String
 ) : Drawable() {
     private val density = context.resources.displayMetrics.density
-    private val base = context.getColor(R.color.earth_footer_base)
-    private val shadow = context.getColor(R.color.earth_footer_shadow)
+    private val base = context.getColor(R.color.carbon_layer)
+    private val shadow = context.getColor(R.color.carbon_text)
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val path = Path()
     private val motif = (pageId.hashCode() and Int.MAX_VALUE) % 3
@@ -187,7 +183,7 @@ class SareeFooterDrawable(
 /** Opaque woven cartouche: the devotional motto is part of the border, never over it. */
 class FooterMottoDrawable(context: Context, @ColorInt private val accent: Int) : Drawable() {
     private val density = context.resources.displayMetrics.density
-    private val base = context.getColor(R.color.earth_footer_base)
+    private val base = context.getColor(R.color.carbon_layer)
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val path = Path()
     private var drawableAlpha = 255
@@ -239,8 +235,8 @@ class FooterMottoDrawable(context: Context, @ColorInt private val accent: Int) :
 /** Ornamental medallion used by footer controls so each button belongs to the weave. */
 class FooterMedallionDrawable(context: Context, @ColorInt private val accent: Int) : Drawable() {
     private val density = context.resources.displayMetrics.density
-    private val base = context.getColor(R.color.earth_footer_base)
-    private val shadow = context.getColor(R.color.earth_footer_shadow)
+    private val base = context.getColor(R.color.carbon_layer)
+    private val shadow = context.getColor(R.color.carbon_text)
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private var pressed = false
     private var drawableAlpha = 255

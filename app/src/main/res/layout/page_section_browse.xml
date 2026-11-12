@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/carbon_background"
+    android:orientation="horizontal"
+    android:padding="@dimen/shell_page_inset">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:orientation="vertical"
+        android:paddingEnd="@dimen/carbon_spacing_05">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/sectionTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Carbon.Heading03"
+            android:textColor="@color/carbon_text" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/sectionSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/carbon_spacing_02"
+            android:textAppearance="@style/TextAppearance.Carbon.Body01"
+            android:textColor="@color/carbon_text_secondary" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/sectionList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/carbon_spacing_05"
+            android:clipToPadding="false" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/carbon_border" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="6"
+        android:paddingStart="@dimen/carbon_spacing_05"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/sectionDetailTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
+                android:textColor="@color/carbon_text" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/sectionDetailBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/carbon_spacing_03"
+                android:lineSpacingMultiplier="1.35"
+                android:textAppearance="@style/TextAppearance.Carbon.Body01"
+                android:textColor="@color/carbon_text" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/sectionAction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/carbon_spacing_05"
+                android:minHeight="48dp"
+                android:visibility="gone"
+                app:cornerRadius="@dimen/carbon_corner_radius" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

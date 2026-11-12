@@ -1,268 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/earth_canvas_desk">
-
-    <LinearLayout
-        android:id="@+id/readerMain"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingLeft="@dimen/page_pad_h"
-        android:paddingTop="@dimen/page_pad_top"
-        android:paddingRight="@dimen/page_pad_h"
-        android:paddingBottom="@dimen/page_pad_bottom">
-
-        <LinearLayout
-            android:id="@+id/readerHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:gravity="center_vertical"
-            android:orientation="vertical"
-            android:paddingTop="0dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/readerTitle"
-                    style="@style/Desk.Title"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:paddingRight="@dimen/ui_grid_1" />
-
-                <Spinner
-                    android:id="@+id/readerKala"
-                    android:layout_width="176dp"
-                    android:layout_height="32dp"
-                    android:background="@drawable/bg_dropdown"
-                    android:contentDescription="ಸಂಧ್ಯಾ ಕಾಲ ಆಯ್ಕೆ"
-                    android:popupBackground="@color/surface_2"
-                    android:spinnerMode="dropdown"
-                    android:visibility="gone" />
-
-                <LinearLayout
-                    android:id="@+id/readerSelect"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/touch"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
-                    android:minWidth="@dimen/touch"
-                    android:orientation="horizontal"
-                    android:paddingLeft="@dimen/ui_grid_1">
-
-                    <TextView
-                        android:id="@+id/readerSelectLabel"
-                        style="@style/Desk.Body2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:importantForAccessibility="no"
-                        android:maxWidth="176dp"
-                        android:maxLines="1"
-                        android:textColor="@color/white"
-                        android:visibility="gone" />
-
-                    <ImageButton
-                        android:id="@+id/readerSelectBtn"
-                        style="@style/Desk.Circle"
-                        android:clickable="false"
-                        android:duplicateParentState="true"
-                        android:focusable="false"
-                        android:importantForAccessibility="no"
-                        android:src="@drawable/ic_expand" />
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent">
+    <androidx.core.widget.NestedScrollView android:id="@+id/readerScroll" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
+            <LinearLayout android:id="@+id/readerMain" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/carbon_spacing_05" app:layout_constraintWidth_max="880dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:id="@+id/readerHeader">
+                    <com.google.android.material.textview.MaterialTextView android:id="@+id/readerTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Carbon.Heading03" android:text="" android:layout_marginBottom="@dimen/carbon_spacing_03" />
+                    <com.google.android.material.button.MaterialButtonToggleGroup android:id="@+id/readerKalaField" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone" app:singleSelection="true" app:selectionRequired="true">
+                        <com.google.android.material.button.MaterialButton android:id="@+id/kalaMorning" style="@style/Widget.Material3.Button.OutlinedButton" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:minHeight="48dp" android:text="ಪ್ರಾತಃ" android:contentDescription="ಪ್ರಾತಃ ಸಂಧ್ಯಾವಂದನೆ" app:icon="@drawable/ic_morning" app:cornerRadius="4dp" />
+                        <com.google.android.material.button.MaterialButton android:id="@+id/kalaNoon" style="@style/Widget.Material3.Button.OutlinedButton" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:minHeight="48dp" android:text="ಮಧ್ಯಾಹ್ನ" android:contentDescription="ಮಾಧ್ಯಾಹ್ನಿಕ ಸಂಧ್ಯಾವಂದನೆ" app:icon="@drawable/ic_noon" app:cornerRadius="4dp" />
+                        <com.google.android.material.button.MaterialButton android:id="@+id/kalaEvening" style="@style/Widget.Material3.Button.OutlinedButton" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:minHeight="48dp" android:text="ಸಾಯಂ" android:contentDescription="ಸಾಯಂ ಸಂಧ್ಯಾವಂದನೆ" app:icon="@drawable/ic_evening" app:cornerRadius="4dp" />
+                    </com.google.android.material.button.MaterialButtonToggleGroup>
+                    <com.google.android.material.textfield.TextInputLayout android:id="@+id/readerItemField" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="ಓದುವ ಪಠ್ಯ" style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu" app:boxCornerRadiusTopStart="4dp" app:boxCornerRadiusTopEnd="4dp" app:boxCornerRadiusBottomStart="4dp" app:boxCornerRadiusBottomEnd="4dp">
+                        <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@+id/readerItem" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="none" android:maxLines="2" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/readerSelect" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="48dp" android:text="ಆಯ್ಕೆಮಾಡಿ" style="@style/Widget.Material3.Button.OutlinedButton" app:cornerRadius="@dimen/carbon_corner_radius" />
+                    <com.google.android.material.button.MaterialButton android:id="@+id/readerSelectBtn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="48dp" android:text="ಆಯ್ಕೆಮಾಡಿ" android:visibility="gone" app:cornerRadius="@dimen/carbon_corner_radius" />
+                    <com.google.android.material.textview.MaterialTextView android:id="@+id/readerSelectLabel" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Carbon.Body02" android:text="" android:layout_marginBottom="@dimen/carbon_spacing_03" android:visibility="gone" />
+                    <com.google.android.material.button.MaterialButtonToggleGroup android:id="@+id/readerSubpages" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone" app:singleSelection="true" app:selectionRequired="true">
+                        <com.google.android.material.button.MaterialButton android:id="@+id/subpageMantras" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="48dp" android:text="" style="@style/Widget.Material3.Button.OutlinedButton" android:layout_weight="1" app:cornerRadius="@dimen/carbon_corner_radius" />
+                        <com.google.android.material.button.MaterialButton android:id="@+id/subpageStotras" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="48dp" android:text="" style="@style/Widget.Material3.Button.OutlinedButton" android:layout_weight="1" app:cornerRadius="@dimen/carbon_corner_radius" />
+                        <com.google.android.material.button.MaterialButton android:id="@+id/subpageSuktas" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="48dp" android:text="" style="@style/Widget.Material3.Button.OutlinedButton" android:layout_weight="1" app:cornerRadius="@dimen/carbon_corner_radius" />
+                    </com.google.android.material.button.MaterialButtonToggleGroup>
+                    <com.google.android.material.textview.MaterialTextView android:id="@+id/readerCrumb" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Carbon.Body01" android:text="" android:layout_marginBottom="@dimen/carbon_spacing_03" />
                 </LinearLayout>
+                <com.google.android.material.textview.MaterialTextView android:id="@+id/readerHead" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Carbon.Heading03" android:text="" android:layout_marginBottom="@dimen/carbon_spacing_03" />
+                <com.google.android.material.textview.MaterialTextView android:id="@+id/readerBody" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Carbon.Body02" android:text="" android:layout_marginBottom="@dimen/carbon_spacing_03" android:lineSpacingMultiplier="1.5" />
             </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/readerSubpages"
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:layout_marginTop="@dimen/ui_grid_1"
-                android:orientation="horizontal"
-                android:visibility="gone">
-
-                <TextView
-                    android:id="@+id/subpageMantras"
-                    style="@style/Desk.Meta"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:textSize="@dimen/type_subpage" />
-
-                <TextView
-                    android:id="@+id/subpageStotras"
-                    style="@style/Desk.Meta"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:textSize="@dimen/type_subpage" />
-
-                <TextView
-                    android:id="@+id/subpageSuktas"
-                    style="@style/Desk.Meta"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:textSize="@dimen/type_subpage" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/readerCrumb"
-                style="@style/Desk.Meta"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:paddingTop="@dimen/space_4"
-                android:paddingBottom="@dimen/space_4"
-                android:textColor="@color/white_55"
-                android:textSize="@dimen/type_breadcrumb" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/stroke_standard"
-                android:background="@drawable/bg_rule"
-                android:importantForAccessibility="no" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <com.paperdesk.launcher.ui.DeskScrollView
-                android:id="@+id/readerScroll"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fillViewport="true"
-                android:overScrollMode="never">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingBottom="@dimen/ui_grid_3">
-
-                    <TextView
-                        android:id="@+id/readerHead"
-                        style="@style/Desk.Section"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:maxLines="3"
-                        android:textColor="@color/accent" />
-
-                    <TextView
-                        android:id="@+id/readerBody"
-                        style="@style/Desk.Body"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/ui_grid_1"
-                        android:includeFontPadding="true"
-                        android:lineSpacingExtra="3.2dp"
-                        android:lineSpacingMultiplier="1.12"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/type_reader_body" />
-                </LinearLayout>
-            </com.paperdesk.launcher.ui.DeskScrollView>
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/chrome_bar" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/selectorPage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/earth_canvas_desk"
-        android:orientation="vertical"
-        android:paddingLeft="@dimen/page_pad_h"
-        android:paddingTop="@dimen/page_pad_top"
-        android:paddingRight="@dimen/page_pad_h"
-        android:paddingBottom="@dimen/page_pad_bottom"
-        android:visibility="gone">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/chrome_bar"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:gravity="center_vertical"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageButton
-                    android:id="@+id/selectorBack"
-                    style="@style/Desk.Circle"
-                    android:contentDescription="@string/back"
-                    android:src="@drawable/ic_nav_prev" />
-
-                <TextView
-                    android:id="@+id/selectorTitle"
-                    style="@style/Desk.Title"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/ui_grid_1"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/stroke_standard"
-                android:background="@drawable/bg_rule"
-                android:importantForAccessibility="no" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <com.paperdesk.launcher.ui.DeskRecyclerView
-                    android:id="@+id/selectorList"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:overScrollMode="never" />
-
-                <TextView
-                    android:id="@+id/selectorEmpty"
-                    style="@style/Desk.Body"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:alpha="0.45"
-                    android:gravity="center"
-                    android:visibility="gone" />
-            </FrameLayout>
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/chrome_bar" />
+    </androidx.core.widget.NestedScrollView>
+    <LinearLayout android:id="@+id/selectorPage" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:padding="@dimen/carbon_spacing_05" android:visibility="gone">
+        <com.google.android.material.button.MaterialButton android:id="@+id/selectorBack" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="48dp" android:text="@string/back" style="@style/Widget.Material3.Button.TextButton" app:cornerRadius="@dimen/carbon_corner_radius" />
+        <com.google.android.material.textview.MaterialTextView android:id="@+id/selectorTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Carbon.Heading03" android:text="" android:layout_marginBottom="@dimen/carbon_spacing_03" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/selectorList" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+        <com.google.android.material.textview.MaterialTextView android:id="@+id/selectorEmpty" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Carbon.Body02" android:text="" android:layout_marginBottom="@dimen/carbon_spacing_03" android:visibility="gone" />
     </LinearLayout>
 </FrameLayout>

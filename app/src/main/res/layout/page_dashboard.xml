@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/carbon_background"
+    android:clipToPadding="false"
+    android:padding="@dimen/shell_page_inset">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Selected date — full-width Carbon tile (not 30:70 pane) -->
+        <LinearLayout
+            android:id="@+id/dashboardContext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/carbon_layer"
+            android:orientation="vertical"
+            android:padding="@dimen/carbon_spacing_05">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dashboard_selected_date"
+                android:textAppearance="@style/TextAppearance.Carbon.Label01"
+                android:textColor="@color/carbon_text_secondary" />
+
+            <TextView
+                android:id="@+id/dashboardDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/carbon_spacing_02"
+                android:textAppearance="@style/TextAppearance.Carbon.Heading03"
+                android:textColor="@color/carbon_text" />
+
+            <TextView
+                android:id="@+id/dashboardTithi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/carbon_spacing_02"
+                android:textAppearance="@style/TextAppearance.Carbon.Body01"
+                android:textColor="@color/carbon_text" />
+
+            <TextView
+                android:id="@+id/dashboardNakshatra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/carbon_spacing_02"
+                android:textAppearance="@style/TextAppearance.Carbon.Body01"
+                android:textColor="@color/carbon_text_secondary" />
+
+            <TextView
+                android:id="@+id/dashboardObservance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/carbon_spacing_03"
+                android:textAppearance="@style/TextAppearance.Carbon.Body01"
+                android:textColor="@color/carbon_ekadashi" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/dashboardOpenPanchanga"
+                style="@style/Widget.Carbon.Button.Primary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/carbon_spacing_05"
+                android:text="@string/dashboard_open_panchanga" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/carbon_spacing_03"
+                android:text="@string/dashboard_sample_badge"
+                android:textAppearance="@style/TextAppearance.Carbon.Label01"
+                android:textColor="@color/carbon_text_helper" />
+        </LinearLayout>
+
+        <!-- Japa | Sandhya -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/carbon_spacing_05"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/carbon_spacing_05"
+                android:layout_weight="1"
+                android:background="@color/carbon_layer"
+                android:orientation="vertical"
+                android:padding="@dimen/carbon_spacing_05">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dashboard_japa"
+                    android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
+                    android:textColor="@color/carbon_text" />
+
+                <TextView
+                    android:id="@+id/dashboardJapaCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/carbon_spacing_03"
+                    android:textAppearance="@style/TextAppearance.Carbon.Heading03"
+                    android:textColor="@color/carbon_text" />
+
+                <TextView
+                    android:id="@+id/dashboardJapaMeta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.Carbon.Label01"
+                    android:textColor="@color/carbon_text_secondary" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/carbon_spacing_04"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/dashboardJapaInc"
+                        style="@style/Widget.Carbon.Button.Primary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+1" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/dashboardJapaUndo"
+                        style="@style/Widget.Carbon.Button.Tertiary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/carbon_spacing_02"
+                        android:text="@string/undo" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/dashboardOpenJapa"
+                        style="@style/Widget.Carbon.Button.Ghost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dashboard_open_japa" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/carbon_layer"
+                android:orientation="vertical"
+                android:padding="@dimen/carbon_spacing_05">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dashboard_sandhya"
+                    android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
+                    android:textColor="@color/carbon_text" />
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/dashboardSandhyaPratah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="44dp"
+                    android:text="@string/pratah_label" />
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/dashboardSandhyaMadhyahna"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="44dp"
+                    android:text="@string/madhyahna_label" />
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/dashboardSandhyaSayam"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="44dp"
+                    android:text="@string/sayam_label" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/dashboardOpenSandhya"
+                    style="@style/Widget.Carbon.Button.Ghost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dashboard_open_sandhya" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Stotra wide -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/carbon_spacing_05"
+            android:background="@color/carbon_layer"
+            android:orientation="vertical"
+            android:padding="@dimen/carbon_spacing_05">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dashboard_stotra"
+                android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
+                android:textColor="@color/carbon_text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/carbon_spacing_02"
+                android:text="@string/dashboard_stotra_note"
+                android:textAppearance="@style/TextAppearance.Carbon.Label01"
+                android:textColor="@color/carbon_text_secondary" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/dashboardStotra1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="44dp"
+                android:text="@string/dashboard_stotra_1" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/dashboardStotra2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="44dp"
+                android:text="@string/dashboard_stotra_2" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/dashboardOpenGrantha"
+                style="@style/Widget.Carbon.Button.Ghost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dashboard_resume_reading" />
+        </LinearLayout>
+
+        <!-- Quick actions wide -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/carbon_spacing_05"
+            android:background="@color/carbon_layer"
+            android:orientation="horizontal"
+            android:padding="@dimen/carbon_spacing_05">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/dashboardQuickPanchanga"
+                style="@style/Widget.Carbon.Button.Primary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dashboard_open_panchanga" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/dashboardQuickHistory"
+                style="@style/Widget.Carbon.Button.Ghost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dashboard_history" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

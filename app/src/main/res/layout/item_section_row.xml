@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.button.MaterialButton xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sectionRow"
+    style="@style/Widget.Carbon.Tile.Clickable"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="start|center_vertical"
+    android:minHeight="@dimen/carbon_layout_size_height_lg"
+    android:paddingStart="@dimen/carbon_spacing_03"
+    android:paddingEnd="@dimen/carbon_spacing_03"
+    android:textAlignment="viewStart"
+    android:textAppearance="@style/TextAppearance.Carbon.Body01"
+    app:icon="@drawable/ic_chevron_right"
+    app:iconGravity="end"
+    app:iconTint="@color/carbon_icon_secondary"
+    app:cornerRadius="@dimen/carbon_corner_radius" />
