@@ -90,6 +90,18 @@
   }
 
   function navigate(id) {
+    if (samskrutiIds.includes(id)) {
+      selectSamskrutiTab(id);
+      id = 'samskruti';
+    }
+    if (granthaIds.includes(id)) {
+      selectGranthaTab(id);
+      id = 'grantha';
+    }
+    if (id === 'user') {
+      window.selectSettingsTab('users');
+      id = 'settings';
+    }
     const nityaChild = nityaTabs.has(id) ? id : null;
     const viewId = nityaChild ? 'nityakarma' : id;
     if (!titles[viewId] && !titles[id]) return;
@@ -105,7 +117,7 @@
       view.classList.toggle('is-active', view.dataset.page === viewId);
     });
     if (viewId === 'nityakarma') showNityaTab(nityaChild || 'sandhya');
-    byId('app')?.classList.toggle('has-child-sections', viewId === 'nityakarma' || viewId === 'puja');
+    byId('app')?.classList.toggle('has-child-sections', viewId === 'puja' || !!document.querySelector('.page.is-active [role="tablist"]'));
     closeNav();
     window.parent.postMessage({ type: 'menu-page', page: page }, '*');
   }
@@ -156,7 +168,7 @@
       else openNav();
     });
     byId('nav-backdrop').addEventListener('click', closeNav);
-    document.querySelectorAll('[data-page]').forEach((el) => {
+    document.querySelectorAll('button[data-page]').forEach((el) => {
       el.addEventListener('click', () => navigate(el.dataset.page));
     });
   }
@@ -168,21 +180,15 @@
     const syncTheme = () => {
       const theme = window.madhvaTheme?.get() || document.documentElement.dataset.theme || 'g100';
       const dark = theme === 'g100' || theme === 'g90';
-      byId('theme-dark')?.setAttribute('aria-pressed', String(dark));
-      byId('theme-light')?.setAttribute('aria-pressed', String(!dark));
+      byId('theme-mode').checked = dark;
       if (byId('theme-select')) byId('theme-select').value = theme;
     };
     byId('theme-select')?.addEventListener('change', (event) => {
       window.madhvaTheme?.set(event.target.value);
       syncTheme();
     });
-    byId('theme-dark')?.addEventListener('click', () => {
-      window.madhvaTheme?.set('g100');
-      syncTheme();
-    });
-    byId('theme-light')?.addEventListener('click', () => {
-      window.madhvaTheme?.set('white');
-      syncTheme();
+    byId('theme-mode').addEventListener('change', event => {
+      window.madhvaTheme.set(event.target.checked ? 'g100' : 'white');
     });
     window.addEventListener('madhva-theme', syncTheme);
     syncTheme();
@@ -390,22 +396,7 @@
     render();
   }
 
-  function bindAayadi() {
-    byId('aayadi-calc').addEventListener('click', () => {
-      const length = Number(byId('len-ft').value) + Number(byId('len-in').value) / 12;
-      const breadth = Number(byId('br-ft').value) + Number(byId('br-in').value) / 12;
-      const area = length * breadth;
-      const padam = ((area * 9) % 8) || 8;
-      const aaya = ((area * 8) % 12) || 12;
-      const dhana = ((area * 3) % 7) || 7;
-      const rina = ((area * 4) % 7) || 7;
-      byId('aayadi-padam').textContent = String(Math.round(padam));
-      byId('aayadi-aaya').textContent = String(Math.round(aaya));
-      byId('aayadi-dhana').textContent = String(Math.round(dhana));
-      byId('aayadi-rina').textContent = String(Math.round(rina));
-      byId('aayadi-results').hidden = false;
-    });
-  }
+
 
   function bindStudio() {
     window.addEventListener('message', (event) => {
@@ -459,7 +450,7 @@
     bindTextControls();
     bindJapa();
     bindDayActions(document.querySelector('[data-nitya-panel="japa"]'));
-    bindAayadi();
+
     bindUserVault();
     bindStudio();
     const start = new URLSearchParams(location.search).get('page') || 'nityakarma';

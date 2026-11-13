@@ -1,17 +1,29 @@
 package com.paperdesk.launcher.data
 
 import android.content.Context
+import java.util.Calendar
 
-/** Local daily practice flags for the Carbon dashboard. Not a streak engine yet. */
+/** Local daily practice flags feeding the Carbon dashboard week + streak. */
 class PracticeDayStore(context: Context) {
     private val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
 
     fun sandhya(date: String = PanchangaStore.dateKey()): Triple<Boolean, Boolean, Boolean> =
-        Triple(get(date, "pratah"), get(date, "madhyahna"), get(date, "sayam"))
+        Triple(
+            get(date, SESSION_PRATAH),
+            get(date, SESSION_MADHYAHNA),
+            get(date, SESSION_SAYAM)
+        )
 
     fun setSandhya(session: String, done: Boolean, date: String = PanchangaStore.dateKey()) {
-        prefs.edit().putBoolean(key(date, session), done).apply()
+        prefs.edit().putBoolean(key(date, normalizeSession(session)), done).apply()
+        if (done) refreshBestStreak()
     }
+
+    fun isSandhyaSessionDone(session: String, date: String = PanchangaStore.dateKey()): Boolean =
+        get(date, normalizeSession(session))
+
+    fun sandhyaComplete(date: String = PanchangaStore.dateKey()): Boolean =
+        sandhya(date).toList().all { it }
 
     fun stotra(id: String, date: String = PanchangaStore.dateKey()): Boolean = get(date, "stotra_$id")
 
@@ -19,10 +31,62 @@ class PracticeDayStore(context: Context) {
         prefs.edit().putBoolean(key(date, "stotra_$id"), done).apply()
     }
 
+    fun currentStreak(): Int {
+        var current = 0
+        val cursor = Calendar.getInstance()
+        if (!sandhyaComplete(PanchangaStore.dateKey(cursor))) {
+            cursor.add(Calendar.DATE, -1)
+        }
+        while (sandhyaComplete(PanchangaStore.dateKey(cursor))) {
+            current++
+            cursor.add(Calendar.DATE, -1)
+            if (current > 400) break
+        }
+        return current
+    }
+
+    fun bestStreak(): Int {
+        val stored = prefs.getInt(KEY_BEST_STREAK, 0)
+        val live = currentStreak()
+        return maxOf(stored, live, computeBestStreak(400))
+    }
+
+    fun refreshBestStreak() {
+        val best = maxOf(prefs.getInt(KEY_BEST_STREAK, 0), computeBestStreak(400), currentStreak())
+        prefs.edit().putInt(KEY_BEST_STREAK, best).apply()
+    }
+
+    private fun computeBestStreak(days: Int): Int {
+        var best = 0
+        var run = 0
+        val scan = Calendar.getInstance()
+        repeat(days) {
+            if (sandhyaComplete(PanchangaStore.dateKey(scan))) {
+                run++
+                best = maxOf(best, run)
+            } else {
+                run = 0
+            }
+            scan.add(Calendar.DATE, -1)
+        }
+        return best
+    }
+
     private fun get(date: String, name: String) = prefs.getBoolean(key(date, name), false)
     private fun key(date: String, name: String) = "${date}_$name"
 
     companion object {
         private const val PREFS = "madhvanidhi_practice_day"
+        private const val KEY_BEST_STREAK = "best_sandhya_streak"
+        const val SESSION_PRATAH = "pratah"
+        const val SESSION_MADHYAHNA = "madhyahna"
+        const val SESSION_SAYAM = "sayam"
+
+        fun normalizeSession(session: String): String = when (session) {
+            SandhyaStore.MADHYA, "madhyahna", "madhyahna_sandhya" -> SESSION_MADHYAHNA
+            SandhyaStore.PRATAH, "pratah_sandhya" -> SESSION_PRATAH
+            SandhyaStore.SAYAM, "sayam_sandhya" -> SESSION_SAYAM
+            else -> session
+        }
     }
 }

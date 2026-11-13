@@ -70,3 +70,7 @@ MadhvaNidhi is landscape-exclusive on mockup and device.
 - [ ] User / Panchanga respect existing freeze contracts
 - [ ] Carbon styling preserved; Kannada readable
 - [ ] Debug build installs on device
+
+## Project memory
+
+Read [`docs/project-memory.md`](docs/project-memory.md) for the current commit context, navigation, frozen design decisions and preview workflow. Verify it against newer commits; older external preview ZIPs are superseded.

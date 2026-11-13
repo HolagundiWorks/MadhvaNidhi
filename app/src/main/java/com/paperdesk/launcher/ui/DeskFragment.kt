@@ -49,6 +49,8 @@ class DeskFragment : Fragment() {
             // Mock density: clamp(0.55, min(vw/960, vh/540), 1.75) — CSS px ≈ dp
             val scale = minOf(view.width / px / 960f, view.height / px / 540f)
                 .coerceIn(0.55f, 1.75f)
+            val fitKey = "${view.width}x${view.height}:${"%.4f".format(scale)}"
+            if (view.getTag(R.id.panchangaFacts) == fitKey) return
             fun spx(baseDp: Float, floorDp: Float = 0f): Int =
                 (maxOf(floorDp, baseDp * scale) * px).toInt()
 
@@ -68,9 +70,32 @@ class DeskFragment : Fragment() {
             val typeTitle = maxOf(14f, 16f * scale) * dm.scaledDensity
             val eventTitle = maxOf(12f, 14f * scale) * dm.scaledDensity
 
-            view.setPadding(pageInset, pagePadBlock, pageInset, pagePadBlock)
-            view.findViewById<View>(R.id.panchangaContext).setPadding(0, 0, paneGap, 0)
-            view.findViewById<View>(R.id.panchangaCalendar).setPadding(paneGap, 0, 0, 0)
+            fun setPad(target: View, l: Int, t: Int, r: Int, b: Int) {
+                if (target.paddingLeft != l || target.paddingTop != t ||
+                    target.paddingRight != r || target.paddingBottom != b
+                ) {
+                    target.setPadding(l, t, r, b)
+                }
+            }
+            fun setMarginTop(target: View, top: Int) {
+                val lp = target.layoutParams as? android.view.ViewGroup.MarginLayoutParams ?: return
+                if (lp.topMargin != top) {
+                    lp.topMargin = top
+                    target.layoutParams = lp
+                }
+            }
+            fun setSize(target: View, w: Int, h: Int) {
+                val lp = target.layoutParams ?: return
+                if (lp.width != w || lp.height != h) {
+                    lp.width = w
+                    lp.height = h
+                    target.layoutParams = lp
+                }
+            }
+
+            setPad(view, pageInset, pagePadBlock, pageInset, pagePadBlock)
+            setPad(view.findViewById(R.id.panchangaContext), 0, 0, paneGap, 0)
+            setPad(view.findViewById(R.id.panchangaCalendar), paneGap, 0, 0, 0)
 
             val divider = resources.getDimensionPixelSize(R.dimen.carbon_border_width)
             val usable = (view.width - view.paddingLeft - view.paddingRight - divider).coerceAtLeast(0)
@@ -98,49 +123,50 @@ class DeskFragment : Fragment() {
                 .setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, eventTitle)
 
             view.findViewById<View>(R.id.panchangaFacts).let { facts ->
-                (facts.layoutParams as? android.view.ViewGroup.MarginLayoutParams)?.topMargin = ctxGap
-                facts.requestLayout()
+                setMarginTop(facts, ctxGap)
                 for (i in 0 until (facts as android.view.ViewGroup).childCount) {
                     val row = facts.getChildAt(i)
                     if (row is android.view.ViewGroup && row.childCount >= 2) {
-                        row.setPadding(0, factPad, 0, factPad)
-                        row.getChildAt(0).layoutParams = row.getChildAt(0).layoutParams.apply {
-                            width = factLabel
-                            if (this is android.view.ViewGroup.MarginLayoutParams) marginEnd = factGap
+                        setPad(row, 0, factPad, 0, factPad)
+                        val label = row.getChildAt(0)
+                        val lp = label.layoutParams
+                        val needsWidth = lp.width != factLabel
+                        val needsEnd = (lp as? android.view.ViewGroup.MarginLayoutParams)?.marginEnd != factGap
+                        if (needsWidth || needsEnd) {
+                            if (lp is android.view.ViewGroup.MarginLayoutParams) lp.marginEnd = factGap
+                            lp.width = factLabel
+                            label.layoutParams = lp
                         }
                     }
                 }
             }
-            (view.findViewById<View>(R.id.contextRule).layoutParams as? android.view.ViewGroup.MarginLayoutParams)
-                ?.topMargin = ctxGap
-            (view.findViewById<View>(R.id.pakshaScroll).layoutParams as? android.view.ViewGroup.MarginLayoutParams)
-                ?.topMargin = calendarGap
-            view.findViewById<View>(R.id.pakshaScroll).setPadding(spx(16f, 4f), spx(16f, 4f), spx(16f, 4f), spx(16f, 4f))
+            setMarginTop(view.findViewById(R.id.contextRule), ctxGap)
+            setMarginTop(view.findViewById(R.id.pakshaScroll), calendarGap)
+            setPad(
+                view.findViewById(R.id.pakshaScroll),
+                spx(16f, 4f), spx(16f, 4f), spx(16f, 4f), spx(16f, 4f)
+            )
 
-            fun sizeControl(id: Int) {
-                view.findViewById<View>(id).layoutParams = view.findViewById<View>(id).layoutParams.apply {
-                    width = control
-                    height = control
-                }
-            }
-            sizeControl(R.id.chooseDate)
-            sizeControl(R.id.eventDetails)
+            setSize(view.findViewById(R.id.chooseDate), control, control)
+            setSize(view.findViewById(R.id.eventDetails), control, control)
             listOf(R.id.calendarPrevious, R.id.calendarNext).forEach { id ->
                 val btn = view.findViewById<com.google.android.material.button.MaterialButton>(id)
-                btn.minHeight = switcherH
-                btn.setPadding(factGap, 0, factGap, 0)
+                if (btn.minHeight != switcherH) btn.minHeight = switcherH
+                setPad(btn, factGap, 0, factGap, 0)
                 btn.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, typeBody)
-                btn.iconSize = moon
+                if (btn.iconSize != moon) btn.iconSize = moon
             }
             listOf(R.id.phaseMoonStart, R.id.phaseMoonMid, R.id.phaseMoonEnd, R.id.masaWeather).forEach { id ->
-                view.findViewById<View>(id).layoutParams = view.findViewById<View>(id).layoutParams.apply {
-                    width = moon
-                    height = moon
-                }
+                setSize(view.findViewById(id), moon, moon)
             }
             view.setTag(R.id.panchangaScreen, scale)
+            view.setTag(R.id.panchangaFacts, fitKey)
         }
-        view.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ -> fitContext() }
+        view.addOnLayoutChangeListener { _, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
+            if (right - left != oldRight - oldLeft || bottom - top != oldBottom - oldTop) {
+                fitContext()
+            }
+        }
         view.post { fitContext() }
         view.findViewById<View>(R.id.dayEvent).setOnClickListener { showDetails() }
         view.findViewById<View>(R.id.dayEventsCard).setOnClickListener { showDetails() }
@@ -238,9 +264,11 @@ class DeskFragment : Fragment() {
         bind(R.id.dateDialogPhase, phase)
         bind(R.id.dateDialogTithi, tithi, accent = ekadashi)
         bind(R.id.dateDialogMasa, masa)
-        bind(R.id.dateDialogRashi, "ಜೋಡಣೆ ಬಾಕಿ", pending = true)
+        val rashi = OsLang.script(PanchangaStore.chandraRashi(day.date), lang)
+        val pada = OsLang.digits(PanchangaStore.nakshatraPada(day.date), lang)
+        bind(R.id.dateDialogRashi, rashi)
         bind(R.id.dateDialogNakshatra, nakshatra.ifBlank { "ಜೋಡಣೆ ಬಾಕಿ" }, pending = nakshatra.isBlank())
-        bind(R.id.dateDialogBhava, "ಜೋಡಣೆ ಬಾಕಿ", pending = true)
+        bind(R.id.dateDialogBhava, "ಪಾದ $pada")
         bind(R.id.dateDialogKarana, OsLang.script(day.karana, lang).ifBlank { "ಜೋಡಣೆ ಬಾಕಿ" }, pending = day.karana.isBlank())
         bind(R.id.dateDialogYoga, OsLang.script(day.yoga, lang).ifBlank { "ಜೋಡಣೆ ಬಾಕಿ" }, pending = day.yoga.isBlank())
         bind(R.id.dateDialogEvent, detailsEvent.ifBlank { "ವಿಶೇಷ ಕಾರ್ಯಕ್ರಮ ದಾಖಲಾಗಿಲ್ಲ" }, accent = ekadashi)
@@ -371,7 +399,7 @@ class DeskFragment : Fragment() {
                 )
             }
         }
-        fact(R.id.rashiValue, "")
+        fact(R.id.rashiValue, OsLang.script(PanchangaStore.chandraRashi(day.date), lang))
         fact(
             R.id.nakshatraValue,
             OsLang.script(
@@ -379,7 +407,7 @@ class DeskFragment : Fragment() {
                 lang
             )
         )
-        fact(R.id.bhavaValue, "")
+        fact(R.id.bhavaValue, "ಪಾದ ${OsLang.digits(PanchangaStore.nakshatraPada(day.date), lang)}")
         fact(R.id.karanaValue, OsLang.script(day.karana, lang))
         FrozenPanchangaBinder.bind(v, cycle, selectedDate) { date ->
             if (!DeskLock.isLocked(requireContext())) {

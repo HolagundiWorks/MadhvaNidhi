@@ -8,7 +8,7 @@
 
 ## Phase
 
-`MOCKUP_ONLY = true` — refine interactive web mockups under `prototypes/`. Do not edit or build Android until explicitly authorized.
+`MOCKUP_ONLY = false` — the approved full-shell Android port is authorized. Keep native implementation and frozen web contracts aligned. See root `AGENTS.md` and [project-memory.md](project-memory.md).
 
 ## Destinations
 
@@ -20,7 +20,7 @@ Primary rail: Dashboard, Panchanga, Nitya Karma, Puja, Grantha, Bhakti Sangeeta,
 - **Nitya Karma** — Carbon **Tabs** for children (ಸಂಧ್ಯಾವಂದನೆ · ಜಪ · ನಿತ್ಯ ಪಾರಾಯಣ) in shell and menu-pages; Japa uses `prototypes/japa-session.js` (count / mala / goal).
 - **Puja** — standalone rail destination (`docs/frozen-nitya-puja.md`); Sandhya-parity step chrome with rite select.
 - **Grantha** — Stotra, Sukta, Mantra, Namavali (Nitya Parayana lives under Nitya Karma).
-- Reading, Aayadi, and section browse screens: mockups in `prototypes/menu-pages/`; Android mapping deferred.
+- Reading, Aayadi, and section browse screens: mockups in `prototypes/menu-pages/`; Android mapping follows the approved freeze contracts.
 
 ## Preview
 
@@ -33,3 +33,5 @@ python -m http.server 8767 --bind 127.0.0.1
 - Panchanga studio: http://127.0.0.1:8767/panchanga/
 
 Landscape screenshots (reference): `captures/carbon-app/`.
+
+Tabbed destinations use the tab strip as the first row and hide the shell header and divider. The side navigation stays available. Gruha Samskruti tabs are Aayadi, Rangavalli and Recipes / Naivedya.

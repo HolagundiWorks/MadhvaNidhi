@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/carbon_spacing_05">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ದಿನದ ಅಭ್ಯಾಸ · Daily progress"
+        android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
+        android:textColor="@color/carbon_text" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/dialogSandhyaPratah"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="44dp"
+        android:text="@string/pratah_label" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/dialogSandhyaMadhyahna"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="44dp"
+        android:text="@string/madhyahna_label" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/dialogSandhyaSayam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="44dp"
+        android:text="@string/sayam_label" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/carbon_border_width"
+        android:layout_marginVertical="@dimen/carbon_spacing_03"
+        android:background="@color/carbon_border_subtle" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dashboard_japa"
+        android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
+        android:textColor="@color/carbon_text" />
+
+    <TextView
+        android:id="@+id/dialogJapaCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/carbon_spacing_02"
+        android:textAppearance="@style/TextAppearance.Carbon.Heading03"
+        android:textColor="@color/carbon_text" />
+
+    <TextView
+        android:id="@+id/dialogJapaMeta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.Carbon.Label01"
+        android:textColor="@color/carbon_text_secondary" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/carbon_spacing_03"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/dialogJapaInc"
+            style="@style/Widget.Carbon.Button.Primary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/dialogJapaUndo"
+            style="@style/Widget.Carbon.Button.Tertiary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/carbon_spacing_02"
+            android:text="@string/undo" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/dialogOpenJapa"
+            style="@style/Widget.Carbon.Button.Ghost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/carbon_spacing_02"
+            android:text="@string/dashboard_open_japa" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/carbon_border_width"
+        android:layout_marginVertical="@dimen/carbon_spacing_03"
+        android:background="@color/carbon_border_subtle" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dashboard_stotra"
+        android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
+        android:textColor="@color/carbon_text" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/dialogStotra1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="44dp"
+        android:text="@string/dashboard_stotra_1" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/dialogStotra2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="44dp"
+        android:text="@string/dashboard_stotra_2" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/dialogOpenGrantha"
+        style="@style/Widget.Carbon.Button.Ghost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dashboard_resume_reading" />
+</LinearLayout>

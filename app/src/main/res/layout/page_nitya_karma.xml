@@ -9,11 +9,12 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/nityaTabs"
         style="@style/Widget.Carbon.TabLayout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/carbon_layout_size_height_md"
+        android:layout_gravity="start"
         android:minHeight="@dimen/carbon_layout_size_height_md"
-        app:tabMode="fixed"
-        app:tabGravity="fill"
+        app:tabMode="scrollable"
+        app:tabGravity="start"
         app:tabInlineLabel="true" />
 
     <FrameLayout

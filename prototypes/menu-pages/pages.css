@@ -67,8 +67,8 @@ input:focus-visible {
 #app.has-child-sections .workspace {
   grid-row: 1;
 }
-#app.has-child-sections .page[data-nitya-tabs],
-#app.has-child-sections .page[data-page="puja"] {
+#app.has-child-sections .page.is-active[data-nitya-tabs],
+#app.has-child-sections .page.is-active[data-page="puja"] {
   padding: 0;
   max-width: none;
   height: 100%;
@@ -76,7 +76,7 @@ input:focus-visible {
   display: flex;
   flex-direction: column;
 }
-#app.has-child-sections .page[data-page="puja"] .puja-panel {
+#app.has-child-sections .page.is-active[data-page="puja"] .puja-panel {
   flex: 1;
   min-height: 0;
   height: 100%;

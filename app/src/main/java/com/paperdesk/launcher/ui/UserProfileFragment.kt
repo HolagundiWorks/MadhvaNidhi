@@ -7,25 +7,21 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.google.android.material.button.MaterialButton
 import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputEditText
 import com.paperdesk.launcher.R
 import com.paperdesk.launcher.data.JapaCatalog
-import com.paperdesk.launcher.data.Profile
+import com.paperdesk.launcher.data.JapaGoals
 import com.paperdesk.launcher.data.ProfileStore
-import java.text.NumberFormat
-import java.util.Locale
 
-/** Frozen User profile — view / edit with diksha + japa targets. */
+/** Frozen User profile — view / edit with diksha + japa targets (Daily · Sankalpa). */
 class UserProfileFragment : Fragment() {
     private lateinit var store: ProfileStore
     private var editing = false
     private val selectedDiksha = linkedSetOf<String>()
     private val targetDaily = mutableMapOf<String, Long>()
-    private val targetMajor = mutableMapOf<String, Long>()
-    private val countFormat = NumberFormat.getIntegerInstance(Locale("en", "IN"))
+    private val targetSankalpa = mutableMapOf<String, Long>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, state: Bundle?): View =
         inflater.inflate(R.layout.page_user_profile, container, false)
@@ -66,12 +62,7 @@ class UserProfileFragment : Fragment() {
             else p.dikshaMantras.joinToString(", ") { id ->
                 JapaCatalog.entries.firstOrNull { it.id == id }?.label ?: id
             }
-        v.findViewById<TextView>(R.id.viewJapaTargets).text =
-            if (p.japaTargets.isEmpty()) "—"
-            else p.japaTargets.entries.joinToString("\n") { (id, goals) ->
-                val label = JapaCatalog.entries.firstOrNull { it.id == id }?.label ?: id
-                "$label · daily ${countFormat.format(goals.first)} · major ${countFormat.format(goals.second)}"
-            }
+        JapaTargetsTable.paintReadonly(v.findViewById(R.id.viewJapaTargets), requireContext())
         v.findViewById<TextView>(R.id.userStatus).text = "Loaded encrypted local profile"
     }
 
@@ -81,10 +72,10 @@ class UserProfileFragment : Fragment() {
         selectedDiksha.clear()
         selectedDiksha.addAll(p.dikshaMantras)
         targetDaily.clear()
-        targetMajor.clear()
+        targetSankalpa.clear()
         p.japaTargets.forEach { (k, pair) ->
             targetDaily[k] = pair.first
-            targetMajor[k] = pair.second
+            targetSankalpa[k] = pair.second
         }
         v.findViewById<TextInputEditText>(R.id.editName).setText(p.name)
         bindSelect(v.findViewById(R.id.editGotra), ProfileStore.GOTRAS, p.gotra)
@@ -118,12 +109,12 @@ class UserProfileFragment : Fragment() {
                 setOnCheckedChangeListener { _, checked ->
                     if (checked) {
                         selectedDiksha += entry.id
-                        targetDaily.putIfAbsent(entry.id, 101L)
-                        targetMajor.putIfAbsent(entry.id, 10001L)
+                        targetDaily.putIfAbsent(entry.id, JapaGoals.DEFAULT_DAILY)
+                        targetSankalpa.putIfAbsent(entry.id, JapaGoals.SANKALPA_AUTO)
                     } else {
                         selectedDiksha -= entry.id
                         targetDaily.remove(entry.id)
-                        targetMajor.remove(entry.id)
+                        targetSankalpa.remove(entry.id)
                     }
                     rebuildTargets(v)
                 }
@@ -133,45 +124,13 @@ class UserProfileFragment : Fragment() {
     }
 
     private fun rebuildTargets(v: View) {
-        val host = v.findViewById<LinearLayout>(R.id.editJapaTargetsHost)
-        host.removeAllViews()
-        val dailyLabels = ProfileStore.DAILY_GOALS.map { countFormat.format(it) }
-        val majorLabels = ProfileStore.MAJOR_GOALS.map { countFormat.format(it) }
-        selectedDiksha.forEach { id ->
-            val label = JapaCatalog.entries.firstOrNull { it.id == id }?.label ?: id
-            val row = LinearLayout(requireContext()).apply {
-                orientation = LinearLayout.VERTICAL
-                setPadding(0, 0, 0, resources.getDimensionPixelSize(R.dimen.carbon_spacing_03))
-            }
-            row.addView(TextView(requireContext()).apply {
-                text = label
-                setTextAppearance(R.style.TextAppearance_Carbon_BodyCompact01)
-                setTextColor(requireContext().getColor(R.color.carbon_text))
-            })
-            val daily = MaterialAutoCompleteTextView(requireContext())
-            val major = MaterialAutoCompleteTextView(requireContext())
-            val dailyIdx = ProfileStore.DAILY_GOALS.indexOf(targetDaily[id] ?: 101L).coerceAtLeast(0)
-            val majorIdx = ProfileStore.MAJOR_GOALS.indexOf(targetMajor[id] ?: 10001L).coerceAtLeast(0)
-            MaterialChoices.bind(daily, dailyLabels, dailyIdx) {
-                targetDaily[id] = ProfileStore.DAILY_GOALS[it]
-            }
-            MaterialChoices.bind(major, majorLabels, majorIdx) {
-                targetMajor[id] = ProfileStore.MAJOR_GOALS[it]
-            }
-            daily.hint = "Daily"
-            major.hint = "Major"
-            row.addView(daily, LinearLayout.LayoutParams(-1, -2))
-            row.addView(major, LinearLayout.LayoutParams(-1, -2).apply {
-                topMargin = resources.getDimensionPixelSize(R.dimen.carbon_spacing_02)
-            })
-            host.addView(row)
-        }
-        if (selectedDiksha.isEmpty()) {
-            host.addView(TextView(requireContext()).apply {
-                text = "Select diksha mantras to set targets"
-                setTextColor(requireContext().getColor(R.color.carbon_text_secondary))
-            })
-        }
+        JapaTargetsTable.paintEditable(
+            v.findViewById(R.id.editJapaTargetsHost),
+            requireContext(),
+            selectedDiksha,
+            targetDaily,
+            targetSankalpa
+        )
     }
 
     private fun save() {
@@ -180,7 +139,10 @@ class UserProfileFragment : Fragment() {
         val maritalIndex = MaterialChoices.position(v.findViewById(R.id.editMarital))
         val marital = ProfileStore.MARITAL.getOrElse(maritalIndex) { ProfileStore.MARITAL.first() }.first
         val targets = selectedDiksha.associateWith { id ->
-            Pair(targetDaily[id] ?: 101L, targetMajor[id] ?: 10001L)
+            Pair(
+                targetDaily[id] ?: JapaGoals.DEFAULT_DAILY,
+                targetSankalpa[id] ?: JapaGoals.SANKALPA_AUTO
+            )
         }
         store.save(
             current.copy(
@@ -195,7 +157,6 @@ class UserProfileFragment : Fragment() {
                 japaTargets = targets
             )
         )
-        // Sync japa pad base goal from first selected mantra daily target
         targets.values.firstOrNull()?.first?.let { daily ->
             requireContext().getSharedPreferences("paperdesk_japa_ui", 0).edit()
                 .putLong("daily_goal", daily)

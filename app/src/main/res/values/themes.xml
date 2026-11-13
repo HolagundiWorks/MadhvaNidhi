@@ -48,6 +48,8 @@
         <item name="buttonBarNegativeButtonStyle">@style/Widget.Carbon.Button.Ghost</item>
         <item name="buttonBarNeutralButtonStyle">@style/Widget.Carbon.Button.Ghost</item>
         <item name="materialButtonStyle">@style/Widget.Carbon.Button.Primary</item>
+        <!-- Carbon md icon FABs (mockup nitya-fab) — not Material's 48dp floor -->
+        <item name="minTouchTargetSize">@dimen/carbon_layout_size_height_md</item>
         <item name="materialButtonOutlinedStyle">@style/Widget.Carbon.Button.Tertiary</item>
         <item name="borderlessButtonStyle">@style/Widget.Carbon.Button.Ghost</item>
         <item name="materialCardViewStyle">@style/Widget.Carbon.Tile</item>
@@ -100,6 +102,11 @@
     <style name="ShapeAppearanceOverlay.Carbon.Square" parent="ShapeAppearance.Material3.Corner.None">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">@dimen/carbon_corner_radius</item>
+    </style>
+
+    <!-- Nitya icon FAB · Carbon md 40 — override Material 48dp min touch target -->
+    <style name="ThemeOverlay.Carbon.NityaFab" parent="">
+        <item name="minTouchTargetSize">@dimen/carbon_layout_size_height_md</item>
     </style>
 
     <!-- Legacy name aliases → Carbon square (keep refs compiling) -->

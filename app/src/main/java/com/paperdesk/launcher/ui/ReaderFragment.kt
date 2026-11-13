@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import androidx.core.widget.NestedScrollView
-import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -69,12 +68,9 @@ class ReaderFragment : Fragment() {
         view.findViewById<View>(R.id.readerSelectLabel).setOnClickListener { openSelector() }
         view.findViewById<View>(R.id.selectorBack).setOnClickListener { closeSelector() }
         if (pageId == SANDHYA) setupKalaDropdown(view)
-        if (pageId == MANTRAS) setupSubpages(view)
         sessionId = prefs.getString("session", "").orEmpty()
         itemId = prefs.getString("item", "").orEmpty()
-        subpageId = lockedSubpage()
-            ?: prefs.getString("subpage", MANTRA_SUBPAGE).orEmpty().takeIf { it in SUBPAGES }
-            ?: MANTRA_SUBPAGE
+        subpageId = lockedSubpage() ?: MANTRA_SUBPAGE
         viewLifecycleOwner.lifecycleScope.launch {
             val app = requireContext().applicationContext
             withContext(Dispatchers.IO) { ensureStoresLoaded(app) }
@@ -169,23 +165,6 @@ class ReaderFragment : Fragment() {
         view?.findViewById<View>(R.id.readerScroll)?.let { ScreenPages.first(it) }
     }
 
-    private fun setupSubpages(v: View) {
-        v.findViewById<View>(R.id.readerSubpages).visibility = View.VISIBLE
-        v.findViewById<View>(R.id.subpageMantras).setOnClickListener { pickSubpage(MANTRA_SUBPAGE) }
-        v.findViewById<View>(R.id.subpageStotras).setOnClickListener { pickSubpage(STOTRA_SUBPAGE) }
-        v.findViewById<View>(R.id.subpageSuktas).setOnClickListener { pickSubpage(SUKTA_SUBPAGE) }
-    }
-
-    private fun pickSubpage(id: String) {
-        if (pageId != MANTRAS || id !in SUBPAGES || id == subpageId) return
-        subpageId = id
-        itemId = CatalogueStore.firstReadable(MANTRAS, subpageId)?.id.orEmpty()
-        sessionId = CatalogueStore.item(itemId)?.group.orEmpty()
-        prefs.edit().putString("subpage", subpageId).putString("session", sessionId).putString("item", itemId).apply()
-        paint()
-        view?.findViewById<View>(R.id.readerScroll)?.let { ScreenPages.first(it) }
-    }
-
     private fun paint() {
         val v = view ?: return
         lang = OsLang.get(requireContext())
@@ -195,8 +174,7 @@ class ReaderFragment : Fragment() {
         DeskType.apply(v.findViewById(R.id.readerTitle), DeskType.SEMIBOLD)
         DeskType.apply(v.findViewById(R.id.selectorTitle), DeskType.SEMIBOLD)
         val sandhya = pageId == SANDHYA
-        v.findViewById<View>(R.id.readerSubpages).visibility = if (pageId == MANTRAS) View.VISIBLE else View.GONE
-        if (pageId == MANTRAS) bindSubpages(v)
+        v.findViewById<View>(R.id.readerSubpages).visibility = View.GONE
         v.findViewById<View>(R.id.readerSelect).visibility = View.GONE
         v.findViewById<View>(R.id.readerItemField).visibility = if (sandhya) View.GONE else View.VISIBLE
         if (!sandhya) bindItemDropdown(v)
@@ -264,7 +242,6 @@ class ReaderFragment : Fragment() {
                 val group = CatalogueStore.groupsFor(pageId).firstOrNull { it.id == (cat?.group ?: sessionId) }
                 val section = group?.let { CatalogueStore.groupLabel(it, lang) }.orEmpty()
                 val name = item?.label.orEmpty()
-                if (pageId == MANTRAS) parts += OsLang.ui(subpageId, lang)
                 if (section.isNotBlank() && section != page) parts += section
                 if (name.isNotBlank() && name != section) parts += name
             }
@@ -297,23 +274,6 @@ class ReaderFragment : Fragment() {
             else -> R.id.kalaMorning
         }
         v.findViewById<com.google.android.material.button.MaterialButtonToggleGroup>(R.id.readerKalaField).check(id)
-    }
-
-    private fun bindSubpages(v: View) {
-        val tabs = listOf(
-            Triple(R.id.subpageMantras, MANTRA_SUBPAGE, OsLang.ui("mantras", lang)),
-            Triple(R.id.subpageStotras, STOTRA_SUBPAGE, OsLang.ui("stotra", lang)),
-            Triple(R.id.subpageSuktas, SUKTA_SUBPAGE, OsLang.ui("suktas", lang))
-        )
-        tabs.forEach { (viewId, id, title) ->
-            v.findViewById<TextView>(viewId).apply {
-                text = title
-                contentDescription = title
-                val active = id == subpageId
-                (this as MaterialButton).isChecked = active
-                DeskType.apply(this, if (active) DeskType.SEMIBOLD else DeskType.REGULAR)
-            }
-        }
     }
 
     private fun bindSelector() {
@@ -468,9 +428,10 @@ class ReaderFragment : Fragment() {
 
     private fun isCataloguePage(): Boolean = pageId in CATALOGUE_PAGES
 
-    private fun usesSubpageFilter(): Boolean = pageId == MANTRAS || lockedSubpage() != null
+    private fun usesSubpageFilter(): Boolean = lockedSubpage() != null
 
     private fun lockedSubpage(): String? = when (pageId) {
+        MANTRAS -> MANTRA_SUBPAGE
         STOTRA -> STOTRA_SUBPAGE
         SUKTAS -> SUKTA_SUBPAGE
         NAMAVALI -> NAMAVALI_SUBPAGE
@@ -554,7 +515,6 @@ class ReaderFragment : Fragment() {
         private const val STOTRA_SUBPAGE = "stotra"
         private const val SUKTA_SUBPAGE = "suktas"
         private const val NAMAVALI_SUBPAGE = "namavali"
-        private val SUBPAGES = setOf(MANTRA_SUBPAGE, STOTRA_SUBPAGE, SUKTA_SUBPAGE, NAMAVALI_SUBPAGE)
         private val CATALOGUE_PAGES = setOf(MANTRAS, HADUGALU, STOTRA, SUKTAS, NAMAVALI)
         private const val ARG_ID = "page_id"
 

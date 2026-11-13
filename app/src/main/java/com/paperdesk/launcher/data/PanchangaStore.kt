@@ -238,6 +238,26 @@ object PanchangaStore {
     fun isMarked(tithi: String): Boolean =
         isEkadasi(tithi) || isPurnima(tithi) || isAmavasya(tithi)
 
+    /** Chandra rashi from local moon longitude (tradition-independent). */
+    fun chandraRashi(date: String): String {
+        val moon = moonLon(julian(parse(date)))
+        return RASHI[(floor(norm(moon) / 30.0).toInt() % 12)]
+    }
+
+    /** Surya rashi from local sun longitude. */
+    fun suryaRashi(date: String): String {
+        val sun = sunLon(julian(parse(date)))
+        return RASHI[(floor(norm(sun) / 30.0).toInt() % 12)]
+    }
+
+    /** Nakshatra pada 1–4 from local moon. */
+    fun nakshatraPada(date: String): Int {
+        val moon = moonLon(julian(parse(date)))
+        val span = 360.0 / 27.0
+        val within = norm(moon) % span
+        return (floor(within / (span / 4.0)).toInt() % 4) + 1
+    }
+
     /** Fifteen civil days of the current paksha: Amavasya→Purnima or Purnima→Amavasya. */
     fun pakshaSpan(date: String): List<String> {
         val start = pakshaStart(date)
@@ -273,6 +293,10 @@ object PanchangaStore {
     private val MASA = arrayOf(
         "CHAITRA", "VAISHAKHA", "JYESHTHA", "ASHADHA", "SHRAVANA", "BHADRAPADA",
         "ASHWAYUJA", "KARTIKA", "MARGASHIRSHA", "PUSHYA", "MAGHA", "PHALGUNA"
+    )
+    private val RASHI = arrayOf(
+        "MESHA", "VRISHABHA", "MITHUNA", "KARKATAKA", "SIMHA", "KANYA",
+        "TULA", "VRISHCHIKA", "DHANUS", "MAKARA", "KUMBHA", "MEENA"
     )
     private val YOGA = arrayOf(
         "VISHKAMBHA", "PRITI", "AYUSHMAN", "SAUBHAGYA", "SHOBHANA", "ATI GANDA", "SUKARMA", "DHRITI",

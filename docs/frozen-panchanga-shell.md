@@ -1,6 +1,6 @@
 # Frozen Panchanga and application shell — finalized 12 November 2026
 
-This is the **approved web-mockup contract** for the Panchanga calendar (`MOCKUP_ONLY`). Future screens reuse the shell and Carbon semantic tokens. Panchanga layout changes require a new design iteration.
+This is the **approved web-mockup contract** for the Panchanga calendar. Future screens reuse the shell and Carbon semantic tokens. Panchanga layout changes require a new design iteration.
 
 | Artifact | Path |
 | --- | --- |
@@ -12,7 +12,7 @@ This is the **approved web-mockup contract** for the Panchanga calendar (`MOCKUP
 | Machine tokens | `docs/frozen-design-tokens.json` |
 | Carbon audit | `docs/carbon-mockup-audit.md` |
 
-Android native sources under `app/` remain **read-only** until explicitly authorized to implement this mockup. Android may later map these visuals onto Material primitives; the mockup itself stays IBM Carbon.
+The approved Android port is authorized by root `AGENTS.md` (`MOCKUP_ONLY = false`). Native views implement this frozen contract under Carbon tokens; the mockup remains the visual authority.
 
 Primary rail destinations: Dashboard, Panchanga, Nitya Karma, Puja, Grantha, Bhakti Sangeeta, Gruha Samskruti, User, Settings. Child features open from hub pages. PaperDesk scheduler/todo/notes/projects/Gita/tools are not destinations.
 

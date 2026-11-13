@@ -4,7 +4,7 @@
   "revision": "panchanga-final",
   "units": {
     "web": "CSS px / Carbon tokens",
-    "android": "dp; text in sp (mapping deferred until Android implementation is authorized)"
+    "android": "dp; text in sp (approved Android implementation)"
   },
   "shell": {
     "railWidth": 56,

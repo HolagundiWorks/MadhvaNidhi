@@ -1,5 +1,7 @@
 # Carbon mockup audit (web prototypes)
 
+Historical snapshot of the mockup phase. For current implementation policy see [the UI system](ui-system.md).
+
 Date: 2026-11-12 · Scope: `prototypes/` only (`MOCKUP_ONLY`)  
 Revision: **panchanga-final + user-profile-final**
 

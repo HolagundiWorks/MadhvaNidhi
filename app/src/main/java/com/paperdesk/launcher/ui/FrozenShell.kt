@@ -188,8 +188,8 @@ class FrozenShell(private val activity: LauncherActivity) {
             "desk" -> "desk"
             "sandhya", "japa", "nitya", "nityakarma" -> "nityakarma"
             "puja" -> "puja"
-            "stotra", "suktas", "mantras", "namavali", "grantha" -> "grantha"
-            "hadugalu", "playlists", "sangeeta" -> "sangeeta"
+            "stotra", "suktas", "mantras", "namavali", "hadugalu", "grantha" -> "grantha"
+            "playlists", "sangeeta" -> "sangeeta"
             "aayadi", "rangavalli", "recipes", "samskruti" -> "samskruti"
             "user" -> "user"
             "settings" -> "settings"
@@ -199,13 +199,15 @@ class FrozenShell(private val activity: LauncherActivity) {
         fun iconFor(id: String): Int = when (id) {
             "dashboard" -> R.drawable.ic_dashboard
             "desk" -> R.drawable.ic_calendar
-            "nityakarma", "sandhya" -> R.drawable.ic_sun
+            "nityakarma" -> R.drawable.ic_time_plot
+            "sandhya" -> R.drawable.ic_sun
             "japa" -> R.drawable.ic_renew
-            "puja" -> R.drawable.ic_book
+            "puja" -> R.drawable.ic_transform_instructions
             "nitya" -> R.drawable.ic_book
-            "grantha", "stotra", "suktas", "mantras", "namavali" -> R.drawable.ic_book
+            "grantha" -> R.drawable.ic_document_multiple_01
+            "stotra", "suktas", "mantras", "namavali" -> R.drawable.ic_book
             "sangeeta", "hadugalu", "playlists" -> R.drawable.ic_music
-            "samskruti", "aayadi", "rangavalli", "recipes" -> R.drawable.ic_image
+            "samskruti", "aayadi", "rangavalli", "recipes" -> R.drawable.ic_mac_command
             "user" -> R.drawable.ic_user
             "settings" -> R.drawable.ic_settings
             else -> R.drawable.ic_information

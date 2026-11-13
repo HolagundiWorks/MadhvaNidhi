@@ -109,6 +109,48 @@ class SettingsStore(context: Context) {
         save(json().put("panchangaTradition", PanchangaTraditions.find(id).id))
     }
 
+    /**
+     * Dashboard row-2 japa slots (5). Slot 0 is always Gayatri; slots 1–4 are user-chosen mantra ids.
+     */
+    fun dashboardJapaSlots(): List<String> {
+        val arr = json().optJSONArray("dashboardJapaSlots")
+        val defaults = listOf("gayatri", "narayana", "rama", "hanuman", "raghavendra")
+        if (arr == null || arr.length() == 0) return defaults
+        val slots = (0 until arr.length()).map { arr.optString(it).ifBlank { defaults.getOrElse(it) { "narayana" } } }
+            .toMutableList()
+        while (slots.size < 5) slots += defaults[slots.size]
+        slots[0] = "gayatri"
+        return slots.take(5)
+    }
+
+    fun setDashboardJapaSlots(slots: List<String>) {
+        val next = slots.take(5).toMutableList()
+        while (next.size < 5) next += "narayana"
+        next[0] = "gayatri"
+        save(json().put("dashboardJapaSlots", JSONArray(next)))
+    }
+
+    /** Dashboard row-3 shortcuts (3). User-chosen destination ids. */
+    fun dashboardShortcuts(): List<String> {
+        val arr = json().optJSONArray("dashboardShortcuts")
+        val defaults = DASHBOARD_SHORTCUT_DEFAULTS
+        if (arr == null || arr.length() == 0) return defaults
+        val slots = (0 until arr.length()).map { i ->
+            val id = arr.optString(i).ifBlank { defaults.getOrElse(i) { "desk" } }
+            if (id in DASHBOARD_SHORTCUT_IDS) id else defaults.getOrElse(i) { "desk" }
+        }.toMutableList()
+        while (slots.size < 3) slots += defaults[slots.size]
+        return slots.take(3)
+    }
+
+    fun setDashboardShortcuts(slots: List<String>) {
+        val next = slots.take(3).map { id ->
+            if (id in DASHBOARD_SHORTCUT_IDS) id else "desk"
+        }.toMutableList()
+        while (next.size < 3) next += DASHBOARD_SHORTCUT_DEFAULTS[next.size]
+        save(json().put("dashboardShortcuts", JSONArray(next)))
+    }
+
     companion object {
         const val PREFS = "paperdesk_os"
         const val VEDA_RIGVEDA = "rigveda_ashvalayana"
@@ -128,6 +170,17 @@ class SettingsStore(context: Context) {
 
         /** Navigation aliases that open Nitya tabs (not separate pages). */
         val NITYA_TAB_ALIASES = setOf("sandhya", "japa", "nitya", "nityakarma")
+
+        val DASHBOARD_SHORTCUT_DEFAULTS = listOf("desk", "japa", "grantha")
+
+        /** Destinations offered for dashboard bottom-row shortcuts. */
+        val DASHBOARD_SHORTCUT_IDS = listOf(
+            "desk", "sandhya", "japa", "nitya", "puja",
+            "grantha", "stotra", "suktas", "mantras", "hadugalu",
+            "sangeeta", "playlists",
+            "samskruti", "aayadi", "rangavalli", "recipes",
+            "settings", "user"
+        )
 
         val PAGE_LABELS = mapOf(
             "dashboard" to "DASHBOARD",
@@ -174,6 +227,8 @@ class SettingsStore(context: Context) {
             .put("pagesRev", 17)
             .put("veda", VEDA_RIGVEDA)
             .put("panchangaTradition", PanchangaTraditions.SRS)
+            .put("dashboardJapaSlots", JSONArray(listOf("gayatri", "narayana", "rama", "hanuman", "raghavendra")))
+            .put("dashboardShortcuts", JSONArray(DASHBOARD_SHORTCUT_DEFAULTS))
             .put("landscape", true)
             .put("theme", "black")
             .put("accent", "#BA4E00")

@@ -111,12 +111,18 @@ object FrozenPanchangaBinder {
             // Live mock append order: .date (civil) → .weekday → .num (tithi)
             val text = "$civil\n$weekday\n$tithi"
             val scale = mockScale()
+            // Mock density CSS clamps — keep ranges ordered so tiny cells never crash coerceIn.
+            fun clampPx(preferred: Float, minPx: Float, maxPx: Float): Int {
+                val lo = minOf(minPx, maxPx)
+                val hi = maxOf(minPx, maxPx)
+                return preferred.coerceIn(lo, hi).roundToInt()
+            }
             // Mock density CSS: date = clamp(10, side*0.2, 21*d); weekday = clamp(8, side*0.11, 12*d); num = clamp(8, side*0.13, 14*d)
-            val datePx = (side * 0.2f).coerceIn(10 * density, 21 * density * scale).roundToInt()
-            val weekdayPx = (side * 0.11f).coerceIn(8 * density, 12 * density * scale).roundToInt()
-            val numPx = (side * 0.13f).coerceIn(8 * density, 14 * density * scale).roundToInt()
+            val datePx = clampPx(side * 0.2f, 10 * density, 21 * density * scale)
+            val weekdayPx = clampPx(side * 0.11f, 8 * density, 12 * density * scale)
+            val numPx = clampPx(side * 0.13f, 8 * density, 14 * density * scale)
             // --tile-pad: clamp(4px, side*0.145, 16*density)
-            val tilePad = (side * 0.145f).coerceIn(4 * density, 16 * density * scale).roundToInt()
+            val tilePad = clampPx(side * 0.145f, 4 * density, 16 * density * scale)
             button.text = android.text.SpannableString(text).apply {
                 setSpan(
                     android.text.style.AbsoluteSizeSpan(datePx),
@@ -404,8 +410,10 @@ object FrozenPanchangaBinder {
         area.setTag(R.id.calendarNext, { reflow() })
         if (area.getTag(R.id.pakshaScroll) == null) {
             area.setTag(R.id.pakshaScroll, true)
-            area.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
-                (area.getTag(R.id.calendarNext) as? (() -> Unit))?.invoke()
+            area.addOnLayoutChangeListener { _, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
+                if (right - left != oldRight - oldLeft || bottom - top != oldBottom - oldTop) {
+                    (area.getTag(R.id.calendarNext) as? (() -> Unit))?.invoke()
+                }
             }
         }
         area.post { reflow() }

@@ -19,7 +19,7 @@ data class Profile(
     val marital: String = "married",
     val matha: String = "",
     val dikshaMantras: List<String> = emptyList(),
-    /** mantraId → Pair(daily, major) */
+    /** mantraId → Pair(daily, sankalpa). Sankalpa 0 = auto next level from cumulative. */
     val japaTargets: Map<String, Pair<Long, Long>> = emptyMap()
 )
 
@@ -167,7 +167,15 @@ class ProfileStore(context: Context) {
                     japaTargets = obj.optJSONObject("japaTargets")?.let { jt ->
                         jt.keys().asSequence().associateWith { key ->
                             val row = jt.optJSONObject(key)
-                            Pair(row?.optLong("daily", 101L) ?: 101L, row?.optLong("major", 10001L) ?: 10001L)
+                            val daily = row?.optLong("daily", JapaGoals.DEFAULT_DAILY) ?: JapaGoals.DEFAULT_DAILY
+                            // Prefer sankalpa; fall back to legacy "major".
+                            val sankalpa = when {
+                                row == null -> JapaGoals.SANKALPA_AUTO
+                                row.has("sankalpa") -> row.optLong("sankalpa", JapaGoals.SANKALPA_AUTO)
+                                row.has("major") -> row.optLong("major", JapaGoals.SANKALPA_AUTO)
+                                else -> JapaGoals.SANKALPA_AUTO
+                            }
+                            Pair(daily.coerceAtLeast(1), sankalpa.coerceAtLeast(0))
                         }
                     }.orEmpty()
                 )
@@ -190,7 +198,13 @@ class ProfileStore(context: Context) {
         .put("dikshaMantras", JSONArray(p.dikshaMantras))
         .put("japaTargets", JSONObject().also { jt ->
             p.japaTargets.forEach { (k, v) ->
-                jt.put(k, JSONObject().put("daily", v.first).put("major", v.second))
+                jt.put(
+                    k,
+                    JSONObject()
+                        .put("daily", v.first)
+                        .put("sankalpa", v.second)
+                        .put("major", v.second) // legacy alias
+                )
             }
         })
 
@@ -264,8 +278,10 @@ class ProfileStore(context: Context) {
 
         val MARITAL = listOf("married" to "Married · ವಿವಾಹಿತ", "unmarried" to "Unmarried · ಅವಿವಾಹಿತ")
 
-        val DAILY_GOALS = listOf(11L, 101L, 1001L, 5001L)
-        val MAJOR_GOALS = listOf(5001L, 10001L, 50001L, 100001L, 1000001L)
+        val DAILY_GOALS = JapaGoals.DAILY
+        /** @deprecated Use [JapaGoals.SANKALPA] — kept for call-site compat. */
+        val MAJOR_GOALS = JapaGoals.SANKALPA
+        val SANKALPA_GOALS = JapaGoals.SANKALPA
 
         val NAKSHATRAS = listOf(
             "ತಿಳಿಸಿಲ್ಲ",

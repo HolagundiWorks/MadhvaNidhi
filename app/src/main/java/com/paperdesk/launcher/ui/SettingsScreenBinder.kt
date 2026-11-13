@@ -2,9 +2,13 @@ package com.paperdesk.launcher.ui
 
 import android.content.Context
 import android.view.View
+import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
+import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.paperdesk.launcher.DeskTheme
 import com.paperdesk.launcher.R
+import com.paperdesk.launcher.data.JapaCatalog
 import com.paperdesk.launcher.data.PanchangaTraditions
 import com.paperdesk.launcher.data.ProfileStore
 import com.paperdesk.launcher.data.SettingsStore
@@ -15,6 +19,7 @@ object SettingsScreenBinder {
         root.findViewById<View>(R.id.settingsPageTitle).visibility = if (showBack) View.VISIBLE else View.GONE
         val settings = SettingsStore(context)
         refreshProfileSummary(root, context)
+        bindJapaTables(root, context, settings)
         root.findViewById<View>(R.id.settingsOpenProfile).setOnClickListener {
             (context as? LauncherActivity)?.navigateTo("user")
                 ?: context.startActivity(ProfileRegisterActivity.intent(context))
@@ -107,5 +112,86 @@ object SettingsScreenBinder {
             } else {
                 parts.joinToString(" · ")
             }
+        root.findViewById<LinearLayout>(R.id.settingsJapaTargetsTable)?.let {
+            JapaTargetsTable.paintReadonly(it, context)
+        }
+    }
+
+    private fun bindJapaTables(root: View, context: Context, settings: SettingsStore) {
+        root.findViewById<LinearLayout>(R.id.settingsJapaTargetsTable)?.let {
+            JapaTargetsTable.paintReadonly(it, context)
+        }
+        val host = root.findViewById<LinearLayout>(R.id.settingsDashboardJapaSlots) ?: return
+        host.removeAllViews()
+        val slots = settings.dashboardJapaSlots().toMutableList()
+        val labels = JapaCatalog.entries.map { it.label }
+        val ids = JapaCatalog.entries.map { it.id }
+        slots.forEachIndexed { index, mantraId ->
+            val row = LinearLayout(context).apply {
+                orientation = LinearLayout.HORIZONTAL
+                gravity = android.view.Gravity.CENTER_VERTICAL
+                setPadding(0, 0, 0, context.resources.getDimensionPixelSize(R.dimen.carbon_spacing_03))
+            }
+            row.addView(TextView(context).apply {
+                text = if (index == 0) "1 · Gayatri" else "${index + 1}"
+                setTextAppearance(R.style.TextAppearance_Carbon_Label01)
+                setTextColor(context.getColor(R.color.carbon_text_secondary))
+                layoutParams = LinearLayout.LayoutParams(
+                    context.resources.getDimensionPixelSize(R.dimen.carbon_spacing_09),
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
+            })
+            if (index == 0) {
+                row.addView(TextView(context).apply {
+                    text = JapaCatalog.entries.firstOrNull { it.id == "gayatri" }?.label ?: "ಗಾಯತ್ರೀ"
+                    setTextAppearance(R.style.TextAppearance_Carbon_BodyCompact01)
+                    setTextColor(context.getColor(R.color.carbon_text))
+                })
+            } else {
+                val picker = MaterialAutoCompleteTextView(context)
+                val selected = ids.indexOf(mantraId).coerceAtLeast(0)
+                MaterialChoices.bind(picker, labels, selected) { choice ->
+                    slots[index] = ids[choice]
+                    slots[0] = "gayatri"
+                    settings.setDashboardJapaSlots(slots)
+                }
+                row.addView(picker, LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f))
+            }
+            host.addView(row)
+        }
+        bindShortcutPickers(root, context, settings)
+    }
+
+    private fun bindShortcutPickers(root: View, context: Context, settings: SettingsStore) {
+        val host = root.findViewById<LinearLayout>(R.id.settingsDashboardShortcuts) ?: return
+        host.removeAllViews()
+        val slots = settings.dashboardShortcuts().toMutableList()
+        val ids = SettingsStore.DASHBOARD_SHORTCUT_IDS
+        val lang = com.paperdesk.launcher.data.OsLang.get(context)
+        val labels = ids.map { com.paperdesk.launcher.data.OsLang.ui(it, lang) }
+        slots.forEachIndexed { index, destId ->
+            val row = LinearLayout(context).apply {
+                orientation = LinearLayout.HORIZONTAL
+                gravity = android.view.Gravity.CENTER_VERTICAL
+                setPadding(0, 0, 0, context.resources.getDimensionPixelSize(R.dimen.carbon_spacing_03))
+            }
+            row.addView(TextView(context).apply {
+                text = "${index + 1}"
+                setTextAppearance(R.style.TextAppearance_Carbon_Label01)
+                setTextColor(context.getColor(R.color.carbon_text_secondary))
+                layoutParams = LinearLayout.LayoutParams(
+                    context.resources.getDimensionPixelSize(R.dimen.carbon_spacing_07),
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
+            })
+            val picker = MaterialAutoCompleteTextView(context)
+            val selected = ids.indexOf(destId).coerceAtLeast(0)
+            MaterialChoices.bind(picker, labels, selected) { choice ->
+                slots[index] = ids[choice]
+                settings.setDashboardShortcuts(slots)
+            }
+            row.addView(picker, LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f))
+            host.addView(row)
+        }
     }
 }

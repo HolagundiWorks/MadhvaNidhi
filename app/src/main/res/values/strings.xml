@@ -176,6 +176,12 @@
     <string name="dashboard_sample_badge">ಜಪ ಎಣಿಕೆ ನೇರ; ಸಂಧ್ಯಾ/ಸ್ತೋತ್ರ ಗುರುತು ಇಂದಿನ ಸ್ಥಳೀಯ ದಾಖಲೆ</string>
     <string name="dashboard_japa">ಜಪ · Japa</string>
     <string name="dashboard_japa_meta">%1$d ಪುನರಾವರ್ತನೆ · %2$d ಮಾಲಾ · ಗುರಿ %3$d</string>
+    <string name="dashboard_japa_meta_sankalpa">%1$d / %2$d ದೈನಂದಿನ · Σ %3$d · ಸಂಕಲ್ಪ %4$s</string>
+    <string name="settings_japa_targets">ಜಪ ಗುರಿ · Japa targets</string>
+    <string name="settings_dashboard_japa">ಡ್ಯಾಶ್‌ಬೋರ್ಡ್ ಜಪ · Dashboard japa slots</string>
+    <string name="settings_dashboard_shortcuts">ಡ್ಯಾಶ್‌ಬೋರ್ಡ್ ತ್ವರಿತ · Dashboard shortcuts</string>
+    <string name="dashboard_shortcut_pick">ತ್ವರಿತ ಗುರಿ ಆಯ್ಕೆ · Choose shortcut</string>
+    <string name="dashboard_shortcut_hint">ಲಾಂಗ್-ಪ್ರೆಸ್‌ನಿಂದ ಬದಲಾಯಿಸಿ · Long-press to customize</string>
     <string name="dashboard_sandhya">ಸಂಧ್ಯಾವಂದನೆ · Sandhyavandana</string>
     <string name="dashboard_stotra">ಸ್ತೋತ್ರ · Stotra</string>
     <string name="dashboard_stotra_note">ಪಠ್ಯ ತೆರೆಯುವುದು ಪೂರ್ಣ ಗುರುತು ಹಾಕುವುದಿಲ್ಲ</string>

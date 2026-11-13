@@ -24,4 +24,4 @@ Studio chrome: **screen size** dropdown + **live preview** of `shell.html`. No d
 
 Related: [`../panchanga/`](../panchanga/), [`../menu-pages/`](../menu-pages/). Policy: [`../../AGENTS.md`](../../AGENTS.md).
 
-Android stays untouched until explicitly authorized.
+The approved Android port is authorized (`MOCKUP_ONLY = false`). Current project decisions: [`../../docs/project-memory.md`](../../docs/project-memory.md).

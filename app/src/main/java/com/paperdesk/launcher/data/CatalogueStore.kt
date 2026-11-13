@@ -86,6 +86,9 @@ object CatalogueStore {
         val songs = setOf("dasara_padagalu", "suladhigalu", "ugabhogagalu")
         return when (page) {
             "hadugalu" -> groups.filter { it.id in songs }
+            "mantras" -> groups.filter { group ->
+                items.any { it.group == group.id && it.file.isNotBlank() && subpageFor(it) == "mantras" }
+            }
             "stotra" -> groups.filter { group ->
                 items.any { it.group == group.id && it.file.isNotBlank() && subpageFor(it) == "stotra" }
             }

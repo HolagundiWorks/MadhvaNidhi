@@ -25,7 +25,7 @@ class ShellHubFragment : Fragment() {
         view.findViewById<TextView>(R.id.hubSubtitle).text = when (hubId) {
             "nityakarma" -> "ಸಂಧ್ಯಾವಂದನೆ, ಜಪ ಮತ್ತು ನಿತ್ಯ ಪಾರಾಯಣ"
             "grantha" -> "ಸ್ತೋತ್ರ, ಸೂಕ್ತ, ಮಂತ್ರ ಮತ್ತು ನಾಮಾವಳಿ"
-            "sangeeta" -> "ಹಾಡುಗಳು ಮತ್ತು ಪ್ಲೇಲಿಸ್ಟ್‌ಗಳು"
+            "sangeeta" -> "ಪ್ಲೇಲಿಸ್ಟ್‌ಗಳು"
             "samskruti" -> "ಆಯಾದಿ, ರಂಗವಲ್ಲಿ ಮತ್ತು ನೈವೇದ್ಯ / ಪಾಕ"
             else -> ""
         }
@@ -80,8 +80,8 @@ class ShellHubFragment : Fragment() {
 
         fun childrenFor(hub: String): List<String> = when (hub) {
             "nityakarma" -> listOf("sandhya", "japa", "nitya")
-            "grantha" -> listOf("stotra", "suktas", "mantras", "namavali")
-            "sangeeta" -> listOf("hadugalu", "playlists")
+            "grantha" -> listOf("stotra", "suktas", "mantras", "hadugalu")
+            "sangeeta" -> listOf("playlists")
             "samskruti" -> listOf("aayadi", "rangavalli", "recipes")
             else -> emptyList()
         }
@@ -89,7 +89,7 @@ class ShellHubFragment : Fragment() {
         fun emptyMessages(hub: String): List<String> = emptyList()
 
         val RAIL_IDS = listOf(
-            "dashboard", "desk", "nityakarma", "puja", "grantha", "sangeeta", "samskruti", "user", "settings"
+            "dashboard", "desk", "nityakarma", "puja", "grantha", "sangeeta", "samskruti", "settings"
         )
     }
 }

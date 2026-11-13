@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Frozen Sandhyavandana · pathya+kala+skip/complete one row · float progress 50% -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -6,239 +7,215 @@
     android:orientation="vertical"
     android:background="@color/carbon_background">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="@dimen/carbon_spacing_05"
+        android:minHeight="@dimen/carbon_layout_size_height_md"
+        android:paddingStart="@dimen/carbon_spacing_05"
+        android:paddingEnd="@dimen/carbon_spacing_05"
+        android:paddingTop="@dimen/carbon_spacing_03"
+        android:paddingBottom="@dimen/carbon_spacing_03"
         android:background="@color/carbon_layer">
 
+        <!-- Actions first so pathya can layout_toStartOf them (mockup single toolbar row). -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/sandhyaToolbarActions"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/carbon_spacing_07"
             android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:minHeight="@dimen/carbon_layout_size_height_lg">
+            android:gravity="center_vertical">
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/sandhyaKalaPratah"
+                style="@style/Widget.Carbon.Button.Tertiary.Icon"
+                android:theme="@style/ThemeOverlay.Carbon.NityaFab"
+                android:layout_width="@dimen/carbon_layout_size_height_sm"
+                android:layout_height="@dimen/carbon_layout_size_height_sm"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="0dp"
+                android:contentDescription="ಪ್ರಾತಃ"
+                app:icon="@drawable/ic_morning"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="16dp"
+                app:iconTint="@color/carbon_icon_secondary"
+                app:cornerRadius="@dimen/carbon_corner_radius"
+                app:strokeColor="@color/carbon_border_strong"
+                app:strokeWidth="@dimen/carbon_border_width" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/sandhyaKalaPratah"
-                    style="@style/Widget.Carbon.Button.Tertiary.Icon"
-                    android:layout_width="@dimen/carbon_layout_size_height_lg"
-                    android:layout_height="@dimen/carbon_layout_size_height_lg"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:minWidth="0dp"
-                    android:padding="0dp"
-                    android:contentDescription="ಪ್ರಾತಃ"
-                    app:icon="@drawable/ic_morning"
-                    app:iconGravity="textStart"
-                    app:iconPadding="0dp"
-                    app:iconTint="@color/carbon_icon_secondary"
-                    app:cornerRadius="@dimen/carbon_corner_radius"
-                    app:strokeColor="@color/carbon_border"
-                    app:strokeWidth="@dimen/carbon_border_width" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/sandhyaKalaMadhya"
+                style="@style/Widget.Carbon.Button.Tertiary.Icon"
+                android:theme="@style/ThemeOverlay.Carbon.NityaFab"
+                android:layout_width="@dimen/carbon_layout_size_height_sm"
+                android:layout_height="@dimen/carbon_layout_size_height_sm"
+                android:layout_marginStart="@dimen/carbon_spacing_03"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="0dp"
+                android:contentDescription="ಮಧ್ಯಾಹ್ನ"
+                app:icon="@drawable/ic_noon"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="16dp"
+                app:iconTint="@color/carbon_icon_secondary"
+                app:cornerRadius="@dimen/carbon_corner_radius"
+                app:strokeColor="@color/carbon_border_strong"
+                app:strokeWidth="@dimen/carbon_border_width" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/sandhyaKalaMadhya"
-                    style="@style/Widget.Carbon.Button.Tertiary.Icon"
-                    android:layout_width="@dimen/carbon_layout_size_height_lg"
-                    android:layout_height="@dimen/carbon_layout_size_height_lg"
-                    android:layout_marginStart="@dimen/carbon_spacing_03"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:minWidth="0dp"
-                    android:padding="0dp"
-                    android:contentDescription="ಮಧ್ಯಾಹ್ನ"
-                    app:icon="@drawable/ic_noon"
-                    app:iconGravity="textStart"
-                    app:iconPadding="0dp"
-                    app:iconTint="@color/carbon_icon_secondary"
-                    app:cornerRadius="@dimen/carbon_corner_radius"
-                    app:strokeColor="@color/carbon_border"
-                    app:strokeWidth="@dimen/carbon_border_width" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/sandhyaKalaSayam"
-                    style="@style/Widget.Carbon.Button.Tertiary.Icon"
-                    android:layout_width="@dimen/carbon_layout_size_height_lg"
-                    android:layout_height="@dimen/carbon_layout_size_height_lg"
-                    android:layout_marginStart="@dimen/carbon_spacing_03"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:minWidth="0dp"
-                    android:padding="0dp"
-                    android:contentDescription="ಸಾಯಂ"
-                    app:icon="@drawable/ic_evening"
-                    app:iconGravity="textStart"
-                    app:iconPadding="0dp"
-                    app:iconTint="@color/carbon_icon_secondary"
-                    app:cornerRadius="@dimen/carbon_corner_radius"
-                    app:strokeColor="@color/carbon_border"
-                    app:strokeWidth="@dimen/carbon_border_width" />
-            </LinearLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/sandhyaKalaSayam"
+                style="@style/Widget.Carbon.Button.Tertiary.Icon"
+                android:theme="@style/ThemeOverlay.Carbon.NityaFab"
+                android:layout_width="@dimen/carbon_layout_size_height_sm"
+                android:layout_height="@dimen/carbon_layout_size_height_sm"
+                android:layout_marginStart="@dimen/carbon_spacing_03"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="0dp"
+                android:contentDescription="ಸಾಯಂ"
+                app:icon="@drawable/ic_evening"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="16dp"
+                app:iconTint="@color/carbon_icon_secondary"
+                app:cornerRadius="@dimen/carbon_corner_radius"
+                app:strokeColor="@color/carbon_border_strong"
+                app:strokeWidth="@dimen/carbon_border_width" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/sandhyaSkip"
                 style="@style/Widget.Carbon.Button.Tertiary.Icon"
-                android:layout_width="@dimen/carbon_layout_size_height_lg"
-                android:layout_height="@dimen/carbon_layout_size_height_lg"
+                android:theme="@style/ThemeOverlay.Carbon.NityaFab"
+                android:layout_width="@dimen/carbon_layout_size_height_sm"
+                android:layout_height="@dimen/carbon_layout_size_height_sm"
+                android:layout_marginStart="@dimen/carbon_spacing_05"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
                 android:minWidth="0dp"
+                android:minHeight="0dp"
                 android:padding="0dp"
                 android:contentDescription="Skip today"
-                app:icon="@drawable/ic_nav_next"
+                app:icon="@drawable/ic_skip"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
+                app:iconSize="16dp"
+                app:iconTint="@color/carbon_icon_secondary"
                 app:cornerRadius="@dimen/carbon_corner_radius"
-                app:strokeColor="@color/carbon_border"
+                app:strokeColor="@color/carbon_border_strong"
                 app:strokeWidth="@dimen/carbon_border_width" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/sandhyaComplete"
                 style="@style/Widget.Carbon.Button.Tertiary.Icon"
-                android:layout_width="@dimen/carbon_layout_size_height_lg"
-                android:layout_height="@dimen/carbon_layout_size_height_lg"
+                android:theme="@style/ThemeOverlay.Carbon.NityaFab"
+                android:layout_width="@dimen/carbon_layout_size_height_sm"
+                android:layout_height="@dimen/carbon_layout_size_height_sm"
                 android:layout_marginStart="@dimen/carbon_spacing_03"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
                 android:minWidth="0dp"
+                android:minHeight="0dp"
                 android:padding="0dp"
                 android:contentDescription="Completed for today"
                 app:icon="@drawable/ic_check"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
+                app:iconSize="16dp"
+                app:iconTint="@color/carbon_icon_secondary"
                 app:cornerRadius="@dimen/carbon_corner_radius"
-                app:strokeColor="@color/carbon_border"
+                app:strokeColor="@color/carbon_border_strong"
                 app:strokeWidth="@dimen/carbon_border_width" />
         </LinearLayout>
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/sandhyaPathy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/carbon_spacing_05"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:layout_toStartOf="@id/sandhyaToolbarActions"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginEnd="@dimen/carbon_spacing_05"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact02"
+            android:textColor="@color/carbon_text"
+            android:text="ಆಚಮನ" />
+    </RelativeLayout>
 
-            <TextView
-                android:id="@+id/sandhyaPathy"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
-                android:textColor="@color/carbon_text"
-                android:text="ಆಚಮನ" />
-
-            <ProgressBar
-                android:id="@+id/sandhyaProgress"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/carbon_spacing_03"
-                android:layout_weight="7"
-                android:layout_marginStart="@dimen/carbon_spacing_05"
-                android:max="100"
-                android:progress="25"
-                android:progressTint="@color/carbon_interactive"
-                android:progressBackgroundTint="@color/carbon_border" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="@dimen/carbon_spacing_05"
-            android:background="@color/carbon_border" />
-    </LinearLayout>
-
-    <ScrollView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:fillViewport="true">
+        android:background="@color/carbon_background">
 
-        <LinearLayout
+        <ScrollView
+            android:id="@+id/sandhyaScroll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/carbon_spacing_05">
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/carbon_spacing_07">
 
-            <TextView
-                android:id="@+id/sandhyaCrumb"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.Carbon.Label01"
-                android:textColor="@color/carbon_text_secondary"
-                android:text="ನಿತ್ಯಕರ್ಮ · ಸಂಧ್ಯಾವಂದನೆ" />
+                android:orientation="vertical"
+                android:padding="@dimen/carbon_spacing_05">
 
-            <TextView
-                android:id="@+id/sandhyaBody"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/carbon_spacing_05"
-                android:lineSpacingMultiplier="1.35"
-                android:textAppearance="@style/TextAppearance.Carbon.Body01"
-                android:textColor="@color/carbon_text"
-                android:textIsSelectable="true" />
-        </LinearLayout>
-    </ScrollView>
+                <TextView
+                    android:id="@+id/sandhyaCrumb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.Carbon.Label01"
+                    android:textColor="@color/carbon_text_secondary"
+                    android:text="ನಿತ್ಯಕರ್ಮ · ಸಂಧ್ಯಾವಂದನೆ" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingStart="@dimen/carbon_spacing_05"
-        android:paddingEnd="@dimen/carbon_spacing_05"
-        android:paddingTop="@dimen/carbon_spacing_03"
-        android:paddingBottom="@dimen/carbon_spacing_03"
-        android:background="@color/carbon_layer"
-        android:elevation="0dp">
+                <TextView
+                    android:id="@+id/sandhyaBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/carbon_spacing_05"
+                    android:lineSpacingMultiplier="1.43"
+                    android:textAppearance="@style/TextAppearance.Carbon.Body01"
+                    android:textColor="@color/carbon_text"
+                    android:textIsSelectable="true" />
+            </LinearLayout>
+        </ScrollView>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/sandhyaPrev"
-            style="@style/Widget.Carbon.Button.Tertiary.Icon"
-            android:layout_width="@dimen/carbon_layout_size_height_lg"
-            android:layout_height="@dimen/carbon_layout_size_height_lg"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:minWidth="0dp"
-            android:padding="0dp"
-            android:contentDescription="Previous pathya"
-            app:icon="@drawable/ic_nav_prev"
-            app:iconGravity="textStart"
-            app:iconPadding="0dp"
-            app:cornerRadius="@dimen/carbon_corner_radius"
-            app:strokeColor="@color/carbon_border"
-            app:strokeWidth="@dimen/carbon_border_width" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/sandhyaNext"
-            style="@style/Widget.Carbon.Button.Tertiary.Icon"
-            android:layout_width="@dimen/carbon_layout_size_height_lg"
-            android:layout_height="@dimen/carbon_layout_size_height_lg"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:minWidth="0dp"
-            android:padding="0dp"
-            android:contentDescription="Next pathya"
-            app:icon="@drawable/ic_nav_next"
-            app:iconGravity="textStart"
-            app:iconPadding="0dp"
-            app:cornerRadius="@dimen/carbon_corner_radius"
-            app:strokeColor="@color/carbon_border"
-            app:strokeWidth="@dimen/carbon_border_width" />
-    </LinearLayout>
+        <ProgressBar
+            android:id="@+id/sandhyaProgress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/carbon_spacing_03"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="@dimen/carbon_spacing_05"
+            android:layout_marginEnd="@dimen/carbon_spacing_05"
+            android:layout_marginBottom="@dimen/carbon_spacing_05"
+            android:alpha="0.5"
+            android:max="100"
+            android:progress="25"
+            android:progressDrawable="@drawable/carbon_progress_horizontal"
+            android:contentDescription="Pathya progress · tap next · long-press previous" />
+    </FrameLayout>
 </LinearLayout>

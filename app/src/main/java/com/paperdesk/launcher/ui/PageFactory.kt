@@ -8,7 +8,9 @@ object PageFactory {
         "dashboard" -> DashboardFragment()
         "nityakarma" -> NityaKarmaFragment.create(NityaKarmaFragment.TAB_SANDHYA)
         "puja" -> PujaFragment()
-        "grantha", "sangeeta", "samskruti" -> ShellHubFragment.create(pageId)
+        "grantha" -> GranthaFragment()
+        "samskruti" -> GranthaFragment().apply { arguments = android.os.Bundle().apply { putString("group", pageId) } }
+        "sangeeta" -> ShellHubFragment.create(pageId)
         "nitya" -> NityaKarmaFragment.create(NityaKarmaFragment.TAB_NITYA)
         "stotra" -> ReaderFragment.create(ReaderFragment.STOTRA)
         "suktas" -> ReaderFragment.create(ReaderFragment.SUKTAS)

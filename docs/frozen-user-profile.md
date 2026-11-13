@@ -1,18 +1,18 @@
 # Frozen User profile — finalized 12 November 2026
 
-This is the **approved web-mockup contract** for the User profile destination (`MOCKUP_ONLY`). Layout and field set changes require a new design iteration.
+This is the **approved web-mockup contract** for the User profile destination. Layout and field set changes require a new design iteration.
 
 | Artifact | Path |
 | --- | --- |
-| Canonical UI | `prototypes/app-shell/shell.html` → `#view-user` (`data-frozen="user-profile"`) |
-| Parity mirror | `prototypes/menu-pages/pages.html` → `[data-page="user"]` |
+| Canonical UI | `prototypes/app-shell/shell.html` → `#settings-panel-users` (`data-frozen="user-profile"`) |
+| Parity mirror | `prototypes/menu-pages/pages.html` → `#settings-panel-users` |
 | Vault / crypto | `prototypes/user-vault.js` |
 | Shared Carbon chrome | `prototypes/carbon-app.css` |
-| Rail icon | Carbon **UserSettings** |
+| Navigation | Settings → Users for profiles, Settings → Backup for export and restore |
 | Related freeze | [frozen-panchanga-shell.md](./frozen-panchanga-shell.md) |
 | Carbon audit | [carbon-mockup-audit.md](./carbon-mockup-audit.md) |
 
-Android under `app/` stays **read-only** until explicitly authorized to implement this mockup.
+The approved Android port is authorized by root `AGENTS.md` (`MOCKUP_ONLY = false`). This does not authorize changing the frozen field set or interaction contract.
 
 ## Screen behaviour
 
@@ -38,13 +38,13 @@ Stored AES-GCM on device (`madhvanidhi-user-vault` + device key). Portable `.mnb
 | Veda · ವೇದ | `cds--select-input` | Same row as matha |
 | Matha · ಮಠ | `cds--select-input` | Same row as veda |
 | Japa / diksha mantras | Carbon **Fluid MultiSelect** | Unlocks japa mantra choices |
-| Japa targets | Carbon **Data table** + inline **Select** | One row per selected japa · Daily (11 · 101 · 1,001 · 5,001) · Major ascending (5,001 · 10,001 · 50,001 · 1,00,001 · 10,00,001) · Indian comma grouping · vault `japaTargets` |
+| Japa targets | Carbon **Data table** + inline **Select** | One row per selected japa · Daily (11 · 101 · 1,001 · 5,001) · **Sankalpa** (Auto · 5,001 · 10,001 · 50,001 · 1,00,001 · 10,00,001) · Indian comma grouping · vault `japaTargets` (`sankalpa`; legacy `major` still read) |
 
 **Not on this screen:** Language (Settings), theme, text size.
 
 ### Design pass · 12 November 2026 (japa targets)
 
-Explicit UI request: after diksha selection, generate a targets table (name · daily · major). Stored in the same encrypted vault as `japaTargets: { [mantraId]: { daily, major } }`. View mode shows a read-only table.
+Explicit UI request: after diksha selection, generate a targets table (name · daily · Sankalpa). Stored in the same encrypted vault as `japaTargets: { [mantraId]: { daily, sankalpa } }` (`major` kept as legacy alias). Sankalpa **Auto** (0) resolves to the next ladder rung above cumulative. View mode shows a read-only table.
 
 ## Carbon-only compliance (freeze audit)
 
@@ -53,7 +53,7 @@ Explicit UI request: after diksha selection, generate a targets table (name · d
 | Tokens / themes | `--cds-*` only for colour, type, spacing, border, focus |
 | Controls | Single outer `cds--form`; `cds--label`; `cds--text-input`; `cds--select-input`; `cds--btn`; Fluid MultiSelect; Accordion |
 | Type | View values use `cds--body-compact-01`; intro / vault copy use `cds--form__helper-text` |
-| Icons | Carbon paths only (accordion chevron, rail UserSettings) |
+| Icons | Carbon paths only in the Settings shell |
 | No nested form chrome | Inner grids are layout only (`form-masonry` / `user-profile-grid`) — not nested `cds--form` |
 | No custom widget chrome | View mode = plain text (not disabled inputs) |
 | No Material / third-party UI kits | Pass |
@@ -71,4 +71,4 @@ Explicit UI request: after diksha selection, generate a targets table (name · d
 
 ## Freeze rule
 
-Do **not** change User profile field set, view/edit behaviour, vault format (`madhvanidhi-user-backup` v1), or Carbon patterns without an explicit new design pass. Shell `#view-user` is canonical; keep `menu-pages` in parity when authorized to touch this screen.
+Do **not** change User profile field set, view/edit behaviour, vault format (`madhvanidhi-user-backup` v1), or Carbon patterns without an explicit new design pass. Shell `#settings-panel-users` is canonical; keep `menu-pages` in parity when authorized to touch this screen.

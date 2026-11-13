@@ -61,7 +61,7 @@ button:disabled {
   line-height: 1.5;
   position: relative;
 }
-/* Child-section screens (e.g. Nitya Karma tabs): no app title bar — tabs are the top chrome */
+/* Child-section screens (e.g. Nitya Karma tabs): no app title bar â€” tabs are the top chrome */
 #app.has-child-sections {
   grid-template-rows: minmax(0, 1fr);
 }
@@ -126,7 +126,7 @@ button:disabled {
   flex: none;
 }
 .side-nav #nav-toggle.icon {
-  /* size + separator from carbon-app.css (#nav-toggle @ 0.75×) */
+  /* size + separator from carbon-app.css (#nav-toggle @ 0.75Ã—) */
   width: var(--nav-toggle-size, 36px);
   margin: var(--cds-spacing-02) auto var(--cds-spacing-04);
 }
@@ -305,7 +305,7 @@ button:disabled {
   outline-offset: 2px;
 }
 
-/* Workspace — full-width by default; 30:70 is Panchanga-only (inside embed) */
+/* Workspace â€” full-width by default; 30:70 is Panchanga-only (inside embed) */
 .workspace {
   grid-column: 2;
   min-width: 0;
@@ -379,7 +379,7 @@ button:disabled {
   flex-direction: column;
   gap: 12px;
 }
-/* Lone panel on a view (User, Settings) → content sits directly on the screen */
+/* Lone panel on a view (User, Settings) â†’ content sits directly on the screen */
 .view:has(> .panel):not(:has(> .panel ~ .panel)) > .panel {
   background: transparent;
   padding: 0;
@@ -576,7 +576,7 @@ button:disabled {
   gap: 16px;
   max-width: 480px;
 }
-/* Landscape user form — multi-column; veda+matha share one row */
+/* Landscape user form â€” multi-column; veda+matha share one row */
 .cds--form.form-masonry,
 #user-form.form-masonry {
   max-width: none;
@@ -707,3 +707,103 @@ button:disabled {
   .context-pane { padding: var(--cds-spacing-05); }
   .panel { padding: var(--cds-spacing-05); gap: var(--cds-spacing-03); }
 }
+
+
+#view-dashboard.is-active { height: 100%; min-height: 0; }
+.practice-dashboard {
+  box-sizing: border-box;
+  display: grid;
+  height: 100%;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: var(--cds-spacing-03);
+  padding: var(--cds-spacing-03);
+}
+.practice-dashboard > .panel, .practice-dashboard > nav > button {
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: var(--cds-spacing-03);
+}
+.dash-week { grid-column: span 4; }
+.dash-streak { grid-column: span 1; }
+.dashboard-shortcuts { display: contents; }
+.dash-shortcut {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  text-align: start;
+  gap: var(--cds-spacing-02);
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+.dash-shortcut-label { font-size: var(--cds-heading-compact-01-font-size, 0.875rem); font-weight: 600; color: var(--cds-text-primary); }
+.dash-progress { grid-column: span 2; }
+.dashboard-japa { display: contents; }
+.dash-japa-slot {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  text-align: start;
+  gap: var(--cds-spacing-01);
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+.dash-japa-count { font-size: var(--cds-heading-compact-01-font-size, 0.875rem); font-weight: 600; color: var(--cds-text-primary); line-height: 1.25; }
+.dash-japa-target { font-size: var(--cds-label-01-font-size, 0.75rem); color: var(--cds-text-secondary); }
+.dash-japa-label { font-size: var(--cds-body-compact-01-font-size, 0.875rem); color: var(--cds-text-primary); }
+.practice-dashboard .dash-streak {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  text-align: center;
+}
+.dash-streak > div { display: grid; align-content: center; }
+.dash-streak > div + div { border-top: 1px solid var(--cds-border-subtle-01); }
+.dash-streak span { font-size: var(--cds-label-01-font-size, .75rem); color: var(--cds-text-secondary); }
+.dash-streak strong { line-height: 1.25; color: var(--cds-text-primary); }
+#view-dashboard dialog { max-width: min(90vw, 44rem); max-height: 85vh; overflow: auto; background: var(--cds-layer-01); color: var(--cds-text-primary); border: 1px solid var(--cds-border-subtle-01); }
+#view-dashboard dialog form { text-align: end; }
+.practice-dashboard .week-strip { margin: 0; }
+.practice-dashboard .week-day { min-width: 0; padding: var(--cds-spacing-01); }
+
+.practice-dashboard .dash-week {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: var(--cds-spacing-02);
+}
+.practice-dashboard .dash-week h3 { display: flex; align-items: center; text-align: start; margin: 0; }
+.sandhya-week {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  align-self: center;
+  gap: var(--cds-spacing-02);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.sandhya-day {
+  position: relative;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  min-block-size: clamp(40px, 10vh, 80px);
+  background: var(--cds-layer-02);
+  border: 1px solid var(--cds-border-subtle-01);
+  border-block-start: 3px solid var(--cds-border-strong-01, var(--cds-text-secondary));
+}
+.sandhya-day[data-status="complete"] { border-block-start-color: var(--cds-support-success); }
+.sandhya-day[data-status="skipped"] { border-block-start-color: var(--cds-support-error); }
+.sandhya-marks { display: flex; justify-content: center; font-size: clamp(11px, 1.5vw, 18px); line-height: 1.2; }
+.sandhya-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.practice-dashboard > .panel.dash-streak {
+  padding: var(--cds-spacing-02);
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 0;
+}
+.dash-streak > div { line-height: 1.25; }

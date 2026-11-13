@@ -13,6 +13,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.tabs.TabLayout
 import com.paperdesk.launcher.R
 import com.paperdesk.launcher.data.OsLang
+import com.paperdesk.launcher.data.PracticeDayStore
 import com.paperdesk.launcher.data.SandhyaStore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,10 +28,12 @@ class NityaKarmaFragment : Fragment() {
     private var sandhyaBound = false
     private var japaBound = false
     private var parayanaBound = false
+    private lateinit var practice: PracticeDayStore
 
     private var kalaId = SandhyaStore.PRATAH
     private var sandhyaIndex = 0
     private var sandhyaDone = false
+    private var sandhyaSkipped = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,10 +50,12 @@ class NityaKarmaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         PagePalette.apply(view, "nityakarma")
+        practice = PracticeDayStore(requireContext())
         viewLifecycleOwner.lifecycleScope.launch {
             withContext(Dispatchers.IO) { SandhyaStore.load(requireContext().applicationContext) }
             if (!isAdded) return@launch
             kalaId = SandhyaStore.nowId()
+            sandhyaDone = practice.isSandhyaSessionDone(kalaId)
             showTab(initialTab)
         }
 
@@ -58,6 +63,7 @@ class NityaKarmaFragment : Fragment() {
         TABS.forEach { tag ->
             tabs.addTab(tabs.newTab().setText(OsLang.ui(tag, OsLang.get(requireContext()))).setTag(tag), false)
         }
+        CarbonTabs.equalizeLeft(tabs)
         tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 showTab(tab.tag as? String ?: TAB_SANDHYA)
@@ -126,74 +132,145 @@ class NityaKarmaFragment : Fragment() {
     }
 
     private fun bindSandhya(root: View) {
+        // Carbon sm (32) FABs — five controls + pathya must fit landscape phone chrome.
+        val fab = resources.getDimensionPixelSize(R.dimen.carbon_layout_size_height_sm)
+        listOf(
+            R.id.sandhyaKalaPratah, R.id.sandhyaKalaMadhya, R.id.sandhyaKalaSayam,
+            R.id.sandhyaSkip, R.id.sandhyaComplete
+        ).forEach { id ->
+            root.findViewById<MaterialButton>(id).apply {
+                minimumWidth = 0
+                minimumHeight = 0
+                iconSize = (16 * resources.displayMetrics.density).toInt().coerceAtMost(fab - 8)
+                layoutParams = layoutParams.apply {
+                    width = fab
+                    height = fab
+                }
+            }
+        }
+        root.findViewById<TextView>(R.id.sandhyaPathy).minimumWidth = 0
         fun steps() = SandhyaStore.session(requireContext(), kalaId)?.steps.orEmpty()
+        fun lang() = OsLang.get(requireContext())
         fun paint() {
             val list = steps()
             if (list.isEmpty()) {
                 root.findViewById<TextView>(R.id.sandhyaPathy).text = "—"
                 root.findViewById<TextView>(R.id.sandhyaBody).text = ""
                 root.findViewById<ProgressBar>(R.id.sandhyaProgress).progress = 0
+                paintSandhyaChrome(root)
                 return
             }
+            if (!sandhyaSkipped) {
+                sandhyaDone = practice.isSandhyaSessionDone(kalaId)
+            }
             sandhyaIndex = sandhyaIndex.coerceIn(0, list.lastIndex)
+            if (sandhyaDone) sandhyaIndex = list.lastIndex
             val step = list[sandhyaIndex]
             val pct = if (sandhyaDone) 100 else ((sandhyaIndex + 1) * 100 / list.size)
-            root.findViewById<TextView>(R.id.sandhyaPathy).text = step.title
-            root.findViewById<TextView>(R.id.sandhyaBody).text = step.body
+            root.findViewById<TextView>(R.id.sandhyaPathy).text =
+                SandhyaStore.label(step.title, lang())
+            root.findViewById<TextView>(R.id.sandhyaBody).text =
+                SandhyaStore.body(requireContext(), step, kalaId, lang())
             val kala = SandhyaStore.session(requireContext(), kalaId)?.title.orEmpty()
             root.findViewById<TextView>(R.id.sandhyaCrumb).text =
                 listOf(
-                    OsLang.ui("nityakarma", OsLang.get(requireContext())),
-                    OsLang.ui("sandhya", OsLang.get(requireContext())),
-                    kala,
-                    step.title
+                    OsLang.ui("nityakarma", lang()),
+                    OsLang.ui("sandhya", lang()),
+                    SandhyaStore.label(kala, lang()),
+                    SandhyaStore.label(step.title, lang())
                 ).filter { it.isNotBlank() }.joinToString(" · ")
             root.findViewById<ProgressBar>(R.id.sandhyaProgress).progress = pct
-            root.findViewById<View>(R.id.sandhyaPrev).isEnabled = sandhyaIndex > 0
-            root.findViewById<View>(R.id.sandhyaNext).isEnabled = !sandhyaDone && sandhyaIndex < list.lastIndex
-            paintKala(root)
+            paintSandhyaChrome(root)
         }
-        root.findViewById<View>(R.id.sandhyaKalaPratah).setOnClickListener {
-            kalaId = SandhyaStore.PRATAH; sandhyaIndex = 0; sandhyaDone = false; paint()
-        }
-        root.findViewById<View>(R.id.sandhyaKalaMadhya).setOnClickListener {
-            kalaId = SandhyaStore.MADHYA; sandhyaIndex = 0; sandhyaDone = false; paint()
-        }
-        root.findViewById<View>(R.id.sandhyaKalaSayam).setOnClickListener {
-            kalaId = SandhyaStore.SAYAM; sandhyaIndex = 0; sandhyaDone = false; paint()
-        }
-        root.findViewById<View>(R.id.sandhyaPrev).setOnClickListener {
-            if (sandhyaIndex > 0) { sandhyaIndex--; sandhyaDone = false; paint() }
-        }
-        root.findViewById<View>(R.id.sandhyaNext).setOnClickListener {
+        fun selectKala(id: String) {
+            kalaId = id
+            sandhyaIndex = 0
+            sandhyaSkipped = false
+            sandhyaDone = practice.isSandhyaSessionDone(kalaId)
             val list = steps()
-            if (sandhyaIndex < list.lastIndex) { sandhyaIndex++; paint() }
+            if (sandhyaDone && list.isNotEmpty()) sandhyaIndex = list.lastIndex
+            paint()
+        }
+        fun goPrev() {
+            if (sandhyaIndex > 0) {
+                sandhyaIndex--
+                sandhyaSkipped = false
+                if (practice.isSandhyaSessionDone(kalaId)) {
+                    practice.setSandhya(kalaId, false)
+                    sandhyaDone = false
+                }
+                paint()
+            }
+        }
+        fun goNext() {
+            val list = steps()
+            if (list.isEmpty()) return
+            if (sandhyaIndex < list.lastIndex) {
+                sandhyaIndex++
+                sandhyaSkipped = false
+                if (sandhyaIndex == list.lastIndex) {
+                    practice.setSandhya(kalaId, true)
+                    sandhyaDone = true
+                }
+                paint()
+            }
+        }
+        root.findViewById<View>(R.id.sandhyaKalaPratah).setOnClickListener { selectKala(SandhyaStore.PRATAH) }
+        root.findViewById<View>(R.id.sandhyaKalaMadhya).setOnClickListener { selectKala(SandhyaStore.MADHYA) }
+        root.findViewById<View>(R.id.sandhyaKalaSayam).setOnClickListener { selectKala(SandhyaStore.SAYAM) }
+        root.findViewById<View>(R.id.sandhyaProgress).setOnClickListener { goNext() }
+        root.findViewById<View>(R.id.sandhyaProgress).setOnLongClickListener {
+            goPrev()
+            true
         }
         root.findViewById<View>(R.id.sandhyaSkip).setOnClickListener {
-            sandhyaDone = false; sandhyaIndex = 0; paint()
+            // Toggle like mockup aria-pressed
+            if (sandhyaSkipped) {
+                sandhyaSkipped = false
+            } else {
+                practice.setSandhya(kalaId, false)
+                sandhyaDone = false
+                sandhyaSkipped = true
+                sandhyaIndex = 0
+            }
+            paint()
         }
         root.findViewById<View>(R.id.sandhyaComplete).setOnClickListener {
-            val list = steps()
-            sandhyaDone = true
-            sandhyaIndex = list.lastIndex.coerceAtLeast(0)
+            if (sandhyaDone && !sandhyaSkipped) {
+                practice.setSandhya(kalaId, false)
+                sandhyaDone = false
+            } else {
+                val list = steps()
+                practice.setSandhya(kalaId, true)
+                sandhyaDone = true
+                sandhyaSkipped = false
+                sandhyaIndex = list.lastIndex.coerceAtLeast(0)
+            }
             paint()
         }
         paint()
     }
 
-    private fun paintKala(root: View) {
-        val density = resources.displayMetrics.density
+    /** Match mockup `.nitya-fab[aria-pressed=true]` — selected layer + interactive border/glyph. */
+    private fun paintSandhyaChrome(root: View) {
         fun style(btn: MaterialButton, active: Boolean) {
-            val color = requireContext().getColor(if (active) R.color.carbon_interactive else R.color.carbon_icon_secondary)
-            btn.iconTint = ColorStateList.valueOf(color)
-            btn.strokeColor = ColorStateList.valueOf(
-                requireContext().getColor(if (active) R.color.carbon_interactive else R.color.carbon_border)
+            val ctx = requireContext()
+            btn.backgroundTintList = ColorStateList.valueOf(
+                ctx.getColor(if (active) R.color.carbon_layer_selected else android.R.color.transparent)
             )
-            btn.strokeWidth = (1 * density).toInt().coerceAtLeast(1)
+            btn.iconTint = ColorStateList.valueOf(
+                ctx.getColor(if (active) R.color.carbon_interactive else R.color.carbon_icon_secondary)
+            )
+            btn.strokeColor = ColorStateList.valueOf(
+                ctx.getColor(if (active) R.color.carbon_border_interactive else R.color.carbon_border_strong)
+            )
+            btn.strokeWidth = resources.getDimensionPixelSize(R.dimen.carbon_border_width).coerceAtLeast(1)
         }
         style(root.findViewById(R.id.sandhyaKalaPratah), kalaId == SandhyaStore.PRATAH)
         style(root.findViewById(R.id.sandhyaKalaMadhya), kalaId == SandhyaStore.MADHYA)
         style(root.findViewById(R.id.sandhyaKalaSayam), kalaId == SandhyaStore.SAYAM)
+        style(root.findViewById(R.id.sandhyaSkip), sandhyaSkipped)
+        style(root.findViewById(R.id.sandhyaComplete), sandhyaDone && !sandhyaSkipped)
     }
 
     companion object {

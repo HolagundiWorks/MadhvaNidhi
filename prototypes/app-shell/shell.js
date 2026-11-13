@@ -41,7 +41,7 @@
     },
     mantra: {
       title: 'ಮಂತ್ರಗಳು · Mantras',
-      body: 'Mantra library with category subpages.'
+      body: 'Mantra library.'
     }
   };
 
@@ -103,11 +103,7 @@
 
   function showChild(group, key) {
     if (group === 'nityakarma') showNityaTab(key);
-    if (group === 'grantha') {
-      const copy = granthaCopy[key] || granthaCopy.stotra;
-      byId('grantha-detail-title').textContent = copy.title;
-      byId('grantha-detail').querySelector('p').textContent = copy.body;
-    }
+    if (group === 'grantha') selectGranthaTab(key);
   }
 
   function bindDayActions(scope) {
@@ -170,8 +166,26 @@
       if (pctEl) pctEl.textContent = `${pct}%`;
       if (barEl) barEl.style.width = `${pct}%`;
       if (barWrap) barWrap.setAttribute('aria-valuenow', String(pct));
-      if (prevBtn) prevBtn.disabled = index <= 0;
-      if (nextBtn) nextBtn.disabled = done || index >= PATHYAS.length - 1;
+    }
+
+    function goPrev() {
+      if (index > 0) {
+        index -= 1;
+        done = false;
+        panel.querySelectorAll('[data-day-action]').forEach((b) => b.setAttribute('aria-pressed', 'false'));
+        render();
+      }
+    }
+
+    function goNext() {
+      if (index < PATHYAS.length - 1) {
+        index += 1;
+        if (index >= PATHYAS.length - 1) {
+          done = true;
+          window.madhvaPractice?.setSandhya(kala === 'madhyahna' ? 'madhya' : kala, true);
+        }
+        render();
+      }
     }
 
     panel.querySelectorAll('[data-kala]').forEach((button) => {
@@ -188,21 +202,34 @@
       });
     });
 
-    prevBtn?.addEventListener('click', () => {
-      if (index > 0) {
-        index -= 1;
-        done = false;
-        panel.querySelectorAll('[data-day-action]').forEach((b) => b.setAttribute('aria-pressed', 'false'));
-        render();
-      }
+    let longPress = false;
+    let pressTimer = 0;
+    barWrap?.addEventListener('pointerdown', () => {
+      longPress = false;
+      pressTimer = window.setTimeout(() => {
+        pressTimer = 0;
+        longPress = true;
+        goPrev();
+      }, 450);
     });
-
-    nextBtn?.addEventListener('click', () => {
-      if (index < PATHYAS.length - 1) {
-        index += 1;
-        render();
+    const clearPress = () => {
+      if (pressTimer) {
+        window.clearTimeout(pressTimer);
+        pressTimer = 0;
       }
+    };
+    barWrap?.addEventListener('pointerup', clearPress);
+    barWrap?.addEventListener('pointerleave', clearPress);
+    barWrap?.addEventListener('pointercancel', clearPress);
+    barWrap?.addEventListener('click', (ev) => {
+      if (longPress) {
+        ev.preventDefault();
+        longPress = false;
+        return;
+      }
+      goNext();
     });
+    barWrap?.addEventListener('contextmenu', (ev) => ev.preventDefault());
 
     panel.querySelectorAll('[data-day-action]').forEach((btn) => {
       btn.addEventListener('click', () => {
@@ -213,12 +240,15 @@
         if (btn.dataset.dayAction === 'complete' && on) {
           done = true;
           index = PATHYAS.length - 1;
+          window.madhvaPractice?.setSandhya(kala, true);
         } else if (btn.dataset.dayAction === 'skip' && on) {
           done = false;
           index = 0;
+          window.madhvaPractice?.setSandhya(kala, false);
         } else {
           done = false;
         }
+        window.madhvaPractice?.paintDashboard?.();
         render();
       });
     });
@@ -355,6 +385,16 @@
   }
 
   function navigate(id, child) {
+    if (samskrutiIds.includes(id) || samskrutiIds.includes(child)) {
+      selectSamskrutiTab(samskrutiIds.includes(id) ? id : child);
+      id = 'samskruti';
+    }
+    if (granthaIds.includes(id)) { child = id; id = "grantha"; }
+    if (granthaIds.includes(child)) id = "grantha";
+    if (id === 'user') {
+      window.selectSettingsTab('users');
+      id = 'settings';
+    }
     if (id === 'nityakarma' && child === 'puja') {
       navigate('puja');
       return;
@@ -384,7 +424,7 @@
     const app = byId('app');
     workspace.classList.toggle('full-content', !meta.context);
     primary.classList.toggle('no-pad', !!meta.embed);
-    app?.classList.toggle('has-child-sections', !!meta.childSections);
+    app?.classList.toggle('has-child-sections', id === 'dashboard' || !!meta.childSections || !!document.querySelector('.view.is-active [role="tablist"]'));
 
     if (id === 'panchanga') {
       const frame = byId('panchanga-frame');
@@ -459,34 +499,203 @@
     const syncPressed = () => {
       const theme = document.documentElement.dataset.theme || 'g100';
       const dark = theme === 'g100' || theme === 'g90';
-      byId('theme-dark')?.setAttribute('aria-pressed', String(dark));
-      byId('theme-light')?.setAttribute('aria-pressed', String(!dark));
+      byId('theme-mode').checked = dark;
       if (byId('theme-select')) byId('theme-select').value = theme;
     };
-    byId('theme-dark')?.addEventListener('click', () => {
-      window.madhvaTheme?.set('g100');
-      syncPressed();
-    });
-    byId('theme-light')?.addEventListener('click', () => {
-      window.madhvaTheme?.set('white');
-      syncPressed();
+    byId('theme-mode').addEventListener('change', event => {
+      window.madhvaTheme.set(event.target.checked ? 'g100' : 'white');
     });
     window.addEventListener('madhva-theme', syncPressed);
     syncPressed();
   }
 
   function bindJapaSample() {
-    let count = 108;
     const label = byId('dash-japa-count');
-    byId('dash-japa-inc')?.addEventListener('click', () => {
-      count += 1;
+    const meta = byId('dash-japa-meta');
+    const readCount = () => {
+      try {
+        const raw = JSON.parse(localStorage.getItem('madhvanidhi-japa-session') || '{}');
+        return Math.max(0, Number(raw.count) || 0);
+      } catch {
+        return 0;
+      }
+    };
+    const writeCount = (count) => {
+      try {
+        const raw = JSON.parse(localStorage.getItem('madhvanidhi-japa-session') || '{}');
+        raw.count = count;
+        localStorage.setItem('madhvanidhi-japa-session', JSON.stringify(raw));
+      } catch {}
       if (label) label.textContent = String(count);
-    });
-    byId('dash-japa-undo')?.addEventListener('click', () => {
-      count = Math.max(0, count - 1);
-      if (label) label.textContent = String(count);
-    });
+      if (meta) meta.textContent = `today · ${count}`;
+      window.madhvaPractice?.paintDashboard?.();
+    };
+    writeCount(readCount());
+    byId('dash-japa-inc')?.addEventListener('click', () => writeCount(readCount() + 1));
+    byId('dash-japa-undo')?.addEventListener('click', () => writeCount(Math.max(0, readCount() - 1)));
   }
+
+  function bindPracticeDialog() {
+    const dialog = byId('dashboard-practice-dialog');
+    if (!dialog) return;
+    const sync = () => {
+      const map = loadPractice();
+      const today = dateKey();
+      const row = map[today] || {};
+      const pratah = byId('sandhya-pratah');
+      const madhya = byId('sandhya-madhyahna');
+      const sayam = byId('sandhya-sayam');
+      if (pratah) pratah.checked = !!row.pratah;
+      if (madhya) madhya.checked = !!(row.madhyahna || row.madhya);
+      if (sayam) sayam.checked = !!row.sayam;
+      const s1 = byId('stotra-1');
+      const s2 = byId('stotra-2');
+      if (s1) s1.checked = !!row.stotra_hari_vayu;
+      if (s2) s2.checked = !!row.stotra_rama_dwadasha;
+    };
+    const wire = (id, key) => {
+      byId(id)?.addEventListener('change', (ev) => {
+        const map = loadPractice();
+        const today = dateKey();
+        const row = map[today] || {};
+        row[key] = !!ev.target.checked;
+        map[today] = row;
+        savePractice(map);
+        paintDashboardPractice();
+      });
+    };
+    wire('sandhya-pratah', 'pratah');
+    wire('sandhya-madhyahna', 'madhyahna');
+    wire('sandhya-sayam', 'sayam');
+    wire('stotra-1', 'stotra_hari_vayu');
+    wire('stotra-2', 'stotra_rama_dwadasha');
+    dialog.addEventListener('toggle', () => {
+      if (dialog.open) sync();
+    });
+    sync();
+  }
+
+  const PRACTICE_KEY = 'madhvanidhi-practice-day';
+  const KN_DAYS = ['ಭಾ', 'ಸೋ', 'ಮಂ', 'ಬು', 'ಗು', 'ಶು', 'ಶ'];
+  function dateKey(d = new Date()) {
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+  }
+  function loadPractice() {
+    try { return JSON.parse(localStorage.getItem(PRACTICE_KEY) || '{}') || {}; }
+    catch { return {}; }
+  }
+  function savePractice(map) {
+    try { localStorage.setItem(PRACTICE_KEY, JSON.stringify(map)); } catch {}
+  }
+  function sandhyaFlags(map, key) {
+    const row = map[key] || {};
+    return [!!row.pratah, !!(row.madhyahna || row.madhya), !!row.sayam];
+  }
+  function paintDashboardPractice() {
+    const map = loadPractice();
+    const week = byId('dash-sandhya-week');
+    const today = dateKey();
+    if (week) {
+      week.innerHTML = '';
+      for (let i = 6; i >= 0; i -= 1) {
+        const d = new Date();
+        d.setDate(d.getDate() - i);
+        const key = dateKey(d);
+        const flags = sandhyaFlags(map, key);
+        const done = flags.filter(Boolean).length;
+        const future = key > today;
+        const pending = key === today && done < 3;
+        const status = done === 3 ? 'complete' : (future || (done === 0 && !pending) ? 'pending' : (pending ? 'pending' : 'skipped'));
+        const marks = future
+          ? ['–', '–', '–']
+          : flags.map((f) => (f ? '✓' : (pending ? '–' : '×')));
+        const li = document.createElement('li');
+        li.className = 'sandhya-day';
+        li.dataset.status = status;
+        li.dataset.date = key;
+        li.innerHTML = `<span aria-hidden="true">${KN_DAYS[d.getDay()]}</span><span class="sandhya-marks" aria-hidden="true">${marks.map((m) => `<span>${m}</span>`).join('')}</span>`;
+        if (!future) {
+          li.style.cursor = 'pointer';
+          li.addEventListener('click', () => {
+            const next = loadPractice();
+            const row = next[key] || {};
+            const order = ['pratah', 'madhyahna', 'sayam'];
+            const idx = order.findIndex((s) => !row[s]);
+            if (idx >= 0) row[order[idx]] = true;
+            else order.forEach((s) => { row[s] = false; });
+            next[key] = row;
+            savePractice(next);
+            paintDashboardPractice();
+          });
+        }
+        week.appendChild(li);
+      }
+    }
+    let current = 0;
+    const cursor = new Date();
+    if (!sandhyaFlags(map, dateKey(cursor)).every(Boolean)) cursor.setDate(cursor.getDate() - 1);
+    while (sandhyaFlags(map, dateKey(cursor)).every(Boolean) && current < 400) {
+      current += 1;
+      cursor.setDate(cursor.getDate() - 1);
+    }
+    let best = Number(map.bestStreak) || 0;
+    let run = 0;
+    const scan = new Date();
+    for (let i = 0; i < 400; i += 1) {
+      if (sandhyaFlags(map, dateKey(scan)).every(Boolean)) {
+        run += 1;
+        best = Math.max(best, run);
+      } else run = 0;
+      scan.setDate(scan.getDate() - 1);
+    }
+    best = Math.max(best, current);
+    map.bestStreak = best;
+    savePractice(map);
+    const curEl = byId('dash-streak-current');
+    const bestEl = byId('dash-streak-best');
+    if (curEl) curEl.textContent = `${current} days`;
+    if (bestEl) bestEl.textContent = `${best} days`;
+
+    const slots = ['gayatri', 'narayana', 'rama', 'hanuman', 'raghavendra'];
+    let cum = {};
+    try { cum = JSON.parse(localStorage.getItem('madhvanidhi-japa-cumulative') || '{}') || {}; } catch {}
+    let session = {};
+    try { session = JSON.parse(localStorage.getItem('madhvanidhi-japa-session') || '{}') || {}; } catch {}
+    document.querySelectorAll('.dash-japa-slot').forEach((btn, i) => {
+      const id = btn.dataset.mantra || slots[i];
+      const target = Number(session.dailyTarget) || 108;
+      const count = id === (session.mantraId || session.mantra || 'gayatri')
+        ? (Number(session.count) || 0)
+        : 0;
+      const countEl = btn.querySelector('.dash-japa-count');
+      const targetEl = btn.querySelector('.dash-japa-target');
+      if (countEl) countEl.textContent = String(count);
+      if (targetEl) targetEl.textContent = `/ ${target}`;
+      void cum;
+    });
+    const progress = document.querySelector('.dash-progress');
+    if (progress) {
+      const flags = sandhyaFlags(map, today);
+      const done = flags.filter(Boolean).length;
+      const japa = Number(session.count) || 0;
+      const goal = Number(session.dailyTarget) || 108;
+      progress.textContent = `ದಿನದ ಅಭ್ಯಾಸ · ${done}/3 ಸಂಧ್ಯಾ · ಜಪ ${japa}/${goal}`;
+    }
+  }
+  window.madhvaPractice = {
+    setSandhya(session, done, date = dateKey()) {
+      const map = loadPractice();
+      const row = map[date] || {};
+      const key = session === 'madhya' ? 'madhyahna' : session;
+      row[key] = !!done;
+      map[date] = row;
+      savePractice(map);
+    },
+    paintDashboard: paintDashboardPractice
+  };
 
   function bindStudioMessages() {
     window.addEventListener('message', (event) => {
@@ -527,12 +736,71 @@
     bindTextControls();
     bindThemeControls();
     bindJapaSample();
+    bindPracticeDialog();
     bindUserVault();
     bindStudioMessages();
     showChild('nityakarma', 'sandhya');
     showChild('grantha', 'stotra');
+    document.querySelectorAll('[data-dashboard-dialog]').forEach(button => {
+      button.addEventListener('click', () => byId(button.dataset.dashboardDialog).showModal());
+    });
+    document.querySelectorAll('#view-dashboard dialog [data-dest]').forEach(button => {
+      button.addEventListener('click', () => button.closest('dialog').close());
+    });
+    bindDashboardShortcuts();
+    paintDashboardPractice();
     navigate('dashboard');
   });
+
+  const SHORTCUT_CHOICES = [
+    { id: 'panchanga', label: 'ಪಂಚಾಂಗ', dest: 'panchanga' },
+    { id: 'sandhya', label: 'ಸಂಧ್ಯಾವಂದನೆ', dest: 'nityakarma', child: 'sandhya' },
+    { id: 'japa', label: 'ಜಪ', dest: 'nityakarma', child: 'japa' },
+    { id: 'nitya', label: 'ನಿತ್ಯ ಪಾರಾಯಣ', dest: 'nityakarma', child: 'nitya' },
+    { id: 'puja', label: 'ಪೂಜೆ', dest: 'puja' },
+    { id: 'grantha', label: 'ಗ್ರಂಥ', dest: 'grantha' },
+    { id: 'sangeeta', label: 'ಭಕ್ತಿ ಸಂಗೀತ', dest: 'sangeeta' },
+    { id: 'samskruti', label: 'ಗೃಹ ಸಂಸ್ಕೃತಿ', dest: 'samskruti' },
+    { id: 'settings', label: 'ಸೆಟ್ಟಿಂಗ್ಸ್', dest: 'settings' }
+  ];
+
+  function bindDashboardShortcuts() {
+    const key = 'madhvanidhi-dashboard-shortcuts';
+    const defaults = ['panchanga', 'japa', 'grantha'];
+    let slots = defaults.slice();
+    try {
+      const saved = JSON.parse(localStorage.getItem(key) || 'null');
+      if (Array.isArray(saved) && saved.length >= 3) slots = saved.slice(0, 3);
+    } catch {}
+    const paint = () => {
+      document.querySelectorAll('[data-shortcut-slot]').forEach(btn => {
+        const i = Number(btn.dataset.shortcutSlot);
+        const choice = SHORTCUT_CHOICES.find(c => c.id === slots[i]) || SHORTCUT_CHOICES[0];
+        const label = btn.querySelector('.dash-shortcut-label');
+        if (label) label.textContent = choice.label;
+        else btn.textContent = choice.label;
+        btn.dataset.dest = choice.dest;
+        if (choice.child) btn.dataset.child = choice.child;
+        else delete btn.dataset.child;
+      });
+    };
+    paint();
+    document.querySelectorAll('[data-shortcut-slot]').forEach(btn => {
+      btn.addEventListener('contextmenu', e => {
+        e.preventDefault();
+        const i = Number(btn.dataset.shortcutSlot);
+        const labels = SHORTCUT_CHOICES.map(c => c.label).join('\n');
+        const pick = window.prompt(`Shortcut ${i + 1} — enter number:\n` + SHORTCUT_CHOICES.map((c, n) => `${n + 1}. ${c.label}`).join('\n'), '1');
+        const n = Number(pick) - 1;
+        if (n >= 0 && n < SHORTCUT_CHOICES.length) {
+          slots[i] = SHORTCUT_CHOICES[n].id;
+          try { localStorage.setItem(key, JSON.stringify(slots)); } catch {}
+          paint();
+        }
+        void labels;
+      });
+    });
+  }
 
   window.madhvaShell = { navigate, applyScale, showNityaTab };
 })();

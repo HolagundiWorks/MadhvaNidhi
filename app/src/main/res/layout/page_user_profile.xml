@@ -106,7 +106,7 @@
             <TextView android:id="@+id/viewDiksha" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/carbon_spacing_05" android:textAppearance="@style/TextAppearance.Carbon.BodyCompact01" android:textColor="@color/carbon_text" />
 
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Japa targets · ಜಪ ಗುರಿ" android:textAppearance="@style/TextAppearance.Carbon.Label01" android:textColor="@color/carbon_text_secondary" />
-            <TextView android:id="@+id/viewJapaTargets" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Carbon.BodyCompact01" android:textColor="@color/carbon_text" />
+            <LinearLayout android:id="@+id/viewJapaTargets" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" />
         </LinearLayout>
 
         <LinearLayout

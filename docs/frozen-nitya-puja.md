@@ -12,7 +12,7 @@ Approved web-mockup contract for **ಪೂಜೆ** as a **standalone primary rail
 ## Navigation
 
 - Primary rail: Dashboard · Panchanga · Nitya Karma · **Puja** · Grantha · …
-- Nitya Karma tabs are **ಸಂಧ್ಯಾವಂದನೆ · ಜಪ** only
+- Nitya Karma tabs are **ಸಂಧ್ಯಾವಂದನೆ · ಜಪ · ನಿತ್ಯ ಪಾರಾಯಣ**
 - Legacy `nityakarma` + child `puja` routes redirect to `puja`
 
 ## Screen structure

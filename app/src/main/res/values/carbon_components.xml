@@ -55,31 +55,39 @@
         <item name="iconTint">@color/carbon_icon_primary</item>
     </style>
 
-    <!-- Icon-only tertiary (outlined · Nitya chrome FABs) -->
+    <!-- Icon-only tertiary (outlined · Nitya chrome FABs · Carbon md / 40) -->
     <style name="Widget.Carbon.Button.Tertiary.Icon" parent="Widget.Carbon.Button.Tertiary">
         <item name="strokeColor">@color/carbon_border_strong</item>
         <item name="android:textColor">@color/carbon_text</item>
-        <item name="iconTint">@color/carbon_icon_primary</item>
-        <item name="android:minWidth">@dimen/carbon_layout_size_height_lg</item>
-        <item name="android:minHeight">@dimen/carbon_layout_size_height_lg</item>
+        <item name="iconTint">@color/carbon_icon_secondary</item>
+        <item name="iconSize">16dp</item>
+        <item name="android:minWidth">@dimen/carbon_layout_size_height_md</item>
+        <item name="android:minHeight">@dimen/carbon_layout_size_height_md</item>
         <item name="android:padding">0dp</item>
         <item name="iconPadding">0dp</item>
         <item name="iconGravity">textStart</item>
         <item name="backgroundTint">@android:color/transparent</item>
+        <item name="cornerRadius">@dimen/carbon_corner_radius</item>
     </style>
 
-    <!-- Contained / default tab strip · Carbon contained (40dp, top interactive) -->
+    <!-- Contained tabs · left-aligned; equal widths applied per screen via CarbonTabs -->
     <style name="Widget.Carbon.TabLayout" parent="Widget.Material3.TabLayout">
         <item name="android:background">@color/carbon_layer_accent</item>
+        <item name="android:layout_gravity">start</item>
         <item name="tabBackground">@drawable/bg_carbon_tab</item>
         <item name="tabIndicatorHeight">0dp</item>
         <item name="tabIndicatorFullWidth">true</item>
+        <item name="tabMode">scrollable</item>
+        <item name="tabGravity">start</item>
         <item name="tabSelectedTextColor">@color/carbon_text_primary</item>
         <item name="tabTextColor">@color/carbon_text_secondary</item>
         <item name="tabRippleColor">@color/carbon_background_hover</item>
         <item name="tabTextAppearance">@style/TextAppearance.Carbon.BodyCompact01</item>
         <item name="tabPaddingStart">@dimen/carbon_spacing_05</item>
         <item name="tabPaddingEnd">@dimen/carbon_spacing_05</item>
+        <item name="tabMinWidth">0dp</item>
+        <item name="tabMaxWidth">10000dp</item>
+        <item name="tabContentStart">0dp</item>
     </style>
 
     <!-- Exposed select (square · Carbon field) -->

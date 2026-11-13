@@ -11,10 +11,10 @@ Developed by **Human Centric Works** — [hcworks.in](https://hcworks.in). Made 
 - Minimum Android: 7.1 / API 25
 - Target Android API: 36
 - Layout: landscape Carbon shell (header + side rail), system font scaling and 100–200% app text-size controls
-- Design: Material components with Carbon spacing/type roles, Gray 100 layers, Orange 40 accents and 4dp corners
+- Design: IBM Carbon themes, square surfaces and a brand-orange interactive accent; Material widgets host Carbon styles
 - Home: Dashboard with Panchanga context and daily practice panels; full Panchanga remains the calendar destination
 - Languages/content: Kannada-first devotional library with supported Sanskrit source transliteration
-- HTML mockup (UI lab, landscape-only): `prototypes/app-shell/` — see `AGENTS.md` (`MOCKUP_ONLY`)
+- HTML mockup (UI lab, landscape-only): `prototypes/app-shell/` — see [current implementation notes](docs/project-memory.md)
 
 MadhvaNidhi is a normal launcher application, not a replacement Android ROM or HOME launcher. It does not disable system navigation, radios, accounts or device security.
 

@@ -111,6 +111,17 @@ class LauncherActivity : AppCompatActivity() {
     }
 
     private fun showPage(pageId: String, nityaTab: String? = null, force: Boolean = false) {
+        val tabGroup = listOf("grantha", "samskruti").firstOrNull { pageId in ShellHubFragment.childrenFor(it) }
+        if (tabGroup != null) {
+            showPage(tabGroup)
+            (supportFragmentManager.findFragmentById(R.id.pageHost) as? GranthaFragment)?.selectReader(pageId)
+            return
+        }
+        if (pageId == "user") {
+            showPage("settings")
+            (supportFragmentManager.findFragmentById(R.id.pageHost) as? SettingsFragment)?.openUsers()
+            return
+        }
         val target = if (pageId in pages) pageId else SettingsStore.canonicalizePageId(pageId)
             .takeIf { it in pages } ?: return
         if (!force && currentPageId == target) {
@@ -138,7 +149,7 @@ class LauncherActivity : AppCompatActivity() {
         if (!::headerTitle.isInitialized) return
         val lang = OsLang.get(this)
         val page = currentPageId
-        val hideHeader = page == "nityakarma" || page == "puja"
+        val hideHeader = page in setOf("dashboard", "nityakarma", "puja", "settings", "grantha", "samskruti")
         appHeader.visibility = if (hideHeader) View.GONE else View.VISIBLE
         headerRule.visibility = if (hideHeader) View.GONE else View.VISIBLE
         headerTitle.text =
