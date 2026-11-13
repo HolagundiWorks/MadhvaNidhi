@@ -159,12 +159,20 @@ object CatalogueStore {
         IndicScript.Lang.EN -> item.en.ifBlank { item.kn.ifBlank { item.sa } }
     }
 
+    private val bodyCache = object : LinkedHashMap<String, String>(32, 0.75f, true) {
+        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, String>?): Boolean = size > 24
+    }
+
     fun body(context: Context, item: CatalogueItem, lang: IndicScript.Lang): String {
         if (item.file.isBlank()) return ""
+        val cacheKey = "${item.id}|${lang.name}|${item.file}"
+        synchronized(bodyCache) {
+            bodyCache[cacheKey]?.let { return it }
+        }
         val raw = read(context, item.file)
         if (raw.isBlank()) return ""
         val tidy = RitualText.tidy(raw, kannada = item.script == "kn")
-        return if (item.script == "kn") {
+        val out = if (item.script == "kn") {
             when (lang) {
                 // Some imported Kannada catalogue files contain Devanagari lines.
                 // Normalising the whole body keeps mixed-script texts consistent.
@@ -179,6 +187,8 @@ object CatalogueStore {
                 IndicScript.Lang.SA -> IndicScript.convert(tidy, IndicScript.Lang.SA)
             }
         }
+        synchronized(bodyCache) { bodyCache[cacheKey] = out }
+        return out
     }
 
     private fun read(context: Context, file: String): String {

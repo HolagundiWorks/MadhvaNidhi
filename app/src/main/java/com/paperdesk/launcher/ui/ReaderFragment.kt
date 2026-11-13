@@ -15,6 +15,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.paperdesk.launcher.R
@@ -24,6 +25,10 @@ import com.paperdesk.launcher.data.MadhwaStore
 import com.paperdesk.launcher.data.OsLang
 import com.paperdesk.launcher.data.SandhyaStore
 import com.paperdesk.launcher.data.Sankalpa
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ReaderFragment : Fragment() {
 
@@ -34,6 +39,7 @@ class ReaderFragment : Fragment() {
     private var subpageId = MANTRA_SUBPAGE
     private lateinit var adapter: SelectAdapter
     private var bindingKala = false
+    private var paintJob: Job? = null
     private val langTick: () -> Unit = { paint() }
 
     private val prefs by lazy {
@@ -52,9 +58,6 @@ class ReaderFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         PagePalette.apply(view, pageId)
         view.findViewById<View>(R.id.selectorPage).setBackgroundColor(PagePalette.surface(requireContext(), pageId))
-        if (pageId == SANDHYA) SandhyaStore.load(requireContext())
-        if (isCataloguePage()) CatalogueStore.load(requireContext())
-        if (pageId == PUJA) MadhwaStore.load(requireContext())
         lang = OsLang.get(requireContext())
         adapter = SelectAdapter { pick(it) }
         view.findViewById<RecyclerView>(R.id.selectorList).apply {
@@ -72,6 +75,22 @@ class ReaderFragment : Fragment() {
         subpageId = lockedSubpage()
             ?: prefs.getString("subpage", MANTRA_SUBPAGE).orEmpty().takeIf { it in SUBPAGES }
             ?: MANTRA_SUBPAGE
+        viewLifecycleOwner.lifecycleScope.launch {
+            val app = requireContext().applicationContext
+            withContext(Dispatchers.IO) { ensureStoresLoaded(app) }
+            if (!isAdded) return@launch
+            resolveSelection()
+            paint()
+        }
+    }
+
+    private fun ensureStoresLoaded(app: android.content.Context) {
+        if (pageId == SANDHYA) SandhyaStore.load(app)
+        if (isCataloguePage()) CatalogueStore.load(app)
+        if (pageId == PUJA) MadhwaStore.load(app)
+    }
+
+    private fun resolveSelection() {
         if (pageId == SANDHYA) {
             if (sessionId.isBlank() || SandhyaStore.session(requireContext(), sessionId) == null) {
                 sessionId = SandhyaStore.nowId()
@@ -89,7 +108,6 @@ class ReaderFragment : Fragment() {
             if (list.none { it.id == itemId }) itemId = list.firstOrNull()?.id.orEmpty()
             sessionId = "puja"
         }
-        paint()
     }
 
     override fun onResume() {
@@ -176,7 +194,6 @@ class ReaderFragment : Fragment() {
         v.findViewById<TextView>(R.id.selectorTitle).text = OsLang.ui("select_$pageId", lang)
         DeskType.apply(v.findViewById(R.id.readerTitle), DeskType.SEMIBOLD)
         DeskType.apply(v.findViewById(R.id.selectorTitle), DeskType.SEMIBOLD)
-        val item = current()
         val sandhya = pageId == SANDHYA
         v.findViewById<View>(R.id.readerSubpages).visibility = if (pageId == MANTRAS) View.VISIBLE else View.GONE
         if (pageId == MANTRAS) bindSubpages(v)
@@ -186,35 +203,60 @@ class ReaderFragment : Fragment() {
         v.findViewById<View>(R.id.readerKalaField).visibility = if (sandhya) View.VISIBLE else View.GONE
         v.findViewById<View>(R.id.readerHead).visibility = View.GONE
         if (sandhya) bindKala(v)
-        v.findViewById<TextView>(R.id.readerHead).text = item?.head.orEmpty()
-        v.findViewById<TextView>(R.id.readerHead).setTextColor(PagePalette.accent(requireContext(), pageId))
-        v.findViewById<TextView>(R.id.readerBody).text = item?.body ?: ""
-        v.findViewById<TextView>(R.id.readerSelectLabel).text =
-            item?.label ?: OsLang.ui("empty_page", lang)
-        v.findViewById<TextView>(R.id.readerSelectLabel).visibility = View.GONE
-        val crumb = v.findViewById<TextView>(R.id.readerCrumb)
-        crumb.visibility = View.GONE
-        crumb.text = breadcrumb(item)
-        crumb.contentDescription = crumb.text
-        DeskType.apply(crumb, DeskType.REGULAR)
-        v.findViewById<TextView>(R.id.readerSelectLabel).alpha = if (item == null) 0.45f else 1f
-        DeskType.apply(v.findViewById(R.id.readerHead), DeskType.SEMIBOLD)
-        DeskType.reading(v.findViewById(R.id.readerBody))
-        DeskType.apply(v.findViewById(R.id.readerSelectLabel), DeskType.REGULAR)
-        v.findViewById<View>(R.id.readerSelect).contentDescription =
-            "${OsLang.ui("select_$pageId", lang)}. ${item?.label ?: OsLang.ui("empty_page", lang)}"
         v.findViewById<View>(R.id.selectorBack).contentDescription = OsLang.ui("back", lang)
-        if (selectorOpen()) bindSelector()
+        val token = "${pageId}|$sessionId|$itemId|$subpageId|${lang.name}"
+        paintJob?.cancel()
+        paintJob = viewLifecycleOwner.lifecycleScope.launch {
+            val app = requireContext().applicationContext
+            val accent = PagePalette.accent(requireContext(), pageId)
+            val emptyLabel = OsLang.ui("empty_page", lang)
+            val selectLabel = OsLang.ui("select_$pageId", lang)
+            val result = withContext(Dispatchers.IO) {
+                ensureStoresLoaded(app)
+                val shown = current(app)
+                Triple(shown, breadcrumb(app, shown), rows())
+            }
+            if (!isAdded || view == null) return@launch
+            if (token != "${pageId}|$sessionId|$itemId|$subpageId|${lang.name}") return@launch
+            val (item, crumbText, selectorRows) = result
+            v.findViewById<TextView>(R.id.readerHead).text = item?.head.orEmpty()
+            v.findViewById<TextView>(R.id.readerHead).setTextColor(accent)
+            v.findViewById<TextView>(R.id.readerBody).text = item?.body ?: ""
+            v.findViewById<TextView>(R.id.readerSelectLabel).text = item?.label ?: emptyLabel
+            v.findViewById<TextView>(R.id.readerSelectLabel).visibility = View.GONE
+            val crumb = v.findViewById<TextView>(R.id.readerCrumb)
+            crumb.visibility = View.GONE
+            crumb.text = crumbText
+            crumb.contentDescription = crumb.text
+            DeskType.apply(crumb, DeskType.REGULAR)
+            v.findViewById<TextView>(R.id.readerSelectLabel).alpha = if (item == null) 0.45f else 1f
+            DeskType.apply(v.findViewById(R.id.readerHead), DeskType.SEMIBOLD)
+            DeskType.reading(v.findViewById(R.id.readerBody))
+            DeskType.apply(v.findViewById(R.id.readerSelectLabel), DeskType.REGULAR)
+            v.findViewById<View>(R.id.readerSelect).contentDescription =
+                "$selectLabel. ${item?.label ?: emptyLabel}"
+            if (selectorOpen()) {
+                adapter.lang = lang
+                adapter.selected = itemId
+                adapter.submit(selectorRows)
+                val empty = selectorRows.isEmpty()
+                v.findViewById<View>(R.id.selectorEmpty).visibility = if (empty) View.VISIBLE else View.GONE
+                v.findViewById<TextView>(R.id.selectorEmpty).text = emptyLabel
+                val list = v.findViewById<RecyclerView>(R.id.selectorList)
+                list.visibility = if (empty) View.GONE else View.VISIBLE
+                if (!empty) keepSelectedRowFullyVisible(list, selectorRows.indexOfFirst { it.id == itemId })
+            }
+        }
     }
 
-    private fun breadcrumb(item: Shown?): String {
+    private fun breadcrumb(app: android.content.Context, item: Shown?): String {
         val page = OsLang.ui(pageId, lang)
         val parts = ArrayList<String>(3)
         parts += page
         when (pageId) {
             SANDHYA -> {
-                parts += SandhyaStore.vedaLabel(requireContext())
-                val kala = SandhyaStore.session(requireContext(), sessionId)?.title.orEmpty()
+                parts += SandhyaStore.vedaLabel(app)
+                val kala = SandhyaStore.session(app, sessionId)?.title.orEmpty()
                 if (kala.isNotBlank()) parts += SandhyaStore.label(kala, lang)
             }
             MANTRAS, HADUGALU, STOTRA, SUKTAS, NAMAVALI -> {
@@ -297,11 +339,14 @@ class ReaderFragment : Fragment() {
         }
     }
 
-    private fun current(): Shown? {
+    /** Must run on a background thread — loads assets and may call Panchanga/Sankalpa. */
+    private fun current(app: android.content.Context): Shown? {
+        val textPrimary = app.getColor(R.color.carbon_text)
+        val textSecondary = app.getColor(R.color.carbon_text_secondary)
         when (pageId) {
             SANDHYA -> {
-                val session = SandhyaStore.session(requireContext(), sessionId)
-                    ?: SandhyaStore.session(requireContext(), SandhyaStore.nowId()) ?: return null
+                val session = SandhyaStore.session(app, sessionId)
+                    ?: SandhyaStore.session(app, SandhyaStore.nowId()) ?: return null
                 sessionId = session.id
                 itemId = session.steps.firstOrNull()?.id.orEmpty()
                 val completeRitual = SpannableStringBuilder()
@@ -309,12 +354,12 @@ class ReaderFragment : Fragment() {
                     if (index > 0) completeRitual.append("\n\n")
                     val number = OsLang.digits(step.n, lang)
                     val title = SandhyaStore.label(step.title, lang)
-                    val body = SandhyaStore.body(requireContext(), step, session.id, lang).trim()
+                    val body = SandhyaStore.body(app, step, session.id, lang).trim()
                     val headingStart = completeRitual.length
                     completeRitual.append("$number. $title")
                     val headingEnd = completeRitual.length
                     completeRitual.setSpan(
-                        ForegroundColorSpan(requireContext().getColor(R.color.carbon_text)),
+                        ForegroundColorSpan(textPrimary),
                         headingStart,
                         headingEnd,
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
@@ -330,7 +375,7 @@ class ReaderFragment : Fragment() {
                     if (body.startsWith("ಸೂಚನೆ:") || body.startsWith("सूचना:") || body.startsWith("Note:")) {
                         val noteStart = headingEnd + 1
                         val noteEnd = noteStart + body.indexOf('\n').takeIf { it >= 0 }.let { it ?: body.length }
-                        completeRitual.setSpan(ForegroundColorSpan(requireContext().getColor(R.color.carbon_text_secondary)), noteStart, noteEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                        completeRitual.setSpan(ForegroundColorSpan(textSecondary), noteStart, noteEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                         completeRitual.setSpan(android.text.style.RelativeSizeSpan(0.875f), noteStart, noteEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                     }
                 }
@@ -354,7 +399,7 @@ class ReaderFragment : Fragment() {
                 val label = CatalogueStore.label(item, lang)
                 return Shown(
                     head = label,
-                    body = withoutRepeatedHeading(CatalogueStore.body(requireContext(), item, lang), label),
+                    body = withoutRepeatedHeading(CatalogueStore.body(app, item, lang), label),
                     label = label
                 )
             }
@@ -366,7 +411,7 @@ class ReaderFragment : Fragment() {
                 return Shown(
                     head = MadhwaStore.label(item, lang),
                     body = Sankalpa.injectPuja(
-                        requireContext(), MadhwaStore.body(requireContext(), item, lang), lang
+                        app, MadhwaStore.body(app, item, lang), lang
                     ),
                     label = MadhwaStore.label(item, lang)
                 )

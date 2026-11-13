@@ -5,9 +5,10 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 class SettingsStore(context: Context) {
-    private val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+    private val prefs = context.applicationContext.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
 
     fun json(): JSONObject {
+        snapshot?.let { return JSONObject(it.toString()) }
         val raw = prefs.getString("json", "") ?: ""
         val obj = if (raw.isBlank()) defaults() else runCatching { JSONObject(raw) }.getOrElse { defaults() }
         var dirty = false
@@ -23,62 +24,8 @@ class SettingsStore(context: Context) {
             obj.put("scheduleEnabled", false)
             dirty = true
         }
-        if (obj.optInt("pagesRev", 0) < 2) {
-            if (insertPage(obj, "sandhya", after = "schedule")) dirty = true
-            obj.put("pagesRev", 2)
-            dirty = true
-        }
-        if (obj.optInt("pagesRev", 0) < 3) {
-            obj.put("pages", JSONArray(PAGE_IDS))
-            obj.put("gitaEnabled", false)
-            obj.put("pagesRev", 3)
-            dirty = true
-        }
-        if (obj.optInt("pagesRev", 0) < 4) {
-            obj.put("pages", JSONArray(PAGE_IDS))
-            obj.put("gitaEnabled", false)
-            obj.put("pagesRev", 4)
-            dirty = true
-        }
-        if (obj.optInt("pagesRev", 0) < 5) {
-            obj.put("pages", JSONArray(PAGE_IDS))
-            obj.put("gitaEnabled", false)
-            obj.put("pagesRev", 5)
-            dirty = true
-        }
-        if (obj.optInt("pagesRev", 0) < 6) {
-            obj.put("pages", JSONArray(PAGE_IDS))
-            obj.put("scheduleEnabled", false)
-            obj.put("gitaEnabled", false)
-            obj.put("pagesRev", 6)
-            dirty = true
-        }
-        if (obj.optInt("pagesRev", 0) < 7) {
-            obj.put("pages", JSONArray(PAGE_IDS))
-            obj.put("pagesRev", 7)
-            dirty = true
-        }
-        if (obj.optInt("pagesRev", 0) < 8) {
-            obj.put("pages", JSONArray(PAGE_IDS))
-            obj.put("pagesRev", 8)
-            dirty = true
-        }
-        if (obj.optInt("pagesRev", 0) < 9) {
-            obj.put("pages", JSONArray(PAGE_IDS))
-            obj.put("pagesRev", 9)
-            dirty = true
-        }
-        if (obj.optInt("pagesRev", 0) < 10) {
-            if (insertPage(obj, "nitya", after = "sandhya")) dirty = true
-            obj.put("pagesRev", 10)
-            dirty = true
-        }
-        if (obj.optInt("pagesRev", 0) < 11) {
-            if (insertPage(obj, "settings", after = "aayadi")) dirty = true
-            obj.put("pagesRev", 11)
-            dirty = true
-        }
-        if (obj.optInt("pagesRev", 0) < 12) {
+        // Historical page migrations collapsed into a single rev bump when needed.
+        if (obj.optInt("pagesRev", 0) < 14) {
             obj.put("pages", JSONArray(PAGE_IDS))
             obj.put("projectEnabled", false)
             obj.put("todoEnabled", false)
@@ -86,33 +33,35 @@ class SettingsStore(context: Context) {
             obj.put("calcEnabled", false)
             obj.put("gitaEnabled", false)
             obj.put("scheduleEnabled", false)
-            obj.put("pagesRev", 12)
-            dirty = true
-        }
-        if (obj.optInt("pagesRev", 0) < 13) {
-            obj.put("pages", JSONArray(PAGE_IDS))
-            obj.put("pagesRev", 13)
-            dirty = true
-        }
-        if (obj.optInt("pagesRev", 0) < 14) {
-            obj.put("pages", JSONArray(PAGE_IDS))
             obj.put("pagesRev", 14)
             dirty = true
         }
-        if (dirty) prefs.edit().putString("json", obj.toString()).apply()
-        return obj
+        // Collapse legacy sandhya/japa/puja pager slots into one nityakarma page (RAM).
+        if (obj.optInt("pagesRev", 0) < 15) {
+            obj.put("pages", JSONArray(PAGE_IDS))
+            obj.put("pagesRev", 15)
+            dirty = true
+        }
+        if (dirty) {
+            prefs.edit().putString("json", obj.toString()).apply()
+        }
+        snapshot = obj
+        return JSONObject(obj.toString())
     }
 
     fun save(obj: JSONObject) {
         val merged = defaults()
         obj.keys().forEach { merged.put(it, obj.get(it)) }
-        prefs.edit().putString("json", merged.toString()).commit()
+        snapshot = merged
+        prefs.edit().putString("json", merged.toString()).apply()
     }
 
     fun pages(): List<String> {
         val arr = json().optJSONArray("pages") ?: defaults().getJSONArray("pages")
         return (0 until arr.length()).map { arr.getString(it) }
+            .map { canonicalizePageId(it) }
             .filter { it in PAGE_IDS }
+            .distinct()
     }
 
     fun landscape(): Boolean = json().optBoolean("landscape", true)
@@ -153,15 +102,21 @@ class SettingsStore(context: Context) {
         const val VEDA_RIGVEDA = "rigveda_ashvalayana"
         const val VEDA_KRISHNA_YAJURVEDA = "krishna_yajurveda_taittiriya"
         val VEDA_IDS = listOf(VEDA_RIGVEDA, VEDA_KRISHNA_YAJURVEDA)
+
+        /** Shipped pager destinations — one Nitya Karma host (not four). */
         val PAGE_IDS = listOf(
             "dashboard", "desk",
-            "nityakarma", "sandhya", "japa", "puja",
+            "nityakarma",
             "grantha", "nitya", "stotra", "suktas", "mantras", "namavali",
             "sangeeta", "hadugalu", "playlists",
             "samskruti", "aayadi", "rangavalli", "recipes",
             "user",
             "settings"
         )
+
+        /** Navigation aliases that open Nitya tabs without separate pager pages. */
+        val NITYA_TAB_ALIASES = setOf("sandhya", "japa", "puja", "nityakarma")
+
         val PAGE_LABELS = mapOf(
             "dashboard" to "DASHBOARD",
             "desk" to "PANCHANGA",
@@ -186,20 +141,25 @@ class SettingsStore(context: Context) {
             "settings" to "SETTINGS"
         )
 
-        private fun insertPage(obj: JSONObject, id: String, after: String): Boolean {
-            val arr = obj.optJSONArray("pages") ?: return false
-            val list = (0 until arr.length()).map { arr.getString(it) }.toMutableList()
-            if (id in list) return false
-            val i = list.indexOf(after)
-            if (i >= 0) list.add(i + 1, id) else list.add(id)
-            obj.put("pages", JSONArray(list))
-            return true
+        @Volatile
+        private var snapshot: JSONObject? = null
+
+        fun invalidateCache() {
+            snapshot = null
         }
+
+        fun canonicalizePageId(id: String): String = when (id) {
+            "sandhya", "japa", "puja" -> "nityakarma"
+            else -> id
+        }
+
+        fun isKnownPage(id: String): Boolean =
+            id in PAGE_IDS || id in NITYA_TAB_ALIASES || id in PAGE_LABELS
 
         fun defaults(): JSONObject = JSONObject()
             .put("flavor", "madhvanidhi")
             .put("pages", JSONArray(PAGE_IDS))
-            .put("pagesRev", 13)
+            .put("pagesRev", 15)
             .put("veda", VEDA_RIGVEDA)
             .put("panchangaTradition", PanchangaTraditions.SRS)
             .put("landscape", true)

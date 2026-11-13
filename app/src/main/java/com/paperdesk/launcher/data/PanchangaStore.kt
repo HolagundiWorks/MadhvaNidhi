@@ -29,18 +29,31 @@ object PanchangaStore {
     private const val PREFS = "paperdesk_panchanga"
     private const val SRS = "https://srsmatha.org/panchanga.php?pdate="
 
+    /** Hot in-memory cache so Sankalpa / dashboard / desk do not re-hit disk/network. */
+    private val memory = object : LinkedHashMap<String, PanchangaDay>(16, 0.75f, true) {
+        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, PanchangaDay>?): Boolean = size > 32
+    }
+
     fun today(context: Context): PanchangaDay = forDate(context, dateKey())
 
     fun forDate(context: Context, date: String): PanchangaDay {
         val tradition = PanchangaTraditions.find(SettingsStore(context).panchangaTradition())
-        cached(context, date, tradition.id)?.let { return it }
+        val memKey = "${tradition.id}|$date"
+        synchronized(memory) { memory[memKey] }?.let { return it }
+        cached(context, date, tradition.id)?.let {
+            synchronized(memory) { memory[memKey] = it }
+            return it
+        }
         if (tradition.liveDailyData) {
             fetchSrs(date)?.copy(source = "${tradition.kn} · ಅಧಿಕೃತ")?.let {
                 save(context, it, tradition.id)
+                synchronized(memory) { memory[memKey] = it }
                 return it
             }
         }
-        return local(date).copy(source = "${tradition.kn} · ಸ್ಥಳೀಯ ಗಣನೆ")
+        return local(date).copy(source = "${tradition.kn} · ಸ್ಥಳೀಯ ಗಣನೆ").also {
+            synchronized(memory) { memory[memKey] = it }
+        }
     }
 
     fun local(date: String): PanchangaDay = compute(date)

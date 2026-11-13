@@ -146,11 +146,13 @@ class ResponsiveUiInstrumentation : Instrumentation() {
                 }
                 var previousRitual = 0
                 onMain {
-                    if (current is JapaFragment) {
-                        val ritual = current.requireView().findViewById<MaterialAutoCompleteTextView>(R.id.japaRitual)
-                        previousRitual = MaterialChoices.position(ritual)
-                        ritual.setText(ritual.adapter.getItem(6).toString(), false)
-                        ritual.onItemClickListener?.onItemClick(null, null, 6, 6)
+                    if (current is NityaKarmaFragment) {
+                        val ritual = current.requireView().findViewById<MaterialAutoCompleteTextView>(R.id.japaMantra)
+                        if (ritual != null && ritual.adapter != null && ritual.adapter.count > 6) {
+                            previousRitual = MaterialChoices.position(ritual)
+                            ritual.setText(ritual.adapter.getItem(6).toString(), false)
+                            ritual.onItemClickListener?.onItemClick(null, null, 6, 6)
+                        }
                     }
                     if (current is ReaderFragment) (current as ReaderFragment).openSelector()
                 }
@@ -186,10 +188,12 @@ class ResponsiveUiInstrumentation : Instrumentation() {
                 onMain { originalLabels.forEach { (field, original) -> field.setText(original, false) } }
                 settle()
                 onMain {
-                    if (current is JapaFragment) {
-                        val ritual = current.requireView().findViewById<MaterialAutoCompleteTextView>(R.id.japaRitual)
-                        MaterialChoices.select(ritual, previousRitual)
-                        ritual.onItemClickListener?.onItemClick(null, null, previousRitual, previousRitual.toLong())
+                    if (current is NityaKarmaFragment) {
+                        val ritual = current.requireView().findViewById<MaterialAutoCompleteTextView>(R.id.japaMantra)
+                        if (ritual != null && ritual.adapter != null) {
+                            MaterialChoices.select(ritual, previousRitual)
+                            ritual.onItemClickListener?.onItemClick(null, null, previousRitual, previousRitual.toLong())
+                        }
                     }
                     if (current is ReaderFragment) (current as ReaderFragment).closeSelector()
                 }

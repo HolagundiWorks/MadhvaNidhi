@@ -6,13 +6,16 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
 import android.os.Bundle
+import com.paperdesk.launcher.data.CatalogueStore
+import com.paperdesk.launcher.data.FestivalStore
 import com.paperdesk.launcher.data.SettingsStore
+import java.util.concurrent.Executors
 
 class PaperDeskApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        com.paperdesk.launcher.DeskTheme.apply(this)
+        DeskTheme.apply(this)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 ALARM_CHANNEL,
@@ -23,6 +26,13 @@ class PaperDeskApp : Application() {
                 enableVibration(true)
             }
             getSystemService(NotificationManager::class.java).createNotificationChannel(channel)
+        }
+        // Warm heavy asset/JSON stores off the main thread before first reader/desk open.
+        val app = applicationContext
+        Executors.newSingleThreadExecutor { r -> Thread(r, "madhva-warmup") }.execute {
+            runCatching { FestivalStore.load(app) }
+            runCatching { CatalogueStore.load(app) }
+            runCatching { SettingsStore(app).pages() }
         }
         registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {}

@@ -283,12 +283,20 @@ object ScreenPages {
                 show()
             }
         }
-        container.viewTreeObserver.addOnGlobalLayoutListener {
+        val layoutListener = android.view.ViewTreeObserver.OnGlobalLayoutListener {
             if (!pending) {
                 pending = true
                 container.post { pending = false; if (container.isAttachedToWindow) paginate() }
             }
         }
+        container.viewTreeObserver.addOnGlobalLayoutListener(layoutListener)
+        container.addOnAttachStateChangeListener(object : View.OnAttachStateChangeListener {
+            override fun onViewAttachedToWindow(v: View) = Unit
+            override fun onViewDetachedFromWindow(v: View) {
+                v.viewTreeObserver.removeOnGlobalLayoutListener(layoutListener)
+                v.removeOnAttachStateChangeListener(this)
+            }
+        })
         return container
     }
 }

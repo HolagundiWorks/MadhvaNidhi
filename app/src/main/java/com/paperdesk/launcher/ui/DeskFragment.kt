@@ -101,8 +101,10 @@ class DeskFragment : Fragment() {
         super.onResume()
         DeskLock.addListener(lockListener)
         OsLang.addListener(langTick)
+        bindLang()
+        // bindDate() reloads only when the selected date changed — avoid double calendar rebuild.
         bindDate()
-        loadPanchanga()
+        if (detailsDay == null || lastPanchangaDate.isEmpty()) loadPanchanga()
     }
     override fun onPause() {
         DeskLock.removeListener(lockListener)
@@ -215,11 +217,24 @@ class DeskFragment : Fragment() {
         val requestedDate = selectedDate
         panchangaJob?.cancel()
         panchangaJob = viewLifecycleOwner.lifecycleScope.launch {
-            val cycle = withContext(Dispatchers.IO) { com.paperdesk.launcher.data.PanchangaCalendar.cycle(requestedDate) }
+            val cycle = withContext(Dispatchers.IO) {
+                FestivalStore.load(context)
+                com.paperdesk.launcher.data.PanchangaCalendar.cycle(requestedDate)
+            }
             if (requestedDate != selectedDate) return@launch
-            renderPanchanga(PanchangaStore.local(requestedDate).copy(source = "ಸ್ಥಳೀಯ ಗಣನೆ"), cycle)
+            // Paint local estimate first so the UI is responsive, then refresh if network/local merge differs.
+            val local = PanchangaStore.local(requestedDate).copy(source = "ಸ್ಥಳೀಯ ಗಣನೆ")
+            renderPanchanga(local, cycle)
             val day = withContext(Dispatchers.IO) { PanchangaStore.forDate(context, requestedDate) }
-            if (requestedDate == selectedDate) renderPanchanga(day, cycle)
+            if (requestedDate != selectedDate) return@launch
+            if (day.tithi != local.tithi || day.nakshatra != local.nakshatra ||
+                day.paksha != local.paksha || day.masa != local.masa || day.source != local.source
+            ) {
+                renderPanchanga(day, cycle)
+            } else {
+                detailsDay = day
+                lastPanchangaDate = day.date
+            }
         }
     }
 
@@ -334,7 +349,6 @@ class DeskFragment : Fragment() {
                 loadPanchanga()
             }
         }
-        FestivalStore.load(requireContext())
         val fest = FestivalStore.label(day.date, lang)
             .ifBlank { com.paperdesk.launcher.data.MadhwaDays.name(day.masa, day.paksha, day.tithi) }
         detailsEvent = if (fest.isBlank()) "ವಿಶೇಷ ಕಾರ್ಯಕ್ರಮ ದಾಖಲಾಗಿಲ್ಲ" else OsLang.script(fest, lang)

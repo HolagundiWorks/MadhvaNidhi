@@ -72,7 +72,6 @@ object JapaPadBinder {
                 HapticFeedbackConstants.KEYBOARD_TAP,
                 HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING
             )
-            store.configure(store.state().mantra, dailyGoal, true)
             paint(root, store.add(1), dailyGoal)
         }
         root.findViewById<View>(R.id.japaComplete).setOnClickListener {

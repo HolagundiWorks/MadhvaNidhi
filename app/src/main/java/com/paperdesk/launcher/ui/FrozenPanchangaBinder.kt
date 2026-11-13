@@ -257,6 +257,47 @@ object FrozenPanchangaBinder {
                 }
             }
         }
+        fun paintSelection(host: FrameLayout) {
+            for (i in 0 until host.childCount) {
+                val cell = host.getChildAt(i) as? FrameLayout ?: continue
+                val button = cell.getChildAt(0) as? MaterialButton ?: continue
+                val tile = button.tag as? PanchangaCalendar.Tile ?: continue
+                val active = selected in tile.dates
+                button.isChecked = active
+                button.backgroundTintList = ColorStateList.valueOf(
+                    root.context.getColor(if (active) R.color.carbon_layer_high else R.color.carbon_layer)
+                )
+                button.strokeWidth = if (active) (2 * density).roundToInt() else 0
+                button.strokeColor = ColorStateList.valueOf(
+                    root.context.getColor(if (active) R.color.carbon_orange else android.R.color.transparent)
+                )
+            }
+        }
+        fun buildPhase(index: Int, side: Int) {
+            val host = grids[index]
+            host.removeAllViews()
+            var column = 0
+            var rowIndex = 0
+            for (tile in groups[index]) {
+                val span = tile.tithis.size
+                if (column + span > 5) {
+                    column = 0
+                    rowIndex++
+                }
+                val cellWidth = side * span + gap * (span - 1)
+                val cell = buildTile(tile, index, cellWidth, side)
+                host.addView(
+                    cell,
+                    FrameLayout.LayoutParams(cellWidth, side).apply {
+                        leftMargin = column * (side + gap)
+                        topMargin = rowIndex * (side + gap)
+                    }
+                )
+                column += span
+            }
+            forceTileLayout(host)
+            host.tag = "${area.width}:$side:$index"
+        }
         fun reflow() {
             if (area.width <= 0 || area.height <= 0 || !root.isAttachedToWindow) return
             val rowCount = groups.maxOf { rows(it) }
@@ -267,32 +308,23 @@ object FrozenPanchangaBinder {
             if (signature == key && hostVisible.childCount > 0 &&
                 (0 until hostVisible.childCount).any { hostVisible.getChildAt(it).width > 0 }
             ) return
+            val structureKey = "${area.width}:$side:$phase"
+            val selectionOnly =
+                signature.startsWith("${area.width}:${area.height}:$phase:") &&
+                    hostVisible.childCount > 0 &&
+                    hostVisible.tag == structureKey
             signature = key
             grids.forEachIndexed { i, grid -> grid.visibility = if (i == phase) View.VISIBLE else View.GONE }
             updateMoonStrip()
-            for (index in 0..1) {
-                val host = grids[index]
-                host.removeAllViews()
-                var column = 0
-                var rowIndex = 0
-                for (tile in groups[index]) {
-                    val span = tile.tithis.size
-                    if (column + span > 5) {
-                        column = 0
-                        rowIndex++
-                    }
-                    val cellWidth = side * span + gap * (span - 1)
-                    val cell = buildTile(tile, index, cellWidth, side)
-                    host.addView(
-                        cell,
-                        FrameLayout.LayoutParams(cellWidth, side).apply {
-                            leftMargin = column * (side + gap)
-                            topMargin = rowIndex * (side + gap)
-                        }
-                    )
-                    column += span
-                }
-                forceTileLayout(host)
+            if (selectionOnly) {
+                paintSelection(hostVisible)
+                return
+            }
+            // Build only the visible paksha — other side on first switch.
+            if (hostVisible.tag != structureKey || hostVisible.childCount == 0) {
+                buildPhase(phase, side)
+            } else {
+                paintSelection(hostVisible)
             }
             hostVisible.post { forceTileLayout(hostVisible) }
         }

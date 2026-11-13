@@ -55,10 +55,11 @@ class LauncherActivity : AppCompatActivity() {
         androidx.core.view.ViewCompat.requestApplyInsets(content)
         pager.adapter = WorkspaceAdapter(this)
         shell = FrozenShell(this, pager)
+        // Swipe disabled — keep only the adjacent page warm to cut RAM on low-end devices.
         pager.offscreenPageLimit = 1
         pager.isUserInputEnabled = false
         val count = pager.adapter!!.itemCount
-        val requested = intent?.getStringExtra("page")
+        val requested = intent?.getStringExtra("page")?.takeIf { SettingsStore.isKnownPage(it) }
         val start = when {
             !requested.isNullOrBlank() -> (pager.adapter as WorkspaceAdapter).indexOf(requested).takeIf { it >= 0 }
             savedInstanceState != null -> savedInstanceState.getInt("page")
@@ -103,7 +104,10 @@ class LauncherActivity : AppCompatActivity() {
             }
         })
         bindNavigation()
-        AlarmScheduler.rescheduleAll(this)
+        // Alarm reschedule hits disk — keep it off the first frame.
+        window.decorView.post {
+            Thread({ AlarmScheduler.rescheduleAll(applicationContext) }, "alarm-reschedule").start()
+        }
         if (Build.VERSION.SDK_INT >= 33 && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS), 42)
         }
@@ -143,15 +147,14 @@ class LauncherActivity : AppCompatActivity() {
     }
     fun navigateTo(pageId: String) {
         if (!::pager.isInitialized) return
+        if (!SettingsStore.isKnownPage(pageId)) return
         val adapter = pager.adapter as? WorkspaceAdapter ?: return
         val nityaTab = when (pageId) {
             "sandhya", "japa", "puja" -> pageId
             "nityakarma" -> "sandhya"
             else -> null
         }
-        val targetId = if (nityaTab != null) {
-            listOf("nityakarma", pageId).firstOrNull { adapter.indexOf(it) >= 0 } ?: pageId
-        } else pageId
+        val targetId = if (nityaTab != null) "nityakarma" else pageId
         val index = adapter.indexOf(targetId)
         if (index < 0) return
         if (pager.currentItem == index) {
@@ -196,7 +199,7 @@ class LauncherActivity : AppCompatActivity() {
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
-        val page = intent.getStringExtra("page")
+        val page = intent.getStringExtra("page")?.takeIf { SettingsStore.isKnownPage(it) }
         if (!page.isNullOrBlank()) navigateTo(page) else goHome()
     }
     @Deprecated("Deprecated in Java")

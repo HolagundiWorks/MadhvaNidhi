@@ -8,12 +8,16 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.paperdesk.launcher.R
 import com.paperdesk.launcher.data.OsLang
 import com.paperdesk.launcher.data.SandhyaStore
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /** Tabbed Nitya Karma shell — Sandhya · Japa · Puja (frozen mockup contract). */
 class NityaKarmaFragment : Fragment() {
@@ -21,6 +25,9 @@ class NityaKarmaFragment : Fragment() {
     private var sandhyaRoot: View? = null
     private var japaRoot: View? = null
     private var pujaRoot: View? = null
+    private var sandhyaBound = false
+    private var japaBound = false
+    private var pujaBound = false
 
     private var kalaId = SandhyaStore.PRATAH
     private var sandhyaIndex = 0
@@ -40,25 +47,13 @@ class NityaKarmaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         PagePalette.apply(view, "nityakarma")
-        SandhyaStore.load(requireContext())
-        kalaId = SandhyaStore.nowId()
-
-        val host = view.findViewById<ViewGroup>(R.id.nityaPanelHost)
-        val inflater = layoutInflater
-        val match = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-        sandhyaRoot = inflater.inflate(R.layout.page_nitya_sandhya, host, false).also { host.addView(it, match) }
-        japaRoot = inflater.inflate(R.layout.page_japa, host, false).also {
-            host.addView(it, match)
-            it.visibility = View.GONE
+        viewLifecycleOwner.lifecycleScope.launch {
+            withContext(Dispatchers.IO) { SandhyaStore.load(requireContext().applicationContext) }
+            if (!isAdded) return@launch
+            kalaId = SandhyaStore.nowId()
+            // Ensure the visible tab is ready after asset load.
+            showTab(initialTab)
         }
-        pujaRoot = inflater.inflate(R.layout.page_nitya_puja, host, false).also {
-            host.addView(it, match)
-            it.visibility = View.GONE
-        }
-
-        bindSandhya(sandhyaRoot!!)
-        bindPuja(pujaRoot!!)
-        JapaPadBinder.bind(this, japaRoot!!)
 
         val tabs = view.findViewById<TabLayout>(R.id.nityaTabs)
         listOf(
@@ -80,6 +75,8 @@ class NityaKarmaFragment : Fragment() {
             TAB_PUJA -> 2
             else -> 0
         }
+        // Inflate only the starting tab immediately; others on first select.
+        ensureTab(listOf(TAB_SANDHYA, TAB_JAPA, TAB_PUJA)[start])
         tabs.getTabAt(start)?.select()
         showTab(listOf(TAB_SANDHYA, TAB_JAPA, TAB_PUJA)[start])
     }
@@ -95,9 +92,47 @@ class NityaKarmaFragment : Fragment() {
     }
 
     private fun showTab(tab: String) {
+        ensureTab(tab)
         sandhyaRoot?.visibility = if (tab == TAB_SANDHYA) View.VISIBLE else View.GONE
         japaRoot?.visibility = if (tab == TAB_JAPA) View.VISIBLE else View.GONE
         pujaRoot?.visibility = if (tab == TAB_PUJA) View.VISIBLE else View.GONE
+    }
+
+    private fun ensureTab(tab: String) {
+        val host = view?.findViewById<ViewGroup>(R.id.nityaPanelHost) ?: return
+        val inflater = layoutInflater
+        val match = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        when (tab) {
+            TAB_SANDHYA -> if (sandhyaRoot == null) {
+                sandhyaRoot = inflater.inflate(R.layout.page_nitya_sandhya, host, false).also {
+                    host.addView(it, match)
+                    if (!sandhyaBound) {
+                        bindSandhya(it)
+                        sandhyaBound = true
+                    }
+                }
+            }
+            TAB_JAPA -> if (japaRoot == null) {
+                japaRoot = inflater.inflate(R.layout.page_japa, host, false).also {
+                    host.addView(it, match)
+                    it.visibility = View.GONE
+                    if (!japaBound) {
+                        JapaPadBinder.bind(this, it)
+                        japaBound = true
+                    }
+                }
+            }
+            TAB_PUJA -> if (pujaRoot == null) {
+                pujaRoot = inflater.inflate(R.layout.page_nitya_puja, host, false).also {
+                    host.addView(it, match)
+                    it.visibility = View.GONE
+                    if (!pujaBound) {
+                        bindPuja(it)
+                        pujaBound = true
+                    }
+                }
+            }
+        }
     }
 
     private fun bindSandhya(root: View) {

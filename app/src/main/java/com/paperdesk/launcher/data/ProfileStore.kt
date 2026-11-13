@@ -57,17 +57,23 @@ class ProfileStore(context: Context) {
             plain.contains("profiles") || plain.contains("active_id")
         if (!hasPlain) return
         val encrypted = createEncrypted()
-        if (!encrypted.contains(KEY_ITEMS) && !encrypted.contains("profiles")) {
+        val encryptedEmpty = !encrypted.contains(KEY_ITEMS) && !encrypted.contains("profiles")
+        if (encryptedEmpty) {
             val items = plain.getString(KEY_ITEMS, null)
                 ?: plain.getString("profiles", null)
             val active = plain.getString(KEY_ACTIVE, null)
                 ?: plain.getString("active_id", null)
-            encrypted.edit()
+            val ok = encrypted.edit()
                 .putString(KEY_ITEMS, items)
                 .putString(KEY_ACTIVE, active)
                 .commit()
+            // Only wipe plaintext after a verified write — avoids dropping the only copy.
+            if (ok && (encrypted.contains(KEY_ITEMS) || encrypted.contains(KEY_ACTIVE) || items.isNullOrBlank())) {
+                plain.edit().clear().apply()
+            }
+            return
         }
-        plain.edit().clear().commit()
+        // Encrypted already populated: leave plaintext intact for a later merge pass.
     }
 
     fun profiles(): List<Profile> {

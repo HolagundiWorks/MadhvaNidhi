@@ -24,6 +24,7 @@ import java.util.Calendar
 class DashboardFragment : Fragment() {
     private lateinit var japa: JapaStore
     private lateinit var practice: PracticeDayStore
+    private var panchangaJob: kotlinx.coroutines.Job? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, state: Bundle?): View =
         inflater.inflate(R.layout.page_dashboard, container, false)
@@ -73,8 +74,12 @@ class DashboardFragment : Fragment() {
             if (parts.size == 3) set(parts[0].toInt(), parts[1].toInt() - 1, parts[2].toInt())
         }
         view.findViewById<TextView>(R.id.dashboardDate).text = OsLang.dateLine(cal, lang)
-        viewLifecycleOwner.lifecycleScope.launch {
-            val day = withContext(Dispatchers.IO) { PanchangaStore.forDate(requireContext(), date) }
+        panchangaJob?.cancel()
+        panchangaJob = viewLifecycleOwner.lifecycleScope.launch {
+            val day = withContext(Dispatchers.IO) {
+                FestivalStore.load(requireContext().applicationContext)
+                PanchangaStore.forDate(requireContext().applicationContext, date)
+            }
             if (!isAdded) return@launch
             val tithi = listOf(day.tithi, day.paksha).filter { it.isNotBlank() }.joinToString(" · ")
             view.findViewById<TextView>(R.id.dashboardTithi).text =

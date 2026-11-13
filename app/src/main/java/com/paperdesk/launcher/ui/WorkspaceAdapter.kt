@@ -13,7 +13,12 @@ class WorkspaceAdapter(activity: FragmentActivity) : FragmentStateAdapter(activi
 
     fun pageId(position: Int): String = pages.getOrNull(position) ?: "dashboard"
 
-    fun indexOf(pageId: String): Int = pages.indexOf(pageId)
+    fun indexOf(pageId: String): Int {
+        val direct = pages.indexOf(pageId)
+        if (direct >= 0) return direct
+        val canonical = SettingsStore.canonicalizePageId(pageId)
+        return pages.indexOf(canonical)
+    }
 
     override fun getItemCount(): Int = pages.size
 
@@ -31,16 +36,13 @@ class WorkspaceAdapter(activity: FragmentActivity) : FragmentStateAdapter(activi
         "dashboard" -> DashboardFragment()
         "nityakarma" -> NityaKarmaFragment.create(NityaKarmaFragment.TAB_SANDHYA)
         "grantha", "sangeeta", "samskruti" -> ShellHubFragment.create(id)
-        "sandhya" -> NityaKarmaFragment.create(NityaKarmaFragment.TAB_SANDHYA)
         "nitya" -> NityaParayanaFragment()
         "stotra" -> ReaderFragment.create(ReaderFragment.STOTRA)
         "suktas" -> ReaderFragment.create(ReaderFragment.SUKTAS)
         "mantras" -> ReaderFragment.create(ReaderFragment.MANTRAS)
         "namavali" -> ReaderFragment.create(ReaderFragment.NAMAVALI)
-        "puja" -> NityaKarmaFragment.create(NityaKarmaFragment.TAB_PUJA)
         "hadugalu" -> ReaderFragment.create(ReaderFragment.HADUGALU)
         "playlists" -> SectionBrowseFragment.create(SectionBrowseFragment.PLAYLISTS)
-        "japa" -> NityaKarmaFragment.create(NityaKarmaFragment.TAB_JAPA)
         "aayadi" -> AayadiFragment()
         "rangavalli" -> SectionBrowseFragment.create(SectionBrowseFragment.RANGAVALLI)
         "recipes" -> SectionBrowseFragment.create(SectionBrowseFragment.RECIPES)
