@@ -5,208 +5,242 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.view.Menu
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.appbar.MaterialToolbar
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.paperdesk.launcher.DeskLock
-import com.paperdesk.launcher.DeskTheme
 import com.paperdesk.launcher.DeskWindow
 import com.paperdesk.launcher.R
 import com.paperdesk.launcher.alarm.AlarmScheduler
+import com.paperdesk.launcher.data.IndicScript
 import com.paperdesk.launcher.data.OsLang
+import com.paperdesk.launcher.data.PanchangaStore
 import com.paperdesk.launcher.data.SettingsStore
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.util.Calendar
 
 class LauncherActivity : AppCompatActivity() {
     override fun attachBaseContext(newBase: android.content.Context) {
         super.attachBaseContext(AppTextSize.wrap(newBase))
     }
 
-    private lateinit var pager: ViewPager2
-    private lateinit var toolbar: MaterialToolbar
+    private lateinit var headerTitle: TextView
+    private lateinit var headerDate: TextView
+    private lateinit var appHeader: View
+    private lateinit var headerRule: View
     private lateinit var shell: FrozenShell
+    private lateinit var pages: List<String>
+    private var currentPageId = "dashboard"
     private var selectorOpen = false
     private var footerAction: (() -> Unit)? = null
+    private var headerDateJob: Job? = null
     private val langTick: () -> Unit = { bindNavigation() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        DeskTheme.apply(this)
-        // Stable page IDs let Android restore the selected page and its view state.
+        // Theme already applied in Application; only re-apply after explicit theme toggles.
         super.onCreate(savedInstanceState)
         androidx.core.view.WindowCompat.setDecorFitsSystemWindows(window, false)
-        val dark = resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK == android.content.res.Configuration.UI_MODE_NIGHT_YES
+        val dark = resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK ==
+            android.content.res.Configuration.UI_MODE_NIGHT_YES
         androidx.core.view.WindowInsetsControllerCompat(window, window.decorView).apply {
             isAppearanceLightStatusBars = !dark
             isAppearanceLightNavigationBars = !dark
         }
         setContentView(R.layout.frozen_launcher)
-        toolbar = findViewById(R.id.toolbar)
-        toolbar.setTitleTextAppearance(this, R.style.TextAppearance_Carbon_Label02)
-        toolbar.setTitleTextColor(getColor(R.color.carbon_text_secondary))
-        pager = findViewById(R.id.pager)
+        appHeader = findViewById(R.id.appHeader)
+        headerRule = findViewById(R.id.headerRule)
+        headerTitle = findViewById(R.id.headerTitle)
+        headerDate = findViewById(R.id.headerDate)
+        headerDate.setOnClickListener {
+            if (currentPageId == "desk") {
+                supportFragmentManager.fragments.filterIsInstance<DeskFragment>().firstOrNull()?.showDatePicker()
+            }
+        }
         val content = findViewById<View>(R.id.materialContent)
         androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(content) { v, insets ->
-            val safe = insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars() or
-                androidx.core.view.WindowInsetsCompat.Type.displayCutout() or androidx.core.view.WindowInsetsCompat.Type.ime())
+            val safe = insets.getInsets(
+                androidx.core.view.WindowInsetsCompat.Type.systemBars() or
+                    androidx.core.view.WindowInsetsCompat.Type.displayCutout() or
+                    androidx.core.view.WindowInsetsCompat.Type.ime()
+            )
             v.setPadding(safe.left, safe.top, safe.right, safe.bottom)
             insets
         }
         androidx.core.view.ViewCompat.requestApplyInsets(content)
-        pager.adapter = WorkspaceAdapter(this)
-        shell = FrozenShell(this, pager)
-        // Swipe disabled — keep only the adjacent page warm to cut RAM on low-end devices.
-        pager.offscreenPageLimit = 1
-        pager.isUserInputEnabled = false
-        val count = pager.adapter!!.itemCount
+
+        // Fixed shipped destinations — do not parse Settings JSON on the launch path.
+        pages = SettingsStore.PAGE_IDS
+        shell = FrozenShell(this)
         val requested = intent?.getStringExtra("page")?.takeIf { SettingsStore.isKnownPage(it) }
-        val start = when {
-            !requested.isNullOrBlank() -> (pager.adapter as WorkspaceAdapter).indexOf(requested).takeIf { it >= 0 }
-            savedInstanceState != null -> savedInstanceState.getInt("page")
+        val startId = when {
+            !requested.isNullOrBlank() -> SettingsStore.canonicalizePageId(requested)
+                .takeIf { it in pages } ?: pages.first()
+            savedInstanceState != null ->
+                savedInstanceState.getString(STATE_PAGE)?.takeIf { it in pages } ?: pages.first()
+            else -> pages.first()
+        }
+        val nityaTab = when (requested) {
+            "sandhya", "japa", "nitya" -> requested
             else -> null
         }
-        pager.setCurrentItem((start ?: 0).coerceIn(0, count - 1), false)
-        listOf(Triple(R.id.toolbarDate, R.drawable.ic_calendar, "ದಿನಾಂಕ ಆಯ್ಕೆಮಾಡಿ"),
-            Triple(R.id.textSmaller, R.drawable.ic_text_smaller, "ಅಕ್ಷರ ಗಾತ್ರ ಕಡಿಮೆ ಮಾಡಿ"),
-            Triple(R.id.textLarger, R.drawable.ic_text_larger, "ಅಕ್ಷರ ಗಾತ್ರ ಹೆಚ್ಚಿಸಿ"),
-            Triple(R.id.themeSwitch, R.drawable.ic_color_switch, "Switch color theme")).forEachIndexed { index, (id, icon, label) ->
-            toolbar.menu.add(Menu.NONE, id, index * 2, label).apply {
-                setIcon(icon)
-                setShowAsAction(android.view.MenuItem.SHOW_AS_ACTION_ALWAYS)
-            }
-        }
-        toolbar.menu.add(Menu.NONE, R.id.textScaleLabel, 3, "Text size").apply {
-            actionView = com.google.android.material.textview.MaterialTextView(this@LauncherActivity).apply {
-                text = "${(AppTextSize.scale(this@LauncherActivity)*100).toInt()}%"
-                setTextColor(getColor(R.color.carbon_text_secondary))
-                setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX,12*resources.displayMetrics.density)
-                gravity=android.view.Gravity.CENTER
-                layoutParams=android.view.ViewGroup.LayoutParams((44*resources.displayMetrics.density).toInt(),-1)
-                contentDescription="App text size $text"
-            }
-            setShowAsAction(android.view.MenuItem.SHOW_AS_ACTION_ALWAYS)
-        }
-        val iconColor = com.google.android.material.color.MaterialColors.getColor(toolbar, com.google.android.material.R.attr.colorOnSurface)
-        for (index in 0 until toolbar.menu.size()) toolbar.menu.getItem(index).icon?.mutate()?.setTint(iconColor)
-        toolbar.setOnMenuItemClickListener {
-            when (it.itemId) {
-                R.id.textSmaller -> resizeText(-0.25f)
-                R.id.textLarger -> resizeText(0.25f)
-                R.id.toolbarDate -> supportFragmentManager.fragments.filterIsInstance<DeskFragment>().firstOrNull()?.showDatePicker()
-                R.id.themeSwitch -> DeskTheme.set(this, if(DeskTheme.current(this)==DeskTheme.BLACK) DeskTheme.PAPER else DeskTheme.BLACK)
-            }
-            true
-        }
-        pager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                supportFragmentManager.fragments.forEach { it.view?.let { root -> MaterialChoices.dismiss(root) } }
-                bindNavigation()
-            }
-        })
-        bindNavigation()
-        // Alarm reschedule hits disk — keep it off the first frame.
+        // Draw shell chrome first; attach the start fragment on the next frame so TTID drops.
         window.decorView.post {
+            if (isFinishing) return@post
+            showPage(startId, nityaTab, force = true)
+            shell.bind()
             Thread({ AlarmScheduler.rescheduleAll(applicationContext) }, "alarm-reschedule").start()
         }
-        if (Build.VERSION.SDK_INT >= 33 && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+        if (Build.VERSION.SDK_INT >= 33 &&
+            checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
+        ) {
             requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS), 42)
         }
     }
 
-    private fun bindNavigation() {
-        if (!::pager.isInitialized) return
-        val adapter = pager.adapter as WorkspaceAdapter
-        val lang = OsLang.get(this)
-        toolbar.title = if (resources.configuration.fontScale > 1.5f) "" else OsLang.ui(adapter.pageId(pager.currentItem), lang)
-        if (::shell.isInitialized) shell.bind()
-        toolbar.menu.findItem(R.id.textSmaller)?.isEnabled = AppTextSize.scale(this) > 1f
-        toolbar.menu.findItem(R.id.textLarger)?.isEnabled = AppTextSize.scale(this) < 2f
-        toolbar.menu.findItem(R.id.toolbarDate)?.isVisible = adapter.pageId(pager.currentItem) == "desk"
-        toolbar.menu.findItem(R.id.themeSwitch)?.title = if(DeskTheme.current(this)==DeskTheme.BLACK) "Switch to light theme" else "Switch to dark theme"
-        val page = adapter.pageId(pager.currentItem)
-        findViewById<View>(R.id.contentControlsHost).visibility =
-            if (page == "desk" || page == "dashboard" || page == "user" || page in ShellHubFragment.RAIL_IDS ||
-                page == "sandhya" || page == "japa" || page == "puja" || page == "nityakarma"
-            ) View.GONE else View.VISIBLE
-        pager.post {
-            val current = supportFragmentManager.fragments.firstOrNull { it.isResumed }?.view
-            if (current != null) ScreenPages.attachControls(current, findViewById(R.id.contentControlsHost))
-        }
-
+    fun currentPageId(): String = currentPageId
+    fun shellPages(): List<String> = pages
+    fun pageCount(): Int = pages.size
+    fun pageIdAt(index: Int): String = pages.getOrElse(index) { pages.first() }
+    fun openPageAt(index: Int) {
+        if (index in pages.indices) showPage(pages[index])
     }
 
-    private fun resizeText(delta: Float) {
-        AppTextSize.save(this, (AppTextSize.scale(this) + delta).coerceIn(1f, 2f))
-        recreate()
-    }
-
-    fun setSelectorOpen(open: Boolean) { selectorOpen = open; bindNavigation() }
-    fun setFooterAction(description: String? = null, action: (() -> Unit)? = null) {
-        footerAction = action
-
-    }
-    fun navigateTo(pageId: String) {
-        if (!::pager.isInitialized) return
-        if (!SettingsStore.isKnownPage(pageId)) return
-        val adapter = pager.adapter as? WorkspaceAdapter ?: return
-        val nityaTab = when (pageId) {
-            "sandhya", "japa", "puja" -> pageId
-            "nityakarma" -> "sandhya"
-            else -> null
-        }
-        val targetId = if (nityaTab != null) "nityakarma" else pageId
-        val index = adapter.indexOf(targetId)
-        if (index < 0) return
-        if (pager.currentItem == index) {
+    private fun showPage(pageId: String, nityaTab: String? = null, force: Boolean = false) {
+        val target = if (pageId in pages) pageId else SettingsStore.canonicalizePageId(pageId)
+            .takeIf { it in pages } ?: return
+        if (!force && currentPageId == target) {
             if (nityaTab != null) {
-                supportFragmentManager.fragments.filterIsInstance<NityaKarmaFragment>()
-                    .firstOrNull { it.isResumed || it.isVisible }
+                (supportFragmentManager.findFragmentById(R.id.pageHost) as? NityaKarmaFragment)
                     ?.selectTab(nityaTab)
             }
             bindNavigation()
             return
         }
-        pager.setCurrentItem(index, false)
-        // ViewPager2 updates currentItem synchronously for smoothScroll=false, but
-        // fragment resume/layout can lag — refresh chrome after the next frame.
-        pager.post {
-            if (nityaTab != null) {
-                supportFragmentManager.fragments.filterIsInstance<NityaKarmaFragment>()
-                    .firstOrNull { it.isAdded }
-                    ?.selectTab(nityaTab)
-            }
-            bindNavigation()
+        currentPageId = target
+        val fragment: Fragment = PageFactory.create(target)
+        supportFragmentManager.beginTransaction()
+            .setReorderingAllowed(true)
+            .replace(R.id.pageHost, fragment, target)
+            .commitNowAllowingStateLoss()
+        if (nityaTab != null) {
+            (supportFragmentManager.findFragmentById(R.id.pageHost) as? NityaKarmaFragment)
+                ?.selectTab(nityaTab)
+        }
+        bindNavigation()
+    }
+
+    private fun bindNavigation() {
+        if (!::headerTitle.isInitialized) return
+        val lang = OsLang.get(this)
+        val page = currentPageId
+        val hideHeader = page == "nityakarma" || page == "puja"
+        appHeader.visibility = if (hideHeader) View.GONE else View.VISIBLE
+        headerRule.visibility = if (hideHeader) View.GONE else View.VISIBLE
+        headerTitle.text =
+            if (resources.configuration.fontScale > 1.5f) "" else OsLang.ui(page, lang)
+        refreshHeaderDate(lang)
+        if (::shell.isInitialized) shell.bind()
+        findViewById<View>(R.id.contentControlsHost).visibility =
+            if (page == "desk" || page == "dashboard" || page == "user" || page in ShellHubFragment.RAIL_IDS ||
+                page == "nityakarma" || page == "puja"
+            ) View.GONE else View.VISIBLE
+        findViewById<View>(R.id.pageHost).post {
+            val current = supportFragmentManager.findFragmentById(R.id.pageHost)?.view
+            if (current != null) ScreenPages.attachControls(current, findViewById(R.id.contentControlsHost))
         }
     }
+
+    private fun refreshHeaderDate(lang: IndicScript.Lang) {
+        val cal = Calendar.getInstance()
+        val dateLine = OsLang.dateLine(cal, lang)
+        headerDate.text = dateLine
+        headerDateJob?.cancel()
+        headerDateJob = lifecycleScope.launch {
+            val day = withContext(Dispatchers.IO) {
+                PanchangaStore.forDate(applicationContext, PanchangaStore.dateKey())
+            }
+            if (isFinishing) return@launch
+            val tithi = OsLang.script(day.tithi.ifBlank { "—" }, lang)
+            headerDate.text = "$dateLine · $tithi"
+        }
+    }
+
+    fun setSelectorOpen(open: Boolean) {
+        selectorOpen = open
+        bindNavigation()
+    }
+
+    fun setFooterAction(description: String? = null, action: (() -> Unit)? = null) {
+        footerAction = action
+    }
+
+    fun navigateTo(pageId: String) {
+        if (!SettingsStore.isKnownPage(pageId)) return
+        val nityaTab = when (pageId) {
+            "sandhya", "japa", "nitya" -> pageId
+            "nityakarma" -> "sandhya"
+            else -> null
+        }
+        val targetId = when {
+            nityaTab != null -> "nityakarma"
+            else -> pageId
+        }
+        showPage(targetId, nityaTab)
+    }
+
     fun goHome() {
         supportFragmentManager.fragments.filterIsInstance<ReaderFragment>().forEach { it.closeSelector() }
         navigateTo("dashboard")
-        if ((pager.adapter as WorkspaceAdapter).indexOf("dashboard") < 0) {
-            pager.setCurrentItem(0, false)
-            bindNavigation()
-        }
+        if ("dashboard" !in pages) showPage(pages.first())
     }
+
     fun applyLockChrome() {
-        if (DeskLock.isLocked(this@LauncherActivity)) pager.setCurrentItem(0, false)
-        bindNavigation()
+        if (DeskLock.isLocked(this)) showPage(pages.firstOrNull() ?: "dashboard")
+        else bindNavigation()
     }
+
     fun applyShadeChrome() = Unit
     fun applyAlwaysOn() = DeskWindow.keepAwake(this, SettingsStore(this).alwaysOn())
 
-    override fun onResume() { super.onResume(); OsLang.addListener(langTick); applyAlwaysOn(); applyLockChrome() }
-    override fun onPause() { OsLang.removeListener(langTick); super.onPause() }
-    override fun onSaveInstanceState(outState: Bundle) { outState.putInt("page", pager.currentItem); super.onSaveInstanceState(outState) }
+    override fun onResume() {
+        super.onResume()
+        OsLang.addListener(langTick)
+        applyAlwaysOn()
+        if (DeskLock.isLocked(this)) applyLockChrome()
+    }
+
+    override fun onPause() {
+        OsLang.removeListener(langTick)
+        super.onPause()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString(STATE_PAGE, currentPageId)
+        super.onSaveInstanceState(outState)
+    }
+
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
         val page = intent.getStringExtra("page")?.takeIf { SettingsStore.isKnownPage(it) }
         if (!page.isNullOrBlank()) navigateTo(page) else goHome()
     }
+
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (::shell.isInitialized && shell.close()) return
         if (supportFragmentManager.fragments.filterIsInstance<ReaderFragment>().any { it.closeSelector() }) return
-        if (DeskLock.isLocked(this@LauncherActivity)) return
-        if (pager.currentItem != 0) goHome() else super.onBackPressed()
+        if (DeskLock.isLocked(this)) return
+        if (currentPageId != (pages.firstOrNull() ?: "dashboard")) goHome()
+        else super.onBackPressed()
+    }
+
+    companion object {
+        private const val STATE_PAGE = "pageId"
     }
 }

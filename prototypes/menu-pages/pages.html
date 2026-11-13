@@ -7,7 +7,7 @@
 <title>MadhvaNidhi · Remaining menu mockups</title>
 <link rel="stylesheet" href="../ibm-plex.css">
 <link rel="stylesheet" href="./carbon-theme.css">
-<link rel="stylesheet" href="../carbon-app.css?v=puja-sandhya-layout">
+<link rel="stylesheet" href="../carbon-app.css?v=nitya-parayana-tab">
 <link rel="stylesheet" href="./pages.css">
 <script src="./theme.js"></script>
 <body>
@@ -20,6 +20,10 @@
       <button type="button" class="nav-button" data-page="nityakarma" aria-current="page" aria-label="ನಿತ್ಯಕರ್ಮ">
         <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16,12a4,4,0,1,1-4,4,4.0045,4.0045,0,0,1,4-4m0-2a6,6,0,1,0,6,6,6,6,0,0,0-6-6Z"/><path d="M15,2h2v5h-2z"/><path d="M15,25h2v5h-2z"/><path d="M2,15h5v2H2z"/><path d="M25,15h5v2h-5z"/><path d="M6.22,6.22l1.41,-1.41 3.54,3.54 -1.41,1.41z"/><path d="M20.83,20.83l1.41,-1.41 3.54,3.54 -1.41,1.41z"/><path d="M6.22,25.78l3.54,-3.54 1.41,1.41 -3.54,3.54z"/><path d="M20.83,11.17l3.54,-3.54 1.41,1.41 -3.54,3.54z"/></svg>
         <span class="nav-label">ನಿತ್ಯಕರ್ಮ</span>
+      </button>
+      <button type="button" class="nav-button" data-page="puja" aria-label="ಪೂಜೆ">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19,10h7v2H19zM19,15h7v2H19zM19,20h7v2H19zM6,10h7v2H6zM6,15h7v2H6zM6,20h7v2H6z"/><path d="M28,5H4A2.002,2.002,0,0,0,2,7V25a2.002,2.002,0,0,0,2,2H28a2.002,2.002,0,0,0,2-2V7A2.002,2.002,0,0,0,28,5ZM4,7H15V25H4ZM17,25V7H28V25Z"/></svg>
+        <span class="nav-label">ಪೂಜೆ</span>
       </button>
       <button type="button" class="nav-button" data-page="grantha" aria-label="ಗ್ರಂಥ">
         <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19,10h7v2H19zM19,15h7v2H19zM19,20h7v2H19zM6,10h7v2H6zM6,15h7v2H6zM6,20h7v2H6z"/><path d="M28,5H4A2.002,2.002,0,0,0,2,7V25a2.002,2.002,0,0,0,2,2H28a2.002,2.002,0,0,0,2-2V7A2.002,2.002,0,0,0,28,5ZM4,7H15V25H4ZM17,25V7H28V25Z"/></svg>
@@ -61,7 +65,7 @@
         <div class="cds--tab-list" role="tablist" aria-label="ನಿತ್ಯಕರ್ಮ children">
           <button type="button" class="cds--tabs__nav-link" role="tab" id="menu-nitya-tab-sandhya" data-nitya-tab="sandhya" aria-controls="menu-nitya-panel-sandhya" aria-selected="true" tabindex="0">ಸಂಧ್ಯಾವಂದನೆ</button>
           <button type="button" class="cds--tabs__nav-link" role="tab" id="menu-nitya-tab-japa" data-nitya-tab="japa" aria-controls="menu-nitya-panel-japa" aria-selected="false" tabindex="-1">ಜಪ</button>
-          <button type="button" class="cds--tabs__nav-link" role="tab" id="menu-nitya-tab-puja" data-nitya-tab="puja" aria-controls="menu-nitya-panel-puja" aria-selected="false" tabindex="-1">ಪೂಜೆ</button>
+          <button type="button" class="cds--tabs__nav-link" role="tab" id="menu-nitya-tab-parayana" data-nitya-tab="nitya" aria-controls="menu-nitya-panel-parayana" aria-selected="false" tabindex="-1">ನಿತ್ಯ ಪಾರಾಯಣ</button>
         </div>
       </div>
 
@@ -170,7 +174,34 @@ Sample reading surface. Android loads the SandhyaStore / catalogue text for the 
         </div>
       </div>
 
-      <div class="cds--tab-content sandhya-panel puja-panel" role="tabpanel" id="menu-nitya-panel-puja" data-nitya-panel="puja" data-frozen="nitya-puja" aria-labelledby="menu-nitya-tab-puja" data-puja-root hidden>
+      <div class="cds--tab-content" role="tabpanel" id="menu-nitya-panel-parayana" data-nitya-panel="nitya" aria-labelledby="menu-nitya-tab-parayana" data-parayana-root hidden>
+        <div class="nitya-panel-toolbar">
+          <div class="cds--form-item japa-toolbar__mantra">
+            <label class="cds--label cds--visually-hidden" for="menu-parayana-item">ಓದುವ ಪಠ್ಯ</label>
+            <div class="cds--select">
+              <select class="cds--select-input" id="menu-parayana-item" aria-label="ಓದುವ ಪಠ್ಯ">
+                <option>ವಿಷ್ಣು ಸಹಸ್ರನಾಮ</option>
+                <option>ಭಾಗವತ ದಶಮ ಸ್ಕಂಧ</option>
+                <option>ರಾಮಾಯಣ ಸುಂದರಕಾಂಡ</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="sandhya-scroll sandhya-reader__main">
+          <p class="cds--form__helper-text">ನಿತ್ಯಕರ್ಮ · ನಿತ್ಯ ಪಾರಾಯಣ</p>
+          <h3 class="cds--heading-compact-02">ವಿಷ್ಣು ಸಹಸ್ರನಾಮ</h3>
+          <p class="cds--body-01 reader-body-sample">ಶುಕ್ಲಾಂಬರಧರಂ ವಿಷ್ಣುಂ ಶಶಿವರ್ಣಂ ಚತುರ್ಭುಜಂ ।
+ಪ್ರಸನ್ನವದನಂ ಧ್ಯಾಯೇತ್ ಸರ್ವವಿಘ್ನೋಪಶಾಂತಯೇ ॥
+
+Wide reading surface. Resume position stays local on Android.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Puja · standalone rail destination -->
+    <section class="page" data-page="puja">
+      <div class="cds--tab-content sandhya-panel puja-panel is-active" role="region" id="menu-puja-panel" data-frozen="nitya-puja" aria-label="ಪೂಜೆ" data-puja-root>
         <div class="sandhya-chrome">
           <div class="nitya-panel-toolbar">
             <div class="cds--form-item japa-toolbar__mantra">
@@ -202,7 +233,7 @@ Sample reading surface. Android loads the SandhyaStore / catalogue text for the 
         </div>
         <div class="sandhya-scroll">
           <div class="sandhya-reader__main">
-            <p class="cds--form__helper-text" data-puja-crumb>ನಿತ್ಯಕರ್ಮ · ಪೂಜೆ · ನಿತ್ಯ ಪೂಜೆ · ಸಂಕಲ್ಪ</p>
+            <p class="cds--form__helper-text" data-puja-crumb>ಪೂಜೆ · ನಿತ್ಯ ಪೂಜೆ · ಸಂಕಲ್ಪ</p>
             <p class="cds--body-01 reader-body-sample" data-puja-body>ಶ್ರೀಮದ್ ಭಾರತವರ್ಷೇ ಭರತಖಂಡೇ …
 ಶ್ರೀ ಶಾಲಿವಾಹನ ಶಕೇ ೧೯೪೮ ಪರಾಭವ ನಾಮ ಸಂವತ್ಸರೇ ಕಾರ್ತಿಕ ಮಾಸೇ ಶುಕ್ಲಪಕ್ಷೇ ತೃತೀಯಾಯಾಂ …
 
@@ -223,9 +254,8 @@ Sample sankalpa. Masa / paksha / tithi bind from Panchanga later.</p>
     <!-- Grantha hub -->
     <section class="page" data-page="grantha">
       <h2 class="hub-title">ಗ್ರಂಥ</h2>
-      <p class="hub-sub">ನಿತ್ಯ ಪಾರಾಯಣ, ಸ್ತೋತ್ರ, ಸೂಕ್ತ, ಮಂತ್ರ ಮತ್ತು ನಾಮಾವಳಿ</p>
+      <p class="hub-sub">ಸ್ತೋತ್ರ, ಸೂಕ್ತ, ಮಂತ್ರ ಮತ್ತು ನಾಮಾವಳಿ</p>
       <div class="dest-stack">
-        <button type="button" class="cds--tile--clickable" data-page="nitya"><div><strong>ನಿತ್ಯ ಪಾರಾಯಣ</strong><span>Daily reading schedule</span></div><svg viewBox="0 0 32 32" aria-hidden="true"><polygon points="18 6 16.57 7.393 24.15 15 4 15 4 17 24.15 17 16.57 24.573 18 26 28 16 18 6"/></svg></button>
         <button type="button" class="cds--tile--clickable" data-page="stotra"><div><strong>ಸ್ತೋತ್ರಗಳು</strong><span>Stotra collection</span></div><svg viewBox="0 0 32 32" aria-hidden="true"><polygon points="18 6 16.57 7.393 24.15 15 4 15 4 17 24.15 17 16.57 24.573 18 26 28 16 18 6"/></svg></button>
         <button type="button" class="cds--tile--clickable" data-page="suktas"><div><strong>ಸೂಕ್ತಗಳು</strong><span>Sukta readings</span></div><svg viewBox="0 0 32 32" aria-hidden="true"><polygon points="18 6 16.57 7.393 24.15 15 4 15 4 17 24.15 17 16.57 24.573 18 26 28 16 18 6"/></svg></button>
         <button type="button" class="cds--tile--clickable" data-page="mantras"><div><strong>ಮಂತ್ರಗಳು</strong><span>Mantra library · subpages</span></div><svg viewBox="0 0 32 32" aria-hidden="true"><polygon points="18 6 16.57 7.393 24.15 15 4 15 4 17 24.15 17 16.57 24.573 18 26 28 16 18 6"/></svg></button>
@@ -234,31 +264,6 @@ Sample sankalpa. Masa / paksha / tithi bind from Panchanga later.</p>
     </section>
 
     <!-- Shared reader pages for grantha children -->
-    <section class="page" data-page="nitya">
-      <div class="back-row"><button type="button" class="cds--btn cds--btn--ghost" data-page="grantha">← ಗ್ರಂಥ</button></div>
-      <h2 class="hub-title">ನಿತ್ಯ ಪಾರಾಯಣ</h2>
-      <div class="cds--tile">
-        <div class="cds--form-item">
-          <label for="nitya-item">ಓದುವ ಪಠ್ಯ</label>
-          <select id="nitya-item">
-            <option>ವಿಷ್ಣು ಸಹಸ್ರನಾಮ</option>
-            <option>ಭಾಗವತ ದಶಮ ಸ್ಕಂಧ</option>
-            <option>ರಾಮಾಯಣ ಸುಂದರಕಾಂಡ</option>
-          </select>
-        </div>
-        <p class="reader-crumb">ಗ್ರಂಥ · ನಿತ್ಯ ಪಾರಾಯಣ</p>
-        <h3 class="reader-head">ವಿಷ್ಣು ಸಹಸ್ರನಾಮ</h3>
-        <p class="reader-body">ಶುಕ್ಲಾಂಬರಧರಂ ವಿಷ್ಣುಂ ಶಶಿವರ್ಣಂ ಚತುರ್ಭುಜಂ ।
-ಪ್ರಸನ್ನವದನಂ ಧ್ಯಾಯೇತ್ ಸರ್ವವಿಘ್ನೋಪಶಾಂತಯೇ ॥
-
-Wide reading surface. Resume position stays local on Android.</p>
-        <div class="action-row">
-          <button type="button" class="cds--btn cds--btn--tertiary">ಹಿಂದಿನ</button>
-          <button type="button" class="cds--btn cds--btn--primary">ಮುಂದಿನ</button>
-        </div>
-      </div>
-    </section>
-
     <section class="page" data-page="stotra">
       <div class="back-row"><button type="button" class="cds--btn cds--btn--ghost" data-page="grantha">← ಗ್ರಂಥ</button></div>
       <h2 class="hub-title">ಸ್ತೋತ್ರಗಳು</h2>
@@ -694,6 +699,6 @@ Subpage filter matches Android ReaderFragment mantras mode.</p>
 </div>
 <script src="../user-vault.js"></script>
 <script src="../japa-session.js"></script>
-<script src="./pages.js?v=puja-sandhya-layout"></script>
+<script src="./pages.js?v=nitya-parayana-tab"></script>
 </body>
 </html>

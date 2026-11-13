@@ -3,7 +3,6 @@ package com.paperdesk.launcher.ui
 import android.content.res.ColorStateList
 import android.view.View
 import android.widget.LinearLayout
-import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.button.MaterialButton
 import com.paperdesk.launcher.DeskLock
 import com.paperdesk.launcher.R
@@ -11,13 +10,14 @@ import com.paperdesk.launcher.data.OsLang
 import com.paperdesk.launcher.data.SettingsStore
 
 /** Carbon side rail and overlay panel. Primary destinations match the HTML shell sim. */
-class FrozenShell(private val activity: LauncherActivity, private val pager: ViewPager2) {
+class FrozenShell(private val activity: LauncherActivity) {
     private val panel: View = activity.findViewById(R.id.sidePanel)
     private val backdrop: View = activity.findViewById(R.id.sidePanelBackdrop)
     private var lastRailKey = ""
     private var lastPanelKey = ""
     private var lastActiveRail = ""
     private var lastCurrent = ""
+    private var built = false
 
     init {
         activity.findViewById<View>(R.id.sidePanelToggle).setOnClickListener { open(true) }
@@ -36,22 +36,25 @@ class FrozenShell(private val activity: LauncherActivity, private val pager: Vie
         backdrop.visibility = panel.visibility
         activity.findViewById<View>(R.id.sidePanelToggle).contentDescription =
             if (value) "Close navigation" else "Open navigation"
-        if (value) activity.findViewById<View>(R.id.closeSidePanel).requestFocus()
+        if (value) {
+            if (!built) bind()
+            activity.findViewById<View>(R.id.closeSidePanel).requestFocus()
+        }
     }
 
     fun bind() {
-        val adapter = pager.adapter as WorkspaceAdapter
-        val current = adapter.pageId(pager.currentItem)
+        val pages = activity.shellPages()
+        val current = activity.currentPageId()
         val activeRail = railForPage(current)
         val density = activity.resources.displayMetrics.density
-        val pageSet = (0 until adapter.itemCount).map { adapter.pageId(it) }.toSet()
+        val pageSet = pages.toSet()
         val hasNitya = "nityakarma" in pageSet
         val panelEntries = buildList {
             addAll(ShellHubFragment.RAIL_IDS)
             addAll(
                 listOf(
-                    "sandhya", "japa", "puja",
-                    "nitya", "stotra", "suktas", "mantras", "namavali",
+                    "sandhya", "japa", "nitya",
+                    "stotra", "suktas", "mantras", "namavali",
                     "hadugalu", "playlists",
                     "aayadi", "rangavalli", "recipes"
                 )
@@ -86,6 +89,7 @@ class FrozenShell(private val activity: LauncherActivity, private val pager: Vie
 
         lastActiveRail = activeRail
         lastCurrent = current
+        built = true
     }
 
     private fun bindHost(
@@ -102,8 +106,9 @@ class FrozenShell(private val activity: LauncherActivity, private val pager: Vie
         val structureChanged = key != lastKey || host.childCount != entries.size
         if (structureChanged) {
             host.removeAllViews()
+            val row = (48 * density).toInt()
             for (id in entries) {
-                host.addView(createButton(id, labeled, density), LinearLayout.LayoutParams(-1, (48 * density).toInt()))
+                host.addView(createButton(id, labeled, density), LinearLayout.LayoutParams(-1, row))
             }
         } else if (current == lastCurrent && activeRail == lastActiveRail) {
             return key
@@ -113,7 +118,7 @@ class FrozenShell(private val activity: LauncherActivity, private val pager: Vie
             val id = button.tag as? String ?: continue
             val active = if (labeled) {
                 when (id) {
-                    "sandhya", "japa", "puja" -> current == "nityakarma"
+                    "sandhya", "japa", "nitya" -> current == "nityakarma"
                     else -> current == id
                 }
             } else {
@@ -132,21 +137,26 @@ class FrozenShell(private val activity: LauncherActivity, private val pager: Vie
             null,
             com.google.android.material.R.attr.borderlessButtonStyle
         ).apply {
+            // Prefer Carbon rail style tokens when available via theme; fall back to manual.
             tag = id
             text = if (labeled) label else ""
             contentDescription = label
             setIconResource(iconFor(id))
-            iconSize = (24 * density).toInt()
-            iconPadding = if (text.isEmpty()) 0 else (12 * density).toInt()
+            iconSize = activity.resources.getDimensionPixelSize(R.dimen.shell_icon_size)
+            iconPadding = if (text.isEmpty()) 0 else activity.resources.getDimensionPixelSize(R.dimen.carbon_spacing_05)
             iconGravity = if (text.isEmpty()) MaterialButton.ICON_GRAVITY_TEXT_START else MaterialButton.ICON_GRAVITY_START
             minimumWidth = 0
             minimumHeight = 0
             insetTop = 0
             insetBottom = 0
-            setPadding((8 * density).toInt(), 0, (8 * density).toInt(), 0)
+            val pad = activity.resources.getDimensionPixelSize(R.dimen.carbon_spacing_05)
+            setPadding(pad, 0, pad, 0)
             cornerRadius = 0
             rippleColor = ColorStateList.valueOf(activity.getColor(R.color.carbon_background_hover))
+            backgroundTintList = null
+            setBackgroundResource(R.drawable.bg_rail_item)
             maxLines = 1
+            gravity = android.view.Gravity.CENTER_VERTICAL or android.view.Gravity.START
             androidx.core.widget.TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(
                 this, 10, 14, 1, android.util.TypedValue.COMPLEX_UNIT_SP
             )
@@ -160,6 +170,7 @@ class FrozenShell(private val activity: LauncherActivity, private val pager: Vie
     }
 
     private fun paintButton(button: MaterialButton, active: Boolean) {
+        button.isSelected = active
         val color = activity.getColor(
             if (active) R.color.carbon_interactive else R.color.carbon_icon_secondary
         )
@@ -169,18 +180,15 @@ class FrozenShell(private val activity: LauncherActivity, private val pager: Vie
                 if (active) R.color.carbon_text_primary else R.color.carbon_text_secondary
             )
         )
-        button.backgroundTintList = ColorStateList.valueOf(
-            if (active) activity.getColor(R.color.carbon_layer_selected)
-            else android.graphics.Color.TRANSPARENT
-        )
     }
 
     companion object {
         fun railForPage(pageId: String): String = when (pageId) {
             "dashboard" -> "dashboard"
             "desk" -> "desk"
-            "sandhya", "japa", "puja", "nityakarma" -> "nityakarma"
-            "nitya", "stotra", "suktas", "mantras", "namavali", "grantha" -> "grantha"
+            "sandhya", "japa", "nitya", "nityakarma" -> "nityakarma"
+            "puja" -> "puja"
+            "stotra", "suktas", "mantras", "namavali", "grantha" -> "grantha"
             "hadugalu", "playlists", "sangeeta" -> "sangeeta"
             "aayadi", "rangavalli", "recipes", "samskruti" -> "samskruti"
             "user" -> "user"
@@ -188,13 +196,14 @@ class FrozenShell(private val activity: LauncherActivity, private val pager: Vie
             else -> pageId
         }
 
-        /** Carbon Design System icons only (32px paths). */
         fun iconFor(id: String): Int = when (id) {
             "dashboard" -> R.drawable.ic_dashboard
             "desk" -> R.drawable.ic_calendar
             "nityakarma", "sandhya" -> R.drawable.ic_sun
             "japa" -> R.drawable.ic_renew
-            "grantha", "nitya", "stotra", "suktas", "mantras", "namavali", "puja" -> R.drawable.ic_book
+            "puja" -> R.drawable.ic_book
+            "nitya" -> R.drawable.ic_book
+            "grantha", "stotra", "suktas", "mantras", "namavali" -> R.drawable.ic_book
             "sangeeta", "hadugalu", "playlists" -> R.drawable.ic_music
             "samskruti", "aayadi", "rangavalli", "recipes" -> R.drawable.ic_image
             "user" -> R.drawable.ic_user

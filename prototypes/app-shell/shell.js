@@ -7,6 +7,7 @@
     dashboard: { title: 'ಮುಖಪುಟ', en: 'Dashboard', context: false },
     panchanga: { title: 'ಪಂಚಾಂಗ', en: 'Panchanga', context: false, embed: true },
     nityakarma: { title: 'ನಿತ್ಯಕರ್ಮ', en: 'Nitya Karma', context: false, childSections: true },
+    puja: { title: 'ಪೂಜೆ', en: 'Pooja', context: false, childSections: true },
     grantha: { title: 'ಗ್ರಂಥ', en: 'Grantha', context: false },
     sangeeta: { title: 'ಭಕ್ತಿ ಸಂಗೀತ', en: 'Bhakti Sangeeta', context: false },
     samskruti: { title: 'ಗೃಹ ಸಂಸ್ಕೃತಿ', en: 'Gruha Samskruti', context: false },
@@ -23,17 +24,13 @@
       title: 'ಜಪ · Japa',
       body: 'Repetition counter with mala conversion. Persistence stores repetitions, not only displayed malas.'
     },
-    puja: {
-      title: 'ಪೂಜೆ · Pooja',
-      body: 'Pooja procedures from the bundled Madhwa catalogue. Sankalpa details use the selected Panchanga date.'
+    nitya: {
+      title: 'ನಿತ್ಯ ಪಾರಾಯಣ · Nitya Parayana',
+      body: 'Daily parayana schedule and reading surface. Resume position stays local.'
     }
   };
 
   const granthaCopy = {
-    parayana: {
-      title: 'ನಿತ್ಯ ಪಾರಾಯಣ · Nitya Parayana',
-      body: 'Daily parayana schedule and reading surface. Resume position stays local.'
-    },
     stotra: {
       title: 'ಸ್ತೋತ್ರಗಳು · Stotras',
       body: 'Stotra collection with bookmarks and adjustable text size.'
@@ -107,7 +104,7 @@
   function showChild(group, key) {
     if (group === 'nityakarma') showNityaTab(key);
     if (group === 'grantha') {
-      const copy = granthaCopy[key] || granthaCopy.parayana;
+      const copy = granthaCopy[key] || granthaCopy.stotra;
       byId('grantha-detail-title').textContent = copy.title;
       byId('grantha-detail').querySelector('p').textContent = copy.body;
     }
@@ -270,7 +267,7 @@
       const riteLabel = riteLabels[rite] || riteLabels.nitya;
       if (stepEl) stepEl.textContent = item.title;
       if (bodyEl) bodyEl.textContent = item.body;
-      if (crumbEl) crumbEl.textContent = `ನಿತ್ಯಕರ್ಮ · ಪೂಜೆ · ${riteLabel} · ${item.title}`;
+      if (crumbEl) crumbEl.textContent = `ಪೂಜೆ · ${riteLabel} · ${item.title}`;
       if (barEl) barEl.style.width = `${pct}%`;
       if (barWrap) barWrap.setAttribute('aria-valuenow', String(pct));
       if (prevBtn) prevBtn.disabled = index <= 0;
@@ -343,9 +340,9 @@
       });
     });
     bindSandhya(root);
-    bindPuja(root);
     bindDayActions(root.querySelector('[data-nitya-panel="japa"]'));
     window.madhvaJapaSession?.bind(root.querySelector('[data-japa-root]'));
+    bindPuja(document);
   }
 
   function syncHeaderDate() {
@@ -358,6 +355,14 @@
   }
 
   function navigate(id, child) {
+    if (id === 'nityakarma' && child === 'puja') {
+      navigate('puja');
+      return;
+    }
+    if (id === 'puja' || child === 'puja') {
+      id = 'puja';
+      child = undefined;
+    }
     if (!destinations[id]) return;
     dest = id;
     const meta = destinations[id];
@@ -427,7 +432,18 @@
     document.querySelectorAll('[data-child-show]').forEach((el) => {
       el.addEventListener('click', () => {
         const key = el.dataset.childShow;
-        if (nityaCopy[key]) showChild('nityakarma', key);
+        if (key === 'puja') {
+          navigate('puja');
+          return;
+        }
+        if (key === 'parayana') {
+          navigate('nityakarma', 'nitya');
+          return;
+        }
+        if (nityaCopy[key]) {
+          navigate('nityakarma', key);
+          return;
+        }
         if (granthaCopy[key]) showChild('grantha', key);
       });
     });
@@ -514,7 +530,7 @@
     bindUserVault();
     bindStudioMessages();
     showChild('nityakarma', 'sandhya');
-    showChild('grantha', 'parayana');
+    showChild('grantha', 'stotra');
     navigate('dashboard');
   });
 

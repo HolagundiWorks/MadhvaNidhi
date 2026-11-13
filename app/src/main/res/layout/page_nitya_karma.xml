@@ -10,7 +10,8 @@
         android:id="@+id/nityaTabs"
         style="@style/Widget.Carbon.TabLayout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/carbon_layout_size_height_lg"
+        android:layout_height="@dimen/carbon_layout_size_height_md"
+        android:minHeight="@dimen/carbon_layout_size_height_md"
         app:tabMode="fixed"
         app:tabGravity="fill"
         app:tabInlineLabel="true" />
@@ -19,5 +20,6 @@
         android:id="@+id/nityaPanelHost"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:background="@color/carbon_layer" />
 </LinearLayout>

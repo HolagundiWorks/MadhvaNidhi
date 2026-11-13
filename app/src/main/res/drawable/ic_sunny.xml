@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Carbon Sunny 32 — Apache-2.0, see assets/licenses/carbon-icons.txt -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="32dp"
+    android:height="32dp"
+    android:viewportWidth="32"
+    android:viewportHeight="32">
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M16,12.005a4,4 0,1 1,-4 4,4.005 4.005,0 0,1 4,-4m0,-2a6,6 0,1 0,6 6,6 6,0 0,0 -6,-6M5.394,6.813L6.81,5.399l3.505,3.506L8.9,10.319zM2,15.005h5v2H2zM5.394,25.198L8.9,21.692l1.414,1.414 -3.505,3.506zM15,25.005h2v5h-2zM21.687,23.105l1.414,-1.414 3.506,3.506 -1.414,1.414zM25,15.005h5v2h-5zM21.687,8.904l3.506,-3.506 1.414,1.414 -3.506,3.506zM15,2.005h2v5h-2z" />
+</vector>

@@ -2,8 +2,6 @@ package com.paperdesk.launcher.data
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.security.crypto.EncryptedSharedPreferences
-import androidx.security.crypto.MasterKey
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -21,18 +19,7 @@ class JapaStore(private val context: Context, private val profileId: String = Pr
         return createEncrypted()
     }
 
-    private fun createEncrypted(): SharedPreferences {
-        val masterKey = MasterKey.Builder(app)
-            .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
-            .build()
-        return EncryptedSharedPreferences.create(
-            app,
-            PREFS_ENCRYPTED,
-            masterKey,
-            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-        )
-    }
+    private fun createEncrypted(): SharedPreferences = SecurePrefs.get(app, PREFS_ENCRYPTED)
 
     private fun migratePlaintextIfNeeded() {
         val plain = app.getSharedPreferences(PREFS_PLAIN, Context.MODE_PRIVATE)

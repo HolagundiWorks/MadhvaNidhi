@@ -12,6 +12,7 @@
     <color name="carbon_layer_03">#F4F4F4</color>
     <color name="carbon_layer_high">#E0E0E0</color>
     <color name="carbon_layer_selected">#E0E0E0</color>
+    <color name="carbon_layer_accent">#E0E0E0</color>
     <color name="carbon_layer_hover">#E8E8E8</color>
     <color name="carbon_layer_active">#C6C6C6</color>
     <color name="carbon_field">#F4F4F4</color>
@@ -59,6 +60,7 @@
     <color name="carbon_support_error">#DA1E28</color>
     <color name="carbon_support_success">#198038</color>
     <color name="carbon_support_warning">#684E00</color>
+    <color name="carbon_support_warning_inverse">#F1C21B</color>
     <color name="carbon_support_info">#BA4E00</color>
     <color name="carbon_ekadashi">#684E00</color>
 

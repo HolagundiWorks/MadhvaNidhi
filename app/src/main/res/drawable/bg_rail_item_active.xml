@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Carbon rail current: $layer-selected + inset 3px interactive -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/carbon_layer_selected" />
+        </shape>
+    </item>
+    <item android:gravity="start" android:width="3dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/carbon_border_interactive" />
+        </shape>
+    </item>
+</layer-list>

@@ -102,10 +102,10 @@ class PanchangaUiInstrumentation : Instrumentation() {
             settle()
             main {
                 check(activity.findViewById<TextView>(R.id.panchangaHeader).text.contains("23")) { "Date entry did not select the requested day" }
-                activity.findViewById<androidx.viewpager2.widget.ViewPager2>(R.id.pager).setCurrentItem(1, false)
+                activity.navigateTo("desk")
             }
             settle()
-            main { activity.findViewById<androidx.viewpager2.widget.ViewPager2>(R.id.pager).setCurrentItem(0, false) }
+            main { activity.navigateTo("dashboard") }
             settle()
             main { check(activity.findViewById<View>(R.id.calendarNext).parent != null) { "Calendar controls were lost after navigation" } }
             runOnMainSync { AppTextSize.save(targetContext, original) }

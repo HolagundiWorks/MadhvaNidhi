@@ -51,7 +51,7 @@ class FrozenShellInstrumentation : Instrumentation() {
             AppTextSize.save(targetContext,scale)
             main { targetContext.startActivity(Intent(Intent.ACTION_MAIN).apply{component=ComponentName(targetContext,LauncherActivity::class.java);addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)}) }
             settle()
-            main { val a=active.get();val pager=a.findViewById<androidx.viewpager2.widget.ViewPager2>(R.id.pager);val adapter=pager.adapter as WorkspaceAdapter;pager.setCurrentItem((0 until adapter.itemCount).first{adapter.pageId(it)=="desk"},false) }
+            main { val a=active.get();a.navigateTo("desk") }
             settle()
             for(theme in listOf(DeskTheme.BLACK,DeskTheme.PAPER)) {
                 if(DeskTheme.current(targetContext)!=theme){main{active.get().findViewById<MaterialToolbar>(R.id.toolbar).menu.performIdentifierAction(R.id.themeSwitch,0)};settle()}

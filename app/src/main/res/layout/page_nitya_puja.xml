@@ -128,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.Carbon.Label01"
                 android:textColor="@color/carbon_text_secondary"
-                android:text="ನಿತ್ಯಕರ್ಮ · ಪೂಜೆ" />
+                android:text="ಪೂಜೆ" />
 
             <TextView
                 android:id="@+id/pujaBody"

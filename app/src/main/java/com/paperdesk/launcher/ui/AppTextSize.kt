@@ -11,9 +11,11 @@ object AppTextSize {
         context.getSharedPreferences(PREFS, 0).edit().putFloat("text_scale", scale.coerceIn(1f, 2f)).apply()
     }
     fun wrap(context: Context): Context {
-        // Override only text scaling; keep window size, density and orientation live.
+        val scale = scale(context)
+        // Avoid createConfigurationContext on the hot path when user has not changed text size.
+        if (scale == 1f) return context
         val configuration = Configuration().apply {
-            fontScale = context.resources.configuration.fontScale * scale(context)
+            fontScale = context.resources.configuration.fontScale * scale
         }
         return context.createConfigurationContext(configuration)
     }

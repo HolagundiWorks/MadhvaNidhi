@@ -78,15 +78,15 @@ object DeskWindow {
             )
             root.setPadding(0, 0, 0, 0)
             content.setPadding(0, 0, 0, 0)
-            content.findViewById<View?>(R.id.pager)?.let { pager ->
-                val params = pager.layoutParams as android.widget.FrameLayout.LayoutParams
+            content.findViewById<View?>(R.id.pageHost)?.let { host ->
+                val params = host.layoutParams as? android.view.ViewGroup.MarginLayoutParams ?: return@let
                 params.setMargins(
                     bars.left + roundedSafe,
                     bars.top + roundedSafe + mottoInset,
                     bars.right + roundedSafe,
                     bars.bottom + roundedSafe
                 )
-                pager.layoutParams = params
+                host.layoutParams = params
             }
             footer.setPadding(
                 bars.left + roundedSafe + footerInset,

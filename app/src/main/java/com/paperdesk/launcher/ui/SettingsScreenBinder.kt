@@ -3,6 +3,7 @@ package com.paperdesk.launcher.ui
 import android.content.Context
 import android.view.View
 import android.widget.TextView
+import com.paperdesk.launcher.DeskTheme
 import com.paperdesk.launcher.R
 import com.paperdesk.launcher.data.PanchangaTraditions
 import com.paperdesk.launcher.data.ProfileStore
@@ -63,6 +64,13 @@ object SettingsScreenBinder {
         }
         root.findViewById<View>(R.id.settingsTextApply).setOnClickListener { applyTextSize(textSlider.value) }
         showTextSize(textSlider.value)
+        root.findViewById<com.google.android.material.materialswitch.MaterialSwitch>(R.id.settingsDarkTheme)?.apply {
+            isChecked = DeskTheme.current(context) == DeskTheme.BLACK
+            setOnCheckedChangeListener { _, checked ->
+                val next = if (checked) DeskTheme.BLACK else DeskTheme.PAPER
+                if (DeskTheme.current(context) != next) DeskTheme.set(context, next)
+            }
+        }
         val vedaChoices = listOf("ಋಗ್ವೇದ — ಆಶ್ವಲಾಯನ", "ಕೃಷ್ಣ ಯಜುರ್ವೇದ — ತೈತ್ತಿರೀಯ")
         MaterialChoices.bind(root.findViewById(R.id.settingsVeda), vedaChoices,
             SettingsStore.VEDA_IDS.indexOf(settings.veda()).coerceAtLeast(0)) { settings.setVeda(SettingsStore.VEDA_IDS[it]) }

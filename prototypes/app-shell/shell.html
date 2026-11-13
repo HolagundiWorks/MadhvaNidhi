@@ -7,7 +7,7 @@
 <title>MadhvaNidhi · Carbon shell preview</title>
 <link rel="stylesheet" href="../ibm-plex.css">
 <link rel="stylesheet" href="./carbon-theme.css">
-<link rel="stylesheet" href="../carbon-app.css?v=puja-sandhya-layout">
+<link rel="stylesheet" href="../carbon-app.css?v=nitya-parayana-tab">
 <link rel="stylesheet" href="./shell.css">
 <script src="./theme.js"></script>
 <body>
@@ -29,6 +29,10 @@
       <button type="button" class="nav-button" data-dest="nityakarma" aria-label="ನಿತ್ಯಕರ್ಮ · Nitya Karma">
         <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16,12a4,4,0,1,1-4,4,4.0045,4.0045,0,0,1,4-4m0-2a6,6,0,1,0,6,6,6,6,0,0,0-6-6Z"/><path d="M16,4a1,1,0,0,0-1,1v2a1,1,0,0,0,2,0V5A1,1,0,0,0,16,4Z"/><path d="M16,24a1,1,0,0,0-1,1v2a1,1,0,1,0,2,0V25A1,1,0,0,0,16,24Z"/><path d="M8.22,7.51a1,1,0,0,0-1.41,0l-1.42,1.41a1,1,0,0,0,1.42,1.42L8.22,8.93A1,1,0,0,0,8.22,7.51Z"/><path d="M26.61,22.66a1,1,0,0,0-1.41,0l-1.42,1.41a1,1,0,1,0,1.42,1.42l1.41-1.42A1,1,0,0,0,26.61,22.66Z"/><path d="M4,15H6a1,1,0,0,1,0,2H4a1,1,0,0,1,0-2Z"/><path d="M26,15h2a1,1,0,0,1,0,2H26a1,1,0,0,1,0-2Z"/><path d="M8.22,24.49l-1.41,1.41a1,1,0,1,0,1.41,1.42l1.42-1.42a1,1,0,0,0-1.42-1.41Z"/><path d="M26.61,9.34,25.2,7.93a1,1,0,0,0-1.42,1.42l1.42,1.41a1,1,0,0,0,1.41-1.42Z"/></svg>
         <span class="nav-label">ನಿತ್ಯಕರ್ಮ</span>
+      </button>
+      <button type="button" class="nav-button" data-dest="puja" aria-label="ಪೂಜೆ · Pooja">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19,10h7v2h-7z"/><path d="M19,15h7v2h-7z"/><path d="M19,20h7v2h-7z"/><path d="M6,10h7v2H6z"/><path d="M6,15h7v2H6z"/><path d="M6,20h7v2H6z"/><path d="M28,5H4A2.002,2.002,0,0,0,2,7V25a2.002,2.002,0,0,0,2,2H28a2.002,2.002,0,0,0,2-2V7A2.002,2.002,0,0,0,28,5ZM4,7H15V25H4ZM17,25V7H28V25Z"/></svg>
+        <span class="nav-label">ಪೂಜೆ</span>
       </button>
       <button type="button" class="nav-button" data-dest="grantha" aria-label="ಗ್ರಂಥ · Grantha">
         <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19,10h7v2h-7z"/><path d="M19,15h7v2h-7z"/><path d="M19,20h7v2h-7z"/><path d="M6,10h7v2H6z"/><path d="M6,15h7v2H6z"/><path d="M6,20h7v2H6z"/><path d="M28,5H4A2.002,2.002,0,0,0,2,7V25a2.002,2.002,0,0,0,2,2H28a2.002,2.002,0,0,0,2-2V7A2.002,2.002,0,0,0,28,5ZM4,7H15V25H4ZM17,25V7H28V25Z"/></svg>
@@ -185,7 +189,7 @@
             <div class="cds--tab-list" role="tablist" aria-label="ನಿತ್ಯಕರ್ಮ children">
               <button type="button" class="cds--tabs__nav-link" role="tab" id="nitya-tab-sandhya" data-nitya-tab="sandhya" aria-controls="nitya-panel-sandhya" aria-selected="true" tabindex="0">ಸಂಧ್ಯಾವಂದನೆ</button>
               <button type="button" class="cds--tabs__nav-link" role="tab" id="nitya-tab-japa" data-nitya-tab="japa" aria-controls="nitya-panel-japa" aria-selected="false" tabindex="-1">ಜಪ</button>
-              <button type="button" class="cds--tabs__nav-link" role="tab" id="nitya-tab-puja" data-nitya-tab="puja" aria-controls="nitya-panel-puja" aria-selected="false" tabindex="-1">ಪೂಜೆ</button>
+              <button type="button" class="cds--tabs__nav-link" role="tab" id="nitya-tab-parayana" data-nitya-tab="nitya" aria-controls="nitya-panel-parayana" aria-selected="false" tabindex="-1">ನಿತ್ಯ ಪಾರಾಯಣ</button>
             </div>
           </div>
 
@@ -294,52 +298,79 @@ Sample reading surface. Catalogue text binds later.</p>
             </div>
           </div>
 
-          <div class="cds--tab-content sandhya-panel puja-panel" role="tabpanel" id="nitya-panel-puja" data-nitya-panel="puja" data-frozen="nitya-puja" aria-labelledby="nitya-tab-puja" data-puja-root hidden>
-            <div class="sandhya-chrome">
-              <div class="nitya-panel-toolbar">
-                <div class="cds--form-item japa-toolbar__mantra">
-                  <label class="cds--label cds--visually-hidden" for="shell-puja-item">ಪೂಜಾ ಕ್ರಮ</label>
-                  <div class="cds--select">
-                    <select class="cds--select-input" id="shell-puja-item" data-puja-rite aria-label="ಪೂಜಾ ಕ್ರಮ">
-                      <option value="nitya">ನಿತ್ಯ ಪೂಜೆ</option>
-                      <option value="vishnu">ವಿಷ್ಣು ಪೂಜೆ</option>
-                      <option value="ganapati">ಗಣಪತಿ ಪೂಜೆ</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="nitya-day-actions" role="group" aria-label="Today · ಪೂಜೆ">
-                  <button type="button" class="cds--btn cds--btn--tertiary nitya-fab" data-day-action="skip" aria-pressed="false" aria-label="Skip today" title="Skip today">
-                    <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M5 28a1 1 0 0 1-1-1V5a1 1 0 0 1 .5-.87 1 1 0 0 1 1 0l19 11a1 1 0 0 1 0 1.74l-19 11A1 1 0 0 1 5 28M6 6.73v18.54L22 16zM28 4h2v24h-2z"/></svg>
-                  </button>
-                  <button type="button" class="cds--btn cds--btn--tertiary nitya-fab" data-day-action="complete" aria-pressed="false" aria-label="Completed for today" title="Completed for today">
-                    <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="m13 24-9-9 1.414-1.414L13 21.171 26.586 7.586 28 9z"/></svg>
-                  </button>
+          <div class="cds--tab-content" role="tabpanel" id="nitya-panel-parayana" data-nitya-panel="nitya" aria-labelledby="nitya-tab-parayana" data-parayana-root hidden>
+            <div class="nitya-panel-toolbar">
+              <div class="cds--form-item japa-toolbar__mantra">
+                <label class="cds--label cds--visually-hidden" for="shell-parayana-item">ಓದುವ ಪಠ್ಯ</label>
+                <div class="cds--select">
+                  <select class="cds--select-input" id="shell-parayana-item" aria-label="ಓದುವ ಪಠ್ಯ">
+                    <option>ವಿಷ್ಣು ಸಹಸ್ರನಾಮ</option>
+                    <option>ಭಾಗವತ ದಶಮ ಸ್ಕಂಧ</option>
+                    <option>ರಾಮಾಯಣ ಸುಂದರಕಾಂಡ</option>
+                  </select>
                 </div>
               </div>
-              <div class="sandhya-progress-row">
-                <h3 class="cds--heading-compact-02 sandhya-pathy" data-puja-step id="shell-puja-progress-label">ಸಂಕಲ್ಪ</h3>
-                <div class="japa-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="25" aria-labelledby="shell-puja-progress-label" data-puja-progressbar>
-                  <div class="japa-progress__bar" data-puja-progress style="width:25%"></div>
-                </div>
-              </div>
-              <hr class="sandhya-rule" aria-hidden="true">
             </div>
-            <div class="sandhya-scroll">
-              <div class="sandhya-reader__main">
-                <p class="cds--form__helper-text" data-puja-crumb>ನಿತ್ಯಕರ್ಮ · ಪೂಜೆ · ನಿತ್ಯ ಪೂಜೆ · ಸಂಕಲ್ಪ</p>
-                <p class="cds--body-01 reader-body-sample" data-puja-body>ಶ್ರೀಮದ್ ಭಾರತವರ್ಷೇ ಭರತಖಂಡೇ …
+            <div class="sandhya-scroll sandhya-reader__main">
+              <p class="cds--form__helper-text">ನಿತ್ಯಕರ್ಮ · ನಿತ್ಯ ಪಾರಾಯಣ</p>
+              <h3 class="cds--heading-compact-02">ವಿಷ್ಣು ಸಹಸ್ರನಾಮ</h3>
+              <p class="cds--body-01 reader-body-sample">ಶುಕ್ಲಾಂಬರಧರಂ ವಿಷ್ಣುಂ ಶಶಿವರ್ಣಂ ಚತುರ್ಭುಜಂ ।
+ಪ್ರಸನ್ನವದನಂ ಧ್ಯಾಯೇತ್ ಸರ್ವವಿಘ್ನೋಪಶಾಂತಯೇ ॥
+
+Wide reading surface. Resume position stays local on Android.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Puja · standalone rail destination -->
+      <section id="view-puja" class="view" data-view="puja">
+        <div class="cds--tab-content sandhya-panel puja-panel is-active" role="region" id="shell-puja-panel" data-frozen="nitya-puja" aria-label="ಪೂಜೆ" data-puja-root>
+          <div class="sandhya-chrome">
+            <div class="nitya-panel-toolbar">
+              <div class="cds--form-item japa-toolbar__mantra">
+                <label class="cds--label cds--visually-hidden" for="shell-puja-item">ಪೂಜಾ ಕ್ರಮ</label>
+                <div class="cds--select">
+                  <select class="cds--select-input" id="shell-puja-item" data-puja-rite aria-label="ಪೂಜಾ ಕ್ರಮ">
+                    <option value="nitya">ನಿತ್ಯ ಪೂಜೆ</option>
+                    <option value="vishnu">ವಿಷ್ಣು ಪೂಜೆ</option>
+                    <option value="ganapati">ಗಣಪತಿ ಪೂಜೆ</option>
+                  </select>
+                </div>
+              </div>
+              <div class="nitya-day-actions" role="group" aria-label="Today · ಪೂಜೆ">
+                <button type="button" class="cds--btn cds--btn--tertiary nitya-fab" data-day-action="skip" aria-pressed="false" aria-label="Skip today" title="Skip today">
+                  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M5 28a1 1 0 0 1-1-1V5a1 1 0 0 1 .5-.87 1 1 0 0 1 1 0l19 11a1 1 0 0 1 0 1.74l-19 11A1 1 0 0 1 5 28M6 6.73v18.54L22 16zM28 4h2v24h-2z"/></svg>
+                </button>
+                <button type="button" class="cds--btn cds--btn--tertiary nitya-fab" data-day-action="complete" aria-pressed="false" aria-label="Completed for today" title="Completed for today">
+                  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="m13 24-9-9 1.414-1.414L13 21.171 26.586 7.586 28 9z"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="sandhya-progress-row">
+              <h3 class="cds--heading-compact-02 sandhya-pathy" data-puja-step id="shell-puja-progress-label">ಸಂಕಲ್ಪ</h3>
+              <div class="japa-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="25" aria-labelledby="shell-puja-progress-label" data-puja-progressbar>
+                <div class="japa-progress__bar" data-puja-progress style="width:25%"></div>
+              </div>
+            </div>
+            <hr class="sandhya-rule" aria-hidden="true">
+          </div>
+          <div class="sandhya-scroll">
+            <div class="sandhya-reader__main">
+              <p class="cds--form__helper-text" data-puja-crumb>ಪೂಜೆ · ನಿತ್ಯ ಪೂಜೆ · ಸಂಕಲ್ಪ</p>
+              <p class="cds--body-01 reader-body-sample" data-puja-body>ಶ್ರೀಮದ್ ಭಾರತವರ್ಷೇ ಭರತಖಂಡೇ …
 ಶ್ರೀ ಶಾಲಿವಾಹನ ಶಕೇ ೧೯೪೮ ಪರಾಭವ ನಾಮ ಸಂವತ್ಸರೇ ಕಾರ್ತಿಕ ಮಾಸೇ ಶುಕ್ಲಪಕ್ಷೇ ತೃತೀಯಾಯಾಂ …
 
 Sample sankalpa. Masa / paksha / tithi bind from Panchanga later.</p>
-              </div>
-              <div class="sandhya-reader__nav" role="group" aria-label="Puja step navigation">
-                <button type="button" class="cds--btn cds--btn--tertiary nitya-fab sandhya-nav" data-puja-prev aria-label="Previous step" title="Previous step" disabled>
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M10 16 20 6l1.4 1.4L12.8 16l8.6 8.6L20 26z"/></svg>
-                </button>
-                <button type="button" class="cds--btn cds--btn--tertiary nitya-fab sandhya-nav" data-puja-next aria-label="Next step" title="Next step">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="m22 16-10 10-1.4-1.4L19.2 16 10.6 7.4 12 6z"/></svg>
-                </button>
-              </div>
+            </div>
+            <div class="sandhya-reader__nav" role="group" aria-label="Puja step navigation">
+              <button type="button" class="cds--btn cds--btn--tertiary nitya-fab sandhya-nav" data-puja-prev aria-label="Previous step" title="Previous step" disabled>
+                <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M10 16 20 6l1.4 1.4L12.8 16l8.6 8.6L20 26z"/></svg>
+              </button>
+              <button type="button" class="cds--btn cds--btn--tertiary nitya-fab sandhya-nav" data-puja-next aria-label="Next step" title="Next step">
+                <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="m22 16-10 10-1.4-1.4L19.2 16 10.6 7.4 12 6z"/></svg>
+              </button>
             </div>
           </div>
         </div>
@@ -351,14 +382,13 @@ Sample sankalpa. Masa / paksha / tithi bind from Panchanga later.</p>
           <article class="panel">
             <h3>ಗ್ರಂಥ · Reading</h3>
             <ul class="child-list">
-              <li class="child-item"><button type="button" class="ghost" data-child-show="parayana">ನಿತ್ಯ ಪಾರಾಯಣ</button><span>Nitya Parayana</span></li>
               <li class="child-item"><button type="button" class="ghost" data-child-show="stotra">ಸ್ತೋತ್ರಗಳು</button><span>Stotras</span></li>
               <li class="child-item"><button type="button" class="ghost" data-child-show="sukta">ಸೂಕ್ತಗಳು</button><span>Suktas</span></li>
               <li class="child-item"><button type="button" class="ghost" data-child-show="mantra">ಮಂತ್ರಗಳು</button><span>Mantras</span></li>
             </ul>
           </article>
           <article class="panel" id="grantha-detail">
-            <h3 id="grantha-detail-title">ನಿತ್ಯ ಪಾರಾಯಣ</h3>
+            <h3 id="grantha-detail-title">ಸ್ತೋತ್ರಗಳು · Stotras</h3>
             <p>Wide reading surface placeholder. Verse navigation, bookmarks, and text size follow the Carbon shell. Kannada uses Noto Sans Kannada.</p>
             <p class="sample-badge">Live feature · layout preview only</p>
           </article>
@@ -688,6 +718,6 @@ Sample sankalpa. Masa / paksha / tithi bind from Panchanga later.</p>
 </div>
 <script src="../user-vault.js"></script>
 <script src="../japa-session.js"></script>
-<script src="./shell.js?v=puja-sandhya-layout"></script>
+<script src="./shell.js?v=nitya-parayana-tab"></script>
 </body>
 </html>

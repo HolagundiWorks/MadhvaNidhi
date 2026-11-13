@@ -77,12 +77,18 @@ button:disabled {
   display: flex;
   flex-direction: column;
 }
-#app.has-child-sections .view[data-view="nityakarma"].is-active {
+#app.has-child-sections .view[data-view="nityakarma"].is-active,
+#app.has-child-sections .view[data-view="puja"].is-active {
   display: flex;
   flex-direction: column;
   flex: 1;
   height: 100%;
   min-height: 0;
+}
+#app.has-child-sections .view[data-view="puja"].is-active .puja-panel {
+  flex: 1;
+  min-height: 0;
+  height: 100%;
 }
 #app.has-child-sections .nitya-tabs-shell {
   flex: 1;

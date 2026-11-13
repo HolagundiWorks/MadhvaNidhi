@@ -1,13 +1,19 @@
-# Frozen Nitya · Puja — finalized 12 November 2026
+# Frozen Puja — updated 13 November 2026
 
-Approved web-mockup contract for the **ಪೂಜೆ** tab. **Layout parity with Sandhya** (shared chrome classes). Changes require a new design iteration.
+Approved web-mockup contract for **ಪೂಜೆ** as a **standalone primary rail destination** (no longer a Nitya Karma tab). Layout still shares Sandhya chrome classes. Changes require a new design iteration.
 
 | Artifact | Path |
 | --- | --- |
-| Canonical UI | `prototypes/app-shell/shell.html` → `[data-nitya-panel="puja"]` (`data-frozen="nitya-puja"`) |
-| Parity mirror | `prototypes/menu-pages/pages.html` |
+| Canonical UI | `prototypes/app-shell/shell.html` → `#view-puja` (`data-frozen="nitya-puja"`) |
+| Parity mirror | `prototypes/menu-pages/pages.html` → `[data-page="puja"]` |
 | Shared chrome | Same as Sandhya: `.sandhya-panel.puja-panel` |
 | Related | [frozen-nitya-sandhya.md](./frozen-nitya-sandhya.md) |
+
+## Navigation
+
+- Primary rail: Dashboard · Panchanga · Nitya Karma · **Puja** · Grantha · …
+- Nitya Karma tabs are **ಸಂಧ್ಯಾವಂದನೆ · ಜಪ** only
+- Legacy `nityakarma` + child `puja` routes redirect to `puja`
 
 ## Screen structure
 
@@ -17,6 +23,8 @@ Identical to Sandhya except left toolbar control:
 2. **Progress row**: step title 30% + progress 70%
 3. **Scroll body** + crumb · pinned bottom prev/next
 
+Crumb form: `ಪೂಜೆ · {rite} · {step}` (no Nitya Karma prefix).
+
 ## Behaviour
 
 - Sample steps: ಸಂಕಲ್ಪ · ಆವಾಹನ · ಉಪಚಾರ · ಸಮರ್ಪಣ
@@ -25,4 +33,4 @@ Identical to Sandhya except left toolbar control:
 
 ## Android mapping notes
 
-Share Sandhya chrome layout with rite dropdown instead of kala FABs; bind to existing puja catalogue / `ReaderFragment.PUJA` data where available.
+`PujaFragment` + `page_nitya_puja.xml`; rail id `puja` in `ShellHubFragment.RAIL_IDS` / `SettingsStore.PAGE_IDS` (pagesRev ≥ 16). Share Sandhya chrome with rite dropdown instead of kala FABs; bind to existing puja catalogue / `ReaderFragment.PUJA` data where available.

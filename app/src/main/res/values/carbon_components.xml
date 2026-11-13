@@ -68,16 +68,18 @@
         <item name="backgroundTint">@android:color/transparent</item>
     </style>
 
-    <!-- Contained / default tab strip -->
+    <!-- Contained / default tab strip · Carbon contained (40dp, top interactive) -->
     <style name="Widget.Carbon.TabLayout" parent="Widget.Material3.TabLayout">
-        <item name="android:background">@color/carbon_layer</item>
-        <item name="tabIndicatorColor">@color/carbon_interactive</item>
+        <item name="android:background">@color/carbon_layer_accent</item>
+        <item name="tabBackground">@drawable/bg_carbon_tab</item>
+        <item name="tabIndicatorHeight">0dp</item>
         <item name="tabIndicatorFullWidth">true</item>
-        <item name="tabIndicatorHeight">@dimen/carbon_spacing_01</item>
-        <item name="tabSelectedTextColor">@color/carbon_text</item>
+        <item name="tabSelectedTextColor">@color/carbon_text_primary</item>
         <item name="tabTextColor">@color/carbon_text_secondary</item>
         <item name="tabRippleColor">@color/carbon_background_hover</item>
         <item name="tabTextAppearance">@style/TextAppearance.Carbon.BodyCompact01</item>
+        <item name="tabPaddingStart">@dimen/carbon_spacing_05</item>
+        <item name="tabPaddingEnd">@dimen/carbon_spacing_05</item>
     </style>
 
     <!-- Exposed select (square · Carbon field) -->
@@ -91,19 +93,20 @@
         <item name="android:textColorHint">@color/carbon_text_placeholder</item>
     </style>
 
-    <!-- Side rail destination -->
+    <!-- Side rail destination · 48dp row, $spacing-05 pad, left accent when selected -->
     <style name="Widget.Carbon.RailButton" parent="Widget.Material3.Button.TextButton">
         <item name="cornerRadius">0dp</item>
         <item name="android:minWidth">0dp</item>
         <item name="android:minHeight">@dimen/carbon_layout_size_height_lg</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
-        <item name="android:paddingStart">@dimen/carbon_spacing_03</item>
-        <item name="android:paddingEnd">@dimen/carbon_spacing_03</item>
+        <item name="android:paddingStart">@dimen/carbon_spacing_05</item>
+        <item name="android:paddingEnd">@dimen/carbon_spacing_05</item>
         <item name="iconTint">@color/carbon_icon_secondary</item>
         <item name="android:textColor">@color/carbon_text_secondary</item>
         <item name="rippleColor">@color/carbon_background_hover</item>
-        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="backgroundTint">@null</item>
+        <item name="android:background">@drawable/bg_rail_item</item>
     </style>
 
     <!-- Carbon tile / cds tile clickable -->

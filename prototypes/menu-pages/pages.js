@@ -24,8 +24,9 @@
   };
 
   const railFor = {
-    nityakarma: 'nityakarma', sandhya: 'nityakarma', japa: 'nityakarma', puja: 'nityakarma',
-    grantha: 'grantha', nitya: 'grantha', stotra: 'grantha', suktas: 'grantha',
+    nityakarma: 'nityakarma', sandhya: 'nityakarma', japa: 'nityakarma', nitya: 'nityakarma',
+    puja: 'puja',
+    grantha: 'grantha', stotra: 'grantha', suktas: 'grantha',
     mantras: 'grantha', namavali: 'grantha',
     sangeeta: 'sangeeta', hadugalu: 'sangeeta', playlists: 'sangeeta',
     samskruti: 'samskruti', aayadi: 'samskruti', rangavalli: 'samskruti', recipes: 'samskruti',
@@ -72,7 +73,7 @@
     if (backdrop) backdrop.hidden = false;
   }
 
-  const nityaTabs = new Set(['sandhya', 'japa', 'puja']);
+  const nityaTabs = new Set(['sandhya', 'japa', 'nitya']);
 
   function showNityaTab(key) {
     const tabKey = nityaTabs.has(key) ? key : 'sandhya';
@@ -104,7 +105,7 @@
       view.classList.toggle('is-active', view.dataset.page === viewId);
     });
     if (viewId === 'nityakarma') showNityaTab(nityaChild || 'sandhya');
-    byId('app')?.classList.toggle('has-child-sections', viewId === 'nityakarma');
+    byId('app')?.classList.toggle('has-child-sections', viewId === 'nityakarma' || viewId === 'puja');
     closeNav();
     window.parent.postMessage({ type: 'menu-page', page: page }, '*');
   }
@@ -335,7 +336,7 @@
       const riteLabel = riteLabels[rite] || riteLabels.nitya;
       if (stepEl) stepEl.textContent = item.title;
       if (bodyEl) bodyEl.textContent = item.body;
-      if (crumbEl) crumbEl.textContent = `ನಿತ್ಯಕರ್ಮ · ಪೂಜೆ · ${riteLabel} · ${item.title}`;
+      if (crumbEl) crumbEl.textContent = `ಪೂಜೆ · ${riteLabel} · ${item.title}`;
       if (barEl) barEl.style.width = `${pct}%`;
       if (barWrap) barWrap.setAttribute('aria-valuenow', String(pct));
       if (prevBtn) prevBtn.disabled = index <= 0;

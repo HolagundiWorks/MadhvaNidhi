@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Panchanga 30:70 — sizes/gaps/colours from prototypes/panchanga/panchanga.html -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/panchangaScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/shell_page_inset">
+    android:paddingStart="@dimen/shell_page_inset"
+    android:paddingEnd="@dimen/shell_page_inset"
+    android:paddingTop="@dimen/shell_page_pad_block"
+    android:paddingBottom="@dimen/shell_page_pad_block">
 
     <LinearLayout
         android:id="@+id/panchangaContext"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:paddingEnd="@dimen/carbon_spacing_05"
+        android:paddingEnd="@dimen/shell_pane_gap"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/contextGuide"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,145 +32,160 @@
             android:scrollbars="none">
 
             <LinearLayout
+                android:id="@+id/eraAndFacts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/selectedDateLabel"
+                <!-- Era copy: gap 2px between lines -->
+                <LinearLayout
+                    android:id="@+id/eraCopy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ಆಯ್ದ ದಿನಾಂಕ"
-                    android:textColor="@color/carbon_text_secondary"
-                    android:textSize="12sp" />
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/shakaYear"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact02"
+                        android:textColor="@color/carbon_text_primary" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/samvatsaraText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/carbon_spacing_01"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact02"
+                        android:textColor="@color/carbon_text_secondary" />
+
+                    <!-- masa: margin-top 8, rules + row -->
+                    <LinearLayout
+                        android:id="@+id/eraMasa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/carbon_spacing_03"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/carbon_border_width"
+                            android:background="@color/carbon_border_subtle" />
+
+                        <LinearLayout
+                            android:id="@+id/masaRow"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/carbon_spacing_03"
+                            android:layout_marginBottom="@dimen/carbon_spacing_03"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/masaValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact02"
+                                android:textColor="@color/carbon_text_secondary" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" | "
+                                android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact02"
+                                android:textColor="@color/carbon_text_secondary"
+                                android:textStyle="normal" />
+
+                            <ImageView
+                                android:id="@+id/masaWeather"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:contentDescription="ಬಿಸಿಲು · Sunny"
+                                android:src="@drawable/ic_sunny"
+                                app:tint="@color/carbon_icon_secondary" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/carbon_border_width"
+                            android:background="@color/carbon_border_subtle" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Compatibility / a11y mirrors -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/shakaLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:importantForAccessibility="no"
+                    android:visibility="gone"
+                    android:text="ಶ್ರೀ ಶಾಲಿವಾಹನ ಗತಶಕೆ" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/pakshaValue"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:importantForAccessibility="no"
+                    android:visibility="gone" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/selectedDateLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:importantForAccessibility="no"
+                    android:visibility="gone"
+                    android:text="ಆಯ್ದ ದಿನಾಂಕ" />
 
                 <LinearLayout
                     android:id="@+id/selectedDateRow"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
-                    android:minHeight="@dimen/shell_control_size"
-                    android:orientation="horizontal">
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:importantForAccessibility="no"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/selectedDateText"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:contentDescription="Selected date details"
-                        android:ellipsize="end"
-                        android:gravity="center_vertical"
-                        android:maxLines="1"
-                        android:minHeight="@dimen/shell_control_size"
-                        android:textColor="@color/carbon_text"
-                        android:textSize="20sp" />
+                        android:contentDescription="Selected date details" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/todayDate"
                         style="@style/Widget.Carbon.Button.Ghost"
-                        android:layout_width="@dimen/shell_control_size"
-                        android:layout_height="@dimen/shell_control_size"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
                         android:contentDescription="Return to today"
-                        android:insetBottom="0dp"
-                        android:insetTop="0dp"
-                        android:minWidth="0dp"
-                        android:padding="0dp"
-                        app:icon="@drawable/ic_today"
-                        app:iconGravity="textStart"
-                        app:iconPadding="0dp" />
+                        android:visibility="gone"
+                        app:icon="@drawable/ic_today" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/selectedTithi"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:importantForAccessibility="no"
+                    android:visibility="gone" />
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/selectedTithi"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/carbon_text"
-                        android:textSize="14sp" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/selectedWeekday"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:importantForAccessibility="no"
+                    android:visibility="gone" />
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingHorizontal="@dimen/carbon_spacing_02"
-                        android:text="·"
-                        android:textColor="@color/carbon_text_secondary"
-                        android:textSize="14sp" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/selectedWeekday"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/carbon_text"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <!-- Compatibility mirror for instrumentation that still reads panchangaHeader / selectedMeta -->
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/selectedMeta"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:importantForAccessibility="no"
                     android:visibility="gone" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginVertical="@dimen/carbon_spacing_03"
-                    android:background="@color/carbon_border" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/shakaLabel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="ಶ್ರೀ ಶಾಲಿವಾಹನ ಗತಶಕೆ"
-                    android:textColor="@color/carbon_text_secondary"
-                    android:textSize="12sp" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/shakaYear"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/carbon_text"
-                    android:textSize="20sp" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/samvatsaraText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/carbon_spacing_02"
-                    android:textColor="@color/carbon_text_secondary"
-                    android:textSize="14sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/carbon_spacing_03"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/masaValue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/carbon_text"
-                        android:textSize="16sp" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/pakshaValue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/carbon_spacing_04"
-                        android:textColor="@color/carbon_text_secondary"
-                        android:textSize="14sp" />
-                </LinearLayout>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/panchangaHeader"
@@ -175,103 +194,147 @@
                     android:importantForAccessibility="no"
                     android:visibility="gone" />
 
+                <!-- Facts: label 5.5rem · gap spacing-05 · pad spacing-03 · border-subtle -->
                 <LinearLayout
+                    android:id="@+id/panchangaFacts"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/carbon_spacing_05"
-                    android:orientation="horizontal">
+                    android:layout_marginTop="@dimen/shell_ctx_gap"
+                    android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:baselineAligned="false"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/carbon_spacing_03"
+                        android:paddingBottom="@dimen/carbon_spacing_03">
 
                         <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="match_parent"
+                            android:layout_width="@dimen/shell_fact_label_width"
                             android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/carbon_spacing_05"
                             android:text="ರಾಶಿ"
-                            android:textColor="@color/carbon_text_secondary"
-                            android:textSize="12sp" />
+                            android:textAppearance="@style/TextAppearance.Carbon.Label01"
+                            android:textColor="@color/carbon_text_secondary" />
 
                         <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/rashiValue"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/carbon_spacing_01"
-                            android:textColor="@color/carbon_text_helper"
-                            android:textSize="14sp" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/carbon_spacing_03"
-                            android:text="ಭಾವ"
-                            android:textColor="@color/carbon_text_secondary"
-                            android:textSize="12sp" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/bhavaValue"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/carbon_spacing_01"
-                            android:textColor="@color/carbon_text_helper"
-                            android:textSize="14sp" />
+                            android:layout_weight="1"
+                            android:textAppearance="@style/TextAppearance.Carbon.BodyCompact01"
+                            android:textColor="@color/carbon_text_helper" />
                     </LinearLayout>
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/carbon_border_width"
+                        android:background="@color/carbon_border_subtle" />
+
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/carbon_spacing_03"
+                        android:paddingBottom="@dimen/carbon_spacing_03">
 
                         <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="match_parent"
+                            android:layout_width="@dimen/shell_fact_label_width"
                             android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/carbon_spacing_05"
                             android:text="ನಕ್ಷತ್ರ"
-                            android:textColor="@color/carbon_text_secondary"
-                            android:textSize="12sp" />
+                            android:textAppearance="@style/TextAppearance.Carbon.Label01"
+                            android:textColor="@color/carbon_text_secondary" />
 
                         <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/nakshatraValue"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/carbon_spacing_01"
-                            android:textColor="@color/carbon_text"
-                            android:textSize="14sp" />
+                            android:layout_weight="1"
+                            android:textAppearance="@style/TextAppearance.Carbon.BodyCompact01"
+                            android:textColor="@color/carbon_text_helper" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/carbon_border_width"
+                        android:background="@color/carbon_border_subtle" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/carbon_spacing_03"
+                        android:paddingBottom="@dimen/carbon_spacing_03">
 
                         <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="match_parent"
+                            android:layout_width="@dimen/shell_fact_label_width"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/carbon_spacing_03"
+                            android:layout_marginEnd="@dimen/carbon_spacing_05"
+                            android:text="ಭಾವ"
+                            android:textAppearance="@style/TextAppearance.Carbon.Label01"
+                            android:textColor="@color/carbon_text_secondary" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/bhavaValue"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textAppearance="@style/TextAppearance.Carbon.BodyCompact01"
+                            android:textColor="@color/carbon_text_helper" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/carbon_border_width"
+                        android:background="@color/carbon_border_subtle" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/carbon_spacing_03"
+                        android:paddingBottom="@dimen/carbon_spacing_03">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="@dimen/shell_fact_label_width"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/carbon_spacing_05"
                             android:text="ಕರಣ"
-                            android:textColor="@color/carbon_text_secondary"
-                            android:textSize="12sp" />
+                            android:textAppearance="@style/TextAppearance.Carbon.Label01"
+                            android:textColor="@color/carbon_text_secondary" />
 
                         <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/karanaValue"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/carbon_spacing_01"
-                            android:textColor="@color/carbon_text"
-                            android:textSize="14sp" />
+                            android:layout_weight="1"
+                            android:textAppearance="@style/TextAppearance.Carbon.BodyCompact01"
+                            android:textColor="@color/carbon_text_helper" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
 
         <View
+            android:id="@+id/contextRule"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="@dimen/carbon_spacing_03"
-            android:background="@color/carbon_border" />
+            android:layout_height="@dimen/carbon_border_width"
+            android:layout_marginTop="@dimen/shell_ctx_gap"
+            android:background="@color/carbon_border_subtle" />
 
         <LinearLayout
             android:id="@+id/dayEventsCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/carbon_spacing_03"
-            android:minHeight="56dp"
+            android:gravity="top"
+            android:minHeight="0dp"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -285,8 +348,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="ದಿನದ ವಿಶೇಷ"
-                    android:textColor="@color/carbon_text_secondary"
-                    android:textSize="12sp" />
+                    android:textAppearance="@style/TextAppearance.Carbon.Label01"
+                    android:textColor="@color/carbon_text_secondary" />
 
                 <ScrollView
                     android:id="@+id/eventScroll"
@@ -305,16 +368,16 @@
                             android:id="@+id/dayEvent"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/carbon_text"
-                            android:textSize="14sp" />
+                            android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
+                            android:textColor="@color/carbon_text_primary" />
 
                         <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/dayEventSummary"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/carbon_spacing_02"
+                            android:textAppearance="@style/TextAppearance.Carbon.Label01"
                             android:textColor="@color/carbon_text_secondary"
-                            android:textSize="12sp"
                             android:visibility="gone" />
                     </LinearLayout>
                 </ScrollView>
@@ -330,9 +393,11 @@
                 android:insetTop="0dp"
                 android:minWidth="0dp"
                 android:padding="0dp"
-                app:icon="@drawable/ic_nav_next"
+                app:icon="@drawable/ic_launch"
                 app:iconGravity="textStart"
-                app:iconPadding="0dp" />
+                app:iconPadding="0dp"
+                app:iconSize="20dp"
+                app:iconTint="@color/carbon_icon_primary" />
         </LinearLayout>
     </LinearLayout>
 
@@ -344,9 +409,9 @@
         app:layout_constraintGuide_percent="0.3" />
 
     <View
-        android:layout_width="1dp"
+        android:layout_width="@dimen/carbon_border_width"
         android:layout_height="0dp"
-        android:background="@color/carbon_border"
+        android:background="@color/carbon_border_subtle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/contextGuide"
         app:layout_constraintTop_toTopOf="parent" />
@@ -356,117 +421,158 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:paddingStart="@dimen/carbon_spacing_05"
+        android:paddingStart="@dimen/shell_pane_gap"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/contextGuide"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:id="@+id/pakshaToggle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:background="@drawable/bg_paksha_toggle"
-            android:orientation="horizontal">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/calendarPrevious"
-                style="@style/Widget.Carbon.ContentSwitcher.Item"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checkable="true"
-                android:contentDescription="Shukla paksha"
-                android:text="ಶುಕ್ಲಪಕ್ಷ"
-                app:icon="@drawable/ic_new_moon"
-                app:iconSize="16dp" />
-
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="@color/carbon_border" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/calendarNext"
-                style="@style/Widget.Carbon.ContentSwitcher.Item"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checkable="true"
-                android:contentDescription="Krishna paksha"
-                android:text="ಕೃಷ್ಣಪಕ್ಷ"
-                app:icon="@drawable/ic_full_moon"
-                app:iconSize="16dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/phaseCycle"
+            android:id="@+id/monthBar"
             android:layout_width="match_parent"
-            android:layout_height="24dp"
-            android:layout_marginTop="@dimen/carbon_spacing_02"
-            android:contentDescription="New moon to full moon"
-            android:gravity="end|center_vertical"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/phaseMoonStart"
-                android:layout_width="14dp"
-                android:layout_height="14dp"
-                android:contentDescription="@null"
-                android:importantForAccessibility="no"
-                android:src="@drawable/ic_new_moon"
-                app:tint="@color/carbon_text_secondary" />
+            <LinearLayout
+                android:id="@+id/monthbarLead"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-            <com.google.android.material.textview.MaterialTextView
+                <LinearLayout
+                    android:id="@+id/phaseCycle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="New moon to full moon"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/phaseMoonStart"
+                        android:layout_width="@dimen/shell_moon_size"
+                        android:layout_height="@dimen/shell_moon_size"
+                        android:contentDescription="@null"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_new_moon"
+                        app:tint="@color/carbon_icon_secondary" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="@dimen/carbon_spacing_03"
+                        android:text="→"
+                        android:textColor="@color/carbon_text_secondary"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/phaseMoonMid"
+                        android:layout_width="@dimen/shell_moon_size"
+                        android:layout_height="@dimen/shell_moon_size"
+                        android:contentDescription="@null"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_half_moon"
+                        app:tint="@color/carbon_icon_secondary" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="@dimen/carbon_spacing_03"
+                        android:text="→"
+                        android:textColor="@color/carbon_text_secondary"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/phaseMoonEnd"
+                        android:layout_width="@dimen/shell_moon_size"
+                        android:layout_height="@dimen/shell_moon_size"
+                        android:contentDescription="@null"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_full_moon"
+                        app:tint="@color/carbon_icon_secondary" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/monthbarSep"
+                    android:layout_width="@dimen/carbon_border_width"
+                    android:layout_height="20dp"
+                    android:layout_marginHorizontal="@dimen/carbon_spacing_03"
+                    android:background="@color/carbon_border_subtle" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/chooseDate"
+                    style="@style/Widget.Carbon.Button.Ghost"
+                    android:layout_width="@dimen/shell_control_size"
+                    android:layout_height="@dimen/shell_control_size"
+                    android:contentDescription="ದಿನಾಂಕ ಆಯ್ಕೆಮಾಡಿ · Choose date"
+                    android:insetBottom="0dp"
+                    android:insetTop="0dp"
+                    android:minWidth="0dp"
+                    android:padding="0dp"
+                    app:icon="@drawable/ic_calendar"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    app:iconSize="20dp"
+                    app:iconTint="@color/carbon_icon_secondary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pakshaToggle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="@dimen/carbon_spacing_02"
-                android:text="→"
-                android:textColor="@color/carbon_text_secondary"
-                android:textSize="14sp" />
+                android:background="@drawable/bg_paksha_toggle"
+                android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/phaseMoonMid"
-                android:layout_width="14dp"
-                android:layout_height="14dp"
-                android:contentDescription="@null"
-                android:importantForAccessibility="no"
-                android:src="@drawable/ic_half_moon"
-                app:tint="@color/carbon_text_secondary" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/calendarPrevious"
+                    style="@style/Widget.Carbon.ContentSwitcher.Item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:contentDescription="Shukla paksha"
+                    android:text="ಶುಕ್ಲಪಕ್ಷ"
+                    app:icon="@drawable/ic_new_moon"
+                    app:iconSize="16dp" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="@dimen/carbon_spacing_02"
-                android:text="→"
-                android:textColor="@color/carbon_text_secondary"
-                android:textSize="14sp" />
+                <View
+                    android:layout_width="@dimen/carbon_border_width"
+                    android:layout_height="match_parent"
+                    android:background="@color/carbon_border_subtle" />
 
-            <ImageView
-                android:id="@+id/phaseMoonEnd"
-                android:layout_width="14dp"
-                android:layout_height="14dp"
-                android:contentDescription="@null"
-                android:importantForAccessibility="no"
-                android:src="@drawable/ic_full_moon"
-                app:tint="@color/carbon_text_secondary" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/calendarNext"
+                    style="@style/Widget.Carbon.ContentSwitcher.Item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:contentDescription="Krishna paksha"
+                    android:text="ಕೃಷ್ಣಪಕ್ಷ"
+                    app:icon="@drawable/ic_full_moon"
+                    app:iconSize="16dp" />
+            </LinearLayout>
         </LinearLayout>
 
         <FrameLayout
             android:id="@+id/pakshaScroll"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/carbon_spacing_03"
-            android:layout_weight="1">
+            android:layout_marginTop="@dimen/shell_calendar_gap"
+            android:layout_weight="1"
+            android:padding="@dimen/shell_phases_pad">
 
             <FrameLayout
                 android:id="@+id/shuklaCalendarRow"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_gravity="center" />
 
             <FrameLayout
                 android:id="@+id/krishnaCalendarRow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:visibility="gone" />
         </FrameLayout>
     </LinearLayout>

@@ -43,11 +43,38 @@ class DeskFragment : Fragment() {
         PagePalette.apply(view, "desk")
         MaterialLayouts.bind(view)
         fun fitContext() {
-            if (view.width <= 0) return
-            val density = resources.displayMetrics.density
-            val divider = resources.getDimensionPixelSize(R.dimen.carbon_spacing_05)
+            if (view.width <= 0 || view.height <= 0) return
+            val dm = resources.displayMetrics
+            val px = dm.density
+            // Mock density: clamp(0.55, min(vw/960, vh/540), 1.75) — CSS px ≈ dp
+            val scale = minOf(view.width / px / 960f, view.height / px / 540f)
+                .coerceIn(0.55f, 1.75f)
+            fun spx(baseDp: Float, floorDp: Float = 0f): Int =
+                (maxOf(floorDp, baseDp * scale) * px).toInt()
+
+            val pageInset = spx(24f, 8f)
+            val pagePadBlock = spx(16f, 4f)
+            val paneGap = spx(24f, 8f)
+            val ctxGap = spx(16f, 4f)
+            val calendarGap = spx(12f, 4f)
+            val control = spx(48f, 32f)
+            val switcherH = spx(40f, 28f)
+            val moon = spx(16f, 10f)
+            val factLabel = spx(88f, 52f)
+            val factPad = spx(8f, 2f)
+            val factGap = spx(16f, 8f)
+            val typeLabel = maxOf(10f, 12f * scale) * dm.scaledDensity
+            val typeBody = maxOf(11f, 14f * scale) * dm.scaledDensity
+            val typeTitle = maxOf(14f, 16f * scale) * dm.scaledDensity
+            val eventTitle = maxOf(12f, 14f * scale) * dm.scaledDensity
+
+            view.setPadding(pageInset, pagePadBlock, pageInset, pagePadBlock)
+            view.findViewById<View>(R.id.panchangaContext).setPadding(0, 0, paneGap, 0)
+            view.findViewById<View>(R.id.panchangaCalendar).setPadding(paneGap, 0, 0, 0)
+
+            val divider = resources.getDimensionPixelSize(R.dimen.carbon_border_width)
             val usable = (view.width - view.paddingLeft - view.paddingRight - divider).coerceAtLeast(0)
-            val minContext = resources.getDimensionPixelSize(R.dimen.shell_context_min_width)
+            val minContext = (208 * px * scale.coerceAtLeast(0.7f)).toInt().coerceAtMost(usable / 2)
             val contextWidth = when {
                 usable <= 0 -> minContext
                 else -> maxOf(minContext.coerceAtMost(usable / 2), (usable * .3f).toInt())
@@ -58,31 +85,67 @@ class DeskFragment : Fragment() {
             if (guide.layoutParams.let { (it as androidx.constraintlayout.widget.ConstraintLayout.LayoutParams).guideBegin } != contextWidth) {
                 guide.setGuidelineBegin(contextWidth)
             }
-            val compact = view.height / density < 360
-            val size = minOf(
-                (if (compact) 12f else 14f) * resources.displayMetrics.scaledDensity,
-                (if (compact) 12f else 18f) * density
-            )
-            listOf(
-                R.id.shakaLabel, R.id.shakaYear, R.id.samvatsaraText, R.id.masaValue, R.id.pakshaValue,
-                R.id.rashiValue, R.id.nakshatraValue, R.id.bhavaValue, R.id.karanaValue,
-                R.id.selectedTithi, R.id.selectedWeekday
-            ).forEach { id ->
-                view.findViewById<TextView>(id).setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, size)
+
+            listOf(R.id.shakaYear, R.id.samvatsaraText, R.id.masaValue).forEach { id ->
+                view.findViewById<TextView>(id).setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, typeTitle)
             }
+            listOf(R.id.rashiValue, R.id.nakshatraValue, R.id.bhavaValue, R.id.karanaValue).forEach { id ->
+                view.findViewById<TextView>(id).setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, typeBody)
+            }
+            view.findViewById<TextView>(R.id.todayEventsTitle)
+                .setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, typeLabel)
+            view.findViewById<TextView>(R.id.dayEvent)
+                .setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, eventTitle)
+
+            view.findViewById<View>(R.id.panchangaFacts).let { facts ->
+                (facts.layoutParams as? android.view.ViewGroup.MarginLayoutParams)?.topMargin = ctxGap
+                facts.requestLayout()
+                for (i in 0 until (facts as android.view.ViewGroup).childCount) {
+                    val row = facts.getChildAt(i)
+                    if (row is android.view.ViewGroup && row.childCount >= 2) {
+                        row.setPadding(0, factPad, 0, factPad)
+                        row.getChildAt(0).layoutParams = row.getChildAt(0).layoutParams.apply {
+                            width = factLabel
+                            if (this is android.view.ViewGroup.MarginLayoutParams) marginEnd = factGap
+                        }
+                    }
+                }
+            }
+            (view.findViewById<View>(R.id.contextRule).layoutParams as? android.view.ViewGroup.MarginLayoutParams)
+                ?.topMargin = ctxGap
+            (view.findViewById<View>(R.id.pakshaScroll).layoutParams as? android.view.ViewGroup.MarginLayoutParams)
+                ?.topMargin = calendarGap
+            view.findViewById<View>(R.id.pakshaScroll).setPadding(spx(16f, 4f), spx(16f, 4f), spx(16f, 4f), spx(16f, 4f))
+
+            fun sizeControl(id: Int) {
+                view.findViewById<View>(id).layoutParams = view.findViewById<View>(id).layoutParams.apply {
+                    width = control
+                    height = control
+                }
+            }
+            sizeControl(R.id.chooseDate)
+            sizeControl(R.id.eventDetails)
+            listOf(R.id.calendarPrevious, R.id.calendarNext).forEach { id ->
+                val btn = view.findViewById<com.google.android.material.button.MaterialButton>(id)
+                btn.minHeight = switcherH
+                btn.setPadding(factGap, 0, factGap, 0)
+                btn.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, typeBody)
+                btn.iconSize = moon
+            }
+            listOf(R.id.phaseMoonStart, R.id.phaseMoonMid, R.id.phaseMoonEnd, R.id.masaWeather).forEach { id ->
+                view.findViewById<View>(id).layoutParams = view.findViewById<View>(id).layoutParams.apply {
+                    width = moon
+                    height = moon
+                }
+            }
+            view.setTag(R.id.panchangaScreen, scale)
         }
         view.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ -> fitContext() }
         view.post { fitContext() }
-        val selected = view.findViewById<TextView>(R.id.selectedDateText)
-        selected.maxLines = 1
-        androidx.core.widget.TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(
-            selected, 12, 22, 1, android.util.TypedValue.COMPLEX_UNIT_SP
-        )
-        view.findViewById<View>(R.id.selectedDateRow).setOnClickListener { showDetails() }
-        view.findViewById<View>(R.id.selectedDateText).setOnClickListener { showDetails() }
         view.findViewById<View>(R.id.dayEvent).setOnClickListener { showDetails() }
         view.findViewById<View>(R.id.dayEventsCard).setOnClickListener { showDetails() }
         view.findViewById<View>(R.id.eventDetails).setOnClickListener { showDetails() }
+        view.findViewById<View>(R.id.chooseDate).setOnClickListener { showDatePicker() }
         parentFragmentManager.setFragmentResultListener("panchangaDate", viewLifecycleOwner) { _, result ->
             selectedDate = result.getString("date") ?: selectedDate
             bindDate()
@@ -277,48 +340,24 @@ class DeskFragment : Fragment() {
         val year = PanchangaStore.shakaYear(day).toString()
         val samvatsara = OsLang.script(PanchangaStore.samvatsaraFor(day), lang)
         val masa = OsLang.script(day.masa.uppercase().replace("KARTEEKA", "KARTIKA"), lang) + "ಮಾಸ"
-        v.findViewById<TextView>(R.id.shakaLabel).apply {
-            DeskType.apply(this, DeskType.REGULAR)
-            setTextColor(requireContext().getColor(R.color.carbon_text_secondary))
-        }
         v.findViewById<TextView>(R.id.shakaYear).apply {
-            text = year
+            text = "ಶ್ರೀ ಶಾಲಿವಾಹನ ಗತಶಕೆ-$year"
             DeskType.apply(this, DeskType.SEMIBOLD)
+            setTextColor(requireContext().getColor(R.color.carbon_text))
         }
         v.findViewById<TextView>(R.id.samvatsaraText).apply {
-            val line = "ಶ್ರೀ $samvatsara ನಾಮ ಸಂವತ್ಸರ"
-            text = android.text.SpannableString(line).apply {
-                val start = line.indexOf(samvatsara)
-                if (start >= 0) {
-                    setSpan(
-                        android.text.style.StyleSpan(android.graphics.Typeface.BOLD),
-                        start,
-                        start + samvatsara.length,
-                        android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-                    )
-                    setSpan(
-                        android.text.style.ForegroundColorSpan(requireContext().getColor(R.color.carbon_text)),
-                        start,
-                        start + samvatsara.length,
-                        android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-                    )
-                }
-            }
-            DeskType.apply(this, DeskType.REGULAR)
+            text = "ಶ್ರೀ $samvatsara ನಾಮ ಸಂವತ್ಸರ"
+            DeskType.apply(this, DeskType.SEMIBOLD)
             setTextColor(requireContext().getColor(R.color.carbon_text_secondary))
         }
         v.findViewById<TextView>(R.id.masaValue).apply {
             text = masa
             DeskType.apply(this, DeskType.SEMIBOLD)
         }
-        v.findViewById<TextView>(R.id.pakshaValue).apply {
-            text = phaseLabel
-            DeskType.apply(this, DeskType.SEMIBOLD)
-            setTextColor(requireContext().getColor(R.color.carbon_text_secondary))
-        }
+        v.findViewById<TextView>(R.id.pakshaValue).text = phaseLabel
         // Keep combined header for instrumentation that still asserts on this id.
         v.findViewById<TextView>(R.id.panchangaHeader).text =
-            "$dateLabel\nಶ್ರೀ ಶಾಲಿವಾಹನ ಗತಶಕೆ $year\nಶ್ರೀ $samvatsara ನಾಮ ಸಂವತ್ಸರ\n$masa · $phaseLabel"
+            "$dateLabel\nಶ್ರೀ ಶಾಲಿವಾಹನ ಗತಶಕೆ-$year\nಶ್ರೀ $samvatsara ನಾಮ ಸಂವತ್ಸರ\n$masa · $phaseLabel"
         fun fact(id: Int, value: String) {
             val pending = value.isBlank()
             val actual = value.ifBlank { "ಜೋಡಣೆ ಬಾಕಿ" }

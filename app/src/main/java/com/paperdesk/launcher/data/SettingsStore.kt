@@ -42,6 +42,18 @@ class SettingsStore(context: Context) {
             obj.put("pagesRev", 15)
             dirty = true
         }
+        // Puja is a top-level destination (not a Nitya Karma tab).
+        if (obj.optInt("pagesRev", 0) < 16) {
+            obj.put("pages", JSONArray(PAGE_IDS))
+            obj.put("pagesRev", 16)
+            dirty = true
+        }
+        // Nitya Parayana moves under Nitya Karma (tab alias, not a Grantha page).
+        if (obj.optInt("pagesRev", 0) < 17) {
+            obj.put("pages", JSONArray(PAGE_IDS))
+            obj.put("pagesRev", 17)
+            dirty = true
+        }
         if (dirty) {
             prefs.edit().putString("json", obj.toString()).apply()
         }
@@ -103,19 +115,19 @@ class SettingsStore(context: Context) {
         const val VEDA_KRISHNA_YAJURVEDA = "krishna_yajurveda_taittiriya"
         val VEDA_IDS = listOf(VEDA_RIGVEDA, VEDA_KRISHNA_YAJURVEDA)
 
-        /** Shipped pager destinations — one Nitya Karma host (not four). */
+        /** Shipped destinations — Nitya Karma (Sandhya/Japa/Parayana) + standalone Puja. */
         val PAGE_IDS = listOf(
             "dashboard", "desk",
-            "nityakarma",
-            "grantha", "nitya", "stotra", "suktas", "mantras", "namavali",
+            "nityakarma", "puja",
+            "grantha", "stotra", "suktas", "mantras", "namavali",
             "sangeeta", "hadugalu", "playlists",
             "samskruti", "aayadi", "rangavalli", "recipes",
             "user",
             "settings"
         )
 
-        /** Navigation aliases that open Nitya tabs without separate pager pages. */
-        val NITYA_TAB_ALIASES = setOf("sandhya", "japa", "puja", "nityakarma")
+        /** Navigation aliases that open Nitya tabs (not separate pages). */
+        val NITYA_TAB_ALIASES = setOf("sandhya", "japa", "nitya", "nityakarma")
 
         val PAGE_LABELS = mapOf(
             "dashboard" to "DASHBOARD",
@@ -149,7 +161,7 @@ class SettingsStore(context: Context) {
         }
 
         fun canonicalizePageId(id: String): String = when (id) {
-            "sandhya", "japa", "puja" -> "nityakarma"
+            "sandhya", "japa", "nitya" -> "nityakarma"
             else -> id
         }
 
@@ -159,7 +171,7 @@ class SettingsStore(context: Context) {
         fun defaults(): JSONObject = JSONObject()
             .put("flavor", "madhvanidhi")
             .put("pages", JSONArray(PAGE_IDS))
-            .put("pagesRev", 15)
+            .put("pagesRev", 17)
             .put("veda", VEDA_RIGVEDA)
             .put("panchangaTradition", PanchangaTraditions.SRS)
             .put("landscape", true)

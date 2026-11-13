@@ -7,7 +7,7 @@ Approved web-mockup contract for the **ಸಂಧ್ಯಾವಂದನೆ** tab i
 | Canonical UI | `prototypes/app-shell/shell.html` → `#view-nityakarma` → `[data-nitya-panel="sandhya"]` (`data-frozen="nitya-sandhya"`) |
 | Parity mirror | `prototypes/menu-pages/pages.html` → same panel |
 | Shared chrome | `prototypes/carbon-app.css` (`.sandhya-panel`, `.sandhya-chrome`, `.sandhya-scroll`) |
-| Related | [frozen-nitya-japa.md](./frozen-nitya-japa.md), [frozen-nitya-puja.md](./frozen-nitya-puja.md) |
+| Related | [frozen-nitya-japa.md](./frozen-nitya-japa.md); Nitya Parayana is a sibling tab; Puja is a separate rail destination — [frozen-nitya-puja.md](./frozen-nitya-puja.md) |
 
 ## Screen structure
 

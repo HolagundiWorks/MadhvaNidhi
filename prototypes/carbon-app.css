@@ -330,7 +330,8 @@ button.cds--tabs__nav-link {
 }
 /* Sandhya / Puja — shared reader chrome · scroll body · bottom nav */
 .cds--tab-content[data-nitya-panel="sandhya"].sandhya-panel,
-.cds--tab-content[data-nitya-panel="puja"].puja-panel {
+.cds--tab-content.puja-panel,
+[data-puja-root].puja-panel {
   position: relative;
   display: flex;
   flex-direction: column;

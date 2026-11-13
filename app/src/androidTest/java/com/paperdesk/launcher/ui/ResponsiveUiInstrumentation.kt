@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.widget.NestedScrollView
-import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.paperdesk.launcher.R
@@ -62,13 +61,13 @@ class ResponsiveUiInstrumentation : Instrumentation() {
             }
             val captures = File(targetContext.getExternalFilesDir(null), "ui-audit").apply { mkdirs() }
             var pages = 0
-            onMain { pages = activity.findViewById<ViewPager2>(R.id.pager).adapter!!.itemCount }
+            onMain { pages = activity.pageCount() }
             repeat(pages) { index ->
-                onMain { activity.findViewById<ViewPager2>(R.id.pager).setCurrentItem(index, false) }
+                onMain { activity.openPageAt(index) }
                 settle()
                 lateinit var current: androidx.fragment.app.Fragment
                 onMain {
-                    val pager = activity.findViewById<View>(R.id.pager)
+                    val pager = activity.findViewById<View>(R.id.pageHost)
                     val toolbar = activity.findViewById<MaterialToolbar>(R.id.toolbar)
                     val bounds = Rect().also { pager.getGlobalVisibleRect(it) }
                     val bar = Rect().also { toolbar.getGlobalVisibleRect(it) }
@@ -236,7 +235,7 @@ class ResponsiveUiInstrumentation : Instrumentation() {
             settle()
             onMain {
                 val bottom = activity.findViewById<View>(R.id.bottomNavigation)
-                val pager = activity.findViewById<View>(R.id.pager)
+                val pager = activity.findViewById<View>(R.id.pageHost)
                 check(bottom.top >= pager.bottom) { "Navigation is not below the content" }
                 val choices = activity.findViewById<MaterialAutoCompleteTextView>(R.id.pageDestination)
                 check(choices.adapter.count == 8) { "Settings is duplicated in destinations" }
@@ -244,12 +243,12 @@ class ResponsiveUiInstrumentation : Instrumentation() {
                 choices.onItemClickListener?.onItemClick(null, null, 1, 1)
             }
             settle()
-            onMain { check(activity.findViewById<ViewPager2>(R.id.pager).currentItem == 1) { "Bottom dropdown did not navigate" } }
+            onMain { check(activity.currentPageId() == activity.pageIdAt(1)) { "Bottom dropdown did not navigate" } }
             capture(captures, "material-navigation")
             onMain { activity.findViewById<MaterialToolbar>(R.id.toolbar).menu.performIdentifierAction(R.id.openSettings, 0) }
             settle()
             onMain {
-                check(activity.findViewById<ViewPager2>(R.id.pager).currentItem == 8) { "Material navigation did not open settings" }
+                check(activity.currentPageId() == activity.pageIdAt(8)) { "Material navigation did not open settings" }
             }
             val monitor = addMonitor(LauncherActivity::class.java.name, null, false)
             val nextScale = if (requestedScale < 2f) requestedScale + 0.25f else requestedScale - 0.25f
@@ -268,7 +267,7 @@ class ResponsiveUiInstrumentation : Instrumentation() {
                 val displayedScale = resized.findViewById<com.google.android.material.slider.Slider>(R.id.settingsTextSize).value
                 check(kotlin.math.abs(displayedScale - nextScale * 100f) < 1f) { "Text-size slider restored an obsolete value" }
                 check(resized.findViewById<TextView>(R.id.settingsTextSizeLabel).text.contains("${(nextScale * 100f).toInt()}%")) { "Text-size label is out of sync" }
-                check(resized.findViewById<ViewPager2>(R.id.pager).currentItem == 8) { "Changing text size lost the Settings page" }
+                check(resized.currentPageId() == resized.pageIdAt(8)) { "Changing text size lost the Settings page" }
                 inspectChrome(resized.findViewById(R.id.toolbar))
                 inspectChrome(resized.findViewById(R.id.bottomNavigation))
                 inspect(resized.supportFragmentManager.fragments.first { it.isResumed }.requireView(), 8)

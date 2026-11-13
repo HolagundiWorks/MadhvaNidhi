@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.paperdesk.launcher.R
 import com.paperdesk.launcher.data.OsLang
 import com.paperdesk.launcher.data.SandhyaStore
@@ -19,27 +18,28 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-/** Tabbed Nitya Karma shell — Sandhya · Japa · Puja (frozen mockup contract). */
+/** Tabbed Nitya Karma shell — Sandhya · Japa · Nitya Parayana (Puja is a separate destination). */
 class NityaKarmaFragment : Fragment() {
     private var initialTab = TAB_SANDHYA
     private var sandhyaRoot: View? = null
     private var japaRoot: View? = null
-    private var pujaRoot: View? = null
+    private var parayanaRoot: View? = null
     private var sandhyaBound = false
     private var japaBound = false
-    private var pujaBound = false
+    private var parayanaBound = false
 
     private var kalaId = SandhyaStore.PRATAH
     private var sandhyaIndex = 0
     private var sandhyaDone = false
 
-    private var pujaRite = 0
-    private var pujaIndex = 0
-    private var pujaDone = false
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initialTab = arguments?.getString(ARG_TAB).orEmpty().ifBlank { TAB_SANDHYA }
+        val requested = arguments?.getString(ARG_TAB).orEmpty().ifBlank { TAB_SANDHYA }
+        initialTab = when (requested) {
+            TAB_JAPA -> TAB_JAPA
+            TAB_NITYA -> TAB_NITYA
+            else -> TAB_SANDHYA
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
@@ -51,17 +51,12 @@ class NityaKarmaFragment : Fragment() {
             withContext(Dispatchers.IO) { SandhyaStore.load(requireContext().applicationContext) }
             if (!isAdded) return@launch
             kalaId = SandhyaStore.nowId()
-            // Ensure the visible tab is ready after asset load.
             showTab(initialTab)
         }
 
         val tabs = view.findViewById<TabLayout>(R.id.nityaTabs)
-        listOf(
-            OsLang.ui("sandhya", OsLang.get(requireContext())) to TAB_SANDHYA,
-            OsLang.ui("japa", OsLang.get(requireContext())) to TAB_JAPA,
-            OsLang.ui("puja", OsLang.get(requireContext())) to TAB_PUJA
-        ).forEach { (label, tag) ->
-            tabs.addTab(tabs.newTab().setText(label).setTag(tag), false)
+        TABS.forEach { tag ->
+            tabs.addTab(tabs.newTab().setText(OsLang.ui(tag, OsLang.get(requireContext()))).setTag(tag), false)
         }
         tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
@@ -70,24 +65,19 @@ class NityaKarmaFragment : Fragment() {
             override fun onTabUnselected(tab: TabLayout.Tab) = Unit
             override fun onTabReselected(tab: TabLayout.Tab) = Unit
         })
-        val start = when (initialTab) {
-            TAB_JAPA -> 1
-            TAB_PUJA -> 2
-            else -> 0
-        }
-        // Inflate only the starting tab immediately; others on first select.
-        ensureTab(listOf(TAB_SANDHYA, TAB_JAPA, TAB_PUJA)[start])
+        val start = TABS.indexOf(initialTab).coerceAtLeast(0)
+        ensureTab(TABS[start])
         tabs.getTabAt(start)?.select()
-        showTab(listOf(TAB_SANDHYA, TAB_JAPA, TAB_PUJA)[start])
+        showTab(TABS[start])
     }
 
     fun selectTab(tab: String) {
-        val tabs = view?.findViewById<TabLayout>(R.id.nityaTabs) ?: return
-        val index = when (tab) {
-            TAB_JAPA -> 1
-            TAB_PUJA -> 2
-            else -> 0
+        if (tab == "puja") {
+            (activity as? LauncherActivity)?.navigateTo("puja")
+            return
         }
+        val tabs = view?.findViewById<TabLayout>(R.id.nityaTabs) ?: return
+        val index = TABS.indexOf(tab).coerceAtLeast(0)
         tabs.getTabAt(index)?.select()
     }
 
@@ -95,7 +85,7 @@ class NityaKarmaFragment : Fragment() {
         ensureTab(tab)
         sandhyaRoot?.visibility = if (tab == TAB_SANDHYA) View.VISIBLE else View.GONE
         japaRoot?.visibility = if (tab == TAB_JAPA) View.VISIBLE else View.GONE
-        pujaRoot?.visibility = if (tab == TAB_PUJA) View.VISIBLE else View.GONE
+        parayanaRoot?.visibility = if (tab == TAB_NITYA) View.VISIBLE else View.GONE
     }
 
     private fun ensureTab(tab: String) {
@@ -122,13 +112,13 @@ class NityaKarmaFragment : Fragment() {
                     }
                 }
             }
-            TAB_PUJA -> if (pujaRoot == null) {
-                pujaRoot = inflater.inflate(R.layout.page_nitya_puja, host, false).also {
+            TAB_NITYA -> if (parayanaRoot == null) {
+                parayanaRoot = inflater.inflate(R.layout.page_nitya_parayana, host, false).also {
                     host.addView(it, match)
                     it.visibility = View.GONE
-                    if (!pujaBound) {
-                        bindPuja(it)
-                        pujaBound = true
+                    if (!parayanaBound) {
+                        NityaParayanaBinder.bind(this, it)
+                        parayanaBound = true
                     }
                 }
             }
@@ -152,8 +142,12 @@ class NityaKarmaFragment : Fragment() {
             root.findViewById<TextView>(R.id.sandhyaBody).text = step.body
             val kala = SandhyaStore.session(requireContext(), kalaId)?.title.orEmpty()
             root.findViewById<TextView>(R.id.sandhyaCrumb).text =
-                listOf(OsLang.ui("nityakarma", OsLang.get(requireContext())), OsLang.ui("sandhya", OsLang.get(requireContext())), kala, step.title)
-                    .filter { it.isNotBlank() }.joinToString(" · ")
+                listOf(
+                    OsLang.ui("nityakarma", OsLang.get(requireContext())),
+                    OsLang.ui("sandhya", OsLang.get(requireContext())),
+                    kala,
+                    step.title
+                ).filter { it.isNotBlank() }.joinToString(" · ")
             root.findViewById<ProgressBar>(R.id.sandhyaProgress).progress = pct
             root.findViewById<View>(R.id.sandhyaPrev).isEnabled = sandhyaIndex > 0
             root.findViewById<View>(R.id.sandhyaNext).isEnabled = !sandhyaDone && sandhyaIndex < list.lastIndex
@@ -202,54 +196,11 @@ class NityaKarmaFragment : Fragment() {
         style(root.findViewById(R.id.sandhyaKalaSayam), kalaId == SandhyaStore.SAYAM)
     }
 
-    private fun bindPuja(root: View) {
-        val rites = listOf("ನಿತ್ಯ ಪೂಜೆ", "ವಿಷ್ಣು ಪೂಜೆ", "ಗಣಪತಿ ಪೂಜೆ")
-        val steps = listOf(
-            "ಸಂಕಲ್ಪ" to "ಶ್ರೀಮದ್ ಭಾರತವರ್ಷೇ ಭರತಖಂಡೇ …\n\nSample sankalpa. Masa / paksha / tithi bind from Panchanga later.",
-            "ಆವಾಹನ" to "ಆವಾಹನ sample.\nInvite the chosen murti for the selected ಪೂಜಾ ಕ್ರಮ.",
-            "ಉಪಚಾರ" to "ಷೋಡಶೋಪಚಾರ sample block.\nOffer the sequential upacharas for the active rite.",
-            "ಸಮರ್ಪಣ" to "ಸಮರ್ಪಣ / ಉದ್ವಾಸನ sample.\nClose the puja with dedication and farewell."
-        )
-        val riteView = root.findViewById<MaterialAutoCompleteTextView>(R.id.pujaRite)
-        MaterialChoices.bind(riteView, rites, 0) {
-            pujaRite = it
-            pujaIndex = 0
-            pujaDone = false
-            paintPuja(root, rites, steps)
-        }
-        fun paint() = paintPuja(root, rites, steps)
-        root.findViewById<View>(R.id.pujaPrev).setOnClickListener {
-            if (pujaIndex > 0) { pujaIndex--; pujaDone = false; paint() }
-        }
-        root.findViewById<View>(R.id.pujaNext).setOnClickListener {
-            if (pujaIndex < steps.lastIndex) { pujaIndex++; paint() }
-        }
-        root.findViewById<View>(R.id.pujaSkip).setOnClickListener {
-            pujaDone = false; pujaIndex = 0; paint()
-        }
-        root.findViewById<View>(R.id.pujaComplete).setOnClickListener {
-            pujaDone = true; pujaIndex = steps.lastIndex; paint()
-        }
-        paint()
-    }
-
-    private fun paintPuja(root: View, rites: List<String>, steps: List<Pair<String, String>>) {
-        pujaIndex = pujaIndex.coerceIn(0, steps.lastIndex)
-        val step = steps[pujaIndex]
-        val pct = if (pujaDone) 100 else ((pujaIndex + 1) * 100 / steps.size)
-        root.findViewById<TextView>(R.id.pujaStep).text = step.first
-        root.findViewById<TextView>(R.id.pujaBody).text = step.second
-        root.findViewById<TextView>(R.id.pujaCrumb).text =
-            "ನಿತ್ಯಕರ್ಮ · ಪೂಜೆ · ${rites.getOrElse(pujaRite) { rites.first() }} · ${step.first}"
-        root.findViewById<ProgressBar>(R.id.pujaProgress).progress = pct
-        root.findViewById<View>(R.id.pujaPrev).isEnabled = pujaIndex > 0
-        root.findViewById<View>(R.id.pujaNext).isEnabled = !pujaDone && pujaIndex < steps.lastIndex
-    }
-
     companion object {
         const val TAB_SANDHYA = "sandhya"
         const val TAB_JAPA = "japa"
-        const val TAB_PUJA = "puja"
+        const val TAB_NITYA = "nitya"
+        private val TABS = listOf(TAB_SANDHYA, TAB_JAPA, TAB_NITYA)
         private const val ARG_TAB = "tab"
 
         fun create(tab: String = TAB_SANDHYA) = NityaKarmaFragment().apply {

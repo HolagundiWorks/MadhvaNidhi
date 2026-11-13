@@ -22,7 +22,7 @@ import kotlinx.coroutines.withContext
 import java.util.Calendar
 
 class DashboardFragment : Fragment() {
-    private lateinit var japa: JapaStore
+    private var japa: JapaStore? = null
     private lateinit var practice: PracticeDayStore
     private var panchangaJob: kotlinx.coroutines.Job? = null
 
@@ -30,12 +30,33 @@ class DashboardFragment : Fragment() {
         inflater.inflate(R.layout.page_dashboard, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        japa = JapaStore(requireContext())
         practice = PracticeDayStore(requireContext())
-        bindPanchanga(view)
-        bindJapa(view)
+        wireNav(view)
         bindSandhya(view)
         bindStotra(view)
+        // Date label is cheap; live tithi/japa wait for IO (MasterKey / network).
+        paintDate(view)
+        viewLifecycleOwner.lifecycleScope.launch {
+            val app = requireContext().applicationContext
+            val store = withContext(Dispatchers.IO) { JapaStore(app) }
+            if (!isAdded) return@launch
+            japa = store
+            bindJapa(view)
+        }
+        bindPanchanga(view)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        view?.let { root ->
+            if (japa != null) bindJapa(root)
+            bindSandhya(root)
+            bindStotra(root)
+            bindPanchanga(root)
+        }
+    }
+
+    private fun wireNav(view: View) {
         view.findViewById<MaterialButton>(R.id.dashboardOpenPanchanga).setOnClickListener {
             (activity as? LauncherActivity)?.navigateTo("desk")
         }
@@ -56,17 +77,7 @@ class DashboardFragment : Fragment() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        view?.let {
-            bindJapa(it)
-            bindSandhya(it)
-            bindStotra(it)
-            bindPanchanga(it)
-        }
-    }
-
-    private fun bindPanchanga(view: View) {
+    private fun paintDate(view: View) {
         val lang = OsLang.get(requireContext())
         val date = PanchangaStore.dateKey()
         val cal = Calendar.getInstance().apply {
@@ -74,6 +85,12 @@ class DashboardFragment : Fragment() {
             if (parts.size == 3) set(parts[0].toInt(), parts[1].toInt() - 1, parts[2].toInt())
         }
         view.findViewById<TextView>(R.id.dashboardDate).text = OsLang.dateLine(cal, lang)
+    }
+
+    private fun bindPanchanga(view: View) {
+        val lang = OsLang.get(requireContext())
+        val date = PanchangaStore.dateKey()
+        paintDate(view)
         panchangaJob?.cancel()
         panchangaJob = viewLifecycleOwner.lifecycleScope.launch {
             val day = withContext(Dispatchers.IO) {
@@ -96,17 +113,18 @@ class DashboardFragment : Fragment() {
     }
 
     private fun bindJapa(view: View) {
-        val state = japa.state()
+        val store = japa ?: return
+        val state = store.state()
         view.findViewById<TextView>(R.id.dashboardJapaCount).text = state.current.toString()
         val malas = if (state.target > 0) state.current / state.target else 0
         view.findViewById<TextView>(R.id.dashboardJapaMeta).text =
             getString(R.string.dashboard_japa_meta, state.current, malas, state.target)
         view.findViewById<MaterialButton>(R.id.dashboardJapaInc).setOnClickListener {
-            japa.add(1)
+            store.add(1)
             bindJapa(view)
         }
         view.findViewById<MaterialButton>(R.id.dashboardJapaUndo).setOnClickListener {
-            japa.undo()
+            store.undo()
             bindJapa(view)
         }
     }

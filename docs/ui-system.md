@@ -12,12 +12,14 @@
 
 ## Destinations
 
-Primary rail: Dashboard, Panchanga, Nitya Karma, Grantha, Bhakti Sangeeta, Gruha Samskruti, User, Settings. Child features open from hub pages. **User** is frozen (`docs/frozen-user-profile.md`): view/edit profile + Fluid MultiSelect diksha/japa mantras + AES-GCM vault + passphrase `.mnbackup`; **Settings** holds appearance (theme, language, text size). Vault helper: `prototypes/user-vault.js`.
+Primary rail: Dashboard, Panchanga, Nitya Karma, Puja, Grantha, Bhakti Sangeeta, Gruha Samskruti, User, Settings. Child features open from hub pages. **User** is frozen (`docs/frozen-user-profile.md`): view/edit profile + Fluid MultiSelect diksha/japa mantras + AES-GCM vault + passphrase `.mnbackup`; **Settings** holds appearance (theme, language, text size). Vault helper: `prototypes/user-vault.js`.
 
 - **Dashboard** — peer Carbon tiles (selected date, Japa, Sandhya, Stotra, quick actions). Full-width content; rail icon is Carbon **Template**. No 30:70 split.
 - **Single-tile pages** — if a destination has only one content tile/panel, that layer is removed and the content sits directly on the screen background (multi-tile pages keep cards).
 - **Panchanga** — **frozen** 30:70 context / calendar only on this screen (see contract). Facts are a definition list; day tiles are borderless Carbon tiles with Yellow 30 ekadashi alert. Other destinations stay full-width.
-- **Nitya Karma** — Carbon **Tabs** for children (ಸಂಧ್ಯಾವಂದನೆ · ಜಪ · ಪೂಜೆ) in shell and menu-pages; Japa uses `prototypes/japa-session.js` (count / mala / goal).
+- **Nitya Karma** — Carbon **Tabs** for children (ಸಂಧ್ಯಾವಂದನೆ · ಜಪ · ನಿತ್ಯ ಪಾರಾಯಣ) in shell and menu-pages; Japa uses `prototypes/japa-session.js` (count / mala / goal).
+- **Puja** — standalone rail destination (`docs/frozen-nitya-puja.md`); Sandhya-parity step chrome with rite select.
+- **Grantha** — Stotra, Sukta, Mantra, Namavali (Nitya Parayana lives under Nitya Karma).
 - Reading, Aayadi, and section browse screens: mockups in `prototypes/menu-pages/`; Android mapping deferred.
 
 ## Preview

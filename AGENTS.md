@@ -25,7 +25,7 @@ Related previews / freezes:
 
 - `prototypes/panchanga/` — **frozen** Panchanga (`docs/frozen-panchanga-shell.md`)
 - `prototypes/app-shell/` `#view-user` — **frozen** User (`docs/frozen-user-profile.md`)
-- Nitya tabs — **frozen** Sandhya / Japa / Puja (`docs/frozen-nitya-sandhya.md`, `docs/frozen-nitya-japa.md`, `docs/frozen-nitya-puja.md`)
+- Nitya tabs — **frozen** Sandhya / Japa (`docs/frozen-nitya-sandhya.md`, `docs/frozen-nitya-japa.md`) plus **ನಿತ್ಯ ಪಾರಾಯಣ** tab; **Puja** is a standalone rail destination (`docs/frozen-nitya-puja.md`)
 - `prototypes/menu-pages/` — hub / child destination mockups (parity)
 
 ## Implementation policy
@@ -66,7 +66,7 @@ MadhvaNidhi is landscape-exclusive on mockup and device.
 ## Validation checklist
 
 - [ ] Landscape only
-- [ ] Nitya tabbed Sandhya / Japa / Puja match freeze docs
+- [ ] Nitya tabbed Sandhya / Japa / Parayana match freeze docs; Puja is its own rail item
 - [ ] User / Panchanga respect existing freeze contracts
 - [ ] Carbon styling preserved; Kannada readable
 - [ ] Debug build installs on device

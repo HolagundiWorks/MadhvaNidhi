@@ -116,17 +116,17 @@
 
     <!-- Content switcher choice (Panchanga paksha) — Carbon pattern on Material button -->
     <style name="Widget.Carbon.ContentSwitcher.Item" parent="Widget.Carbon.Button.Ghost">
-        <item name="android:minHeight">@dimen/carbon_layout_size_height_lg</item>
+        <item name="android:minHeight">@dimen/shell_content_switcher_height</item>
         <item name="android:minWidth">0dp</item>
         <item name="android:paddingStart">@dimen/carbon_spacing_05</item>
         <item name="android:paddingEnd">@dimen/carbon_spacing_05</item>
-        <item name="android:textAppearance">@style/TextAppearance.Carbon.Label01</item>
-        <item name="android:textColor">@color/carbon_text</item>
+        <item name="android:textAppearance">@style/TextAppearance.Carbon.BodyCompact01</item>
+        <item name="android:textColor">@color/carbon_text_secondary</item>
         <item name="backgroundTint">@null</item>
         <item name="android:background">@drawable/bg_paksha_choice</item>
         <item name="iconPadding">@dimen/carbon_spacing_03</item>
-        <item name="iconTint">@color/carbon_icon_primary</item>
-        <item name="rippleColor">@color/carbon_layer_high</item>
+        <item name="iconTint">@color/carbon_icon_secondary</item>
+        <item name="rippleColor">@color/carbon_layer_hover</item>
     </style>
     <style name="Widget.MadhvaNidhi.PakshaChoice" parent="Widget.Carbon.ContentSwitcher.Item" />
 

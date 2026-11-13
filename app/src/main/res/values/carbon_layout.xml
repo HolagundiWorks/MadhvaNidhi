@@ -27,7 +27,14 @@
         <item name="android:textSize">16sp</item><item name="lineHeight">24sp</item>
         <item name="android:textColor">@color/carbon_text</item>
     </style>
-    <style name="TextAppearance.Carbon.HeadingCompact01" parent="TextAppearance.Carbon.Body02">
+    <!-- Carbon heading-compact-01: 14/18 @ 600 -->
+    <style name="TextAppearance.Carbon.HeadingCompact01" parent="TextAppearance.Carbon.BodyCompact01">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">18sp</item>
+    </style>
+    <!-- Carbon heading-compact-02: 16/22 @ 600 -->
+    <style name="TextAppearance.Carbon.HeadingCompact02" parent="TextAppearance.Carbon.Body02">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">16sp</item>
         <item name="lineHeight">22sp</item>
