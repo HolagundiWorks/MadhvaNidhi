@@ -624,14 +624,16 @@
       "items": [
         {
           "id": "dasa_001",
-          "kn": "ಅಂಧಾಂತಮಸ ಪ್ರಾಪ್ತಿ",
+          "kn": "ಅಂಧಂತಮಸು ಇನ್ನಾರಿಗೆ",
           "sa": "",
-          "en": "Andhantamasa prapti",
+          "en": "Andhantamasu innarige",
           "type": "dasara_pada",
           "deity": "Ekadashi",
           "script": "kn",
-          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
-          "file": ""
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF",
+          "file": "haridasa/kanaka/andhantamasu_18.txt",
+          "author": "kanaka",
+          "license": "cc-by-sa-wikisource"
         },
         {
           "id": "dasa_002",
@@ -679,14 +681,16 @@
         },
         {
           "id": "dasa_006",
-          "kn": "ಆನೆ ಬಂದಿದೆ",
+          "kn": "ಆನೆ ಬಂದಿದೆ ಇದಿಗೊ",
           "sa": "",
-          "en": "Aane bandhidhe",
+          "en": "Aane bandide idigo",
           "type": "dasara_pada",
           "deity": "Krishna",
           "script": "kn",
-          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
-          "file": ""
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF",
+          "file": "haridasa/kanaka/ane_16.txt",
+          "author": "kanaka",
+          "license": "cc-by-sa-wikisource"
         },
         {
           "id": "dasa_007",
@@ -1297,14 +1301,16 @@
         },
         {
           "id": "dasa_yenu_kaarana",
-          "kn": "ಏನು ಕಾರಣ ಬಾಯ ತೆರೆದಿಯೋ",
+          "kn": "ಏನು ಕಾರಣ ಬಾಯಿ ತೆರೆದಿ",
           "sa": "",
-          "en": "Yenu Kaarana Baaya Theredhiyo",
+          "en": "Yenu kaarana baayi teredi",
           "type": "dasara_pada",
           "deity": "Narasimha",
           "script": "kn",
-          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
-          "file": ""
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF",
+          "file": "haridasa/kanaka/yenu_20.txt",
+          "author": "kanaka",
+          "license": "cc-by-sa-wikisource"
         },
         {
           "id": "dasa_vyasa_badari",
@@ -1679,7 +1685,7 @@
           "script": "kn",
           "file": "haridasa/purandara/duggani_embodu.txt",
           "license": "cc-by-sa-wikisource",
-          "url": ""
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%A6%E0%B3%81%E0%B2%97%E0%B3%8D%E0%B2%97%E0%B2%BE%E0%B2%A3%E0%B2%BF_%E0%B2%8E%E0%B2%82%E0%B2%AC%E0%B3%8A%E0%B2%A6%E0%B3%81"
         },
         {
           "id": "dasa_ws_na_madida_karma",
@@ -1692,7 +1698,7 @@
           "script": "kn",
           "file": "haridasa/purandara/na_madida_karma.txt",
           "license": "cc-by-sa-wikisource",
-          "url": ""
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%A8%E0%B2%BE_%E0%B2%AE%E0%B2%BE%E0%B2%A1%E0%B2%BF%E0%B2%A6_%E0%B2%95%E0%B2%B0%E0%B3%8D%E0%B2%AE"
         },
         {
           "id": "dasa_ws_yamanello_kaane",
@@ -1705,7 +1711,7 @@
           "script": "kn",
           "file": "haridasa/purandara/yamanello_kaane.txt",
           "license": "cc-by-sa-wikisource",
-          "url": ""
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%AF%E0%B2%AE%E0%B2%A8%E0%B3%86%E0%B2%B2%E0%B3%8D%E0%B2%B2%E0%B3%8B_%E0%B2%95%E0%B2%BE%E0%B2%A3%E0%B3%86%E0%B2%A8%E0%B3%86%E0%B2%82%E0%B2%A6%E0%B3%8D%E0%B2%B9%E0%B3%87%E0%B2%B3%E0%B2%AC%E0%B3%87%E0%B2%A1"
         },
         {
           "id": "dasa_ws_yake_nirdayanaade",
@@ -1718,7 +1724,7 @@
           "script": "kn",
           "file": "haridasa/purandara/yake_nirdayanaade.txt",
           "license": "cc-by-sa-wikisource",
-          "url": ""
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%AF%E0%B2%BE%E0%B2%95%E0%B3%86_%E0%B2%A8%E0%B2%BF%E0%B2%B0%E0%B3%8D%E0%B2%A6%E0%B2%AF%E0%B2%A8%E0%B2%BE%E0%B2%A6%E0%B3%86_%E0%B2%8E%E0%B2%B2%E0%B3%8A_%E0%B2%A6%E0%B3%87%E0%B2%B5%E0%B2%A8%E0%B3%86"
         },
         {
           "id": "dasa_ws_yake_moorkhanaadyo",
@@ -1731,7 +1737,7 @@
           "script": "kn",
           "file": "haridasa/purandara/yake_moorkhanaadyo.txt",
           "license": "cc-by-sa-wikisource",
-          "url": ""
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%AF%E0%B2%BE%E0%B2%95%E0%B3%86_%E0%B2%AE%E0%B3%82%E0%B2%B0%E0%B3%8D%E0%B2%96%E0%B2%A8%E0%B2%BE%E0%B2%A6%E0%B3%8D%E0%B2%AF%E0%B3%8B_%E0%B2%AE%E0%B2%A8%E0%B3%81%E0%B2%9C"
         },
         {
           "id": "dasa_ws_yakennoLinaitu",
@@ -1744,7 +1750,7 @@
           "script": "kn",
           "file": "haridasa/purandara/yakennoLinaitu.txt",
           "license": "cc-by-sa-wikisource",
-          "url": ""
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%AF%E0%B2%BE%E0%B2%95%E0%B3%86%E0%B2%A8%E0%B3%8D%E0%B2%A8%E0%B3%8B%E0%B2%B3%E0%B2%BF%E0%B2%A8%E0%B2%BF%E0%B2%A4%E0%B3%81_%E0%B2%95%E0%B3%83%E0%B2%AA%E0%B3%86%E0%B2%AF%E0%B2%BF%E0%B2%B2%E0%B3%8D%E0%B2%B2_%E0%B2%B9%E0%B2%B0%E0%B2%BF%E0%B2%AF%E0%B3%86"
         },
         {
           "id": "dasa_ws_yadava_nee_baa_yadukula",
@@ -1757,7 +1763,7 @@
           "script": "kn",
           "file": "haridasa/purandara/yadava_nee_baa_yadukula.txt",
           "license": "cc-by-sa-wikisource",
-          "url": ""
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%AF%E0%B2%BE%E0%B2%A6%E0%B2%B5_%E0%B2%A8%E0%B3%80_%E0%B2%AC%E0%B2%BE_%E0%B2%AF%E0%B2%A6%E0%B3%81%E0%B2%95%E0%B3%81%E0%B2%B2_%E0%B2%A8%E0%B2%82%E0%B2%A6%E0%B2%A8"
         },
         {
           "id": "dasa_ws_yaru_olidarenu",
@@ -1770,7 +1776,7 @@
           "script": "kn",
           "file": "haridasa/purandara/yaru_olidarenu.txt",
           "license": "cc-by-sa-wikisource",
-          "url": ""
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%AF%E0%B2%BE%E0%B2%B0%E0%B3%81_%E0%B2%92%E0%B2%B2%E0%B2%BF%E0%B2%A6%E0%B2%B0%E0%B3%87%E0%B2%A8%E0%B3%81"
         },
         {
           "id": "dasa_ws_yare_bandavaru",
@@ -1783,7 +1789,7 @@
           "script": "kn",
           "file": "haridasa/purandara/yare_bandavaru.txt",
           "license": "cc-by-sa-wikisource",
-          "url": ""
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%AF%E0%B2%BE%E0%B2%B0%E0%B3%86_%E0%B2%AC%E0%B2%82%E0%B2%A6%E0%B2%B5%E0%B2%B0%E0%B3%81_%E0%B2%AE%E0%B2%A8%E0%B3%86%E0%B2%97%E0%B3%86"
         },
         {
           "id": "dasa_ws_yare_rangana",
@@ -1796,7 +1802,7 @@
           "script": "kn",
           "file": "haridasa/purandara/yare_rangana.txt",
           "license": "cc-by-sa-wikisource",
-          "url": ""
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%AF%E0%B2%BE%E0%B2%B0%E0%B3%86_%E0%B2%B0%E0%B2%82%E0%B2%97%E0%B2%A8_%E0%B2%AF%E0%B2%BE%E0%B2%B0%E0%B3%86_%E0%B2%95%E0%B3%83%E0%B2%B7%E0%B3%8D%E0%B2%A3%E0%B2%A8"
         },
         {
           "id": "dasa_ws_ragi_tandira",
@@ -1809,7 +1815,566 @@
           "script": "kn",
           "file": "haridasa/purandara/ragi_tandira.txt",
           "license": "cc-by-sa-wikisource",
-          "url": ""
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%B0%E0%B2%BE%E0%B2%97%E0%B2%BF_%E0%B2%A4%E0%B2%82%E0%B2%A6%E0%B3%80%E0%B2%B0%E0%B2%BE_%E0%B2%AD%E0%B2%BF%E0%B2%95%E0%B3%8D%E0%B2%B7%E0%B2%95%E0%B3%86_%E0%B2%B0%E0%B2%BE%E0%B2%97%E0%B2%BF_%E0%B2%A4%E0%B2%82%E0%B2%A6%E0%B3%80%E0%B2%B0%E0%B2%BE"
+        },
+        {
+          "id": "dasa_ws_krishnaa_baro",
+          "kn": "krishnaa baro",
+          "sa": "",
+          "en": "krishnaa baro",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/krishnaa_baro.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B3%83%E0%B2%B7%E0%B3%8D%E0%B2%A3%E0%B2%BE_%E0%B2%AC%E0%B2%BE%E0%B2%B0%E0%B3%8B"
+        },
+        {
+          "id": "dasa_ws_giliyu_panjaradollilla",
+          "kn": "giliyu panjaradollilla",
+          "sa": "",
+          "en": "giliyu panjaradollilla",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/giliyu_panjaradollilla.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%97%E0%B2%BF%E0%B2%B3%E0%B2%BF%E0%B2%AF%E0%B3%81_%E0%B2%AA%E0%B2%82%E0%B2%9C%E0%B2%B0%E0%B2%A6%E0%B3%8A%E0%B2%B3%E0%B2%BF%E0%B2%B2%E0%B3%8D%E0%B2%B2"
+        },
+        {
+          "id": "dasa_ws_tallanasidiru_kandya",
+          "kn": "tallanasidiru kandya",
+          "sa": "",
+          "en": "tallanasidiru kandya",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/kanaka/tallanasidiru_kandya.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%A4%E0%B2%B2%E0%B3%8D%E0%B2%B2%E0%B2%A3%E0%B2%B8%E0%B2%BF%E0%B2%A6%E0%B2%BF%E0%B2%B0%E0%B3%81_%E0%B2%95%E0%B2%82%E0%B2%A1%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_teliso_illa",
+          "kn": "teliso illa",
+          "sa": "",
+          "en": "teliso illa",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/teliso_illa.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%A4%E0%B3%87%E0%B2%B2%E0%B2%BF%E0%B2%B8%E0%B3%8A_%E0%B2%87%E0%B2%B2%E0%B3%8D%E0%B2%B2_%E0%B2%AE%E0%B3%81%E0%B2%B3%E0%B3%81%E0%B2%97%E0%B2%BF%E0%B2%B8%E0%B3%8A"
+        },
+        {
+          "id": "dasa_ws_yaru_bittaru_kaiya",
+          "kn": "yaru bittaru kaiya",
+          "sa": "",
+          "en": "yaru bittaru kaiya",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/yaru_bittaru_kaiya.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%AF%E0%B2%BE%E0%B2%B0%E0%B3%81_%E0%B2%AC%E0%B2%BF%E0%B2%9F%E0%B3%8D%E0%B2%9F%E0%B2%B0%E0%B3%82_%E0%B2%95%E0%B3%88%E0%B2%AF_%E0%B2%A8%E0%B3%80_%E0%B2%AC%E0%B2%BF%E0%B2%A1%E0%B2%A6%E0%B2%BF%E0%B2%B0%E0%B3%81"
+        },
+        {
+          "id": "dasa_ws_yaroo_sangada",
+          "kn": "yaroo sangada",
+          "sa": "",
+          "en": "yaroo sangada",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/yaroo_sangada.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%AF%E0%B2%BE%E0%B2%B0%E0%B3%82_%E0%B2%B8%E0%B2%82%E0%B2%97%E0%B2%A1_%E0%B2%AC%E0%B2%BE%E0%B2%B9%E0%B3%8B%E0%B2%B0%E0%B2%BF%E0%B2%B2%E0%B3%8D%E0%B2%B2"
+        },
+        {
+          "id": "dasa_ws_ambujadalakshage_13",
+          "kn": "ambujadalakshage 13",
+          "sa": "",
+          "en": "ambujadalakshage 13",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/ambujadalakshage_13.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_ajnani_kanaka_18",
+          "kn": "ajnani kanaka 18",
+          "sa": "",
+          "en": "ajnani kanaka 18",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/ajnani_kanaka_18.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b285e0b29fe0b3",
+          "kn": "kanaka e0b285e0b29fe0b3",
+          "sa": "",
+          "en": "kanaka e0b285e0b29fe0b3",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b285e0b29fe0b3.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b285e0b2a1e0b2",
+          "kn": "kanaka e0b285e0b2a1e0b2",
+          "sa": "",
+          "en": "kanaka e0b285e0b2a1e0b2",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b285e0b2a1e0b2.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b285e0b2a3e0b3",
+          "kn": "kanaka e0b285e0b2a3e0b3",
+          "sa": "",
+          "en": "kanaka e0b285e0b2a3e0b3",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b285e0b2a3e0b3.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b285e0b2ade0b3",
+          "kn": "kanaka e0b285e0b2ade0b3",
+          "sa": "",
+          "en": "kanaka e0b285e0b2ade0b3",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b285e0b2ade0b3.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b285e0b2b0e0b2",
+          "kn": "kanaka e0b285e0b2b0e0b2",
+          "sa": "",
+          "en": "kanaka e0b285e0b2b0e0b2",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b285e0b2b0e0b2.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b285e0b2b9e0b2",
+          "kn": "kanaka e0b285e0b2b9e0b2",
+          "sa": "",
+          "en": "kanaka e0b285e0b2b9e0b2",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b285e0b2b9e0b2.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b285e0b2b9e0b3",
+          "kn": "kanaka e0b285e0b2b9e0b3",
+          "sa": "",
+          "en": "kanaka e0b285e0b2b9e0b3",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b285e0b2b9e0b3.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b28620e0b2b5e0",
+          "kn": "kanaka e0b28620e0b2b5e0",
+          "sa": "",
+          "en": "kanaka e0b28620e0b2b5e0",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b28620e0b2b5e0.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b286e0b2a4e0b2",
+          "kn": "kanaka e0b286e0b2a4e0b2",
+          "sa": "",
+          "en": "kanaka e0b286e0b2a4e0b2",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b286e0b2a4e0b2.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_ane_18",
+          "kn": "ane 18",
+          "sa": "",
+          "en": "ane 18",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/ane_18.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_ane_13",
+          "kn": "ane 13",
+          "sa": "",
+          "en": "ane 13",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/ane_13.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b286e0b2b0e0b2",
+          "kn": "kanaka e0b286e0b2b0e0b2",
+          "sa": "",
+          "en": "kanaka e0b286e0b2b0e0b2",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b286e0b2b0e0b2.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b286e0b2b0e0b3",
+          "kn": "kanaka e0b286e0b2b0e0b3",
+          "sa": "",
+          "en": "kanaka e0b286e0b2b0e0b3",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b286e0b2b0e0b3.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b286e0b2b520e0",
+          "kn": "kanaka e0b286e0b2b520e0",
+          "sa": "",
+          "en": "kanaka e0b286e0b2b520e0",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b286e0b2b520e0.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b286e0b2b5e0b3",
+          "kn": "kanaka e0b286e0b2b5e0b3",
+          "sa": "",
+          "en": "kanaka e0b286e0b2b5e0b3",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b286e0b2b5e0b3.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b287e0b282e0b2",
+          "kn": "kanaka e0b287e0b282e0b2",
+          "sa": "",
+          "en": "kanaka e0b287e0b282e0b2",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b287e0b282e0b2.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b287e0b2a6e0b3",
+          "kn": "kanaka e0b287e0b2a6e0b3",
+          "sa": "",
+          "en": "kanaka e0b287e0b2a6e0b3",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b287e0b2a6e0b3.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b287e0b2b0e0b2",
+          "kn": "kanaka e0b287e0b2b0e0b2",
+          "sa": "",
+          "en": "kanaka e0b287e0b2b0e0b2",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b287e0b2b0e0b2.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b287e0b2b7e0b3",
+          "kn": "kanaka e0b287e0b2b7e0b3",
+          "sa": "",
+          "en": "kanaka e0b287e0b2b7e0b3",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b287e0b2b7e0b3.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b28820e0b2aae0",
+          "kn": "kanaka e0b28820e0b2aae0",
+          "sa": "",
+          "en": "kanaka e0b28820e0b2aae0",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b28820e0b2aae0.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b28820e0b2b8e0",
+          "kn": "kanaka e0b28820e0b2b8e0",
+          "sa": "",
+          "en": "kanaka e0b28820e0b2b8e0",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b28820e0b2b8e0.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b288e0b2a4e0b2",
+          "kn": "kanaka e0b288e0b2a4e0b2",
+          "sa": "",
+          "en": "kanaka e0b288e0b2a4e0b2",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b288e0b2a4e0b2.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b295e0b387e0b2",
+          "kn": "kanaka e0b295e0b387e0b2",
+          "sa": "",
+          "en": "kanaka e0b295e0b387e0b2",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b295e0b387e0b2.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b28ae0b2b0e0b2",
+          "kn": "kanaka e0b28ae0b2b0e0b2",
+          "sa": "",
+          "en": "kanaka e0b28ae0b2b0e0b2",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b28ae0b2b0e0b2.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b28ee0b282e0b2",
+          "kn": "kanaka e0b28ee0b282e0b2",
+          "sa": "",
+          "en": "kanaka e0b28ee0b282e0b2",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b28ee0b282e0b2.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b28ee0b2a8e0b3",
+          "kn": "kanaka e0b28ee0b2a8e0b3",
+          "sa": "",
+          "en": "kanaka e0b28ee0b2a8e0b3",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b28ee0b2a8e0b3.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b28ee0b2b2e0b3",
+          "kn": "kanaka e0b28ee0b2b2e0b3",
+          "sa": "",
+          "en": "kanaka e0b28ee0b2b2e0b3",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b28ee0b2b2e0b3.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b28ee0b2b7e0b3",
+          "kn": "kanaka e0b28ee0b2b7e0b3",
+          "sa": "",
+          "en": "kanaka e0b28ee0b2b7e0b3",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b28ee0b2b7e0b3.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b28fe0b2b3e0b3",
+          "kn": "kanaka e0b28fe0b2b3e0b3",
+          "sa": "",
+          "en": "kanaka e0b28fe0b2b3e0b3",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b28fe0b2b3e0b3.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b28ee0b2b3e0b3",
+          "kn": "kanaka e0b28ee0b2b3e0b3",
+          "sa": "",
+          "en": "kanaka e0b28ee0b2b3e0b3",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b28ee0b2b3e0b3.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b28fe0b295e0b3",
+          "kn": "kanaka e0b28fe0b295e0b3",
+          "sa": "",
+          "en": "kanaka e0b28fe0b295e0b3",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b28fe0b295e0b3.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b28fe0b2a8e0b2",
+          "kn": "kanaka e0b28fe0b2a8e0b2",
+          "sa": "",
+          "en": "kanaka e0b28fe0b2a8e0b2",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b28fe0b2a8e0b2.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_yenu_19",
+          "kn": "yenu 19",
+          "sa": "",
+          "en": "yenu 19",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/yenu_19.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_yenu_18",
+          "kn": "yenu 18",
+          "sa": "",
+          "en": "yenu 18",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/yenu_18.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_kanaka_e0b28fe0b2a8e0b3",
+          "kn": "kanaka e0b28fe0b2a8e0b3",
+          "sa": "",
+          "en": "kanaka e0b28fe0b2a8e0b3",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "kanaka",
+          "script": "kn",
+          "file": "haridasa/kanaka/kanaka_e0b28fe0b2a8e0b3.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%A8%E0%B2%95%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF"
         }
       ]
     },

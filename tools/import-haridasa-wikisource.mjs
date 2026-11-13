@@ -175,6 +175,12 @@ const slugByTitle = {
   "ಯಾರೆ ರಂಗನ ಯಾರೆ ಕೃಷ್ಣನ": "purandara/yare_rangana.txt",
   "ರಾಗಿ ತಂದೀರಾ ಭಿಕ್ಷಕೆ ರಾಗಿ ತಂದೀರಾ": "purandara/ragi_tandira.txt",
   "ಯಾದವ ನೀ ಬಾ ಯದುಕುಲ ನಂದನ": "purandara/yadava_nee_baa_yadukula.txt",
+  "ಕೃಷ್ಣಾ ಬಾರೋ": "purandara/krishnaa_baro.txt",
+  "ಗಿಳಿಯು ಪಂಜರದೊಳಿಲ್ಲ": "purandara/giliyu_panjaradollilla.txt",
+  "ತೇಲಿಸೊ ಇಲ್ಲ ಮುಳುಗಿಸೊ": "purandara/teliso_illa.txt",
+  "ಯಾರು ಬಿಟ್ಟರೂ ಕೈಯ ನೀ ಬಿಡದಿರು": "purandara/yaru_bittaru_kaiya.txt",
+  "ಯಾರೂ ಸಂಗಡ ಬಾಹೋರಿಲ್ಲ": "purandara/yaroo_sangada.txt",
+  "ತಲ್ಲಣಸಿದಿರು ಕಂಡ್ಯ": "kanaka/tallanasidiru_kandya.txt",
 };
 
 function titleFromWikiName(name) {

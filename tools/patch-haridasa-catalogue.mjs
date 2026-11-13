@@ -24,6 +24,10 @@ const idByHint = {
   "ಭಾಗ್ಯದ ಲಕ್ಷ್ಮೀ ಬಾರಮ್ಮ": "dasa_bhagyada",
   "ಆಡಿಸಿದಳೆಶೋದಾ ಜಗದೋದ್ಧಾರನ": "dasa_jagadodharana",
   "ಕೃಷ್ಣ ನೀ ಬೇಗನೆ ಬಾರೊ": "dasa_krishna_baaro",
+  // Empty-stub title variants ↔ Wikisource Kanaka/Purandara texts
+  "ಅಂಧಂತಮಸು ಇನ್ನಾರಿಗೆ": "dasa_001",
+  "ಆನೆ ಬಂದಿದೆ ಇದಿಗೊ": "dasa_006",
+  "ಏನು ಕಾರಣ ಬಾಯಿ ತೆರೆದಿ": "dasa_yenu_kaarana",
 };
 
 function deityGuess(title) {
@@ -66,11 +70,11 @@ const onDisk = walk(textsRoot).map((rel) => ({
 }));
 
 const byRel = new Map();
-for (const row of [...imported.map((r) => ({
-  ...r,
-  file: r.file.startsWith("haridasa/") ? r.file : `haridasa/${r.file}`,
-})), ...onDisk]) {
-  byRel.set(row.file, row);
+// Disk discovery first; Wikisource imported.json wins on title/author/url.
+for (const row of onDisk) byRel.set(row.file, row);
+for (const r of imported) {
+  const file = r.file.startsWith("haridasa/") ? r.file : `haridasa/${r.file}`;
+  byRel.set(file, { ...r, file });
 }
 
 let linked = 0;
