@@ -106,17 +106,38 @@
     if (group === 'grantha') selectGranthaTab(key);
   }
 
-  function bindDayActions(scope) {
-    (scope || document).querySelectorAll('.nitya-day-actions').forEach((group) => {
-      group.querySelectorAll('[data-day-action]').forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const on = btn.getAttribute('aria-pressed') !== 'true';
-          group.querySelectorAll('[data-day-action]').forEach((peer) => {
-            peer.setAttribute('aria-pressed', peer === btn && on ? 'true' : 'false');
-          });
-        });
+  /** Japa Skip/Complete — day flags only; never auto-fill bead count. */
+  function bindJapaDayActions(scope) {
+    const panel = (scope || document).querySelector?.('[data-nitya-panel="japa"]') || scope;
+    if (!panel || !panel.querySelectorAll) return;
+    const group = panel.querySelector('.nitya-day-actions');
+    if (!group) return;
+    const practice = window.madhvaPracticeDay;
+    const statusEl = panel.querySelector('[data-japa-status]');
+
+    function paint() {
+      const skipped = !!practice?.japaSkipped?.();
+      const complete = !!practice?.japaComplete?.();
+      practice?.paintDayActions?.(group, skipped, complete);
+      if (statusEl) {
+        if (complete) statusEl.textContent = 'ಇಂದು ಪೂರ್ಣ · Completed';
+        else if (skipped) statusEl.textContent = 'ಇಂದು ಬಿಟ್ಟಿದೆ · Skipped';
+      }
+    }
+
+    group.querySelectorAll('[data-day-action]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const on = btn.getAttribute('aria-pressed') !== 'true';
+        if (btn.dataset.dayAction === 'complete') {
+          practice?.setJapaDay?.(!!on, false);
+        } else if (btn.dataset.dayAction === 'skip') {
+          practice?.setJapaDay?.(false, !!on);
+        }
+        paint();
+        window.madhvaPractice?.paintDashboard?.();
       });
     });
+    paint();
   }
 
   function bindSandhya(root) {
@@ -155,10 +176,14 @@
     const prevBtn = panel.querySelector('[data-sandhya-prev]');
     const nextBtn = panel.querySelector('[data-sandhya-next]');
 
+    const practice = window.madhvaPracticeDay;
+    const dayGroup = panel.querySelector('.nitya-day-actions');
+    let skipped = !!practice?.isSandhyaSkipped?.(kala);
+
     function render() {
       const item = PATHYAS[index] || PATHYAS[0];
       const step = Math.min(index + 1, PATHYAS.length);
-      const pct = done ? 100 : Math.round(((index + 1) / PATHYAS.length) * 100);
+      const pct = done ? 100 : skipped ? 0 : Math.min(99, Math.round(((index + 1) / PATHYAS.length) * 100));
       if (pathyEl) pathyEl.textContent = item.title;
       if (bodyEl) bodyEl.textContent = item.body;
       if (crumbEl) crumbEl.textContent = `ನಿತ್ಯಕರ್ಮ · ಸಂಧ್ಯಾವಂದನೆ · ${kalaLabels[kala]} · ${item.title}`;
@@ -166,13 +191,15 @@
       if (pctEl) pctEl.textContent = `${pct}%`;
       if (barEl) barEl.style.width = `${pct}%`;
       if (barWrap) barWrap.setAttribute('aria-valuenow', String(pct));
+      practice?.paintDayActions?.(dayGroup, skipped, done);
     }
 
     function goPrev() {
       if (index > 0) {
         index -= 1;
         done = false;
-        panel.querySelectorAll('[data-day-action]').forEach((b) => b.setAttribute('aria-pressed', 'false'));
+        skipped = false;
+        practice?.setSandhyaDay?.(kala, false, false);
         render();
       }
     }
@@ -180,9 +207,11 @@
     function goNext() {
       if (index < PATHYAS.length - 1) {
         index += 1;
-        if (index >= PATHYAS.length - 1) {
-          done = true;
-          window.madhvaPractice?.setSandhya(kala === 'madhyahna' ? 'madhya' : kala, true);
+        // Last pathya does not auto-complete — Complete FAB is explicit.
+        if (done || skipped) {
+          done = false;
+          skipped = false;
+          practice?.setSandhyaDay?.(kala, false, false);
         }
         render();
       }
@@ -196,8 +225,9 @@
         });
         kala = button.dataset.kala;
         index = 0;
-        done = false;
-        panel.querySelectorAll('[data-day-action]').forEach((b) => b.setAttribute('aria-pressed', 'false'));
+        skipped = !!practice?.isSandhyaSkipped?.(kala);
+        done = !!practice?.isSandhyaDone?.(kala);
+        if (done) index = PATHYAS.length - 1;
         render();
       });
     });
@@ -234,117 +264,100 @@
     panel.querySelectorAll('[data-day-action]').forEach((btn) => {
       btn.addEventListener('click', () => {
         const on = btn.getAttribute('aria-pressed') !== 'true';
-        panel.querySelectorAll('[data-day-action]').forEach((peer) => {
-          peer.setAttribute('aria-pressed', peer === btn && on ? 'true' : 'false');
-        });
-        if (btn.dataset.dayAction === 'complete' && on) {
-          done = true;
-          index = PATHYAS.length - 1;
-          window.madhvaPractice?.setSandhya(kala, true);
-        } else if (btn.dataset.dayAction === 'skip' && on) {
+        if (btn.dataset.dayAction === 'complete') {
+          done = !!on;
+          skipped = false;
+          if (on) index = PATHYAS.length - 1;
+          practice?.setSandhyaDay?.(kala, !!on, false);
+        } else if (btn.dataset.dayAction === 'skip') {
+          skipped = !!on;
           done = false;
-          index = 0;
-          window.madhvaPractice?.setSandhya(kala, false);
-        } else {
-          done = false;
+          if (on) index = 0;
+          practice?.setSandhyaDay?.(kala, false, !!on);
         }
         window.madhvaPractice?.paintDashboard?.();
         render();
       });
     });
 
+    skipped = !!practice?.isSandhyaSkipped?.(kala);
+    done = !!practice?.isSandhyaDone?.(kala);
+    if (done) index = PATHYAS.length - 1;
     render();
+  }
+
+  function bindParayana(root) {
+    const panel = (root || document).querySelector('[data-parayana-root]');
+    if (!panel) return;
+    const practice = window.madhvaPracticeDay;
+    const group = panel.querySelector('.nitya-day-actions');
+    if (!group) return;
+
+    function paint() {
+      practice?.paintDayActions?.(group, !!practice.parayanaSkipped?.(), !!practice.parayanaComplete?.());
+    }
+
+    group.querySelectorAll('[data-day-action]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const on = btn.getAttribute('aria-pressed') !== 'true';
+        if (btn.dataset.dayAction === 'complete') practice?.setParayanaDay?.(!!on, false);
+        else if (btn.dataset.dayAction === 'skip') practice?.setParayanaDay?.(false, !!on);
+        paint();
+      });
+    });
+    paint();
   }
 
   function bindPuja(root) {
     const panel = (root || document).querySelector('[data-puja-root]');
     if (!panel) return;
-    const STEPS = [
-      {
-        title: 'ಸಂಕಲ್ಪ',
-        body: 'ಶ್ರೀಮದ್ ಭಾರತವರ್ಷೇ ಭರತಖಂಡೇ …\nಶ್ರೀ ಶಾಲಿವಾಹನ ಶಕೇ ೧೯೪೮ ಪರಾಭವ ನಾಮ ಸಂವತ್ಸರೇ ಕಾರ್ತಿಕ ಮಾಸೇ ಶುಕ್ಲಪಕ್ಷೇ ತೃತೀಯಾಯಾಂ …\n\nSample sankalpa. Masa / paksha / tithi bind from Panchanga later.'
-      },
-      {
-        title: 'ಆವಾಹನ',
-        body: 'ಆವಾಹನ sample.\nInvite the chosen murti for the selected ಪೂಜಾ ಕ್ರಮ.'
-      },
-      {
-        title: 'ಉಪಚಾರ',
-        body: 'ಷೋಡಶೋಪಚಾರ sample block.\nOffer the sequential upacharas for the active rite.'
-      },
-      {
-        title: 'ಸಮರ್ಪಣ',
-        body: 'ಸಮರ್ಪಣ / ಉದ್ವಾಸನ sample.\nClose the puja with dedication and farewell.'
-      }
-    ];
+    const practice = window.madhvaPracticeDay;
+    const BODIES = {
+      nitya: 'ಸಂಕಲ್ಪ\nಶ್ರೀಮದ್ ಭಾರತವರ್ಷೇ ಭರತಖಂಡೇ …\nಶ್ರೀ ಶಾಲಿವಾಹನ ಶಕೇ ೧೯೪೮ ಪರಾಭವ ನಾಮ ಸಂವತ್ಸರೇ ಕಾರ್ತಿಕ ಮಾಸೇ ಶುಕ್ಲಪಕ್ಷೇ ತೃತೀಯಾಯಾಂ …\n\nಆವಾಹನ\nInvite the chosen murti for ನಿತ್ಯ ಪೂಜೆ.\n\nಉಪಚಾರ\nಷೋಡಶೋಪಚಾರ sample block. Offer the sequential upacharas.\n\nಸಮರ್ಪಣ\nಸಮರ್ಪಣ / ಉದ್ವಾಸನ. Close with dedication.',
+      vishnu: 'ಸಂಕಲ್ಪ\nವಿಷ್ಣು ಪೂಜೆ sample — continuous scroll.\n\nಆವಾಹನ · ಉಪಚಾರ · ಸಮರ್ಪಣ\nFull rite text scrolls in one pane.',
+      ganapati: 'ಸಂಕಲ್ಪ\nಗಣಪತಿ ಪೂಜೆ sample — continuous scroll.\n\nಆವಾಹನ · ಉಪಚಾರ · ಸಮರ್ಪಣ\nFull rite text scrolls in one pane.'
+    };
     const riteLabels = { nitya: 'ನಿತ್ಯ ಪೂಜೆ', vishnu: 'ವಿಷ್ಣು ಪೂಜೆ', ganapati: 'ಗಣಪತಿ ಪೂಜೆ' };
     let rite = 'nitya';
-    let index = 0;
-    let done = false;
 
     const stepEl = panel.querySelector('[data-puja-step]');
     const crumbEl = panel.querySelector('[data-puja-crumb]');
     const bodyEl = panel.querySelector('[data-puja-body]');
     const barEl = panel.querySelector('[data-puja-progress]');
     const barWrap = panel.querySelector('[data-puja-progressbar]');
-    const prevBtn = panel.querySelector('[data-puja-prev]');
-    const nextBtn = panel.querySelector('[data-puja-next]');
     const riteSelect = panel.querySelector('[data-puja-rite]');
+    const dayGroup = panel.querySelector('.nitya-day-actions');
 
     function render() {
-      const item = STEPS[index] || STEPS[0];
-      const pct = done ? 100 : Math.round(((index + 1) / STEPS.length) * 100);
       const riteLabel = riteLabels[rite] || riteLabels.nitya;
-      if (stepEl) stepEl.textContent = item.title;
-      if (bodyEl) bodyEl.textContent = item.body;
-      if (crumbEl) crumbEl.textContent = `ಪೂಜೆ · ${riteLabel} · ${item.title}`;
+      const done = !!practice?.pujaComplete?.();
+      const skipped = !!practice?.pujaSkipped?.();
+      const pct = done ? 100 : 0;
+      if (stepEl) stepEl.textContent = riteLabel;
+      if (bodyEl) bodyEl.textContent = BODIES[rite] || BODIES.nitya;
+      if (crumbEl) crumbEl.textContent = `ಪೂಜೆ · ${riteLabel}`;
       if (barEl) barEl.style.width = `${pct}%`;
       if (barWrap) barWrap.setAttribute('aria-valuenow', String(pct));
-      if (prevBtn) prevBtn.disabled = index <= 0;
-      if (nextBtn) nextBtn.disabled = done || index >= STEPS.length - 1;
       if (riteSelect && riteSelect.value !== rite) riteSelect.value = rite;
+      practice?.paintDayActions?.(dayGroup, skipped, done);
     }
 
     riteSelect?.addEventListener('change', () => {
       rite = riteSelect.value || 'nitya';
-      index = 0;
-      done = false;
-      panel.querySelectorAll('[data-day-action]').forEach((b) => b.setAttribute('aria-pressed', 'false'));
+      practice?.setPujaDay?.(false, false);
       render();
-    });
-
-    prevBtn?.addEventListener('click', () => {
-      if (index > 0) {
-        index -= 1;
-        done = false;
-        panel.querySelectorAll('[data-day-action]').forEach((b) => b.setAttribute('aria-pressed', 'false'));
-        render();
-      }
-    });
-
-    nextBtn?.addEventListener('click', () => {
-      if (index < STEPS.length - 1) {
-        index += 1;
-        render();
-      }
     });
 
     panel.querySelectorAll('[data-day-action]').forEach((btn) => {
       btn.addEventListener('click', () => {
         const on = btn.getAttribute('aria-pressed') !== 'true';
-        panel.querySelectorAll('[data-day-action]').forEach((peer) => {
-          peer.setAttribute('aria-pressed', peer === btn && on ? 'true' : 'false');
-        });
-        if (btn.dataset.dayAction === 'complete' && on) {
-          done = true;
-          index = STEPS.length - 1;
-        } else if (btn.dataset.dayAction === 'skip' && on) {
-          done = false;
-          index = 0;
-        } else {
-          done = false;
+        if (btn.dataset.dayAction === 'complete') {
+          practice?.setPujaDay?.(!!on, false);
+        } else if (btn.dataset.dayAction === 'skip') {
+          practice?.setPujaDay?.(false, !!on);
         }
         render();
+        window.madhvaPractice?.paintDashboard?.();
       });
     });
 
@@ -370,8 +383,9 @@
       });
     });
     bindSandhya(root);
-    bindDayActions(root.querySelector('[data-nitya-panel="japa"]'));
+    bindJapaDayActions(root.querySelector('[data-nitya-panel="japa"]'));
     window.madhvaJapaSession?.bind(root.querySelector('[data-japa-root]'));
+    bindParayana(root);
     bindPuja(document);
   }
 
@@ -384,6 +398,24 @@
     if (tithiEl && contextTithi) tithiEl.textContent = contextTithi.textContent.trim();
   }
 
+  function parentDest(id) {
+    if (id === 'dashboard') return null;
+    if (id === 'user') return 'settings';
+    if (destinations[id]) return 'dashboard';
+    return 'dashboard';
+  }
+
+  function goBack() {
+    const nav = byId('side-nav');
+    if (nav?.classList.contains('is-expanded')) {
+      closeNav();
+      return;
+    }
+    if (dest === 'settings' && window.consumeSettingsBack?.()) return;
+    const parent = parentDest(dest);
+    if (parent) navigate(parent);
+  }
+
   function navigate(id, child) {
     if (samskrutiIds.includes(id) || samskrutiIds.includes(child)) {
       selectSamskrutiTab(samskrutiIds.includes(id) ? id : child);
@@ -391,6 +423,10 @@
     }
     if (granthaIds.includes(id)) { child = id; id = "grantha"; }
     if (granthaIds.includes(child)) id = "grantha";
+    if (id === 'playlists' || child === 'playlists') {
+      id = 'sangeeta';
+      child = 'playlists';
+    }
     if (id === 'user') {
       window.selectSettingsTab('users');
       id = 'settings';
@@ -687,12 +723,22 @@
   }
   window.madhvaPractice = {
     setSandhya(session, done, date = dateKey()) {
+      if (window.madhvaPracticeDay?.setSandhya) {
+        window.madhvaPracticeDay.setSandhya(session, done, date);
+        return;
+      }
       const map = loadPractice();
       const row = map[date] || {};
       const key = session === 'madhya' ? 'madhyahna' : session;
       row[key] = !!done;
       map[date] = row;
       savePractice(map);
+    },
+    setJapaDay(complete, skipped, date = dateKey()) {
+      window.madhvaPracticeDay?.setJapaDay?.(complete, skipped, date);
+    },
+    setPujaDay(complete, skipped, date = dateKey()) {
+      window.madhvaPracticeDay?.setPujaDay?.(complete, skipped, date);
     },
     paintDashboard: paintDashboardPractice
   };
@@ -718,6 +764,7 @@
       cancelBtn: byId('user-cancel-btn'),
       status: byId('user-vault-status'),
       passphrase: byId('user-backup-passphrase'),
+      passphraseConfirm: byId('user-backup-passphrase-confirm'),
       backupBtn: byId('user-backup-btn'),
       restoreBtn: byId('user-restore-btn'),
       fileInput: byId('user-restore-file')
@@ -802,5 +849,12 @@
     });
   }
 
-  window.madhvaShell = { navigate, applyScale, showNityaTab };
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      goBack();
+    }
+  });
+
+  window.madhvaShell = { navigate, goBack, applyScale, showNityaTab };
 })();

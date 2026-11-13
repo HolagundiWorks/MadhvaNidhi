@@ -114,30 +114,20 @@ object JapaPadBinder {
         val skip = root.findViewById<MaterialButton>(R.id.japaSkip)
         val complete = root.findViewById<MaterialButton>(R.id.japaComplete)
         fun paintDayActions() {
-            skip.isSelected = practice.japaSkipped()
-            complete.isSelected = practice.japaComplete()
+            NityaDayChrome.paint(skip, practice.japaSkipped())
+            NityaDayChrome.paint(complete, practice.japaComplete())
         }
+        // Day flag only — never auto-fill remaining bead count (error prevention).
         complete.setOnClickListener {
             val on = !practice.japaComplete()
-            if (on) {
-                val counts = store.counts(activeId)
-                val need = (dailyGoal - counts.daily).coerceAtLeast(0)
-                val after = if (need > 0) store.add(need, activeId) else counts
-                practice.setJapaDay(complete = true, skipped = false)
-                paint(root, after, dailyGoal, practice)
-                root.findViewById<TextView>(R.id.japaStatus).text = "ಇಂದು ಪೂರ್ಣ · Completed"
-            } else {
-                practice.setJapaDay(complete = false, skipped = false)
-                paint(root, store.counts(activeId), dailyGoal, practice)
-            }
+            practice.setJapaDay(complete = on, skipped = false)
+            paint(root, store.counts(activeId), dailyGoal, practice)
             paintDayActions()
         }
         skip.setOnClickListener {
             val on = !practice.japaSkipped()
             practice.setJapaDay(complete = false, skipped = on)
             paint(root, store.counts(activeId), dailyGoal, practice)
-            root.findViewById<TextView>(R.id.japaStatus).text =
-                if (on) "ಇಂದು ಬಿಟ್ಟಿದೆ · Skipped" else cumulativeStatus(store.counts(activeId))
             paintDayActions()
         }
 

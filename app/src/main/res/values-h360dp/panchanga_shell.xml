@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Short landscape phones (~640×360): denser rail so 8 destinations fit without scrolling. -->
+<resources>
+    <dimen name="shell_rail_item_height">40dp</dimen>
+    <dimen name="shell_rail_item_gap">0dp</dimen>
+    <dimen name="shell_nav_toggle_size">40dp</dimen>
+    <dimen name="shell_nav_toggle_icon">20dp</dimen>
+</resources>

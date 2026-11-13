@@ -46,7 +46,7 @@
                 android:minWidth="0dp"
                 android:padding="0dp"
                 android:contentDescription="Skip today"
-                app:icon="@drawable/ic_nav_next"
+                app:icon="@drawable/ic_skip"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
                 app:cornerRadius="@dimen/carbon_corner_radius"
@@ -110,17 +110,19 @@
             android:background="@color/carbon_border" />
     </LinearLayout>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:clipToPadding="false">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/carbon_spacing_05">
+            android:padding="@dimen/carbon_spacing_05"
+            android:paddingBottom="@dimen/carbon_spacing_07">
 
             <TextView
                 android:id="@+id/pujaCrumb"
@@ -140,56 +142,5 @@
                 android:textColor="@color/carbon_text"
                 android:textIsSelectable="true" />
         </LinearLayout>
-    </ScrollView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingStart="@dimen/carbon_spacing_05"
-        android:paddingEnd="@dimen/carbon_spacing_05"
-        android:paddingTop="@dimen/carbon_spacing_03"
-        android:paddingBottom="@dimen/carbon_spacing_03"
-        android:background="@color/carbon_layer">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/pujaPrev"
-            style="@style/Widget.Carbon.Button.Tertiary.Icon"
-            android:layout_width="@dimen/carbon_layout_size_height_lg"
-            android:layout_height="@dimen/carbon_layout_size_height_lg"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:minWidth="0dp"
-            android:padding="0dp"
-            android:contentDescription="Previous step"
-            app:icon="@drawable/ic_nav_prev"
-            app:iconGravity="textStart"
-            app:iconPadding="0dp"
-            app:cornerRadius="@dimen/carbon_corner_radius"
-            app:strokeColor="@color/carbon_border"
-            app:strokeWidth="@dimen/carbon_border_width" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/pujaNext"
-            style="@style/Widget.Carbon.Button.Tertiary.Icon"
-            android:layout_width="@dimen/carbon_layout_size_height_lg"
-            android:layout_height="@dimen/carbon_layout_size_height_lg"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:minWidth="0dp"
-            android:padding="0dp"
-            android:contentDescription="Next step"
-            app:icon="@drawable/ic_nav_next"
-            app:iconGravity="textStart"
-            app:iconPadding="0dp"
-            app:cornerRadius="@dimen/carbon_corner_radius"
-            app:strokeColor="@color/carbon_border"
-            app:strokeWidth="@dimen/carbon_border_width" />
-    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

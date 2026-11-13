@@ -40,7 +40,7 @@
             android:minWidth="0dp"
             android:padding="0dp"
             android:contentDescription="Skip today"
-            app:icon="@drawable/ic_nav_next"
+            app:icon="@drawable/ic_skip"
             app:iconGravity="textStart"
             app:iconPadding="0dp"
             app:cornerRadius="@dimen/carbon_corner_radius"

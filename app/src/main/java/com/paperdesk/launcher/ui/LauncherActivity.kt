@@ -111,7 +111,7 @@ class LauncherActivity : AppCompatActivity() {
     }
 
     private fun showPage(pageId: String, nityaTab: String? = null, force: Boolean = false) {
-        val tabGroup = listOf("grantha", "samskruti").firstOrNull { pageId in ShellHubFragment.childrenFor(it) }
+        val tabGroup = ShellHubFragment.TAB_HUBS.firstOrNull { pageId in ShellHubFragment.childrenFor(it) }
         if (tabGroup != null) {
             showPage(tabGroup)
             (supportFragmentManager.findFragmentById(R.id.pageHost) as? GranthaFragment)?.selectReader(pageId)
@@ -149,7 +149,10 @@ class LauncherActivity : AppCompatActivity() {
         if (!::headerTitle.isInitialized) return
         val lang = OsLang.get(this)
         val page = currentPageId
-        val hideHeader = page in setOf("dashboard", "nityakarma", "puja", "settings", "grantha", "samskruti")
+        // Tab hubs show their own hubTitle; practice hubs have in-panel chrome.
+        val hideHeader = page in setOf(
+            "dashboard", "nityakarma", "puja", "settings", "grantha", "samskruti", "sangeeta"
+        )
         appHeader.visibility = if (hideHeader) View.GONE else View.VISIBLE
         headerRule.visibility = if (hideHeader) View.GONE else View.VISIBLE
         headerTitle.text =
@@ -242,13 +245,27 @@ class LauncherActivity : AppCompatActivity() {
         if (!page.isNullOrBlank()) navigateTo(page) else goHome()
     }
 
+    /** Hierarchical back: leaf → hub → dashboard (not flat dump to home). */
+    private fun parentPage(pageId: String): String? = when (pageId) {
+        "playlists" -> "sangeeta"
+        "stotra", "suktas", "mantras", "hadugalu", "namavali" -> "grantha"
+        "aayadi", "rangavalli", "recipes" -> "samskruti"
+        "user" -> "settings"
+        "dashboard" -> null
+        else -> if (pageId in ShellHubFragment.RAIL_IDS || pageId == "desk") "dashboard" else null
+    }
+
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (::shell.isInitialized && shell.close()) return
         if (supportFragmentManager.fragments.filterIsInstance<ReaderFragment>().any { it.closeSelector() }) return
         if (DeskLock.isLocked(this)) return
-        if (currentPageId != (pages.firstOrNull() ?: "dashboard")) goHome()
-        else super.onBackPressed()
+        if ((supportFragmentManager.findFragmentById(R.id.pageHost) as? SettingsFragment)?.consumeBack() == true) return
+        val parent = parentPage(currentPageId)
+        when {
+            parent != null -> navigateTo(parent)
+            else -> super.onBackPressed()
+        }
     }
 
     companion object {

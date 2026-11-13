@@ -18,13 +18,15 @@ Approved web-mockup contract for the **ಸಂಧ್ಯಾವಂದನೆ** tab i
 
 ## Behaviour
 
-- Kala change resets pathya index and clears day-action pressed state
+- Kala change resets pathya index and restores that kala’s persisted day-action state
 - No prev/next navigation buttons
-- Skip → index 0; Complete → last pathya + 100% progress
+- Floating progress hit target is **48px** tall; visual bar stays thin @ 50% opacity
+- Advancing onto the last pathya does **not** auto-complete — Complete FAB is explicit
+- Skip → index 0 + persisted skip flag; Complete → last pathya + 100% progress + persisted done
 - Landscape only; square corners; Carbon FABs / tokens only
 
 ## Android mapping notes
 
-`page_nitya_sandhya.xml` + `NityaKarmaFragment.bindSandhya`; Material icon buttons + translucent `ProgressBar` overlay (`carbon_progress_horizontal`, 50% alpha). Reuse `SandhyaStore` for steps.
+`page_nitya_sandhya.xml` + `NityaKarmaFragment.bindSandhya`; Material icon buttons + translucent `ProgressBar` inside a 48dp hit frame. Persist via `PracticeDayStore.setSandhyaDay` / `isSandhyaSkipped`. Reuse `SandhyaStore` for steps.
 
 On narrow landscape phones the five toolbar FABs use Carbon **sm (32dp)** so pathya + kala + skip/complete stay on one row without clipping; mockup reference size remains **md (40dp)**.

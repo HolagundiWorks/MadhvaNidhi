@@ -12,6 +12,14 @@ class SettingsFragment : Fragment(R.layout.page_settings_tabs) {
         view?.findViewById<TabLayout>(R.id.settingsTabs)?.getTabAt(1)?.select()
     }
 
+    /** Back from Users/Backup/Legal returns to UI Settings before leaving the hub. */
+    fun consumeBack(): Boolean {
+        val tabs = view?.findViewById<TabLayout>(R.id.settingsTabs) ?: return false
+        if (selected == 0) return false
+        tabs.getTabAt(0)?.select()
+        return true
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         selected = savedInstanceState?.getInt("tab") ?: 0
         val tabs = view.findViewById<TabLayout>(R.id.settingsTabs)

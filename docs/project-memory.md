@@ -1,6 +1,6 @@
 # MadhvaNidhi project memory
 
-Updated 13 November 2026. Reviewed source: `9d3b2423b9e8367b7a48f15b71f12fe12703a383` on `master`. `git pull --ff-only` reported already up to date. This file records current project decisions; verify Git status and newer commits before changing code.
+Updated 13 November 2026. UX audit pass complete: practice day flags (Sandhya skip, Japa/Puja/Parayana), Sandhya 48dp pathya hit + no auto-complete, backup passphrase confirm, nav toggle 48dp, hierarchical Back. Verify Git status before changing code.
 
 ## Current authority
 
@@ -21,11 +21,12 @@ Use the current repository mockups as the design authority. The earlier external
 Primary rail, in order: Dashboard → Panchanga → Nitya Karma → Puja → Grantha → Bhakti Sangeeta → Gruha Samskruti → Settings. Native `desk` corresponds to web `panchanga`.
 
 - Nitya Karma tabs: Sandhyavandana (`sandhya`), Japa (`japa`), Nitya Parayana (`nitya`). Puja is not a Nitya tab. Legacy Nitya/Puja links redirect to standalone Puja.
-- Grantha tabs: Stotra, Suktas, Mantras and Songs (Hadugalu). Namavali retains its existing reader route. Parayana lives under Nitya Karma.
-- Sangeeta: Playlists. Samskruti: Aayadi, Rangavalli, Recipes/Naivedya.
+- Grantha tabs: Stotra, Suktas, Mantras, Songs (Hadugalu), Namavali. Leaf ids remap into the Grantha tab host.
+- Sangeeta / Samskruti use the same contained-tab hub pattern (`GranthaFragment` groups). Sangeeta child: Playlists. Samskruti: Aayadi, Rangavalli, Recipes/Naivedya.
+- Expanded nav panel lists the 8 primary rail destinations only (not a flat child laundry list). Short landscape (`h360dp`) densifies rail rows to 40dp.
 - Dashboard is full-width peer tiles; the 30:70 split belongs only to Panchanga.
 - Settings contains UI Settings, Users and Backup. Android Backup transfers local profiles using passphrase-protected .mnprofiles files. The web preview retains its .mnbackup format. Users contains the frozen full-width view/edit profile, not the older registration dialog. Preserve fields, Fluid MultiSelect, per-mantra targets, AES-GCM vault and passphrase backup format. Language/theme/text size belong in Settings.
-- Japa goal tiles (11/101/1,001) change the daily goal, not completed repetitions. Reset restores the profile goal; the large plus increments completed count.
+- Japa goal tiles (11/101/1,001) change the daily goal, not completed repetitions. Reset restores the profile goal; the large plus increments completed count. Japa/Puja Skip·Complete are day flags only (no bead auto-fill). System/Escape Back: Settings child tab → UI → hub → Dashboard.
 
 ## Visual contract
 

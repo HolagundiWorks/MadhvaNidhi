@@ -35,22 +35,39 @@ class ProfileBackupFragment : Fragment(R.layout.page_profile_backup) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         view.findViewById<View>(R.id.exportProfiles).setOnClickListener {
-            if (hasPassphrase()) create.launch("MadhvaNidhi-profiles.mnprofiles")
+            if (hasPassphrase(requireConfirm = true)) create.launch("MadhvaNidhi-profiles.mnprofiles")
         }
         view.findViewById<View>(R.id.importProfiles).setOnClickListener {
-            if (hasPassphrase()) open.launch(arrayOf("*/*"))
+            // Restore only needs the known passphrase — no confirm field.
+            if (hasPassphrase(requireConfirm = false)) {
+                open.launch(arrayOf("application/octet-stream", "application/*", "*/*"))
+            }
         }
     }
 
-    private fun hasPassphrase(): Boolean {
-        val input = requireView().findViewById<EditText>(R.id.backupPassword)
-        if (input.length() >= 4) return true
-        input.error = "Enter at least four characters"
-        return false
+    private fun hasPassphrase(requireConfirm: Boolean): Boolean {
+        val root = requireView()
+        val input = root.findViewById<EditText>(R.id.backupPassword)
+        val confirm = root.findViewById<EditText>(R.id.backupPasswordConfirm)
+        input.error = null
+        confirm.error = null
+        if (input.length() < 4) {
+            input.error = "Enter at least four characters"
+            return false
+        }
+        if (requireConfirm) {
+            val a = input.text?.toString().orEmpty()
+            val b = confirm.text?.toString().orEmpty()
+            if (a != b) {
+                confirm.error = "Passphrases do not match"
+                return false
+            }
+        }
+        return true
     }
 
     private fun transfer(uri: Uri, exporting: Boolean) {
-        if (!hasPassphrase()) return
+        if (!hasPassphrase(requireConfirm = exporting)) return
         val root = requireView()
         val password = root.findViewById<EditText>(R.id.backupPassword).text.toString().toCharArray()
         val context = requireContext().applicationContext

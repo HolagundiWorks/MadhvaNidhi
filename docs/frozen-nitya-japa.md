@@ -22,9 +22,9 @@ Approved web-mockup contract for the **ಜಪ** tab inside Nitya Karma. Layout c
 
 - Goal tiles mutate daily target only
 - Reset restores vault/profile daily goal for the selected mantra (does not zero count)
-- Skip / Complete are day actions for the japa session
+- Skip / Complete are **day flags only** (pressed chrome); Complete must **not** auto-fill remaining bead count
 - Mantra list prefers diksha-selected mantras from User profile
 
 ## Android mapping notes
 
-Rewrite `page_japa.xml` / `JapaFragment` to pad layout; Material tiles under Carbon tokens; square corners (`0`).
+Rewrite `page_japa.xml` / `JapaFragment` to pad layout; Material tiles under Carbon tokens; square corners (`0`). Persist via `PracticeDayStore.setJapaDay`; pressed chrome via `NityaDayChrome`.

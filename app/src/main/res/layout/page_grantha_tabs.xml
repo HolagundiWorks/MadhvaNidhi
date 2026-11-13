@@ -6,6 +6,20 @@
     android:orientation="vertical"
     android:background="@color/carbon_background">
 
+    <!-- Hub title — destination confirmation when shell header is hidden. -->
+    <TextView
+        android:id="@+id/hubTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/carbon_spacing_05"
+        android:paddingEnd="@dimen/carbon_spacing_05"
+        android:paddingTop="@dimen/carbon_spacing_03"
+        android:paddingBottom="@dimen/carbon_spacing_02"
+        android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact02"
+        android:textColor="@color/carbon_text_primary"
+        android:maxLines="1"
+        android:ellipsize="end" />
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/granthaTabs"
         style="@style/Widget.Carbon.TabLayout"

@@ -8,6 +8,13 @@ function selectSettingsTab(name) {
     if (panel) panel.hidden = !selected;
   }
 }
+/** Back from Users/Backup/Legal returns to UI Settings before leaving the hub. */
+function consumeSettingsBack() {
+  const selected = settingsTabs.find((tab) => tab.getAttribute('aria-selected') === 'true');
+  if (!selected || selected.id === 'settings-tab-ui') return false;
+  selectSettingsTab('ui');
+  return true;
+}
 settingsTabs.forEach((tab, index) => {
   tab.onclick = () => selectSettingsTab(tab.id.slice('settings-tab-'.length));
   tab.onkeydown = event => {
@@ -25,3 +32,5 @@ settingsTabs.forEach((tab, index) => {
     next.click();
   };
 });
+window.selectSettingsTab = selectSettingsTab;
+window.consumeSettingsBack = consumeSettingsBack;

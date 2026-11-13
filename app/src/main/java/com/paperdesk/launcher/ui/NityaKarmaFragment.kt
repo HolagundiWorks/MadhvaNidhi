@@ -1,6 +1,5 @@
 package com.paperdesk.launcher.ui
 
-import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -55,7 +54,8 @@ class NityaKarmaFragment : Fragment() {
             withContext(Dispatchers.IO) { SandhyaStore.load(requireContext().applicationContext) }
             if (!isAdded) return@launch
             kalaId = SandhyaStore.nowId()
-            sandhyaDone = practice.isSandhyaSessionDone(kalaId)
+            sandhyaSkipped = practice.isSandhyaSkipped(kalaId)
+            sandhyaDone = !sandhyaSkipped && practice.isSandhyaSessionDone(kalaId)
             showTab(initialTab)
         }
 
@@ -160,13 +160,17 @@ class NityaKarmaFragment : Fragment() {
                 paintSandhyaChrome(root)
                 return
             }
-            if (!sandhyaSkipped) {
-                sandhyaDone = practice.isSandhyaSessionDone(kalaId)
-            }
+            sandhyaSkipped = practice.isSandhyaSkipped(kalaId)
+            sandhyaDone = !sandhyaSkipped && practice.isSandhyaSessionDone(kalaId)
             sandhyaIndex = sandhyaIndex.coerceIn(0, list.lastIndex)
             if (sandhyaDone) sandhyaIndex = list.lastIndex
             val step = list[sandhyaIndex]
-            val pct = if (sandhyaDone) 100 else ((sandhyaIndex + 1) * 100 / list.size)
+            // Progress reflects reading position; 100% only after explicit Complete.
+            val pct = when {
+                sandhyaDone -> 100
+                sandhyaSkipped -> 0
+                else -> ((sandhyaIndex + 1) * 100 / list.size).coerceAtMost(99)
+            }
             root.findViewById<TextView>(R.id.sandhyaPathy).text =
                 SandhyaStore.label(step.title, lang())
             root.findViewById<TextView>(R.id.sandhyaBody).text =
@@ -185,8 +189,8 @@ class NityaKarmaFragment : Fragment() {
         fun selectKala(id: String) {
             kalaId = id
             sandhyaIndex = 0
-            sandhyaSkipped = false
-            sandhyaDone = practice.isSandhyaSessionDone(kalaId)
+            sandhyaSkipped = practice.isSandhyaSkipped(kalaId)
+            sandhyaDone = !sandhyaSkipped && practice.isSandhyaSessionDone(kalaId)
             val list = steps()
             if (sandhyaDone && list.isNotEmpty()) sandhyaIndex = list.lastIndex
             paint()
@@ -194,10 +198,10 @@ class NityaKarmaFragment : Fragment() {
         fun goPrev() {
             if (sandhyaIndex > 0) {
                 sandhyaIndex--
-                sandhyaSkipped = false
                 if (practice.isSandhyaSessionDone(kalaId)) {
-                    practice.setSandhya(kalaId, false)
+                    practice.setSandhyaDay(kalaId, complete = false, skipped = false)
                     sandhyaDone = false
+                    sandhyaSkipped = false
                 }
                 paint()
             }
@@ -207,10 +211,11 @@ class NityaKarmaFragment : Fragment() {
             if (list.isEmpty()) return
             if (sandhyaIndex < list.lastIndex) {
                 sandhyaIndex++
-                sandhyaSkipped = false
-                if (sandhyaIndex == list.lastIndex) {
-                    practice.setSandhya(kalaId, true)
-                    sandhyaDone = true
+                // Reaching the last pathya does not auto-complete — Complete FAB is explicit.
+                if (sandhyaDone || sandhyaSkipped) {
+                    practice.setSandhyaDay(kalaId, complete = false, skipped = false)
+                    sandhyaDone = false
+                    sandhyaSkipped = false
                 }
                 paint()
             }
@@ -218,33 +223,36 @@ class NityaKarmaFragment : Fragment() {
         root.findViewById<View>(R.id.sandhyaKalaPratah).setOnClickListener { selectKala(SandhyaStore.PRATAH) }
         root.findViewById<View>(R.id.sandhyaKalaMadhya).setOnClickListener { selectKala(SandhyaStore.MADHYA) }
         root.findViewById<View>(R.id.sandhyaKalaSayam).setOnClickListener { selectKala(SandhyaStore.SAYAM) }
-        root.findViewById<View>(R.id.sandhyaProgress).setOnClickListener { goNext() }
-        root.findViewById<View>(R.id.sandhyaProgress).setOnLongClickListener {
+        val progressHit = root.findViewById<View>(R.id.sandhyaProgressHit)
+        progressHit.setOnClickListener { goNext() }
+        progressHit.setOnLongClickListener {
             goPrev()
             true
         }
         root.findViewById<View>(R.id.sandhyaSkip).setOnClickListener {
-            // Toggle like mockup aria-pressed
-            if (sandhyaSkipped) {
-                sandhyaSkipped = false
-            } else {
-                practice.setSandhya(kalaId, false)
-                sandhyaDone = false
+            val on = !practice.isSandhyaSkipped(kalaId)
+            if (on) {
+                practice.setSandhyaDay(kalaId, complete = false, skipped = true)
                 sandhyaSkipped = true
+                sandhyaDone = false
                 sandhyaIndex = 0
+            } else {
+                practice.setSandhyaDay(kalaId, complete = false, skipped = false)
+                sandhyaSkipped = false
             }
             paint()
         }
         root.findViewById<View>(R.id.sandhyaComplete).setOnClickListener {
-            if (sandhyaDone && !sandhyaSkipped) {
-                practice.setSandhya(kalaId, false)
-                sandhyaDone = false
-            } else {
+            val on = !(sandhyaDone && !sandhyaSkipped)
+            if (on) {
                 val list = steps()
-                practice.setSandhya(kalaId, true)
+                practice.setSandhyaDay(kalaId, complete = true, skipped = false)
                 sandhyaDone = true
                 sandhyaSkipped = false
                 sandhyaIndex = list.lastIndex.coerceAtLeast(0)
+            } else {
+                practice.setSandhyaDay(kalaId, complete = false, skipped = false)
+                sandhyaDone = false
             }
             paint()
         }
@@ -253,24 +261,11 @@ class NityaKarmaFragment : Fragment() {
 
     /** Match mockup `.nitya-fab[aria-pressed=true]` — selected layer + interactive border/glyph. */
     private fun paintSandhyaChrome(root: View) {
-        fun style(btn: MaterialButton, active: Boolean) {
-            val ctx = requireContext()
-            btn.backgroundTintList = ColorStateList.valueOf(
-                ctx.getColor(if (active) R.color.carbon_layer_selected else android.R.color.transparent)
-            )
-            btn.iconTint = ColorStateList.valueOf(
-                ctx.getColor(if (active) R.color.carbon_interactive else R.color.carbon_icon_secondary)
-            )
-            btn.strokeColor = ColorStateList.valueOf(
-                ctx.getColor(if (active) R.color.carbon_border_interactive else R.color.carbon_border_strong)
-            )
-            btn.strokeWidth = resources.getDimensionPixelSize(R.dimen.carbon_border_width).coerceAtLeast(1)
-        }
-        style(root.findViewById(R.id.sandhyaKalaPratah), kalaId == SandhyaStore.PRATAH)
-        style(root.findViewById(R.id.sandhyaKalaMadhya), kalaId == SandhyaStore.MADHYA)
-        style(root.findViewById(R.id.sandhyaKalaSayam), kalaId == SandhyaStore.SAYAM)
-        style(root.findViewById(R.id.sandhyaSkip), sandhyaSkipped)
-        style(root.findViewById(R.id.sandhyaComplete), sandhyaDone && !sandhyaSkipped)
+        NityaDayChrome.paint(root.findViewById(R.id.sandhyaKalaPratah), kalaId == SandhyaStore.PRATAH)
+        NityaDayChrome.paint(root.findViewById(R.id.sandhyaKalaMadhya), kalaId == SandhyaStore.MADHYA)
+        NityaDayChrome.paint(root.findViewById(R.id.sandhyaKalaSayam), kalaId == SandhyaStore.SAYAM)
+        NityaDayChrome.paint(root.findViewById(R.id.sandhyaSkip), sandhyaSkipped)
+        NityaDayChrome.paint(root.findViewById(R.id.sandhyaComplete), sandhyaDone && !sandhyaSkipped)
     }
 
     companion object {

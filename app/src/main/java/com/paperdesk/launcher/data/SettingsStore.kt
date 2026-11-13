@@ -173,13 +173,13 @@ class SettingsStore(context: Context) {
 
         val DASHBOARD_SHORTCUT_DEFAULTS = listOf("desk", "japa", "grantha")
 
-        /** Destinations offered for dashboard bottom-row shortcuts. */
+        /**
+         * Dashboard shortcut picker — hubs + high-use practice tabs only (Hick).
+         * Leaf readers open from their hub tabs; User is under Settings.
+         */
         val DASHBOARD_SHORTCUT_IDS = listOf(
             "desk", "sandhya", "japa", "nitya", "puja",
-            "grantha", "stotra", "suktas", "mantras", "hadugalu",
-            "sangeeta", "playlists",
-            "samskruti", "aayadi", "rangavalli", "recipes",
-            "settings", "user"
+            "grantha", "sangeeta", "samskruti", "settings"
         )
 
         val PAGE_LABELS = mapOf(

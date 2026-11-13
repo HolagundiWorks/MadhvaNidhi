@@ -203,19 +203,31 @@
             </LinearLayout>
         </ScrollView>
 
-        <ProgressBar
-            android:id="@+id/sandhyaProgress"
-            style="?android:attr/progressBarStyleHorizontal"
+        <!-- 48dp hit target; visual bar stays carbon_spacing_03 @ 50% opacity (Fitts). -->
+        <FrameLayout
+            android:id="@+id/sandhyaProgressHit"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/carbon_spacing_03"
+            android:layout_height="@dimen/carbon_layout_size_height_lg"
             android:layout_gravity="bottom"
             android:layout_marginStart="@dimen/carbon_spacing_05"
             android:layout_marginEnd="@dimen/carbon_spacing_05"
-            android:layout_marginBottom="@dimen/carbon_spacing_05"
-            android:alpha="0.5"
-            android:max="100"
-            android:progress="25"
-            android:progressDrawable="@drawable/carbon_progress_horizontal"
-            android:contentDescription="Pathya progress · tap next · long-press previous" />
+            android:layout_marginBottom="@dimen/carbon_spacing_03"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="Pathya progress · tap next · long-press previous">
+
+            <ProgressBar
+                android:id="@+id/sandhyaProgress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/carbon_spacing_03"
+                android:layout_gravity="center_vertical"
+                android:alpha="0.5"
+                android:max="100"
+                android:progress="25"
+                android:progressDrawable="@drawable/carbon_progress_horizontal"
+                android:clickable="false"
+                android:focusable="false" />
+        </FrameLayout>
     </FrameLayout>
 </LinearLayout>

@@ -14,7 +14,7 @@ This is the **approved web-mockup contract** for the Panchanga calendar. Future 
 
 The approved Android port is authorized by root `AGENTS.md` (`MOCKUP_ONLY = false`). Native views implement this frozen contract under Carbon tokens; the mockup remains the visual authority.
 
-Primary rail destinations: Dashboard, Panchanga, Nitya Karma, Puja, Grantha, Bhakti Sangeeta, Gruha Samskruti, User, Settings. Child features open from hub pages. PaperDesk scheduler/todo/notes/projects/Gita/tools are not destinations.
+Primary rail destinations: Dashboard, Panchanga, Nitya Karma, Puja, Grantha, Bhakti Sangeeta, Gruha Samskruti, Settings (8 items). User profile opens under Settings → Users. Child features open from hub tabs. PaperDesk scheduler/todo/notes/projects/Gita/tools are not destinations.
 
 ## Shell and spacing tokens
 

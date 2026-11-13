@@ -133,9 +133,9 @@ header.app-header {
   border-right: var(--cds-border-width) solid var(--cds-border-subtle-01);
 }
 
-/* Rail collapse / expand — 0.75× control with separator below */
+/* Rail collapse / expand — full action target ($button-height / 48px) */
 #nav-toggle {
-  --nav-toggle-size: calc(var(--cds-button-height, 3rem) * 0.75);
+  --nav-toggle-size: var(--cds-button-height, 3rem);
   width: var(--nav-toggle-size) !important;
   min-width: var(--nav-toggle-size);
   height: var(--nav-toggle-size);
@@ -149,8 +149,8 @@ header.app-header {
   place-items: center;
 }
 #nav-toggle svg {
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
 }
 #nav-toggle::after {
   content: "";
@@ -395,16 +395,24 @@ button.cds--tabs__nav-link {
   padding: var(--cds-spacing-05);
   padding-bottom: calc(var(--cds-spacing-05) + var(--cds-spacing-07));
 }
-/* Floating progress over reading body · 50% opacity · tap next / long-press prev */
+/* Floating progress over reading body · 50% opacity · tap next / long-press prev
+   Visual bar stays thin; hit area is full $button-height (Fitts). */
 .sandhya-progress-float {
   position: absolute;
   left: var(--cds-spacing-05);
   right: var(--cds-spacing-05);
-  bottom: var(--cds-spacing-05);
+  bottom: var(--cds-spacing-03);
   margin: 0;
+  min-height: var(--cds-button-height, 3rem);
+  display: flex;
+  align-items: center;
   opacity: 0.5;
   cursor: pointer;
   z-index: 1;
+}
+.sandhya-progress-float .japa-progress__bar,
+.sandhya-progress-float[data-sandhya-progressbar] {
+  width: 100%;
 }
 .sandhya-reader__nav {
   display: none;

@@ -7,7 +7,6 @@ import com.google.android.material.button.MaterialButton
 import com.paperdesk.launcher.DeskLock
 import com.paperdesk.launcher.R
 import com.paperdesk.launcher.data.OsLang
-import com.paperdesk.launcher.data.SettingsStore
 
 /** Carbon side rail and overlay panel. Primary destinations match the HTML shell sim. */
 class FrozenShell(private val activity: LauncherActivity) {
@@ -43,32 +42,16 @@ class FrozenShell(private val activity: LauncherActivity) {
     }
 
     fun bind() {
-        val pages = activity.shellPages()
         val current = activity.currentPageId()
         val activeRail = railForPage(current)
         val density = activity.resources.displayMetrics.density
-        val pageSet = pages.toSet()
-        val hasNitya = "nityakarma" in pageSet
-        val panelEntries = buildList {
-            addAll(ShellHubFragment.RAIL_IDS)
-            addAll(
-                listOf(
-                    "sandhya", "japa", "nitya",
-                    "stotra", "suktas", "mantras", "namavali",
-                    "hadugalu", "playlists",
-                    "aayadi", "rangavalli", "recipes"
-                )
-            )
-        }.distinct().filter { id ->
-            id in ShellHubFragment.RAIL_IDS ||
-                id in pageSet ||
-                (id in SettingsStore.NITYA_TAB_ALIASES && hasNitya)
-        }
+        // Expanded panel matches mockup: labeled primary rail only (hubs open children).
+        val panelEntries = ShellHubFragment.RAIL_IDS
 
         bindHost(
             hostId = R.id.railDestinations,
             entries = ShellHubFragment.RAIL_IDS,
-            key = ShellHubFragment.RAIL_IDS.joinToString(),
+            key = ShellHubFragment.RAIL_IDS.joinToString() + "|${activity.resources.getDimensionPixelSize(R.dimen.shell_rail_item_height)}",
             lastKey = lastRailKey,
             labeled = false,
             current = current,
@@ -79,7 +62,7 @@ class FrozenShell(private val activity: LauncherActivity) {
         bindHost(
             hostId = R.id.panelDestinations,
             entries = panelEntries,
-            key = panelEntries.joinToString(),
+            key = panelEntries.joinToString() + "|${activity.resources.getDimensionPixelSize(R.dimen.shell_rail_item_height)}",
             lastKey = lastPanelKey,
             labeled = true,
             current = current,
@@ -106,7 +89,7 @@ class FrozenShell(private val activity: LauncherActivity) {
         val structureChanged = key != lastKey || host.childCount != entries.size
         if (structureChanged) {
             host.removeAllViews()
-            val row = (48 * density).toInt()
+            val row = activity.resources.getDimensionPixelSize(R.dimen.shell_rail_item_height)
             for (id in entries) {
                 host.addView(createButton(id, labeled, density), LinearLayout.LayoutParams(-1, row))
             }
@@ -116,14 +99,7 @@ class FrozenShell(private val activity: LauncherActivity) {
         for (i in 0 until host.childCount) {
             val button = host.getChildAt(i) as? MaterialButton ?: continue
             val id = button.tag as? String ?: continue
-            val active = if (labeled) {
-                when (id) {
-                    "sandhya", "japa", "nitya" -> current == "nityakarma"
-                    else -> current == id
-                }
-            } else {
-                activeRail == id
-            }
+            val active = activeRail == id || current == id
             paintButton(button, active)
             button.isEnabled = !DeskLock.isLocked(activity)
         }
@@ -191,8 +167,7 @@ class FrozenShell(private val activity: LauncherActivity) {
             "stotra", "suktas", "mantras", "namavali", "hadugalu", "grantha" -> "grantha"
             "playlists", "sangeeta" -> "sangeeta"
             "aayadi", "rangavalli", "recipes", "samskruti" -> "samskruti"
-            "user" -> "user"
-            "settings" -> "settings"
+            "user", "settings" -> "settings"
             else -> pageId
         }
 

@@ -588,6 +588,7 @@
     const form = options.form;
     const status = options.status;
     const passphrase = options.passphrase;
+    const passphraseConfirm = options.passphraseConfirm;
     const backupBtn = options.backupBtn;
     const restoreBtn = options.restoreBtn;
     const fileInput = options.fileInput;
@@ -664,7 +665,12 @@
     backupBtn?.addEventListener('click', async () => {
       try {
         if (editing) throw new Error('Save or Cancel profile edits before creating a backup');
-        const blob = await createBackupBlob(readForm(form), passphrase?.value || '');
+        const pass = passphrase?.value || '';
+        const confirm = passphraseConfirm?.value || '';
+        if (passphraseConfirm && pass !== confirm) {
+          throw new Error('Passphrases do not match');
+        }
+        const blob = await createBackupBlob(readForm(form), pass);
         downloadBackup(blob);
         setStatus(status, 'Backup file downloaded · move to new phone and Restore', 'ok');
       } catch (err) {

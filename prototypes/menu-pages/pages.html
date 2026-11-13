@@ -174,6 +174,14 @@ Sample reading surface. Android loads the SandhyaStore / catalogue text for the 
               </select>
             </div>
           </div>
+          <div class="nitya-day-actions" role="group" aria-label="Today · ನಿತ್ಯ ಪಾರಾಯಣ">
+            <button type="button" class="cds--btn cds--btn--tertiary nitya-fab" data-day-action="skip" aria-pressed="false" aria-label="Skip today" title="Skip today">
+              <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M5 28a1 1 0 0 1-1-1V5a1 1 0 0 1 .5-.87 1 1 0 0 1 1 0l19 11a1 1 0 0 1 0 1.74l-19 11A1 1 0 0 1 5 28M6 6.73v18.54L22 16zM28 4h2v24h-2z"/></svg>
+            </button>
+            <button type="button" class="cds--btn cds--btn--tertiary nitya-fab" data-day-action="complete" aria-pressed="false" aria-label="Completed for today" title="Completed for today">
+              <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="m13 24-9-9 1.414-1.414L13 21.171 26.586 7.586 28 9z"/></svg>
+            </button>
+          </div>
         </div>
         <div class="sandhya-scroll sandhya-reader__main">
           <p class="cds--form__helper-text">ನಿತ್ಯಕರ್ಮ · ನಿತ್ಯ ಪಾರಾಯಣ</p>
@@ -212,28 +220,30 @@ Wide reading surface. Resume position stays local on Android.</p>
             </div>
           </div>
           <div class="sandhya-progress-row">
-            <h3 class="cds--heading-compact-02 sandhya-pathy" data-puja-step id="pages-puja-progress-label">ಸಂಕಲ್ಪ</h3>
-            <div class="japa-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="25" aria-labelledby="pages-puja-progress-label" data-puja-progressbar>
-              <div class="japa-progress__bar" data-puja-progress style="width:25%"></div>
+            <h3 class="cds--heading-compact-02 sandhya-pathy" data-puja-step id="pages-puja-progress-label">ನಿತ್ಯ ಪೂಜೆ</h3>
+            <div class="japa-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="pages-puja-progress-label" data-puja-progressbar>
+              <div class="japa-progress__bar" data-puja-progress style="width:0%"></div>
             </div>
           </div>
           <hr class="sandhya-rule" aria-hidden="true">
         </div>
         <div class="sandhya-scroll">
           <div class="sandhya-reader__main">
-            <p class="cds--form__helper-text" data-puja-crumb>ಪೂಜೆ · ನಿತ್ಯ ಪೂಜೆ · ಸಂಕಲ್ಪ</p>
-            <p class="cds--body-01 reader-body-sample" data-puja-body>ಶ್ರೀಮದ್ ಭಾರತವರ್ಷೇ ಭರತಖಂಡೇ …
+            <p class="cds--form__helper-text" data-puja-crumb>ಪೂಜೆ · ನಿತ್ಯ ಪೂಜೆ</p>
+            <p class="cds--body-01 reader-body-sample" data-puja-body>ಸಂಕಲ್ಪ
+ಶ್ರೀಮದ್ ಭಾರತವರ್ಷೇ ಭರತಖಂಡೇ …
 ಶ್ರೀ ಶಾಲಿವಾಹನ ಶಕೇ ೧೯೪೮ ಪರಾಭವ ನಾಮ ಸಂವತ್ಸರೇ ಕಾರ್ತಿಕ ಮಾಸೇ ಶುಕ್ಲಪಕ್ಷೇ ತೃತೀಯಾಯಾಂ …
 
-Sample sankalpa. Masa / paksha / tithi bind from Panchanga later.</p>
-          </div>
-          <div class="sandhya-reader__nav" role="group" aria-label="Puja step navigation">
-            <button type="button" class="cds--btn cds--btn--tertiary nitya-fab sandhya-nav" data-puja-prev aria-label="Previous step" title="Previous step" disabled>
-              <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M10 16 20 6l1.4 1.4L12.8 16l8.6 8.6L20 26z"/></svg>
-            </button>
-            <button type="button" class="cds--btn cds--btn--tertiary nitya-fab sandhya-nav" data-puja-next aria-label="Next step" title="Next step">
-              <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="m22 16-10 10-1.4-1.4L19.2 16 10.6 7.4 12 6z"/></svg>
-            </button>
+ಆವಾಹನ
+Invite the chosen murti for the selected ಪೂಜಾ ಕ್ರಮ.
+
+ಉಪಚಾರ
+ಷೋಡಶೋಪಚಾರ sample block. Offer the sequential upacharas for the active rite.
+
+ಸಮರ್ಪಣ
+ಸಮರ್ಪಣ / ಉದ್ವಾಸನ. Close the puja with dedication and farewell.
+
+Sample continuous scroll — masa / paksha / tithi bind from Panchanga later.</p>
           </div>
         </div>
       </div>
@@ -245,6 +255,7 @@ Sample sankalpa. Masa / paksha / tithi bind from Panchanga later.</p>
 <button type="button" id="grantha-tab-suktas" class="cds--tabs__nav-link" role="tab" aria-selected="false" tabindex="-1" aria-controls="grantha-panel-suktas">ಸೂಕ್ತಗಳು</button>
 <button type="button" id="grantha-tab-mantras" class="cds--tabs__nav-link" role="tab" aria-selected="false" tabindex="-1" aria-controls="grantha-panel-mantras">ಮಂತ್ರಗಳು</button>
 <button type="button" id="grantha-tab-hadugalu" class="cds--tabs__nav-link" role="tab" aria-selected="false" tabindex="-1" aria-controls="grantha-panel-hadugalu">ಹಾಡುಗಳು</button>
+<button type="button" id="grantha-tab-namavali" class="cds--tabs__nav-link" role="tab" aria-selected="false" tabindex="-1" aria-controls="grantha-panel-namavali">ನಾಮಾವಳಿ</button>
 </div></div>
 <div role="tabpanel" id="grantha-panel-stotra" aria-labelledby="grantha-tab-stotra">
       <div class="cds--tile">
@@ -303,6 +314,22 @@ Catalogue-backed mantra list (no subpage switcher).</p>
       </ul>
       <p class="cds--tag" style="margin-top:var(--cds-spacing-04)">Sample catalogue</p>
     </div>
+<div role="tabpanel" id="grantha-panel-namavali" aria-labelledby="grantha-tab-namavali" hidden>
+      <div class="cds--tile">
+        <div class="cds--form-item">
+          <label for="menu-namavali-item">ನಾಮಾವಳಿ</label>
+          <select id="menu-namavali-item">
+            <option>ವಿಷ್ಣು ಸಹಸ್ರನಾಮ</option>
+            <option>ಲಲಿತಾ ಸಹಸ್ರನಾಮ</option>
+            <option>ಶಿವ ಸಹಸ್ರನಾಮ</option>
+          </select>
+        </div>
+        <p class="reader-crumb">ಗ್ರಂಥ · ನಾಮಾವಳಿ</p>
+        <h3 class="reader-head">ವಿಷ್ಣು ಸಹಸ್ರನಾಮ</h3>
+        <p class="reader-body">ಶುಕ್ಲಾಂಬರಧರಂ ವಿಷ್ಣುಂ ಶಶಿವರ್ಣಂ ಚತುರ್ಭುಜಂ …
+Catalogue-backed namavali reader.</p>
+      </div>
+    </div>
 </section>
 
     <!-- Shared reader pages for grantha children -->
@@ -333,15 +360,17 @@ Catalogue-backed mantra list (no subpage switcher).</p>
       </div>
     </section>
 
-    <!-- Sangeeta -->
-    <section class="page" data-page="sangeeta">
-      <h2 class="hub-title">ಭಕ್ತಿ ಸಂಗೀತ</h2>
-      <p class="hub-sub">ಪ್ಲೇಲಿಸ್ಟ್‌ಗಳು</p>
-      <div class="dest-stack">
-
-        <button type="button" class="cds--tile--clickable" data-page="playlists"><div><strong>ಪ್ಲೇಲಿಸ್ಟ್‌ಗಳು</strong><span>Later phase</span></div><svg viewBox="0 0 32 32" aria-hidden="true"><polygon points="18 6 16.57 7.393 24.15 15 4 15 4 17 24.15 17 16.57 24.573 18 26 28 16 18 6"/></svg></button>
+    <!-- Sangeeta · contained tab host (parity with Grantha / Samskruti) -->
+    <section class="page" data-page="sangeeta"><div class="cds--tabs cds--tabs--contained"><div class="cds--tab-list" role="tablist" aria-label="Bhakti Sangeeta">
+<button type="button" id="menu-sangeeta-tab-playlists" class="cds--tabs__nav-link" role="tab" aria-selected="true" tabindex="0" aria-controls="menu-sangeeta-panel-playlists">ಪ್ಲೇಲಿಸ್ಟ್‌ಗಳು</button>
+</div></div>
+<div role="tabpanel" id="menu-sangeeta-panel-playlists" aria-labelledby="menu-sangeeta-tab-playlists">
+      <div class="cds--empty-state">
+        <strong>Playlists</strong>
+        Playlists are specified for a later phase. No sample playlist content here.
       </div>
-    </section>
+    </div>
+</section>
 
 
 
@@ -638,6 +667,12 @@ Catalogue-backed mantra list (no subpage switcher).</p>
                     <input class="cds--text-input" type="password" id="user-backup-passphrase" name="passphrase" autocomplete="new-password" minlength="4" placeholder="Min 4 characters">
                   </div>
                 </div>
+                <div class="cds--form-item">
+                  <label class="cds--label" for="user-backup-passphrase-confirm">Confirm passphrase · ದೃಢೀಕರಿಸಿ</label>
+                  <div class="cds--text-input-wrapper">
+                    <input class="cds--text-input" type="password" id="user-backup-passphrase-confirm" name="passphraseConfirm" autocomplete="new-password" minlength="4" placeholder="Re-enter passphrase">
+                  </div>
+                </div>
               </form>
               <div class="cds--btn-set user-vault-actions">
                 <button type="button" class="cds--btn cds--btn--primary" id="user-backup-btn">Create backup file</button>
@@ -668,7 +703,8 @@ Catalogue-backed mantra list (no subpage switcher).</p>
 <script src="../grantha-tabs.js"></script>
 <script src="../settings-tabs.js"></script>
 <script src="../user-vault.js"></script>
+<script src="../practice-day.js"></script>
 <script src="../japa-session.js"></script>
-<script src="./pages.js?v=nitya-parayana-tab"></script>
+<script src="./pages.js?v=ux-nav-ia"></script>
 </body>
 </html>
