@@ -51,7 +51,7 @@ class ReaderFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        return ScreenPages.wrap(inflater.inflate(R.layout.page_reader, container, false))
+        return inflater.inflate(R.layout.page_reader, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -152,7 +152,7 @@ class ReaderFragment : Fragment() {
         prefs.edit().putString("session", sessionId).putString("item", itemId).apply()
         closeSelector()
         paint()
-        view?.findViewById<View>(R.id.readerScroll)?.let { ScreenPages.first(it) }
+        view?.findViewById<NestedScrollView>(R.id.readerScroll)?.scrollTo(0, 0)
     }
 
     private fun pickKala(id: String) {
@@ -162,7 +162,7 @@ class ReaderFragment : Fragment() {
         itemId = next?.steps?.firstOrNull()?.id.orEmpty()
         prefs.edit().putString("session", sessionId).putString("item", itemId).apply()
         paint()
-        view?.findViewById<View>(R.id.readerScroll)?.let { ScreenPages.first(it) }
+        view?.findViewById<NestedScrollView>(R.id.readerScroll)?.scrollTo(0, 0)
     }
 
     private fun paint() {

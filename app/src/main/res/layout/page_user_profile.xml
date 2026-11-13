@@ -228,20 +228,32 @@
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
-            <TextView
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/carbon_spacing_05"
-                android:text="Diksha mantras (tap to toggle)"
-                android:textAppearance="@style/TextAppearance.Carbon.Label01"
-                android:textColor="@color/carbon_text_secondary" />
+                android:hint="Japa / diksha · ಜಪ ದೀಕ್ಷಾ"
+                style="@style/Widget.Carbon.TextInput.ExposedDropdown"
+                app:boxCornerRadiusTopStart="@dimen/carbon_corner_radius"
+                app:boxCornerRadiusTopEnd="@dimen/carbon_corner_radius"
+                app:boxCornerRadiusBottomStart="@dimen/carbon_corner_radius"
+                app:boxCornerRadiusBottomEnd="@dimen/carbon_corner_radius">
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/editDiksha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:cursorVisible="false"
+                    android:hint="Choose mantras for japa" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
                 android:id="@+id/editDikshaHost"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="@dimen/carbon_spacing_03" />
+                android:visibility="gone" />
 
             <TextView
                 android:layout_width="match_parent"

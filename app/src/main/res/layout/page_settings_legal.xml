@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:clipToPadding="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/carbon_spacing_05"
+        android:paddingBottom="@dimen/carbon_spacing_07">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/legal_title"
+            android:textAppearance="@style/TextAppearance.Carbon.Heading03"
+            android:layout_marginBottom="@dimen/carbon_spacing_05" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/carbon_spacing_05"
+            app:cardCornerRadius="@dimen/carbon_corner_radius"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four"
+            app:cardBackgroundColor="@color/carbon_layer">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/carbon_spacing_05">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/legal_developer_heading"
+                    android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/legalDeveloperBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/carbon_spacing_03"
+                    android:text="@string/legal_developer_body"
+                    android:textAppearance="@style/TextAppearance.Carbon.Body01"
+                    android:textIsSelectable="true" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/legalVersion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/carbon_spacing_03"
+                    android:textAppearance="@style/TextAppearance.Carbon.Label01"
+                    android:text="" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/carbon_spacing_05"
+            app:cardCornerRadius="@dimen/carbon_corner_radius"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four"
+            app:cardBackgroundColor="@color/carbon_layer">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/carbon_spacing_05">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/legal_privacy_heading"
+                    android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/legalPrivacyBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/carbon_spacing_03"
+                    android:text="@string/legal_privacy_body"
+                    android:textAppearance="@style/TextAppearance.Carbon.Body01"
+                    android:textIsSelectable="true" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/carbon_spacing_05"
+            app:cardCornerRadius="@dimen/carbon_corner_radius"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four"
+            app:cardBackgroundColor="@color/carbon_layer">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/carbon_spacing_05">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/legal_license_heading"
+                    android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/legalLicenseBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/carbon_spacing_03"
+                    android:text="@string/legal_license_body"
+                    android:textAppearance="@style/TextAppearance.Carbon.Body01"
+                    android:textIsSelectable="true" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/brand_made_in"
+            android:textAppearance="@style/TextAppearance.Carbon.Label01" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

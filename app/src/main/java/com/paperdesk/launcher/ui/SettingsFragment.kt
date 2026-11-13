@@ -15,7 +15,12 @@ class SettingsFragment : Fragment(R.layout.page_settings_tabs) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         selected = savedInstanceState?.getInt("tab") ?: 0
         val tabs = view.findViewById<TabLayout>(R.id.settingsTabs)
-        listOf("UI Settings", "Users", "Backup").forEachIndexed { index, label ->
+        listOf(
+            "UI Settings",
+            "Users",
+            "Backup",
+            getString(R.string.settings_tab_legal)
+        ).forEachIndexed { index, label ->
             tabs.addTab(tabs.newTab().setText(label), index == selected)
         }
         CarbonTabs.equalizeLeft(tabs)
@@ -24,6 +29,7 @@ class SettingsFragment : Fragment(R.layout.page_settings_tabs) {
             val page = when (index) {
                 1 -> UserProfileFragment()
                 2 -> ProfileBackupFragment()
+                3 -> LegalSettingsFragment()
                 else -> UiSettingsFragment()
             }
             childFragmentManager.beginTransaction().replace(R.id.settingsPanelHost, page).commitNow()

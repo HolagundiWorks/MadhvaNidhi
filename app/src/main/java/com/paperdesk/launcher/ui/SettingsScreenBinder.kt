@@ -8,7 +8,9 @@ import android.widget.TextView
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.paperdesk.launcher.DeskTheme
 import com.paperdesk.launcher.R
+import com.paperdesk.launcher.data.IndicScript
 import com.paperdesk.launcher.data.JapaCatalog
+import com.paperdesk.launcher.data.OsLang
 import com.paperdesk.launcher.data.PanchangaTraditions
 import com.paperdesk.launcher.data.ProfileStore
 import com.paperdesk.launcher.data.SettingsStore
@@ -69,12 +71,36 @@ object SettingsScreenBinder {
         }
         root.findViewById<View>(R.id.settingsTextApply).setOnClickListener { applyTextSize(textSlider.value) }
         showTextSize(textSlider.value)
-        root.findViewById<com.google.android.material.materialswitch.MaterialSwitch>(R.id.settingsDarkTheme)?.apply {
-            isChecked = DeskTheme.current(context) == DeskTheme.BLACK
-            setOnCheckedChangeListener { _, checked ->
-                val next = if (checked) DeskTheme.BLACK else DeskTheme.PAPER
-                if (DeskTheme.current(context) != next) DeskTheme.set(context, next)
+        val themeIds = DeskTheme.CARBON_OPTIONS.map { it.first }
+        val themeLabels = DeskTheme.CARBON_OPTIONS.map { it.second }
+        val themeIndex = themeIds.indexOf(DeskTheme.carbonId(context)).coerceAtLeast(0)
+        root.findViewById<com.google.android.material.textfield.MaterialAutoCompleteTextView>(R.id.settingsTheme)?.let { themeView ->
+            MaterialChoices.bind(themeView, themeLabels, themeIndex) { index ->
+                val next = themeIds[index]
+                if (DeskTheme.carbonId(context) != next) {
+                    DeskTheme.set(context, next)
+                    (context as? android.app.Activity)?.recreate()
+                }
             }
+        }
+        val langChoices = listOf(
+            IndicScript.Lang.KN to "ಕನ್ನಡ",
+            IndicScript.Lang.SA to "संस्कृतम्",
+            IndicScript.Lang.EN to "English"
+        )
+        val langIndex = langChoices.indexOfFirst { it.first == OsLang.get(context) }.coerceAtLeast(0)
+        root.findViewById<com.google.android.material.textfield.MaterialAutoCompleteTextView>(R.id.settingsLang)?.let { langView ->
+            MaterialChoices.bind(langView, langChoices.map { it.second }, langIndex) { index ->
+                val next = langChoices[index].first
+                if (OsLang.get(context) != next) {
+                    OsLang.set(context, next)
+                    (context as? android.app.Activity)?.recreate()
+                }
+            }
+        }
+        root.findViewById<com.google.android.material.materialswitch.MaterialSwitch>(R.id.settingsDarkTheme)?.apply {
+            // Legacy toggle kept hidden; Carbon theme dropdown is the authority.
+            visibility = View.GONE
         }
         val vedaChoices = listOf("ಋಗ್ವೇದ — ಆಶ್ವಲಾಯನ", "ಕೃಷ್ಣ ಯಜುರ್ವೇದ — ತೈತ್ತಿರೀಯ")
         MaterialChoices.bind(root.findViewById(R.id.settingsVeda), vedaChoices,

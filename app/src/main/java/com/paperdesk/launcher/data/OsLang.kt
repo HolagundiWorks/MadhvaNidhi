@@ -4,27 +4,27 @@ import android.content.Context
 import java.util.Calendar
 import java.util.concurrent.CopyOnWriteArrayList
 
-/** OS-wide script: Kannada only. */
+/** OS-wide script: Kannada / Sanskrit / English (settings picker). */
 object OsLang {
     private const val PREFS = "paperdesk_os_lang"
     private val listeners = CopyOnWriteArrayList<() -> Unit>()
 
     fun get(context: Context): IndicScript.Lang {
-        val prefs = context.getSharedPreferences(PREFS, 0)
-        if (prefs.getString("lang", "kn") != "kn") {
-            prefs.edit().putString("lang", "kn").apply()
-        }
-        return IndicScript.Lang.KN
+        val raw = context.getSharedPreferences(PREFS, 0).getString("lang", "kn") ?: "kn"
+        return IndicScript.parse(raw)
     }
 
     fun set(context: Context, lang: IndicScript.Lang) {
-        if (lang != IndicScript.Lang.KN) return
-        if (get(context) == IndicScript.Lang.KN) return
-        context.getSharedPreferences(PREFS, 0).edit().putString("lang", "kn").apply()
+        if (get(context) == lang) return
+        context.getSharedPreferences(PREFS, 0).edit().putString("lang", IndicScript.key(lang)).apply()
         listeners.forEach { it.invoke() }
     }
 
-    fun badge(lang: IndicScript.Lang): String = "ಕ"
+    fun badge(lang: IndicScript.Lang): String = when (lang) {
+        IndicScript.Lang.KN -> "ಕ"
+        IndicScript.Lang.SA -> "स"
+        IndicScript.Lang.EN -> "E"
+    }
 
     fun addListener(fn: () -> Unit) {
         listeners.add(fn)

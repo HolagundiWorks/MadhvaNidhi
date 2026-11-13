@@ -16,7 +16,7 @@ class AayadiFragment : Fragment() {
     private val fmt = DecimalFormat("0.##")
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, state: Bundle?): View =
-        ScreenPages.wrap(inflater.inflate(R.layout.page_aayadi, container, false))
+        inflater.inflate(R.layout.page_aayadi, container, false)
 
     override fun onViewCreated(view: View, state: Bundle?) {
         PagePalette.apply(view, "aayadi")
@@ -28,7 +28,12 @@ class AayadiFragment : Fragment() {
         bind(view.findViewById(R.id.aayadiBreadthIn), (0..11).map { it.toString() }, 0)
         view.findViewById<View>(R.id.aayadiCalculate).setOnClickListener {
             calculate(view)
-            ScreenPages.reveal(view, if (view.findViewById<View>(R.id.aayadiResults).visibility == View.VISIBLE) R.id.aayadiResults else R.id.aayadiError)
+            val target = if (view.findViewById<View>(R.id.aayadiResults).visibility == View.VISIBLE) {
+                view.findViewById<View>(R.id.aayadiResults)
+            } else {
+                view.findViewById<View>(R.id.aayadiError)
+            }
+            target?.post { target.parent?.requestChildFocus(target, target) }
         }
         view.findViewById<View>(R.id.aayadiInfo).setOnClickListener { showInfo() }
         calculate(view)

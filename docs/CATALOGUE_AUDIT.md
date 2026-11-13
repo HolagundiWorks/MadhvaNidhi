@@ -71,6 +71,10 @@ are not relabelled as Rigveda merely because individual verses also occur there.
   <https://sanskritdocuments.org/doc_vishhnu/vAtapuranAthAShTakam.pdf>
 - Kannada Haridasa discovery catalogue:
   <https://dasasahithyamahithi.com/lyrics_and_audio/search/>
+- Kannada Wikisource Haridasa pads (CC BY-SA 4.0) — Phase 1 import:
+  see `docs/haridasa-import-plan.md`, `docs/haridasa-import-manifest.csv`,
+  and `app/src/main/assets/licenses/haridasa-wikisource.txt`.
+  Bodies live under `madhwa/texts/haridasa/`. Sampada.net was not scraped.
 - Sumadhwa Seva — Yagnopaveeta Dharana Vidhi:
   <https://www.sumadhwaseva.com/wp-content/uploads/2009/08/yagnopaveeta-dharana-english1.pdf>
 

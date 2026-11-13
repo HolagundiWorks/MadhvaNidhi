@@ -31,6 +31,17 @@ class PracticeDayStore(context: Context) {
         prefs.edit().putBoolean(key(date, "stotra_$id"), done).apply()
     }
 
+    fun japaComplete(date: String = PanchangaStore.dateKey()): Boolean = get(date, KEY_JAPA_COMPLETE)
+    fun japaSkipped(date: String = PanchangaStore.dateKey()): Boolean = get(date, KEY_JAPA_SKIPPED)
+
+    /** Day actions for the Japa session — mutually exclusive when set. */
+    fun setJapaDay(complete: Boolean, skipped: Boolean, date: String = PanchangaStore.dateKey()) {
+        prefs.edit()
+            .putBoolean(key(date, KEY_JAPA_COMPLETE), complete)
+            .putBoolean(key(date, KEY_JAPA_SKIPPED), skipped && !complete)
+            .apply()
+    }
+
     fun currentStreak(): Int {
         var current = 0
         val cursor = Calendar.getInstance()
@@ -78,6 +89,8 @@ class PracticeDayStore(context: Context) {
     companion object {
         private const val PREFS = "madhvanidhi_practice_day"
         private const val KEY_BEST_STREAK = "best_sandhya_streak"
+        private const val KEY_JAPA_COMPLETE = "japa_complete"
+        private const val KEY_JAPA_SKIPPED = "japa_skipped"
         const val SESSION_PRATAH = "pratah"
         const val SESSION_MADHYAHNA = "madhyahna"
         const val SESSION_SAYAM = "sayam"

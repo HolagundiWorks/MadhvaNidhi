@@ -751,8 +751,10 @@
           "type": "dasara_pada",
           "deity": "Miscellaneous",
           "script": "kn",
-          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
-          "file": ""
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%86%E0%B2%9A%E0%B2%BE%E0%B2%B0%E0%B2%B5%E0%B2%BF%E0%B2%B2%E0%B3%8D%E0%B2%B2%E0%B2%A6_%E0%B2%A8%E0%B2%BE%E0%B2%B2%E0%B2%BF%E0%B2%97%E0%B3%86",
+          "file": "haridasa/purandara/acharavillada_nalige.txt",
+          "author": "purandara",
+          "license": "cc-by-sa-wikisource"
         },
         {
           "id": "dasa_013",
@@ -767,14 +769,16 @@
         },
         {
           "id": "dasa_014",
-          "kn": "ಅದದೆಲ್ಲ ಒಳಿತೇ ಆಯಿತು",
+          "kn": "ಆದದ್ದೆಲ್ಲ ಒಳಿತೇ ಆಯಿತು",
           "sa": "",
-          "en": "Adadella olite ayitu",
+          "en": "Aadaddella olite ayitu",
           "type": "dasara_pada",
           "deity": "Miscellaneous",
           "script": "kn",
-          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
-          "file": ""
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%86%E0%B2%A6%E0%B2%A6%E0%B3%8D%E0%B2%A6%E0%B3%86%E0%B2%B2%E0%B3%8D%E0%B2%B2_%E0%B2%92%E0%B2%B3%E0%B2%BF%E0%B2%A4%E0%B3%86_%E0%B2%86%E0%B2%AF%E0%B2%BF%E0%B2%A4%E0%B3%81",
+          "file": "haridasa/purandara/adadella_olite.txt",
+          "author": "purandara",
+          "license": "cc-by-sa-wikisource"
         },
         {
           "id": "dasa_015",
@@ -789,14 +793,16 @@
         },
         {
           "id": "dasa_016",
-          "kn": "ಅಜ್ಜನಿಗಳ ಕೂಡ ಅಧಿಕ",
+          "kn": "ಅಜ್ಞಾನಿಗಳ ಕೂಡ ಅಧಿಕ",
           "sa": "",
-          "en": "Ajjanigala kuda adhika",
+          "en": "Ajnanigala kuda adhika",
           "type": "dasara_pada",
           "deity": "Miscellaneous",
           "script": "kn",
-          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
-          "file": ""
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%A6%E0%B2%BE%E0%B2%B8_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF/%E0%B2%AA%E0%B3%81%E0%B2%B0%E0%B2%82%E0%B2%A6%E0%B2%B0%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0%E0%B3%81",
+          "file": "haridasa/purandara/ajnani_gala_kuda.txt",
+          "author": "purandara",
+          "license": "cc-by-sa-wikisource"
         },
         {
           "id": "dasa_017",
@@ -899,14 +905,16 @@
         },
         {
           "id": "dasa_026",
-          "kn": "ಅಂಬೆ ಕಾಲಿಕುತಲಿ",
+          "kn": "ಅಂಬೆಗಾಲಿಕ್ಕುತಲಿ",
           "sa": "",
-          "en": "Ambe kalikuthali",
+          "en": "Ambegalikkutali",
           "type": "dasara_pada",
           "deity": "Krishna",
           "script": "kn",
-          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
-          "file": ""
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%85%E0%B2%82%E0%B2%AC%E0%B3%86%E0%B2%97%E0%B2%BE%E0%B2%B2%E0%B2%BF%E0%B2%95%E0%B3%8D%E0%B2%95%E0%B3%81%E0%B2%A4%E0%B2%B2%E0%B2%BF",
+          "file": "haridasa/purandara/ambegalikkutali.txt",
+          "author": "purandara",
+          "license": "cc-by-sa-wikisource"
         },
         {
           "id": "dasa_027",
@@ -916,8 +924,10 @@
           "type": "dasara_pada",
           "deity": "Miscellaneous",
           "script": "kn",
-          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
-          "file": ""
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%85%E0%B2%82%E0%B2%AC%E0%B2%BF%E0%B2%97_%E0%B2%A8%E0%B2%BE_%E0%B2%A8%E0%B2%BF%E0%B2%A8%E0%B3%8D%E0%B2%A8_%E0%B2%A8%E0%B2%82%E0%B2%AC%E0%B2%BF%E0%B2%A6%E0%B3%86",
+          "file": "haridasa/purandara/ambiga_na_ninna.txt",
+          "author": "purandara",
+          "license": "cc-by-sa-wikisource"
         },
         {
           "id": "dasa_028",
@@ -1037,8 +1047,10 @@
           "type": "dasara_pada",
           "deity": "Miscellaneous",
           "script": "kn",
-          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
-          "file": ""
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%A6%E0%B2%BE%E0%B2%B8_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF/%E0%B2%AA%E0%B3%81%E0%B2%B0%E0%B2%82%E0%B2%A6%E0%B2%B0%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0%E0%B3%81",
+          "file": "haridasa/purandara/antakana_dutarige.txt",
+          "author": "purandara",
+          "license": "cc-by-sa-wikisource"
         },
         {
           "id": "dasa_039",
@@ -1048,8 +1060,10 @@
           "type": "dasara_pada",
           "deity": "Hari / Narayana",
           "script": "kn",
-          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
-          "file": ""
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%A6%E0%B2%BE%E0%B2%B8_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF/%E0%B2%AA%E0%B3%81%E0%B2%B0%E0%B2%82%E0%B2%A6%E0%B2%B0%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0%E0%B3%81",
+          "file": "haridasa/purandara/antarangadalli_hariya.txt",
+          "author": "purandara",
+          "license": "cc-by-sa-wikisource"
         },
         {
           "id": "dasa_040",
@@ -1180,8 +1194,10 @@
           "type": "dasara_pada",
           "deity": "Krishna",
           "script": "kn",
-          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
-          "file": ""
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B3%83%E0%B2%B7%E0%B3%8D%E0%B2%A3_%E0%B2%A8%E0%B3%80_%E0%B2%AC%E0%B3%87%E0%B2%97%E0%B2%A8%E0%B3%86_%E0%B2%AC%E0%B2%BE%E0%B2%B0%E0%B3%8A",
+          "file": "haridasa/vyasaraya/krishna_nee_begane.txt",
+          "author": "vyasaraya",
+          "license": "cc-by-sa-wikisource"
         },
         {
           "id": "dasa_jagadodharana",
@@ -1190,20 +1206,24 @@
           "en": "Jagadodharana",
           "type": "dasara_pada",
           "deity": "Krishna",
-          "script": "sa",
-          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
-          "file": "jagadodharana.txt"
+          "script": "kn",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%86%E0%B2%A1%E0%B2%BF%E0%B2%B8%E0%B2%BF%E0%B2%A6%E0%B2%B3%E0%B3%86%E0%B2%B6%E0%B3%8B%E0%B2%A6%E0%B2%BE_%E0%B2%9C%E0%B2%97%E0%B2%A6%E0%B3%8B%E0%B2%A6%E0%B3%8D%E0%B2%A7%E0%B2%BE%E0%B2%B0%E0%B2%A8",
+          "file": "haridasa/purandara/jagadodharana.txt",
+          "author": "purandara",
+          "license": "cc-by-sa-wikisource"
         },
         {
           "id": "dasa_bhagyada",
-          "kn": "ಭಾಗ್ಯದ ಲಕ್ಷ್ಮಿ ಬಾರಮ್ಮ",
+          "kn": "ಭಾಗ್ಯದ ಲಕ್ಷ್ಮೀ ಬಾರಮ್ಮ",
           "sa": "",
           "en": "Bhagyada Lakshmi Baramma",
           "type": "dasara_pada",
           "deity": "Mahalakshmi",
-          "script": "sa",
-          "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
-          "file": "bhagyada_lakshmi.txt"
+          "script": "kn",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%AD%E0%B2%BE%E0%B2%97%E0%B3%8D%E0%B2%AF%E0%B2%A6_%E0%B2%B2%E0%B2%95%E0%B3%8D%E0%B2%B7%E0%B3%8D%E0%B2%AE%E0%B3%80_%E0%B2%AC%E0%B2%BE%E0%B2%B0%E0%B2%AE%E0%B3%8D%E0%B2%AE",
+          "file": "haridasa/purandara/bhagyada_lakshmi.txt",
+          "author": "purandara",
+          "license": "cc-by-sa-wikisource"
         },
         {
           "id": "dasa_hanuma",
@@ -1214,7 +1234,9 @@
           "deity": "Hanuma",
           "script": "kn",
           "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
-          "file": "dasara_hanuma.txt"
+          "file": "dasara_hanuma.txt",
+          "author": "purandara",
+          "license": "existing-bundled"
         },
         {
           "id": "dasa_madhwa",
@@ -1225,7 +1247,9 @@
           "deity": "Madhwacharyaru",
           "script": "kn",
           "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
-          "file": "dasara_madhwa.txt"
+          "file": "dasara_madhwa.txt",
+          "author": "purandara",
+          "license": "existing-bundled"
         },
         {
           "id": "dasa_venkata",
@@ -1292,6 +1316,357 @@
           "script": "kn",
           "url": "https://madhwafestivals.com/2017/04/15/index-dasara-padagalu-lyrics/",
           "file": ""
+        },
+        {
+          "id": "dasa_anjabeda",
+          "kn": "ಅಂಜಬೇಡ ಬೇಡವೆಲೆ ಜೀವ",
+          "sa": "",
+          "en": "Anjabeda bedavele jeeva",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/anjabeda_bedavele.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%A6%E0%B2%BE%E0%B2%B8_%E0%B2%B8%E0%B2%BE%E0%B2%B9%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%AF/%E0%B2%AA%E0%B3%81%E0%B2%B0%E0%B2%82%E0%B2%A6%E0%B2%B0%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%B0%E0%B3%81"
+        },
+        {
+          "id": "dasa_karuniso",
+          "kn": "ಕರುಣಿಸೋ ರಂಗ",
+          "sa": "",
+          "en": "Karuniso ranga",
+          "type": "dasara_pada",
+          "deity": "Krishna",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/karuniso_ranga.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%B0%E0%B3%81%E0%B2%A3%E0%B2%BF%E0%B2%B8%E0%B3%8B_%E0%B2%B0%E0%B2%82%E0%B2%97"
+        },
+        {
+          "id": "dasa_dasana_madiko",
+          "kn": "ದಾಸನ ಮಾಡಿಕೊ ಎನ್ನ",
+          "sa": "",
+          "en": "Dasana madiko enna",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/dasana_madiko.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B2%A8_%E0%B2%AE%E0%B2%BE%E0%B2%A1%E0%B2%BF%E0%B2%95%E0%B3%8A_%E0%B2%8E%E0%B2%A8%E0%B3%8D%E0%B2%A8"
+        },
+        {
+          "id": "dasa_neenyako",
+          "kn": "ನೀನ್ಯಾಕೊ ನಿನ್ನ ಹಂಗ್ಯಾಕೊ",
+          "sa": "",
+          "en": "Neenyako ninna hangyako",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/neenyako_ninna.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%A8%E0%B3%80%E0%B2%A8%E0%B3%8D%E0%B2%AF%E0%B2%BE%E0%B2%95%E0%B3%8A_%E0%B2%A8%E0%B2%BF%E0%B2%A8%E0%B3%8D%E0%B2%A8_%E0%B2%B9%E0%B2%82%E0%B2%97%E0%B3%8D%E0%B2%AF%E0%B2%BE%E0%B2%95%E0%B3%8A"
+        },
+        {
+          "id": "dasa_anugalavu",
+          "kn": "ಅನುಗಾಲವು ಚಿಂತೆ",
+          "sa": "",
+          "en": "Anugalavu chinte",
+          "type": "dasara_pada",
+          "deity": "Miscellaneous",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/anugalavu_chinte.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%85%E0%B2%A8%E0%B3%81%E0%B2%97%E0%B2%BE%E0%B2%B2%E0%B2%B5%E0%B3%81_%E0%B2%9A%E0%B2%BF%E0%B2%82%E0%B2%A4%E0%B3%86"
+        },
+        {
+          "id": "dasa_ws_kallu_sakkare",
+          "kn": "ಕಲ್ಲು ಸಕ್ಕರೆ ಕೊಳ್ಳಿರೊ",
+          "sa": "",
+          "en": "ಕಲ್ಲು ಸಕ್ಕರೆ ಕೊಳ್ಳಿರೊ",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/kallu_sakkare.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%95%E0%B2%B2%E0%B3%8D%E0%B2%B2%E0%B3%81_%E0%B2%B8%E0%B2%95%E0%B3%8D%E0%B2%95%E0%B2%B0%E0%B3%86_%E0%B2%95%E0%B3%8A%E0%B2%B3%E0%B3%8D%E0%B2%B3%E0%B2%BF%E0%B2%B0%E0%B3%8A"
+        },
+        {
+          "id": "dasa_ws_gajavadana_beduve",
+          "kn": "ಗಜಾನನ ಸ್ತುತಿ - ಗಜವದನ ಬೇಡುವೆ",
+          "sa": "",
+          "en": "ಗಜಾನನ ಸ್ತುತಿ - ಗಜವದನ ಬೇಡುವೆ",
+          "type": "dasara_pada",
+          "deity": "Ganesha",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/gajavadana_beduve.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%97%E0%B2%9C%E0%B2%BE%E0%B2%A8%E0%B2%A8_%E0%B2%B8%E0%B3%8D%E0%B2%A4%E0%B3%81%E0%B2%A4%E0%B2%BF_-_%E0%B2%97%E0%B2%9C%E0%B2%B5%E0%B2%A6%E0%B2%A8_%E0%B2%AC%E0%B3%87%E0%B2%A1%E0%B3%81%E0%B2%B5%E0%B3%86"
+        },
+        {
+          "id": "dasa_ws_gajendra_moksha",
+          "kn": "ಗಜೇಂದ್ರಮೋಕ್ಷ",
+          "sa": "",
+          "en": "ಗಜೇಂದ್ರಮೋಕ್ಷ",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/gajendra_moksha.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%97%E0%B2%9C%E0%B3%87%E0%B2%82%E0%B2%A6%E0%B3%8D%E0%B2%B0%E0%B2%AE%E0%B3%8B%E0%B2%95%E0%B3%8D%E0%B2%B7"
+        },
+        {
+          "id": "dasa_ws_guruvina_gulama",
+          "kn": "ಗುರುವಿನ ಗುಲಾಮ",
+          "sa": "",
+          "en": "ಗುರುವಿನ ಗುಲಾಮ",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/guruvina_gulama.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%97%E0%B3%81%E0%B2%B0%E0%B3%81%E0%B2%B5%E0%B2%BF%E0%B2%A8_%E0%B2%97%E0%B3%81%E0%B2%B2%E0%B2%BE%E0%B2%AE"
+        },
+        {
+          "id": "dasa_ws_donku_balada",
+          "kn": "ಡೊಂಕು ಬಾಲದ ನಾಯಕರೆ",
+          "sa": "",
+          "en": "ಡೊಂಕು ಬಾಲದ ನಾಯಕರೆ",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/donku_balada.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%A1%E0%B3%8A%E0%B2%82%E0%B2%95%E0%B3%81_%E0%B2%AC%E0%B2%BE%E0%B2%B2%E0%B2%A6_%E0%B2%A8%E0%B2%BE%E0%B2%AF%E0%B2%95%E0%B2%B0%E0%B3%86"
+        },
+        {
+          "id": "dasa_ws_deva_banda",
+          "kn": "ದೇವ ಬಂದ",
+          "sa": "",
+          "en": "ದೇವ ಬಂದ",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/deva_banda.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%A6%E0%B3%87%E0%B2%B5_%E0%B2%AC%E0%B2%82%E0%B2%A6"
+        },
+        {
+          "id": "dasa_ws_na_ninna_dhyana",
+          "kn": "ನಾ ನಿನ್ನ ಧ್ಯಾನದೊಳಿರಲು",
+          "sa": "",
+          "en": "ನಾ ನಿನ್ನ ಧ್ಯಾನದೊಳಿರಲು",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/na_ninna_dhyana.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%A8%E0%B2%BE_%E0%B2%A8%E0%B2%BF%E0%B2%A8%E0%B3%8D%E0%B2%A8_%E0%B2%A7%E0%B3%8D%E0%B2%AF%E0%B2%BE%E0%B2%A8%E0%B2%A6%E0%B3%8A%E0%B2%B3%E0%B2%BF%E0%B2%B0%E0%B2%B2%E0%B3%81"
+        },
+        {
+          "id": "dasa_ws_palisennanu_lakshmi",
+          "kn": "ಪಾಲಿಸೆನ್ನನು ಶ್ರೀಮಹಾಲಕ್ಷ್ಮೀ",
+          "sa": "",
+          "en": "ಪಾಲಿಸೆನ್ನನು ಶ್ರೀಮಹಾಲಕ್ಷ್ಮೀ",
+          "type": "dasara_pada",
+          "deity": "Mahalakshmi",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/palisennanu_lakshmi.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%AA%E0%B2%BE%E0%B2%B2%E0%B2%BF%E0%B2%B8%E0%B3%86%E0%B2%A8%E0%B3%8D%E0%B2%A8%E0%B2%A8%E0%B3%81_%E0%B2%B6%E0%B3%8D%E0%B2%B0%E0%B3%80%E0%B2%AE%E0%B2%B9%E0%B2%BE%E0%B2%B2%E0%B2%95%E0%B3%8D%E0%B2%B7%E0%B3%8D%E0%B2%AE%E0%B3%80"
+        },
+        {
+          "id": "dasa_ws_pogadirelo_ranga",
+          "kn": "ಪೋಗದಿರೆಲೊ ರಂಗ",
+          "sa": "",
+          "en": "ಪೋಗದಿರೆಲೊ ರಂಗ",
+          "type": "dasara_pada",
+          "deity": "Krishna",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/pogadirelo_ranga.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%AA%E0%B3%8B%E0%B2%97%E0%B2%A6%E0%B2%BF%E0%B2%B0%E0%B3%86%E0%B2%B2%E0%B3%8A_%E0%B2%B0%E0%B2%82%E0%B2%97"
+        },
+        {
+          "id": "dasa_ws_bandadella_barali",
+          "kn": "ಬಂದದೆಲ್ಲ ಬರಲಿ",
+          "sa": "",
+          "en": "ಬಂದದೆಲ್ಲ ಬರಲಿ",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/bandadella_barali.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%AC%E0%B2%82%E0%B2%A6%E0%B2%A6%E0%B3%86%E0%B2%B2%E0%B3%8D%E0%B2%B2_%E0%B2%AC%E0%B2%B0%E0%B2%B2%E0%B2%BF"
+        },
+        {
+          "id": "dasa_ws_mosa_hodenalla",
+          "kn": "ಮೋಸ ಹೋದೆನಲ್ಲಾ",
+          "sa": "",
+          "en": "ಮೋಸ ಹೋದೆನಲ್ಲಾ",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/mosa_hodenalla.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%AE%E0%B3%8B%E0%B2%B8_%E0%B2%B9%E0%B3%8B%E0%B2%A6%E0%B3%86%E0%B2%A8%E0%B2%B2%E0%B3%8D%E0%B2%B2%E0%B2%BE"
+        },
+        {
+          "id": "dasa_ws_yake_chintisutiddi",
+          "kn": "ಯಾಕೆ ಚಿಂತಿಸುತಿದ್ದಿ ಕೋತಿಮನವೆ",
+          "sa": "",
+          "en": "ಯಾಕೆ ಚಿಂತಿಸುತಿದ್ದಿ ಕೋತಿಮನವೆ",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/yake_chintisutiddi.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%AF%E0%B2%BE%E0%B2%95%E0%B3%86_%E0%B2%9A%E0%B2%BF%E0%B2%82%E0%B2%A4%E0%B2%BF%E0%B2%B8%E0%B3%81%E0%B2%A4%E0%B2%BF%E0%B2%A6%E0%B3%8D%E0%B2%A6%E0%B2%BF_%E0%B2%95%E0%B3%8B%E0%B2%A4%E0%B2%BF%E0%B2%AE%E0%B2%A8%E0%B2%B5%E0%B3%86"
+        },
+        {
+          "id": "dasa_ws_yadava_nee_baa",
+          "kn": "ಯಾದವ ನೀ ಬಾ",
+          "sa": "",
+          "en": "ಯಾದವ ನೀ ಬಾ",
+          "type": "dasara_pada",
+          "deity": "Krishna",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/yadava_nee_baa.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%AF%E0%B2%BE%E0%B2%A6%E0%B2%B5_%E0%B2%A8%E0%B3%80_%E0%B2%AC%E0%B2%BE"
+        },
+        {
+          "id": "dasa_ws_yarige_yaruntu",
+          "kn": "ಯಾರಿಗೆ ಯಾರುಂಟು ಎರವಿನ ಸಂಸಾರ",
+          "sa": "",
+          "en": "ಯಾರಿಗೆ ಯಾರುಂಟು ಎರವಿನ ಸಂಸಾರ",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/yarige_yaruntu.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%AF%E0%B2%BE%E0%B2%B0%E0%B2%BF%E0%B2%97%E0%B3%86_%E0%B2%AF%E0%B2%BE%E0%B2%B0%E0%B3%81%E0%B2%82%E0%B2%9F%E0%B3%81_%E0%B2%8E%E0%B2%B0%E0%B2%B5%E0%B2%BF%E0%B2%A8_%E0%B2%B8%E0%B2%82%E0%B2%B8%E0%B2%BE%E0%B2%B0"
+        },
+        {
+          "id": "dasa_ws_ranga_baro",
+          "kn": "ರಂಗ ಬಾರೋ ರಂಗ ಬಾರೋ",
+          "sa": "",
+          "en": "ರಂಗ ಬಾರೋ ರಂಗ ಬಾರೋ",
+          "type": "dasara_pada",
+          "deity": "Krishna",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/ranga_baro.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%B0%E0%B2%82%E0%B2%97_%E0%B2%AC%E0%B2%BE%E0%B2%B0%E0%B3%8B_%E0%B2%B0%E0%B2%82%E0%B2%97_%E0%B2%AC%E0%B2%BE%E0%B2%B0%E0%B3%8B"
+        },
+        {
+          "id": "dasa_ws_ranganayaka_rajeevalochana",
+          "kn": "ರಂಗನಾಯಕ ರಾಜೀವಲೋಚನ",
+          "sa": "",
+          "en": "ರಂಗನಾಯಕ ರಾಜೀವಲೋಚನ",
+          "type": "dasara_pada",
+          "deity": "Krishna",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/ranganayaka_rajeevalochana.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%B0%E0%B2%82%E0%B2%97%E0%B2%A8%E0%B2%BE%E0%B2%AF%E0%B2%95_%E0%B2%B0%E0%B2%BE%E0%B2%9C%E0%B3%80%E0%B2%B5%E0%B2%B2%E0%B3%8B%E0%B2%9A%E0%B2%A8"
+        },
+        {
+          "id": "dasa_ws_rakshisu_lokanayaka",
+          "kn": "ರಕ್ಷಿಸು ಲೋಕನಾಯಕನೆ ರಕ್ಷಿಸು",
+          "sa": "",
+          "en": "ರಕ್ಷಿಸು ಲೋಕನಾಯಕನೆ ರಕ್ಷಿಸು",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/rakshisu_lokanayaka.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%B0%E0%B2%95%E0%B3%8D%E0%B2%B7%E0%B2%BF%E0%B2%B8%E0%B3%81_%E0%B2%B2%E0%B3%8B%E0%B2%95%E0%B2%A8%E0%B2%BE%E0%B2%AF%E0%B2%95%E0%B2%A8%E0%B3%86_%E0%B2%B0%E0%B2%95%E0%B3%8D%E0%B2%B7%E0%B2%BF%E0%B2%B8%E0%B3%81"
+        },
+        {
+          "id": "dasa_ws_rama_nama_payasa",
+          "kn": "ರಾಮ ನಾಮ ಪಾಯಸಕ್ಕೆ",
+          "sa": "",
+          "en": "ರಾಮ ನಾಮ ಪಾಯಸಕ್ಕೆ",
+          "type": "dasara_pada",
+          "deity": "Raama Devaru",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/rama_nama_payasa.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%B0%E0%B2%BE%E0%B2%AE_%E0%B2%A8%E0%B2%BE%E0%B2%AE_%E0%B2%AA%E0%B2%BE%E0%B2%AF%E0%B2%B8%E0%B2%95%E0%B3%8D%E0%B2%95%E0%B3%86"
+        },
+        {
+          "id": "dasa_ws_sharanu_siddhivinayaka",
+          "kn": "ಶರಣು ಸಿದ್ಧಿವಿನಾಯಕ",
+          "sa": "",
+          "en": "ಶರಣು ಸಿದ್ಧಿವಿನಾಯಕ",
+          "type": "dasara_pada",
+          "deity": "Ganesha",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/sharanu_siddhivinayaka.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%B6%E0%B2%B0%E0%B2%A3%E0%B3%81_%E0%B2%B8%E0%B2%BF%E0%B2%A6%E0%B3%8D%E0%B2%A7%E0%B2%BF%E0%B2%B5%E0%B2%BF%E0%B2%A8%E0%B2%BE%E0%B2%AF%E0%B2%95"
+        },
+        {
+          "id": "dasa_ws_srinivasa_enna_bittu",
+          "kn": "ಶ್ರೀನಿವಾಸ ಎನ್ನ ಬಿಟ್ಟು",
+          "sa": "",
+          "en": "ಶ್ರೀನಿವಾಸ ಎನ್ನ ಬಿಟ್ಟು",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/srinivasa_enna_bittu.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%B6%E0%B3%8D%E0%B2%B0%E0%B3%80%E0%B2%A8%E0%B2%BF%E0%B2%B5%E0%B2%BE%E0%B2%B8_%E0%B2%8E%E0%B2%A8%E0%B3%8D%E0%B2%A8_%E0%B2%AC%E0%B2%BF%E0%B2%9F%E0%B3%8D%E0%B2%9F%E0%B3%81"
+        },
+        {
+          "id": "dasa_ws_hari_chitta_satya",
+          "kn": "ಹರಿ ಚಿತ್ತ ಸತ್ಯ",
+          "sa": "",
+          "en": "ಹರಿ ಚಿತ್ತ ಸತ್ಯ",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/hari_chitta_satya.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%B9%E0%B2%B0%E0%B2%BF_%E0%B2%9A%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%A4_%E0%B2%B8%E0%B2%A4%E0%B3%8D%E0%B2%AF"
+        },
+        {
+          "id": "dasa_ws_hari_smarane_mado",
+          "kn": "ಹರಿ ಸ್ಮರಣೆ ಮಾಡೊ",
+          "sa": "",
+          "en": "ಹರಿ ಸ್ಮರಣೆ ಮಾಡೊ",
+          "type": "dasara_pada",
+          "deity": "Hari / Narayana",
+          "author": "purandara",
+          "script": "kn",
+          "file": "haridasa/purandara/hari_smarane_mado.txt",
+          "license": "cc-by-sa-wikisource",
+          "url": "https://kn.wikisource.org/wiki/%E0%B2%B9%E0%B2%B0%E0%B2%BF_%E0%B2%B8%E0%B3%8D%E0%B2%AE%E0%B2%B0%E0%B2%A3%E0%B3%86_%E0%B2%AE%E0%B2%BE%E0%B2%A1%E0%B3%8A"
         }
       ]
     },

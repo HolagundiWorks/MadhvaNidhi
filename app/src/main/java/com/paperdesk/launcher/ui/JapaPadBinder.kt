@@ -4,6 +4,7 @@ import android.view.HapticFeedbackConstants
 import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.paperdesk.launcher.R
@@ -12,6 +13,7 @@ import com.paperdesk.launcher.data.JapaCatalog
 import com.paperdesk.launcher.data.JapaGoals
 import com.paperdesk.launcher.data.JapaStore
 import com.paperdesk.launcher.data.OsLang
+import com.paperdesk.launcher.data.PracticeDayStore
 import com.paperdesk.launcher.data.ProfileStore
 import com.paperdesk.launcher.data.SandhyaStore
 import com.paperdesk.launcher.data.Sankalpa
@@ -25,6 +27,7 @@ object JapaPadBinder {
     fun bind(host: Fragment, root: View) {
         val context = host.requireContext()
         val store = JapaStore(context)
+        val practice = PracticeDayStore(context)
         val profile = ProfileStore(context).active()
         val lang = OsLang.get(context)
         val mantraIds = profile.dikshaMantras.ifEmpty { listOf("gayatri") }
@@ -62,7 +65,7 @@ object JapaPadBinder {
             store.setActiveMantraId(entry.id)
             dailyGoal = profileDaily[entry.id] ?: dailyTargetFor(entry.id)
             store.configure(entry.mantra, dailyGoal, true)
-            paint(root, store.counts(activeId), dailyGoal)
+            paint(root, store.counts(activeId), dailyGoal, practice)
         }
 
         val angaTabs = root.findViewById<TabLayout>(R.id.japaAngaTabs)
@@ -84,9 +87,9 @@ object JapaPadBinder {
             dailyGoal = (dailyGoal + delta).coerceAtMost(JapaGoals.SANKALPA.last())
             val entry = JapaCatalog.entries.first { it.id == activeId }
             store.configure(entry.mantra, dailyGoal, true)
-            paint(root, store.counts(activeId), dailyGoal)
+            paint(root, store.counts(activeId), dailyGoal, practice)
             root.findViewById<TextView>(R.id.japaStatus).text =
-                "Daily ${countFormat.format(dailyGoal)}"
+                "ದೈನಂದಿನ ಗುರಿ +${countFormat.format(delta)} → ${countFormat.format(dailyGoal)}"
         }
 
         root.findViewById<View>(R.id.japaGoal11).setOnClickListener { addGoal(11) }
@@ -96,42 +99,80 @@ object JapaPadBinder {
             dailyGoal = profileDaily[activeId] ?: dailyTargetFor(activeId)
             val entry = JapaCatalog.entries.first { it.id == activeId }
             store.configure(entry.mantra, dailyGoal, true)
-            paint(root, store.counts(activeId), dailyGoal)
-            root.findViewById<TextView>(R.id.japaStatus).text = "Daily goal restored"
+            paint(root, store.counts(activeId), dailyGoal, practice)
+            root.findViewById<TextView>(R.id.japaStatus).text =
+                "ದೈನಂದಿನ ಗುರಿ ಮರುಸ್ಥಾಪನೆ · ${countFormat.format(dailyGoal)}"
         }
         root.findViewById<View>(R.id.japaTap).setOnClickListener { button ->
             button.performHapticFeedback(
                 HapticFeedbackConstants.KEYBOARD_TAP,
                 HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING
             )
-            paint(root, store.add(1, activeId), dailyGoal)
+            paint(root, store.add(1, activeId), dailyGoal, practice)
         }
-        root.findViewById<View>(R.id.japaComplete).setOnClickListener {
-            paint(root, store.complete(activeId), dailyGoal)
-            root.findViewById<TextView>(R.id.japaStatus).text = "Completed for today"
+
+        val skip = root.findViewById<MaterialButton>(R.id.japaSkip)
+        val complete = root.findViewById<MaterialButton>(R.id.japaComplete)
+        fun paintDayActions() {
+            skip.isSelected = practice.japaSkipped()
+            complete.isSelected = practice.japaComplete()
         }
-        root.findViewById<View>(R.id.japaSkip).setOnClickListener {
-            root.findViewById<TextView>(R.id.japaStatus).text = "Skipped today"
+        complete.setOnClickListener {
+            val on = !practice.japaComplete()
+            if (on) {
+                val counts = store.counts(activeId)
+                val need = (dailyGoal - counts.daily).coerceAtLeast(0)
+                val after = if (need > 0) store.add(need, activeId) else counts
+                practice.setJapaDay(complete = true, skipped = false)
+                paint(root, after, dailyGoal, practice)
+                root.findViewById<TextView>(R.id.japaStatus).text = "ಇಂದು ಪೂರ್ಣ · Completed"
+            } else {
+                practice.setJapaDay(complete = false, skipped = false)
+                paint(root, store.counts(activeId), dailyGoal, practice)
+            }
+            paintDayActions()
+        }
+        skip.setOnClickListener {
+            val on = !practice.japaSkipped()
+            practice.setJapaDay(complete = false, skipped = on)
+            paint(root, store.counts(activeId), dailyGoal, practice)
+            root.findViewById<TextView>(R.id.japaStatus).text =
+                if (on) "ಇಂದು ಬಿಟ್ಟಿದೆ · Skipped" else cumulativeStatus(store.counts(activeId))
+            paintDayActions()
         }
 
         store.setActiveMantraId(activeId)
         val entry = JapaCatalog.entries.first { it.id == activeId }
         store.configure(entry.mantra, dailyGoal, true)
-        paint(root, store.counts(activeId), dailyGoal)
+        paint(root, store.counts(activeId), dailyGoal, practice)
+        paintDayActions()
     }
 
-    private fun paint(root: View, counts: JapaStore.MantraCounts, dailyGoal: Long) {
+    private fun paint(
+        root: View,
+        counts: JapaStore.MantraCounts,
+        dailyGoal: Long,
+        practice: PracticeDayStore
+    ) {
         val done = counts.daily
         val target = dailyGoal.coerceAtLeast(1)
         root.findViewById<TextView>(R.id.japaCountDone).text = formatCount(done)
         root.findViewById<TextView>(R.id.japaCountTarget).text = countFormat.format(target)
+        val status = root.findViewById<TextView>(R.id.japaStatus)
+        status.text = when {
+            practice.japaComplete() -> "ಇಂದು ಪೂರ್ಣ · Completed"
+            practice.japaSkipped() -> "ಇಂದು ಬಿಟ್ಟಿದೆ · Skipped"
+            else -> cumulativeStatus(counts)
+        }
+    }
+
+    private fun cumulativeStatus(counts: JapaStore.MantraCounts): String {
         val sankalpaLabel = if (counts.sankalpaConfigured > 0) {
             countFormat.format(counts.sankalpa)
         } else {
-            "Auto ${countFormat.format(counts.sankalpa)}"
+            "ಸ್ವಯಂ ${countFormat.format(counts.sankalpa)}"
         }
-        root.findViewById<TextView>(R.id.japaStatus).text =
-            "Cumulative ${countFormat.format(counts.cumulative)} · Sankalpa $sankalpaLabel"
+        return "ಒಟ್ಟು ${countFormat.format(counts.cumulative)} · ಸಂಕಲ್ಪ $sankalpaLabel"
     }
 
     private fun formatCount(value: Long): String =

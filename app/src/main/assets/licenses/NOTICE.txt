@@ -1,0 +1,40 @@
+MadhvaNidhi — third-party and content notices
+=============================================
+
+Developer
+---------
+MadhvaNidhi is developed by Human Centric Works (hcworks.in), Hospet, Karnataka.
+
+Privacy (summary)
+-----------------
+Sadhak profile and practice data are stored locally on the device (encrypted vault /
+AES-GCM backup). There is no account sign-in and no cloud sync of the user vault.
+Internet may be used for optional live Panchanga tradition data when selected and
+reachable. The app does not sell personal data. See in-app Legal → Privacy for the
+full declaration.
+
+IBM Carbon icons
+----------------
+Selected icon SVGs are derived from IBM Carbon Design System icons.
+Copyright IBM Corp. Licensed under the Apache License, Version 2.0.
+See carbon-icons.txt in this folder.
+
+Haridasa lyric imports
+----------------------
+Classical Haridasa compositions are public-domain literary works.
+Kannada Wikisource transcriptions bundled under madhwa/texts/haridasa/ are used
+under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+Attribution: Kannada Wikisource contributors.
+See haridasa-wikisource.txt and docs/haridasa-import-manifest.csv.
+
+Sampada / other web catalogues
+------------------------------
+MadhvaNidhi is not affiliated with Saaranga Infotech LLP or sampada.net.
+Those sites were used only as discovery references; their page bodies were not
+scraped into this application.
+
+Other bundled stotra / mantra / library texts
+---------------------------------------------
+Retain source attributions recorded in docs/CATALOGUE_AUDIT.md and individual
+text headers where present. Do not assume a single open license for the entire
+library corpus.

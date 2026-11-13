@@ -19,7 +19,6 @@ object NityaParayanaBinder {
                 DeskType.reading(this)
             }
             prefs.edit().putInt("section", index).apply()
-            ScreenPages.first(root)
         }
         if (sections.isNotEmpty()) {
             MaterialChoices.bind(root.findViewById(R.id.nityaSection), sections.map { it.title }, selected) { show(it) }

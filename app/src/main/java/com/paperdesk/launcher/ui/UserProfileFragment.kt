@@ -4,10 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.google.android.material.checkbox.MaterialCheckBox
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputEditText
 import com.paperdesk.launcher.R
@@ -100,26 +99,42 @@ class UserProfileFragment : Fragment() {
     }
 
     private fun rebuildDiksha(v: View) {
-        val host = v.findViewById<LinearLayout>(R.id.editDikshaHost)
-        host.removeAllViews()
-        JapaCatalog.entries.forEach { entry ->
-            val box = MaterialCheckBox(requireContext()).apply {
-                text = entry.label
-                isChecked = entry.id in selectedDiksha
-                setOnCheckedChangeListener { _, checked ->
-                    if (checked) {
-                        selectedDiksha += entry.id
-                        targetDaily.putIfAbsent(entry.id, JapaGoals.DEFAULT_DAILY)
-                        targetSankalpa.putIfAbsent(entry.id, JapaGoals.SANKALPA_AUTO)
+        val field = v.findViewById<MaterialAutoCompleteTextView>(R.id.editDiksha)
+        fun paintSummary() {
+            field.setText(
+                if (selectedDiksha.isEmpty()) ""
+                else selectedDiksha.joinToString(", ") { id ->
+                    JapaCatalog.entries.firstOrNull { it.id == id }?.label ?: id
+                },
+                false
+            )
+        }
+        paintSummary()
+        field.setOnClickListener {
+            val labels = JapaCatalog.entries.map { it.label }.toTypedArray()
+            val checked = BooleanArray(JapaCatalog.entries.size) { i ->
+                JapaCatalog.entries[i].id in selectedDiksha
+            }
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Choose mantras for japa")
+                .setMultiChoiceItems(labels, checked) { _, which, isChecked ->
+                    val id = JapaCatalog.entries[which].id
+                    if (isChecked) {
+                        selectedDiksha += id
+                        targetDaily.putIfAbsent(id, JapaGoals.DEFAULT_DAILY)
+                        targetSankalpa.putIfAbsent(id, JapaGoals.SANKALPA_AUTO)
                     } else {
-                        selectedDiksha -= entry.id
-                        targetDaily.remove(entry.id)
-                        targetSankalpa.remove(entry.id)
+                        selectedDiksha -= id
+                        targetDaily.remove(id)
+                        targetSankalpa.remove(id)
                     }
+                }
+                .setPositiveButton(android.R.string.ok) { _, _ ->
+                    paintSummary()
                     rebuildTargets(v)
                 }
-            }
-            host.addView(box)
+                .setNegativeButton(android.R.string.cancel, null)
+                .show()
         }
     }
 
