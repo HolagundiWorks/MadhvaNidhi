@@ -190,12 +190,15 @@ object FrozenPanchangaBinder {
             val marker = 11 in tile.tithis || 15 in tile.tithis
             val stripH = root.resources.getDimensionPixelSize(R.dimen.carbon_spacing_02)
             val topPad = if (11 in tile.tithis) stripH + (2 * density).roundToInt() else tilePad
-            button.setPadding(tilePad, topPad, tilePad, tilePad)
-            button.setLineSpacing(0f, 1.1f)
+            // TOP gravity + tighter font padding keeps Kannada tithi ink inside the fixed cell.
+            val bottomPad = (tilePad * 0.65f).roundToInt().coerceAtLeast((2 * density).roundToInt())
+            button.setPadding(tilePad, topPad, tilePad, bottomPad)
+            button.setLineSpacing(0f, 1.0f)
+            button.includeFontPadding = false
             button.maxLines = 3
             button.minimumWidth = 0
             button.minimumHeight = 0
-            button.gravity = Gravity.CENTER
+            button.gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL
             androidx.core.widget.TextViewCompat.setAutoSizeTextTypeWithDefaults(
                 button, androidx.core.widget.TextViewCompat.AUTO_SIZE_TEXT_TYPE_NONE
             )

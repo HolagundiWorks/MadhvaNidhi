@@ -238,6 +238,12 @@ class DashboardFragment : Fragment() {
                 setTextColor(requireContext().getColor(R.color.carbon_text))
                 setPadding(0, resources.getDimensionPixelSize(R.dimen.carbon_spacing_02), 0, 0)
                 maxLines = 1
+                ellipsize = android.text.TextUtils.TruncateAt.END
+                includeFontPadding = false
+                layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                )
             })
             cell.setOnClickListener {
                 store.setActiveMantraId(entry.id)
@@ -252,7 +258,7 @@ class DashboardFragment : Fragment() {
     }
 
     private fun shortLabel(label: String): String =
-        label.substringBefore("—").substringBefore("·").trim().take(14)
+        label.substringBefore("—").substringBefore("·").trim()
 
     private fun showProgressDialog(date: String = PanchangaStore.dateKey()) {
         val content = layoutInflater.inflate(R.layout.dialog_dashboard_progress, null, false)

@@ -101,9 +101,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/carbon_spacing_05"
+                    android:paddingBottom="@dimen/carbon_spacing_07"
                     android:textAppearance="@style/TextAppearance.Carbon.Body01"
                     android:textColor="@color/carbon_text"
-                    android:lineSpacingMultiplier="1.3" />
+                    android:lineSpacingMultiplier="1.3"
+                    android:includeFontPadding="false" />
             </ScrollView>
         </LinearLayout>
 

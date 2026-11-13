@@ -293,6 +293,8 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:padding="@dimen/carbon_spacing_03"
+            android:maxLines="3"
+            android:ellipsize="end"
             android:text="ದಿನದ ಅಭ್ಯಾಸ · Daily progress"
             android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
             android:textColor="@color/carbon_text"

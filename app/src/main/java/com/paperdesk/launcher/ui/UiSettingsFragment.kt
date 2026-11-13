@@ -8,8 +8,9 @@ import androidx.fragment.app.Fragment
 import com.paperdesk.launcher.R
 
 class UiSettingsFragment : Fragment() {
+    // Continuous NestedScrollView — ScreenPages mid-card paging was clipping japa-target rows.
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
-        ScreenPages.wrap(inflater.inflate(R.layout.activity_app_settings, container, false))
+        inflater.inflate(R.layout.activity_app_settings, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         PagePalette.apply(view, "settings")
