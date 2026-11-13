@@ -164,6 +164,17 @@ const slugByTitle = {
   "ರಕ್ಷಿಸು ಲೋಕನಾಯಕನೆ ರಕ್ಷಿಸು": "purandara/rakshisu_lokanayaka.txt",
   "ಶ್ರೀನಿವಾಸ ಎನ್ನ ಬಿಟ್ಟು": "purandara/srinivasa_enna_bittu.txt",
   "ಗಜೇಂದ್ರಮೋಕ್ಷ": "purandara/gajendra_moksha.txt",
+  "ದುಗ್ಗಾಣಿ ಎಂಬೊದು": "purandara/duggani_embodu.txt",
+  "ನಾ ಮಾಡಿದ ಕರ್ಮ": "purandara/na_madida_karma.txt",
+  "ಯಮನೆಲ್ಲೋ ಕಾಣೆನೆಂದ್ಹೇಳಬೇಡ": "purandara/yamanello_kaane.txt",
+  "ಯಾಕೆ ನಿರ್ದಯನಾದೆ ಎಲೊ ದೇವನೆ": "purandara/yake_nirdayanaade.txt",
+  "ಯಾಕೆ ಮೂರ್ಖನಾದ್ಯೋ ಮನುಜ": "purandara/yake_moorkhanaadyo.txt",
+  "ಯಾಕೆನ್ನೋಳಿನಿತು ಕೃಪೆಯಿಲ್ಲ ಹರಿಯೆ": "purandara/yakennoLinaitu.txt",
+  "ಯಾರು ಒಲಿದರೇನು": "purandara/yaru_olidarenu.txt",
+  "ಯಾರೆ ಬಂದವರು ಮನೆಗೆ": "purandara/yare_bandavaru.txt",
+  "ಯಾರೆ ರಂಗನ ಯಾರೆ ಕೃಷ್ಣನ": "purandara/yare_rangana.txt",
+  "ರಾಗಿ ತಂದೀರಾ ಭಿಕ್ಷಕೆ ರಾಗಿ ತಂದೀರಾ": "purandara/ragi_tandira.txt",
+  "ಯಾದವ ನೀ ಬಾ ಯದುಕುಲ ನಂದನ": "purandara/yadava_nee_baa_yadukula.txt",
 };
 
 function titleFromWikiName(name) {

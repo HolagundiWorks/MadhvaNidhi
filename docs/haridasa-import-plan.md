@@ -2,7 +2,7 @@
 
 Status: **Phase 1 pilot started** (2026-11-13). Aligns with `docs/CATALOGUE_AUDIT.md` and `docs/devotional-catalogue.md`.
 
-Pilot shipped: **39** readable `dasara_padagalu` bodies (was 4 → 17 → 39), CC BY-SA Wikisource under `madhwa/texts/haridasa/`. Manifest: `docs/haridasa-import-manifest.csv`. No Sampada scrape.
+Pilot shipped: **50** readable `dasara_padagalu` bodies (was 4 → 17 → 39 → 50), CC BY-SA Wikisource under `madhwa/texts/haridasa/`. Manifest: `docs/haridasa-import-manifest.csv`. No Sampada scrape.
 
 ## Goal
 
@@ -12,7 +12,7 @@ Fill **ಭಕ್ತಿ ಸಂಗೀತ → ಹಾಡುಗಳು** (catalogue gr
 
 | Group | Index titles | Bodies on device |
 | --- | ---: | ---: |
-| `dasara_padagalu` | 88 | **39** (Phase 1 continued) |
+| `dasara_padagalu` | 99 | **50** (Phase 1 continued) |
 | `suladhigalu` | 13 | **10** |
 | `ugabhogagalu` | 2 | **2** |
 
