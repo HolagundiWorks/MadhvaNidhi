@@ -47,7 +47,7 @@
         <li><button type="button" class="cds--tile wiki-item" data-wiki-open="${esc(a.id)}">
           <span class="cds--body-compact-01">${esc(a.title_en)} · ${esc(a.title_kn)}</span>
           <span class="cds--label-01">${esc(a.summary)}</span>
-          <span class="cds--tag cds--tag--${a.status === 'sourced' ? 'green' : 'gray'}">${a.status === 'pending' ? 'Pending source' : esc(a.status)}</span>
+          <span class="cds--tag cds--tag--${a.status === 'sourced' ? 'green' : 'gray'}">${({ sourced: 'Sourced', partial: 'Partly sourced', pending: 'Pending source' })[a.status] || esc(a.status)}</span>
           ${bookmarks.includes(a.id) ? '<span class="cds--label-01">Bookmarked</span>' : ''}
         </button></li>`).join('') || '<li class="cds--body-01">No matching article.</li>'}</ul>`;
   }

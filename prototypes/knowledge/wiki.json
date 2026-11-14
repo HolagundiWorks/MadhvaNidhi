@@ -4,7 +4,8 @@
   "statuses": {
     "sourced": "Facts checked against a cited source",
     "traditional": "Traditional account; label it as such in the UI",
-    "pending": "Structure only; no verified content yet"
+    "pending": "Structure only; no verified content yet",
+    "partial": "Some sections sourced, others still pending"
   },
   "categories": [
     {
@@ -65,7 +66,7 @@
         {
           "heading": "Disciples and lineage",
           "status": "sourced",
-          "body": "Padmanabha Tirtha headed a matha outside Tulunadu; Narahari, Madhava and Akshobhya Tirtha were meant to succeed him. Eight disciples headed the Udupi Ashta Mathas. Later lineage includes Jayatirtha and Vyasatirtha."
+          "body": "Madhva's direct disciples are named as Adhokshaja, Hrishikesha, Narasimha, Upendra, Rama, Vamana and Janardhana Tirthas, plus his brother Vishnu Tirtha. Padmanabha Tirtha was made head of a matha outside Tulunadu, with Narahari, Madhava and Akshobhya Tirtha named as his successors. Jayatirtha succeeded to the main matha after Akshobhya Tirtha; Uttaradi, Vyasaraja and Raghavendra mathas descend from him."
         },
         {
           "heading": "Associated places",
@@ -84,6 +85,12 @@
           "url": "https://en.wikipedia.org/wiki/Madhvacharya",
           "accessed": "2026-11-14",
           "note": "Read for birthplace, dates, works, disciples and doctrine sections"
+        },
+        {
+          "title": "Madhva Sampradaya — Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Madhva_Sampradaya",
+          "accessed": "2026-11-14",
+          "note": "Read for guru lineage and matha context (first 100,000 characters read); no full chronological list on the page"
         }
       ]
     },
@@ -117,18 +124,18 @@
         },
         {
           "heading": "Jiva, Ishvara and Jagat",
-          "status": "pending",
-          "body": "Not yet sourced."
+          "status": "sourced",
+          "body": "Jivas (souls) are eternal and infinite in number, reflections of God but never identical to God, even in liberation. Ishvara is Vishnu (Narayana), the independent reality, personal, almighty, all-knowing and compassionate. Jagat is the dependent reality: fully real with its own essence, and subject to cycles of creation and dissolution. Madhva divides souls into three classes: those capable of liberation, those bound to endless rebirth, and those condemned to eternal suffering."
         },
         {
           "heading": "Bhakti, Jnana and Moksha",
-          "status": "pending",
-          "body": "Not yet sourced."
+          "status": "sourced",
+          "body": "Devotion is central, and liberation comes through God's grace, which the soul earns partly through its own effort, including devotion and righteous conduct. Moksha means realising one's innate bliss, obscured by ignorance, and recognising total dependence on the Supreme. Jnana is direct experiential knowledge of God, built by hearing, reflecting on and meditating on scripture. Liberation needs both jnana and divine grace."
         },
         {
           "heading": "Comparison with other Vedanta schools",
-          "status": "pending",
-          "body": "Not yet sourced. Requires a scholarly comparison before publication."
+          "status": "sourced",
+          "body": "Against Advaita: Madhva rejects the claim that ignorance explains the appearance of multiplicity in one Brahman, arguing that it makes liberation incoherent and places ignorance within Brahman. Against Vishishtadvaita: Madhva accepts Ramanuja's real world and personal God but rejects qualified non-dualism as inconsistent; Dvaita insists on complete, eternal separation between God, souls and matter."
         }
       ],
       "related": [
@@ -142,6 +149,12 @@
           "url": "https://en.wikipedia.org/wiki/Madhvacharya",
           "accessed": "2026-11-14",
           "note": "Read for birthplace, dates, works, disciples and doctrine sections"
+        },
+        {
+          "title": "Dvaita — Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Dvaita",
+          "accessed": "2026-11-14",
+          "note": "Read for Jiva, Ishvara, Jagat, Bhakti, Jnana, Moksha and Advaita/Vishishtadvaita comparisons (first 100,000 characters read)"
         }
       ]
     },
@@ -204,13 +217,18 @@
       "category": "mathas",
       "title_en": "Ashta Mathas of Udupi",
       "title_kn": "ಅಷ್ಟ ಮಠಗಳು",
-      "status": "sourced",
+      "status": "partial",
       "summary": "The eight mathas of Udupi founded in the Madhva tradition.",
       "sections": [
         {
           "heading": "Overview",
           "status": "sourced",
-          "body": "Eight mathas of Udupi founded by direct disciples of Madhvacharya, each named after its village of origin: Pejavara, Palimaru, Adamaru, Puttige, Shirur, Sode, Kaniyooru and Krishnapura. They administer the Udupi Krishna temple by a rotation (paryaya); the rotation period is not yet sourced."
+          "body": "Eight of the twelve Tuluva mathas form the Ashta Mathas of Udupi, founded by Madhva's direct disciples and named after their villages of origin: Pejavara, Palimaru, Adamaru, Puttige, Shirur, Sode, Kaniyooru and Krishnapura. They administer the Udupi Krishna temple by rotation (paryaya)."
+        },
+        {
+          "heading": "Rotation period",
+          "body": "Conflict between sources: the Madhva Sampradaya page says the mathas take turns every two years; the Ashta Mathas page gives no period. Pending confirmation from a primary source.",
+          "status": "pending"
         }
       ],
       "related": [
@@ -230,6 +248,12 @@
           "url": "https://en.wikipedia.org/wiki/Ashta_Mathas_of_Udupi",
           "accessed": "2026-11-14",
           "note": "Read for the eight mathas and first sannyasi; rotation period and founding date not stated"
+        },
+        {
+          "title": "Madhva Sampradaya — Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Madhva_Sampradaya",
+          "accessed": "2026-11-14",
+          "note": "Read for guru lineage and matha context (first 100,000 characters read); no full chronological list on the page"
         }
       ]
     },
@@ -238,7 +262,7 @@
       "category": "mathas",
       "title_en": "Pejavara Matha",
       "title_kn": "ಪೇಜಾವರ ಮಠ",
-      "status": "sourced",
+      "status": "partial",
       "summary": "One of the Ashta Mathas of Udupi. First sannyasi (founding disciple): Sri Adhokshaja Teertha.",
       "sections": [
         {
@@ -276,7 +300,7 @@
       "category": "mathas",
       "title_en": "Palimaru Matha",
       "title_kn": "ಪಲಿಮಾರು ಮಠ",
-      "status": "sourced",
+      "status": "partial",
       "summary": "One of the Ashta Mathas of Udupi. First sannyasi (founding disciple): Sri Hrishikesha Teertha.",
       "sections": [
         {
@@ -313,7 +337,7 @@
       "category": "mathas",
       "title_en": "Adamaru Matha",
       "title_kn": "ಅದಮಾರು ಮಠ",
-      "status": "sourced",
+      "status": "partial",
       "summary": "One of the Ashta Mathas of Udupi. First sannyasi (founding disciple): Sri Narasimha Teertha.",
       "sections": [
         {
@@ -350,7 +374,7 @@
       "category": "mathas",
       "title_en": "Puttige Matha",
       "title_kn": "ಪುತ್ತಿಗೆ ಮಠ",
-      "status": "sourced",
+      "status": "partial",
       "summary": "One of the Ashta Mathas of Udupi. First sannyasi (founding disciple): Sri Upendra Teertha.",
       "sections": [
         {
@@ -387,7 +411,7 @@
       "category": "mathas",
       "title_en": "Shirur Matha",
       "title_kn": "ಶಿರೂರು ಮಠ",
-      "status": "sourced",
+      "status": "partial",
       "summary": "One of the Ashta Mathas of Udupi. First sannyasi (founding disciple): Sri Vamana Teertha Swamiji.",
       "sections": [
         {
@@ -424,7 +448,7 @@
       "category": "mathas",
       "title_en": "Sode Matha",
       "title_kn": "ಸೋದೆ ಮಠ",
-      "status": "sourced",
+      "status": "partial",
       "summary": "One of the Ashta Mathas of Udupi. First sannyasi (founding disciple): Sri Vishnu Teertha Swamiji.",
       "sections": [
         {
@@ -461,7 +485,7 @@
       "category": "mathas",
       "title_en": "Kaniyooru Matha",
       "title_kn": "ಕಣಿಯೂರು ಮಠ",
-      "status": "sourced",
+      "status": "partial",
       "summary": "One of the Ashta Mathas of Udupi. First sannyasi (founding disciple): Sri Rama Teertha Swamiji.",
       "sections": [
         {
@@ -498,7 +522,7 @@
       "category": "mathas",
       "title_en": "Krishnapura Matha",
       "title_kn": "ಕೃಷ್ಣಾಪುರ ಮಠ",
-      "status": "sourced",
+      "status": "partial",
       "summary": "One of the Ashta Mathas of Udupi. First sannyasi (founding disciple): Sri Janardhana Teertha Swamiji.",
       "sections": [
         {
@@ -535,25 +559,32 @@
       "category": "peethadhipatis",
       "title_en": "Guru Parampara",
       "title_kn": "ಗುರು ಪರಂಪರೆ",
-      "status": "pending",
+      "status": "partial",
       "summary": "Chronological lineage and Peethadhipati directory, matha by matha.",
       "sections": [
         {
           "heading": "Matha-wise lists",
-          "status": "pending",
-          "body": ""
+          "status": "sourced",
+          "body": "Lineage per Wikipedia: the Udupi Ashta Mathas and the twelve Tuluva mathas descend from Madhva's disciples. The Mathatraya (Uttaradi, Vyasaraja, Raghavendra) are regarded as the premier institutions of Dvaita, with Jayatirtha as their source. Full matha-by-matha succession lists are pending."
         },
         {
           "heading": "Period of leadership",
           "status": "pending",
-          "body": ""
+          "body": "Not yet sourced. The Wikipedia page gives dates for only a few figures, such as Vyasatirtha (1469–1539), Chaitanya Mahaprabhu (1496–1534) and Madhva (1238–1317 as one of the cited dates)."
         }
       ],
       "related": [
         "madhvacharya",
         "ashta-mathas"
       ],
-      "sources": []
+      "sources": [
+        {
+          "title": "Madhva Sampradaya — Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Madhva_Sampradaya",
+          "accessed": "2026-11-14",
+          "note": "Read for guru lineage and matha context (first 100,000 characters read); no full chronological list on the page"
+        }
+      ]
     }
   ]
 }
