@@ -781,7 +781,7 @@
         {
           "heading": "Current Peethadhipati",
           "status": "pending",
-          "body": "Wikipedia names Vidyavallabha Theertha as present pontiff, with no dates. Not verified; leave pending until confirmed by the matha."
+          "body": "Pending. Directory and search results name Sri Vidyavallabha Theertha as present head, with no tenure date. The official site could not be checked."
         },
         {
           "heading": "Headquarters and location",
@@ -801,7 +801,7 @@
         {
           "heading": "Official website and contact",
           "status": "pending",
-          "body": "Not yet sourced."
+          "body": "Directory listings name kaniyoormatha.org and an Udupi address on Temple Car Street. The official site could not be reached on 14 Nov 2026, so this is not yet verified."
         }
       ],
       "location": {
@@ -825,6 +825,12 @@
           "url": "https://en.wikipedia.org/wiki/Ashta_Mathas_of_Udupi",
           "accessed": "2026-11-14",
           "note": "First sannyasi for each matha"
+        },
+        {
+          "title": "Kaniyooru Matha directory listing — madhwasakha.com",
+          "url": "https://madhwasakha.com/math-details/shri-kaniyoor-math/8",
+          "accessed": "2026-11-14",
+          "note": "Directory listing names the official site and lists an Udupi address. The official site could not be reached on 14 Nov 2026."
         }
       ]
     },
