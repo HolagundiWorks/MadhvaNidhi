@@ -37,6 +37,10 @@
     <color name="ds_status_error">@color/md_theme_error</color>
     <color name="ds_status_info">@color/md_theme_primary</color>
 
+    <!-- Glass: translucent surface and hairline border for floating chrome (light theme) -->
+    <color name="ds_glass_surface">#E6FFFFFF</color>
+    <color name="ds_glass_border">#29000000</color>
+
     <!-- Compatibility names used by existing screens (aliases of the roles above) -->
     <color name="ds_surface">@color/ds_bg_surface</color>
     <color name="ds_surface_container">@color/ds_bg_raised</color>

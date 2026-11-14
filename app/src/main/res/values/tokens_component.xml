@@ -19,7 +19,16 @@
     <!-- Navigation (floating bottom bar) -->
     <dimen name="ds_nav_height">@dimen/ds_size_bar</dimen>
     <dimen name="ds_nav_inset">@dimen/ds_space_4</dimen>
-    <dimen name="ds_nav_radius">@dimen/ds_shape_xl</dimen>
+    <!-- Half the bar height, so the bar ends are full semicircles matching the circle buttons. -->
+    <dimen name="ds_nav_radius">40dp</dimen>
+    <dimen name="ds_nav_item_size">40dp</dimen>
+    <dimen name="ds_nav_item_radius">20dp</dimen>
+    <dimen name="ds_dock_padding">@dimen/ds_space_3</dimen>
+    <!-- Page bottom clearance: dock height + its bottom inset + a gap, so content ends above the floating dock. -->
+    <dimen name="ds_dock_clearance">104dp</dimen>
+    <dimen name="ds_glass_stroke">1dp</dimen>
+    <dimen name="ds_scroll_track_size">3dp</dimen>
+    <dimen name="ds_scroll_track_radius">1.5dp</dimen>
     <dimen name="ds_nav_elevation">@dimen/ds_elevation_low</dimen>
 
     <!-- Dashboard widgets -->

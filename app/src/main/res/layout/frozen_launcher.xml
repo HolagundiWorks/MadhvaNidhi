@@ -36,10 +36,11 @@
                     android:paddingEnd="@dimen/ds_space_4">
 
                     <com.google.android.material.button.MaterialButton
+                        android:visibility="gone"
                         android:id="@+id/sidePanelToggle"
                         style="@style/Widget.MadhvaNidhi.IconButton"
-                        android:layout_width="@dimen/md_layout_size_height_lg"
-                        android:layout_height="48dp"
+                        android:layout_width="@dimen/ds_touch_min"
+                        android:layout_height="@dimen/ds_touch_min"
                         android:contentDescription="Open navigation"
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
@@ -83,6 +84,7 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/pageHost"
+
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
@@ -92,30 +94,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <!-- Material 3 floating bottom navigation bar: inset, rounded and elevated. -->
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_marginStart="@dimen/ds_space_4"
-                android:layout_marginEnd="@dimen/ds_space_4"
-                android:layout_marginBottom="@dimen/ds_space_4"
-                android:background="@drawable/bg_floating_nav"
-                android:clipToOutline="true"
-                android:elevation="@dimen/ds_nav_elevation"
-                android:fillViewport="true"
-                android:overScrollMode="never"
-                android:scrollbars="none">
-
-                <LinearLayout
-                    android:id="@+id/railDestinations"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingTop="0dp"
-                    android:paddingBottom="0dp" />
-            </HorizontalScrollView>
         </LinearLayout>
+
+        <!-- Material 3 floating bottom navigation bar: inset, rounded and elevated. -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ds_nav_height"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="@dimen/ds_space_4"
+            android:layout_marginEnd="@dimen/ds_space_4"
+            android:layout_marginBottom="@dimen/ds_space_4"
+            android:background="@drawable/bg_floating_nav"
+            android:clipToOutline="true"
+            android:elevation="@dimen/ds_nav_elevation"
+            android:fillViewport="true"
+            android:overScrollMode="never"
+            android:scrollbars="horizontal"
+            android:scrollbarSize="@dimen/ds_scroll_track_size"
+            android:scrollbarStyle="outsideInset"
+            android:scrollbarThumbHorizontal="@drawable/scroll_thumb_thin">
+
+            <LinearLayout
+                android:id="@+id/railDestinations"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="@dimen/ds_dock_padding"
+                android:paddingEnd="@dimen/ds_dock_padding"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp" />
+        </HorizontalScrollView>
 
         <View
             android:id="@+id/sidePanelBackdrop"

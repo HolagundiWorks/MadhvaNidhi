@@ -71,7 +71,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/readerSongFavorite"
             style="@style/Widget.MadhvaNidhi.IconButton"
-            android:layout_width="48dp" android:layout_height="48dp"
+            android:layout_width="@dimen/ds_touch_min" android:layout_height="@dimen/ds_touch_min"
             android:minWidth="48dp" android:padding="0dp" android:visibility="gone"
             app:icon="@drawable/ic_favorite_outline" app:iconPadding="0dp"
             app:iconGravity="textStart" app:iconTint="@color/md_theme_onSurface"/>
@@ -87,15 +87,16 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/readerFontDecrease"
                 style="@style/Widget.MadhvaNidhi.IconButton"
-                android:layout_width="@dimen/md_layout_size_height_lg"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/ds_touch_min"
+                android:layout_height="@dimen/ds_touch_min"
                 android:contentDescription="@string/text_smaller"
                 app:cornerRadius="@dimen/md_corner_radius"
                 app:icon="@drawable/ic_text_smaller"
                 app:iconSize="20dp"
                 app:iconTint="@color/md_theme_onSurface"
                 app:strokeColor="@color/md_theme_outline"
-                app:strokeWidth="@dimen/md_border_width"/>
+                app:strokeWidth="@dimen/md_border_width"
+                app:iconPadding="0dp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/readerFontSizeLabel"
@@ -111,15 +112,16 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/readerFontIncrease"
                 style="@style/Widget.MadhvaNidhi.IconButton"
-                android:layout_width="@dimen/md_layout_size_height_lg"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/ds_touch_min"
+                android:layout_height="@dimen/ds_touch_min"
                 android:contentDescription="@string/text_larger"
                 app:cornerRadius="@dimen/md_corner_radius"
                 app:icon="@drawable/ic_text_larger"
                 app:iconSize="20dp"
                 app:iconTint="@color/md_theme_onSurface"
                 app:strokeColor="@color/md_theme_outline"
-                app:strokeWidth="@dimen/md_border_width"/>
+                app:strokeWidth="@dimen/md_border_width"
+                app:iconPadding="0dp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -145,12 +147,13 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/readerStepPrev"
             style="@style/Widget.MadhvaNidhi.IconButton"
-            android:layout_width="@dimen/md_layout_size_height_lg"
-            android:layout_height="48dp"
+            android:layout_width="@dimen/ds_touch_min"
+            android:layout_height="@dimen/ds_touch_min"
             android:contentDescription="Previous step"
             app:cornerRadius="@dimen/md_corner_radius"
             app:icon="@drawable/ic_nav_prev"
-            app:iconTint="@color/md_theme_onSurface"/>
+            app:iconTint="@color/md_theme_onSurface"
+                app:iconPadding="0dp" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -183,12 +186,13 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/readerStepNext"
             style="@style/Widget.MadhvaNidhi.IconButton"
-            android:layout_width="@dimen/md_layout_size_height_lg"
-            android:layout_height="48dp"
+            android:layout_width="@dimen/ds_touch_min"
+            android:layout_height="@dimen/ds_touch_min"
             android:contentDescription="Next step"
             app:cornerRadius="@dimen/md_corner_radius"
             app:icon="@drawable/ic_nav_next"
-            app:iconTint="@color/md_theme_onSurface"/>
+            app:iconTint="@color/md_theme_onSurface"
+                app:iconPadding="0dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/readerStepAll"

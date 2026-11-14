@@ -110,7 +110,30 @@ class FrozenShell(private val activity: LauncherActivity) {
             paintButton(button, active, labeled)
             button.isEnabled = !DeskLock.isLocked(activity)
         }
+        if (!labeled) fitRail(host, activeRail, density)
         return key
+    }
+
+    /** Shows only the dock items that fit whole; the active destination always stays visible. */
+    private fun fitRail(host: LinearLayout, activeId: String, density: Float) {
+        val apply = Runnable {
+            val avail = host.width - host.paddingStart - host.paddingEnd
+            val total = host.childCount
+            if (avail <= 0 || total == 0) return@Runnable
+            val minSlot = (40 * density).toInt()
+            val fit = (avail / minSlot).coerceIn(1, total)
+            val activeIdx = (0 until total).firstOrNull { (host.getChildAt(it) as? MaterialButton)?.tag == activeId } ?: -1
+            val visible = (0 until fit).toMutableSet()
+            if (activeIdx >= fit) { visible.remove(fit - 1); visible.add(activeIdx) }
+            for (i in 0 until total) {
+                host.getChildAt(i).visibility = if (i in visible) View.VISIBLE else View.GONE
+            }
+        }
+        host.post(apply)
+        if (host.getTag(R.id.railFitListener) == null) {
+            host.setTag(R.id.railFitListener, true)
+            host.addOnLayoutChangeListener { _, l, _, r, _, ol, _, or, _ -> if (r - l != or - ol) host.post(apply) }
+        }
     }
 
     private fun createButton(id: String, labeled: Boolean, density: Float): MaterialButton {
@@ -131,13 +154,13 @@ class FrozenShell(private val activity: LauncherActivity) {
             minHeight = 0
             stateListAnimator = null
             elevation = 0f
-            minimumWidth = if (!labeled) (48 * density).toInt() else 0
+            minimumWidth = if (!labeled) (40 * density).toInt() else 0
             minimumHeight = (48 * density).toInt()
             insetTop = 0
             insetBottom = 0
             val pad = if (labeled) activity.resources.getDimensionPixelSize(R.dimen.ds_space_4) else 0
             setPadding(pad, 0, pad, 0)
-            cornerRadius = (12 * density).toInt()
+            cornerRadius = if (labeled) (12 * density).toInt() else (20 * density).toInt()  // circle ripple for rail icons
             rippleColor = ColorStateList.valueOf(activity.getColor(R.color.md_theme_hover))
             backgroundTintList = null
             setBackgroundResource(if (labeled) R.drawable.bg_rail_item else R.drawable.bg_rail_item_bottom)

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Material 3 NavigationBar-style active indicator pill -->
+<!-- Floating navigation: the active destination is a true circle (40dp, radius = half). -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:gravity="center"
-        android:width="40dp"
-        android:height="32dp">
+        android:width="@dimen/ds_nav_item_size"
+        android:height="@dimen/ds_nav_item_size">
         <shape android:shape="rectangle">
             <solid android:color="@color/md_theme_primary" />
-            <corners android:radius="16dp" />
+            <corners android:radius="@dimen/ds_nav_item_radius" />
         </shape>
     </item>
 </layer-list>

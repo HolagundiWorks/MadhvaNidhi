@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tag key used by the floating menu dock to attach its fit listener once. -->
+<resources>
+    <item name="railFitListener" type="id" />
+</resources>

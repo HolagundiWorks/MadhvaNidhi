@@ -173,8 +173,27 @@ class LauncherActivity : AppCompatActivity() {
             ) View.GONE else View.VISIBLE
         findViewById<View>(R.id.pageHost).post {
             val current = supportFragmentManager.findFragmentById(R.id.pageHost)?.view
-            if (current != null) ScreenPages.attachControls(current, findViewById(R.id.contentControlsHost))
+            if (current != null) {
+                ScreenPages.attachControls(current, findViewById(R.id.contentControlsHost))
+                applyDockClearance(current)
+            }
         }
+    }
+
+    /**
+     * The floating dock overlays the page. Each page's scroll view keeps its content drawable under the
+     * dock, with bottom padding equal to the dock clearance, so the last items still end above it.
+     */
+    private fun applyDockClearance(root: View) {
+        val clearance = resources.getDimensionPixelSize(R.dimen.ds_dock_clearance)
+        fun visit(v: View) {
+            if (v is android.widget.ScrollView || v is androidx.core.widget.NestedScrollView) {
+                v.clipToPadding = false
+                v.setPadding(v.paddingLeft, v.paddingTop, v.paddingRight, clearance)
+            }
+            if (v is android.view.ViewGroup) for (i in 0 until v.childCount) visit(v.getChildAt(i))
+        }
+        visit(root)
     }
 
     private fun refreshHeaderDate(lang: IndicScript.Lang) {

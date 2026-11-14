@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Material 3 floating navigation bar surface: rounded container, surfaceContainer fill. -->
+<!-- Glass surface for the floating dock: translucent fill with a hairline border, token-based. -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
-    <solid android:color="@color/md_theme_surfaceContainer" />
+    <solid android:color="@color/ds_glass_surface" />
+    <stroke android:width="@dimen/ds_glass_stroke" android:color="@color/ds_glass_border" />
     <corners android:radius="@dimen/ds_nav_radius" />
 </shape>

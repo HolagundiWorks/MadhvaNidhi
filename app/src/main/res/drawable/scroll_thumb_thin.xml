@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Thin horizontal scroll indicator for the floating menu dock. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="@color/ds_interaction_accent" />
+    <corners android:radius="@dimen/ds_scroll_track_radius" />
+</shape>
