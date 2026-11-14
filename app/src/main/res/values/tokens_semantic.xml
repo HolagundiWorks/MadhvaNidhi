@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Layer 2 of 3 - SEMANTIC (roles, not raw colours).
+  Values alias the Material 3 scheme (md_theme_*), so they follow the light/dark theme automatically.
+-->
+<resources>
+
+    <!-- Background -->
+    <color name="ds_bg_page">@color/md_theme_background</color>
+    <color name="ds_bg_surface">@color/md_theme_surface</color>
+    <color name="ds_bg_raised">@color/md_theme_surfaceContainer</color>
+    <color name="ds_bg_raised_high">@color/md_theme_surfaceContainerHigh</color>
+    <color name="ds_bg_accent">@color/md_theme_primaryContainer</color>
+    <color name="ds_bg_scrim">@color/md_overlay</color>
+
+    <!-- Text and icon -->
+    <color name="ds_text_primary">@color/md_theme_onSurface</color>
+    <color name="ds_text_secondary">@color/md_theme_onSurfaceVariant</color>
+    <color name="ds_text_on_accent">@color/md_theme_onPrimary</color>
+    <color name="ds_text_on_accent_container">@color/md_theme_onPrimaryContainer</color>
+    <color name="ds_text_disabled">@color/md_text_disabled</color>
+
+    <!-- Border -->
+    <color name="ds_border_subtle">@color/md_theme_outlineVariant</color>
+    <color name="ds_border_strong">@color/md_theme_outline</color>
+    <color name="ds_border_accent">@color/md_theme_primary</color>
+
+    <!-- Interaction -->
+    <color name="ds_interaction_accent">@color/md_theme_primary</color>
+    <color name="ds_interaction_hover">@color/md_theme_hover</color>
+    <color name="ds_interaction_focus">@color/md_theme_primary</color>
+    <color name="ds_interaction_selected">@color/md_theme_secondaryContainer</color>
+
+    <!-- Status -->
+    <color name="ds_status_success">@color/md_support_success</color>
+    <color name="ds_status_warning">@color/md_support_warning</color>
+    <color name="ds_status_error">@color/md_theme_error</color>
+    <color name="ds_status_info">@color/md_theme_primary</color>
+
+    <!-- Compatibility names used by existing screens (aliases of the roles above) -->
+    <color name="ds_surface">@color/ds_bg_surface</color>
+    <color name="ds_surface_container">@color/ds_bg_raised</color>
+    <color name="ds_on_surface">@color/ds_text_primary</color>
+    <color name="ds_on_surface_variant">@color/ds_text_secondary</color>
+    <color name="ds_outline">@color/ds_border_strong</color>
+    <color name="ds_outline_variant">@color/ds_border_subtle</color>
+    <color name="ds_accent">@color/ds_interaction_accent</color>
+    <color name="ds_on_accent">@color/ds_text_on_accent</color>
+
+</resources>

@@ -175,8 +175,8 @@
                 android:layout_marginTop="@dimen/md_spacing_02"
                 android:max="100"
                 android:progress="25"
-                app:indicatorColor="@color/md_theme_primary"
-                app:trackColor="@color/md_theme_surfaceContainerHighest"
+                app:indicatorColor="@color/ds_progress_indicator"
+                app:trackColor="@color/ds_progress_track"
                 app:trackCornerRadius="2dp" />
         </LinearLayout>
 

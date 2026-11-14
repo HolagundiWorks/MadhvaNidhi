@@ -101,7 +101,7 @@
                 android:layout_marginBottom="@dimen/ds_space_4"
                 android:background="@drawable/bg_floating_nav"
                 android:clipToOutline="true"
-                android:elevation="6dp"
+                android:elevation="@dimen/ds_nav_elevation"
                 android:fillViewport="true"
                 android:overScrollMode="never"
                 android:scrollbars="none">

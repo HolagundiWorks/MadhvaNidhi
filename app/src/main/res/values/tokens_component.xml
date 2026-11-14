@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Layer 3 of 3 - COMPONENT (what a component uses).
+  Built from foundation scales and semantic roles. Change a component here to change every instance.
+-->
+<resources>
+
+    <!-- Buttons -->
+    <dimen name="ds_button_height">@dimen/ds_size_control</dimen>
+    <dimen name="ds_button_height_compact">@dimen/ds_size_control_compact</dimen>
+    <dimen name="ds_button_radius">@dimen/ds_shape_md</dimen>
+    <dimen name="ds_icon_button_size">@dimen/ds_size_touch</dimen>
+
+    <!-- Cards -->
+    <dimen name="ds_card_radius">@dimen/ds_shape_lg</dimen>
+    <dimen name="ds_card_padding">@dimen/ds_space_5</dimen>
+    <dimen name="ds_card_gap">@dimen/ds_space_3</dimen>
+
+    <!-- Navigation (floating bottom bar) -->
+    <dimen name="ds_nav_height">@dimen/ds_size_bar</dimen>
+    <dimen name="ds_nav_inset">@dimen/ds_space_4</dimen>
+    <dimen name="ds_nav_radius">@dimen/ds_shape_xl</dimen>
+    <dimen name="ds_nav_elevation">@dimen/ds_elevation_low</dimen>
+
+    <!-- Dashboard widgets -->
+    <dimen name="ds_widget_radius">@dimen/ds_shape_lg</dimen>
+    <dimen name="ds_widget_padding">@dimen/ds_space_4</dimen>
+    <dimen name="ds_widget_gap">@dimen/ds_space_3</dimen>
+
+    <!-- Progress indicators -->
+    <dimen name="ds_progress_height">@dimen/ds_space_1</dimen>
+    <dimen name="ds_progress_radius">@dimen/ds_shape_xs</dimen>
+    <color name="ds_progress_track">@color/ds_border_subtle</color>
+    <color name="ds_progress_indicator">@color/ds_interaction_accent</color>
+
+    <!-- Layout roles -->
+    <dimen name="ds_page_gutter">@dimen/ds_space_4</dimen>
+    <dimen name="ds_section_gap">@dimen/ds_space_6</dimen>
+    <dimen name="ds_item_gap">@dimen/ds_space_3</dimen>
+
+    <!-- Legacy names used by existing layouts; aliases of the component and foundation tokens -->
+    <dimen name="ds_radius_card">@dimen/ds_card_radius</dimen>
+    <dimen name="ds_radius_control">@dimen/ds_button_radius</dimen>
+    <dimen name="ds_radius_surface">@dimen/ds_shape_xl</dimen>
+    <dimen name="ds_control_height">@dimen/ds_button_height</dimen>
+    <dimen name="ds_control_height_compact">@dimen/ds_button_height_compact</dimen>
+    <dimen name="ds_touch_min">@dimen/ds_size_touch</dimen>
+    <dimen name="ds_icon_size">@dimen/ds_size_icon</dimen>
+
+    <!-- Text hierarchy: one name per role, each backed by a Material 3 type style -->
+    <style name="TextAppearance.DS.Display" parent="TextAppearance.Material3.DisplayLarge" />
+    <style name="TextAppearance.DS.Headline" parent="TextAppearance.Material3.HeadlineSmall" />
+    <style name="TextAppearance.DS.Title" parent="TextAppearance.Material3.TitleLarge" />
+    <style name="TextAppearance.DS.Subtitle" parent="TextAppearance.Material3.TitleMedium" />
+    <style name="TextAppearance.DS.Body" parent="TextAppearance.Material3.BodyLarge" />
+    <style name="TextAppearance.DS.BodySmall" parent="TextAppearance.Material3.BodyMedium" />
+    <style name="TextAppearance.DS.Label" parent="TextAppearance.Material3.LabelLarge" />
+    <style name="TextAppearance.DS.Caption" parent="TextAppearance.Material3.LabelMedium" />
+
+    <!-- Card component -->
+    <style name="Widget.DS.Card" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@color/ds_bg_raised</item>
+        <item name="cardElevation">0dp</item>
+        <item name="cardCornerRadius">@dimen/ds_card_radius</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="rippleColor">@color/ds_interaction_hover</item>
+    </style>
+
+</resources>

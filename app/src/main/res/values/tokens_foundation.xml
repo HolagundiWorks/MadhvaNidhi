@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Layer 1 of 3 - FOUNDATION (Material Design 3 raw scales).
+  Raw values only. Semantic and component tokens reference these; screens should not.
+  Palette source: brand orange #FF4F18 on pure black/white/grey neutrals (md_theme_* in m3_colors.xml).
+-->
+<resources>
+
+    <!-- Palette (brand + neutrals) -->
+    <color name="ds_palette_orange">#FF4F18</color>
+    <color name="ds_palette_on_orange">#000000</color>
+    <color name="ds_palette_black">#000000</color>
+    <color name="ds_palette_white">#FFFFFF</color>
+
+    <!-- Spacing scale: 4dp grid -->
+    <dimen name="ds_space_1">4dp</dimen>
+    <dimen name="ds_space_2">8dp</dimen>
+    <dimen name="ds_space_3">12dp</dimen>
+    <dimen name="ds_space_4">16dp</dimen>
+    <dimen name="ds_space_5">20dp</dimen>
+    <dimen name="ds_space_6">24dp</dimen>
+    <dimen name="ds_space_8">32dp</dimen>
+    <dimen name="ds_space_12">48dp</dimen>
+
+    <!-- Shape scale (Material 3 corner sizes) -->
+    <dimen name="ds_shape_xs">4dp</dimen>
+    <dimen name="ds_shape_sm">8dp</dimen>
+    <dimen name="ds_shape_md">12dp</dimen>
+    <dimen name="ds_shape_lg">16dp</dimen>
+    <dimen name="ds_shape_xl">28dp</dimen>
+
+    <!-- Size scale -->
+    <dimen name="ds_size_touch">48dp</dimen>
+    <dimen name="ds_size_control">56dp</dimen>
+    <dimen name="ds_size_control_compact">40dp</dimen>
+    <dimen name="ds_size_icon">24dp</dimen>
+    <dimen name="ds_size_bar">80dp</dimen>
+
+    <!-- Elevation scale -->
+    <dimen name="ds_elevation_none">0dp</dimen>
+    <dimen name="ds_elevation_low">6dp</dimen>
+
+</resources>
