@@ -136,6 +136,30 @@ class PracticeDayStore(context: Context) {
         return best
     }
 
+    /** Over the last [days]: days with only the morning session, and days with all three sessions. */
+    fun sandhyaPatternCounts(days: Int = 1000): Pair<Int, Int> {
+        var morningOnly = 0
+        var allThree = 0
+        val cursor = Calendar.getInstance()
+        repeat(days) {
+            val (morning, noon, evening) = sandhya(PanchangaStore.dateKey(cursor))
+            if (morning && noon && evening) allThree++ else if (morning && !noon && !evening) morningOnly++
+            cursor.add(Calendar.DATE, -1)
+        }
+        return morningOnly to allThree
+    }
+
+    /** Days with the japa day complete over the last [days]. */
+    fun japaCompleteDays(days: Int = 1000): Int {
+        var done = 0
+        val cursor = Calendar.getInstance()
+        repeat(days) {
+            if (japaComplete(PanchangaStore.dateKey(cursor))) done++
+            cursor.add(Calendar.DATE, -1)
+        }
+        return done
+    }
+
     private fun get(date: String, name: String) = prefs.getBoolean(key(date, name), false)
     private fun key(date: String, name: String) = "${date}_$name"
     private fun skipKey(session: String) = "sandhya_skip_$session"

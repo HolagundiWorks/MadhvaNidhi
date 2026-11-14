@@ -42,6 +42,10 @@ object OsLang {
 
     fun script(context: Context, text: String): String = script(text, get(context))
 
+    /** Nakshatra name in the chosen script; splits PURVA/UTTARA + name so the Kannada map matches (e.g. UTTARAASHADHA). */
+    fun nakshatra(text: String, lang: IndicScript.Lang): String =
+        script(text.replace(Regex("^(PURVA|UTTARA)\\s*(PHALGUNI|ASHADHA|BHADRAPADA)$"), "$1 $2"), lang)
+
     fun ui(context: Context, key: String): String = ui(key, get(context))
 
     fun ui(key: String, lang: IndicScript.Lang): String {
@@ -408,7 +412,7 @@ object OsLang {
     private val NAMES = mapOf(
         "PRATIPADA" to "प्रतिपदा", "DWITIYA" to "द्वितीया", "DWITEEYA" to "द्वितीया",
         "TRITIYA" to "तृतीया", "TRUTEEYA" to "तृतीया", "THRITEEYA" to "तृतीया",
-        "CHATURTHI" to "चतुर्थी", "PANCHAMI" to "पञ्चमी", "SHASHTHI" to "षष्ठी",
+        "CHATURTHI" to "चतुर्थी", "PANCHAMI" to "पञ्चमी", "SHASHTHI" to "षष्ठी", "SHASHTI" to "षष्ठी",
         "SAPTAMI" to "सप्तमी", "ASHTAMI" to "अष्टमी", "NAVAMI" to "नवमी",
         "DASHAMI" to "दशमी", "EKADASHI" to "एकादशी", "DWADASHI" to "द्वादशी",
         "TRAYODASHI" to "त्रयोदशी", "CHATURDASHI" to "चतुर्दशी",

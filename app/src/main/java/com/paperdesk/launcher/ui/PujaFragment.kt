@@ -68,8 +68,8 @@ class PujaFragment : Fragment(R.layout.page_nitya_puja) {
             }
             selected = rites.indexOfFirst { it.item.id == prefs.getString("rite", "") }.coerceAtLeast(0)
             val lang = OsLang.get(requireContext())
-            MaterialChoices.bind(
-                view.findViewById(R.id.pujaRite),
+            ListChoices.bind(
+                view.findViewById(R.id.pujaList),
                 rites.map { MadhwaStore.label(it.item, lang) },
                 selected
             ) {

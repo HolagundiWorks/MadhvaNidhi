@@ -28,6 +28,22 @@ import kotlinx.coroutines.withContext
 
 /** Offline Madhva wiki: category chips, search, article view with sources and bookmarks. Material 3 styling. */
 class WikiFragment : Fragment() {
+    /** One shape for every article element: 16dp rounded corners, same as the article cards. */
+    private fun articleShape() = com.google.android.material.shape.ShapeAppearanceModel.builder()
+        .setAllCornerSizes(dp(16).toFloat())
+        .build()
+
+    /** Each article read once earns 10 points. */
+    private fun readIds(context: android.content.Context): Set<String> =
+        context.getSharedPreferences("wiki_points", 0).getStringSet("read", emptySet()) ?: emptySet()
+
+    private fun markRead(context: android.content.Context, id: String) {
+        val ids = readIds(context).toMutableSet()
+        if (ids.add(id)) context.getSharedPreferences("wiki_points", 0).edit().putStringSet("read", ids).apply()
+    }
+
+    private fun points(context: android.content.Context) = readIds(context).size * 10
+
     private var book: WikiStore.Book? = null
     private var category = "all"
     private var query = ""
@@ -115,6 +131,8 @@ class WikiFragment : Fragment() {
             (category == "all" || a.category == category) &&
                 (q.isEmpty() || listOf(a.titleEn, a.titleKn, a.summary).joinToString(" ").lowercase().contains(q))
         }
+        listHost.addView(label("${points(requireContext())} points · ${readIds(requireContext()).size} articles read",
+            R.style.TextAppearance_DS_Label, secondary = true))
         if (items.isEmpty()) listHost.addView(label("No matching article.", R.style.TextAppearance_DS_Body, secondary = true))
         items.forEach { a ->
             val card = MaterialCardView(requireContext()).apply {
@@ -138,14 +156,17 @@ class WikiFragment : Fragment() {
         val context = requireContext()
         val bookmarks = WikiStore.bookmarks(context)
         val saved = a.id in bookmarks
+        markRead(context, a.id)
 
         val toolbar = LinearLayout(context).apply { orientation = LinearLayout.HORIZONTAL; gravity = Gravity.CENTER_VERTICAL }
         toolbar.addView(MaterialButton(context, null, com.google.android.material.R.attr.materialButtonOutlinedStyle).apply {
             text = "Back"
+            shapeAppearanceModel = articleShape()
             setOnClickListener { openId = null; render() }
         })
         toolbar.addView(MaterialButton(context, null, com.google.android.material.R.attr.materialButtonOutlinedStyle).apply {
             text = if (saved) "Bookmarked" else "Bookmark"
+            shapeAppearanceModel = articleShape()
             isChecked = saved
             setOnClickListener {
                 WikiStore.setBookmarked(context, a.id, !saved)
@@ -180,6 +201,7 @@ class WikiFragment : Fragment() {
         a.sources.forEach { src ->
             content.addView(MaterialButton(context, null, com.google.android.material.R.attr.materialButtonOutlinedStyle).apply {
                 text = "${src.title} · accessed ${src.accessed.ifBlank { "not recorded" }}"
+                shapeAppearanceModel = articleShape()
                 setOnClickListener { openUrl(src.url) }
             }, LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(8) })
             if (src.note.isNotBlank()) content.addView(label(src.note, R.style.TextAppearance_DS_BodyXSmall, secondary = true))
@@ -191,6 +213,7 @@ class WikiFragment : Fragment() {
             a.related.mapNotNull { book?.article(it) }.forEach { r ->
                 related.addView(Chip(context).apply {
                     text = r.titleEn
+                    shapeAppearanceModel = articleShape()
                     setOnClickListener { openId = r.id; render() }
                 })
             }

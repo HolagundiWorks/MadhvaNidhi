@@ -62,8 +62,8 @@ class NityaKarmaFragment : Fragment() {
         TABS.forEach { tag ->
             tabs.addTab(tabs.newTab().setText(OsLang.ui(tag, OsLang.get(requireContext()))).setIcon(FrozenShell.iconFor(tag)).setTag(tag), false)
         }
-        tabs.tabMode = TabLayout.MODE_SCROLLABLE
-        tabs.tabGravity = TabLayout.GRAVITY_START
+        tabs.tabMode = TabLayout.MODE_FIXED
+        tabs.tabGravity = TabLayout.GRAVITY_FILL
         tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 showTab(tab.tag as? String ?: TAB_SANDHYA)

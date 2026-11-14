@@ -15,19 +15,18 @@ import kotlin.math.ceil
  */
 object MdTabs {
     fun equalizeLeft(tabs: TabLayout) {
-        tabs.tabMode = TabLayout.MODE_SCROLLABLE
-        tabs.tabGravity = TabLayout.GRAVITY_START
+        tabs.tabMode = TabLayout.MODE_FIXED
+        tabs.tabGravity = TabLayout.GRAVITY_FILL
         tabs.isTabIndicatorFullWidth = true
         val lp = tabs.layoutParams
         if (lp != null) {
-            lp.width = ViewGroup.LayoutParams.WRAP_CONTENT
+            lp.width = ViewGroup.LayoutParams.MATCH_PARENT
             when (lp) {
                 is LinearLayout.LayoutParams -> lp.gravity = Gravity.START
                 is android.widget.FrameLayout.LayoutParams -> lp.gravity = Gravity.START
             }
             tabs.layoutParams = lp
         }
-        tabs.post { applyEqualWidths(tabs) }
     }
 
     private fun applyEqualWidths(tabs: TabLayout) {

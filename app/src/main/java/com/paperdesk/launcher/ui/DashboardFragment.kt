@@ -34,10 +34,6 @@ class DashboardFragment : Fragment() {
     private var japa: JapaStore? = null
     private lateinit var practice: PracticeDayStore
     private val countFormat = NumberFormat.getIntegerInstance(Locale("en", "IN"))
-    private val slotIds = listOf(
-        R.id.dashboardJapaSlot0, R.id.dashboardJapaSlot1, R.id.dashboardJapaSlot2,
-        R.id.dashboardJapaSlot3, R.id.dashboardJapaSlot4
-    )
     private val knDays = listOf("ಭಾನು", "ಸೋಮ", "ಮಂಗಳ", "ಬುಧ", "ಗುರು", "ಶುಕ್ರ", "ಶನಿ")
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, state: Bundle?): View =
@@ -48,11 +44,14 @@ class DashboardFragment : Fragment() {
         view.findViewById<View>(R.id.dashboardMenu).setOnClickListener { (activity as? LauncherActivity)?.openNavigation() }
         view.findViewById<View>(R.id.dashboardProfile).setOnClickListener { (activity as? LauncherActivity)?.navigateTo("user") }
         view.findViewById<View>(R.id.dashboardSettings).setOnClickListener { (activity as? LauncherActivity)?.navigateTo("settings") }
-        view.findViewById<View>(R.id.dashboardResumeJapa).setOnClickListener { (activity as? LauncherActivity)?.navigateTo("japa") }
         viewLifecycleOwner.lifecycleScope.launch {
             val app = requireContext().applicationContext
             val profile = withContext(Dispatchers.IO) { com.paperdesk.launcher.data.ProfileStore(app).active() }
             view.findViewById<TextView>(R.id.dashboardGreeting).text = profile.name.ifBlank { "MadhvaNidhi" }
+            view.findViewById<TextView>(R.id.dashboardProfileMeta).text =
+                listOf(profile.gotra, profile.nakshatra)
+                    .filter { it.isNotBlank() }
+                    .joinToString("  ·  ")
         }
 
         MdMotion.fadeIn(view)
@@ -77,7 +76,6 @@ class DashboardFragment : Fragment() {
         practice.refreshBestStreak()
         bindWeek(view)
         bindPanchanga(view)
-        bindStreak(view)
         bindShortcuts(view)
         if (japa != null) {
             bindJapaRow(view)
@@ -136,7 +134,7 @@ class DashboardFragment : Fragment() {
             }
             view.findViewById<TextView>(R.id.dashPanchangaPaksha).text =
                 OsLang.script(if (day.paksha.contains("KRISHNA", true)) "ಕೃಷ್ಣಪಕ್ಷ" else "ಶುಕ್ಲಪಕ್ಷ", lang)
-            view.findViewById<TextView>(R.id.dashPanchangaNakshatra).text = OsLang.script(day.nakshatra, lang)
+            view.findViewById<TextView>(R.id.dashPanchangaNakshatra).text = OsLang.nakshatra(day.nakshatra, lang)
             view.findViewById<TextView>(R.id.dashPanchangaKarana).text = OsLang.script(day.karana, lang)
             view.findViewById<TextView>(R.id.dashPanchangaYoga).text = OsLang.script(day.yoga, lang)
             val fest = com.paperdesk.launcher.data.FestivalStore.label(day.date, lang)
@@ -278,73 +276,84 @@ class DashboardFragment : Fragment() {
         }
     }
 
-    private fun bindStreak(view: View) {
-        val current = practice.currentStreak()
-        val best = practice.bestStreak()
-        val earned = DashboardBadges.evaluate(DashboardBadges.STREAK_TIERS, current.toLong())
-        val next = DashboardBadges.nextTier(DashboardBadges.STREAK_TIERS, current.toLong())
-        val progress = (DashboardBadges.progressToNext(DashboardBadges.STREAK_TIERS, current.toLong()) * 100).toInt()
-
-        applyAwardIcon(view.findViewById(R.id.dashStreakIcon), earned?.tier ?: DashboardBadges.STREAK_TIERS.first())
-        view.findViewById<View>(R.id.dashStreakIcon).alpha = if (earned == null) .38f else 1f
-        view.findViewById<TextView>(R.id.dashStreakCurrent).text = countFormat.format(current)
-        view.findViewById<TextView>(R.id.dashStreakBest).text = "Best ${countFormat.format(best)}"
-        view.findViewById<LinearProgressIndicator>(R.id.dashStreakProgress).progress = progress
-
-        val nextLabel = view.findViewById<TextView>(R.id.dashStreakNext)
-        nextLabel.text = if (next != null) {
-            "+${next.threshold - current}"
-        } else {
-            "Top tier"
-        }
-
-        view.findViewById<View>(R.id.dashStreak).contentDescription =
-            "Streak ${countFormat.format(current)} days. Best ${countFormat.format(best)}. " +
-                (earned?.let { it.tier.hint } ?: next?.hint.orEmpty())
-    }
+    private var badgesExpanded = false
 
     private fun bindBadges(view: View, japaCumulative: Long? = null) {
-        val tray = view.findViewById<LinearLayout>(R.id.dashBadgeTray)
-        tray.removeAllViews()
-        val streak = practice.currentStreak()
-        val week = practice.weeklySandhyaCompleteCount()
+        view.findViewById<TextView>(R.id.dashCurrentStreak).text = practice.currentStreak().toString()
+        view.findViewById<TextView>(R.id.dashBestStreak).text = practice.bestStreak().toString()
+        val grid = view.findViewById<LinearLayout>(R.id.dashBadgeGrid)
+        val toggle = view.findViewById<TextView>(R.id.dashBadgeToggle)
+        grid.removeAllViews()
+        val (morningOnly, allThree) = practice.sandhyaPatternCounts()
+        val japaDays = practice.japaCompleteDays()
         val cum = japaCumulative ?: japa?.totalCumulative() ?: 0L
-        val live = DashboardBadges.allEarned(streak, week, cum)
-        val demo = live.isEmpty()
-        val earned = if (demo) DashboardBadges.demoEarned() else live
+        val pictoDark = 0xFF2B2B2B.toInt()
 
-        // At most peak + next; sit beside streak in one quiet row.
-        val inflater = layoutInflater
-        val peak = earned.maxByOrNull { it.tier.threshold }
-        if (peak != null) {
-            val chip = inflater.inflate(R.layout.item_dash_badge, tray, false)
-            applyAwardIcon(chip.findViewById(R.id.badgeIcon), peak.tier)
-            chip.findViewById<TextView>(R.id.badgeTitle).text = compactBadgeValue(peak)
-            chip.contentDescription = "${DashboardBadges.finishFor(peak.tier).name.lowercase()} award. ${peak.tier.hint}"
-            tray.addView(chip)
+        // kind: 0 = silver sun (morning only), 1 = gold sun (all three), 2 = japa lotus.
+        data class Medal(val kind: Int, val gold: Boolean, val milestone: Long, val reached: Boolean, val desc: String)
+        val medals = mutableListOf<Medal>()
+        DashboardBadges.DAY_MILESTONES.forEach { tier ->
+            medals += Medal(0, false, tier.threshold, morningOnly >= tier.threshold,
+                "Silver sun, ${tier.threshold} morning-only days")
+        }
+        DashboardBadges.DAY_MILESTONES.forEach { tier ->
+            medals += Medal(1, true, tier.threshold, allThree >= tier.threshold,
+                "Gold sun, ${tier.threshold} days with all three sessions")
+        }
+        DashboardBadges.DAY_MILESTONES.forEach { tier ->
+            medals += Medal(2, cum >= 1_00_000L, tier.threshold, japaDays >= tier.threshold,
+                "Japa hexagon, ${tier.threshold} japa days")
         }
 
-        if (!demo) {
-            val next = listOfNotNull(
-                DashboardBadges.nextTier(DashboardBadges.WEEKLY_TIERS, week.toLong()),
-                DashboardBadges.nextTier(DashboardBadges.STREAK_TIERS, streak.toLong()),
-                DashboardBadges.nextTier(DashboardBadges.JAPA_TIERS, cum)
-            ).minByOrNull { it.threshold }
-            if (next != null) {
-                val chip = inflater.inflate(R.layout.item_dash_badge, tray, false)
-                chip.alpha = 0.5f
-                applyAwardIcon(chip.findViewById(R.id.badgeIcon), next)
-                chip.findViewById<TextView>(R.id.badgeTitle).text = compactThreshold(next.threshold)
-                chip.contentDescription = "Next ${DashboardBadges.finishFor(next).name.lowercase()} award. ${next.hint}"
-                tray.addView(chip)
+        // Earned only, highest milestone first; same milestone: gold sun, silver sun, japa.
+        val earned = medals.filter { it.reached }.sortedWith(
+            compareByDescending<Medal> { it.milestone }.thenBy {
+                when {
+                    it.kind == 2 -> 2
+                    it.gold -> 0
+                    else -> 1
+                }
             }
-        } else if (earned.size > 1) {
-            val second = earned[1]
-            val chip = inflater.inflate(R.layout.item_dash_badge, tray, false)
-            applyAwardIcon(chip.findViewById(R.id.badgeIcon), second.tier)
-            chip.findViewById<TextView>(R.id.badgeTitle).text = compactBadgeValue(second)
-            chip.contentDescription = "${DashboardBadges.finishFor(second.tier).name.lowercase()} award. ${second.tier.hint}"
-            tray.addView(chip)
+        )
+        val perRow = 5
+        val rows = earned.chunked(perRow)
+        rows.forEachIndexed { rowIndex, rowMedals ->
+            val row = LinearLayout(requireContext()).apply { orientation = LinearLayout.HORIZONTAL }
+            rowMedals.forEach { m ->
+                val c = layoutInflater.inflate(R.layout.item_dash_badge, row, false)
+                c.layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
+                    .apply { marginEnd = resources.getDimensionPixelSize(R.dimen.ds_space_half) }
+                c.findViewById<ImageView>(R.id.badgeMedal).setImageResource(
+                    when (m.kind) {
+                        0 -> R.drawable.medal_sun_silver
+                        1 -> R.drawable.medal_sun_gold
+                        else -> if (m.gold) R.drawable.medal_hex_gold else R.drawable.medal_hex_silver
+                    }
+                )
+                c.findViewById<ImageView>(R.id.badgePicto).apply {
+                    setImageResource(if (m.kind == 2) R.drawable.ic_japa_eda else R.drawable.ic_badge_sun)
+                    imageTintList = android.content.res.ColorStateList.valueOf(pictoDark)
+                }
+                c.findViewById<TextView>(R.id.badgeTitle).text = countFormat.format(m.milestone)
+                c.contentDescription = m.desc
+                row.addView(c)
+            }
+            repeat(perRow - rowMedals.size) {
+                row.addView(View(requireContext()), LinearLayout.LayoutParams(0, 0, 1f))
+            }
+            row.visibility = if (rowIndex == 0 || badgesExpanded) View.VISIBLE else View.GONE
+            grid.addView(row, LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT))
+        }
+
+        toggle.visibility = if (rows.size > 1) View.VISIBLE else View.GONE
+        toggle.text = if (badgesExpanded) "Show less" else "Show all"
+        toggle.setOnClickListener {
+            badgesExpanded = !badgesExpanded
+            for (i in 1 until grid.childCount) {
+                grid.getChildAt(i).visibility = if (badgesExpanded) View.VISIBLE else View.GONE
+            }
+            toggle.text = if (badgesExpanded) "Show less" else "Show all"
         }
     }
 
@@ -372,120 +381,72 @@ class DashboardFragment : Fragment() {
         val store = japa ?: return
         val density = resources.displayMetrics.density
         val slots = SettingsStore(requireContext()).dashboardJapaSlots()
-        val summary = store.counts(slots.firstOrNull() ?: "gayatri")
-        val complete = store.procedurePhase(summary.mantraId) == 3
-        val status = when {
-            complete -> "ಪೂರ್ಣ · Completed"
-            practice.japaSkipped() -> "ಬಿಟ್ಟಿದೆ · Skipped"
-            else -> "ಬಾಕಿ · Not marked complete"
-        }
         val foreground = ContextCompat.getColor(requireContext(),
             R.color.md_theme_onSurface)
         val secondary = ContextCompat.getColor(requireContext(),
             R.color.md_theme_onSurfaceVariant)
-        val overall = view.findViewById<com.google.android.material.card.MaterialCardView>(R.id.dashboardOverallCard)
-        styleJapaCard(overall, complete)
-        view.findViewById<TextView>(R.id.dashboardOverallTitle).apply {
-            text = "Your Japa practice"
-            setTextColor(foreground)
-        }
-        view.findViewById<TextView>(R.id.dashboardOverallStatus).apply { text = status; setTextColor(secondary) }
-        view.findViewById<TextView>(R.id.dashboardOverallJapa).setTextColor(foreground)
-        view.findViewById<ImageView>(R.id.dashboardOverallIcon).imageTintList =
-            android.content.res.ColorStateList.valueOf(if (complete) foreground else requireContext().getColor(R.color.md_theme_primary))
-        view.findViewById<MaterialButton>(R.id.dashboardResumeJapa).apply {
-            text = if (complete) "Open Japa →" else "Continue Japa →"
-            setTextColor(if (complete) foreground else requireContext().getColor(R.color.md_theme_onSecondaryContainer))
-            backgroundTintList = android.content.res.ColorStateList.valueOf(
-                if (complete) androidx.core.graphics.ColorUtils.setAlphaComponent(foreground, 24)
-                else requireContext().getColor(R.color.md_theme_secondaryContainer))
-        }
-
-        view.findViewById<TextView>(R.id.dashboardOverallJapa).text =
-            countFormat.format(summary.daily) + " / " + countFormat.format(summary.dailyTarget) + " today"
-        view.findViewById<com.google.android.material.progressindicator.CircularProgressIndicator>(R.id.dashboardOverallProgress).progress =
-            ((summary.daily.toDouble() / summary.dailyTarget.coerceAtLeast(1)) * 100).toInt().coerceIn(0, 100)
-        view.findViewById<com.google.android.material.progressindicator.CircularProgressIndicator>(R.id.dashboardOverallProgress).apply {
-            setIndicatorColor(if (complete) foreground else requireContext().getColor(R.color.md_theme_primary))
-            trackColor = if (complete) androidx.core.graphics.ColorUtils.setAlphaComponent(foreground, 32)
-                else requireContext().getColor(R.color.md_theme_surfaceContainerHighest)
-        }
-        slotIds.forEachIndexed { index, viewId ->
-            val cell = view.findViewById<LinearLayout>(viewId)
-            val mantraId = slots.getOrElse(index) { if (index == 0) "gayatri" else "narayana" }
-            val entry = JapaCatalog.entries.firstOrNull { it.id == mantraId }
-                ?: JapaCatalog.entries.first()
+        val table = view.findViewById<LinearLayout>(R.id.dashboardJapaTable)
+        table.removeAllViews()
+        val rowPad = resources.getDimensionPixelSize(R.dimen.ds_space_3)
+        val gapH = resources.getDimensionPixelSize(R.dimen.ds_space_3)
+        val neutralTrack = requireContext().getColor(R.color.md_theme_surfaceContainerHighest)
+        val primary = requireContext().getColor(R.color.md_theme_primary)
+        slots.take(5).forEachIndexed { index, mantraId ->
+            val entry = JapaCatalog.entries.firstOrNull { it.id == mantraId } ?: JapaCatalog.entries.first()
             val counts = store.counts(entry.id)
             val complete = store.procedurePhase(entry.id) == 3
-            val status = if (complete) "ಪೂರ್ಣ · Completed" else "ಬಾಕಿ · Not marked complete"
             val target = counts.dailyTarget.coerceAtLeast(1)
             val pct = ((counts.daily * 100) / target).toInt().coerceIn(0, 100)
-            val label = entry.label
-            styleJapaCard(cell.parent as com.google.android.material.card.MaterialCardView, complete)
-            cell.removeAllViews()
-            cell.gravity = Gravity.CENTER_HORIZONTAL
-
-            val head = LinearLayout(requireContext()).apply {
+            val row = LinearLayout(requireContext()).apply {
                 orientation = LinearLayout.HORIZONTAL
-                gravity = Gravity.CENTER
+                gravity = Gravity.CENTER_VERTICAL
+                setPadding(0, rowPad, 0, rowPad)
+                isClickable = true
+                isFocusable = true
+                contentDescription = "${entry.label}. ${countFormat.format(counts.daily)} of " +
+                    "${countFormat.format(target)}. Tap to open japa."
+                setOnClickListener {
+                    MdMotion.pressFlash(it)
+                    store.setActiveMantraId(entry.id)
+                    (activity as? LauncherActivity)?.navigateTo("japa")
+                }
             }
-            head.addView(TextView(requireContext()).apply {
-                text = label
-                gravity = Gravity.CENTER
-                minLines = 2
+            // Column 1: japa name
+            row.addView(TextView(requireContext()).apply {
+                text = entry.label
+                maxLines = 2
+                ellipsize = android.text.TextUtils.TruncateAt.END
                 setTextAppearance(R.style.TextAppearance_DS_TitleSmall)
                 setTextColor(foreground)
-                layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
+                layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 3f)
             })
-            cell.addView(head)
-
-            cell.addView(TextView(requireContext()).apply {
-                text = "${countFormat.format(counts.daily)}/${countFormat.format(target)}"
-                gravity = Gravity.CENTER
-                setTextAppearance(R.style.TextAppearance_DS_Subtitle)
-                setTextColor(foreground)
-                setPadding(0, resources.getDimensionPixelSize(R.dimen.ds_space_half), 0, 0)
-            })
-
-            cell.addView(LinearProgressIndicator(requireContext()).apply {
-                layoutParams = LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-                ).apply {
-                    topMargin = resources.getDimensionPixelSize(R.dimen.ds_space_1)
+            // Column 2: progress bar
+            row.addView(LinearProgressIndicator(requireContext()).apply {
+                layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 4f).apply {
+                    marginStart = gapH
+                    marginEnd = gapH
                 }
                 max = 100
                 progress = pct
                 trackCornerRadius = (4 * density).toInt()
                 trackThickness = (4 * density).toInt()
-                setIndicatorColor(if (complete) foreground else requireContext().getColor(R.color.md_theme_primary))
+                setIndicatorColor(if (complete) foreground else primary)
                 trackColor = if (complete) androidx.core.graphics.ColorUtils.setAlphaComponent(foreground, 32)
-                    else requireContext().getColor(R.color.md_theme_surfaceContainerHighest)
+                    else neutralTrack
             })
-
-            cell.addView(TextView(requireContext()).apply {
-                text = "Σ ${countFormat.format(counts.cumulative)}"
-                gravity = Gravity.CENTER
-                setTextAppearance(R.style.TextAppearance_DS_LabelSmall)
-                setTextColor(secondary)
-                setPadding(0, resources.getDimensionPixelSize(R.dimen.ds_space_half), 0, 0)
+            // Column 3: target number
+            row.addView(TextView(requireContext()).apply {
+                text = countFormat.format(target)
+                gravity = Gravity.END
+                setTextAppearance(R.style.TextAppearance_DS_Subtitle)
+                setTextColor(foreground)
+                layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.5f)
             })
-
-            cell.addView(TextView(requireContext()).apply {
-                text = status
-                gravity = Gravity.CENTER
-                setTextAppearance(R.style.TextAppearance_DS_Caption)
-                setTextColor(secondary)
-                setPadding(0, resources.getDimensionPixelSize(R.dimen.ds_space_1), 0, 0)
-            })
-            androidx.core.view.ViewCompat.setStateDescription(cell, status)
-            cell.contentDescription =
-                "$label. $status. ${countFormat.format(counts.daily)} of ${countFormat.format(target)}. " +
-                    "Cumulative ${countFormat.format(counts.cumulative)}. Tap to open japa."
-            cell.setOnClickListener {
-                MdMotion.pressFlash(it)
-                store.setActiveMantraId(entry.id)
-                (activity as? LauncherActivity)?.navigateTo("japa")
+            table.addView(row)
+            if (index < slots.take(5).size - 1) {
+                table.addView(View(requireContext()).apply {
+                    setBackgroundColor(requireContext().getColor(R.color.md_theme_outlineVariant))
+                }, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, (1 * density).toInt()))
             }
         }
     }

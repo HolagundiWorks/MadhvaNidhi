@@ -51,6 +51,14 @@ object DashboardBadges {
         Tier("streak_365", Kind.STREAK, 365, "ಸಂವತ್ಸರ", "Year keeper", "365-day streak")
     )
 
+    /** Day milestones for the sun (Sandhyavandana) and hexagon (Japa) badges. */
+    val DAY_MILESTONES = listOf(
+        Tier("day_10", Kind.STREAK, 10, "ದಶ", "Ten days", "10 days"),
+        Tier("day_100", Kind.STREAK, 100, "ಶತ", "Hundred days", "100 days"),
+        Tier("day_500", Kind.STREAK, 500, "ಪಂಚಶತ", "500 days", "500 days"),
+        Tier("day_1000", Kind.STREAK, 1000, "ಸಹಸ್ರ", "1000 days", "1000 days")
+    )
+
     /** Complete Sandhya days in the rolling 7-day window. */
     val WEEKLY_TIERS = listOf(
         Tier("week_3", Kind.WEEKLY, 3, "ಪಾದ", "Footing", "3 of 7 days complete"),

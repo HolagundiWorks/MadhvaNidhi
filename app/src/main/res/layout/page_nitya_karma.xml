@@ -13,8 +13,8 @@
         android:layout_height="48dp"
         android:layout_gravity="start"
         android:minHeight="48dp"
-        app:tabMode="scrollable"
-        app:tabGravity="start"
+        app:tabMode="fixed"
+        app:tabGravity="fill"
         app:tabInlineLabel="true" />
 
     <FrameLayout

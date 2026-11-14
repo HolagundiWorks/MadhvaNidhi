@@ -180,7 +180,7 @@ class ReaderFragment : Fragment() {
         val sandhya = pageId == SANDHYA
         v.findViewById<View>(R.id.readerSubpages).visibility = View.GONE
         v.findViewById<View>(R.id.readerSelect).visibility = View.GONE
-        v.findViewById<View>(R.id.readerItemField).visibility = if (sandhya) View.GONE else View.VISIBLE
+        v.findViewById<View>(R.id.readerItemField).visibility = if (sandhya || pageId == PUJA) View.GONE else View.VISIBLE
         if (!sandhya) bindItemDropdown(v)
         v.findViewById<View>(R.id.readerKalaField).visibility = if (sandhya) View.VISIBLE else View.GONE
         if (sandhya) bindKala(v)

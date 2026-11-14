@@ -41,7 +41,7 @@ object NityaParayanaBinder {
         }
 
         if (sections.isNotEmpty()) {
-            MaterialChoices.bind(root.findViewById(R.id.nityaSection), sections.map { it.title }, selected) {
+            ListChoices.bind(root.findViewById(R.id.nityaList), sections.map { it.title }, selected) {
                 selected = it
                 show(it)
                 fragment.startActivity(ContentReaderActivity.forNityaParayana(context, it))
