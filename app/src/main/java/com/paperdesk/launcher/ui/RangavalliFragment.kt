@@ -78,7 +78,7 @@ class RangavalliFragment : Fragment(R.layout.page_rangavalli) {
             }, LinearLayout.LayoutParams(-1, (280 * density).toInt()))
             fun paragraph(value: String) = TextView(context).apply {
                 text = value
-                setTextAppearance(com.google.android.material.R.style.TextAppearance_Material3_BodyLarge)
+                setTextAppearance(R.style.TextAppearance_DS_Body)
                 setTextColor(context.getColor(R.color.md_theme_onSurface))
                 setPadding(0,pad,0,0)
             }

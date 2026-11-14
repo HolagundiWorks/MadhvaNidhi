@@ -8,19 +8,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/md_spacing_06">
+        android:padding="@dimen/ds_space_6">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/dateDialogTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/md_theme_onSurface"
-            android:textSize="20sp" />
+            android:textSize="@dimen/ds_type_xl" />
 
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/md_spacing_05"
+            android:layout_marginTop="@dimen/ds_space_4"
             android:columnCount="2"
             android:useDefaultMargins="false">
 
@@ -28,8 +28,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_marginEnd="@dimen/md_spacing_03"
-                android:layout_marginBottom="@dimen/md_spacing_03"
+                android:layout_marginEnd="@dimen/ds_space_2"
+                android:layout_marginBottom="@dimen/ds_space_2"
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -37,21 +37,21 @@
                     android:layout_height="wrap_content"
                     android:text="ವಾರ"
                     android:textColor="@color/md_theme_onSurfaceVariant"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/ds_type_xs" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/dateDialogWeekday"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/md_theme_onSurface"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/ds_type_sm" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_marginBottom="@dimen/md_spacing_03"
+                android:layout_marginBottom="@dimen/ds_space_2"
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -59,22 +59,22 @@
                     android:layout_height="wrap_content"
                     android:text="ಪಕ್ಷ"
                     android:textColor="@color/md_theme_onSurfaceVariant"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/ds_type_xs" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/dateDialogPhase"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/md_theme_onSurface"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/ds_type_sm" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_marginEnd="@dimen/md_spacing_03"
-                android:layout_marginBottom="@dimen/md_spacing_03"
+                android:layout_marginEnd="@dimen/ds_space_2"
+                android:layout_marginBottom="@dimen/ds_space_2"
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -82,21 +82,21 @@
                     android:layout_height="wrap_content"
                     android:text="ತಿಥಿ"
                     android:textColor="@color/md_theme_onSurfaceVariant"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/ds_type_xs" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/dateDialogTithi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/md_theme_onSurface"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/ds_type_sm" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_marginBottom="@dimen/md_spacing_03"
+                android:layout_marginBottom="@dimen/ds_space_2"
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -104,22 +104,22 @@
                     android:layout_height="wrap_content"
                     android:text="ಮಾಸ"
                     android:textColor="@color/md_theme_onSurfaceVariant"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/ds_type_xs" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/dateDialogMasa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/md_theme_onSurface"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/ds_type_sm" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_marginEnd="@dimen/md_spacing_03"
-                android:layout_marginBottom="@dimen/md_spacing_03"
+                android:layout_marginEnd="@dimen/ds_space_2"
+                android:layout_marginBottom="@dimen/ds_space_2"
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -127,21 +127,21 @@
                     android:layout_height="wrap_content"
                     android:text="ರಾಶಿ"
                     android:textColor="@color/md_theme_onSurfaceVariant"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/ds_type_xs" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/dateDialogRashi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/md_text_helper"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/ds_type_sm" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_marginBottom="@dimen/md_spacing_03"
+                android:layout_marginBottom="@dimen/ds_space_2"
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -149,22 +149,22 @@
                     android:layout_height="wrap_content"
                     android:text="ನಕ್ಷತ್ರ"
                     android:textColor="@color/md_theme_onSurfaceVariant"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/ds_type_xs" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/dateDialogNakshatra"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/md_theme_onSurface"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/ds_type_sm" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_marginEnd="@dimen/md_spacing_03"
-                android:layout_marginBottom="@dimen/md_spacing_03"
+                android:layout_marginEnd="@dimen/ds_space_2"
+                android:layout_marginBottom="@dimen/ds_space_2"
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -172,21 +172,21 @@
                     android:layout_height="wrap_content"
                     android:text="ನಕ್ಷತ್ರ ಪಾದ"
                     android:textColor="@color/md_theme_onSurfaceVariant"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/ds_type_xs" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/dateDialogBhava"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/md_text_helper"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/ds_type_sm" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_marginBottom="@dimen/md_spacing_03"
+                android:layout_marginBottom="@dimen/ds_space_2"
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -194,14 +194,14 @@
                     android:layout_height="wrap_content"
                     android:text="ಕರಣ"
                     android:textColor="@color/md_theme_onSurfaceVariant"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/ds_type_xs" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/dateDialogKarana"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/md_theme_onSurface"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/ds_type_sm" />
             </LinearLayout>
 
             <LinearLayout
@@ -209,7 +209,7 @@
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:layout_columnSpan="2"
-                android:layout_marginBottom="@dimen/md_spacing_03"
+                android:layout_marginBottom="@dimen/ds_space_2"
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -217,46 +217,46 @@
                     android:layout_height="wrap_content"
                     android:text="ಯೋಗ"
                     android:textColor="@color/md_theme_onSurfaceVariant"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/ds_type_xs" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/dateDialogYoga"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/md_theme_onSurface"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/ds_type_sm" />
             </LinearLayout>
         </GridLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="@dimen/md_spacing_03"
+            android:layout_marginTop="@dimen/ds_space_2"
             android:background="@color/md_border" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/md_spacing_05"
+            android:layout_marginTop="@dimen/ds_space_4"
             android:text="ದಿನದ ವಿಶೇಷ"
             android:textColor="@color/md_theme_onSurfaceVariant"
-            android:textSize="12sp" />
+            android:textSize="@dimen/ds_type_xs" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/dateDialogEvent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/md_spacing_02"
+            android:layout_marginTop="@dimen/ds_space_1"
             android:textColor="@color/md_theme_onSurface"
-            android:textSize="16sp" />
+            android:textSize="@dimen/ds_type_md" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/dateDialogSummary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/md_spacing_02"
+            android:layout_marginTop="@dimen/ds_space_1"
             android:textColor="@color/md_theme_onSurfaceVariant"
-            android:textSize="12sp"
+            android:textSize="@dimen/ds_type_xs"
             android:visibility="gone" />
     </LinearLayout>
 </ScrollView>

@@ -125,7 +125,7 @@ class FrozenShell(private val activity: LauncherActivity) {
             contentDescription = label
             setIconResource(iconFor(id))
             iconSize = activity.resources.getDimensionPixelSize(R.dimen.shell_icon_size)
-            iconPadding = if (!labeled) 0 else activity.resources.getDimensionPixelSize(R.dimen.md_spacing_05)
+            iconPadding = if (!labeled) 0 else activity.resources.getDimensionPixelSize(R.dimen.ds_space_4)
             iconGravity = if (!labeled) MaterialButton.ICON_GRAVITY_TEXT_START else MaterialButton.ICON_GRAVITY_START
             minWidth = 0
             minHeight = 0
@@ -135,7 +135,7 @@ class FrozenShell(private val activity: LauncherActivity) {
             minimumHeight = (48 * density).toInt()
             insetTop = 0
             insetBottom = 0
-            val pad = if (labeled) activity.resources.getDimensionPixelSize(R.dimen.md_spacing_05) else 0
+            val pad = if (labeled) activity.resources.getDimensionPixelSize(R.dimen.ds_space_4) else 0
             setPadding(pad, 0, pad, 0)
             cornerRadius = (12 * density).toInt()
             rippleColor = ColorStateList.valueOf(activity.getColor(R.color.md_theme_hover))

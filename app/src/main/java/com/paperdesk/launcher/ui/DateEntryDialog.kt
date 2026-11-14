@@ -53,7 +53,7 @@ class DateEntryDialog : DialogFragment() {
         val density = resources.displayMetrics.density
         val parent = requireActivity().findViewById<android.view.View>(R.id.materialContent)
         val available = parent?.let { it.width - it.paddingLeft - it.paddingRight } ?: resources.displayMetrics.widthPixels
-        val width = minOf(available - resources.getDimensionPixelSize(R.dimen.md_spacing_05) * 2, (560 * density).toInt())
+        val width = minOf(available - resources.getDimensionPixelSize(R.dimen.ds_space_4) * 2, (560 * density).toInt())
         requireDialog().window?.apply {
             setLayout(width, android.view.ViewGroup.LayoutParams.WRAP_CONTENT)
             setSoftInputMode(android.view.WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)

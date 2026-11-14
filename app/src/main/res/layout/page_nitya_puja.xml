@@ -13,10 +13,10 @@
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:minHeight="@dimen/md_layout_size_height_lg"
-        android:paddingStart="@dimen/md_spacing_05"
-        android:paddingEnd="@dimen/md_spacing_05"
-        android:paddingTop="@dimen/md_spacing_03"
-        android:paddingBottom="@dimen/md_spacing_03"
+        android:paddingStart="@dimen/ds_space_4"
+        android:paddingEnd="@dimen/ds_space_4"
+        android:paddingTop="@dimen/ds_space_2"
+        android:paddingBottom="@dimen/ds_space_2"
         android:background="@color/md_theme_surfaceContainerLow">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -39,7 +39,7 @@
             style="@style/Widget.MadhvaNidhi.Button.Outlined"
             android:layout_width="@dimen/md_layout_size_height_lg"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/md_spacing_05"
+            android:layout_marginStart="@dimen/ds_space_4"
             android:minWidth="0dp"
             android:padding="0dp"
             android:contentDescription="Skip today"
@@ -53,7 +53,7 @@
             style="@style/Widget.MadhvaNidhi.Button.Outlined"
             android:layout_width="@dimen/md_layout_size_height_lg"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/md_spacing_03"
+            android:layout_marginStart="@dimen/ds_space_2"
             android:minWidth="0dp"
             android:padding="0dp"
             android:contentDescription="Completed for today"
@@ -68,17 +68,17 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:paddingStart="@dimen/md_spacing_05"
-        android:paddingEnd="@dimen/md_spacing_05"
-        android:paddingTop="@dimen/md_spacing_03"
-        android:paddingBottom="@dimen/md_spacing_03">
+        android:paddingStart="@dimen/ds_space_4"
+        android:paddingEnd="@dimen/ds_space_4"
+        android:paddingTop="@dimen/ds_space_2"
+        android:paddingBottom="@dimen/ds_space_2">
 
         <TextView
             android:id="@+id/pujaTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:layout_marginEnd="@dimen/md_spacing_04"
+            android:layout_marginEnd="@dimen/ds_space_3"
             android:ellipsize="end"
             android:maxLines="1"
             android:textAppearance="@style/TextAppearance.DS.Subtitle"
@@ -103,19 +103,19 @@
         android:layout_weight="1"
         android:fillViewport="true"
         android:clipToPadding="false"
-        android:paddingBottom="@dimen/md_spacing_09">
+        android:paddingBottom="@dimen/ds_space_12">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/md_spacing_05">
+            android:padding="@dimen/ds_space_4">
 
             <TextView
                 android:id="@+id/pujaCrumb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/md_spacing_04"
+                android:layout_marginBottom="@dimen/ds_space_3"
                 android:textAppearance="@style/TextAppearance.DS.Caption"
                 android:textColor="@color/md_theme_onSurfaceVariant" />
 

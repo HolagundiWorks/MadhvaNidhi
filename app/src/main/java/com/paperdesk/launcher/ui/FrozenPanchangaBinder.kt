@@ -27,7 +27,7 @@ object FrozenPanchangaBinder {
     fun bind(root: View, cycle: PanchangaCalendar.Cycle, selected: String, onPick: (String) -> Unit) {
         val area = root.findViewById<View>(R.id.pakshaScroll)
         val density = root.resources.displayMetrics.density
-        val gap = root.resources.getDimensionPixelSize(R.dimen.md_spacing_03)
+        val gap = root.resources.getDimensionPixelSize(R.dimen.ds_space_2)
         fun mockScale(): Float {
             (root.getTag(R.id.panchangaScreen) as? Float)?.let { return it }
             if (root.width <= 0 || root.height <= 0) return 1f
@@ -194,7 +194,7 @@ object FrozenPanchangaBinder {
             }
             DeskType.apply(button, DeskType.REGULAR)
             val marker = 11 in tile.tithis || 15 in tile.tithis
-            val stripH = root.resources.getDimensionPixelSize(R.dimen.md_spacing_02)
+            val stripH = root.resources.getDimensionPixelSize(R.dimen.ds_space_1)
             val topPad = if (11 in tile.tithis) stripH + (2 * density).roundToInt() else tilePad
             // TOP gravity + tighter font padding keeps Kannada tithi ink inside the fixed cell.
             val bottomPad = (tilePad * 0.65f).roundToInt().coerceAtLeast((2 * density).roundToInt())
@@ -244,7 +244,7 @@ object FrozenPanchangaBinder {
             cell.addView(button, FrameLayout.LayoutParams(cellWidth, side))
             if (11 in tile.tithis) {
                 // Top Yellow-30 alert strip ($support-warning-inverse)
-                val stripH = root.resources.getDimensionPixelSize(R.dimen.md_spacing_02)
+                val stripH = root.resources.getDimensionPixelSize(R.dimen.ds_space_1)
                 cell.addView(
                     View(root.context).apply {
                         setBackgroundColor(root.context.getColor(R.color.md_support_warning_inverse))
@@ -281,7 +281,7 @@ object FrozenPanchangaBinder {
                     tag = "tile-marker"
                 }
                 val markerTop = if (11 in tile.tithis) {
-                    root.resources.getDimensionPixelSize(R.dimen.md_spacing_02) + (2 * density).roundToInt()
+                    root.resources.getDimensionPixelSize(R.dimen.ds_space_1) + (2 * density).roundToInt()
                 } else {
                     tilePad
                 }

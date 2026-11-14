@@ -32,7 +32,7 @@ class ShellHubFragment : Fragment() {
         val children = view.findViewById<GridLayout>(R.id.hubChildren)
         children.removeAllViews()
         val inflater = layoutInflater
-        val gap = resources.getDimensionPixelSize(R.dimen.md_spacing_03)
+        val gap = resources.getDimensionPixelSize(R.dimen.ds_space_2)
         val list = childrenFor(hubId)
         list.forEachIndexed { index, child ->
             val button = inflater.inflate(R.layout.item_hub_child, children, false) as MaterialButton
@@ -60,14 +60,14 @@ class ShellHubFragment : Fragment() {
                 setTextAppearance(R.style.TextAppearance_MadhvaNidhi_Body01)
                 setTextColor(requireContext().getColor(R.color.md_text_secondary))
                 setBackgroundColor(requireContext().getColor(R.color.md_layer))
-                val pad = resources.getDimensionPixelSize(R.dimen.md_spacing_05)
+                val pad = resources.getDimensionPixelSize(R.dimen.ds_space_4)
                 setPadding(pad, pad, pad, pad)
             }
             val lp = LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
-            lp.bottomMargin = resources.getDimensionPixelSize(R.dimen.md_spacing_03)
+            lp.bottomMargin = resources.getDimensionPixelSize(R.dimen.ds_space_2)
             empties.addView(label, lp)
         }
     }

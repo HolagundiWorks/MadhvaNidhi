@@ -10,20 +10,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/md_spacing_05"
-        android:paddingBottom="@dimen/md_spacing_07">
+        android:padding="@dimen/ds_space_4"
+        android:paddingBottom="@dimen/ds_space_8">
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/legal_title"
             android:textAppearance="@style/TextAppearance.DS.Headline"
-            android:layout_marginBottom="@dimen/md_spacing_05" />
+            android:layout_marginBottom="@dimen/ds_space_4" />
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/md_spacing_05"
+            android:layout_marginBottom="@dimen/ds_space_4"
             app:cardCornerRadius="@dimen/md_corner_radius"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four"
             app:cardBackgroundColor="@color/md_theme_surfaceContainer">
@@ -32,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="@dimen/md_spacing_05">
+                android:padding="@dimen/ds_space_4">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
@@ -44,7 +44,7 @@
                     android:id="@+id/legalDeveloperBody"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/md_spacing_03"
+                    android:layout_marginTop="@dimen/ds_space_2"
                     android:text="@string/legal_developer_body"
                     android:textAppearance="@style/TextAppearance.DS.BodySmall"
                     android:textIsSelectable="true"
@@ -56,7 +56,7 @@
                     android:id="@+id/legalVersion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/md_spacing_03"
+                    android:layout_marginTop="@dimen/ds_space_2"
                     android:textAppearance="@style/TextAppearance.DS.Caption"
                     android:text="" />
             </LinearLayout>
@@ -65,7 +65,7 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/md_spacing_05"
+            android:layout_marginBottom="@dimen/ds_space_4"
             app:cardCornerRadius="@dimen/md_corner_radius"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four"
             app:cardBackgroundColor="@color/md_theme_surfaceContainer">
@@ -74,7 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="@dimen/md_spacing_05">
+                android:padding="@dimen/ds_space_4">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
@@ -86,7 +86,7 @@
                     android:id="@+id/legalPrivacyBody"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/md_spacing_03"
+                    android:layout_marginTop="@dimen/ds_space_2"
                     android:text="@string/legal_privacy_body"
                     android:textAppearance="@style/TextAppearance.DS.BodySmall"
                     android:textIsSelectable="true" />
@@ -96,7 +96,7 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/md_spacing_05"
+            android:layout_marginBottom="@dimen/ds_space_4"
             app:cardCornerRadius="@dimen/md_corner_radius"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four"
             app:cardBackgroundColor="@color/md_theme_surfaceContainer">
@@ -105,7 +105,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="@dimen/md_spacing_05">
+                android:padding="@dimen/ds_space_4">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
@@ -117,7 +117,7 @@
                     android:id="@+id/legalLicenseBody"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/md_spacing_03"
+                    android:layout_marginTop="@dimen/ds_space_2"
                     android:text="@string/legal_license_body"
                     android:textAppearance="@style/TextAppearance.DS.BodySmall"
                     android:textIsSelectable="true" />

@@ -33,7 +33,7 @@ object MdTabs {
     private fun applyEqualWidths(tabs: TabLayout) {
         val count = tabs.tabCount
         if (count == 0) return
-        val pad = tabs.resources.getDimensionPixelSize(R.dimen.md_spacing_05) * 2
+        val pad = tabs.resources.getDimensionPixelSize(R.dimen.ds_space_4) * 2
         var maxText = 0
         for (i in 0 until count) {
             val tab = tabs.getTabAt(i) ?: continue
@@ -54,7 +54,7 @@ object MdTabs {
             maxText = maxOf(maxText, measured)
         }
         val width = (maxText + pad).coerceAtLeast(
-            tabs.resources.getDimensionPixelSize(R.dimen.md_spacing_07)
+            tabs.resources.getDimensionPixelSize(R.dimen.ds_space_8)
         )
         for (i in 0 until count) {
             val tabView = tabs.getTabAt(i)?.view ?: continue

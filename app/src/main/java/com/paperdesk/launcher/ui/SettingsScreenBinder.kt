@@ -119,14 +119,14 @@ object SettingsScreenBinder {
             val row = LinearLayout(context).apply {
                 orientation = LinearLayout.HORIZONTAL
                 gravity = android.view.Gravity.CENTER_VERTICAL
-                setPadding(0, 0, 0, context.resources.getDimensionPixelSize(R.dimen.md_spacing_03))
+                setPadding(0, 0, 0, context.resources.getDimensionPixelSize(R.dimen.ds_space_2))
             }
             row.addView(TextView(context).apply {
                 text = "${index + 1}"
                 setTextAppearance(R.style.TextAppearance_MadhvaNidhi_Label01)
                 setTextColor(context.getColor(R.color.md_text_secondary))
                 layoutParams = LinearLayout.LayoutParams(
-                    context.resources.getDimensionPixelSize(R.dimen.md_spacing_09),
+                    context.resources.getDimensionPixelSize(R.dimen.ds_space_12),
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
             })
@@ -164,14 +164,14 @@ object SettingsScreenBinder {
             val row = LinearLayout(context).apply {
                 orientation = LinearLayout.HORIZONTAL
                 gravity = android.view.Gravity.CENTER_VERTICAL
-                setPadding(0, 0, 0, context.resources.getDimensionPixelSize(R.dimen.md_spacing_03))
+                setPadding(0, 0, 0, context.resources.getDimensionPixelSize(R.dimen.ds_space_2))
             }
             row.addView(TextView(context).apply {
                 text = "${index + 1}"
                 setTextAppearance(R.style.TextAppearance_MadhvaNidhi_Label01)
                 setTextColor(context.getColor(R.color.md_text_secondary))
                 layoutParams = LinearLayout.LayoutParams(
-                    context.resources.getDimensionPixelSize(R.dimen.md_spacing_07),
+                    context.resources.getDimensionPixelSize(R.dimen.ds_space_8),
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
             })

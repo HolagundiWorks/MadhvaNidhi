@@ -124,9 +124,9 @@ class DashboardFragment : Fragment() {
         view.findViewById<TextView>(R.id.dashboardTodayCount).text = "$todayCount / 3"
         view.findViewById<LinearProgressIndicator>(R.id.dashboardTodayProgress).progress = todayCount
         val density = resources.displayMetrics.density
-        val gap = resources.getDimensionPixelSize(R.dimen.md_spacing_02)
-        val padH = resources.getDimensionPixelSize(R.dimen.md_spacing_03)
-        val padV = resources.getDimensionPixelSize(R.dimen.md_spacing_02)
+        val gap = resources.getDimensionPixelSize(R.dimen.ds_space_1)
+        val padH = resources.getDimensionPixelSize(R.dimen.ds_space_2)
+        val padV = resources.getDimensionPixelSize(R.dimen.ds_space_1)
         val todayKey = PanchangaStore.dateKey()
         val completeDays = practice.weeklySandhyaCompleteCount()
         val weeklyBadge = DashboardBadges.evaluate(DashboardBadges.WEEKLY_TIERS, completeDays.toLong())
@@ -183,7 +183,7 @@ class DashboardFragment : Fragment() {
             row.addView(TextView(requireContext()).apply {
                 text = dayName
                 minWidth = (36 * density).toInt()
-                setTextAppearance(com.google.android.material.R.style.TextAppearance_Material3_TitleSmall)
+                setTextAppearance(R.style.TextAppearance_DS_TitleSmall)
                 setTextColor(
                     ContextCompat.getColor(
                         requireContext(),
@@ -393,7 +393,7 @@ class DashboardFragment : Fragment() {
                 text = label
                 gravity = Gravity.CENTER
                 minLines = 2
-                setTextAppearance(com.google.android.material.R.style.TextAppearance_Material3_TitleSmall)
+                setTextAppearance(R.style.TextAppearance_DS_TitleSmall)
                 setTextColor(foreground)
                 layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
             })
@@ -402,9 +402,9 @@ class DashboardFragment : Fragment() {
             cell.addView(TextView(requireContext()).apply {
                 text = "${countFormat.format(counts.daily)}/${countFormat.format(target)}"
                 gravity = Gravity.CENTER
-                setTextAppearance(com.google.android.material.R.style.TextAppearance_Material3_TitleMedium)
+                setTextAppearance(R.style.TextAppearance_DS_Subtitle)
                 setTextColor(foreground)
-                setPadding(0, resources.getDimensionPixelSize(R.dimen.md_spacing_01), 0, 0)
+                setPadding(0, resources.getDimensionPixelSize(R.dimen.ds_space_half), 0, 0)
             })
 
             cell.addView(LinearProgressIndicator(requireContext()).apply {
@@ -412,7 +412,7 @@ class DashboardFragment : Fragment() {
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
                 ).apply {
-                    topMargin = resources.getDimensionPixelSize(R.dimen.md_spacing_02)
+                    topMargin = resources.getDimensionPixelSize(R.dimen.ds_space_1)
                 }
                 max = 100
                 progress = pct
@@ -426,17 +426,17 @@ class DashboardFragment : Fragment() {
             cell.addView(TextView(requireContext()).apply {
                 text = "Σ ${countFormat.format(counts.cumulative)}"
                 gravity = Gravity.CENTER
-                setTextAppearance(com.google.android.material.R.style.TextAppearance_Material3_LabelSmall)
+                setTextAppearance(R.style.TextAppearance_DS_LabelSmall)
                 setTextColor(secondary)
-                setPadding(0, resources.getDimensionPixelSize(R.dimen.md_spacing_01), 0, 0)
+                setPadding(0, resources.getDimensionPixelSize(R.dimen.ds_space_half), 0, 0)
             })
 
             cell.addView(TextView(requireContext()).apply {
                 text = status
                 gravity = Gravity.CENTER
-                setTextAppearance(com.google.android.material.R.style.TextAppearance_Material3_LabelMedium)
+                setTextAppearance(R.style.TextAppearance_DS_Caption)
                 setTextColor(secondary)
-                setPadding(0, resources.getDimensionPixelSize(R.dimen.md_spacing_02), 0, 0)
+                setPadding(0, resources.getDimensionPixelSize(R.dimen.ds_space_1), 0, 0)
             })
             androidx.core.view.ViewCompat.setStateDescription(cell, status)
             cell.contentDescription =

@@ -2,6 +2,6 @@
 <!-- Google Material Symbols Outlined: text_increase, weight 400, FILL 0, opsz 24; Apache-2.0. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="960" android:viewportHeight="960">
     <group android:translateX="-0.0" android:translateY="960.0">
-        <path android:fillColor="#000000" android:pathData="m40-200 210-560h100l210 560h-96l-51-143H187l-51 143H40Zm176-224h168l-82-232h-4l-82 232Zm504 104v-120H600v-80h120v-120h80v120h120v80H800v120h-80Z" />
+        <path android:fillColor="@color/ds_palette_black" android:pathData="m40-200 210-560h100l210 560h-96l-51-143H187l-51 143H40Zm176-224h168l-82-232h-4l-82 232Zm504 104v-120H600v-80h120v-120h80v120h120v80H800v120h-80Z" />
     </group>
 </vector>

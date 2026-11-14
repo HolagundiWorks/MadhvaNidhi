@@ -33,6 +33,11 @@
     <color name="ds_progress_track">@color/ds_border_subtle</color>
     <color name="ds_progress_indicator">@color/ds_interaction_accent</color>
 
+    <!-- Tabs: seamless browser chrome (tab strip = page colour, active tab = content colour) -->
+    <color name="ds_tab_strip">@color/ds_bg_page</color>
+    <color name="ds_tab_active">@color/ds_bg_raised</color>
+    <dimen name="ds_tab_radius">@dimen/ds_shape_md</dimen>
+
     <!-- Layout roles -->
     <dimen name="ds_page_gutter">@dimen/ds_space_4</dimen>
     <dimen name="ds_section_gap">@dimen/ds_space_6</dimen>
@@ -56,6 +61,9 @@
     <style name="TextAppearance.DS.BodySmall" parent="TextAppearance.Material3.BodyMedium" />
     <style name="TextAppearance.DS.Label" parent="TextAppearance.Material3.LabelLarge" />
     <style name="TextAppearance.DS.Caption" parent="TextAppearance.Material3.LabelMedium" />
+    <style name="TextAppearance.DS.TitleSmall" parent="TextAppearance.Material3.TitleSmall" />
+    <style name="TextAppearance.DS.LabelSmall" parent="TextAppearance.Material3.LabelSmall" />
+    <style name="TextAppearance.DS.BodyXSmall" parent="TextAppearance.Material3.BodySmall" />
 
     <!-- Card component -->
     <style name="Widget.DS.Card" parent="Widget.Material3.CardView.Filled">

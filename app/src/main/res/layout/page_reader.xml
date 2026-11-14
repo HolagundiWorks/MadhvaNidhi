@@ -17,9 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="@dimen/md_spacing_05"
-            android:paddingTop="@dimen/md_spacing_04"
-            android:paddingBottom="@dimen/md_spacing_03"
+            android:paddingHorizontal="@dimen/ds_space_4"
+            android:paddingTop="@dimen/ds_space_3"
+            android:paddingBottom="@dimen/ds_space_2"
             android:background="@color/md_theme_surfaceContainer">
 
             <com.google.android.material.textview.MaterialTextView
@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.DS.Headline"
                 android:textColor="@color/md_theme_onSurface"
-                android:layout_marginBottom="@dimen/md_spacing_03"
+                android:layout_marginBottom="@dimen/ds_space_2"
                 android:visibility="gone" />
 
             <com.google.android.material.button.MaterialButtonToggleGroup
@@ -118,7 +118,7 @@
                 android:id="@+id/readerSelectLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/md_spacing_03"
+                android:layout_marginBottom="@dimen/ds_space_2"
                 android:text=""
                 android:textAppearance="@style/TextAppearance.DS.Body"
                 android:visibility="gone" />
@@ -175,9 +175,9 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:clipToPadding="false"
-            android:paddingHorizontal="@dimen/md_spacing_04"
-            android:paddingTop="@dimen/md_spacing_03"
-            android:paddingBottom="@dimen/md_spacing_04" />
+            android:paddingHorizontal="@dimen/ds_space_3"
+            android:paddingTop="@dimen/ds_space_2"
+            android:paddingBottom="@dimen/ds_space_3" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/selectorEmpty"
@@ -185,7 +185,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:padding="@dimen/md_spacing_05"
+            android:padding="@dimen/ds_space_4"
             android:text=""
             android:textAppearance="@style/TextAppearance.DS.Body"
             android:textColor="@color/md_theme_onSurfaceVariant"
@@ -204,13 +204,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="@dimen/md_spacing_05">
+                android:padding="@dimen/ds_space_4">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/readerHead"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/md_spacing_03"
+                    android:layout_marginBottom="@dimen/ds_space_2"
                     android:text=""
                     android:textAppearance="@style/TextAppearance.DS.Headline" />
 
@@ -218,7 +218,7 @@
                     android:id="@+id/readerBody"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/md_spacing_03"
+                    android:layout_marginBottom="@dimen/ds_space_2"
                     android:ellipsize="end"
                     android:lineSpacingMultiplier="1.45"
                     android:maxLines="8"
@@ -239,8 +239,8 @@
             android:layout_height="wrap_content"
             android:background="@color/md_theme_surfaceContainer"
             android:orientation="vertical"
-            android:paddingHorizontal="@dimen/md_spacing_05"
-            android:paddingVertical="@dimen/md_spacing_03">
+            android:paddingHorizontal="@dimen/ds_space_4"
+            android:paddingVertical="@dimen/ds_space_2">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/readerSelectedTitle"
@@ -255,8 +255,8 @@
                 android:id="@+id/readerCrumb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/md_spacing_01"
-                android:layout_marginBottom="@dimen/md_spacing_03"
+                android:layout_marginTop="@dimen/ds_space_half"
+                android:layout_marginBottom="@dimen/ds_space_2"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text=""

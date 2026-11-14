@@ -12,9 +12,9 @@
         android:layout_height="wrap_content"
         android:background="@color/md_theme_surfaceContainer"
         android:orientation="vertical"
-        android:paddingHorizontal="@dimen/md_spacing_05"
-        android:paddingTop="@dimen/md_spacing_04"
-        android:paddingBottom="@dimen/md_spacing_03">
+        android:paddingHorizontal="@dimen/ds_space_4"
+        android:paddingTop="@dimen/ds_space_3"
+        android:paddingBottom="@dimen/ds_space_2">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/sectionTitle"
@@ -27,7 +27,7 @@
             android:id="@+id/sectionSubtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/md_spacing_01"
+            android:layout_marginTop="@dimen/ds_space_half"
             android:textAppearance="@style/TextAppearance.DS.BodySmall"
             android:textColor="@color/md_theme_onSurfaceVariant" />
     </LinearLayout>
@@ -43,8 +43,8 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:clipToPadding="false"
-        android:paddingHorizontal="@dimen/md_spacing_04"
-        android:paddingVertical="@dimen/md_spacing_03" />
+        android:paddingHorizontal="@dimen/ds_space_3"
+        android:paddingVertical="@dimen/ds_space_2" />
 
     <View
         android:layout_width="match_parent"
@@ -57,8 +57,8 @@
         android:layout_height="wrap_content"
         android:background="@color/md_theme_surfaceContainer"
         android:orientation="vertical"
-        android:paddingHorizontal="@dimen/md_spacing_05"
-        android:paddingVertical="@dimen/md_spacing_03">
+        android:paddingHorizontal="@dimen/ds_space_4"
+        android:paddingVertical="@dimen/ds_space_2">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/sectionDetailTitle"
@@ -73,7 +73,7 @@
             android:id="@+id/sectionDetailBody"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/md_spacing_01"
+            android:layout_marginTop="@dimen/ds_space_half"
             android:ellipsize="end"
             android:lineSpacingMultiplier="1.3"
             android:maxLines="3"
@@ -83,7 +83,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/md_spacing_03"
+            android:layout_marginTop="@dimen/ds_space_2"
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
@@ -91,7 +91,7 @@
                 style="@style/Widget.MadhvaNidhi.Button.Outlined"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/md_spacing_03"
+                android:layout_marginEnd="@dimen/ds_space_2"
                 android:minHeight="@dimen/md_button_height"
                 android:visibility="gone"
                 app:cornerRadius="@dimen/md_corner_radius" />

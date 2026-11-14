@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="56dp"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/md_spacing_01"
+    android:layout_marginStart="@dimen/ds_space_half"
     android:background="@drawable/bg_badge_chip"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingTop="@dimen/md_spacing_02"
-    android:paddingBottom="@dimen/md_spacing_02">
+    android:paddingTop="@dimen/ds_space_1"
+    android:paddingBottom="@dimen/ds_space_1">
 
     <ImageView
         android:id="@+id/badgeIcon"
@@ -23,7 +23,7 @@
         android:id="@+id/badgeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/md_spacing_01"
+        android:layout_marginTop="@dimen/ds_space_half"
         android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
         android:textColor="@color/md_theme_onSecondaryContainer" />
 

@@ -55,24 +55,24 @@ class NaivedyaFragment : Fragment(R.layout.page_naivedya) {
             layoutParams = LinearLayout.LayoutParams(-1,-2).apply { bottomMargin = dp(8) }
         }
         val summary = LinearLayout(context).apply { orientation = LinearLayout.VERTICAL; setPadding(dp(16),dp(16),dp(16),dp(16)) }
-        summary.addView(label(recipe.title, com.google.android.material.R.style.TextAppearance_Material3_HeadlineSmall))
-        summary.addView(label(recipe.englishTitle, com.google.android.material.R.style.TextAppearance_Material3_BodyMedium, true))
-        summary.addView(label(recipe.time, com.google.android.material.R.style.TextAppearance_Material3_BodyLarge))
-        summary.addView(label(recipe.batch, com.google.android.material.R.style.TextAppearance_Material3_LabelLarge, true))
+        summary.addView(label(recipe.title, R.style.TextAppearance_DS_Headline))
+        summary.addView(label(recipe.englishTitle, R.style.TextAppearance_DS_BodySmall, true))
+        summary.addView(label(recipe.time, R.style.TextAppearance_DS_Body))
+        summary.addView(label(recipe.batch, R.style.TextAppearance_DS_Label, true))
         body.addView(MaterialCardView(context).apply {
             setCardBackgroundColor(context.getColor(R.color.md_theme_surfaceContainer))
             cardElevation = 0f
             radius = dp(16).toFloat()
             addView(summary)
         }, LinearLayout.LayoutParams(-1,-2))
-        fun heading(value: String) = label(value, com.google.android.material.R.style.TextAppearance_Material3_TitleLarge).apply {
+        fun heading(value: String) = label(value, R.style.TextAppearance_DS_Title).apply {
             setPadding(0,dp(24),0,dp(8))
         }
         body.addView(heading("ಪದಾರ್ಥಗಳು"))
         recipe.ingredients.forEach { ingredient ->
             val row = LinearLayout(context).apply { orientation = LinearLayout.HORIZONTAL; setPadding(0,dp(8),0,dp(8)); isBaselineAligned = false }
-            row.addView(label(ingredient.name, com.google.android.material.R.style.TextAppearance_Material3_BodyLarge), LinearLayout.LayoutParams(0,-2, 1f))
-            row.addView(label(ingredient.quantity, com.google.android.material.R.style.TextAppearance_Material3_BodyLarge).apply {
+            row.addView(label(ingredient.name, R.style.TextAppearance_DS_Body), LinearLayout.LayoutParams(0,-2, 1f))
+            row.addView(label(ingredient.quantity, R.style.TextAppearance_DS_Body).apply {
                 gravity = android.view.Gravity.END
                 setPadding(dp(12),0,0,0)
             }, LinearLayout.LayoutParams(0,-2, 1f))
@@ -81,14 +81,14 @@ class NaivedyaFragment : Fragment(R.layout.page_naivedya) {
         }
         body.addView(heading("ತಯಾರಿಸುವ ವಿಧಾನ"))
         recipe.steps.forEachIndexed { index, step ->
-            body.addView(label("${index+1}. $step", com.google.android.material.R.style.TextAppearance_Material3_BodyLarge).apply { setPadding(0,0,0,dp(12)) })
+            body.addView(label("${index+1}. $step", R.style.TextAppearance_DS_Body).apply { setPadding(0,0,0,dp(12)) })
         }
         if (recipe.note.isNotBlank()) {
             body.addView(heading("ಪಾಕದ ಸೂಚನೆ"))
-            body.addView(label(recipe.note, com.google.android.material.R.style.TextAppearance_Material3_BodyLarge))
+            body.addView(label(recipe.note, R.style.TextAppearance_DS_Body))
         }
         body.addView(heading("ಮೂಲ ಉಲ್ಲೇಖ"))
-        body.addView(label(recipe.author, com.google.android.material.R.style.TextAppearance_Material3_BodyMedium, true))
+        body.addView(label(recipe.author, R.style.TextAppearance_DS_BodySmall, true))
         body.addView(MaterialButton(context, null, com.google.android.material.R.attr.borderlessButtonStyle).apply {
             text = "ಮೂಲ ಪಾಕವಿಧಾನ ನೋಡಿ"
             minHeight = dp(64)

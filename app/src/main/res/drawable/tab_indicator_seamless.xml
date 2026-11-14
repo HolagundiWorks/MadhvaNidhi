@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Seamless browser-chrome tab: the active tab is the content colour, rounded only at the top,
+     so it joins the content below with no divider. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="@android:color/white" />
+    <corners
+        android:topLeftRadius="@dimen/ds_tab_radius"
+        android:topRightRadius="@dimen/ds_tab_radius"
+        android:bottomLeftRadius="0dp"
+        android:bottomRightRadius="0dp" />
+</shape>

@@ -70,8 +70,8 @@ class WikiFragment : Fragment() {
     }
 
     private fun renderList(current: WikiStore.Book) {
-        content.addView(label("Madhva wiki", com.google.android.material.R.style.TextAppearance_Material3_HeadlineSmall))
-        content.addView(label("Offline reference. Pending entries are structure only until sourced.", com.google.android.material.R.style.TextAppearance_Material3_BodySmall, secondary = true))
+        content.addView(label("Madhva wiki", R.style.TextAppearance_DS_Headline))
+        content.addView(label("Offline reference. Pending entries are structure only until sourced.", R.style.TextAppearance_DS_BodyXSmall, secondary = true))
 
         val search = TextInputEditText(requireContext()).apply {
             hint = "Search matha, Peethadhipati, concept"
@@ -115,7 +115,7 @@ class WikiFragment : Fragment() {
             (category == "all" || a.category == category) &&
                 (q.isEmpty() || listOf(a.titleEn, a.titleKn, a.summary).joinToString(" ").lowercase().contains(q))
         }
-        if (items.isEmpty()) listHost.addView(label("No matching article.", com.google.android.material.R.style.TextAppearance_Material3_BodyLarge, secondary = true))
+        if (items.isEmpty()) listHost.addView(label("No matching article.", R.style.TextAppearance_DS_Body, secondary = true))
         items.forEach { a ->
             val card = MaterialCardView(requireContext()).apply {
                 setCardBackgroundColor(context.getColor(R.color.md_theme_surfaceContainer))
@@ -125,10 +125,10 @@ class WikiFragment : Fragment() {
                 setOnClickListener { openId = a.id; render() }
             }
             val inner = LinearLayout(requireContext()).apply { orientation = LinearLayout.VERTICAL; setPadding(dp(16), dp(16), dp(16), dp(16)) }
-            inner.addView(label(a.titleEn, com.google.android.material.R.style.TextAppearance_Material3_TitleMedium))
-            if (a.titleKn.isNotBlank()) inner.addView(label(a.titleKn, com.google.android.material.R.style.TextAppearance_Material3_BodyMedium, secondary = true))
-            inner.addView(label(a.summary, com.google.android.material.R.style.TextAppearance_Material3_BodyMedium))
-            inner.addView(label(statusText(a.status) + if (a.id in bookmarks) " · Bookmarked" else "", com.google.android.material.R.style.TextAppearance_Material3_LabelLarge, secondary = true))
+            inner.addView(label(a.titleEn, R.style.TextAppearance_DS_Subtitle))
+            if (a.titleKn.isNotBlank()) inner.addView(label(a.titleKn, R.style.TextAppearance_DS_BodySmall, secondary = true))
+            inner.addView(label(a.summary, R.style.TextAppearance_DS_BodySmall))
+            inner.addView(label(statusText(a.status) + if (a.id in bookmarks) " · Bookmarked" else "", R.style.TextAppearance_DS_Label, secondary = true))
             card.addView(inner)
             listHost.addView(card, LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(8) })
         }
@@ -154,10 +154,10 @@ class WikiFragment : Fragment() {
         }, LinearLayout.LayoutParams(-2, -2).apply { marginStart = dp(8) })
         content.addView(toolbar)
 
-        content.addView(label(a.titleEn, com.google.android.material.R.style.TextAppearance_Material3_HeadlineSmall).apply { setPadding(0, dp(12), 0, 0) })
-        if (a.titleKn.isNotBlank()) content.addView(label(a.titleKn, com.google.android.material.R.style.TextAppearance_Material3_TitleMedium, secondary = true))
-        content.addView(label(a.summary, com.google.android.material.R.style.TextAppearance_Material3_BodyLarge))
-        content.addView(label(statusText(a.status), com.google.android.material.R.style.TextAppearance_Material3_LabelLarge, secondary = true))
+        content.addView(label(a.titleEn, R.style.TextAppearance_DS_Headline).apply { setPadding(0, dp(12), 0, 0) })
+        if (a.titleKn.isNotBlank()) content.addView(label(a.titleKn, R.style.TextAppearance_DS_Subtitle, secondary = true))
+        content.addView(label(a.summary, R.style.TextAppearance_DS_Body))
+        content.addView(label(statusText(a.status), R.style.TextAppearance_DS_Label, secondary = true))
 
         a.sections.forEach { s ->
             val card = MaterialCardView(context).apply {
@@ -166,27 +166,27 @@ class WikiFragment : Fragment() {
                 radius = dp(16).toFloat()
             }
             val inner = LinearLayout(context).apply { orientation = LinearLayout.VERTICAL; setPadding(dp(16), dp(16), dp(16), dp(16)) }
-            inner.addView(label(s.heading, com.google.android.material.R.style.TextAppearance_Material3_TitleMedium))
+            inner.addView(label(s.heading, R.style.TextAppearance_DS_Subtitle))
             val body = if (s.body.isNotBlank()) s.body else "Pending source. Content not yet verified."
-            inner.addView(label(body, com.google.android.material.R.style.TextAppearance_Material3_BodyMedium, secondary = s.body.isBlank()))
+            inner.addView(label(body, R.style.TextAppearance_DS_BodySmall, secondary = s.body.isBlank()))
             card.addView(inner)
             content.addView(card, LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(12) })
         }
 
-        content.addView(label("Sources", com.google.android.material.R.style.TextAppearance_Material3_TitleLarge).apply { setPadding(0, dp(24), 0, dp(8)) })
+        content.addView(label("Sources", R.style.TextAppearance_DS_Title).apply { setPadding(0, dp(24), 0, dp(8)) })
         if (a.sources.isEmpty()) {
-            content.addView(label("No citation yet. Add one before this article is marked sourced.", com.google.android.material.R.style.TextAppearance_Material3_BodyMedium, secondary = true))
+            content.addView(label("No citation yet. Add one before this article is marked sourced.", R.style.TextAppearance_DS_BodySmall, secondary = true))
         }
         a.sources.forEach { src ->
             content.addView(MaterialButton(context, null, com.google.android.material.R.attr.materialButtonOutlinedStyle).apply {
                 text = "${src.title} · accessed ${src.accessed.ifBlank { "not recorded" }}"
                 setOnClickListener { openUrl(src.url) }
             }, LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(8) })
-            if (src.note.isNotBlank()) content.addView(label(src.note, com.google.android.material.R.style.TextAppearance_Material3_BodySmall, secondary = true))
+            if (src.note.isNotBlank()) content.addView(label(src.note, R.style.TextAppearance_DS_BodyXSmall, secondary = true))
         }
 
         if (a.related.isNotEmpty()) {
-            content.addView(label("Related", com.google.android.material.R.style.TextAppearance_Material3_TitleLarge).apply { setPadding(0, dp(24), 0, dp(8)) })
+            content.addView(label("Related", R.style.TextAppearance_DS_Title).apply { setPadding(0, dp(24), 0, dp(8)) })
             val related = ChipGroup(context)
             a.related.mapNotNull { book?.article(it) }.forEach { r ->
                 related.addView(Chip(context).apply {

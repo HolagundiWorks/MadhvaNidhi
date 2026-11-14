@@ -186,8 +186,8 @@ object ScreenPages {
         fun paginate() {
             if (viewport.width == 0 || viewport.height == 0) return
             val density = container.resources.displayMetrics.density
-            val outerToken = if (viewport.height / density < 480) R.dimen.md_spacing_03
-                else if (viewport.width / density >= 1000) R.dimen.md_spacing_06 else R.dimen.md_spacing_05
+            val outerToken = if (viewport.height / density < 480) R.dimen.ds_space_2
+                else if (viewport.width / density >= 1000) R.dimen.ds_space_6 else R.dimen.ds_space_4
             val outer = container.resources.getDimensionPixelSize(outerToken)
             if (content.paddingLeft != outer || content.paddingTop != outer) content.setPadding(outer, outer, outer, outer)
             content.measure(View.MeasureSpec.makeMeasureSpec(viewport.width, View.MeasureSpec.EXACTLY),

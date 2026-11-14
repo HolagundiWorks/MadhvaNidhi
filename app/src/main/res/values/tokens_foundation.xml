@@ -11,8 +11,11 @@
     <color name="ds_palette_on_orange">#000000</color>
     <color name="ds_palette_black">#000000</color>
     <color name="ds_palette_white">#FFFFFF</color>
+    <color name="ds_palette_mark_cream">#F5E7CC</color>
+    <color name="ds_palette_mark_brown">#8A3F2B</color>
 
     <!-- Spacing scale: 4dp grid -->
+    <dimen name="ds_space_half">2dp</dimen>
     <dimen name="ds_space_1">4dp</dimen>
     <dimen name="ds_space_2">8dp</dimen>
     <dimen name="ds_space_3">12dp</dimen>
@@ -20,7 +23,9 @@
     <dimen name="ds_space_5">20dp</dimen>
     <dimen name="ds_space_6">24dp</dimen>
     <dimen name="ds_space_8">32dp</dimen>
+    <dimen name="ds_space_10">40dp</dimen>
     <dimen name="ds_space_12">48dp</dimen>
+    <dimen name="ds_space_16">64dp</dimen>
 
     <!-- Shape scale (Material 3 corner sizes) -->
     <dimen name="ds_shape_xs">4dp</dimen>
@@ -39,5 +44,15 @@
     <!-- Elevation scale -->
     <dimen name="ds_elevation_none">0dp</dimen>
     <dimen name="ds_elevation_low">6dp</dimen>
+
+    <!-- Type scale (sp) -->
+    <dimen name="ds_type_xs">12sp</dimen>
+    <dimen name="ds_type_sm">14sp</dimen>
+    <dimen name="ds_type_md">16sp</dimen>
+    <dimen name="ds_type_lg">18sp</dimen>
+    <dimen name="ds_type_xl">20sp</dimen>
+    <dimen name="ds_type_2xl">22sp</dimen>
+    <dimen name="ds_type_3xl">24sp</dimen>
+    <dimen name="ds_type_display">72sp</dimen>
 
 </resources>

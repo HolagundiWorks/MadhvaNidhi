@@ -4,8 +4,8 @@
     style="@style/Widget.MadhvaNidhi.Button.Tonal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/md_spacing_03"
+    android:layout_marginBottom="@dimen/ds_space_2"
     app:iconGravity="start"
-    app:iconPadding="@dimen/md_spacing_04"
+    app:iconPadding="@dimen/ds_space_3"
     app:iconSize="20dp"
     app:iconTint="@color/md_theme_onSurface" />
