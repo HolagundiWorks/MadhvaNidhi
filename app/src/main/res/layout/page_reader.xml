@@ -216,14 +216,14 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/readerBody"
+                    android:textAppearance="@style/TextAppearance.DS.MantraText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/ds_space_2"
                     android:ellipsize="end"
                     android:lineSpacingMultiplier="1.45"
                     android:maxLines="8"
-                    android:text=""
-                    android:textAppearance="@style/TextAppearance.DS.Body" />
+                    android:text="" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 

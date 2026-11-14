@@ -53,17 +53,6 @@
     <dimen name="ds_icon_size">@dimen/ds_size_icon</dimen>
 
     <!-- Text hierarchy: one name per role, each backed by a Material 3 type style -->
-    <style name="TextAppearance.DS.Display" parent="TextAppearance.Material3.DisplayLarge" />
-    <style name="TextAppearance.DS.Headline" parent="TextAppearance.Material3.HeadlineSmall" />
-    <style name="TextAppearance.DS.Title" parent="TextAppearance.Material3.TitleLarge" />
-    <style name="TextAppearance.DS.Subtitle" parent="TextAppearance.Material3.TitleMedium" />
-    <style name="TextAppearance.DS.Body" parent="TextAppearance.Material3.BodyLarge" />
-    <style name="TextAppearance.DS.BodySmall" parent="TextAppearance.Material3.BodyMedium" />
-    <style name="TextAppearance.DS.Label" parent="TextAppearance.Material3.LabelLarge" />
-    <style name="TextAppearance.DS.Caption" parent="TextAppearance.Material3.LabelMedium" />
-    <style name="TextAppearance.DS.TitleSmall" parent="TextAppearance.Material3.TitleSmall" />
-    <style name="TextAppearance.DS.LabelSmall" parent="TextAppearance.Material3.LabelSmall" />
-    <style name="TextAppearance.DS.BodyXSmall" parent="TextAppearance.Material3.BodySmall" />
 
     <!-- Card component -->
     <style name="Widget.DS.Card" parent="Widget.Material3.CardView.Filled">
@@ -72,6 +61,114 @@
         <item name="cardCornerRadius">@dimen/ds_card_radius</item>
         <item name="strokeWidth">0dp</item>
         <item name="rippleColor">@color/ds_interaction_hover</item>
+    </style>
+
+
+    <!-- Type roles: exact values from the typography scale (size, line height, weight) -->
+    <style name="TextAppearance.DS.DisplayLarge" parent="TextAppearance.Material3.DisplayLarge">
+        <item name="android:textSize">@dimen/ds_font_display_large_size</item>
+        <item name="android:lineHeight">@dimen/ds_font_display_large_line</item>
+        <item name="android:fontWeight">400</item>
+    </style>
+    <style name="TextAppearance.DS.DisplayMedium" parent="TextAppearance.Material3.DisplayMedium">
+        <item name="android:textSize">@dimen/ds_font_display_medium_size</item>
+        <item name="android:lineHeight">@dimen/ds_font_display_medium_line</item>
+        <item name="android:fontWeight">400</item>
+    </style>
+    <style name="TextAppearance.DS.DisplaySmall" parent="TextAppearance.Material3.DisplaySmall">
+        <item name="android:textSize">@dimen/ds_font_display_small_size</item>
+        <item name="android:lineHeight">@dimen/ds_font_display_small_line</item>
+        <item name="android:fontWeight">400</item>
+    </style>
+    <style name="TextAppearance.DS.HeadlineLarge" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="android:textSize">@dimen/ds_font_headline_large_size</item>
+        <item name="android:lineHeight">@dimen/ds_font_headline_large_line</item>
+        <item name="android:fontWeight">400</item>
+    </style>
+    <style name="TextAppearance.DS.HeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="android:textSize">@dimen/ds_font_headline_medium_size</item>
+        <item name="android:lineHeight">@dimen/ds_font_headline_medium_line</item>
+        <item name="android:fontWeight">400</item>
+    </style>
+    <style name="TextAppearance.DS.HeadlineSmall" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:textSize">@dimen/ds_font_headline_small_size</item>
+        <item name="android:lineHeight">@dimen/ds_font_headline_small_line</item>
+        <item name="android:fontWeight">400</item>
+    </style>
+    <style name="TextAppearance.DS.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textSize">@dimen/ds_font_title_large_size</item>
+        <item name="android:lineHeight">@dimen/ds_font_title_large_line</item>
+        <item name="android:fontWeight">400</item>
+    </style>
+    <style name="TextAppearance.DS.TitleMedium" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textSize">@dimen/ds_font_title_medium_size</item>
+        <item name="android:lineHeight">@dimen/ds_font_title_medium_line</item>
+        <item name="android:fontWeight">500</item>
+    </style>
+    <style name="TextAppearance.DS.TitleSmall" parent="TextAppearance.Material3.TitleSmall">
+        <item name="android:textSize">@dimen/ds_font_title_small_size</item>
+        <item name="android:lineHeight">@dimen/ds_font_title_small_line</item>
+        <item name="android:fontWeight">500</item>
+    </style>
+    <style name="TextAppearance.DS.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:textSize">@dimen/ds_font_body_large_size</item>
+        <item name="android:lineHeight">@dimen/ds_font_body_large_line</item>
+        <item name="android:fontWeight">400</item>
+    </style>
+    <style name="TextAppearance.DS.BodyMedium" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textSize">@dimen/ds_font_body_medium_size</item>
+        <item name="android:lineHeight">@dimen/ds_font_body_medium_line</item>
+        <item name="android:fontWeight">400</item>
+    </style>
+    <style name="TextAppearance.DS.BodySmall" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:textSize">@dimen/ds_font_body_small_size</item>
+        <item name="android:lineHeight">@dimen/ds_font_body_small_line</item>
+        <item name="android:fontWeight">400</item>
+    </style>
+    <style name="TextAppearance.DS.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:textSize">@dimen/ds_font_label_large_size</item>
+        <item name="android:lineHeight">@dimen/ds_font_label_large_line</item>
+        <item name="android:fontWeight">500</item>
+    </style>
+    <style name="TextAppearance.DS.LabelMedium" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:textSize">@dimen/ds_font_label_medium_size</item>
+        <item name="android:lineHeight">@dimen/ds_font_label_medium_line</item>
+        <item name="android:fontWeight">500</item>
+    </style>
+    <style name="TextAppearance.DS.LabelSmall" parent="TextAppearance.Material3.LabelSmall">
+        <item name="android:textSize">@dimen/ds_font_label_small_size</item>
+        <item name="android:lineHeight">@dimen/ds_font_label_small_line</item>
+        <item name="android:fontWeight">500</item>
+    </style>
+    <!-- Legacy role names used by existing layouts -->
+    <style name="TextAppearance.DS.Display" parent="TextAppearance.DS.DisplayLarge" />
+    <style name="TextAppearance.DS.Headline" parent="TextAppearance.DS.HeadlineSmall" />
+    <style name="TextAppearance.DS.Title" parent="TextAppearance.DS.TitleLarge" />
+    <style name="TextAppearance.DS.Subtitle" parent="TextAppearance.DS.TitleMedium" />
+    <style name="TextAppearance.DS.Body" parent="TextAppearance.DS.BodyLarge" />
+    <style name="TextAppearance.DS.Label" parent="TextAppearance.DS.LabelLarge" />
+    <style name="TextAppearance.DS.Caption" parent="TextAppearance.DS.LabelMedium" />
+    <style name="TextAppearance.DS.BodyXSmall" parent="TextAppearance.DS.BodySmall" />
+    <!-- Element roles: which type role each UI element uses -->
+    <style name="TextAppearance.DS.AppTitle" parent="TextAppearance.DS.TitleLarge">
+        <item name="android:fontWeight">500</item>
+    </style>
+    <style name="TextAppearance.DS.SectionTitle" parent="TextAppearance.DS.TitleMedium" />
+    <style name="TextAppearance.DS.StreakNumber" parent="TextAppearance.DS.DisplaySmall" />
+    <style name="TextAppearance.DS.JapaNumber" parent="TextAppearance.DS.HeadlineSmall" />
+    <style name="TextAppearance.DS.GayatriNumber" parent="TextAppearance.DS.HeadlineSmall" />
+    <style name="TextAppearance.DS.CardTitle" parent="TextAppearance.DS.TitleSmall" />
+    <style name="TextAppearance.DS.CardDescription" parent="TextAppearance.DS.BodyMedium" />
+    <style name="TextAppearance.DS.NavItem" parent="TextAppearance.DS.LabelLarge" />
+    <style name="TextAppearance.DS.Metadata" parent="TextAppearance.DS.LabelMedium" />
+    <style name="TextAppearance.DS.ButtonText" parent="TextAppearance.DS.LabelLarge" />
+    <style name="TextAppearance.DS.MantraText" parent="TextAppearance.DS.BodyLarge">
+        <item name="android:textSize">@dimen/ds_font_mantra_size</item>
+        <item name="android:lineHeight">@dimen/ds_font_mantra_line</item>
+    </style>
+    <style name="TextAppearance.DS.ScriptureLongForm" parent="TextAppearance.DS.BodyLarge">
+        <item name="android:textSize">@dimen/ds_font_scripture_size</item>
+        <item name="android:lineHeight">@dimen/ds_font_scripture_line</item>
     </style>
 
 </resources>

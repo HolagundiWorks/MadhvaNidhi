@@ -3,7 +3,7 @@
     <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MadhvaNidhi.TextField.Exposed" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="ನೈವೇದ್ಯ ಆಯ್ಕೆ">
         <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@+id/naivedyaSelector" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="64dp" android:inputType="none" android:textColor="@color/md_theme_onSurface" />
     </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textview.MaterialTextView android:id="@+id/naivedyaOfferingNote" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ds_space_3" android:layout_marginBottom="@dimen/ds_space_3" android:textAppearance="@style/TextAppearance.DS.BodySmall" android:textColor="@color/md_theme_onSurfaceVariant" />
+    <com.google.android.material.textview.MaterialTextView android:id="@+id/naivedyaOfferingNote" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ds_space_3" android:layout_marginBottom="@dimen/ds_space_3" android:textAppearance="@style/TextAppearance.DS.BodyMedium" android:textColor="@color/md_theme_onSurfaceVariant" />
     <androidx.core.widget.NestedScrollView android:id="@+id/naivedyaScroll" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:clipToPadding="false" android:paddingBottom="@dimen/ds_space_3">
         <LinearLayout android:id="@+id/naivedyaContent" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" />
     </androidx.core.widget.NestedScrollView>

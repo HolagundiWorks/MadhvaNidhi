@@ -126,8 +126,8 @@ class WikiFragment : Fragment() {
             }
             val inner = LinearLayout(requireContext()).apply { orientation = LinearLayout.VERTICAL; setPadding(dp(16), dp(16), dp(16), dp(16)) }
             inner.addView(label(a.titleEn, R.style.TextAppearance_DS_Subtitle))
-            if (a.titleKn.isNotBlank()) inner.addView(label(a.titleKn, R.style.TextAppearance_DS_BodySmall, secondary = true))
-            inner.addView(label(a.summary, R.style.TextAppearance_DS_BodySmall))
+            if (a.titleKn.isNotBlank()) inner.addView(label(a.titleKn, R.style.TextAppearance_DS_BodyMedium, secondary = true))
+            inner.addView(label(a.summary, R.style.TextAppearance_DS_BodyMedium))
             inner.addView(label(statusText(a.status) + if (a.id in bookmarks) " · Bookmarked" else "", R.style.TextAppearance_DS_Label, secondary = true))
             card.addView(inner)
             listHost.addView(card, LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(8) })
@@ -168,14 +168,14 @@ class WikiFragment : Fragment() {
             val inner = LinearLayout(context).apply { orientation = LinearLayout.VERTICAL; setPadding(dp(16), dp(16), dp(16), dp(16)) }
             inner.addView(label(s.heading, R.style.TextAppearance_DS_Subtitle))
             val body = if (s.body.isNotBlank()) s.body else "Pending source. Content not yet verified."
-            inner.addView(label(body, R.style.TextAppearance_DS_BodySmall, secondary = s.body.isBlank()))
+            inner.addView(label(body, R.style.TextAppearance_DS_BodyMedium, secondary = s.body.isBlank()))
             card.addView(inner)
             content.addView(card, LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(12) })
         }
 
         content.addView(label("Sources", R.style.TextAppearance_DS_Title).apply { setPadding(0, dp(24), 0, dp(8)) })
         if (a.sources.isEmpty()) {
-            content.addView(label("No citation yet. Add one before this article is marked sourced.", R.style.TextAppearance_DS_BodySmall, secondary = true))
+            content.addView(label("No citation yet. Add one before this article is marked sourced.", R.style.TextAppearance_DS_BodyMedium, secondary = true))
         }
         a.sources.forEach { src ->
             content.addView(MaterialButton(context, null, com.google.android.material.R.attr.materialButtonOutlinedStyle).apply {

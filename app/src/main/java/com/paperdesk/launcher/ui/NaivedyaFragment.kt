@@ -56,7 +56,7 @@ class NaivedyaFragment : Fragment(R.layout.page_naivedya) {
         }
         val summary = LinearLayout(context).apply { orientation = LinearLayout.VERTICAL; setPadding(dp(16),dp(16),dp(16),dp(16)) }
         summary.addView(label(recipe.title, R.style.TextAppearance_DS_Headline))
-        summary.addView(label(recipe.englishTitle, R.style.TextAppearance_DS_BodySmall, true))
+        summary.addView(label(recipe.englishTitle, R.style.TextAppearance_DS_BodyMedium, true))
         summary.addView(label(recipe.time, R.style.TextAppearance_DS_Body))
         summary.addView(label(recipe.batch, R.style.TextAppearance_DS_Label, true))
         body.addView(MaterialCardView(context).apply {
@@ -88,7 +88,7 @@ class NaivedyaFragment : Fragment(R.layout.page_naivedya) {
             body.addView(label(recipe.note, R.style.TextAppearance_DS_Body))
         }
         body.addView(heading("ಮೂಲ ಉಲ್ಲೇಖ"))
-        body.addView(label(recipe.author, R.style.TextAppearance_DS_BodySmall, true))
+        body.addView(label(recipe.author, R.style.TextAppearance_DS_BodyMedium, true))
         body.addView(MaterialButton(context, null, com.google.android.material.R.attr.borderlessButtonStyle).apply {
             text = "ಮೂಲ ಪಾಕವಿಧಾನ ನೋಡಿ"
             minHeight = dp(64)

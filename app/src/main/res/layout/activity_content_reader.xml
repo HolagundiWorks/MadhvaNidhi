@@ -165,7 +165,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:textAppearance="@style/TextAppearance.DS.BodySmall"
+                android:textAppearance="@style/TextAppearance.DS.BodyMedium"
                 android:textColor="@color/md_theme_onSurface" />
 
             <com.google.android.material.progressindicator.LinearProgressIndicator

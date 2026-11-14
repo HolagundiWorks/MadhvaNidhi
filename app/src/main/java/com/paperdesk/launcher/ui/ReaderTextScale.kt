@@ -12,9 +12,9 @@ object ReaderTextScale {
     const val MAX_SCALE = 2.20f
     const val STEP = 0.15f
     const val DEFAULT_SCALE = 1.0f
-    const val BASE_BODY_SP = 17f
+    const val BASE_BODY_SP = 20f // ds_font_mantra_size
     const val BASE_HEAD_SP = 21f
-    const val BASE_LINE_HEIGHT_SP = 26f
+    const val BASE_LINE_HEIGHT_SP = 36f // ds_font_mantra_line
 
     fun clamp(scale: Float): Float =
         ((scale * 100f).roundToInt() / 100f).coerceIn(MIN_SCALE, MAX_SCALE)

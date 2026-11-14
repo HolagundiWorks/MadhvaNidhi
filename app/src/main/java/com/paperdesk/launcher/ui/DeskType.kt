@@ -33,10 +33,15 @@ object DeskType {
         tv.paint.isFakeBoldText = false
     }
 
-    fun reading(tv: TextView, lineHeightSp: Float = 24f) {
+    fun reading(tv: TextView, lineHeightSp: Float? = null) {
         apply(tv, REGULAR)
-        val nominal = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_SP,
-            lineHeightSp, tv.resources.displayMetrics).toInt()
+        // Long-form English scripture uses Noto Serif; Indic reader text keeps its script font.
+        val hasIndic = tv.text?.toString().orEmpty().any { it in 'ऀ'..'ॿ' || it in 'ಀ'..'೿' }
+        if (!hasIndic && OsLang.get(tv.context) == IndicScript.Lang.EN) tv.typeface = serif(tv.context)
+        // Default line height comes from the mantra text token (ds_font_mantra_line).
+        val nominal = if (lineHeightSp == null) tv.resources.getDimensionPixelSize(R.dimen.ds_font_mantra_line)
+            else android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_SP,
+                lineHeightSp, tv.resources.displayMetrics).toInt()
         val value = tv.text.toString().replace('\n', ' ')
         val ink = android.graphics.Rect()
         if (value.isNotBlank()) tv.paint.getTextBounds(value, 0, value.length, ink)
@@ -84,6 +89,12 @@ object DeskType {
                 if (bold) "fonts/NotoSansDevanagari-SemiBold.ttf" else "fonts/NotoSansDevanagari-Regular.ttf"
             IndicScript.Lang.EN -> null
         }
+    }
+
+    private val serifCache = ConcurrentHashMap<String, Typeface>()
+    fun serif(context: Context): Typeface = serifCache.getOrPut("serif") {
+        runCatching { Typeface.createFromAsset(context.assets, "fonts/NotoSerif-Regular.ttf") }
+            .getOrElse { Typeface.create(Typeface.SERIF, Typeface.NORMAL) }
     }
 
     private fun latin(weight: Int): Typeface {

@@ -55,4 +55,43 @@
     <dimen name="ds_type_3xl">24sp</dimen>
     <dimen name="ds_type_display">72sp</dimen>
 
+
+    <!-- Typography scale: size and line height per role (sp) -->
+    <dimen name="ds_font_display_large_size">57sp</dimen>
+    <dimen name="ds_font_display_large_line">64sp</dimen>
+    <dimen name="ds_font_display_medium_size">45sp</dimen>
+    <dimen name="ds_font_display_medium_line">52sp</dimen>
+    <dimen name="ds_font_display_small_size">36sp</dimen>
+    <dimen name="ds_font_display_small_line">44sp</dimen>
+    <dimen name="ds_font_headline_large_size">32sp</dimen>
+    <dimen name="ds_font_headline_large_line">40sp</dimen>
+    <dimen name="ds_font_headline_medium_size">28sp</dimen>
+    <dimen name="ds_font_headline_medium_line">36sp</dimen>
+    <dimen name="ds_font_headline_small_size">24sp</dimen>
+    <dimen name="ds_font_headline_small_line">32sp</dimen>
+    <dimen name="ds_font_title_large_size">22sp</dimen>
+    <dimen name="ds_font_title_large_line">28sp</dimen>
+    <dimen name="ds_font_title_medium_size">16sp</dimen>
+    <dimen name="ds_font_title_medium_line">24sp</dimen>
+    <dimen name="ds_font_title_small_size">14sp</dimen>
+    <dimen name="ds_font_title_small_line">20sp</dimen>
+    <dimen name="ds_font_body_large_size">16sp</dimen>
+    <dimen name="ds_font_body_large_line">24sp</dimen>
+    <dimen name="ds_font_body_medium_size">14sp</dimen>
+    <dimen name="ds_font_body_medium_line">20sp</dimen>
+    <dimen name="ds_font_body_small_size">12sp</dimen>
+    <dimen name="ds_font_body_small_line">16sp</dimen>
+    <dimen name="ds_font_label_large_size">14sp</dimen>
+    <dimen name="ds_font_label_large_line">20sp</dimen>
+    <dimen name="ds_font_label_medium_size">12sp</dimen>
+    <dimen name="ds_font_label_medium_line">16sp</dimen>
+    <dimen name="ds_font_label_small_size">11sp</dimen>
+    <dimen name="ds_font_label_small_line">16sp</dimen>
+
+    <!-- Content typefaces: scripture and mantra sizes -->
+    <dimen name="ds_font_mantra_size">20sp</dimen>
+    <dimen name="ds_font_mantra_line">36sp</dimen>
+    <dimen name="ds_font_scripture_size">18sp</dimen>
+    <dimen name="ds_font_scripture_line">32sp</dimen>
+
 </resources>
