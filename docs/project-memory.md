@@ -30,13 +30,13 @@ Primary rail, in order: Dashboard → Panchanga → Nitya Karma → Puja → Gra
 
 ## Visual contract
 
-Landscape only. IBM Carbon is the sole visual authority. Productive surfaces have square corners (`0`), not the older 4px design. Orange maps to the Carbon interactive slot; domain alert yellow remains separate. Use the exact current freeze docs and `docs/frozen-design-tokens.json` for density, spacing, type, icons and colours. The old AppleDash/1.5× corner-marker iteration is superseded: current frozen Panchanga uses `WatsonHealthStatusPartialFail` for Ekadashi and its selected state is layer-selected only.
+Portrait-first shell (header + bottom rail; left drawer for labeled nav). Content readers may use landscape. IBM Carbon is the sole visual authority. Productive surfaces have square corners (`0`), not the older 4px design. Orange maps to the Carbon interactive slot; domain alert yellow remains separate. Use the exact current freeze docs and `docs/frozen-design-tokens.json` for density, spacing, type, icons and colours. The old AppleDash/1.5× corner-marker iteration is superseded: current frozen Panchanga uses `WatsonHealthStatusPartialFail` for Ekadashi and its selected state is layer-selected only.
 
 Canonical preview: `prototypes/app-shell/index.html` (studio), `shell.html` (screen). Shared assets: `prototypes/carbon-app.css`, `ibm-plex.css`, `studio.js`, `studio.css`, `user-vault.js`, `japa-session.js`. Menu and Panchanga previews are parity/reference surfaces. Preserve freeze markers and do not redesign frozen screens without a new user-directed design pass.
 
 ## Preview and verification
 
-From the repository: `python -m http.server 8767 --bind 127.0.0.1 --directory prototypes`. Open `/app-shell/`; presets include 640×360, 960×540 and Galaxy M11 1560×720. The mockup is static HTML/CSS/JS and has no frontend dependency-install/build step. A portable build must include the complete tracked `prototypes/` tree, including shared scripts, fonts, themes and relative assets. Do not copy local browser vault data or private app records into artifacts.
+From the repository: `python -m http.server 8767 --bind 127.0.0.1 --directory prototypes`. Open `/app-shell/`; presets include 360×640, 390×844 and Galaxy M11 portrait. The mockup is static HTML/CSS/JS and has no frontend dependency-install/build step. A portable build must include the complete tracked `prototypes/` tree, including shared scripts, fonts, themes and relative assets. Do not copy local browser vault data or private app records into artifacts.
 
 For changes, run JavaScript syntax checks, local asset/route checks, then inspect the browser. Do not claim Android or device validation from web-only checks. Preserve untracked user captures; do not add them to a preview package. Current validation results belong in the generated verification report, not in assumed persistent claims.
 

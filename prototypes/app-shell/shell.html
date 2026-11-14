@@ -12,10 +12,19 @@
 <script src="./theme.js"></script>
 <body>
 <div id="app">
-  <aside id="side-nav" class="side-nav" aria-label="App navigation">
-    <button type="button" id="nav-toggle" class="icon" aria-expanded="false" aria-controls="nav-links" aria-label="Expand navigation">
+  <header class="app-header">
+    <button type="button" id="nav-toggle" class="icon header-nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation">
       <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M28,4H4A2,2,0,0,0,2,6V26a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V6A2,2,0,0,0,28,4Zm0,22H12V6H28Z"/></svg>
     </button>
+    <h1 id="page-title">ಮುಖಪುಟ</h1>
+    <p class="header-date" id="header-date">
+      <span id="header-date-value">೧೨ ನವೆಂಬರ್ ೨೦೨೬</span>
+      <span aria-hidden="true"> · </span>
+      <span id="header-tithi">ಏಕಾದಶಿ</span>
+    </p>
+  </header>
+
+  <aside id="side-nav" class="side-nav" aria-label="App navigation">
     <nav id="nav-links" class="nav-links">
       <button type="button" class="nav-button" data-dest="dashboard" aria-current="page" aria-label="ಮುಖಪುಟ · Dashboard">
         <!-- Carbon Template — Apache-2.0 -->
@@ -55,15 +64,6 @@
     </nav>
   </aside>
   <button type="button" id="nav-backdrop" class="nav-backdrop" aria-label="Close navigation" hidden></button>
-
-  <header class="app-header">
-    <h1 id="page-title">ಮುಖಪುಟ</h1>
-    <p class="header-date" id="header-date">
-      <span id="header-date-value">೧೨ ನವೆಂಬರ್ ೨೦೨೬</span>
-      <span aria-hidden="true"> · </span>
-      <span id="header-tithi">ಏಕಾದಶಿ</span>
-    </p>
-  </header>
 
   <div id="workspace" class="workspace full-content">
     <!-- Shell context pane reserved; 30:70 lives only inside Panchanga embed -->

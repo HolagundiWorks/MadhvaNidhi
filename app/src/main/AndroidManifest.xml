@@ -23,18 +23,25 @@
             android:windowSoftInputMode="adjustResize"
             android:excludeFromRecents="false"
             android:theme="@style/Theme.PaperDesk"
-            android:screenOrientation="sensorLandscape">
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboard|keyboardHidden"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.ContentReaderActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PaperDesk"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboard|keyboardHidden"
+            android:screenOrientation="sensorLandscape" />
+        <activity
             android:name=".ui.ProfileRegisterActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize"
             android:theme="@style/Theme.PaperDesk.Entry"
-            android:screenOrientation="sensorLandscape" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.AlarmAlertActivity"
             android:excludeFromRecents="true"
@@ -43,7 +50,7 @@
             android:showWhenLocked="true"
             android:turnScreenOn="true"
             android:theme="@style/Theme.PaperDesk"
-            android:screenOrientation="sensorLandscape" />
+            android:screenOrientation="portrait" />
         <receiver android:name=".BootReceiver" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

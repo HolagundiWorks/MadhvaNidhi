@@ -1,5 +1,5 @@
 ---
-description: MadhvaNidhi authorized Android port from Carbon mockups — landscape, freeze contracts
+description: MadhvaNidhi authorized Android port from Carbon mockups — portrait shell, freeze contracts
 alwaysApply: true
 ---
 
@@ -15,8 +15,8 @@ alwaysApply: true
 
 ## Studio (mockup)
 
-- Chrome = landscape screen-size selector + live iframe preview only
-- Presets landscape only; custom `width > height`
+- Chrome = portrait screen-size selector + live iframe preview only
+- Presets portrait only; custom `height > width`
 
 ## Design (Carbon only)
 
@@ -33,6 +33,6 @@ alwaysApply: true
 - Nitya Japa — `docs/frozen-nitya-japa.md`
 - Puja (rail) — `docs/frozen-nitya-puja.md`
 
-## Landscape-only
+## Portrait-first
 
-Never portrait presets or layouts on mockup or device.
+Main shell is portrait (header + content + bottom rail). Content readers may use landscape. Do not restore landscape-only launcher locks.

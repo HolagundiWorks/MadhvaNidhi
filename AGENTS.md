@@ -35,16 +35,17 @@ Related previews / freezes:
 - Edit Android Kotlin, XML layouts/resources, Gradle as needed for mockup parity
 - Build/install debug APKs; use `adb` for device validation
 - Update freeze docs and mockup only when aligning contracts
-- Landscape-only layouts; Carbon visual tokens (`carbon_*` resources)
+- Portrait-first layouts; Carbon visual tokens (`carbon_*` resources)
+- Content readers may use `sensorLandscape` (e.g. `ContentReaderActivity`) while the main shell stays portrait
 
 ### Still prohibited
 
 - Publishing, signing, or Play Store release unless explicitly asked
-- Portrait layouts or Material restyle that abandons Carbon visuals
+- Material restyle that abandons Carbon visuals
 
-## Landscape-only
+## Portrait-first
 
-MadhvaNidhi is landscape-exclusive on mockup and device.
+MadhvaNidhi main shell is portrait on mockup and device (top header + content + bottom destination rail; left drawer for labeled nav). Do not force landscape-only studio presets or lock the launcher to landscape.
 
 ## Design system
 
@@ -62,12 +63,12 @@ UX principles and motion checklist: [`docs/carbon-android-ux.md`](docs/carbon-an
 
 1. Prefer frozen mockup contracts as the UI spec
 2. Implement in `app/`
-3. `installDebug` and validate on connected landscape phone
+3. `installDebug` and validate on connected portrait phone
 4. Capture / fix regressions; keep freeze docs in sync
 
 ## Validation checklist
 
-- [ ] Landscape only
+- [ ] Portrait shell (header + bottom rail); readers may rotate landscape
 - [ ] Nitya tabbed Sandhya / Japa / Parayana match freeze docs; Puja is its own rail item
 - [ ] User / Panchanga respect existing freeze contracts
 - [ ] Carbon styling preserved; Kannada readable

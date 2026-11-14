@@ -13,7 +13,6 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0.0"
-        testInstrumentationRunner = providers.gradleProperty("uiTestRunner").getOrElse("com.paperdesk.launcher.ui.ResponsiveUiInstrumentation")
     }
 
     val uploadStoreFile = providers.gradleProperty("MADHVANIDHI_UPLOAD_STORE_FILE")
@@ -28,6 +27,12 @@ android {
     ).all { it.isPresent }
 
     signingConfigs {
+        create("debugConfig") {
+            storeFile = file("${rootDir}/debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
         if (uploadSigningReady) {
             create("upload") {
                 storeFile = file(uploadStoreFile.get())
@@ -50,6 +55,7 @@ android {
         }
         debug {
             isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("debugConfig")
         }
     }
 

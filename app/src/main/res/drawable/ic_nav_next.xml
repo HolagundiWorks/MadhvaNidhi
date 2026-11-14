@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Carbon arrow-right 32 - Apache-2.0, see assets/licenses/carbon-icons.txt -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="32dp"
-    android:height="32dp"
-    android:viewportWidth="32"
-    android:viewportHeight="32">
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
     <path
-        android:fillColor="#FF000000"
-        android:pathData="M18,6l-1.43,1.393L24.15,15H4v2H24.15l-7.58,7.573L18,26 28,16Z" />
+        android:fillColor="@color/black"
+        android:pathData="M10,6L8.59,7.41 13.17,12l-4.58,4.59L10,18l6,-6z" />
 </vector>

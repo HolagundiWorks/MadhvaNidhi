@@ -1,1 +1,6 @@
-<com.google.android.material.textview.MaterialTextView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="@dimen/carbon_layout_size_height_lg" android:gravity="center_vertical" android:padding="@dimen/carbon_spacing_05" android:textAppearance="@style/TextAppearance.Carbon.Body02" />
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="35.2dp"
+    android:background="@color/surface_2" android:gravity="center_vertical"
+    android:paddingLeft="9.6dp" android:paddingRight="9.6dp"
+    android:textColor="@color/white" android:textSize="12.8sp" />

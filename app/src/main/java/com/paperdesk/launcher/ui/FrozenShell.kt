@@ -91,7 +91,12 @@ class FrozenShell(private val activity: LauncherActivity) {
             host.removeAllViews()
             val row = activity.resources.getDimensionPixelSize(R.dimen.shell_rail_item_height)
             for (id in entries) {
-                host.addView(createButton(id, labeled, density), LinearLayout.LayoutParams(-1, row))
+                val lp = if (labeled) {
+                    LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, row)
+                } else {
+                    LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f)
+                }
+                host.addView(createButton(id, labeled, density), lp)
             }
         } else if (current == lastCurrent && activeRail == lastActiveRail) {
             return key
@@ -119,23 +124,29 @@ class FrozenShell(private val activity: LauncherActivity) {
             contentDescription = label
             setIconResource(iconFor(id))
             iconSize = activity.resources.getDimensionPixelSize(R.dimen.shell_icon_size)
-            iconPadding = if (text.isEmpty()) 0 else activity.resources.getDimensionPixelSize(R.dimen.carbon_spacing_05)
-            iconGravity = if (text.isEmpty()) MaterialButton.ICON_GRAVITY_TEXT_START else MaterialButton.ICON_GRAVITY_START
-            minimumWidth = 0
-            minimumHeight = 0
+            iconPadding = if (!labeled) 0 else activity.resources.getDimensionPixelSize(R.dimen.carbon_spacing_05)
+            iconGravity = if (!labeled) MaterialButton.ICON_GRAVITY_TEXT_START else MaterialButton.ICON_GRAVITY_START
+            minimumWidth = if (!labeled) (48 * density).toInt() else 0
+            minimumHeight = (48 * density).toInt()
             insetTop = 0
             insetBottom = 0
-            val pad = activity.resources.getDimensionPixelSize(R.dimen.carbon_spacing_05)
+            val pad = if (labeled) activity.resources.getDimensionPixelSize(R.dimen.carbon_spacing_05) else 0
             setPadding(pad, 0, pad, 0)
             cornerRadius = 0
             rippleColor = ColorStateList.valueOf(activity.getColor(R.color.carbon_background_hover))
             backgroundTintList = null
-            setBackgroundResource(R.drawable.bg_rail_item)
+            setBackgroundResource(if (labeled) R.drawable.bg_rail_item else R.drawable.bg_rail_item_bottom)
             maxLines = 1
-            gravity = android.view.Gravity.CENTER_VERTICAL or android.view.Gravity.START
-            androidx.core.widget.TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(
-                this, 10, 14, 1, android.util.TypedValue.COMPLEX_UNIT_SP
-            )
+            gravity = if (labeled) {
+                android.view.Gravity.CENTER_VERTICAL or android.view.Gravity.START
+            } else {
+                android.view.Gravity.CENTER
+            }
+            if (labeled) {
+                androidx.core.widget.TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(
+                    this, 10, 14, 1, android.util.TypedValue.COMPLEX_UNIT_SP
+                )
+            }
             androidx.core.view.ViewCompat.setTooltipText(this, label)
             setOnClickListener {
                 close()

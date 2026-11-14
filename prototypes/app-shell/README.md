@@ -1,6 +1,6 @@
 # MadhvaNidhi app-shell mockup
 
-Primary interactive UI lab for MadhvaNidhi. Landscape only. Carbon design authority.
+Primary interactive UI lab for MadhvaNidhi. Portrait-first shell. Carbon design authority.
 
 ## Open
 
@@ -20,7 +20,7 @@ Studio chrome: **screen size** dropdown + **live preview** of `shell.html`. No d
 | `index.html` | Minimal studio (viewport + iframe) |
 | `shell.html` / `shell.css` / `shell.js` | Application shell UI |
 | `carbon-theme.css` / `theme.js` | Carbon tokens |
-| `../studio.css` / `../studio.js` | Shared landscape studio chrome |
+| `../studio.css` / `../studio.js` | Shared portrait studio chrome |
 
 Related: [`../panchanga/`](../panchanga/), [`../menu-pages/`](../menu-pages/). Policy: [`../../AGENTS.md`](../../AGENTS.md).
 

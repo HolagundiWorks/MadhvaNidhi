@@ -226,4 +226,11 @@
     <string name="recipes_intro_body">ಮೊದಲು ಶ್ರೀಹರಿಗೆ, ನಂತರ ಮಹಾಲಕ್ಷ್ಮಿ ಮತ್ತು ಪರಿವಾರ ದೇವತೆಗಳಿಗೆ ನೈವೇದ್ಯ. ಸಾತ್ತ್ವಿಕ ಆಹಾರ, ಕುಟುಂಬಾಚಾರ ಮತ್ತು ಮಠ ನಿರ್ಣಯವನ್ನು ಅನುಸರಿಸಿ. ಕೆಳಗಿನ ಪಟ್ಟಿ ಸ್ಥಳೀಯ ಹಬ್ಬ/ಪೂಜಾ ಪಠ್ಯಗಳಿಂದ.</string>
     <string name="recipes_common_title">ಸಾಮಾನ್ಯ ನೈವೇದ್ಯ ಕ್ರಮ</string>
     <string name="recipes_common_body">ನೈವೇದ್ಯ ಸಿದ್ಧಪಡಿಸಿ, ಪ್ರೋಕ್ಷಣೆ ಮಾಡಿ, ಪ್ರಾಣಾಹುತಿ ಮಂತ್ರಗಳೊಂದಿಗೆ ಅರ್ಪಿಸಿ. ವಿವರವಾದ ಕ್ರಮಕ್ಕೆ ಪೂಜೆ ಕ್ಯಾಟಲಾಗ್‌ನಲ್ಲಿನ ಪಠ್ಯಗಳನ್ನು ನೋಡಿ.</string>
+    <string name="open_content">ವಿಷಯ ತೆರೆಯಿರಿ · Open Content</string>
+    <string name="back_to_menu">ಮೆನು · Back</string>
+    <string name="text_smaller">ಅಕ್ಷರ ಚಿಕ್ಕದು</string>
+    <string name="text_larger">ಅಕ್ಷರ ದೊಡ್ಡದು</string>
+    <string name="preview_label">ಮುನ್ನೋಟ · Preview</string>
+    <string name="open_panchanga_details">ವಿವರ ತೆರೆಯಿರಿ · Open Content</string>
+    <string name="open_anga_reader">ಪೂರ್ವಾಂಗ / ಉತ್ತರಾಂಗ ಓದಿ · Open Content</string>
 </resources>

@@ -1,38 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Aliases only — every value resolves to Carbon spacing / colour tokens. -->
 <resources>
-    <dimen name="ui_grid_1">@dimen/carbon_spacing_03</dimen>
-    <dimen name="ui_grid_2">@dimen/carbon_spacing_05</dimen>
-    <dimen name="ui_grid_3">@dimen/carbon_spacing_06</dimen>
-    <dimen name="ui_grid_4">@dimen/carbon_spacing_07</dimen>
-    <dimen name="ui_grid_5">@dimen/carbon_spacing_08</dimen>
-    <dimen name="ui_grid_6">@dimen/carbon_spacing_09</dimen>
-    <dimen name="ui_grid_7">@dimen/carbon_spacing_09</dimen>
-    <dimen name="ui_grid_8">@dimen/carbon_spacing_10</dimen>
-    <dimen name="ui_content_inset">@dimen/carbon_spacing_05</dimen>
-    <dimen name="ui_section_gap">@dimen/carbon_spacing_05</dimen>
-    <dimen name="ui_component_gap">@dimen/carbon_spacing_03</dimen>
-    <dimen name="ui_footer_height">@dimen/carbon_spacing_10</dimen>
-    <dimen name="ui_footer_control">@dimen/carbon_layout_size_height_lg</dimen>
-    <dimen name="ui_footer_motto_height">@dimen/carbon_layout_size_height_md</dimen>
-    <dimen name="ui_rounded_safe">@dimen/carbon_corner_radius</dimen>
+    <!-- Acharya composition tokens: content geometry follows an 8dp unit. -->
+    <dimen name="ui_grid_1">8dp</dimen>
+    <dimen name="ui_grid_2">16dp</dimen>
+    <dimen name="ui_grid_3">24dp</dimen>
+    <dimen name="ui_grid_4">32dp</dimen>
+    <dimen name="ui_grid_5">40dp</dimen>
+    <dimen name="ui_grid_6">48dp</dimen>
+    <dimen name="ui_grid_7">56dp</dimen>
+    <dimen name="ui_grid_8">64dp</dimen>
+    <dimen name="ui_content_inset">16dp</dimen>
+    <dimen name="ui_section_gap">16dp</dimen>
+    <dimen name="ui_component_gap">8dp</dimen>
+    <!-- 1.25x treatment of the original 48dp border and 40dp medallions. -->
+    <dimen name="ui_footer_height">60dp</dimen>
+    <dimen name="ui_footer_control">50dp</dimen>
+    <dimen name="ui_footer_motto_height">40dp</dimen>
+    <dimen name="ui_rounded_safe">8dp</dimen>
 
-    <color name="earth_canvas_desk">@color/carbon_background</color>
-    <color name="earth_canvas_sandhya">@color/carbon_background</color>
-    <color name="earth_canvas_nitya">@color/carbon_background</color>
-    <color name="earth_canvas_mantras">@color/carbon_background</color>
-    <color name="earth_canvas_puja">@color/carbon_background</color>
-    <color name="earth_canvas_hadugalu">@color/carbon_background</color>
-    <color name="earth_canvas_japa">@color/carbon_background</color>
-    <color name="earth_canvas_aayadi">@color/carbon_background</color>
-    <color name="earth_accent_desk">@color/carbon_interactive</color>
-    <color name="earth_accent_sandhya">@color/carbon_interactive</color>
-    <color name="earth_accent_nitya">@color/carbon_interactive</color>
-    <color name="earth_accent_mantras">@color/carbon_interactive</color>
-    <color name="earth_accent_puja">@color/carbon_interactive</color>
-    <color name="earth_accent_hadugalu">@color/carbon_interactive</color>
-    <color name="earth_accent_japa">@color/carbon_interactive</color>
-    <color name="earth_accent_aayadi">@color/carbon_interactive</color>
-    <color name="earth_footer_base">@color/carbon_layer</color>
-    <color name="earth_footer_shadow">@color/carbon_text</color>
+    <!-- Warm white paper canvas with restrained earthen accents. -->
+    <color name="earth_canvas_desk">#FFFDF8</color>
+    <color name="earth_canvas_sandhya">#FFFDF8</color>
+    <color name="earth_canvas_nitya">#FFFDF8</color>
+    <color name="earth_canvas_mantras">#FFFDF8</color>
+    <color name="earth_canvas_puja">#FFFDF8</color>
+    <color name="earth_canvas_hadugalu">#FFFDF8</color>
+    <color name="earth_canvas_japa">#FFFDF8</color>
+    <color name="earth_canvas_aayadi">#FFFDF8</color>
+    <color name="earth_accent_desk">#C96F45</color>
+    <color name="earth_accent_sandhya">#C96F45</color>
+    <color name="earth_accent_nitya">#C96F45</color>
+    <color name="earth_accent_mantras">#C96F45</color>
+    <color name="earth_accent_puja">#C96F45</color>
+    <color name="earth_accent_hadugalu">#C96F45</color>
+    <color name="earth_accent_japa">#C96F45</color>
+    <color name="earth_accent_aayadi">#C96F45</color>
+    <color name="earth_footer_base">#F1E6DB</color>
+    <color name="earth_footer_shadow">#211A16</color>
 </resources>

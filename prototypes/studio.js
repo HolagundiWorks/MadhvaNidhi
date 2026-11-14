@@ -1,26 +1,23 @@
 /**
- * Landscape-only mockup studio: viewport preset + live iframe preview.
- * MOCKUP_ONLY — do not couple to Android.
+ * Portrait mockup studio: viewport preset + live iframe preview.
  */
 (() => {
   const PRESETS = [
-    { id: "m115f-logical", label: "Galaxy M11 app · 854 × 387 · 90% text", w: 1495 / 1.75, h: 678 / 1.75, fontScale: 0.9 },
-    { id: "phone-sm", label: "Phone Landscape · 640 × 360", w: 640, h: 360 },
-    { id: "phone", label: "Phone Landscape · 800 × 480", w: 800, h: 480 },
-    { id: "phone-lg", label: "Phone Landscape · 960 × 540", w: 960, h: 540 },
-    { id: "m115f", label: "SM-M115F Landscape · 1560 × 720", w: 1560, h: 720 },
-    { id: "m115f-app", label: "SM-M115F App Area · 1495 × 694", w: 1495, h: 694 },
-    { id: "compact", label: "Compact Landscape · 960 × 600", w: 960, h: 600 },
-    { id: "7in", label: "7-inch Tablet · 1024 × 600", w: 1024, h: 600 },
-    { id: "8in", label: "8-inch Tablet · 1280 × 800", w: 1280, h: 800 },
-    { id: "10in", label: "10-inch Tablet · 1920 × 1200", w: 1920, h: 1200 },
-    { id: "11in", label: "11-inch Tablet · 2000 × 1200", w: 2000, h: 1200 },
-    { id: "12in", label: "12-inch Tablet · 2560 × 1600", w: 2560, h: 1600 },
-    { id: "custom", label: "Custom Landscape Resolution", w: null, h: null }
+    { id: "m115f-logical", label: "Galaxy M11 app · 387 × 854 · 90% text", w: 678 / 1.75, h: 1495 / 1.75, fontScale: 0.9 },
+    { id: "phone-sm", label: "Phone Portrait · 360 × 640", w: 360, h: 640 },
+    { id: "phone", label: "Phone Portrait · 390 × 844", w: 390, h: 844 },
+    { id: "phone-lg", label: "Phone Portrait · 412 × 915", w: 412, h: 915 },
+    { id: "m115f", label: "SM-M115F Portrait · 720 × 1560", w: 720, h: 1560 },
+    { id: "m115f-app", label: "SM-M115F App Area · 694 × 1495", w: 694, h: 1495 },
+    { id: "compact", label: "Compact Portrait · 360 × 720", w: 360, h: 720 },
+    { id: "7in", label: "7-inch Tablet · 600 × 1024", w: 600, h: 1024 },
+    { id: "8in", label: "8-inch Tablet · 800 × 1280", w: 800, h: 1280 },
+    { id: "10in", label: "10-inch Tablet · 800 × 1280", w: 800, h: 1280 },
+    { id: "custom", label: "Custom Portrait Resolution", w: null, h: null }
   ];
 
   const root = document.currentScript;
-  const storageKey = root?.dataset.storage || "madhva-mockup-viewport-v1";
+  const storageKey = root?.dataset.storage || "madhva-mockup-viewport-v2-portrait";
   const frame = document.getElementById("preview");
   const select = document.getElementById("viewport");
   const stage = document.querySelector(".stage");
@@ -39,11 +36,16 @@
     select.appendChild(opt);
   });
 
-  let state = { preset: "m115f-logical", customW: 1495 / 1.75, customH: 678 / 1.75 };
+  let state = { preset: "m115f-logical", customW: 678 / 1.75, customH: 1495 / 1.75 };
   try {
     const saved = JSON.parse(localStorage.getItem(storageKey));
     if (saved) state = { ...state, ...saved };
-    if (["m115f", "m115f-app"].includes(state.preset)) state.preset = "m115f-logical";
+    // Migrate landscape presets / dimensions into portrait defaults
+    if (["m115f", "m115f-app"].includes(state.preset) && state.customW > state.customH) {
+      state.preset = "m115f-logical";
+      state.customW = 678 / 1.75;
+      state.customH = 1495 / 1.75;
+    }
   } catch {}
 
   select.value = state.preset;
@@ -63,17 +65,17 @@
       return { w, h };
     }
     const preset = PRESETS.find((p) => p.id === state.preset)
-      || PRESETS.find((p) => p.id === "m115f")
+      || PRESETS.find((p) => p.id === "m115f-logical")
       || PRESETS[0];
     return { w: preset.w, h: preset.h };
   }
 
   function validate(w, h) {
-    if (!Number.isFinite(w) || !Number.isFinite(h) || w < 320 || h < 240) {
-      return "Enter valid landscape dimensions.";
+    if (!Number.isFinite(w) || !Number.isFinite(h) || w < 240 || h < 320) {
+      return "Enter valid portrait dimensions.";
     }
-    if (w <= h) {
-      return "Portrait is not allowed. Width must exceed height.";
+    if (h <= w) {
+      return "Portrait required. Height must exceed width.";
     }
     return "";
   }

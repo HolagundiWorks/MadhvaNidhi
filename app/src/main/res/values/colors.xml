@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Legacy aliases → Carbon White tokens (night overrides via carbon_colors). -->
-    <color name="black">@color/carbon_background</color>
-    <color name="white">@color/carbon_text</color>
-    <color name="accent">@color/carbon_button_primary</color>
-    <color name="calendar_month_previous">@color/carbon_text_helper</color>
-    <color name="calendar_month_current">@color/carbon_text</color>
-    <color name="calendar_month_next">@color/carbon_button_primary</color>
-    <color name="white_90">@color/carbon_text</color>
-    <color name="white_70">@color/carbon_text_secondary</color>
-    <color name="white_55">@color/carbon_text_helper</color>
-    <color name="white_45">@color/carbon_text_helper</color>
-    <color name="surface_1">@color/carbon_layer</color>
-    <color name="surface_2">@color/carbon_layer_high</color>
-    <color name="divider">@color/carbon_border</color>
-    <color name="accent_90">@color/carbon_button_primary</color>
-    <color name="accent_70">@color/carbon_button_primary_hover</color>
-    <color name="scrim">@color/carbon_overlay</color>
-    <color name="clock_face">@color/carbon_background</color>
-    <color name="clock_ink">@color/carbon_text</color>
-    <color name="leaf">@color/carbon_background</color>
-    <color name="leaf_fibre">@color/carbon_text</color>
-    <color name="leaf_hole">@color/carbon_text</color>
-    <color name="moon_lit">@color/carbon_layer_high</color>
-    <color name="moon_shade">@color/carbon_text_helper</color>
-    <!-- Support (kept for older references; prefer carbon_support_*) -->
-    <color name="carbon_gray_100">@color/carbon_text</color>
-    <color name="carbon_gray_90">@color/carbon_layer_high</color>
-    <color name="carbon_gray_80">@color/carbon_layer</color>
-    <color name="carbon_gray_70">@color/carbon_text_helper</color>
+    <!-- Legacy names now map to the light canvas and dark ink respectively. -->
+    <color name="black">#FFFDF8</color>
+    <color name="white">#211A16</color>
+    <color name="accent">#C96F45</color>
+    <color name="calendar_month_previous">#8A7767</color>
+    <color name="calendar_month_current">#211A16</color>
+    <color name="calendar_month_next">#B85F3A</color>
+    <color name="white_90">#E6211A16</color>
+    <color name="white_70">#B3211A16</color>
+    <color name="white_55">#8C211A16</color>
+    <color name="white_45">#73211A16</color>
+    <color name="surface_1">#F5EEE7</color>
+    <color name="surface_2">#EADFD4</color>
+    <color name="divider">#A98D77</color>
+    <color name="accent_90">#E6C96F45</color>
+    <color name="accent_70">#B3C96F45</color>
+    <color name="scrim">#99000000</color>
+    <color name="clock_face">#FFFDF8</color>
+    <color name="clock_ink">#211A16</color>
+    <color name="leaf">#FFFDF8</color>
+    <color name="leaf_fibre">#211A16</color>
+    <color name="leaf_hole">#211A16</color>
+    <color name="moon_lit">#D8C8BA</color>
+    <color name="moon_shade">#6D5D51</color>
+    <!-- Carbon Design System support tokens for the g100 theme. Interactive blue is intentionally replaced by Acharya orange. -->
+    <color name="carbon_gray_100">#211A16</color>
+    <color name="carbon_gray_90">#3A302A</color>
+    <color name="carbon_gray_80">#E8DDD2</color>
+    <color name="carbon_gray_70">#9B8674</color>
 </resources>

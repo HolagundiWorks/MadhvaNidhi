@@ -11,12 +11,12 @@
 <body>
   <div class="studio-bar" role="region" aria-label="Preview size">
     <label for="viewport">Screen size</label>
-    <select id="viewport" aria-label="Landscape preview size"></select>
+    <select id="viewport" aria-label="Portrait preview size"></select>
     <div id="custom-fields">
       <label for="custom-w">W</label>
-      <input id="custom-w" type="number" min="321" step="1" aria-label="Custom width">
+      <input id="custom-w" type="number" min="240" step="1" aria-label="Custom width">
       <label for="custom-h">H</label>
-      <input id="custom-h" type="number" min="240" step="1" aria-label="Custom height">
+      <input id="custom-h" type="number" min="321" step="1" aria-label="Custom height">
     </div>
     <span id="viewport-error" class="error" hidden></span>
     <span id="dimensions" class="dims" aria-live="polite"></span>
@@ -26,6 +26,6 @@
       <iframe src="./panchanga.html" title="Panchanga live preview" id="preview"></iframe>
     </div>
   </div>
-  <script src="../studio.js" data-storage="madhva-panchanga-viewport-v1"></script>
+  <script src="../studio.js" data-storage="madhva-panchanga-viewport-v2-portrait"></script>
 </body>
 </html>

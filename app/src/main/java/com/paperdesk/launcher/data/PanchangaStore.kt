@@ -6,6 +6,7 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.util.Calendar
 import java.util.Locale
+import java.util.concurrent.ConcurrentHashMap
 import kotlin.math.floor
 import kotlin.math.sin
 
@@ -28,47 +29,38 @@ data class PanchangaDay(
 object PanchangaStore {
     private const val PREFS = "paperdesk_panchanga"
     private const val SRS = "https://srsmatha.org/panchanga.php?pdate="
-
-    /** Hot in-memory cache so Sankalpa / dashboard / desk do not re-hit disk/network. */
-    private val memory = object : LinkedHashMap<String, PanchangaDay>(16, 0.75f, true) {
-        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, PanchangaDay>?): Boolean = size > 32
-    }
+    private const val FETCH_RETRY_COOLDOWN_MS = 5 * 60 * 1000L
+    private val localCache = ConcurrentHashMap<String, PanchangaDay>()
+    private val failedFetchAt = ConcurrentHashMap<String, Long>()
 
     fun today(context: Context): PanchangaDay = forDate(context, dateKey())
 
     fun forDate(context: Context, date: String): PanchangaDay {
         val tradition = PanchangaTraditions.find(SettingsStore(context).panchangaTradition())
-        val memKey = "${tradition.id}|$date"
-        synchronized(memory) { memory[memKey] }?.let { return it }
-        cached(context, date, tradition.id)?.let {
-            synchronized(memory) { memory[memKey] = it }
-            return it
-        }
+        cached(context, date, tradition.id)?.let { return it }
         if (tradition.liveDailyData) {
-            fetchSrs(date)?.copy(source = "${tradition.kn} · ಅಧಿಕೃತ")?.let {
-                save(context, it, tradition.id)
-                synchronized(memory) { memory[memKey] = it }
-                return it
+            val lastFail = failedFetchAt[date] ?: 0L
+            if (System.currentTimeMillis() - lastFail >= FETCH_RETRY_COOLDOWN_MS) {
+                val live = fetchSrs(date)?.copy(source = "${tradition.kn} · ಅಧಿಕೃತ")
+                if (live != null) {
+                    failedFetchAt.remove(date)
+                    save(context, live, tradition.id)
+                    return live
+                } else {
+                    failedFetchAt[date] = System.currentTimeMillis()
+                }
             }
         }
-        return local(date).copy(source = "${tradition.kn} · ಸ್ಥಳೀಯ ಗಣನೆ").also {
-            synchronized(memory) { memory[memKey] = it }
-        }
+        return local(date).copy(source = "${tradition.kn} · ಸ್ಥಳೀಯ ಗಣನೆ")
     }
 
-    fun local(date: String): PanchangaDay = compute(date)
-
-    fun samvatsaraFor(day: PanchangaDay): String =
-        SAMVAT.firstOrNull { name -> Regex("\\b$name\\b", RegexOption.IGNORE_CASE).containsMatchIn(day.samvatsara) }
-            ?: local(day.date).samvatsara
-
-    fun shakaYear(day: PanchangaDay): Int {
-        val year = parse(day.date).get(Calendar.YEAR)
-        val index = SAMVAT.indexOf(samvatsaraFor(day))
-        val previous = ((year - 1 - 1987) % 60 + 60) % 60
-        return year - if (index == previous) 79 else 78
+    fun local(date: String): PanchangaDay {
+        localCache[date]?.let { return it }
+        val computed = compute(date)
+        if (localCache.size > 256) localCache.clear()
+        localCache[date] = computed
+        return computed
     }
-
 
     fun shortTithi(tithi: String): String {
         val t = tithi.uppercase(Locale.US)
@@ -209,7 +201,12 @@ object PanchangaStore {
     fun parse(date: String): Calendar {
         val p = date.split("-")
         return Calendar.getInstance().apply {
-            set(p[0].toInt(), p[1].toInt() - 1, p[2].toInt(), 6, 0, 0)
+            val y = p.getOrNull(0)?.toIntOrNull()
+            val m = p.getOrNull(1)?.toIntOrNull()
+            val d = p.getOrNull(2)?.toIntOrNull()
+            if (y != null && m != null && d != null) {
+                set(y, m - 1, d, 6, 0, 0)
+            }
             set(Calendar.MILLISECOND, 0)
         }
     }
@@ -237,26 +234,6 @@ object PanchangaStore {
 
     fun isMarked(tithi: String): Boolean =
         isEkadasi(tithi) || isPurnima(tithi) || isAmavasya(tithi)
-
-    /** Chandra rashi from local moon longitude (tradition-independent). */
-    fun chandraRashi(date: String): String {
-        val moon = moonLon(julian(parse(date)))
-        return RASHI[(floor(norm(moon) / 30.0).toInt() % 12)]
-    }
-
-    /** Surya rashi from local sun longitude. */
-    fun suryaRashi(date: String): String {
-        val sun = sunLon(julian(parse(date)))
-        return RASHI[(floor(norm(sun) / 30.0).toInt() % 12)]
-    }
-
-    /** Nakshatra pada 1–4 from local moon. */
-    fun nakshatraPada(date: String): Int {
-        val moon = moonLon(julian(parse(date)))
-        val span = 360.0 / 27.0
-        val within = norm(moon) % span
-        return (floor(within / (span / 4.0)).toInt() % 4) + 1
-    }
 
     /** Fifteen civil days of the current paksha: Amavasya→Purnima or Purnima→Amavasya. */
     fun pakshaSpan(date: String): List<String> {
@@ -294,10 +271,6 @@ object PanchangaStore {
         "CHAITRA", "VAISHAKHA", "JYESHTHA", "ASHADHA", "SHRAVANA", "BHADRAPADA",
         "ASHWAYUJA", "KARTIKA", "MARGASHIRSHA", "PUSHYA", "MAGHA", "PHALGUNA"
     )
-    private val RASHI = arrayOf(
-        "MESHA", "VRISHABHA", "MITHUNA", "KARKATAKA", "SIMHA", "KANYA",
-        "TULA", "VRISHCHIKA", "DHANUS", "MAKARA", "KUMBHA", "MEENA"
-    )
     private val YOGA = arrayOf(
         "VISHKAMBHA", "PRITI", "AYUSHMAN", "SAUBHAGYA", "SHOBHANA", "ATI GANDA", "SUKARMA", "DHRITI",
         "SHOOLA", "GANDA", "VRIDDHI", "DHRUVA", "VYAGHATA", "HARSHANA", "VAJRA", "SIDDHI", "VYATIPATA",
@@ -325,10 +298,7 @@ object PanchangaStore {
     }
 
     private fun compute(date: String): PanchangaDay {
-        val p = date.split("-")
-        val cal = Calendar.getInstance().apply {
-            set(p[0].toInt(), p[1].toInt() - 1, p[2].toInt(), 6, 0, 0)
-        }
+        val cal = parse(date)
         val jd = julian(cal)
         val sun = sunLon(jd)
         val moon = moonLon(jd)

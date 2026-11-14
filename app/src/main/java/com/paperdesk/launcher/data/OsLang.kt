@@ -197,7 +197,13 @@ object OsLang {
         "thu_s" to "Th", "fri_s" to "Fr", "sat_s" to "Sa",
         "jan" to "January", "feb" to "February", "mar" to "March", "apr" to "April",
         "may" to "May", "jun" to "June", "jul" to "July", "aug" to "August",
-        "sep" to "September", "oct" to "October", "nov" to "November", "dec" to "December"
+        "sep" to "September", "oct" to "October", "nov" to "November", "dec" to "December",
+        "open_content" to "Open Content",
+        "back_to_menu" to "Back to menu",
+        "text_smaller" to "Decrease text size",
+        "text_larger" to "Increase text size",
+        "open_details" to "Open Details",
+        "full_session" to "Full ritual"
     )
 
     private val SA = mapOf(
@@ -285,7 +291,13 @@ object OsLang {
         "thu_s" to "गुरु", "fri_s" to "शुक्र", "sat_s" to "शनि",
         "jan" to "जनवरी", "feb" to "फरवरी", "mar" to "मार्च", "apr" to "अप्रैल",
         "may" to "मई", "jun" to "जून", "jul" to "जुलाई", "aug" to "अगस्त",
-        "sep" to "सितम्बर", "oct" to "अक्तूबर", "nov" to "नवम्बर", "dec" to "दिसम्बर"
+        "sep" to "सितम्बर", "oct" to "अक्तूबर", "nov" to "नवम्बर", "dec" to "दिसम्बर",
+        "open_content" to "पाठं उद्घाटयतु",
+        "back_to_menu" to "सूचीं प्रति",
+        "text_smaller" to "अक्षरं लघु कुरु",
+        "text_larger" to "अक्षरं बृहत् कुरु",
+        "open_details" to "विवरणं उद्घाटयतु",
+        "full_session" to "सम्पूर्णविधिः"
     )
 
     private val KN = mapOf(
@@ -381,7 +393,13 @@ object OsLang {
         "thu_s" to "ಗು", "fri_s" to "ಶು", "sat_s" to "ಶ",
         "jan" to "ಜನವರಿ", "feb" to "ಫೆಬ್ರವರಿ", "mar" to "ಮಾರ್ಚ್", "apr" to "ಏಪ್ರಿಲ್",
         "may" to "ಮೇ", "jun" to "ಜೂನ್", "jul" to "ಜುಲೈ", "aug" to "ಆಗಸ್ಟ್",
-        "sep" to "ಸೆಪ್ಟೆಂಬರ್", "oct" to "ಅಕ್ಟೋಬರ್", "nov" to "ನವೆಂಬರ್", "dec" to "ಡಿಸೆಂಬರ್"
+        "sep" to "ಸೆಪ್ಟೆಂಬರ್", "oct" to "ಅಕ್ಟೋಬರ್", "nov" to "ನವೆಂಬರ್", "dec" to "ಡಿಸೆಂಬರ್",
+        "open_content" to "ವಿಷಯ ತೆರೆಯಿರಿ · Open Content",
+        "back_to_menu" to "ಮೆನು · Back",
+        "text_smaller" to "ಅಕ್ಷರ ಚಿಕ್ಕದು",
+        "text_larger" to "ಅಕ್ಷರ ದೊಡ್ಡದು",
+        "open_details" to "ವಿವರ ತೆರೆಯಿರಿ · Open",
+        "full_session" to "ಸಂಪೂರ್ಣ ಕ್ರಮ"
     )
 
     private val NAMES = mapOf(
