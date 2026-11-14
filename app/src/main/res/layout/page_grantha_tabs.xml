@@ -16,7 +16,7 @@
         android:paddingEnd="@dimen/md_spacing_05"
         android:paddingTop="@dimen/md_spacing_03"
         android:paddingBottom="@dimen/md_spacing_02"
-        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+        android:textAppearance="@style/TextAppearance.DS.Title"
         android:textColor="@color/md_theme_onSurface"
         android:maxLines="1"
         android:ellipsize="end" />

@@ -46,7 +46,7 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                        android:textAppearance="@style/TextAppearance.DS.Title"
                         android:textColor="@color/md_theme_onSurface" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -56,7 +56,7 @@
                         android:layout_marginTop="@dimen/md_spacing_01"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                        android:textAppearance="@style/TextAppearance.DS.Title"
                         android:textColor="@color/md_theme_onSurfaceVariant" />
 
                     <LinearLayout
@@ -85,14 +85,14 @@
                                 android:layout_height="wrap_content"
                                 android:ellipsize="end"
                                 android:maxLines="1"
-                                android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                                android:textAppearance="@style/TextAppearance.DS.Title"
                                 android:textColor="@color/md_theme_onSurfaceVariant" />
 
                             <com.google.android.material.textview.MaterialTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text=" | "
-                                android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                                android:textAppearance="@style/TextAppearance.DS.Title"
                                 android:textColor="@color/md_theme_onSurfaceVariant" />
 
                             <ImageView
@@ -208,7 +208,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/md_spacing_04"
                             android:text="ರಾಶಿ"
-                            android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                            android:textAppearance="@style/TextAppearance.DS.Caption"
                             android:textColor="@color/md_theme_onSurfaceVariant" />
 
                         <com.google.android.material.textview.MaterialTextView
@@ -216,7 +216,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            android:textAppearance="@style/TextAppearance.DS.BodySmall"
                             android:textColor="@color/md_text_helper" />
                     </LinearLayout>
 
@@ -237,7 +237,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/md_spacing_04"
                             android:text="ನಕ್ಷತ್ರ"
-                            android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                            android:textAppearance="@style/TextAppearance.DS.Caption"
                             android:textColor="@color/md_theme_onSurfaceVariant" />
 
                         <com.google.android.material.textview.MaterialTextView
@@ -245,7 +245,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            android:textAppearance="@style/TextAppearance.DS.BodySmall"
                             android:textColor="@color/md_text_helper" />
                     </LinearLayout>
 
@@ -266,7 +266,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/md_spacing_04"
                             android:text="ನಕ್ಷತ್ರ ಪಾದ"
-                            android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                            android:textAppearance="@style/TextAppearance.DS.Caption"
                             android:textColor="@color/md_theme_onSurfaceVariant" />
 
                         <com.google.android.material.textview.MaterialTextView
@@ -274,7 +274,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            android:textAppearance="@style/TextAppearance.DS.BodySmall"
                             android:textColor="@color/md_text_helper" />
                     </LinearLayout>
 
@@ -295,7 +295,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/md_spacing_04"
                             android:text="ಕರಣ"
-                            android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                            android:textAppearance="@style/TextAppearance.DS.Caption"
                             android:textColor="@color/md_theme_onSurfaceVariant" />
 
                         <com.google.android.material.textview.MaterialTextView
@@ -303,7 +303,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            android:textAppearance="@style/TextAppearance.DS.BodySmall"
                             android:textColor="@color/md_text_helper" />
                     </LinearLayout>
                 </LinearLayout>
@@ -335,7 +335,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="ದಿನದ ವಿಶೇಷ"
-                        android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                        android:textAppearance="@style/TextAppearance.DS.Caption"
                         android:textColor="@color/md_theme_onSurfaceVariant" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -343,7 +343,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/md_spacing_01"
-                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                        android:textAppearance="@style/TextAppearance.DS.Subtitle"
                         android:textColor="@color/md_theme_onSurface" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -351,16 +351,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/md_spacing_01"
-                        android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                        android:textAppearance="@style/TextAppearance.DS.Caption"
                         android:textColor="@color/md_theme_onSurfaceVariant"
                         android:visibility="gone" />
                 </LinearLayout>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/eventDetails"
-                    style="@style/Widget.MadhvaNidhi.Button.Text"
+                    style="@style/Widget.MadhvaNidhi.IconButton"
                     android:layout_width="@dimen/md_layout_size_height_lg"
-                    android:layout_height="@dimen/md_layout_size_height_lg"
+                    android:layout_height="wrap_content"
                     android:contentDescription="Show day’s event and significance"
                     android:insetBottom="0dp"
                     android:insetTop="0dp"
@@ -451,9 +451,9 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/chooseDate"
-                        style="@style/Widget.MadhvaNidhi.Button.Outlined"
+                        style="@style/Widget.MadhvaNidhi.IconButton"
                         android:layout_width="@dimen/md_layout_size_height_lg"
-                        android:layout_height="@dimen/md_layout_size_height_lg"
+                        android:layout_height="wrap_content"
                         android:contentDescription="ದಿನಾಂಕ ಆಯ್ಕೆಮಾಡಿ · Choose date"
                         android:insetBottom="0dp"
                         android:insetTop="0dp"
@@ -483,7 +483,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:minHeight="@dimen/md_layout_size_height_lg"
+                        android:minHeight="@dimen/md_button_height"
                         android:checkable="true"
                         android:contentDescription="Shukla paksha"
                         android:text="ಶುಕ್ಲಪಕ್ಷ"
@@ -502,7 +502,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:minHeight="@dimen/md_layout_size_height_lg"
+                        android:minHeight="@dimen/md_button_height"
                         android:checkable="true"
                         android:contentDescription="Krishna paksha"
                         android:text="ಕೃಷ್ಣಪಕ್ಷ"

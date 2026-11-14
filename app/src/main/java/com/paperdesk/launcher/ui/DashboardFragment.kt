@@ -45,6 +45,7 @@ class DashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         practice = PracticeDayStore(requireContext())
+        view.findViewById<View>(R.id.dashboardMenu).setOnClickListener { (activity as? LauncherActivity)?.openNavigation() }
         view.findViewById<View>(R.id.dashboardProfile).setOnClickListener { (activity as? LauncherActivity)?.navigateTo("user") }
         view.findViewById<View>(R.id.dashboardSettings).setOnClickListener { (activity as? LauncherActivity)?.navigateTo("settings") }
         view.findViewById<View>(R.id.dashboardResumeJapa).setOnClickListener { (activity as? LauncherActivity)?.navigateTo("japa") }

@@ -150,13 +150,19 @@ class LauncherActivity : AppCompatActivity() {
         bindNavigation()
     }
 
+    fun openNavigation() {
+        if (::shell.isInitialized) shell.openPanel()
+    }
+
     private fun bindNavigation() {
         if (!::headerTitle.isInitialized) return
         val lang = OsLang.get(this)
         val page = currentPageId
         // One header pattern: the shared app bar carries the destination title on every page.
-        appHeader.visibility = View.VISIBLE
-        headerRule.visibility = View.VISIBLE
+        // Dashboard has no top bar: its own greeting row carries the navigation button.
+        val showHeader = page != "dashboard"
+        appHeader.visibility = if (showHeader) View.VISIBLE else View.GONE
+        headerRule.visibility = if (showHeader) View.VISIBLE else View.GONE
         headerTitle.text =
             if (resources.configuration.fontScale > 1.5f) "" else OsLang.ui(page, lang)
         refreshHeaderDate(lang)

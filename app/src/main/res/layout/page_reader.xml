@@ -26,7 +26,7 @@
                 android:id="@+id/readerTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+                android:textAppearance="@style/TextAppearance.DS.Headline"
                 android:textColor="@color/md_theme_onSurface"
                 android:layout_marginBottom="@dimen/md_spacing_03"
                 android:visibility="gone" />
@@ -45,7 +45,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:minHeight="@dimen/md_layout_size_height_lg"
+                    android:minHeight="@dimen/md_button_height"
                     android:contentDescription="ಪ್ರಾತಃ ಸಂಧ್ಯಾವಂದನೆ"
                     android:text="ಪ್ರಾತಃ"
                     app:cornerRadius="@dimen/md_corner_radius"
@@ -57,7 +57,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:minHeight="@dimen/md_layout_size_height_lg"
+                    android:minHeight="@dimen/md_button_height"
                     android:contentDescription="ಮಾಧ್ಯಾಹ್ನಿಕ ಸಂಧ್ಯಾವಂದನೆ"
                     android:text="ಮಧ್ಯಾಹ್ನ"
                     app:cornerRadius="@dimen/md_corner_radius"
@@ -69,7 +69,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:minHeight="@dimen/md_layout_size_height_lg"
+                    android:minHeight="@dimen/md_button_height"
                     android:contentDescription="ಸಾಯಂ ಸಂಧ್ಯಾವಂದನೆ"
                     android:text="ಸಾಯಂ"
                     app:cornerRadius="@dimen/md_corner_radius"
@@ -100,7 +100,7 @@
                 style="@style/Widget.MadhvaNidhi.Button.Outlined"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="@dimen/md_layout_size_height_lg"
+                android:minHeight="@dimen/md_button_height"
                 android:text="ಆಯ್ಕೆಮಾಡಿ"
                 android:visibility="gone"
                 app:cornerRadius="@dimen/md_corner_radius" />
@@ -109,7 +109,7 @@
                 android:id="@+id/readerSelectBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="@dimen/md_layout_size_height_lg"
+                android:minHeight="@dimen/md_button_height"
                 android:text="ಆಯ್ಕೆಮಾಡಿ"
                 android:visibility="gone"
                 app:cornerRadius="@dimen/md_corner_radius" />
@@ -120,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/md_spacing_03"
                 android:text=""
-                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                android:textAppearance="@style/TextAppearance.DS.Body"
                 android:visibility="gone" />
 
             <com.google.android.material.button.MaterialButtonToggleGroup
@@ -137,7 +137,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:minHeight="@dimen/md_layout_size_height_lg"
+                    android:minHeight="@dimen/md_button_height"
                     android:text=""
                     app:cornerRadius="@dimen/md_corner_radius" />
 
@@ -147,7 +147,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:minHeight="@dimen/md_layout_size_height_lg"
+                    android:minHeight="@dimen/md_button_height"
                     android:text=""
                     app:cornerRadius="@dimen/md_corner_radius" />
 
@@ -157,7 +157,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:minHeight="@dimen/md_layout_size_height_lg"
+                    android:minHeight="@dimen/md_button_height"
                     android:text=""
                     app:cornerRadius="@dimen/md_corner_radius" />
             </com.google.android.material.button.MaterialButtonToggleGroup>
@@ -187,7 +187,7 @@
             android:gravity="center"
             android:padding="@dimen/md_spacing_05"
             android:text=""
-            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            android:textAppearance="@style/TextAppearance.DS.Body"
             android:textColor="@color/md_theme_onSurfaceVariant"
             android:visibility="gone" />
 
@@ -212,7 +212,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/md_spacing_03"
                     android:text=""
-                    android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall" />
+                    android:textAppearance="@style/TextAppearance.DS.Headline" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/readerBody"
@@ -223,7 +223,7 @@
                     android:lineSpacingMultiplier="1.45"
                     android:maxLines="8"
                     android:text=""
-                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+                    android:textAppearance="@style/TextAppearance.DS.Body" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
@@ -248,7 +248,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                android:textAppearance="@style/TextAppearance.DS.Subtitle"
                 android:textColor="@color/md_theme_onSurface" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -260,7 +260,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text=""
-                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                android:textAppearance="@style/TextAppearance.DS.Caption"
                 android:textColor="@color/md_theme_onSurfaceVariant" />
         </LinearLayout>
     </LinearLayout>

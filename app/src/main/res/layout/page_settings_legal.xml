@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/legal_title"
-            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+            android:textAppearance="@style/TextAppearance.DS.Headline"
             android:layout_marginBottom="@dimen/md_spacing_05" />
 
         <com.google.android.material.card.MaterialCardView
@@ -38,7 +38,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/legal_developer_heading"
-                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+                    android:textAppearance="@style/TextAppearance.DS.Subtitle" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/legalDeveloperBody"
@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/md_spacing_03"
                     android:text="@string/legal_developer_body"
-                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textAppearance="@style/TextAppearance.DS.BodySmall"
                     android:textIsSelectable="true"
                     android:autoLink="email|phone"
                     android:linksClickable="true"
@@ -57,7 +57,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/md_spacing_03"
-                    android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                    android:textAppearance="@style/TextAppearance.DS.Caption"
                     android:text="" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -80,7 +80,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/legal_privacy_heading"
-                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+                    android:textAppearance="@style/TextAppearance.DS.Subtitle" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/legalPrivacyBody"
@@ -88,7 +88,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/md_spacing_03"
                     android:text="@string/legal_privacy_body"
-                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textAppearance="@style/TextAppearance.DS.BodySmall"
                     android:textIsSelectable="true" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -111,7 +111,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/legal_license_heading"
-                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+                    android:textAppearance="@style/TextAppearance.DS.Subtitle" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/legalLicenseBody"
@@ -119,7 +119,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/md_spacing_03"
                     android:text="@string/legal_license_body"
-                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textAppearance="@style/TextAppearance.DS.BodySmall"
                     android:textIsSelectable="true" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -128,6 +128,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/brand_made_in"
-            android:textAppearance="@style/TextAppearance.Material3.LabelMedium" />
+            android:textAppearance="@style/TextAppearance.DS.Caption" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

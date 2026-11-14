@@ -5,7 +5,7 @@
     android:background="@color/black"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="32dp">
+    android:padding="@dimen/ds_space_8">
 
     <TextView
         android:id="@+id/alertTime"
@@ -18,7 +18,7 @@
         android:id="@+id/alertLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/ds_space_2"
         android:textColor="@color/accent"
         android:textSize="22sp" />
 
@@ -27,7 +27,7 @@
         style="@style/Widget.MadhvaNidhi.Button.Filled"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="@dimen/ds_space_12"
         android:text="@string/dismiss" />
 
     <TextView
@@ -35,7 +35,7 @@
         style="@style/Widget.MadhvaNidhi.Button.Tonal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="@dimen/ds_space_3"
         android:text="@string/snooze"
         android:textColor="@color/white" />
 </LinearLayout>

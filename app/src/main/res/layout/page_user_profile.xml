@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ಬಳಕೆದಾರ · User"
-            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+            android:textAppearance="@style/TextAppearance.DS.Headline"
             android:textColor="@color/md_theme_onSurface" />
 
         <TextView
@@ -27,20 +27,20 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/md_spacing_02"
             android:text="Profile details are encrypted on this device. Use Edit · Save to update them."
-            android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+            android:textAppearance="@style/TextAppearance.DS.Caption"
             android:textColor="@color/md_theme_onSurfaceVariant" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="@dimen/ds_space_6"
+            android:layout_marginBottom="@dimen/ds_space_2"
             android:text="Practice preferences · ಆಚರಣೆಯ ಆಯ್ಕೆಗಳು"
-            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+            android:textAppearance="@style/TextAppearance.DS.Subtitle" />
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/ds_space_4"
             android:text="These preferences save automatically."
             android:textAppearance="@style/TextAppearance.Material3.BodySmall" />
 <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" app:cardCornerRadius="@dimen/md_corner_radius" app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four" app:cardBackgroundColor="@color/md_theme_surfaceContainer">
@@ -48,7 +48,7 @@
                     <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:hint="@string/settings_veda" style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu" app:boxCornerRadiusTopStart="@dimen/md_corner_radius" app:boxCornerRadiusTopEnd="@dimen/md_corner_radius" app:boxCornerRadiusBottomStart="@dimen/md_corner_radius" app:boxCornerRadiusBottomEnd="@dimen/md_corner_radius">
                         <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@+id/settingsVeda" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="none" android:maxLines="3" />
                     </com.google.android.material.textfield.TextInputLayout>
-                    <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:text="@string/settings_veda_hint" android:layout_marginBottom="@dimen/md_spacing_03" />
+                    <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Caption" android:text="@string/settings_veda_hint" android:layout_marginBottom="@dimen/md_spacing_03" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" app:cardCornerRadius="@dimen/md_corner_radius" app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four" app:cardBackgroundColor="@color/md_theme_surfaceContainer">
@@ -56,7 +56,7 @@
                     <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:hint="@string/settings_panchanga" style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu" app:boxCornerRadiusTopStart="@dimen/md_corner_radius" app:boxCornerRadiusTopEnd="@dimen/md_corner_radius" app:boxCornerRadiusBottomStart="@dimen/md_corner_radius" app:boxCornerRadiusBottomEnd="@dimen/md_corner_radius">
                         <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@+id/settingsPanchanga" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="none" android:maxLines="3" />
                     </com.google.android.material.textfield.TextInputLayout>
-                    <com.google.android.material.textview.MaterialTextView android:id="@+id/settingsPanchangaHint" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:text="" android:layout_marginBottom="@dimen/md_spacing_03" />
+                    <com.google.android.material.textview.MaterialTextView android:id="@+id/settingsPanchangaHint" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Caption" android:text="" android:layout_marginBottom="@dimen/md_spacing_03" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -89,7 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/md_spacing_03"
-                android:minHeight="@dimen/md_layout_size_height_lg"
+                android:minHeight="@dimen/md_button_height"
                 android:text="Cancel"
                 android:visibility="gone"
                 app:cornerRadius="@dimen/md_corner_radius" />
@@ -105,31 +105,31 @@
             android:padding="@dimen/md_spacing_05"
             android:paddingBottom="@dimen/md_spacing_06">
 
-            <TextView android:id="@+id/viewNameLabel" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Name · ಹೆಸರು" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:textColor="@color/md_theme_onSurfaceVariant" />
-            <TextView android:id="@+id/viewName" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" />
+            <TextView android:id="@+id/viewNameLabel" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Name · ಹೆಸರು" android:textAppearance="@style/TextAppearance.DS.Caption" android:textColor="@color/md_theme_onSurfaceVariant" />
+            <TextView android:id="@+id/viewName" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:textAppearance="@style/TextAppearance.DS.BodySmall" android:textColor="@color/md_theme_onSurface" />
 
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Gotra · ಗೋತ್ರ" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:textColor="@color/md_theme_onSurfaceVariant" />
-            <TextView android:id="@+id/viewGotra" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Gotra · ಗೋತ್ರ" android:textAppearance="@style/TextAppearance.DS.Caption" android:textColor="@color/md_theme_onSurfaceVariant" />
+            <TextView android:id="@+id/viewGotra" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:textAppearance="@style/TextAppearance.DS.BodySmall" android:textColor="@color/md_theme_onSurface" />
 
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Marital · ವೈವಾಹಿಕ" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:textColor="@color/md_theme_onSurfaceVariant" />
-            <TextView android:id="@+id/viewMarital" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Marital · ವೈವಾಹಿಕ" android:textAppearance="@style/TextAppearance.DS.Caption" android:textColor="@color/md_theme_onSurfaceVariant" />
+            <TextView android:id="@+id/viewMarital" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:textAppearance="@style/TextAppearance.DS.BodySmall" android:textColor="@color/md_theme_onSurface" />
 
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Rashi · ರಾಶಿ" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:textColor="@color/md_theme_onSurfaceVariant" />
-            <TextView android:id="@+id/viewRashi" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Rashi · ರಾಶಿ" android:textAppearance="@style/TextAppearance.DS.Caption" android:textColor="@color/md_theme_onSurfaceVariant" />
+            <TextView android:id="@+id/viewRashi" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:textAppearance="@style/TextAppearance.DS.BodySmall" android:textColor="@color/md_theme_onSurface" />
 
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Nakshatra · ನಕ್ಷತ್ರ" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:textColor="@color/md_theme_onSurfaceVariant" />
-            <TextView android:id="@+id/viewNakshatra" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Nakshatra · ನಕ್ಷತ್ರ" android:textAppearance="@style/TextAppearance.DS.Caption" android:textColor="@color/md_theme_onSurfaceVariant" />
+            <TextView android:id="@+id/viewNakshatra" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:textAppearance="@style/TextAppearance.DS.BodySmall" android:textColor="@color/md_theme_onSurface" />
 
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Veda · ವೇದ" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:textColor="@color/md_theme_onSurfaceVariant" />
-            <TextView android:id="@+id/viewVeda" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Veda · ವೇದ" android:textAppearance="@style/TextAppearance.DS.Caption" android:textColor="@color/md_theme_onSurfaceVariant" />
+            <TextView android:id="@+id/viewVeda" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:textAppearance="@style/TextAppearance.DS.BodySmall" android:textColor="@color/md_theme_onSurface" />
 
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Matha · ಮಠ" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:textColor="@color/md_theme_onSurfaceVariant" />
-            <TextView android:id="@+id/viewMatha" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Matha · ಮಠ" android:textAppearance="@style/TextAppearance.DS.Caption" android:textColor="@color/md_theme_onSurfaceVariant" />
+            <TextView android:id="@+id/viewMatha" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:textAppearance="@style/TextAppearance.DS.BodySmall" android:textColor="@color/md_theme_onSurface" />
 
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/md_spacing_05" android:text="Japa / diksha · ಜಪ ದೀಕ್ಷಾ" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:textColor="@color/md_theme_onSurfaceVariant" />
-            <TextView android:id="@+id/viewDiksha" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/md_spacing_05" android:text="Japa / diksha · ಜಪ ದೀಕ್ಷಾ" android:textAppearance="@style/TextAppearance.DS.Caption" android:textColor="@color/md_theme_onSurfaceVariant" />
+            <TextView android:id="@+id/viewDiksha" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:textAppearance="@style/TextAppearance.DS.BodySmall" android:textColor="@color/md_theme_onSurface" />
 
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Japa targets · ಜಪ ಗುರಿ" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:textColor="@color/md_theme_onSurfaceVariant" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Japa targets · ಜಪ ಗುರಿ" android:textAppearance="@style/TextAppearance.DS.Caption" android:textColor="@color/md_theme_onSurfaceVariant" />
             <LinearLayout android:id="@+id/viewJapaTargets" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" />
         </LinearLayout>
 
@@ -264,7 +264,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/md_spacing_05"
                 android:text="Japa targets"
-                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                android:textAppearance="@style/TextAppearance.DS.Caption"
                 android:textColor="@color/md_theme_onSurfaceVariant" />
 
             <LinearLayout
@@ -280,7 +280,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/md_spacing_05"
-            android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+            android:textAppearance="@style/TextAppearance.DS.Caption"
             android:textColor="@color/md_theme_onSurfaceVariant" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

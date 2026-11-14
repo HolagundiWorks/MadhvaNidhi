@@ -30,6 +30,8 @@ class FrozenShell(private val activity: LauncherActivity) {
         return wasOpen
     }
 
+    fun openPanel() = open(true)
+
     private fun open(value: Boolean) {
         panel.visibility = if (value) View.VISIBLE else View.GONE
         backdrop.visibility = panel.visibility

@@ -23,7 +23,7 @@
                 android:id="@+id/profileBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="@dimen/md_layout_size_height_lg"
+                android:minHeight="@dimen/md_button_height"
                 android:text="@string/back"
                 style="@style/Widget.MadhvaNidhi.Button.Text"
                 app:cornerRadius="@dimen/md_corner_radius" />
@@ -32,14 +32,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_register_title"
-                android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+                android:textAppearance="@style/TextAppearance.DS.Headline"
                 android:layout_marginBottom="@dimen/md_spacing_03" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_register_hint"
-                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                android:textAppearance="@style/TextAppearance.DS.Caption"
                 android:layout_marginBottom="@dimen/md_spacing_03"
                 android:maxLines="2" />
 
@@ -217,7 +217,7 @@
             android:id="@+id/profileSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="@dimen/md_layout_size_height_lg"
+            android:minHeight="@dimen/md_button_height"
             android:text="@string/profile_save"
             app:cornerRadius="@dimen/md_corner_radius" />
 
@@ -226,6 +226,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/md_spacing_03"
             android:text="@string/profile_privacy_note"
-            android:textAppearance="@style/TextAppearance.Material3.LabelMedium" />
+            android:textAppearance="@style/TextAppearance.DS.Caption" />
     </LinearLayout>
 </LinearLayout>

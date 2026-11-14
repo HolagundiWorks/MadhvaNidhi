@@ -34,7 +34,7 @@
             android:id="@+id/parayanaSkip"
             style="@style/Widget.MadhvaNidhi.Button.Outlined"
             android:layout_width="@dimen/md_layout_size_height_lg"
-            android:layout_height="@dimen/md_layout_size_height_lg"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/md_spacing_05"
             android:insetTop="0dp"
             android:insetBottom="0dp"
@@ -52,7 +52,7 @@
             android:id="@+id/parayanaComplete"
             style="@style/Widget.MadhvaNidhi.Button.Outlined"
             android:layout_width="@dimen/md_layout_size_height_lg"
-            android:layout_height="@dimen/md_layout_size_height_lg"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/md_spacing_03"
             android:insetTop="0dp"
             android:insetBottom="0dp"
@@ -83,7 +83,7 @@
                 android:id="@+id/parayanaCrumb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                android:textAppearance="@style/TextAppearance.DS.Caption"
                 android:textColor="@color/md_theme_onSurfaceVariant"
                 android:text="ನಿತ್ಯಕರ್ಮ · ನಿತ್ಯ ಪಾರಾಯಣ" />
 
@@ -92,14 +92,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/md_spacing_05"
-                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                android:textAppearance="@style/TextAppearance.DS.Body"
                 android:lineSpacingMultiplier="1.5" />
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/parayanaRead"
                 style="@style/Widget.MadhvaNidhi.Button.Filled"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/ds_space_4"
                 android:text="Read Parayana · ಪಾರಾಯಣ ಓದಿ"
                 app:icon="@drawable/ic_launch" />
         </LinearLayout>

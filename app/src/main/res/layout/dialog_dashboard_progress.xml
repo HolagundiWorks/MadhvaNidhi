@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ದಿನದ ಅಭ್ಯಾಸ · Daily progress"
-        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+        android:textAppearance="@style/TextAppearance.DS.Subtitle"
         android:textColor="@color/md_theme_onSurface" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
@@ -57,7 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/dashboard_japa"
-        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+        android:textAppearance="@style/TextAppearance.DS.Subtitle"
         android:textColor="@color/md_theme_onSurface" />
 
     <TextView
@@ -65,14 +65,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/md_spacing_02"
-        android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+        android:textAppearance="@style/TextAppearance.DS.Headline"
         android:textColor="@color/md_theme_onSurface" />
 
     <TextView
         android:id="@+id/dialogJapaMeta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+        android:textAppearance="@style/TextAppearance.DS.Caption"
         android:textColor="@color/md_theme_onSurfaceVariant" />
 
     <LinearLayout
@@ -100,7 +100,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/dashboard_stotra"
-        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+        android:textAppearance="@style/TextAppearance.DS.Subtitle"
         android:textColor="@color/md_theme_onSurface" />
 
     <com.google.android.material.checkbox.MaterialCheckBox

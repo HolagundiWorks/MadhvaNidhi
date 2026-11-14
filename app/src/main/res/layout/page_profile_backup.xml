@@ -46,6 +46,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:accessibilityLiveRegion="polite"
-            android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+            android:textAppearance="@style/TextAppearance.DS.Body" />
     </LinearLayout>
 </ScrollView>

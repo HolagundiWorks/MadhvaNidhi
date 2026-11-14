@@ -68,4 +68,5 @@
     <dimen name="md_layout_size_height_sm">32dp</dimen>
     <dimen name="md_layout_size_height_md">40dp</dimen>
     <dimen name="md_layout_size_height_lg">48dp</dimen>
+    <dimen name="md_button_height">56dp</dimen>
 </resources>

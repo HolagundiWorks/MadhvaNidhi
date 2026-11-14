@@ -4,7 +4,7 @@
     <style name="Widget.MadhvaNidhi.SurfaceCard" parent="Widget.Material3.CardView.Filled">
         <item name="cardBackgroundColor">@color/md_theme_surfaceContainer</item>
         <item name="cardElevation">0dp</item>
-        <item name="cardCornerRadius">12dp</item>
+        <item name="cardCornerRadius">@dimen/ds_radius_card</item>
         <item name="strokeWidth">0dp</item>
         <item name="rippleColor">@color/md_theme_hover</item>
     </style>
@@ -12,7 +12,7 @@
     <style name="Widget.MadhvaNidhi.SurfaceCard.Elevated" parent="Widget.Material3.CardView.Filled">
         <item name="cardBackgroundColor">@color/md_theme_surfaceContainerHigh</item>
         <item name="cardElevation">0dp</item>
-        <item name="cardCornerRadius">12dp</item>
+        <item name="cardCornerRadius">@dimen/ds_radius_card</item>
         <item name="strokeWidth">0dp</item>
         <item name="rippleColor">@color/md_theme_hover</item>
     </style>
@@ -60,34 +60,34 @@
     </style>
 
     <style name="Widget.MadhvaNidhi.Button.Filled" parent="Widget.Material3.Button">
-        <item name="cornerRadius">12dp</item>
-        <item name="android:minHeight">48dp</item>
+        <item name="cornerRadius">@dimen/ds_radius_control</item>
+        <item name="android:minHeight">@dimen/ds_control_height</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
         <item name="android:textAppearance">@style/TextAppearance.Material3.LabelLarge</item>
     </style>
 
     <style name="Widget.MadhvaNidhi.Button.Tonal" parent="Widget.Material3.Button.TonalButton">
-        <item name="cornerRadius">12dp</item>
-        <item name="android:minHeight">48dp</item>
+        <item name="cornerRadius">@dimen/ds_radius_control</item>
+        <item name="android:minHeight">@dimen/ds_control_height</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
         <item name="android:textAppearance">@style/TextAppearance.Material3.LabelLarge</item>
     </style>
 
     <style name="Widget.MadhvaNidhi.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
-        <item name="cornerRadius">12dp</item>
+        <item name="cornerRadius">@dimen/ds_radius_control</item>
         <item name="strokeColor">@color/md_theme_outline</item>
         <item name="strokeWidth">1dp</item>
-        <item name="android:minHeight">48dp</item>
+        <item name="android:minHeight">@dimen/ds_control_height</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
         <item name="android:textAppearance">@style/TextAppearance.Material3.LabelLarge</item>
     </style>
 
     <style name="Widget.MadhvaNidhi.Button.Text" parent="Widget.Material3.Button.TextButton">
-        <item name="cornerRadius">12dp</item>
-        <item name="android:minHeight">48dp</item>
+        <item name="cornerRadius">@dimen/ds_radius_control</item>
+        <item name="android:minHeight">@dimen/ds_control_height</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
         <item name="android:textAppearance">@style/TextAppearance.Material3.LabelLarge</item>
@@ -95,7 +95,7 @@
 
     <style name="Widget.MadhvaNidhi.IconButton" parent="Widget.Material3.Button.IconButton.Filled.Tonal">
         <item name="android:minWidth">48dp</item>
-        <item name="android:minHeight">48dp</item>
+        <item name="android:minHeight">@dimen/ds_control_height</item>
         <item name="iconTint">@color/md_theme_onSecondaryContainer</item>
         <item name="backgroundTint">@color/md_theme_secondaryContainer</item>
         <item name="rippleColor">@color/md_theme_hover</item>
@@ -104,7 +104,7 @@
 
     <style name="Widget.MadhvaNidhi.IconButton.Standard" parent="Widget.Material3.Button.IconButton">
         <item name="android:minWidth">48dp</item>
-        <item name="android:minHeight">48dp</item>
+        <item name="android:minHeight">@dimen/ds_control_height</item>
         <item name="iconTint">@color/md_theme_onSurface</item>
         <item name="rippleColor">@color/md_theme_hover</item>
         <item name="shapeAppearanceOverlay">@style/ShapeAppearance.MadhvaNidhi.Round</item>
@@ -131,12 +131,12 @@
     </style>
 
     <style name="Widget.MadhvaNidhi.Segmented.Item" parent="Widget.Material3.Button.OutlinedButton">
-        <item name="cornerRadius">12dp</item>
+        <item name="cornerRadius">@dimen/ds_radius_control</item>
         <item name="strokeColor">@color/md_theme_outline</item>
         <item name="strokeWidth">1dp</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
-        <item name="android:minHeight">40dp</item>
+        <item name="android:minHeight">@dimen/ds_control_height</item>
         <item name="android:textAppearance">@style/TextAppearance.Material3.LabelLarge</item>
         <item name="backgroundTint">@color/md_theme_surface</item>
     </style>
