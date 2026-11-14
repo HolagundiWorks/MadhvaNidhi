@@ -76,6 +76,7 @@ class DashboardFragment : Fragment() {
     private fun refreshAll(view: View) {
         practice.refreshBestStreak()
         bindWeek(view)
+        bindPanchanga(view)
         bindStreak(view)
         bindShortcuts(view)
         if (japa != null) {
@@ -116,6 +117,35 @@ class DashboardFragment : Fragment() {
         }
     )
 
+    /** Today's Panchanga card and Dina Visesha card, filled from the same day data as the Panchanga screen. */
+    private fun bindPanchanga(view: View) {
+        val ctx = requireContext().applicationContext
+        val lang = OsLang.get(ctx)
+        viewLifecycleOwner.lifecycleScope.launch {
+            val day = withContext(Dispatchers.IO) {
+                com.paperdesk.launcher.data.FestivalStore.load(ctx)
+                PanchangaStore.forDate(ctx, PanchangaStore.dateKey())
+            }
+            val cal = PanchangaStore.parse(day.date)
+            view.findViewById<TextView>(R.id.dashPanchangaDate).text =
+                "${cal.get(java.util.Calendar.DAY_OF_MONTH)} ${OsLang.month(cal, lang)} ${cal.get(java.util.Calendar.YEAR)} · ${OsLang.weekday(cal, lang)}"
+            val ekadashi = day.tithi.contains("EKADASHI", true)
+            view.findViewById<TextView>(R.id.dashPanchangaTithi).apply {
+                text = OsLang.script(day.tithi.uppercase(), lang)
+                setTextColor(requireContext().getColor(if (ekadashi) R.color.md_ekadashi else R.color.md_text))
+            }
+            view.findViewById<TextView>(R.id.dashPanchangaPaksha).text =
+                OsLang.script(if (day.paksha.contains("KRISHNA", true)) "ಕೃಷ್ಣಪಕ್ಷ" else "ಶುಕ್ಲಪಕ್ಷ", lang)
+            view.findViewById<TextView>(R.id.dashPanchangaNakshatra).text = OsLang.script(day.nakshatra, lang)
+            view.findViewById<TextView>(R.id.dashPanchangaKarana).text = OsLang.script(day.karana, lang)
+            view.findViewById<TextView>(R.id.dashPanchangaYoga).text = OsLang.script(day.yoga, lang)
+            val fest = com.paperdesk.launcher.data.FestivalStore.label(day.date, lang)
+                .ifBlank { com.paperdesk.launcher.data.MadhwaDays.name(day.masa, day.paksha, day.tithi) }
+            view.findViewById<TextView>(R.id.dashDayEvent).text =
+                if (fest.isBlank()) "ವಿಶೇಷ ಕಾರ್ಯಕ್ರಮ ದಾಖಲಾಗಿಲ್ಲ" else OsLang.script(fest, lang)
+        }
+    }
+
     private fun bindWeek(view: View) {
         val week = view.findViewById<LinearLayout>(R.id.dashboardWeek)
         week.removeAllViews()
@@ -123,6 +153,16 @@ class DashboardFragment : Fragment() {
         val todayCount = listOf(todayFlags.first, todayFlags.second, todayFlags.third).count { it }
         view.findViewById<TextView>(R.id.dashboardTodayCount).text = "$todayCount / 3"
         view.findViewById<LinearProgressIndicator>(R.id.dashboardTodayProgress).progress = todayCount
+        // Morning, noon and evening light up when that session is done today.
+        val sessions = listOf(
+            R.id.dashSessionMorning to todayFlags.first,
+            R.id.dashSessionNoon to todayFlags.second,
+            R.id.dashSessionEvening to todayFlags.third
+        )
+        for ((id, done) in sessions) {
+            view.findViewById<android.widget.ImageView>(id).imageTintList = android.content.res.ColorStateList.valueOf(
+                requireContext().getColor(if (done) R.color.md_theme_primary else R.color.ds_text_disabled))
+        }
         val density = resources.displayMetrics.density
         val gap = resources.getDimensionPixelSize(R.dimen.ds_space_1)
         val padH = resources.getDimensionPixelSize(R.dimen.ds_space_2)
