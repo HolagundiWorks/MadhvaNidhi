@@ -62,7 +62,7 @@
       </section>`).join('');
     const related = (a.related || []).map(id => articleById(id)).filter(Boolean).map(r =>
       `<button type="button" class="cds--btn cds--btn--tertiary" data-wiki-open="${esc(r.id)}">${esc(r.title_en)}</button>`).join('');
-    const sources = a.sources.length ? a.sources.map(s => `<li>${esc(s.title)} — ${esc(s.note || '')}</li>`).join('')
+    const sources = a.sources.length ? a.sources.map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a> · accessed ${esc(s.accessed || 'not recorded')}${s.note ? '<br><span class="cds--label-01">' + esc(s.note) + '</span>' : ''}</li>`).join('')
       : '<li class="cds--label-01">No citation yet. Add one before this article is marked sourced.</li>';
     const loc = a.location ? `<p class="cds--label-01">Location: ${esc(a.location.place)} · map coordinates ${a.location.status === 'pending' ? 'pending' : esc(a.location.lat + ', ' + a.location.lng)}</p>` : '';
     return `
