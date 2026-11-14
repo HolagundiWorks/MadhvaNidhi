@@ -58,10 +58,9 @@ class DeskFragment : Fragment() {
             }
         }
         view.post { fitContext() }
-        view.findViewById<View>(R.id.dayEvent).setOnClickListener { showDetails() }
-        view.findViewById<View>(R.id.dayEventsCard).setOnClickListener { showDetails() }
-        view.findViewById<View>(R.id.eventDetails).setOnClickListener { showDetails() }
-        view.findViewById<View>(R.id.panchangaOpenContent).setOnClickListener { openDetailsInReader() }
+        view.findViewById<View>(R.id.dayEvent).setOnClickListener { showEventDetails() }
+        view.findViewById<View>(R.id.dayEventsCard).setOnClickListener { showEventDetails() }
+        view.findViewById<View>(R.id.eventDetails).setOnClickListener { showEventDetails() }
         view.findViewById<View>(R.id.chooseDate).setOnClickListener { showDatePicker() }
         parentFragmentManager.setFragmentResultListener("panchangaDate", viewLifecycleOwner) { _, result ->
             selectedDate = result.getString("date") ?: selectedDate
@@ -107,6 +106,23 @@ class DeskFragment : Fragment() {
             loadPanchanga()
         }
         picker.show(parentFragmentManager, "panchanga-picker")
+    }
+
+    private fun showEventDetails() {
+        val day = detailsDay ?: return
+        val lang = OsLang.get(requireContext())
+        val title = view?.findViewById<TextView>(R.id.todayEventsTitle)?.text ?: "Day’s events"
+        val event = detailsEvent.ifBlank { "ವಿಶೇಷ ಕಾರ್ಯಕ್ರಮ ದಾಖಲಾಗಿಲ್ಲ" }
+        val message = listOf(
+            OsLang.dateLine(PanchangaStore.parse(day.date), lang),
+            event,
+            detailsSummary
+        ).filter { it.isNotBlank() }.joinToString("\n\n")
+        com.google.android.material.dialog.MaterialAlertDialogBuilder(requireContext())
+            .setTitle(title)
+            .setMessage(message)
+            .setPositiveButton("ಸರಿ", null)
+            .show()
     }
 
     private fun showDetails() {
@@ -156,10 +172,10 @@ class DeskFragment : Fragment() {
         bind(R.id.dateDialogTithi, tithi, accent = ekadashi)
         bind(R.id.dateDialogMasa, masa)
         val rashi = OsLang.script(PanchangaStore.chandraRashi(day.date), lang)
-        val pada = OsLang.digits(PanchangaStore.nakshatraPada(day.date), lang)
+        val pada = PanchangaStore.nakshatraPada(day)?.let { OsLang.digits(it, lang) + " · 06:00 ಅಂದಾಜು" } ?: "ದೃಢಪಟ್ಟಿಲ್ಲ"
         bind(R.id.dateDialogRashi, rashi)
         bind(R.id.dateDialogNakshatra, nakshatra.ifBlank { "ಜೋಡಣೆ ಬಾಕಿ" }, pending = nakshatra.isBlank())
-        bind(R.id.dateDialogBhava, "ಪಾದ $pada")
+        bind(R.id.dateDialogBhava, pada)
         bind(R.id.dateDialogKarana, OsLang.script(day.karana, lang).ifBlank { "ಜೋಡಣೆ ಬಾಕಿ" }, pending = day.karana.isBlank())
         bind(R.id.dateDialogYoga, OsLang.script(day.yoga, lang).ifBlank { "ಜೋಡಣೆ ಬಾಕಿ" }, pending = day.yoga.isBlank())
         bind(R.id.dateDialogEvent, detailsEvent.ifBlank { "ವಿಶೇಷ ಕಾರ್ಯಕ್ರಮ ದಾಖಲಾಗಿಲ್ಲ" }, accent = ekadashi)
@@ -174,7 +190,6 @@ class DeskFragment : Fragment() {
         com.google.android.material.dialog.MaterialAlertDialogBuilder(requireContext())
             .setView(content)
             .setPositiveButton("ಸರಿ", null)
-            .setNeutralButton(OsLang.ui("open_content", lang)) { _, _ -> openDetailsInReader() }
             .show()
     }
 
@@ -203,7 +218,7 @@ class DeskFragment : Fragment() {
             day.nakshatra.replace(Regex("^(PURVA|UTTARA)(PHALGUNI|ASHADHA|BHADRAPADA)$"), "$1 $2"),
             lang
         ).ifBlank { "ಜೋಡಣೆ ಬಾಕಿ" }
-        val pada = OsLang.digits(PanchangaStore.nakshatraPada(day.date), lang)
+        val pada = PanchangaStore.nakshatraPada(day)?.let { OsLang.digits(it, lang) + " · 06:00 ಅಂದಾಜು" } ?: "ದೃಢಪಟ್ಟಿಲ್ಲ"
         val karana = OsLang.script(day.karana, lang).ifBlank { "ಜೋಡಣೆ ಬಾಕಿ" }
         val yoga = OsLang.script(day.yoga, lang).ifBlank { "ಜೋಡಣೆ ಬಾಕಿ" }
         val special = detailsEvent.ifBlank { "ವಿಶೇಷ ಕಾರ್ಯಕ್ರಮ ದಾಖಲಾಗಿಲ್ಲ" }
@@ -215,6 +230,7 @@ class DeskFragment : Fragment() {
             appendLine()
             appendLine("ರಾಶಿ: $rashi")
             appendLine("ನಕ್ಷತ್ರ: $nakshatra (ಪಾದ $pada)")
+            appendLine("ಪಾದ/ರಾಶಿ: 06:00 ಸ್ಥಳೀಯ ಸಮಯದ ಸಿಡೀರಿಯಲ್ ಅಂದಾಜು")
             appendLine("ಕರಣ: $karana")
             appendLine("ಯೋಗ: $yoga")
             appendLine()
@@ -263,13 +279,11 @@ class DeskFragment : Fragment() {
             }
             if (requestedDate != selectedDate) return@launch
             // Paint local estimate first so the UI is responsive, then refresh if network/local merge differs.
-            val local = PanchangaStore.local(requestedDate).copy(source = "ಸ್ಥಳೀಯ ಗಣನೆ")
+            val local = PanchangaStore.local(requestedDate).copy(source = "ಸ್ಥಳೀಯ ಅಂದಾಜು (06:00)")
             renderPanchanga(local, cycle)
             val day = withContext(Dispatchers.IO) { PanchangaStore.forDate(context, requestedDate) }
             if (requestedDate != selectedDate) return@launch
-            if (day.tithi != local.tithi || day.nakshatra != local.nakshatra ||
-                day.paksha != local.paksha || day.masa != local.masa || day.source != local.source
-            ) {
+            if (day != local) {
                 renderPanchanga(day, cycle)
             } else {
                 detailsDay = day
@@ -356,7 +370,7 @@ class DeskFragment : Fragment() {
                 lang
             )
         )
-        fact(R.id.bhavaValue, "ಪಾದ ${OsLang.digits(PanchangaStore.nakshatraPada(day.date), lang)}")
+        fact(R.id.bhavaValue, PanchangaStore.nakshatraPada(day)?.let { OsLang.digits(it, lang) + " · 06:00 ಅಂದಾಜು" } ?: "ದೃಢಪಟ್ಟಿಲ್ಲ")
         fact(R.id.karanaValue, OsLang.script(day.karana, lang))
         FrozenPanchangaBinder.bind(v, cycle, selectedDate) { date ->
             if (!DeskLock.isLocked(requireContext())) {

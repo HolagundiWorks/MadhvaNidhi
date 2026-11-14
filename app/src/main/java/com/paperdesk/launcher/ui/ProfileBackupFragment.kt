@@ -96,7 +96,7 @@ class ProfileBackupFragment : Fragment(R.layout.page_profile_backup) {
                     if (exporting) {
                         random.nextBytes(salt)
                         random.nextBytes(nonce)
-                        val encrypted = cipher(Cipher.ENCRYPT_MODE).doFinal(store.exportJson().toString().toByteArray())
+                        val encrypted = cipher(Cipher.ENCRYPT_MODE).doFinal(store.exportJson().put("songFavorites", com.paperdesk.launcher.data.SongFavoritesStore.exportAll(context)).toString().toByteArray())
                         requireNotNull(resolver.openOutputStream(uri, "wt")).use { it.write(magic + salt + nonce + encrypted) }
                     } else {
                         val bytes = requireNotNull(resolver.openInputStream(uri)).use { stream ->
@@ -116,6 +116,7 @@ class ProfileBackupFragment : Fragment(R.layout.page_profile_backup) {
                         val profile = JSONObject(String(cipher(Cipher.DECRYPT_MODE).doFinal(bytes, 36, bytes.size - 36), Charsets.UTF_8))
                         require(profile.getJSONArray("items").length() > 0)
                         store.importJson(profile)
+                        profile.optJSONObject("songFavorites")?.let { com.paperdesk.launcher.data.SongFavoritesStore.importAll(context,it) }
                     }
                 }
                 status.text = if (exporting) "Profile backup created" else "Profiles restored"

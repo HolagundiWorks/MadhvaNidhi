@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/md_theme_background" android:padding="16dp">
+    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="ಶೀರ್ಷಿಕೆ / ಕರ್ತೃ ಹುಡುಕಿ">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/catalogueSearch" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp" android:singleLine="true" android:imeOptions="actionDone" android:inputType="text" android:textColor="@color/md_theme_onSurface" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textview.MaterialTextView android:id="@+id/catalogueListCount" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:layout_marginBottom="8dp" android:textAppearance="@style/TextAppearance.Material3.LabelLarge" android:textColor="@color/md_theme_onSurfaceVariant" />
+    <com.google.android.material.textview.MaterialTextView android:id="@+id/catalogueListEmpty" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="24dp" android:textAppearance="@style/TextAppearance.Material3.BodyLarge" android:textColor="@color/md_theme_onSurfaceVariant" android:visibility="gone" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/catalogueList" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:clipToPadding="false" android:paddingBottom="12dp" />
+</LinearLayout>

@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "artwork_note": "Independent geometric line studies. Linked blog photographs and articles are references only, not bundled or traced.",
+  "items": [
+    {
+      "id": "four_petals",
+      "title_kn": "ನಾಲ್ಕು ದಳದ ಹೂವು",
+      "title_en": "Four-petal flower",
+      "category": "floral",
+      "construction": "Freehand geometric study",
+      "asset": "rangavalli/four_petals.png",
+      "source_id": "sans-dots-small",
+      "artwork_origin": "independent-original-geometric-study",
+      "steps_kn": [
+        "ಮಧ್ಯದಲ್ಲಿ ಸಣ್ಣ ವೃತ್ತ ಬಿಡಿಸಿ.",
+        "ನಾಲ್ಕು ದಿಕ್ಕುಗಳಲ್ಲಿ ಸಮಾನ ಉದ್ದದ ದಳಗಳನ್ನು ಬಿಡಿಸಿ.",
+        "ಮೂಲೆಗಳಲ್ಲಿ ಸಣ್ಣ ಎಲೆಗಳನ್ನು ಸೇರಿಸಿ."
+      ]
+    },
+    {
+      "id": "lotus_eight",
+      "title_kn": "ಎಂಟು ದಳದ ಪದ್ಮ",
+      "title_en": "Eight-petal lotus study",
+      "category": "floral",
+      "construction": "Freehand geometric study",
+      "asset": "rangavalli/lotus_eight.png",
+      "source_id": "sans-dots-small",
+      "artwork_origin": "independent-original-geometric-study",
+      "steps_kn": [
+        "ಒಂದೇ ಕೇಂದ್ರದ ಎರಡು ಸಣ್ಣ ವೃತ್ತಗಳನ್ನು ಬಿಡಿಸಿ.",
+        "ನಾಲ್ಕು ಮುಖ್ಯ ದಿಕ್ಕುಗಳಲ್ಲಿ ದಳಗಳನ್ನು ಬಿಡಿಸಿ.",
+        "ಉಳಿದ ನಾಲ್ಕು ದಿಕ್ಕುಗಳಲ್ಲಿ ಸಮಾನ ದಳಗಳನ್ನು ಪೂರ್ಣಗೊಳಿಸಿ."
+      ]
+    },
+    {
+      "id": "eight_point_star",
+      "title_kn": "ಎಂಟು ಮೊನೆಯ ನಕ್ಷತ್ರ",
+      "title_en": "Eight-point star",
+      "category": "geometric",
+      "construction": "Freehand geometric study",
+      "asset": "rangavalli/eight_point_star.png",
+      "source_id": "sans-dots-archive",
+      "artwork_origin": "independent-original-geometric-study",
+      "steps_kn": [
+        "ಎಂಟು ದಿಕ್ಕುಗಳಲ್ಲಿ ಹೊರ ಮೊನೆಗಳನ್ನು ಗುರುತಿಸಿ.",
+        "ಒಳ ಮತ್ತು ಹೊರ ಮೊನೆಗಳನ್ನು ಪರ್ಯಾಯವಾಗಿ ಜೋಡಿಸಿ.",
+        "ಮಧ್ಯದಲ್ಲಿ ಎರಡು ತಿರುಗಿದ ಚೌಕ ಮತ್ತು ಸಣ್ಣ ವೃತ್ತ ಸೇರಿಸಿ."
+      ]
+    },
+    {
+      "id": "nested_diamonds",
+      "title_kn": "ಪದರದ ವಜ್ರಾಕೃತಿ",
+      "title_en": "Nested diamonds",
+      "category": "geometric",
+      "construction": "Freehand geometric study",
+      "asset": "rangavalli/nested_diamonds.png",
+      "source_id": "traditional-kolam",
+      "artwork_origin": "independent-original-geometric-study",
+      "steps_kn": [
+        "ಮಧ್ಯದಲ್ಲಿ ಒಂದು ಸಣ್ಣ ವಜ್ರಾಕೃತಿ ಬಿಡಿಸಿ.",
+        "ಒಂದೇ ಅಂತರದಲ್ಲಿ ಇನ್ನೆರಡು ಹೊರ ಪದರಗಳನ್ನು ಬಿಡಿಸಿ.",
+        "ನಾಲ್ಕು ಹೊರ ಮೊನೆಗಳ ಬಳಿ ಸಣ್ಣ ವೃತ್ತಗಳನ್ನು ಸೇರಿಸಿ."
+      ]
+    },
+    {
+      "id": "padi_square",
+      "title_kn": "ಸಮಾನಾಂತರ ಚೌಕ",
+      "title_en": "Parallel-square study",
+      "category": "geometric",
+      "construction": "Freehand geometric study",
+      "asset": "rangavalli/padi_square.png",
+      "source_id": "sans-dots-archive",
+      "artwork_origin": "independent-original-geometric-study",
+      "steps_kn": [
+        "ಒಂದೇ ಕೇಂದ್ರದ ಮೂರು ಸಮಾನಾಂತರ ಚೌಕ ಬಿಡಿಸಿ.",
+        "ಪ್ರತಿ ಬದಿಯ ಮಧ್ಯದಲ್ಲಿ ಹೊರಮುಖ ದಳ ಸೇರಿಸಿ.",
+        "ಕೇಂದ್ರದಲ್ಲಿ ಸಣ್ಣ ವಜ್ರಾಕೃತಿ ಮತ್ತು ವೃತ್ತ ಬಿಡಿಸಿ."
+      ]
+    },
+    {
+      "id": "four_lamps",
+      "title_kn": "ನಾಲ್ಕು ದೀಪ",
+      "title_en": "Four lamps",
+      "category": "lamps",
+      "construction": "Freehand geometric study",
+      "asset": "rangavalli/four_lamps.png",
+      "source_id": "sans-dots-small",
+      "artwork_origin": "independent-original-geometric-study",
+      "steps_kn": [
+        "ಮಧ್ಯದಲ್ಲಿ ನಾಲ್ಕು ಸಣ್ಣ ದಳಗಳನ್ನು ಬಿಡಿಸಿ.",
+        "ನಾಲ್ಕು ದಿಕ್ಕುಗಳಲ್ಲಿ ದೀಪದ ಪಾತ್ರೆ ಮತ್ತು ಪಾದ ಬಿಡಿಸಿ.",
+        "ಪ್ರತಿ ಪಾತ್ರೆಯ ಮೇಲೆ ಹೊರಮುಖ ಜ್ವಾಲೆಯನ್ನು ಸೇರಿಸಿ."
+      ]
+    }
+  ]
+}

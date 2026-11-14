@@ -7,6 +7,22 @@ package com.paperdesk.launcher.data
 object DashboardBadges {
 
     enum class Kind { STREAK, WEEKLY, JAPA }
+    enum class Finish { BROWN, SILVER, GOLD }
+
+    /** Lower, middle and upper thirds of each existing milestone ladder. */
+    fun finishFor(tier: Tier): Finish {
+        val ladder = when (tier.kind) {
+            Kind.STREAK -> STREAK_TIERS
+            Kind.WEEKLY -> WEEKLY_TIERS
+            Kind.JAPA -> JAPA_TIERS
+        }
+        val rank = ladder.indexOfFirst { it.id == tier.id }.coerceAtLeast(0)
+        return when (rank * 3 / ladder.size) {
+            0 -> Finish.BROWN
+            1 -> Finish.SILVER
+            else -> Finish.GOLD
+        }
+    }
 
     data class Tier(
         val id: String,

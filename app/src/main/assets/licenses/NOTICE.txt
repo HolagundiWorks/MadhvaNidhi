@@ -3,7 +3,10 @@ MadhvaNidhi — third-party and content notices
 
 Developer
 ---------
-MadhvaNidhi is developed by Human Centric Works (hcworks.in), Hospet, Karnataka.
+MadhvaNidhi is developed and published by VISWABHIRAM D HOLAGUNDI as an individual.
+Location: Hosapete, Karnataka, India.
+Support/privacy contact: vishwabhiram@gmail.com
+Phone: +91 9739822277
 
 Privacy (summary)
 -----------------
@@ -38,3 +41,35 @@ Other bundled stotra / mantra / library texts
 Retain source attributions recorded in docs/CATALOGUE_AUDIT.md and individual
 text headers where present. Do not assume a single open license for the entire
 library corpus.
+
+Google Material Symbols
+-----------------------
+award_star (Outlined, FILL 1, default weight 400, optical size 24) and eda
+(Outlined, FILL 0, weight 100, GRAD 0, optical size 24) are from Google’s
+Material Symbols repository, licensed under Apache License 2.0.
+Source: https://github.com/google/material-design-icons/tree/master/symbols/web
+See material-symbols-license.txt in this folder.
+
+Navigation Material Symbols Outlined (FILL 0, weight 400, opsz 24):
+home, calendar_month, self_improvement, spa, menu_book, music_note,
+temple_hindu and settings. Google Material Design Icons; Apache-2.0.
+Japa retains eda (FILL 0, weight 100, opsz 24).
+
+Rangavalli line studies
+----------------------
+Bundled rangavalli/*.png are original geometric line studies generated from
+project-owned vector construction paths under resources/rangavalli. Related
+reading references: Sudha Balaji, Rangoli-sans-dots; Aishwarya, Rangoli Designs.
+Their linked photographs and article bodies are not included or traced.
+No redistribution licence is asserted for those external blog materials.
+See assets/rangavalli/sources.json and docs/rangavalli-artwork-2026-11-14.md.
+
+Naivedya recipe references
+-------------------------
+Ingredient facts are referenced to Sumana / Udupi Recipes, Smitha Kalluraya /
+Cook with Smile, Sailu's Food and SwayamPaaka. Kannada preparation summaries
+are original editorial text. Source photos and narrative articles are not
+bundled; no licence grant is claimed for them. Full links and review dates:
+assets/naivedya/sources.json. Editorial notes: docs/naivedya-cookbook-2026-11-14.md.
+
+Song favorite markers: Material Symbols Outlined star (outlined and filled), Google, Apache License 2.0. Source: https://github.com/google/material-design-icons/tree/master/symbols/web/star

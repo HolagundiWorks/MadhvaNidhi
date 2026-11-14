@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Pure light theme: white / grey surfaces · orange accent #BA4E00 only. -->
+<!-- Pure light theme: white / grey surfaces · orange accent #FF4F18 only. -->
 <resources>
-    <color name="md_theme_primary">#BA4E00</color>
-    <color name="md_theme_onPrimary">#FFFFFF</color>
-    <color name="md_theme_primaryContainer">#FFE8D6</color>
-    <color name="md_theme_onPrimaryContainer">#3D1900</color>
+    <color name="md_theme_primary">#FF4F18</color>
+    <color name="md_theme_onPrimary">#000000</color>
+    <color name="md_theme_primaryContainer">#FFE4DC</color>
+    <color name="md_theme_onPrimaryContainer">#351000</color>
 
     <color name="md_theme_secondary">#616161</color>
     <color name="md_theme_onSecondary">#FFFFFF</color>
@@ -32,7 +32,7 @@
     <color name="md_theme_outlineVariant">#E0E0E0</color>
     <color name="md_theme_inverseSurface">#121212</color>
     <color name="md_theme_inverseOnSurface">#FFFFFF</color>
-    <color name="md_theme_inversePrimary">#FFB68C</color>
+    <color name="md_theme_inversePrimary">#FFA68B</color>
     <color name="md_theme_scrim">#000000</color>
     <color name="md_theme_shadow">#000000</color>
 
@@ -44,14 +44,14 @@
     <color name="md_theme_surfaceContainerHigh">#EEEEEE</color>
     <color name="md_theme_surfaceContainerHighest">#E0E0E0</color>
 
-    <color name="md_theme_primary_fixed">#FFE8D6</color>
-    <color name="md_theme_onPrimary_fixed">#3D1900</color>
-    <color name="md_theme_primary_fixed_dim">#FFB68C</color>
+    <color name="md_theme_primary_fixed">#FFE4DC</color>
+    <color name="md_theme_onPrimary_fixed">#351000</color>
+    <color name="md_theme_primary_fixed_dim">#FFA68B</color>
     <color name="md_theme_secondary_fixed">#E0E0E0</color>
     <color name="md_theme_onSecondary_fixed">#212121</color>
     <color name="md_theme_secondary_fixed_dim">#9E9E9E</color>
 
-    <color name="md_theme_hover">#1FBA4E00</color>
-    <color name="md_theme_pressed">#33BA4E00</color>
-    <color name="md_theme_focus">#1FBA4E00</color>
+    <color name="md_theme_hover">#1FFF4F18</color>
+    <color name="md_theme_pressed">#33FF4F18</color>
+    <color name="md_theme_focus">#1FFF4F18</color>
 </resources>

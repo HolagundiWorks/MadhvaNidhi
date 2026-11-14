@@ -3,7 +3,7 @@ package com.paperdesk.launcher
 import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
 
-/** Carbon theme tokens mapped to Android night/day host. */
+/** Light/dark Material themes; legacy preference values remain readable. */
 object DeskTheme {
     const val BLACK = "black"
     const val PAPER = "paper"
@@ -14,24 +14,14 @@ object DeskTheme {
 
     private const val PREFS = "madhvanidhi_theme"
 
-    val CARBON_OPTIONS = listOf(
-        G100 to "Dark",
-        G90 to "Dark (soft)",
-        G10 to "Light",
-        WHITE to "Light (bright)"
-    )
+    val OPTIONS = listOf(G10 to "Light", G100 to "Dark")
 
     fun current(context: Context): String =
         context.getSharedPreferences(PREFS, 0).getString("theme", G100) ?: G100
 
     fun carbonId(context: Context): String {
         val raw = current(context)
-        return when (raw) {
-            BLACK, "dark" -> G100
-            PAPER, "light" -> G10
-            G100, G90, G10, WHITE -> raw
-            else -> G100
-        }
+        return if (isDark(raw)) G100 else G10
     }
 
     fun isDark(name: String): Boolean = when (name) {
@@ -51,11 +41,7 @@ object DeskTheme {
     }
 
     fun set(context: Context, name: String) {
-        val id = when (name) {
-            BLACK -> G100
-            PAPER -> G10
-            else -> name
-        }
+        val id = if (isDark(name)) G100 else G10
         context.getSharedPreferences(PREFS, 0).edit().putString("theme", id).apply()
         apply(context, id)
     }

@@ -77,8 +77,10 @@ class LauncherActivity : AppCompatActivity() {
         pages = SettingsStore.PAGE_IDS
         shell = FrozenShell(this)
         val requested = intent?.getStringExtra("page")?.takeIf { SettingsStore.isKnownPage(it) }
+        val requestedHub = ShellHubFragment.TAB_HUBS.firstOrNull { requested in ShellHubFragment.childrenFor(it) }
+            ?: if (requested == "playlists") "sangeeta" else null
         val startId = when {
-            !requested.isNullOrBlank() -> SettingsStore.canonicalizePageId(requested)
+            !requested.isNullOrBlank() -> requestedHub ?: SettingsStore.canonicalizePageId(requested)
                 .takeIf { it in pages } ?: pages.first()
             savedInstanceState != null ->
                 savedInstanceState.getString(STATE_PAGE)?.takeIf { it in pages } ?: pages.first()
@@ -92,6 +94,7 @@ class LauncherActivity : AppCompatActivity() {
         window.decorView.post {
             if (isFinishing) return@post
             showPage(startId, nityaTab, force = true)
+            if (requested != null && requested != startId && nityaTab == null) navigateTo(requested)
             shell.bind()
             Thread({ AlarmScheduler.rescheduleAll(applicationContext) }, "alarm-reschedule").start()
         }
@@ -114,7 +117,9 @@ class LauncherActivity : AppCompatActivity() {
         val tabGroup = ShellHubFragment.TAB_HUBS.firstOrNull { pageId in ShellHubFragment.childrenFor(it) }
         if (tabGroup != null) {
             showPage(tabGroup)
-            (supportFragmentManager.findFragmentById(R.id.pageHost) as? GranthaFragment)?.selectReader(pageId)
+            val host = supportFragmentManager.findFragmentById(R.id.pageHost)
+            if (host is SongLibraryFragment) host.selectCollection(pageId)
+            else (host as? GranthaFragment)?.selectReader(pageId)
             return
         }
         if (pageId == "user") {
@@ -196,6 +201,7 @@ class LauncherActivity : AppCompatActivity() {
     fun navigateTo(pageId: String) {
         val id = when (pageId) {
             "panchanga" -> "desk"
+            "playlists" -> "favorites"
             else -> pageId
         }
         if (!SettingsStore.isKnownPage(id)) return
@@ -251,8 +257,8 @@ class LauncherActivity : AppCompatActivity() {
 
     /** Hierarchical back: leaf → hub → dashboard (not flat dump to home). */
     private fun parentPage(pageId: String): String? = when (pageId) {
-        "playlists" -> "sangeeta"
-        "stotra", "suktas", "mantras", "hadugalu", "namavali" -> "grantha"
+        "playlists", "favorites", "hadugalu" -> "sangeeta"
+        "stotra", "suktas", "mantras", "namavali" -> "grantha"
         "aayadi", "rangavalli", "recipes" -> "samskruti"
         "user" -> "settings"
         "dashboard" -> null

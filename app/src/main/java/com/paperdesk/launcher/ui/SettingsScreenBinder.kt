@@ -37,50 +37,11 @@ object SettingsScreenBinder {
                 (context as? android.app.Activity)?.let { com.paperdesk.launcher.DeskWindow.keepAwake(it, checked) }
             }
         }
-        val audio = context.getSystemService(Context.AUDIO_SERVICE) as android.media.AudioManager
-        root.findViewById<com.google.android.material.slider.Slider>(R.id.settingsVolume).apply {
-            valueFrom = 0f
-            valueTo = audio.getStreamMaxVolume(android.media.AudioManager.STREAM_MUSIC).coerceAtLeast(1).toFloat()
-            stepSize = 1f
-            value = audio.getStreamVolume(android.media.AudioManager.STREAM_MUSIC).toFloat().coerceIn(valueFrom, valueTo)
-            addOnChangeListener { _, selected, fromUser ->
-                if (fromUser) audio.setStreamVolume(android.media.AudioManager.STREAM_MUSIC, selected.toInt(), 0)
-            }
-        }
-        val textSlider = root.findViewById<com.google.android.material.slider.Slider>(R.id.settingsTextSize)
-        val textLabel = root.findViewById<TextView>(R.id.settingsTextSizeLabel)
-        fun showTextSize(percent: Float) {
-            textLabel.text = "ಅಕ್ಷರ ಗಾತ್ರ · ${percent.toInt()}%"
-        }
-        fun applyTextSize(percent: Float) {
-            if (kotlin.math.abs(AppTextSize.scale(context) * 100f - percent) < 1f) return
-            AppTextSize.save(context, percent / 100f)
-            (context as? android.app.Activity)?.recreate()
-        }
-        textSlider.apply {
-            valueFrom = 100f
-            valueTo = 200f
-            stepSize = 25f
-            value = AppTextSize.scale(context) * 100f
-            setLabelFormatter { "${it.toInt()}%" }
-            addOnChangeListener { _, percent, _ -> showTextSize(percent) }
-            addOnSliderTouchListener(object : com.google.android.material.slider.Slider.OnSliderTouchListener {
-                override fun onStartTrackingTouch(slider: com.google.android.material.slider.Slider) = Unit
-                override fun onStopTrackingTouch(slider: com.google.android.material.slider.Slider) { applyTextSize(slider.value) }
-            })
-        }
-        root.findViewById<View>(R.id.settingsTextApply).setOnClickListener { applyTextSize(textSlider.value) }
-        showTextSize(textSlider.value)
-        val themeIds = DeskTheme.CARBON_OPTIONS.map { it.first }
-        val themeLabels = DeskTheme.CARBON_OPTIONS.map { it.second }
-        val themeIndex = themeIds.indexOf(DeskTheme.carbonId(context)).coerceAtLeast(0)
-        root.findViewById<com.google.android.material.textfield.MaterialAutoCompleteTextView>(R.id.settingsTheme)?.let { themeView ->
-            MaterialChoices.bind(themeView, themeLabels, themeIndex) { index ->
-                val next = themeIds[index]
-                if (DeskTheme.carbonId(context) != next) {
-                    DeskTheme.set(context, next)
-                    (context as? android.app.Activity)?.recreate()
-                }
+        root.findViewById<com.google.android.material.materialswitch.MaterialSwitch>(R.id.settingsThemeSwitch).apply {
+            isChecked = DeskTheme.isDark(DeskTheme.current(context))
+            setOnCheckedChangeListener { _, dark ->
+                DeskTheme.set(context, if (dark) DeskTheme.G100 else DeskTheme.G10)
+                (context as? android.app.Activity)?.recreate()
             }
         }
         val langChoices = listOf(
@@ -98,13 +59,18 @@ object SettingsScreenBinder {
                 }
             }
         }
-        root.findViewById<com.google.android.material.materialswitch.MaterialSwitch>(R.id.settingsDarkTheme)?.apply {
-            // Legacy toggle kept hidden; Carbon theme dropdown is the authority.
-            visibility = View.GONE
-        }
+        root.findViewById<TextView>(R.id.settingsVersion).text = context.getString(
+            R.string.settings_version,
+            context.packageManager.getPackageInfo(context.packageName, 0).versionName ?: "1.0.0"
+        )
+    }
+
+    fun bindUserPracticeSettings(root: View, context: Context) {
+        val settings = SettingsStore(context)
         val vedaChoices = listOf("ಋಗ್ವೇದ — ಆಶ್ವಲಾಯನ", "ಕೃಷ್ಣ ಯಜುರ್ವೇದ — ತೈತ್ತಿರೀಯ")
         MaterialChoices.bind(root.findViewById(R.id.settingsVeda), vedaChoices,
             SettingsStore.VEDA_IDS.indexOf(settings.veda()).coerceAtLeast(0)) { settings.setVeda(SettingsStore.VEDA_IDS[it]) }
+        MaterialChoices.wrapLabel(root.findViewById(R.id.settingsVeda))
         val hint = root.findViewById<TextView>(R.id.settingsPanchangaHint)
         fun showHint(index: Int) {
             hint.setText(if (PanchangaTraditions.all[index].liveDailyData) R.string.settings_panchanga_live else R.string.settings_panchanga_reference)
@@ -114,11 +80,8 @@ object SettingsScreenBinder {
             settings.setPanchangaTradition(PanchangaTraditions.all[it].id)
             showHint(it)
         }
+        MaterialChoices.wrapLabel(root.findViewById(R.id.settingsPanchanga))
         showHint(selected)
-        root.findViewById<TextView>(R.id.settingsVersion).text = context.getString(
-            R.string.settings_version,
-            context.packageManager.getPackageInfo(context.packageName, 0).versionName ?: "1.0.0"
-        )
     }
 
     fun refreshProfileSummary(root: View, context: Context) {
@@ -159,7 +122,7 @@ object SettingsScreenBinder {
                 setPadding(0, 0, 0, context.resources.getDimensionPixelSize(R.dimen.carbon_spacing_03))
             }
             row.addView(TextView(context).apply {
-                text = if (index == 0) "1 · Gayatri" else "${index + 1}"
+                text = "${index + 1}"
                 setTextAppearance(R.style.TextAppearance_Carbon_Label01)
                 setTextColor(context.getColor(R.color.carbon_text_secondary))
                 layoutParams = LinearLayout.LayoutParams(
@@ -169,7 +132,8 @@ object SettingsScreenBinder {
             })
             if (index == 0) {
                 row.addView(TextView(context).apply {
-                    text = JapaCatalog.entries.firstOrNull { it.id == "gayatri" }?.label ?: "ಗಾಯತ್ರೀ"
+                    text = JapaCatalog.entries.firstOrNull { it.id == "gayatri" }?.label ?: "ಗಾಯತ್ರೀ ಮಂತ್ರ"
+                    layoutParams = LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f)
                     setTextAppearance(R.style.TextAppearance_Carbon_BodyCompact01)
                     setTextColor(context.getColor(R.color.carbon_text))
                 })
@@ -181,6 +145,7 @@ object SettingsScreenBinder {
                     slots[0] = "gayatri"
                     settings.setDashboardJapaSlots(slots)
                 }
+                MaterialChoices.wrapLabel(picker)
                 row.addView(picker, LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f))
             }
             host.addView(row)

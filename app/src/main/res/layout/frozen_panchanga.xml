@@ -265,7 +265,7 @@
                             android:layout_width="@dimen/shell_fact_label_width"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/carbon_spacing_04"
-                            android:text="ಭಾವ"
+                            android:text="ನಕ್ಷತ್ರ ಪಾದ"
                             android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                             android:textColor="@color/md_theme_onSurfaceVariant" />
 
@@ -361,7 +361,7 @@
                     style="@style/Widget.Material3.Button.TextButton"
                     android:layout_width="@dimen/carbon_layout_size_height_lg"
                     android:layout_height="@dimen/carbon_layout_size_height_lg"
-                    android:contentDescription="Event details and significance"
+                    android:contentDescription="Show day’s event and significance"
                     android:insetBottom="0dp"
                     android:insetTop="0dp"
                     android:minWidth="0dp"
@@ -372,18 +372,6 @@
                     app:iconSize="20dp"
                     app:iconTint="@color/md_theme_onSurface" />
             </LinearLayout>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/panchangaOpenContent"
-                style="@style/Widget.MadhvaNidhi.Button.Filled"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/carbon_spacing_03"
-                android:minHeight="@dimen/carbon_layout_size_height_lg"
-                android:text="@string/open_panchanga_details"
-                app:icon="@drawable/ic_launch"
-                app:iconGravity="textEnd"
-                app:iconPadding="@dimen/carbon_spacing_03" />
         </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

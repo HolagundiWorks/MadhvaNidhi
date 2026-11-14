@@ -19,7 +19,7 @@
     <dimen name="ui_rounded_safe">8dp</dimen>
 
     <!-- Warm white paper canvas with restrained earthen accents. -->
-    <color name="earth_canvas_desk">#FFFDF8</color>
+    <color name="earth_canvas_desk">@color/md_theme_background</color>
     <color name="earth_canvas_sandhya">#FFFDF8</color>
     <color name="earth_canvas_nitya">#FFFDF8</color>
     <color name="earth_canvas_mantras">#FFFDF8</color>
@@ -27,7 +27,7 @@
     <color name="earth_canvas_hadugalu">#FFFDF8</color>
     <color name="earth_canvas_japa">#FFFDF8</color>
     <color name="earth_canvas_aayadi">#FFFDF8</color>
-    <color name="earth_accent_desk">#C96F45</color>
+    <color name="earth_accent_desk">@color/md_theme_primary</color>
     <color name="earth_accent_sandhya">#C96F45</color>
     <color name="earth_accent_nitya">#C96F45</color>
     <color name="earth_accent_mantras">#C96F45</color>

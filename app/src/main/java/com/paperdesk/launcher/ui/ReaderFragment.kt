@@ -11,7 +11,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.paperdesk.launcher.R
 import com.paperdesk.launcher.data.CatalogueStore
@@ -19,7 +18,6 @@ import com.paperdesk.launcher.data.IndicScript
 import com.paperdesk.launcher.data.MadhwaStore
 import com.paperdesk.launcher.data.OsLang
 import com.paperdesk.launcher.data.SandhyaStore
-import com.paperdesk.launcher.data.Sankalpa
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -62,7 +60,6 @@ class ReaderFragment : Fragment() {
         view.findViewById<View>(R.id.readerSelectBtn).setOnClickListener { openSelector() }
         view.findViewById<View>(R.id.readerSelectLabel).setOnClickListener { openSelector() }
         view.findViewById<View>(R.id.selectorBack).setOnClickListener { closeSelector() }
-        view.findViewById<MaterialButton>(R.id.readerOpenContent).setOnClickListener { openContent() }
         if (pageId == SANDHYA) setupKalaDropdown(view)
         sessionId = prefs.getString("session", "").orEmpty()
         itemId = prefs.getString("item", "").orEmpty()
@@ -138,6 +135,7 @@ class ReaderFragment : Fragment() {
         itemId = row.id
         prefs.edit().putString("session", sessionId).putString("item", itemId).apply()
         paint()
+        openContent()
     }
 
     private fun pickKala(id: String) {
@@ -187,9 +185,7 @@ class ReaderFragment : Fragment() {
         v.findViewById<View>(R.id.readerKalaField).visibility = if (sandhya) View.VISIBLE else View.GONE
         if (sandhya) bindKala(v)
 
-        val openBtn = v.findViewById<MaterialButton>(R.id.readerOpenContent)
-        openBtn.text = OsLang.ui("open_content", lang)
-        openBtn.contentDescription = OsLang.ui("open_content", lang)
+        v.findViewById<View>(R.id.readerActionBar).visibility = View.GONE
 
         val token = "${pageId}|$sessionId|$itemId|$subpageId|${lang.name}"
         paintJob?.cancel()
@@ -215,8 +211,6 @@ class ReaderFragment : Fragment() {
             crumb.contentDescription = crumbText
             DeskType.apply(crumb, DeskType.REGULAR)
 
-            openBtn.isEnabled = item != null
-
             val list = v.findViewById<RecyclerView>(R.id.selectorList)
             val emptyView = v.findViewById<TextView>(R.id.selectorEmpty)
             val scrollPreview = v.findViewById<View>(R.id.readerScroll)
@@ -224,14 +218,14 @@ class ReaderFragment : Fragment() {
             if (sandhya) {
                 list.visibility = View.GONE
                 emptyView.visibility = View.GONE
-                scrollPreview.visibility = View.VISIBLE
+                scrollPreview.visibility = View.GONE
                 v.findViewById<TextView>(R.id.readerHead).apply {
                     text = item?.head.orEmpty()
                     setTextColor(PagePalette.accent(requireContext(), pageId))
                     DeskType.apply(this, DeskType.SEMIBOLD)
                 }
                 v.findViewById<TextView>(R.id.readerBody).apply {
-                    text = item?.body ?: ""
+                    text = ""
                     DeskType.reading(this)
                 }
             } else {
@@ -350,7 +344,7 @@ class ReaderFragment : Fragment() {
                 val label = MadhwaStore.label(item, lang)
                 return Shown(
                     head = label,
-                    body = Sankalpa.injectPuja(app, MadhwaStore.body(app, item, lang), lang).take(300),
+                    body = "",
                     label = label
                 )
             }
@@ -449,12 +443,12 @@ class ReaderFragment : Fragment() {
             } else if (holder is ItemVH) {
                 val on = row.id == selected
                 holder.title.text = row.title
-                val card = holder.itemView as MaterialCardView
-                card.isChecked = on
                 val ctx = holder.itemView.context
-                card.setCardBackgroundColor(
-                    ctx.getColor(if (on) R.color.carbon_layer_selected else R.color.carbon_layer)
+                holder.itemView.isSelected = on
+                holder.itemView.setBackgroundColor(
+                    ctx.getColor(if (on) R.color.md_theme_secondaryContainer else R.color.md_theme_surface)
                 )
+                holder.itemView.findViewById<View>(R.id.selectMark).visibility = if (on) View.VISIBLE else View.INVISIBLE
                 holder.title.setTextColor(
                     ctx.getColor(if (on) R.color.carbon_interactive else R.color.carbon_text_primary)
                 )

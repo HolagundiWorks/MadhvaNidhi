@@ -1,3 +1,5 @@
+> Superseded for native Android by the 14 November guided procedure/counting redesign: [Japa flow](japa-flow-2026-11-14.md). The historical Carbon mock below is retained as an archive.
+
 # Frozen Nitya · Japa — finalized 12 November 2026
 
 Approved web-mockup contract for the **ಜಪ** tab inside Nitya Karma. Layout changes require a new design iteration.

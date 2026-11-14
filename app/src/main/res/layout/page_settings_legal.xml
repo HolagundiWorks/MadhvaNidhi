@@ -47,7 +47,10 @@
                     android:layout_marginTop="@dimen/carbon_spacing_03"
                     android:text="@string/legal_developer_body"
                     android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                    android:textIsSelectable="true" />
+                    android:textIsSelectable="true"
+                    android:autoLink="email|phone"
+                    android:linksClickable="true"
+                    android:textColorLink="@color/md_theme_onSurface" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/legalVersion"

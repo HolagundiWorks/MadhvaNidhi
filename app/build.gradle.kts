@@ -9,6 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "in.hcworks.madhvanidhi"
+        testApplicationId = "in.hcworks.madhvanidhi.flowtests"
         minSdk = 25
         targetSdk = 36
         versionCode = 1

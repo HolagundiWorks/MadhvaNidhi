@@ -180,9 +180,9 @@ class FrozenShellInstrumentation : Instrumentation() {
             }
             settle()
             main {
-                val scroll = active.get().findViewById<ScrollView>(R.id.eventScroll)
-                check(scroll.canScrollVertically(1) && !scroll.isVerticalScrollBarEnabled) {
-                    "Event scrolling / hidden scrollbar failed"
+                val scroll = active.get().findViewById<androidx.core.widget.NestedScrollView>(R.id.panchangaScreen)
+                check(scroll.canScrollVertically(1) || scroll.canScrollVertically(-1)) {
+                    "Panchanga event details cannot scroll"
                 }
             }
             result.putString(

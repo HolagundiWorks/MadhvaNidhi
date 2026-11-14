@@ -1,247 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Portrait Japa · mockup carbon-app.css ≤720px: anga stacked above counter -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/carbon_spacing_05"
-    android:background="@color/md_theme_background">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:minHeight="@dimen/carbon_layout_size_height_lg">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="ಜಪ"
-            style="@style/Widget.MadhvaNidhi.TextField.Exposed">
-
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:id="@+id/japaMantra"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none"
-                android:maxLines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/japaSkip"
-            style="@style/Widget.MadhvaNidhi.Button.Outlined"
-            android:layout_width="@dimen/carbon_layout_size_height_lg"
-            android:layout_height="@dimen/carbon_layout_size_height_lg"
-            android:layout_marginStart="@dimen/carbon_spacing_05"
-            android:minWidth="0dp"
-            android:padding="0dp"
-            android:contentDescription="Skip today"
-            app:icon="@drawable/ic_skip"
-            app:iconGravity="textStart"
-            app:iconPadding="0dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/japaComplete"
-            style="@style/Widget.MadhvaNidhi.Button.Outlined"
-            android:layout_width="@dimen/carbon_layout_size_height_lg"
-            android:layout_height="@dimen/carbon_layout_size_height_lg"
-            android:layout_marginStart="@dimen/carbon_spacing_03"
-            android:minWidth="0dp"
-            android:padding="0dp"
-            android:contentDescription="Completed for today"
-            app:icon="@drawable/ic_check"
-            app:iconGravity="textStart"
-            app:iconPadding="0dp" />
-    </LinearLayout>
-
-    <!-- Stacked portrait: anga (~40%) then counter -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="@dimen/carbon_spacing_05"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:orientation="vertical"
-            android:paddingBottom="@dimen/carbon_spacing_05">
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/japaAngaTabs"
-                style="@style/Widget.MadhvaNidhi.TabLayout"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_gravity="start"
-                app:tabMode="scrollable"
-                app:tabGravity="start" />
-
-            <com.google.android.material.card.MaterialCardView
-                style="@style/Widget.MadhvaNidhi.SurfaceCard"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fillViewport="true">
-
-                    <TextView
-                        android:id="@+id/japaAngaBody"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/carbon_spacing_05"
-                        android:paddingBottom="@dimen/carbon_spacing_07"
-                        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                        android:textColor="@color/md_theme_onSurface"
-                        android:lineSpacingMultiplier="1.3"
-                        android:includeFontPadding="false" />
-                </ScrollView>
-            </com.google.android.material.card.MaterialCardView>
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/carbon_border_width"
-            android:background="@color/md_theme_outlineVariant" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:orientation="vertical"
-            android:paddingTop="@dimen/carbon_spacing_05">
-
-            <com.google.android.material.card.MaterialCardView
-                style="@style/Widget.MadhvaNidhi.SurfaceCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:id="@+id/japaCountTile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="88dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/carbon_spacing_05">
-
-                    <TextView
-                        android:id="@+id/japaCountDone"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="@style/TextAppearance.Material3.DisplaySmall"
-                        android:textColor="@color/md_theme_onSurface"
-                        android:text="01"
-                        android:textSize="42sp" />
-
-                    <TextView
-                        android:id="@+id/japaCountSep"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/carbon_spacing_02"
-                        android:layout_marginEnd="@dimen/carbon_spacing_02"
-                        android:text="/"
-                        android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
-                        android:textColor="@color/md_theme_onSurfaceVariant" />
-
-                    <TextView
-                        android:id="@+id/japaCountTarget"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
-                        android:textColor="@color/md_theme_onSurfaceVariant"
-                        android:text="101" />
+<?xml version='1.0' encoding='utf-8'?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/md_theme_background">
+    <androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="0dp" android:fillViewport="true" android:background="@color/md_theme_background" android:layout_weight="1">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp" android:showDividers="none">
+            <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MadhvaNidhi.TextField.Exposed" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="ಜಪ ಮಂತ್ರ" app:startIconDrawable="@drawable/ic_japa_eda" app:startIconTint="@color/md_theme_onSurface">
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@+id/japaMantra" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="64dp" android:inputType="none" android:textColor="@color/md_theme_onSurface" android:textSize="18sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView android:id="@+id/japaFlowTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="1 · ಪೂರ್ವಾಂಗ" android:textAppearance="@style/TextAppearance.Material3.TitleLarge" android:textColor="@color/md_theme_onSurface" android:layout_marginBottom="8dp" android:layout_marginTop="20dp" />
+            <com.google.android.material.progressindicator.LinearProgressIndicator android:id="@+id/japaFlowProgress" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="3" app:indicatorColor="@color/md_theme_primary" />
+            <TextView android:id="@+id/japaFlowHint" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ಪೂರ್ವಾಂಗ → ಎಣಿಕೆ → ಉತ್ತರಾಂಗ" android:textAppearance="@style/TextAppearance.Material3.BodyLarge" android:textColor="@color/md_theme_onSurface" android:layout_marginBottom="8dp" android:layout_marginTop="12dp" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/japaReadPoorvanga" style="@style/Widget.Material3.Button.OutlinedButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="64dp" android:insetTop="0dp" android:insetBottom="0dp" android:layout_marginTop="12dp" android:text="ಪೂರ್ವಾಂಗ ಓದಿ" android:textSize="16sp" android:textColor="@color/md_theme_onSurface" app:cornerRadius="16dp" />
+            <com.google.android.material.card.MaterialCardView style="@style/Widget.MadhvaNidhi.SurfaceCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp">
+                <LinearLayout android:id="@+id/japaCountTile" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ಇಂದಿನ ಜಪ · ದೈನಂದಿನ ಗುರಿ" android:textAppearance="@style/TextAppearance.Material3.LabelLarge" android:textColor="@color/md_theme_onSurface" android:gravity="center" />
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:baselineAligned="false" android:gravity="center" android:minHeight="88dp">
+                        <TextView android:id="@+id/japaCountDone" android:layout_width="wrap_content" android:layout_margin="6dp" android:layout_height="wrap_content" android:text="64" android:textAppearance="@style/TextAppearance.Material3.DisplayLarge" android:textColor="@color/md_theme_onSurface" android:gravity="end" />
+                        <TextView android:id="@+id/japaCountSep" android:layout_width="wrap_content" android:layout_margin="6dp" android:layout_height="wrap_content" android:text="/" android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall" android:textColor="@color/md_theme_onSurface" android:gravity="center" />
+                        <TextView android:id="@+id/japaCountTarget" android:layout_width="wrap_content" android:layout_margin="6dp" android:layout_height="wrap_content" android:text="101" android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall" android:textColor="@color/md_theme_onSurface" android:gravity="start" />
+                    </LinearLayout>
+                    <TextView android:id="@+id/japaStatus" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="" android:textAppearance="@style/TextAppearance.Material3.BodyLarge" android:textColor="@color/md_theme_onSurface" android:gravity="center" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_marginTop="@dimen/carbon_spacing_05"
-                android:orientation="horizontal"
-                android:gravity="bottom">
-
-                <GridLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="bottom"
-                    android:columnCount="2"
-                    android:rowCount="2"
-                    android:alignmentMode="alignBounds"
-                    android:useDefaultMargins="false">
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/japaGoal11"
-                        style="@style/Widget.MadhvaNidhi.Button.Outlined"
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/carbon_layout_size_height_lg"
-                        android:layout_columnWeight="1"
-                        android:layout_marginEnd="@dimen/carbon_spacing_03"
-                        android:layout_marginBottom="@dimen/carbon_spacing_03"
-                        android:text="11"
-                        android:contentDescription="Add 11 to daily goal" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/japaGoal101"
-                        style="@style/Widget.MadhvaNidhi.Button.Outlined"
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/carbon_layout_size_height_lg"
-                        android:layout_columnWeight="1"
-                        android:layout_marginBottom="@dimen/carbon_spacing_03"
-                        android:text="101"
-                        android:contentDescription="Add 101 to daily goal" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/japaGoal1001"
-                        style="@style/Widget.MadhvaNidhi.Button.Outlined"
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/carbon_layout_size_height_lg"
-                        android:layout_columnWeight="1"
-                        android:layout_marginEnd="@dimen/carbon_spacing_03"
-                        android:text="1,001"
-                        android:contentDescription="Add 1,001 to daily goal" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/japaReset"
-                        style="@style/Widget.MadhvaNidhi.Button.Outlined"
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/carbon_layout_size_height_lg"
-                        android:layout_columnWeight="1"
-                        android:contentDescription="Reset daily goal"
-                        app:icon="@drawable/ic_reset"
-                        app:iconGravity="textStart"
-                        app:iconPadding="0dp" />
-                </GridLayout>
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/japaTap"
-                    style="@style/Widget.MadhvaNidhi.Button.Filled"
-                    android:layout_width="@dimen/carbon_spacing_10"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/carbon_spacing_05"
-                    android:minHeight="@dimen/carbon_spacing_09"
-                    android:text="+"
-                    android:textSize="32sp"
-                    android:contentDescription="Japa +1" />
+            <TextView android:id="@+id/japaTargetNote" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ಇಂದಿನ ಗುರಿ" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" android:layout_marginBottom="8dp" />
+            <LinearLayout android:id="@+id/japaCountControls" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                <com.google.android.material.button.MaterialButton android:id="@+id/japaTap" style="@style/Widget.Material3.Button" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="96dp" android:insetTop="0dp" android:insetBottom="0dp" android:paddingTop="12dp" android:paddingBottom="12dp" android:text="+  1 ಜಪ" android:textSize="24sp" android:textColor="@color/md_theme_onPrimary" app:cornerRadius="16dp" app:icon="@drawable/ic_japa_eda" app:iconSize="24dp" android:contentDescription="ಒಂದು ಜಪ ಸೇರಿಸಿ · Add one Japa" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:baselineAligned="false">
+                    <com.google.android.material.button.MaterialButton android:id="@+id/japaRecordBatch" style="@style/Widget.Material3.Button.OutlinedButton" android:layout_width="0dp" android:layout_height="wrap_content" android:minHeight="64dp" android:insetTop="0dp" android:insetBottom="0dp" android:layout_marginTop="12dp" android:text="ಮಾಡಿದ ಜಪದ ಸಂಖ್ಯೆ ಸೇರಿಸಿ" android:textSize="16sp" android:textColor="@color/md_theme_onSurface" app:cornerRadius="16dp" android:layout_weight="1" android:layout_margin="4dp" />
+                    <com.google.android.material.button.MaterialButton android:id="@+id/japaUndo" style="@style/Widget.Material3.Button.OutlinedButton" android:layout_width="0dp" android:layout_height="wrap_content" android:minHeight="64dp" android:insetTop="0dp" android:insetBottom="0dp" android:layout_marginTop="12dp" android:text="ಹಿಂದಿನ ಎಣಿಕೆ ರದ್ದು" android:textSize="16sp" android:textColor="@color/md_theme_onSurface" app:cornerRadius="16dp" android:layout_weight="1" android:layout_margin="4dp" />
+                </LinearLayout>
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/japaStatus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/carbon_spacing_03"
-                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
-                android:textColor="@color/md_theme_onSurfaceVariant"
-                android:minHeight="16dp" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/japaReadUttaranga" style="@style/Widget.Material3.Button.OutlinedButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="64dp" android:insetTop="0dp" android:insetBottom="0dp" android:layout_marginTop="12dp" android:text="ಉತ್ತರಾಂಗ ಓದಿ" android:textSize="16sp" android:textColor="@color/md_theme_onSurface" app:cornerRadius="16dp" />
         </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="16dp" android:paddingEnd="16dp" android:paddingTop="8dp" android:paddingBottom="12dp" android:background="@color/md_theme_surfaceContainer">
+        <com.google.android.material.button.MaterialButton android:id="@+id/japaFlowBack" style="@style/Widget.Material3.Button.OutlinedButton" android:layout_width="0dp" android:layout_height="wrap_content" android:minHeight="64dp" android:insetTop="0dp" android:insetBottom="0dp" android:layout_marginTop="0dp" android:text="ಹಿಂದಿನ ಹಂತ" android:textSize="16sp" android:textColor="@color/md_theme_onSurface" app:cornerRadius="16dp" android:layout_weight="1" android:layout_marginEnd="8dp" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/japaFlowNext" style="@style/Widget.Material3.Button" android:layout_width="0dp" android:layout_height="wrap_content" android:minHeight="64dp" android:insetTop="0dp" android:insetBottom="0dp" android:layout_marginTop="0dp" android:text="ಎಣಿಕೆ ಪ್ರಾರಂಭಿಸಿ" android:textSize="16sp" android:textColor="@color/md_theme_onPrimary" app:cornerRadius="16dp" android:layout_weight="2" />
     </LinearLayout>
 </LinearLayout>

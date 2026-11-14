@@ -93,22 +93,20 @@ class ResponsiveUiInstrumentation : Instrumentation() {
             settle()
             main {
                 val root = active.get().supportFragmentManager.findFragmentById(R.id.pageHost)!!.requireView()
-                root.findViewById<View>(R.id.dashProgress).performClick()
+                root.findViewById<android.widget.LinearLayout>(R.id.dashboardWeek).getChildAt(0).performClick()
             }
             settle()
             alive()
             uiAutomation.performGlobalAction(android.accessibilityservice.AccessibilityService.GLOBAL_ACTION_BACK)
             settle(400)
 
-            // Sandhya: kala + skip/complete + floating progress
+            // Sandhya: kala selector and direct landscape-reader entry
             main { active.get().navigateTo("sandhya") }
             settle()
             main {
                 val root = active.get().supportFragmentManager.findFragmentById(R.id.pageHost)!!.requireView()
                 root.findViewById<MaterialButton>(R.id.sandhyaKalaMadhya).performClick()
-                root.findViewById<MaterialButton>(R.id.sandhyaComplete).performClick()
-                root.findViewById<ProgressBar>(R.id.sandhyaProgress).performClick()
-                root.findViewById<MaterialButton>(R.id.sandhyaSkip).performClick()
+                check(root.findViewById<MaterialButton>(R.id.sandhyaRead).isEnabled)
             }
             settle()
             alive()

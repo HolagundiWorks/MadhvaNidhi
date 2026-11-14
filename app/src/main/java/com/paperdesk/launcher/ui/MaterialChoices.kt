@@ -24,6 +24,14 @@ object MaterialChoices {
             onSelected(position)
         }
     }
+    /** Keep complete catalogue names visible in Japa selectors. */
+    fun wrapLabel(view: MaterialAutoCompleteTextView) {
+        view.setSingleLine(false)
+        view.maxLines = Int.MAX_VALUE
+        view.ellipsize = null
+        view.setHorizontallyScrolling(false)
+    }
+
     fun select(view: MaterialAutoCompleteTextView, position: Int) {
         val safe = position.coerceIn(0, (view.adapter?.count ?: 1) - 1)
         view.tag = safe

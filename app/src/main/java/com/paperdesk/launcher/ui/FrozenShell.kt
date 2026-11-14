@@ -105,8 +105,11 @@ class FrozenShell(private val activity: LauncherActivity) {
             val button = host.getChildAt(i) as? MaterialButton ?: continue
             val id = button.tag as? String ?: continue
             val active = activeRail == id || current == id
-            paintButton(button, active)
+            paintButton(button, active, labeled)
             button.isEnabled = !DeskLock.isLocked(activity)
+            if (active && !labeled) button.post {
+                button.requestRectangleOnScreen(android.graphics.Rect(0, 0, button.width, button.height), false)
+            }
         }
         return key
     }
@@ -125,6 +128,8 @@ class FrozenShell(private val activity: LauncherActivity) {
             iconSize = activity.resources.getDimensionPixelSize(R.dimen.shell_icon_size)
             iconPadding = if (!labeled) 0 else activity.resources.getDimensionPixelSize(R.dimen.carbon_spacing_05)
             iconGravity = if (!labeled) MaterialButton.ICON_GRAVITY_TEXT_START else MaterialButton.ICON_GRAVITY_START
+            minWidth = 0
+            minHeight = 0
             minimumWidth = if (!labeled) (48 * density).toInt() else 0
             minimumHeight = (48 * density).toInt()
             insetTop = 0
@@ -151,14 +156,16 @@ class FrozenShell(private val activity: LauncherActivity) {
                 close()
                 activity.navigateTo(id)
             }
-            paintButton(this, false)
+            paintButton(this, false, labeled)
         }
     }
 
-    private fun paintButton(button: MaterialButton, active: Boolean) {
+    private fun paintButton(button: MaterialButton, active: Boolean, labeled: Boolean) {
         button.isSelected = active
+        androidx.core.view.ViewCompat.setStateDescription(button, if (active) "Current destination" else null)
         val color = activity.getColor(
-            if (active) R.color.md_theme_onSecondaryContainer else R.color.md_theme_onSurfaceVariant
+            if (active && !labeled) R.color.md_theme_onPrimary
+            else if (active) R.color.md_theme_onSecondaryContainer else R.color.md_theme_onSurfaceVariant
         )
         button.iconTint = ColorStateList.valueOf(color)
         button.setTextColor(color)
@@ -171,26 +178,29 @@ class FrozenShell(private val activity: LauncherActivity) {
             "sandhya", "japa", "nitya", "nityakarma" -> "nityakarma"
             "puja" -> "puja"
             "stotra", "suktas", "mantras", "namavali", "grantha" -> "grantha"
-            "hadugalu", "playlists", "sangeeta" -> "sangeeta"
+            "hadugalu", "playlists", "favorites", "sangeeta" -> "sangeeta"
             "aayadi", "rangavalli", "recipes", "samskruti" -> "samskruti"
             "user", "settings" -> "settings"
             else -> pageId
         }
 
         fun iconFor(id: String): Int = when (id) {
-            "dashboard" -> R.drawable.ic_dashboard
-            "desk" -> R.drawable.ic_calendar
-            "nityakarma" -> R.drawable.ic_time_plot
+            "dashboard" -> R.drawable.ic_nav_home
+            "desk" -> R.drawable.ic_nav_calendar
+            "nityakarma" -> R.drawable.ic_nav_daily
             "sandhya" -> R.drawable.ic_sun
-            "japa" -> R.drawable.ic_renew
-            "puja" -> R.drawable.ic_transform_instructions
-            "nitya" -> R.drawable.ic_book
-            "grantha" -> R.drawable.ic_document_multiple_01
-            "stotra", "suktas", "mantras", "namavali" -> R.drawable.ic_book
-            "sangeeta", "hadugalu", "playlists" -> R.drawable.ic_music
-            "samskruti", "aayadi", "rangavalli", "recipes" -> R.drawable.ic_mac_command
+            "japa" -> R.drawable.ic_japa_eda
+            "puja" -> R.drawable.ic_nav_puja
+            "nitya" -> R.drawable.ic_nav_library
+            "grantha" -> R.drawable.ic_nav_library
+            "stotra", "suktas", "mantras", "namavali" -> R.drawable.ic_nav_library
+            "sangeeta", "hadugalu", "playlists", "favorites" -> R.drawable.ic_nav_songs
+            "samskruti" -> R.drawable.ic_nav_culture
+            "aayadi" -> R.drawable.ic_nav_culture
+            "rangavalli" -> R.drawable.ic_dashboard
+            "recipes" -> R.drawable.ic_nav_puja
             "user" -> R.drawable.ic_user
-            "settings" -> R.drawable.ic_settings
+            "settings" -> R.drawable.ic_nav_settings
             else -> R.drawable.ic_information
         }
     }

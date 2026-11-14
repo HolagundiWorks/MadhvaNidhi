@@ -135,7 +135,15 @@
           "deity": "Srinivasa",
           "file": "lib:stotra/VenkateshaStotram",
           "script": "sa",
-          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/"
+          "url": "https://madhwafestivals.com/2017/04/06/sthothra-compilation-on-madhwa-yatigalu/",
+          "sourceReferences": [
+            {
+              "source_id": "stotra_sangrahah",
+              "path": "stotras/venkatesha/VenkateshaStotram.tex",
+              "comparison": "exact-id-or-file-name",
+              "rights_status": "redistribution-rights-review-required"
+            }
+          ]
         },
         {
           "id": "laghu_shiva_stuti",
@@ -272,7 +280,15 @@
           "deity": "Kaveri",
           "file": "lib:stotra/KaveriPrarthana",
           "script": "sa",
-          "url": "https://madhwafestivals.com/tag/sthothra/"
+          "url": "https://madhwafestivals.com/tag/sthothra/",
+          "sourceReferences": [
+            {
+              "source_id": "stotra_sangrahah",
+              "path": "stotras/nadi/KaveriPrarthana.tex",
+              "comparison": "exact-id-or-file-name",
+              "rights_status": "redistribution-rights-review-required"
+            }
+          ]
         },
         {
           "id": "raghavendra_stotra",
@@ -335,7 +351,15 @@
           "deity": "Narasimha",
           "file": "lib:stotra/LakshmiNrisimhaKarunarasaStotram",
           "script": "sa",
-          "url": "https://madhwafestivals.com/"
+          "url": "https://madhwafestivals.com/",
+          "sourceReferences": [
+            {
+              "source_id": "stotra_sangrahah",
+              "path": "stotras/vishnu/LakshmiNrisimhaKarunarasaStotram.tex",
+              "comparison": "exact-id-or-file-name",
+              "rights_status": "redistribution-rights-review-required"
+            }
+          ]
         },
         {
           "id": "nrisimha_stuti_np",
@@ -546,7 +570,15 @@
           "deity": "Gowri",
           "file": "lib:stotra/GauriAshtottaraShatanamaStotram",
           "script": "sa",
-          "url": "https://madhwafestivals.com/tag/index/"
+          "url": "https://madhwafestivals.com/tag/index/",
+          "sourceReferences": [
+            {
+              "source_id": "stotra_sangrahah",
+              "path": "stotras/shatanama/GauriAshtottaraShatanamaStotram.tex",
+              "comparison": "exact-id-or-file-name",
+              "rights_status": "redistribution-rights-review-required"
+            }
+          ]
         },
         {
           "id": "nama_ganesha",

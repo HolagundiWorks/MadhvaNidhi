@@ -162,7 +162,7 @@ class SettingsStore(context: Context) {
             "dashboard", "desk",
             "nityakarma", "puja",
             "grantha", "stotra", "suktas", "mantras", "namavali",
-            "sangeeta", "hadugalu", "playlists",
+            "sangeeta", "hadugalu", "favorites",
             "samskruti", "aayadi", "rangavalli", "recipes",
             "user",
             "settings"
@@ -195,7 +195,8 @@ class SettingsStore(context: Context) {
             "puja" to "POOJA",
             "grantha" to "GRANTHA",
             "hadugalu" to "HADUGALU",
-            "playlists" to "PLAYLISTS",
+            "playlists" to "FAVORITES",
+            "favorites" to "FAVORITES",
             "sangeeta" to "BHAKTI SANGEETA",
             "japa" to "JAPA",
             "samskruti" to "GRUHA SAMSKRUTI",
@@ -216,6 +217,7 @@ class SettingsStore(context: Context) {
         fun canonicalizePageId(id: String): String = when (id) {
             "sandhya", "japa", "nitya" -> "nityakarma"
             "panchanga" -> "desk"
+            "playlists" -> "favorites"
             else -> id
         }
 

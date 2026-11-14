@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="kn">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MadhvaNidhi · Material dashboard</title>
+<link rel="stylesheet" href="../ibm-plex.css"><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;icon_names=award_star,calendar_view_week,chevron_right,dark_mode,eda,home,insights,light_mode,menu_book,music_note,person,spa,remove,self_improvement,wb_twilight">
+<script type="importmap">{"imports":{"@material/web/":"https://esm.run/@material/web/"}}</script>
+<link rel="stylesheet" href="./material-dashboard.css"><script type="module" src="./material-dashboard.js"></script>
+</head><body>
+<main id="dashboard">
+<header class="welcome"><md-filled-tonal-icon-button aria-label="User profile" id="profile-button"><span class="material-symbols-outlined">person</span></md-filled-tonal-icon-button><div><small>Welcome back</small><h1>ಸಾಧಕ</h1></div><md-icon-button id="theme-button" aria-label="Switch light or dark theme"><span class="material-symbols-outlined">dark_mode</span></md-icon-button></header>
+<h2 class="section-title">Daily practice</h2>
+<div class="paired-cards">
+<section class="surface"><div class="card-title"><h3>Sandhyavandana</h3><md-icon-button id="open-week" aria-label="View practice week"><span class="material-symbols-outlined">chevron_right</span></md-icon-button></div><strong class="large-number" id="today-count">2 / 3</strong><p>Morning · Noon · Evening</p><div class="session-icons"><span class="material-symbols-outlined">wb_twilight</span><span class="material-symbols-outlined">light_mode</span><span class="material-symbols-outlined pending">dark_mode</span></div><md-linear-progress id="today-progress" value=".67"></md-linear-progress></section>
+<section class="surface"><div class="card-title"><h3>Streak</h3><span class="material-symbols-outlined award-symbol award-brown" aria-label="Brown streak award">award_star</span></div><strong class="large-number">20 <small>days</small></strong><p>Best streak · 20 days</p><div id="award-badges" class="award-badges"></div></section>
+</div>
+<h2 class="section-title">Overall progress</h2>
+<section class="surface overall"><div><h2>Your Japa practice</h2><p id="overall-status" class="completion-state"></p><p><strong>64 / 101</strong> repetitions today</p><md-filled-button id="resume-japa">Continue Japa</md-filled-button></div><div class="overall-ring"><md-circular-progress value=".6337"></md-circular-progress><span class="material-symbols-outlined japa-symbol">eda</span></div></section>
+<div class="section-heading"><h2 class="section-title">Your Japa</h2><span>Daily · Cumulative</span></div><div id="japa-cards" class="japa-cards"></div>
+<div class="section-heading"><h2 class="section-title">Weekly streak</h2><span id="week-score">6 of 7 days</span></div>
+<section class="surface week-card"><div id="practice-week"></div></section>
+<h2 class="section-title">Quick access</h2><div class="quick-access"><md-outlined-button id="quick-puja"><span slot="icon" class="material-symbols-outlined">spa</span>ಪೂಜೆ</md-outlined-button><md-outlined-button id="quick-songs"><span slot="icon" class="material-symbols-outlined">music_note</span>ಹಾಡುಗಳು</md-outlined-button><md-outlined-button id="quick-grantha"><span slot="icon" class="material-symbols-outlined">menu_book</span>ಗ್ರಂಥ</md-outlined-button></div>
+</main>
+<nav class="bottom-navigation" aria-label="Dashboard sections"><md-icon-button class="active" aria-current="location" data-scroll="dashboard" aria-label="Home"><span class="material-symbols-outlined">home</span></md-icon-button><md-icon-button data-scroll="japa-cards" aria-label="Japa"><span class="material-symbols-outlined japa-symbol">eda</span></md-icon-button><md-icon-button data-scroll="practice-week" aria-label="Weekly streak"><span class="material-symbols-outlined">calendar_view_week</span></md-icon-button></nav>
+<md-dialog id="detail-dialog"><div slot="headline" id="detail-title"></div><div slot="content" id="detail-body"></div><div slot="actions"><md-text-button id="close-dialog">Close</md-text-button></div></md-dialog>
+</body></html>

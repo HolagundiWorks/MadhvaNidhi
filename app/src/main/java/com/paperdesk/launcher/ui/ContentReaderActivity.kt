@@ -190,6 +190,23 @@ class ContentReaderActivity : AppCompatActivity() {
             if (isFinishing) return@launch
             if (loaded != null) {
                 displayStatic(loaded.first, loaded.second, loaded.first, loaded.third)
+                if (pageId == "hadugalu") {
+                    CatalogueStore.item(itemId)?.let { song ->
+                        val favorites = com.paperdesk.launcher.data.SongFavoritesStore(this@ContentReaderActivity)
+                        findViewById<MaterialButton>(R.id.readerSongFavorite).apply {
+                            visibility = View.VISIBLE
+                            fun paintFavorite() {
+                                val selected = favorites.contains(song.id)
+                                setIconResource(if (selected) R.drawable.ic_favorite_filled else R.drawable.ic_favorite_outline)
+                                iconTint = ColorStateList.valueOf(getColor(if (selected) R.color.md_theme_primary else R.color.md_theme_onSurface))
+                                contentDescription = (if (selected) "ಮೆಚ್ಚಿನ ಪಟ್ಟಿಯಿಂದ ತೆಗೆದುಹಾಕಿ: " else "ಮೆಚ್ಚಿನ ಪಟ್ಟಿಗೆ ಸೇರಿಸಿ: ") + loaded.first
+                                ViewCompat.setStateDescription(this, if (selected) "Favorite" else "Not favorite")
+                            }
+                            setOnClickListener { favorites.set(song.id,!favorites.contains(song.id)); paintFavorite() }
+                            paintFavorite()
+                        }
+                    }
+                }
             } else {
                 loadInlineContent()
             }
@@ -247,67 +264,45 @@ class ContentReaderActivity : AppCompatActivity() {
         val skipBtn = findViewById<MaterialButton>(R.id.readerModeSkip)
         val completeBtn = findViewById<MaterialButton>(R.id.readerModeComplete)
 
-        prevBtn.setOnClickListener {
-            if (sandhyaAllSteps) {
-                sandhyaAllSteps = false
-            } else if (sandhyaStepIdx > 0) {
-                sandhyaStepIdx--
-                sandhyaSkipped = false
-                if (practice.isSandhyaSessionDone(sandhyaKala)) {
-                    practice.setSandhya(sandhyaKala, false)
-                    sandhyaDone = false
-                }
-            }
-            paintSandhya(practice)
-            scrollView.scrollTo(0, 0)
-        }
-        nextBtn.setOnClickListener {
-            if (sandhyaAllSteps) {
-                sandhyaAllSteps = false
-            } else if (sandhyaStepIdx < sandhyaSteps.lastIndex) {
-                sandhyaStepIdx++
-                sandhyaSkipped = false
-                if (sandhyaStepIdx == sandhyaSteps.lastIndex) {
-                    practice.setSandhya(sandhyaKala, true)
-                    sandhyaDone = true
-                }
-            }
-            paintSandhya(practice)
-            scrollView.scrollTo(0, 0)
-        }
+        prevBtn.visibility = View.GONE
+        nextBtn.visibility = View.GONE
+        allBtn.setIconResource(R.drawable.ic_chevron_down)
+        allBtn.iconGravity = MaterialButton.ICON_GRAVITY_TEXT_END
         allBtn.setOnClickListener {
-            sandhyaAllSteps = !sandhyaAllSteps
-            paintSandhya(practice)
-            scrollView.scrollTo(0, 0)
+            val labels = listOf(OsLang.ui("full_session", lang)) +
+                sandhyaSteps.mapIndexed { index, step -> "${OsLang.digits(index + 1, lang)}. ${SandhyaStore.label(step.title, lang)}" }
+            com.google.android.material.dialog.MaterialAlertDialogBuilder(this)
+                .setTitle(if (lang == IndicScript.Lang.EN) "Select section" else "ಭಾಗ ಆಯ್ಕೆಮಾಡಿ")
+                .setSingleChoiceItems(labels.toTypedArray(), if (sandhyaAllSteps) 0 else sandhyaStepIdx + 1) { dialog, which ->
+                    sandhyaAllSteps = which == 0
+                    if (which > 0) sandhyaStepIdx = which - 1
+                    paintSandhya(practice)
+                    scrollView.scrollTo(0, 0)
+                    dialog.dismiss()
+                }
+                .setNegativeButton(OsLang.ui("cancel", lang), null).show()
+                .getButton(androidx.appcompat.app.AlertDialog.BUTTON_NEGATIVE)
+                .setTextColor(getColor(R.color.md_theme_primary))
         }
-        skipBtn.setOnClickListener {
-            if (sandhyaSkipped) {
-                sandhyaSkipped = false
-            } else {
-                practice.setSandhya(sandhyaKala, false)
-                sandhyaDone = false
-                sandhyaSkipped = true
-                sandhyaStepIdx = 0
+        fun confirmStatus(complete: Boolean) {
+            val targetKala = sandhyaKala
+            val date = com.paperdesk.launcher.data.PanchangaStore.dateKey()
+            val marked = if (complete) practice.isSandhyaSessionDone(targetKala, date)
+                else practice.isSandhyaSkipped(targetKala, date)
+            SandhyaDayConfirmation.show(this, sandhyaTitle, complete, marked) {
+                practice.setSandhyaDay(targetKala, complete = complete && !marked,
+                    skipped = !complete && !marked, date = date)
+                paintSandhya(practice)
             }
-            paintSandhya(practice)
         }
-        completeBtn.setOnClickListener {
-            if (sandhyaDone && !sandhyaSkipped) {
-                practice.setSandhya(sandhyaKala, false)
-                sandhyaDone = false
-            } else {
-                practice.setSandhya(sandhyaKala, true)
-                sandhyaDone = true
-                sandhyaSkipped = false
-                sandhyaStepIdx = sandhyaSteps.lastIndex.coerceAtLeast(0)
-            }
-            paintSandhya(practice)
-        }
+        skipBtn.setOnClickListener { confirmStatus(false) }
+        completeBtn.setOnClickListener { confirmStatus(true) }
     }
 
     private fun paintSandhya(practice: PracticeDayStore) {
         if (sandhyaSteps.isEmpty()) return
-        if (!sandhyaSkipped) sandhyaDone = practice.isSandhyaSessionDone(sandhyaKala)
+        sandhyaSkipped = practice.isSandhyaSkipped(sandhyaKala)
+        sandhyaDone = practice.isSandhyaSessionDone(sandhyaKala)
         sandhyaStepIdx = sandhyaStepIdx.coerceIn(0, sandhyaSteps.lastIndex)
 
         val prevBtn = findViewById<MaterialButton>(R.id.readerStepPrev)
@@ -318,7 +313,7 @@ class ContentReaderActivity : AppCompatActivity() {
         val stepTitle = findViewById<TextView>(R.id.readerStepTitle)
         val progress = findViewById<ProgressBar>(R.id.readerStepProgress)
 
-        allBtn.text = if (sandhyaAllSteps) OsLang.ui("steps", lang) else OsLang.ui("full_session", lang)
+        allBtn.text = if (lang == IndicScript.Lang.EN) "Sections" else "ಭಾಗಗಳು"
         paintToggleChrome(skipBtn, sandhyaSkipped)
         paintToggleChrome(completeBtn, sandhyaDone && !sandhyaSkipped)
 
@@ -328,7 +323,7 @@ class ContentReaderActivity : AppCompatActivity() {
 
         if (sandhyaAllSteps) {
             stepTitle.text = "${OsLang.ui("full_session", lang)} (${OsLang.digits(sandhyaSteps.size, lang)})"
-            progress.progress = 100
+            progress.progress = if (sandhyaDone) 100 else 0
             prevBtn.isEnabled = true
             nextBtn.isEnabled = false
             crumbView.text = baseCrumb
@@ -340,7 +335,7 @@ class ContentReaderActivity : AppCompatActivity() {
             val num = OsLang.digits(sandhyaStepIdx + 1, lang)
             val total = OsLang.digits(sandhyaSteps.size, lang)
             stepTitle.text = "$num / $total · $stepName"
-            progress.progress = if (sandhyaDone) 100 else ((sandhyaStepIdx + 1) * 100 / sandhyaSteps.size)
+            progress.progress = if (sandhyaDone) 100 else if (sandhyaSkipped) 0 else ((sandhyaStepIdx + 1) * 100 / sandhyaSteps.size).coerceAtMost(99)
             prevBtn.isEnabled = sandhyaStepIdx > 0
             nextBtn.isEnabled = sandhyaStepIdx < sandhyaSteps.lastIndex
             crumbView.text = "$baseCrumb  ›  $stepName"
@@ -392,31 +387,16 @@ class ContentReaderActivity : AppCompatActivity() {
                         MadhwaStore.body(applicationContext, it, lang),
                         lang
                     )
-                    val chunks = body.split(Regex("\n{2,}")).map { c -> c.trim() }.filter { c -> c.isNotBlank() }
-                    val sankalpa = Sankalpa.pujaBlock(applicationContext, lang)
-                    val mid = chunks.drop(1).dropLast(1)
-                    val half = (mid.size / 2).coerceAtLeast(0)
-                    val samarpana = chunks.lastOrNull().orEmpty().ifBlank {
-                        IndicScript.convert(
-                            "कायेन वाचा मनसेन्द्रियैर्वा बुद्ध्यात्मना वा प्रकृतेः स्वभावात्।\n" +
-                                "करोमि यद्यत् सकलं परस्मै नारायणायेति समर्पयामि॥\n\n" +
-                                "भारतीरमण मुख्यप्राणान्तर्गत श्रीलक्ष्मीनारायण प्रीत्यर्थं कृतमिदं पूजाकर्म श्रीकृष्णार्पणमस्तु।",
-                            lang
-                        )
-                    }
-                    val builtSteps = listOf(
-                        "ಸಂಕಲ್ಪ" to sankalpa,
-                        "ಆವಾಹನ" to (chunks.firstOrNull() ?: body),
-                        "ಉಪಚಾರ" to mid.drop(half).ifEmpty { mid }.joinToString("\n\n").ifBlank { body },
-                        "ಸಮರ್ಪಣ" to samarpana
-                    )
-                    Pair(label, builtSteps)
+                    // Keep the complete source procedure, in its original order.
+                    Pair(label, listOf(label to body))
                 }
             }
             if (isFinishing || loaded == null) return@launch
             pujaTitle = loaded.first
             pujaSteps = loaded.second
-            bindPujaStepBar()
+            pujaAllSteps = true
+            findViewById<View>(R.id.readerStepBar).visibility = View.GONE
+            findViewById<View>(R.id.readerModeDivider).visibility = View.GONE
             paintPuja()
         }
     }
@@ -498,7 +478,7 @@ class ContentReaderActivity : AppCompatActivity() {
             nextBtn.isEnabled = false
             crumbView.text = baseCrumb
             headView.visibility = View.GONE
-            bodyView.text = pujaSteps.joinToString("\n\n") { (title, body) -> "$title\n$body" }
+            bodyView.text = pujaSteps.joinToString("\n\n") { it.second }
         } else {
             val step = pujaSteps[pujaStepIdx]
             val num = OsLang.digits(pujaStepIdx + 1, lang)

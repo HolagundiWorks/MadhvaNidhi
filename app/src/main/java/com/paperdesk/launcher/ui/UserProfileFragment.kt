@@ -28,6 +28,7 @@ class UserProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         PagePalette.apply(view, "user")
         store = ProfileStore(requireContext())
+        SettingsScreenBinder.bindUserPracticeSettings(view, requireContext())
         view.findViewById<View>(R.id.userEdit).setOnClickListener { setEditing(true) }
         view.findViewById<View>(R.id.userCancel).setOnClickListener { setEditing(false); paintView() }
         view.findViewById<View>(R.id.userSave).setOnClickListener { save(); setEditing(false); paintView() }

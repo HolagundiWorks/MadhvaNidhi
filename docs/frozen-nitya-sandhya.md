@@ -1,4 +1,4 @@
-# Frozen Nitya · Sandhyavandana — updated 13 November 2026
+# Frozen Nitya · Sandhyavandana — updated 14 November 2026
 
 Approved web-mockup contract for the **ಸಂಧ್ಯಾವಂದನೆ** tab inside Nitya Karma. Layout changes require a new design iteration.
 
@@ -9,24 +9,27 @@ Approved web-mockup contract for the **ಸಂಧ್ಯಾವಂದನೆ** tab i
 | Shared chrome | `prototypes/carbon-app.css` (`.sandhya-panel`, `.sandhya-chrome`, `.sandhya-scroll`) |
 | Related | [frozen-nitya-japa.md](./frozen-nitya-japa.md); Nitya Parayana is a sibling tab; Puja is a separate rail destination — [frozen-nitya-puja.md](./frozen-nitya-puja.md) |
 
-## Screen structure
+## Current native screen structure (user-approved 14 November)
 
-1. **Contained tabs** (parent shell): ಸಂಧ್ಯಾವಂದನೆ · ಜಪ · ನಿತ್ಯ ಪಾರಾಯಣ
-2. **Single toolbar row**: pathya title (flex) · kala FABs (ಪ್ರಾತಃ · ಮಧ್ಯಾಹ್ನ · ಸಾಯಂ) · Skip · Complete — all on one line
-3. **Full-height reading body**: crumb helper + reader body (`pre-wrap`); no bottom pathya nav
-4. **Floating progress**: horizontal bar at the bottom of the reading area, overlaid on the text at **50% opacity**; tap → next pathya; long-press → previous
+1. Contained Nitya tabs: Sandhyavandana / Japa / Nitya Parayana.
+2. Portrait entry: Morning / Noon / Evening time selectors, followed immediately by the large Open Sandhyavandana action and a landscape-reader hint.
+3. Selected session status, followed by Skipped today / Completed today actions. No current-section card, progress interaction or Previous/Next Section buttons on this screen.
+4. The selected time opens ContentReaderActivity in sensorLandscape with the full session initially visible.
+5. Inside the reader, Sections opens a Material single-choice dialog containing Full session followed by the numbered sections. Previous/next buttons are hidden for Sandhyavandana. The section label, progress and body update after selection.
 
-## Behaviour
+## Day-status behaviour
 
-- Kala change resets pathya index and restores that kala’s persisted day-action state
-- No prev/next navigation buttons
-- Floating progress hit target is **48px** tall; visual bar stays thin @ 50% opacity
-- Advancing onto the last pathya does **not** auto-complete — Complete FAB is explicit
-- Skip → index 0 + persisted skip flag; Complete → last pathya + 100% progress + persisted done
-- Landscape only; square corners; Carbon FABs / tokens only
+- Both portrait and reader Skip / Complete actions require a Material confirmation dialog naming the selected time. Undoing an existing mark also requires confirmation.
+- Cancel, Back and outside dismissal do not change status.
+- On confirmation, the captured session and date are updated through PracticeDayStore.setSandhyaDay; complete and skipped remain mutually exclusive and dashboard reads the same records.
+- Selecting sections, opening the reader and reaching the final section never changes completion or skip flags. Reading position is separate from explicit completion; uncompleted individual-section progress stays below 100%.
+- The legacy web panel below is not the current native layout authority; the former full-height portrait reading/progress navigation contract is superseded by this approved entry/reader split.
 
-## Android mapping notes
+## Android mapping and verification
 
-`page_nitya_sandhya.xml` + `NityaKarmaFragment.bindSandhya`; Material icon buttons + translucent `ProgressBar` inside a 48dp hit frame. Persist via `PracticeDayStore.setSandhyaDay` / `isSandhyaSkipped`. Reuse `SandhyaStore` for steps.
-
-On narrow landscape phones the five toolbar FABs use Carbon **sm (32dp)** so pathya + kala + skip/complete stay on one row without clipping; mockup reference size remains **md (40dp)**.
+- Entry: page_nitya_sandhya.xml / NityaKarmaFragment.bindSandhya.
+- Reader: ContentReaderActivity.bindSandhyaStepBar / paintSandhya.
+- Shared dialog: SandhyaDayConfirmation; mutations occur only in the positive-action callback.
+- Debug build installed on connected Galaxy M11; offline unit suite 52 tests passed.
+- On-device SandhyaFlowInstrumentation passed: entry loaded, removed entry controls absent, cancel/dismiss inert for skip/complete and undo, confirm callbacks execute once. Test uses callbacks without writing practice flags.
+- Actual entry, confirmation dialog and landscape section chooser checked on the phone. Full cross-screen smoke suite was not rerun.

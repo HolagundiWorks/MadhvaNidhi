@@ -1,0 +1,5 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <instrumentation android:name="com.paperdesk.launcher.ui.JapaFlowInstrumentation" android:targetPackage="in.hcworks.madhvanidhi" android:label="Isolated Japa count regression checks" />
+    <instrumentation android:name="com.paperdesk.launcher.ui.SongFavoritesInstrumentation" android:targetPackage="in.hcworks.madhvanidhi" android:label="Isolated song favorites checks" />
+    <instrumentation android:name="com.paperdesk.launcher.ui.SandhyaFlowInstrumentation" android:targetPackage="in.hcworks.madhvanidhi" android:label="Sandhya confirmation checks without practice mutations" />
+</manifest>

@@ -94,6 +94,14 @@
                 android:layout_marginTop="@dimen/carbon_spacing_05"
                 android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                 android:lineSpacingMultiplier="1.5" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/parayanaRead"
+                style="@style/Widget.Material3.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Read Parayana · ಪಾರಾಯಣ ಓದಿ"
+                app:icon="@drawable/ic_launch" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </LinearLayout>

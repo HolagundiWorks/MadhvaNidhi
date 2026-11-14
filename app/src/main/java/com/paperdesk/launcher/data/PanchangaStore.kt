@@ -51,7 +51,7 @@ object PanchangaStore {
                 return it
             }
         }
-        return local(date).copy(source = "${tradition.kn} · ಸ್ಥಳೀಯ ಗಣನೆ").also {
+        return local(date).copy(source = "${tradition.kn} · ಸ್ಥಳೀಯ ಅಂದಾಜು (06:00)").also {
             synchronized(memory) { memory[memKey] = it }
         }
     }
@@ -95,7 +95,7 @@ object PanchangaStore {
 
     private fun cached(context: Context, date: String, tradition: String): PanchangaDay? {
         val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
-        val raw = prefs.getString("json_${tradition}_$date", null) ?: return null
+        val raw = prefs.getString("json_v2_${tradition}_$date", null) ?: return null
         val day = parseJson(raw) ?: return null
         return if (day.date == date) day else null
     }
@@ -116,7 +116,7 @@ object PanchangaStore {
             .put("source", day.source)
         context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
             .edit()
-            .putString("json_${tradition}_${day.date}", obj.toString())
+            .putString("json_v2_${tradition}_${day.date}", obj.toString())
             .apply()
     }
 
@@ -127,7 +127,7 @@ object PanchangaStore {
             conn.connectTimeout = 12000
             conn.readTimeout = 15000
             conn.instanceFollowRedirects = true
-            conn.setRequestProperty("User-Agent", "MadhvaNidhi/1.0 (hcworks.in)")
+            conn.setRequestProperty("User-Agent", "MadhvaNidhi/1.0")
             if (conn.responseCode != 200) return null
             val html = conn.inputStream.bufferedReader().use { it.readText() }
             parseSrs(html, date)
@@ -172,7 +172,7 @@ object PanchangaStore {
             vara = neat(vara),
             nakshatra = neat(nak).replace("SHRAAVANA", "SHRAVANA"),
             yoga = neat(yoga),
-            karana = neat(karana),
+            karana = canonicalKarana(neat(karana)),
             source = "SRS MANTRALAYA"
         )
     }
@@ -206,12 +206,21 @@ object PanchangaStore {
         return String.format(Locale.US, "%04d-%02d-%02d", cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH))
     }
 
+    /** Selected civil date at 06:00 in the device time zone; invalid input falls back safely. */
     fun parse(date: String): Calendar {
-        val p = date.split("-")
-        return Calendar.getInstance().apply {
-            set(p[0].toInt(), p[1].toInt() - 1, p[2].toInt(), 6, 0, 0)
+        fun fallback() = Calendar.getInstance().apply {
+            set(Calendar.HOUR_OF_DAY, 6); set(Calendar.MINUTE, 0); set(Calendar.SECOND, 0)
             set(Calendar.MILLISECOND, 0)
         }
+        val parts = Regex("^(\\d{4})-(\\d{2})-(\\d{2})$").matchEntire(date)?.groupValues ?: return fallback()
+        return runCatching {
+            Calendar.getInstance().apply {
+                clear()
+                isLenient = false
+                set(parts[1].toInt(), parts[2].toInt() - 1, parts[3].toInt(), 6, 0, 0)
+                timeInMillis // validate month and day without lenient rollover
+            }
+        }.getOrElse { fallback() }
     }
 
     fun shiftKey(date: String, days: Int): String {
@@ -238,24 +247,73 @@ object PanchangaStore {
     fun isMarked(tithi: String): Boolean =
         isEkadasi(tithi) || isPurnima(tithi) || isAmavasya(tithi)
 
-    /** Chandra rashi from local moon longitude (tradition-independent). */
+    /** Approximate Chandra rashi from the same local sidereal Moon used for nakshatra/pada. */
     fun chandraRashi(date: String): String {
-        val moon = moonLon(julian(parse(date)))
+        val jd = julian(parse(date))
+        val moon = siderealLongitude(moonLon(jd), jd)
         return RASHI[(floor(norm(moon) / 30.0).toInt() % 12)]
     }
 
-    /** Surya rashi from local sun longitude. */
+    /** Approximate sidereal Surya rashi at 06:00 device-local time. */
     fun suryaRashi(date: String): String {
-        val sun = sunLon(julian(parse(date)))
+        val jd = julian(parse(date))
+        val sun = siderealLongitude(sunLon(jd), jd)
         return RASHI[(floor(norm(sun) / 30.0).toInt() % 12)]
     }
 
-    /** Nakshatra pada 1–4 from local moon. */
+    /** Approximate sidereal quarter at 06:00 local time; never an official-provider value. */
     fun nakshatraPada(date: String): Int {
-        val moon = moonLon(julian(parse(date)))
-        val span = 360.0 / 27.0
-        val within = norm(moon) % span
-        return (floor(within / (span / 4.0)).toInt() % 4) + 1
+        val jd = julian(parse(date))
+        return padaFromSiderealLongitude(siderealLongitude(moonLon(jd), jd))
+    }
+
+    /** Do not attach a local quarter to a different provider-reported nakshatra. */
+    fun nakshatraPada(day: PanchangaDay): Int? =
+        if (nakshatraKey(day.nakshatra) == nakshatraKey(local(day.date).nakshatra)) nakshatraPada(day.date) else null
+
+    private fun nakshatraKey(name: String): String = name.uppercase(Locale.US)
+        .replace(Regex("[^A-Z]"), "").replace("AA", "A")
+        .replace("DHANISHTHA", "DHANISHTA").replace("SHATABISHA", "SHATABHISHA")
+
+    internal fun padaFromSiderealLongitude(longitude: Double): Int {
+        require(longitude.isFinite())
+        val quarter = floor(norm(longitude) / (360.0 / 108.0)).toInt()
+        return quarter % 4 + 1
+    }
+
+    /** Low-precision Lahiri-like mean correction, not a tradition-specific ephemeris. */
+    internal fun siderealLongitude(tropical: Double, jd: Double): Double {
+        val centuries = (jd - 2451545.0) / 36525.0
+        val ayanamsha = 23.857092333333 + 1.3969713 * centuries + 0.0003086 * centuries * centuries
+        return norm(tropical - ayanamsha)
+    }
+
+    /** Zero-based half-tithi slots: fixed 0 and 57–59, seven names repeated in 1–56. */
+    internal fun karanaFromElongation(elongation: Double): String {
+        require(elongation.isFinite())
+        val half = floor(norm(elongation) / 6.0).toInt()
+        return when (half) {
+            0 -> "KIMSTUGHNA"
+            57 -> "SHAKUNI"
+            58 -> "CHATUSHPADA"
+            59 -> "NAGA"
+            else -> KARANA[(half - 1) % 7]
+        }
+    }
+
+    internal fun canonicalKarana(raw: String): String = when (raw.uppercase(Locale.US).replace(Regex("[^A-Z]"), "")) {
+        "BAVA", "BHAVA" -> "BAVA"
+        "BALAVA", "BAALAVA" -> "BALAVA"
+        "KAULAVA" -> "KAULAVA"
+        "TAITILA", "TAITULA" -> "TAITILA"
+        "GARA", "GARAJA", "GARIJA", "GARI" -> "GARA"
+        "VANIJA", "VANIJ", "VANIJYA" -> "VANIJA"
+        "VISHTI", "VISTI", "BHADRA" -> "VISHTI"
+        "SHAKUNI", "SAKUNI" -> "SHAKUNI"
+        "CHATUSHPADA", "CHATUSPADA" -> "CHATUSHPADA"
+        "NAGA", "NAAGA" -> "NAGA"
+        "KIMSTUGHNA", "KIMSTHUGHNA", "KINSTUGHNA" -> "KIMSTUGHNA"
+        else -> ""
     }
 
     /** Fifteen civil days of the current paksha: Amavasya→Purnima or Purnima→Amavasya. */
@@ -325,10 +383,7 @@ object PanchangaStore {
     }
 
     private fun compute(date: String): PanchangaDay {
-        val p = date.split("-")
-        val cal = Calendar.getInstance().apply {
-            set(p[0].toInt(), p[1].toInt() - 1, p[2].toInt(), 6, 0, 0)
-        }
+        val cal = parse(date)
         val jd = julian(cal)
         val sun = sunLon(jd)
         val moon = moonLon(jd)
@@ -336,10 +391,11 @@ object PanchangaStore {
         val tithiN = (floor(elong / 12.0).toInt() % 30)
         val shukla = tithiN < 15
         val tithi = if (shukla) TITHI[tithiN] else TITHI_K[tithiN - 15]
-        val nak = NAK[(floor(norm(moon) / (360.0 / 27.0)).toInt() % 27)]
-        val yogaN = (floor(norm(sun + moon) / (360.0 / 27.0)).toInt() % 27)
-        val karN = (floor(elong / 6.0).toInt())
-        val karana = if (tithiN == 0 && !shukla) "KIMSTUGHNA" else if (tithiN == 29) "NAVAN" else KARANA[karN % 7]
+        val siderealMoon = siderealLongitude(moon, jd)
+        val siderealSun = siderealLongitude(sun, jd)
+        val nak = NAK[(floor(siderealMoon / (360.0 / 27.0)).toInt() % 27)]
+        val yogaN = (floor(norm(siderealSun + siderealMoon) / (360.0 / 27.0)).toInt() % 27)
+        val karana = karanaFromElongation(elong)
         val masa = MASA[floor(norm(sun - 30.0) / 30.0).toInt() % 12]
         val ayana = if (norm(sun) >= 180) "DAKSHINAYANA" else "UTTARAYANA"
         val rituN = (floor(norm(sun - 30.0) / 60.0).toInt() % 6)
@@ -350,7 +406,7 @@ object PanchangaStore {
             cal.get(Calendar.DAY_OF_WEEK) - 1
         ]
         return PanchangaDay(
-            date = date,
+            date = dateKey(cal),
             samvatsara = sam,
             ayana = ayana,
             ritu = ritu,
@@ -365,18 +421,8 @@ object PanchangaStore {
         )
     }
 
-    private fun julian(cal: Calendar): Double {
-        var y = cal.get(Calendar.YEAR)
-        var m = cal.get(Calendar.MONTH) + 1
-        val d = cal.get(Calendar.DAY_OF_MONTH) + cal.get(Calendar.HOUR_OF_DAY) / 24.0
-        if (m <= 2) {
-            y -= 1
-            m += 12
-        }
-        val a = y / 100
-        val b = 2 - a + a / 4
-        return floor(365.25 * (y + 4716)) + floor(30.6001 * (m + 1)) + d + b - 1524.5
-    }
+    /** Julian days use the UTC instant, including zone offset, minutes and seconds. */
+    internal fun julian(cal: Calendar): Double = cal.timeInMillis / 86400000.0 + 2440587.5
 
     private fun sunLon(jd: Double): Double {
         val t = (jd - 2451545.0) / 36525.0

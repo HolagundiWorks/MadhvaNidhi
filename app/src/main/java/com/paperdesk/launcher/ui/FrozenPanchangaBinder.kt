@@ -111,11 +111,11 @@ object FrozenPanchangaBinder {
                 PanchangaStore.parse(it).get(Calendar.DAY_OF_MONTH).toString()
             }.ifBlank { "—" }
             val weekday = tile.dates.map {
-                OsLang.weekdayShort(PanchangaStore.parse(it), IndicScript.Lang.KN)
+                OsLang.weekday(PanchangaStore.parse(it), OsLang.get(root.context))
             }.distinct().joinToString("/").ifBlank { "—" }
             val tithi = tile.tithis.joinToString(" + ") { tithiName(it, index) }
-            // Freeze: tithi name → civil date number → weekday
-            val text = "$tithi\n$civil\n$weekday"
+            // Date number → weekday → tithi; span offsets follow this same order.
+            val text = "$civil\n$weekday\n$tithi"
             val scale = mockScale()
             // Mock density CSS clamps — keep ranges ordered so tiny cells never crash coerceIn.
             fun clampPx(preferred: Float, minPx: Float, maxPx: Float): Int {

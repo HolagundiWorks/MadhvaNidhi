@@ -160,27 +160,47 @@ class JapaStore(private val context: Context, private val profileId: String = Pr
         ensureDay(mantraId)
         val d = delta.coerceAtLeast(0)
         if (d == 0L) return counts(mantraId)
-        val daily = safeAdd(prefs.getLong(mKey(mantraId, "daily"), 0L), d)
-        val cumulative = safeAdd(prefs.getLong(mKey(mantraId, "cumulative"), 0L), d)
+        val change = JapaCountMath.add(prefs.getLong(mKey(mantraId, "daily"), 0L),
+            prefs.getLong(mKey(mantraId, "cumulative"), 0L), d)
+        if (change.delta == 0L) return counts(mantraId)
         prefs.edit()
-            .putLong(mKey(mantraId, "daily"), daily)
-            .putLong(mKey(mantraId, "cumulative"), cumulative)
+            .putLong(mKey(mantraId, "daily"), change.daily)
+            .putLong(mKey(mantraId, "cumulative"), change.cumulative)
+            .putLong(mKey(mantraId, "last_count_delta"), change.delta)
             .apply()
+        val cumulative = change.cumulative
         // Auto-advance Sankalpa when unset and cumulative crossed the rung.
         maybeAdvanceAutoSankalpa(mantraId, cumulative)
         return counts(mantraId)
     }
 
+    /** Undo the last recorded action, including an entire manually entered batch. */
     fun undo(mantraId: String = activeMantraId()): MantraCounts {
         ensureDay(mantraId)
-        val daily = prefs.getLong(mKey(mantraId, "daily"), 0L)
-        if (daily <= 0L) return counts(mantraId)
-        val cumulative = prefs.getLong(mKey(mantraId, "cumulative"), 0L).coerceAtLeast(1) - 1
+        val change = JapaCountMath.undo(prefs.getLong(mKey(mantraId, "daily"), 0L),
+            prefs.getLong(mKey(mantraId, "cumulative"), 0L), lastCountDelta(mantraId))
         prefs.edit()
-            .putLong(mKey(mantraId, "daily"), daily - 1)
-            .putLong(mKey(mantraId, "cumulative"), cumulative)
+            .putLong(mKey(mantraId, "daily"), change.daily)
+            .putLong(mKey(mantraId, "cumulative"), change.cumulative)
+            .remove(mKey(mantraId, "last_count_delta"))
             .apply()
         return counts(mantraId)
+    }
+
+    fun lastCountDelta(mantraId: String = activeMantraId()): Long {
+        ensureDay(mantraId)
+        return prefs.getLong(mKey(mantraId, "last_count_delta"), 0L).coerceAtLeast(0)
+    }
+
+    /** 0: preparation, 1: counting, 2: closing, 3: explicitly finished. Per mantra/day. */
+    fun procedurePhase(mantraId: String = activeMantraId()): Int {
+        ensureDay(mantraId)
+        return prefs.getInt(mKey(mantraId, "procedure_phase"), 0).coerceIn(0, 3)
+    }
+
+    fun setProcedurePhase(mantraId: String, phase: Int) {
+        ensureDay(mantraId)
+        prefs.edit().putInt(mKey(mantraId, "procedure_phase"), phase.coerceIn(0, 3)).apply()
     }
 
     fun complete(mantraId: String = activeMantraId()): MantraCounts {
@@ -274,6 +294,8 @@ class JapaStore(private val context: Context, private val profileId: String = Pr
         if (prefs.getString(key, "") == today) return
         prefs.edit()
             .putString(key, today)
+            .remove(mKey(mantraId, "last_count_delta"))
+            .remove(mKey(mantraId, "procedure_phase"))
             .putLong(mKey(mantraId, "daily"), 0L)
             .apply()
     }

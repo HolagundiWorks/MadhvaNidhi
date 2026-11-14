@@ -7,21 +7,21 @@ object PageFactory {
     fun create(pageId: String): Fragment = when (pageId) {
         "dashboard" -> DashboardFragment()
         "nityakarma" -> NityaKarmaFragment.create(NityaKarmaFragment.TAB_SANDHYA)
-        "puja" -> PujaFragment()
+        "puja" -> ReaderFragment.create(ReaderFragment.PUJA)
         "grantha" -> GranthaFragment()
-        "samskruti", "sangeeta" -> GranthaFragment().apply {
+        "samskruti" -> GranthaFragment().apply {
             arguments = android.os.Bundle().apply { putString("group", pageId) }
         }
         "nitya" -> NityaKarmaFragment.create(NityaKarmaFragment.TAB_NITYA)
-        "stotra" -> ReaderFragment.create(ReaderFragment.STOTRA)
-        "suktas" -> ReaderFragment.create(ReaderFragment.SUKTAS)
-        "mantras" -> ReaderFragment.create(ReaderFragment.MANTRAS)
-        "namavali" -> ReaderFragment.create(ReaderFragment.NAMAVALI)
-        "hadugalu" -> ReaderFragment.create(ReaderFragment.HADUGALU)
-        "playlists" -> SectionBrowseFragment.create(SectionBrowseFragment.PLAYLISTS)
+        "stotra" -> CatalogueListFragment.create("stotra")
+        "suktas" -> CatalogueListFragment.create("suktas")
+        "mantras" -> CatalogueListFragment.create("mantras")
+        "namavali" -> CatalogueListFragment.create("namavali")
+        "sangeeta", "hadugalu" -> SongLibraryFragment.create()
+        "favorites", "playlists" -> SongLibraryFragment.create(favorites = true)
         "aayadi" -> AayadiFragment()
-        "rangavalli" -> SectionBrowseFragment.create(SectionBrowseFragment.RANGAVALLI)
-        "recipes" -> SectionBrowseFragment.create(SectionBrowseFragment.RECIPES)
+        "rangavalli" -> RangavalliFragment()
+        "recipes" -> NaivedyaFragment()
         "user" -> UserProfileFragment()
         "settings" -> SettingsFragment()
         "desk" -> DeskFragment()

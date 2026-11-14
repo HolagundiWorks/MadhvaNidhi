@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Pure dark theme: black / grey surfaces · orange accent #BA4E00 only. -->
+<!-- Pure dark theme: black / grey surfaces · orange accent #FF4F18 only. -->
 <resources>
-    <color name="md_theme_primary">#FF8A3D</color>
+    <color name="md_theme_primary">#FF4F18</color>
     <color name="md_theme_onPrimary">#000000</color>
-    <color name="md_theme_primaryContainer">#BA4E00</color>
-    <color name="md_theme_onPrimaryContainer">#FFFFFF</color>
+    <color name="md_theme_primaryContainer">#4A2115</color>
+    <color name="md_theme_onPrimaryContainer">#FFDAD0</color>
 
     <color name="md_theme_secondary">#BDBDBD</color>
     <color name="md_theme_onSecondary">#000000</color>
@@ -32,7 +32,7 @@
     <color name="md_theme_outlineVariant">#3A3A3A</color>
     <color name="md_theme_inverseSurface">#FFFFFF</color>
     <color name="md_theme_inverseOnSurface">#000000</color>
-    <color name="md_theme_inversePrimary">#BA4E00</color>
+    <color name="md_theme_inversePrimary">#FF4F18</color>
     <color name="md_theme_scrim">#000000</color>
     <color name="md_theme_shadow">#000000</color>
 
@@ -44,14 +44,14 @@
     <color name="md_theme_surfaceContainerHigh">#2C2C2C</color>
     <color name="md_theme_surfaceContainerHighest">#3A3A3A</color>
 
-    <color name="md_theme_primary_fixed">#FFE8D6</color>
-    <color name="md_theme_onPrimary_fixed">#3D1900</color>
-    <color name="md_theme_primary_fixed_dim">#FF8A3D</color>
+    <color name="md_theme_primary_fixed">#FFE4DC</color>
+    <color name="md_theme_onPrimary_fixed">#351000</color>
+    <color name="md_theme_primary_fixed_dim">#FF4F18</color>
     <color name="md_theme_secondary_fixed">#E0E0E0</color>
     <color name="md_theme_onSecondary_fixed">#212121</color>
     <color name="md_theme_secondary_fixed_dim">#9E9E9E</color>
 
-    <color name="md_theme_hover">#29FF8A3D</color>
-    <color name="md_theme_pressed">#33FF8A3D</color>
-    <color name="md_theme_focus">#29FF8A3D</color>
+    <color name="md_theme_hover">#29FF4F18</color>
+    <color name="md_theme_pressed">#33FF4F18</color>
+    <color name="md_theme_focus">#29FF4F18</color>
 </resources>

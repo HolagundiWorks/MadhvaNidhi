@@ -16,7 +16,7 @@ object NityaParayanaBinder {
         val practice = PracticeDayStore(context)
         val sections = NityaParayanaStore.load(context)
         val prefs = context.getSharedPreferences("madhvanidhi_nitya", 0)
-        val selected = prefs.getInt("section", 0).coerceIn(0, (sections.size - 1).coerceAtLeast(0))
+        var selected = prefs.getInt("section", 0).coerceIn(0, (sections.size - 1).coerceAtLeast(0))
         val lang = OsLang.get(context)
 
         fun paintDay() {
@@ -29,8 +29,8 @@ object NityaParayanaBinder {
         fun show(index: Int) {
             val title = sections.getOrNull(index)?.title.orEmpty()
             root.findViewById<TextView>(R.id.nityaReading).apply {
-                text = sections.getOrNull(index)?.body.orEmpty()
-                DeskType.reading(this)
+                text = ""
+                visibility = View.GONE
             }
             root.findViewById<TextView>(R.id.parayanaCrumb)?.text =
                 listOf(OsLang.ui("nityakarma", lang), OsLang.ui("nitya", lang), title)
@@ -42,9 +42,18 @@ object NityaParayanaBinder {
 
         if (sections.isNotEmpty()) {
             MaterialChoices.bind(root.findViewById(R.id.nityaSection), sections.map { it.title }, selected) {
+                selected = it
                 show(it)
+                fragment.startActivity(ContentReaderActivity.forNityaParayana(context, it))
             }
             show(selected)
+        }
+
+        root.findViewById<View>(R.id.parayanaRead).apply {
+            isEnabled = sections.isNotEmpty()
+            setOnClickListener {
+                fragment.startActivity(ContentReaderActivity.forNityaParayana(context, selected))
+            }
         }
 
         root.findViewById<View>(R.id.parayanaSkip)?.setOnClickListener {

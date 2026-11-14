@@ -1,0 +1,55 @@
+{
+  "sources": [
+    {
+      "id": "hayagreeva",
+      "url": "https://udupi-recipes.com/2012/10/hayagreeva-hayagriva-recipe.html",
+      "author": "Sumana / Udupi Recipes",
+      "page_title": "Hayagreeva | Hayagriva Recipe | Hayagreeva Maddi Recipe - Udupi Recipes",
+      "checked_on": "2026-11-14",
+      "sha256": "f645f5c30748e01286c3b3a0a0e7fe27194ddb607a3a63bb3c85c76ef4505e84",
+      "structured_recipe_found": true,
+      "usage": "Ingredient facts and concise original Kannada preparation summary; no article prose or photographs imported"
+    },
+    {
+      "id": "avalakki",
+      "url": "https://smithakalluraya.com/avalakki-panchakajjaya-recipe-sihi-avalakki-sweet-poha-recipe/",
+      "author": "Smitha Kalluraya / Cook with Smile",
+      "page_title": "AVALAKKI PANCHAKAJJAYA RECIPE | SIHI AVALAKKI | SWEET POHA RECIPE - Cook with Smile",
+      "checked_on": "2026-11-14",
+      "sha256": "b56cab66bed47b3f9ed742ee1a4e5dec7a3edf43fb3c01f1ca87c15ee6c5a54d",
+      "structured_recipe_found": true,
+      "usage": "Ingredient facts and concise original Kannada preparation summary; no article prose or photographs imported"
+    },
+    {
+      "id": "kosambari",
+      "url": "https://www.sailusfood.com/kosambari-recipe-moong-dal-salad",
+      "author": "Sailaja Gudivada / Sailu’s Food",
+      "page_title": "Kosambari recipe, moong dal salad | Sailu's Kitchen | Sailu's Food",
+      "checked_on": "2026-11-14",
+      "sha256": "6955671308033404fa913963f5863fca230e92c39f33bf52c904c15f80c0bf07",
+      "structured_recipe_found": true,
+      "usage": "Ingredient facts and concise original Kannada preparation summary; no article prose or photographs imported"
+    },
+    {
+      "id": "panaka",
+      "url": "https://swayampaaka.com/juice/bellada-panaka-jaggery-panakam/",
+      "author": "SwayamPaaka",
+      "page_title": "bellada panaka | jaggery panakam - Swayampaaka - ಸ್ವಯಂ ಪಾಕ",
+      "checked_on": "2026-11-14",
+      "sha256": "b85fc2f2705b8d9365d2c0ad413c73e9b9a9c2c6262ec5a2ad827934afff5d68",
+      "structured_recipe_found": false,
+      "usage": "Ingredient facts and concise original Kannada preparation summary; no article prose or photographs imported",
+      "manual_recipe_review": true
+    },
+    {
+      "id": "payasa",
+      "url": "https://udupi-recipes.com/2013/04/moong-dal-payasamhesaru-bele-payasa-recipe.html",
+      "author": "Sumana / Udupi Recipes",
+      "page_title": "Moong Dal Payasam | Hesaru Bele Payasa Recipe - Udupi Recipes",
+      "checked_on": "2026-11-14",
+      "sha256": "6a672fa27bb27fb7bdad6198df95012decbba3d23fa3b2064f18a23f48a243d3",
+      "structured_recipe_found": true,
+      "usage": "Ingredient facts and concise original Kannada preparation summary; no article prose or photographs imported"
+    }
+  ]
+}

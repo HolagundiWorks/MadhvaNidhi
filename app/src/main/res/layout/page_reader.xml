@@ -232,7 +232,7 @@
             android:layout_height="@dimen/carbon_border_width"
             android:background="@color/md_theme_outlineVariant" />
 
-        <!-- Pinned Selection Summary + Open Content CTA -->
+        <!-- Selection summary -->
         <LinearLayout
             android:id="@+id/readerActionBar"
             android:layout_width="match_parent"
@@ -262,18 +262,6 @@
                 android:text=""
                 android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                 android:textColor="@color/md_theme_onSurfaceVariant" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/readerOpenContent"
-                style="@style/Widget.Material3.Button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="@dimen/carbon_layout_size_height_lg"
-                android:text="@string/open_content"
-                app:cornerRadius="@dimen/carbon_corner_radius"
-                app:icon="@drawable/ic_launch"
-                app:iconGravity="textEnd"
-                app:iconPadding="@dimen/carbon_spacing_03" />
         </LinearLayout>
     </LinearLayout>
 

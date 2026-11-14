@@ -170,7 +170,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ಭಾವ"
+                    android:text="ನಕ್ಷತ್ರ ಪಾದ"
                     android:textColor="@color/md_theme_onSurfaceVariant"
                     android:textSize="12sp" />
 

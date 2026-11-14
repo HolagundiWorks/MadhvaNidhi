@@ -1,0 +1,99 @@
+html[data-theme="g100"], html[data-theme="g90"] {
+  --cds-background: #000000;
+  --cds-layer-01: #1E1E1E;
+  --cds-layer-02: #2C2C2C;
+  --cds-text-primary: #FFFFFF;
+  --cds-text-secondary: #BDBDBD;
+  --cds-interactive: #FF8A3D;
+  --cds-border-subtle-01: #3A3A3A;
+  --cds-border-strong-01: #757575;
+  --cds-layer-selected-01: #2C2C2C;
+  --cds-focus: #FF8A3D;
+  --cds-border-radius: 12px;
+}
+html[data-theme="white"], html[data-theme="g10"] {
+  --cds-background: #FFFFFF;
+  --cds-layer-01: #F5F5F5;
+  --cds-layer-02: #EEEEEE;
+  --cds-text-primary: #000000;
+  --cds-text-secondary: #616161;
+  --cds-interactive: #BA4E00;
+  --cds-border-subtle-01: #E0E0E0;
+  --cds-border-strong-01: #9E9E9E;
+  --cds-layer-selected-01: #E0E0E0;
+  --cds-focus: #BA4E00;
+  --cds-border-radius: 12px;
+}
+
+#app { min-height: 0; font-family: Roboto, Arial, "Noto Sans Kannada", sans-serif; }
+button, select, input, .panel, .current-card { border-radius: 12px; }
+#primary-content { padding: 0; overflow-y: auto; }
+#view-dashboard.is-active { height: auto; min-height: 100%; overflow: visible; }
+.current-dashboard { display: flex; flex-direction: column; gap: 12px; padding: 12px; }
+.today-summary { min-height: 56px; border: 0; background: var(--cds-layer-selected-01); color: var(--cds-text-primary); font-size: 16px; }
+.current-card { padding: 12px; background: var(--cds-layer-01); }
+.current-week-head { display: flex; align-items: center; justify-content: space-between; font-size: 24px; }
+.current-week-head > span { color: var(--cds-text-secondary); font-size: 18px; letter-spacing: 10px; }
+.current-dashboard progress, .current-puja progress { appearance: none; width: 100%; height: 4px; border: 0; border-radius: 4px; display: block; margin: 8px 0; }
+progress::-webkit-progress-bar { background: var(--cds-layer-02); border-radius: 4px; }
+progress::-webkit-progress-value { background: var(--cds-interactive); border-radius: 4px; }
+.current-week-row { display: grid; grid-template-columns: minmax(64px, 1fr) repeat(3, 44px); width: 100%; align-items: center; min-height: 48px; border: 0; border-radius: 8px; padding: 4px 8px; margin-top: 4px; background: transparent; text-align: start; }
+.current-week-row.today { background: var(--cds-layer-selected-01); outline: 1px solid var(--cds-interactive); }
+.current-week-row .day-name { display: flex; flex-direction: column; font-size: 14px; }
+.current-week-row small { font-size: 11px; color: var(--cds-text-secondary); }
+.session-mark { justify-self: center; font-size: 20px; color: var(--cds-text-secondary); }
+.session-mark.done { color: var(--cds-interactive); }
+.current-streak { display: flex; align-items: center; justify-content: space-between; }
+.current-streak > div { display: flex; align-items: center; gap: 8px; }
+.current-streak strong { font-size: 20px; }
+.current-streak small { color: var(--cds-text-secondary); }
+.current-badges span { border-radius: 20px; padding: 8px 12px; background: var(--cds-layer-02); color: var(--cds-interactive); }
+.current-japas { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+.current-japa { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 12px; gap: 6px; min-width: 0; min-height: 120px; border: 0; background: var(--cds-layer-01); }
+.current-japa strong { white-space: nowrap; font-size: 14px; }
+.current-japa .japa-value { font-size: 18px; }
+.current-japa small { font-size: 11px; color: var(--cds-text-secondary); }
+.current-japa progress { margin: 0; }
+.current-shortcuts { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; }
+.current-shortcuts button { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 80px; border: 0; background: var(--cds-layer-01); font-size: 24px; }
+.current-shortcuts span { font-size: 12px; margin-top: 4px; }
+.current-puja { display: flex; flex-direction: column; height: 100%; min-height: 0; }
+.current-puja-head { padding: 12px; }
+.current-puja select, [data-current-songs] select { display: block; width: 100%; min-width: 0; padding: 12px; margin-top: 4px; }
+.current-puja-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px; }
+.current-puja-actions button[aria-pressed=true] { background: var(--cds-layer-selected-01); border-color: var(--cds-interactive); }
+.current-puja h2 { font-size: 18px; margin: 8px 0; }
+.current-puja-body { padding: 12px; overflow: auto; min-height: 0; line-height: 1.65; }
+[data-current-puja-body] { white-space: pre-wrap; }
+.current-tabs { display: flex; border-bottom: 1px solid var(--cds-border-subtle-01); }
+.current-tabs button { flex: 1; border: 0; border-radius: 0; background: transparent; }
+.current-tabs button[aria-selected=true] { color: var(--cds-interactive); box-shadow: inset 0 -3px var(--cds-interactive); }
+[data-current-songs], [data-current-playlists] { padding: 12px; overflow-y: auto; }
+.current-song-row { display: block; text-align: start; width: 100%; border: 0; border-bottom: 1px solid var(--cds-border-subtle-01); border-radius: 0; padding: 12px; background: transparent; }
+.current-reader { width: 95%; max-width: 48rem; max-height: 90dvh; overflow: auto; background: var(--cds-background); color: var(--cds-text-primary); border: 0; border-radius: 16px; padding: 20px; }
+.current-reader pre { white-space: pre-wrap; font: inherit; line-height: 1.7; }
+#side-nav { background: var(--cds-layer-01); }
+.nav-button[aria-current=page] { border-radius: 20px; background: var(--cds-layer-selected-01); }
+#current-practice-dialog label { display: flex; align-items: center; gap: 12px; min-height: 48px; }
+#current-practice-dialog input { width: 24px; height: 24px; accent-color: var(--cds-interactive); }
+
+#app .current-week-row, #app .current-japa, #app .current-shortcuts button, #app .today-summary {
+  border: 0;
+  box-shadow: none;
+}
+#app .current-japa { border-radius: 12px; }
+#app .today-summary { border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+#app .current-week-row { border-radius: 8px; }
+.current-week-head { gap: 8px; }
+.current-week-head > span { display: flex; gap: 18px; margin-left: auto; }
+.current-streak strong, .current-badges span { display: inline-flex; align-items: center; gap: 4px; }
+.current-badges svg { width: 16px; height: 16px; }
+.current-dashboard { font-size: 14px; }
+
+#app .current-week-row, #app .current-japa, #app .current-shortcuts button, #app .today-summary {
+  border: 0 !important;
+}
+#app .current-japa, #app .current-shortcuts button, #app .today-summary { border-radius: 12px !important; }
+#app .current-week-row { border-radius: 8px !important; }
+#app .current-week-row.today { outline: 1px solid var(--cds-interactive); }
+#app .current-card { border-radius: 12px !important; }

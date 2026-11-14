@@ -7,7 +7,8 @@ data class CatalogueGroup(
     val id: String,
     val kn: String,
     val sa: String,
-    val en: String
+    val en: String,
+    val collection: String = ""
 )
 
 data class CatalogueItem(
@@ -50,7 +51,8 @@ object CatalogueStore {
                     id = gid,
                     kn = g.optString("kn"),
                     sa = g.optString("sa"),
-                    en = g.optString("en")
+                    en = g.optString("en"),
+                    collection = g.optString("collection")
                 )
                 val arr = g.optJSONArray("items") ?: continue
                 for (j in 0 until arr.length()) {
@@ -83,9 +85,7 @@ object CatalogueStore {
     fun groups(): List<CatalogueGroup> = groups
 
     fun groupsFor(page: String): List<CatalogueGroup> {
-        val songs = setOf("dasara_padagalu", "suladhigalu", "ugabhogagalu")
-        return if (page == "hadugalu") groups.filter { it.id in songs }
-        else groups.filter { it.id !in songs }
+        return groups.filter { CatalogueClassification.isSongGroup(it, items) == (page == "hadugalu") }
     }
 
     fun item(id: String): CatalogueItem? = byId[id]
@@ -124,14 +124,7 @@ object CatalogueStore {
 
     fun belongsToSubpage(item: CatalogueItem, subpage: String): Boolean = subpageFor(item) == subpage
 
-    private fun subpageFor(item: CatalogueItem): String {
-        val searchable = "${item.id} ${item.kn} ${item.sa} ${item.en}".lowercase()
-        return when {
-            item.group == "rigveda_suktas" || "sukta" in searchable || "सूक्त" in searchable || "ಸೂಕ್ತ" in searchable -> "suktas"
-            item.type.equals("stotra", true) || item.group == "stotras" || item.group == "sanskrit_parayana" -> "stotra"
-            else -> "mantras"
-        }
-    }
+    private fun subpageFor(item: CatalogueItem): String = CatalogueClassification.subpage(item)
 
     fun groupLabel(group: CatalogueGroup, lang: IndicScript.Lang): String = when (lang) {
         IndicScript.Lang.KN -> group.kn.ifBlank { group.en }
