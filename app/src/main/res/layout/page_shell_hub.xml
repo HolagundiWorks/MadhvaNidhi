@@ -15,6 +15,7 @@
             android:id="@+id/hubTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
             android:textColor="@color/md_theme_onSurface" />
 

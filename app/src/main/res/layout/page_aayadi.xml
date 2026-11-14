@@ -20,7 +20,7 @@
                             <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@+id/aayadiBreadthIn" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="none" android:maxLines="3" />
                         </com.google.android.material.textfield.TextInputLayout>
                     </GridLayout>
-                    <com.google.android.material.button.MaterialButton android:id="@+id/aayadiCalculate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/carbon_layout_size_height_lg" android:text="ಆಯಾದಿ ಲೆಕ್ಕ ಹಾಕಿ" app:cornerRadius="@dimen/carbon_corner_radius" />
+                    <com.google.android.material.button.MaterialButton android:id="@+id/aayadiCalculate" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="@dimen/carbon_layout_size_height_lg" android:text="ಆಯಾದಿ ಲೆಕ್ಕ ಹಾಕಿ" style="@style/Widget.MadhvaNidhi.Button.Filled" />
                     <com.google.android.material.textview.MaterialTextView android:id="@+id/aayadiError" android:textColor="@color/carbon_error" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Material3.BodyLarge" android:text="ಸರಿಯಾದ ಉದ್ದ ಮತ್ತು ಅಗಲ ಆಯ್ಕೆಮಾಡಿ" android:layout_marginBottom="@dimen/carbon_spacing_03" android:visibility="gone" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>

@@ -154,12 +154,9 @@ class LauncherActivity : AppCompatActivity() {
         if (!::headerTitle.isInitialized) return
         val lang = OsLang.get(this)
         val page = currentPageId
-        // Tab hubs show their own hubTitle; practice hubs have in-panel chrome.
-        val hideHeader = page in setOf(
-            "dashboard", "nityakarma", "puja", "settings", "grantha", "samskruti", "sangeeta"
-        )
-        appHeader.visibility = if (hideHeader) View.GONE else View.VISIBLE
-        headerRule.visibility = if (hideHeader) View.GONE else View.VISIBLE
+        // One header pattern: the shared app bar carries the destination title on every page.
+        appHeader.visibility = View.VISIBLE
+        headerRule.visibility = View.VISIBLE
         headerTitle.text =
             if (resources.configuration.fontScale > 1.5f) "" else OsLang.ui(page, lang)
         refreshHeaderDate(lang)

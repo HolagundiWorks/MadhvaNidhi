@@ -107,9 +107,6 @@ class FrozenShell(private val activity: LauncherActivity) {
             val active = activeRail == id || current == id
             paintButton(button, active, labeled)
             button.isEnabled = !DeskLock.isLocked(activity)
-            if (active && !labeled) button.post {
-                button.requestRectangleOnScreen(android.graphics.Rect(0, 0, button.width, button.height), false)
-            }
         }
         return key
     }
@@ -130,6 +127,8 @@ class FrozenShell(private val activity: LauncherActivity) {
             iconGravity = if (!labeled) MaterialButton.ICON_GRAVITY_TEXT_START else MaterialButton.ICON_GRAVITY_START
             minWidth = 0
             minHeight = 0
+            stateListAnimator = null
+            elevation = 0f
             minimumWidth = if (!labeled) (48 * density).toInt() else 0
             minimumHeight = (48 * density).toInt()
             insetTop = 0
