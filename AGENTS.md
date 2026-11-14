@@ -92,6 +92,19 @@ Verify against the dated notes before changing these; the detailed contracts liv
 - **Samskruti:** Aayadi, Rangavalli (offline gallery, original PNGs), Naivedya recipes (five offline Kannada cards with source links).
 - **Backups:** Android uses passphrase-protected `.mnprofiles`; keep the AES-GCM vault and existing backup formats readable.
 
+## Knowledge hub and achievements (planned, Phase 1 mockup done)
+
+Decisions recorded 14 Nov 2026 (user):
+
+- **Scope:** Wiki (Madhva Sampradaya, Dvaita, Mathas, Peethadhipatis), Notifications, Achievements (Sandhyavandana, general Japa, Gayatri Japa), poster sharing. Spec phases: mockup first, native Android only after approval of Phase 7.
+- **Layout:** portrait, matching the shell. Readers may still use landscape.
+- **Visual system:** Carbon in the web mockup (`prototypes/app-shell`, `prototypes/knowledge-hub.js`). Android uses **Material 3** for the new screens too, with the same `md_theme_*` tokens and `#FF4F18` accent. Do not add Carbon styles to Android code.
+- **Wiki content:** every fact needs a citation before it is marked `sourced`. Entries stay `pending` until verified. Never invent dates, biographies, succession or affiliations. Mark traditional accounts as traditional.
+- **Data:** structured JSON in `prototypes/knowledge/` (`wiki.json`, `achievements.json`). Achievement milestones are configuration, not hardcoded.
+- **Gayatri Japa:** a separate series. Never mix its counts with general Japa unless configured. Its ladder is `configure` until the target is confirmed.
+- **Sharing:** always user-initiated. Use the native share sheet with a PNG and no automatic WhatsApp or publishing.
+- **Privacy:** ritual and achievement data stays local.
+
 ## Project memory
 
 Read [`docs/project-memory.md`](docs/project-memory.md) for the current commit context, navigation, frozen design decisions and preview workflow. Verify it against newer commits; older external preview ZIPs are superseded.
