@@ -1,1 +1,7 @@
-<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="32" android:viewportHeight="32"><path android:fillColor="#FF000000" android:strokeColor="#FF000000" android:strokeWidth="2" android:pathData="M16,5a11,11 0,1 0,0 22a11,11 0,1 0,0 -22"/></vector>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Google Material Symbols Outlined: brightness_1, weight 400, FILL 1, opsz 24; Apache-2.0. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="960" android:viewportHeight="960">
+    <group android:translateX="-0.0" android:translateY="960.0">
+        <path android:fillColor="#000000" android:pathData="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z" />
+    </group>
+</vector>

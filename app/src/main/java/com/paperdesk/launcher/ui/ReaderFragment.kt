@@ -450,7 +450,7 @@ class ReaderFragment : Fragment() {
                 )
                 holder.itemView.findViewById<View>(R.id.selectMark).visibility = if (on) View.VISIBLE else View.INVISIBLE
                 holder.title.setTextColor(
-                    ctx.getColor(if (on) R.color.carbon_interactive else R.color.carbon_text_primary)
+                    ctx.getColor(if (on) R.color.md_interactive else R.color.md_text_primary)
                 )
                 DeskType.apply(holder.title, if (on) DeskType.SEMIBOLD else DeskType.REGULAR)
                 holder.itemView.setOnClickListener { onPick(row) }

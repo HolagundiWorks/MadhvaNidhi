@@ -4,8 +4,8 @@
     style="@style/Widget.Material3.Button.TonalButton"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/carbon_spacing_03"
+    android:layout_marginBottom="@dimen/md_spacing_03"
     app:iconGravity="start"
-    app:iconPadding="@dimen/carbon_spacing_04"
+    app:iconPadding="@dimen/md_spacing_04"
     app:iconSize="20dp"
     app:iconTint="@color/md_theme_onSurface" />

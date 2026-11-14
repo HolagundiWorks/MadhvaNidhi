@@ -12,7 +12,7 @@ import com.google.android.material.button.MaterialButton
 import com.paperdesk.launcher.R
 import com.paperdesk.launcher.data.OsLang
 
-/** Secondary destinations for Carbon shell groups (cds--tile--clickable). */
+/** Secondary destinations for Material shell groups (cds--tile--clickable). */
 class ShellHubFragment : Fragment() {
     private val hubId: String get() = requireArguments().getString(ARG_HUB).orEmpty()
 
@@ -32,7 +32,7 @@ class ShellHubFragment : Fragment() {
         val children = view.findViewById<GridLayout>(R.id.hubChildren)
         children.removeAllViews()
         val inflater = layoutInflater
-        val gap = resources.getDimensionPixelSize(R.dimen.carbon_spacing_03)
+        val gap = resources.getDimensionPixelSize(R.dimen.md_spacing_03)
         val list = childrenFor(hubId)
         list.forEachIndexed { index, child ->
             val button = inflater.inflate(R.layout.item_hub_child, children, false) as MaterialButton
@@ -57,17 +57,17 @@ class ShellHubFragment : Fragment() {
         for (message in emptyMessages(hubId)) {
             val label = TextView(requireContext()).apply {
                 this.text = message
-                setTextAppearance(R.style.TextAppearance_Carbon_Body01)
-                setTextColor(requireContext().getColor(R.color.carbon_text_secondary))
-                setBackgroundColor(requireContext().getColor(R.color.carbon_layer))
-                val pad = resources.getDimensionPixelSize(R.dimen.carbon_spacing_05)
+                setTextAppearance(R.style.TextAppearance_MadhvaNidhi_Body01)
+                setTextColor(requireContext().getColor(R.color.md_text_secondary))
+                setBackgroundColor(requireContext().getColor(R.color.md_layer))
+                val pad = resources.getDimensionPixelSize(R.dimen.md_spacing_05)
                 setPadding(pad, pad, pad, pad)
             }
             val lp = LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
-            lp.bottomMargin = resources.getDimensionPixelSize(R.dimen.carbon_spacing_03)
+            lp.bottomMargin = resources.getDimensionPixelSize(R.dimen.md_spacing_03)
             empties.addView(label, lp)
         }
     }
@@ -86,7 +86,7 @@ class ShellHubFragment : Fragment() {
             else -> emptyList()
         }
 
-        /** Hubs that host children as contained Carbon tabs (not a flat tile grid). */
+        /** Hubs that host children as contained Material tabs (not a flat tile grid). */
         val TAB_HUBS = listOf("grantha", "samskruti", "sangeeta")
 
         fun emptyMessages(hub: String): List<String> = emptyList()

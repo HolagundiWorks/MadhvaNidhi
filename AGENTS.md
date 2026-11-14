@@ -60,8 +60,9 @@ MadhvaNidhi main shell is portrait on mockup and device (top header + content + 
 - Theme: `Theme.PaperDesk` → `Theme.Material3.DayNight.NoActionBar` (`Theme.PaperDesk.Base`) in `app/src/main/res/values/themes.xml`
 - Colour: pure white/grey (light) and black/grey (dark) neutrals with the orange accent **`#FF4F18`** (user-updated 14 Nov 2026, `md_theme_primary` in `values/m3_colors.xml` and `values-night/m3_colors.xml`). Do not reintroduce `#BA4E00` or warm brown tonal surfaces on Android. Filled orange controls use black foregrounds.
 - Prefer `Widget.Material3.*` / `TextAppearance.Material3.*` and `md_theme_*` colours; surfaces are flat filled cards (no elevation overlays)
-- Legacy `Widget.Carbon.*` / `carbon_*` names may remain as bridges remapped onto M3; do not reintroduce Carbon 0dp productive corners on Android
-- Icons: offline official Material Symbols Outlined vectors (with attribution under `assets/licenses`) for shell, menu and practice actions; domain glyphs (moon phases, app mark, Japa `eda`) may stay. Ekadashi uses Carbon `Transparency_01` pictogram
+- **All Android UI is Material Design 3.** No Carbon components, tokens, styles or icons in Android code. Replace `Widget.Carbon.*` / `carbon_*` usages with `Widget.Material3.*` / `Widget.MadhvaNidhi.*` (M3-based) and `md_theme_*` colours.
+- **Icons:** every Android icon comes from Google Fonts Material Symbols (https://fonts.google.com/icons, Apache-2.0), converted to vector drawables under `res/drawable`. Do not add other icon sets. The app mark is the only exception. Record the licence and attribution in `app/src/main/assets/licenses/` and the project docs whenever icons change.
+- Moon phases map to Material Symbols glyphs too (no separate icon set).
 - Restore tag before M3 pass: `restore/portrait-mock-pre-m3` (exists locally)
 
 **Mockups:** IBM Carbon remains the web/structure reference (`cds--*` / `--cds-*`; moon glyph circle is the sole domain exception). Do not redesign frozen mockup HTML to Material unless asked. Freeze docs stay layout/IA contracts.

@@ -24,8 +24,8 @@
     <color name="leaf_hole">@color/md_theme_onSurface</color>
     <color name="moon_lit">#E0E0E0</color>
     <color name="moon_shade">#616161</color>
-    <color name="carbon_gray_100">@color/md_theme_onSurface</color>
-    <color name="carbon_gray_90">@color/md_theme_onSurfaceVariant</color>
-    <color name="carbon_gray_80">@color/md_theme_surfaceContainerHighest</color>
-    <color name="carbon_gray_70">@color/md_theme_outline</color>
+    <color name="md_gray_100">@color/md_theme_onSurface</color>
+    <color name="md_gray_90">@color/md_theme_onSurfaceVariant</color>
+    <color name="md_gray_80">@color/md_theme_surfaceContainerHighest</color>
+    <color name="md_gray_70">@color/md_theme_outline</color>
 </resources>

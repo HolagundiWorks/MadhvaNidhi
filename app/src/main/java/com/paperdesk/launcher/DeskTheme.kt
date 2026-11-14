@@ -19,7 +19,7 @@ object DeskTheme {
     fun current(context: Context): String =
         context.getSharedPreferences(PREFS, 0).getString("theme", G100) ?: G100
 
-    fun carbonId(context: Context): String {
+    fun themeId(context: Context): String {
         val raw = current(context)
         return if (isDark(raw)) G100 else G10
     }

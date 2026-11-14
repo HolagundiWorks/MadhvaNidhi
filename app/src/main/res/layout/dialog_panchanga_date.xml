@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/carbon_spacing_06">
+        android:padding="@dimen/md_spacing_06">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/dateDialogTitle"
@@ -20,7 +20,7 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/carbon_spacing_05"
+            android:layout_marginTop="@dimen/md_spacing_05"
             android:columnCount="2"
             android:useDefaultMargins="false">
 
@@ -28,8 +28,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_marginEnd="@dimen/carbon_spacing_03"
-                android:layout_marginBottom="@dimen/carbon_spacing_03"
+                android:layout_marginEnd="@dimen/md_spacing_03"
+                android:layout_marginBottom="@dimen/md_spacing_03"
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -51,7 +51,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_marginBottom="@dimen/carbon_spacing_03"
+                android:layout_marginBottom="@dimen/md_spacing_03"
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -73,8 +73,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_marginEnd="@dimen/carbon_spacing_03"
-                android:layout_marginBottom="@dimen/carbon_spacing_03"
+                android:layout_marginEnd="@dimen/md_spacing_03"
+                android:layout_marginBottom="@dimen/md_spacing_03"
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -96,7 +96,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_marginBottom="@dimen/carbon_spacing_03"
+                android:layout_marginBottom="@dimen/md_spacing_03"
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -118,8 +118,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_marginEnd="@dimen/carbon_spacing_03"
-                android:layout_marginBottom="@dimen/carbon_spacing_03"
+                android:layout_marginEnd="@dimen/md_spacing_03"
+                android:layout_marginBottom="@dimen/md_spacing_03"
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -133,7 +133,7 @@
                     android:id="@+id/dateDialogRashi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/carbon_text_helper"
+                    android:textColor="@color/md_text_helper"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -141,7 +141,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_marginBottom="@dimen/carbon_spacing_03"
+                android:layout_marginBottom="@dimen/md_spacing_03"
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -163,8 +163,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_marginEnd="@dimen/carbon_spacing_03"
-                android:layout_marginBottom="@dimen/carbon_spacing_03"
+                android:layout_marginEnd="@dimen/md_spacing_03"
+                android:layout_marginBottom="@dimen/md_spacing_03"
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -178,7 +178,7 @@
                     android:id="@+id/dateDialogBhava"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/carbon_text_helper"
+                    android:textColor="@color/md_text_helper"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -186,7 +186,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_marginBottom="@dimen/carbon_spacing_03"
+                android:layout_marginBottom="@dimen/md_spacing_03"
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -209,7 +209,7 @@
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:layout_columnSpan="2"
-                android:layout_marginBottom="@dimen/carbon_spacing_03"
+                android:layout_marginBottom="@dimen/md_spacing_03"
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -231,13 +231,13 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="@dimen/carbon_spacing_03"
-            android:background="@color/carbon_border" />
+            android:layout_marginTop="@dimen/md_spacing_03"
+            android:background="@color/md_border" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/carbon_spacing_05"
+            android:layout_marginTop="@dimen/md_spacing_05"
             android:text="ದಿನದ ವಿಶೇಷ"
             android:textColor="@color/md_theme_onSurfaceVariant"
             android:textSize="12sp" />
@@ -246,7 +246,7 @@
             android:id="@+id/dateDialogEvent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/carbon_spacing_02"
+            android:layout_marginTop="@dimen/md_spacing_02"
             android:textColor="@color/md_theme_onSurface"
             android:textSize="16sp" />
 
@@ -254,7 +254,7 @@
             android:id="@+id/dateDialogSummary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/carbon_spacing_02"
+            android:layout_marginTop="@dimen/md_spacing_02"
             android:textColor="@color/md_theme_onSurfaceVariant"
             android:textSize="12sp"
             android:visibility="gone" />

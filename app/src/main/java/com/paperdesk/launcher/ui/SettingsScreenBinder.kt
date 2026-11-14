@@ -119,14 +119,14 @@ object SettingsScreenBinder {
             val row = LinearLayout(context).apply {
                 orientation = LinearLayout.HORIZONTAL
                 gravity = android.view.Gravity.CENTER_VERTICAL
-                setPadding(0, 0, 0, context.resources.getDimensionPixelSize(R.dimen.carbon_spacing_03))
+                setPadding(0, 0, 0, context.resources.getDimensionPixelSize(R.dimen.md_spacing_03))
             }
             row.addView(TextView(context).apply {
                 text = "${index + 1}"
-                setTextAppearance(R.style.TextAppearance_Carbon_Label01)
-                setTextColor(context.getColor(R.color.carbon_text_secondary))
+                setTextAppearance(R.style.TextAppearance_MadhvaNidhi_Label01)
+                setTextColor(context.getColor(R.color.md_text_secondary))
                 layoutParams = LinearLayout.LayoutParams(
-                    context.resources.getDimensionPixelSize(R.dimen.carbon_spacing_09),
+                    context.resources.getDimensionPixelSize(R.dimen.md_spacing_09),
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
             })
@@ -134,8 +134,8 @@ object SettingsScreenBinder {
                 row.addView(TextView(context).apply {
                     text = JapaCatalog.entries.firstOrNull { it.id == "gayatri" }?.label ?: "ಗಾಯತ್ರೀ ಮಂತ್ರ"
                     layoutParams = LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f)
-                    setTextAppearance(R.style.TextAppearance_Carbon_BodyCompact01)
-                    setTextColor(context.getColor(R.color.carbon_text))
+                    setTextAppearance(R.style.TextAppearance_MadhvaNidhi_BodyCompact01)
+                    setTextColor(context.getColor(R.color.md_text))
                 })
             } else {
                 val picker = MaterialAutoCompleteTextView(context)
@@ -164,14 +164,14 @@ object SettingsScreenBinder {
             val row = LinearLayout(context).apply {
                 orientation = LinearLayout.HORIZONTAL
                 gravity = android.view.Gravity.CENTER_VERTICAL
-                setPadding(0, 0, 0, context.resources.getDimensionPixelSize(R.dimen.carbon_spacing_03))
+                setPadding(0, 0, 0, context.resources.getDimensionPixelSize(R.dimen.md_spacing_03))
             }
             row.addView(TextView(context).apply {
                 text = "${index + 1}"
-                setTextAppearance(R.style.TextAppearance_Carbon_Label01)
-                setTextColor(context.getColor(R.color.carbon_text_secondary))
+                setTextAppearance(R.style.TextAppearance_MadhvaNidhi_Label01)
+                setTextColor(context.getColor(R.color.md_text_secondary))
                 layoutParams = LinearLayout.LayoutParams(
-                    context.resources.getDimensionPixelSize(R.dimen.carbon_spacing_07),
+                    context.resources.getDimensionPixelSize(R.dimen.md_spacing_07),
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
             })

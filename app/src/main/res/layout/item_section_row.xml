@@ -6,12 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="start|center_vertical"
-    android:minHeight="@dimen/carbon_layout_size_height_lg"
-    android:paddingStart="@dimen/carbon_spacing_03"
-    android:paddingEnd="@dimen/carbon_spacing_03"
+    android:minHeight="@dimen/md_layout_size_height_lg"
+    android:paddingStart="@dimen/md_spacing_03"
+    android:paddingEnd="@dimen/md_spacing_03"
     android:textAlignment="viewStart"
     android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
     app:icon="@drawable/ic_chevron_right"
     app:iconGravity="end"
     app:iconTint="@color/md_theme_onSurfaceVariant"
-    app:cornerRadius="@dimen/carbon_corner_radius" />
+    app:cornerRadius="@dimen/md_corner_radius" />

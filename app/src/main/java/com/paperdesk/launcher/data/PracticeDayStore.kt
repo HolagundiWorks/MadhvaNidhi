@@ -3,7 +3,7 @@ package com.paperdesk.launcher.data
 import android.content.Context
 import java.util.Calendar
 
-/** Local daily practice flags feeding the Carbon dashboard week + streak. */
+/** Local daily practice flags feeding the Material dashboard week + streak. */
 class PracticeDayStore(context: Context) {
     private val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
 

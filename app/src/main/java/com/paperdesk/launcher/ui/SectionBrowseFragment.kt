@@ -191,10 +191,10 @@ class SectionBrowseFragment : Fragment() {
             val active = item.id == selected
             holder.button.text = item.title
             holder.button.setTextColor(
-                holder.button.context.getColor(if (active) R.color.carbon_orange else R.color.carbon_text)
+                holder.button.context.getColor(if (active) R.color.md_orange else R.color.md_text)
             )
             holder.button.backgroundTintList = ColorStateList.valueOf(
-                holder.button.context.getColor(if (active) R.color.carbon_layer_high else R.color.carbon_layer)
+                holder.button.context.getColor(if (active) R.color.md_layer_high else R.color.md_layer)
             )
             holder.button.setOnClickListener { onSelect(item.id) }
         }

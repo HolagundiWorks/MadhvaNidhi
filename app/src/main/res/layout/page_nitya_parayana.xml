@@ -11,16 +11,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:padding="@dimen/carbon_spacing_05"
+        android:padding="@dimen/md_spacing_05"
         android:background="@color/md_theme_surfaceContainer"
-        android:minHeight="@dimen/carbon_layout_size_height_lg">
+        android:minHeight="@dimen/md_layout_size_height_lg">
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="ನಿತ್ಯ ಪಾರಾಯಣ"
-            style="@style/Widget.Carbon.TextInput.ExposedDropdown">
+            style="@style/Widget.MadhvaNidhi.TextInput.ExposedDropdown">
 
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
                 android:id="@+id/nityaSection"
@@ -33,9 +33,9 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/parayanaSkip"
             style="@style/Widget.Material3.Button.OutlinedButton"
-            android:layout_width="@dimen/carbon_layout_size_height_lg"
-            android:layout_height="@dimen/carbon_layout_size_height_lg"
-            android:layout_marginStart="@dimen/carbon_spacing_05"
+            android:layout_width="@dimen/md_layout_size_height_lg"
+            android:layout_height="@dimen/md_layout_size_height_lg"
+            android:layout_marginStart="@dimen/md_spacing_05"
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:minWidth="0dp"
@@ -44,16 +44,16 @@
             app:icon="@drawable/ic_skip"
             app:iconGravity="textStart"
             app:iconPadding="0dp"
-            app:cornerRadius="@dimen/carbon_corner_radius"
-            app:strokeColor="@color/carbon_border"
-            app:strokeWidth="@dimen/carbon_border_width" />
+            app:cornerRadius="@dimen/md_corner_radius"
+            app:strokeColor="@color/md_border"
+            app:strokeWidth="@dimen/md_border_width" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/parayanaComplete"
             style="@style/Widget.Material3.Button.OutlinedButton"
-            android:layout_width="@dimen/carbon_layout_size_height_lg"
-            android:layout_height="@dimen/carbon_layout_size_height_lg"
-            android:layout_marginStart="@dimen/carbon_spacing_03"
+            android:layout_width="@dimen/md_layout_size_height_lg"
+            android:layout_height="@dimen/md_layout_size_height_lg"
+            android:layout_marginStart="@dimen/md_spacing_03"
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:minWidth="0dp"
@@ -62,9 +62,9 @@
             app:icon="@drawable/ic_check"
             app:iconGravity="textStart"
             app:iconPadding="0dp"
-            app:cornerRadius="@dimen/carbon_corner_radius"
-            app:strokeColor="@color/carbon_border"
-            app:strokeWidth="@dimen/carbon_border_width" />
+            app:cornerRadius="@dimen/md_corner_radius"
+            app:strokeColor="@color/md_border"
+            app:strokeWidth="@dimen/md_border_width" />
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -77,7 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/carbon_spacing_05">
+            android:padding="@dimen/md_spacing_05">
 
             <TextView
                 android:id="@+id/parayanaCrumb"
@@ -91,7 +91,7 @@
                 android:id="@+id/nityaReading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/carbon_spacing_05"
+                android:layout_marginTop="@dimen/md_spacing_05"
                 android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                 android:lineSpacingMultiplier="1.5" />
             <com.google.android.material.button.MaterialButton

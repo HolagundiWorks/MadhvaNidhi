@@ -120,7 +120,7 @@ object ScreenPages {
                 }
                 view.cardElevation = 0f
                 view.strokeWidth = if (plain) 0 else context.resources.displayMetrics.density.toInt().coerceAtLeast(1)
-                view.setStrokeColor(context.getColor(R.color.carbon_border))
+                view.setStrokeColor(context.getColor(R.color.md_border))
             }
             if (view is ViewGroup) for (i in 0 until view.childCount) prepareCards(view.getChildAt(i))
         }
@@ -146,7 +146,7 @@ object ScreenPages {
         val label = MaterialTextView(context).apply {
             id = R.id.contentPageLabel
             gravity = android.view.Gravity.CENTER
-            setTextAppearance(R.style.TextAppearance_Carbon_Label01)
+            setTextAppearance(R.style.TextAppearance_MadhvaNidhi_Label01)
             accessibilityLiveRegion = View.ACCESSIBILITY_LIVE_REGION_POLITE
         }
         val touch = (48 * context.resources.displayMetrics.density).toInt()
@@ -186,8 +186,8 @@ object ScreenPages {
         fun paginate() {
             if (viewport.width == 0 || viewport.height == 0) return
             val density = container.resources.displayMetrics.density
-            val outerToken = if (viewport.height / density < 480) R.dimen.carbon_spacing_03
-                else if (viewport.width / density >= 1000) R.dimen.carbon_spacing_06 else R.dimen.carbon_spacing_05
+            val outerToken = if (viewport.height / density < 480) R.dimen.md_spacing_03
+                else if (viewport.width / density >= 1000) R.dimen.md_spacing_06 else R.dimen.md_spacing_05
             val outer = container.resources.getDimensionPixelSize(outerToken)
             if (content.paddingLeft != outer || content.paddingTop != outer) content.setPadding(outer, outer, outer, outer)
             content.measure(View.MeasureSpec.makeMeasureSpec(viewport.width, View.MeasureSpec.EXACTLY),

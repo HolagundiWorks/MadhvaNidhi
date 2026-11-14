@@ -32,7 +32,7 @@ class SettingsFragment : Fragment(R.layout.page_settings_tabs) {
         ).forEachIndexed { index, label ->
             tabs.addTab(tabs.newTab().setText(label), index == selected)
         }
-        CarbonTabs.equalizeLeft(tabs)
+        MdTabs.equalizeLeft(tabs)
         fun show(index: Int) {
             selected = index
             val page = when (index) {

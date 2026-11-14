@@ -12,11 +12,11 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:minHeight="@dimen/carbon_layout_size_height_lg"
-        android:paddingStart="@dimen/carbon_spacing_05"
-        android:paddingEnd="@dimen/carbon_spacing_05"
-        android:paddingTop="@dimen/carbon_spacing_03"
-        android:paddingBottom="@dimen/carbon_spacing_03"
+        android:minHeight="@dimen/md_layout_size_height_lg"
+        android:paddingStart="@dimen/md_spacing_05"
+        android:paddingEnd="@dimen/md_spacing_05"
+        android:paddingTop="@dimen/md_spacing_03"
+        android:paddingBottom="@dimen/md_spacing_03"
         android:background="@color/md_theme_surfaceContainerLow">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -37,9 +37,9 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/pujaSkip"
             style="@style/Widget.MadhvaNidhi.Button.Outlined"
-            android:layout_width="@dimen/carbon_layout_size_height_lg"
-            android:layout_height="@dimen/carbon_layout_size_height_lg"
-            android:layout_marginStart="@dimen/carbon_spacing_05"
+            android:layout_width="@dimen/md_layout_size_height_lg"
+            android:layout_height="@dimen/md_layout_size_height_lg"
+            android:layout_marginStart="@dimen/md_spacing_05"
             android:minWidth="0dp"
             android:padding="0dp"
             android:contentDescription="Skip today"
@@ -51,9 +51,9 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/pujaComplete"
             style="@style/Widget.MadhvaNidhi.Button.Outlined"
-            android:layout_width="@dimen/carbon_layout_size_height_lg"
-            android:layout_height="@dimen/carbon_layout_size_height_lg"
-            android:layout_marginStart="@dimen/carbon_spacing_03"
+            android:layout_width="@dimen/md_layout_size_height_lg"
+            android:layout_height="@dimen/md_layout_size_height_lg"
+            android:layout_marginStart="@dimen/md_spacing_03"
             android:minWidth="0dp"
             android:padding="0dp"
             android:contentDescription="Completed for today"
@@ -68,17 +68,17 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:paddingStart="@dimen/carbon_spacing_05"
-        android:paddingEnd="@dimen/carbon_spacing_05"
-        android:paddingTop="@dimen/carbon_spacing_03"
-        android:paddingBottom="@dimen/carbon_spacing_03">
+        android:paddingStart="@dimen/md_spacing_05"
+        android:paddingEnd="@dimen/md_spacing_05"
+        android:paddingTop="@dimen/md_spacing_03"
+        android:paddingBottom="@dimen/md_spacing_03">
 
         <TextView
             android:id="@+id/pujaTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:layout_marginEnd="@dimen/carbon_spacing_04"
+            android:layout_marginEnd="@dimen/md_spacing_04"
             android:ellipsize="end"
             android:maxLines="1"
             android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
@@ -103,19 +103,19 @@
         android:layout_weight="1"
         android:fillViewport="true"
         android:clipToPadding="false"
-        android:paddingBottom="@dimen/carbon_spacing_09">
+        android:paddingBottom="@dimen/md_spacing_09">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/carbon_spacing_05">
+            android:padding="@dimen/md_spacing_05">
 
             <TextView
                 android:id="@+id/pujaCrumb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/carbon_spacing_04"
+                android:layout_marginBottom="@dimen/md_spacing_04"
                 android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                 android:textColor="@color/md_theme_onSurfaceVariant" />
 

@@ -133,8 +133,8 @@
         <item name="android:backgroundDimAmount">0.5</item>
     </style>
 
-    <!-- Nitya chrome FAB overlay (was undefined ThemeOverlay.Carbon.NityaFab). -->
-    <style name="ThemeOverlay.Carbon.NityaFab" parent="ThemeOverlay.Material3.Button">
+    <!-- Nitya chrome FAB overlay (was undefined ThemeOverlay.MadhvaNidhi.NityaFab). -->
+    <style name="ThemeOverlay.MadhvaNidhi.NityaFab" parent="ThemeOverlay.Material3.Button">
         <item name="colorPrimary">@color/md_theme_primary</item>
         <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_primaryContainer</item>

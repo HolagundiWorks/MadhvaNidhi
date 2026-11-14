@@ -14,7 +14,7 @@ object MaterialChoices {
     }
 
     fun bind(view: MaterialAutoCompleteTextView, choices: List<String>, selected: Int = 0, onSelected: (Int) -> Unit = {}) {
-        view.setTextAppearance(R.style.TextAppearance_Carbon_BodyCompact01)
+        view.setTextAppearance(R.style.TextAppearance_MadhvaNidhi_BodyCompact01)
         view.setSingleLine(true)
         view.ellipsize = android.text.TextUtils.TruncateAt.END
         view.setAdapter(ArrayAdapter(view.context, R.layout.item_dropdown, choices))

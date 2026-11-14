@@ -16,7 +16,7 @@ import com.paperdesk.launcher.data.ProfileStore
 import java.text.NumberFormat
 import java.util.Locale
 
-/** Carbon-style japa targets table: Mantra · Daily · Sankalpa · Cumulative. */
+/** Material-style japa targets table: Mantra · Daily · Sankalpa · Cumulative. */
 object JapaTargetsTable {
     private val countFormat = NumberFormat.getIntegerInstance(Locale("en", "IN"))
 
@@ -150,12 +150,12 @@ object JapaTargetsTable {
     ): TextView = TextView(context).apply {
         this.text = text
         setTextAppearance(
-            if (secondary) R.style.TextAppearance_Carbon_Label01
-            else R.style.TextAppearance_Carbon_BodyCompact01
+            if (secondary) R.style.TextAppearance_MadhvaNidhi_Label01
+            else R.style.TextAppearance_MadhvaNidhi_BodyCompact01
         )
         setTextColor(
             context.getColor(
-                if (secondary) R.color.carbon_text_secondary else R.color.carbon_text
+                if (secondary) R.color.md_text_secondary else R.color.md_text
             )
         )
         if (bold) setTypeface(typeface, Typeface.BOLD)
@@ -165,15 +165,15 @@ object JapaTargetsTable {
     private fun divider(context: Context): View = View(context).apply {
         layoutParams = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
-            context.resources.getDimensionPixelSize(R.dimen.carbon_border_width)
+            context.resources.getDimensionPixelSize(R.dimen.md_border_width)
         )
-        setBackgroundColor(context.getColor(R.color.carbon_border_subtle))
+        setBackgroundColor(context.getColor(R.color.md_border_subtle))
     }
 
     private fun hint(context: Context, text: String): TextView = TextView(context).apply {
         this.text = text
-        setTextAppearance(R.style.TextAppearance_Carbon_BodyCompact01)
-        setTextColor(context.getColor(R.color.carbon_text_secondary))
+        setTextAppearance(R.style.TextAppearance_MadhvaNidhi_BodyCompact01)
+        setTextColor(context.getColor(R.color.md_text_secondary))
     }
 
     private fun dp(context: Context, value: Int): Int =

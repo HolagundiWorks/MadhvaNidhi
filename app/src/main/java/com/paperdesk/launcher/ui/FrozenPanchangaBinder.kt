@@ -27,7 +27,7 @@ object FrozenPanchangaBinder {
     fun bind(root: View, cycle: PanchangaCalendar.Cycle, selected: String, onPick: (String) -> Unit) {
         val area = root.findViewById<View>(R.id.pakshaScroll)
         val density = root.resources.displayMetrics.density
-        val gap = root.resources.getDimensionPixelSize(R.dimen.carbon_spacing_03)
+        val gap = root.resources.getDimensionPixelSize(R.dimen.md_spacing_03)
         fun mockScale(): Float {
             (root.getTag(R.id.panchangaScreen) as? Float)?.let { return it }
             if (root.width <= 0 || root.height <= 0) return 1f
@@ -56,8 +56,8 @@ object FrozenPanchangaBinder {
             krishnaButton.isCheckable = true
             shuklaButton.isChecked = phase == 0
             krishnaButton.isChecked = phase == 1
-            val active = root.context.getColor(R.color.carbon_text)
-            val idle = root.context.getColor(R.color.carbon_text_secondary)
+            val active = root.context.getColor(R.color.md_text)
+            val idle = root.context.getColor(R.color.md_text_secondary)
             shuklaButton.setTextColor(if (phase == 0) active else idle)
             krishnaButton.setTextColor(if (phase == 1) active else idle)
             shuklaButton.iconTint = ColorStateList.valueOf(if (phase == 0) active else idle)
@@ -144,7 +144,7 @@ object FrozenPanchangaBinder {
                 )
                 setSpan(
                     android.text.style.ForegroundColorSpan(
-                        root.context.getColor(R.color.carbon_text_primary)
+                        root.context.getColor(R.color.md_text_primary)
                     ),
                     0,
                     civil.length,
@@ -159,7 +159,7 @@ object FrozenPanchangaBinder {
                 )
                 setSpan(
                     android.text.style.ForegroundColorSpan(
-                        root.context.getColor(R.color.carbon_text_secondary)
+                        root.context.getColor(R.color.md_text_secondary)
                     ),
                     weekdayStart,
                     weekdayStart + weekday.length,
@@ -175,7 +175,7 @@ object FrozenPanchangaBinder {
                 if (11 in tile.tithis) {
                     setSpan(
                         android.text.style.ForegroundColorSpan(
-                            root.context.getColor(R.color.carbon_ekadashi)
+                            root.context.getColor(R.color.md_ekadashi)
                         ),
                         tithiStart,
                         text.length,
@@ -184,7 +184,7 @@ object FrozenPanchangaBinder {
                 } else {
                     setSpan(
                         android.text.style.ForegroundColorSpan(
-                            root.context.getColor(R.color.carbon_text_primary)
+                            root.context.getColor(R.color.md_text_primary)
                         ),
                         tithiStart,
                         text.length,
@@ -194,7 +194,7 @@ object FrozenPanchangaBinder {
             }
             DeskType.apply(button, DeskType.REGULAR)
             val marker = 11 in tile.tithis || 15 in tile.tithis
-            val stripH = root.resources.getDimensionPixelSize(R.dimen.carbon_spacing_02)
+            val stripH = root.resources.getDimensionPixelSize(R.dimen.md_spacing_02)
             val topPad = if (11 in tile.tithis) stripH + (2 * density).roundToInt() else tilePad
             // TOP gravity + tighter font padding keeps Kannada tithi ink inside the fixed cell.
             val bottomPad = (tilePad * 0.65f).roundToInt().coerceAtLeast((2 * density).roundToInt())
@@ -215,10 +215,10 @@ object FrozenPanchangaBinder {
             button.alpha = if (button.isEnabled) 1f else .38f
             button.backgroundTintList = ColorStateList.valueOf(
                 root.context.getColor(
-                    if (active) R.color.carbon_layer_selected else R.color.carbon_layer_01
+                    if (active) R.color.md_layer_selected else R.color.md_layer_01
                 )
             )
-            button.setTextColor(root.context.getColor(R.color.carbon_text_primary))
+            button.setTextColor(root.context.getColor(R.color.md_text_primary))
             // Selected = layer fill only — no stroke (frozen contract)
             button.strokeWidth = 0
             button.strokeColor = ColorStateList.valueOf(android.graphics.Color.TRANSPARENT)
@@ -244,10 +244,10 @@ object FrozenPanchangaBinder {
             cell.addView(button, FrameLayout.LayoutParams(cellWidth, side))
             if (11 in tile.tithis) {
                 // Top Yellow-30 alert strip ($support-warning-inverse)
-                val stripH = root.resources.getDimensionPixelSize(R.dimen.carbon_spacing_02)
+                val stripH = root.resources.getDimensionPixelSize(R.dimen.md_spacing_02)
                 cell.addView(
                     View(root.context).apply {
-                        setBackgroundColor(root.context.getColor(R.color.carbon_support_warning_inverse))
+                        setBackgroundColor(root.context.getColor(R.color.md_support_warning_inverse))
                         importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
                     },
                     FrameLayout.LayoutParams(
@@ -271,9 +271,9 @@ object FrozenPanchangaBinder {
                     imageTintList = ColorStateList.valueOf(
                         root.context.getColor(
                             if (11 in tile.tithis) {
-                                R.color.carbon_support_warning_inverse
+                                R.color.md_support_warning_inverse
                             } else {
-                                R.color.carbon_text_primary
+                                R.color.md_text_primary
                             }
                         )
                     )
@@ -281,7 +281,7 @@ object FrozenPanchangaBinder {
                     tag = "tile-marker"
                 }
                 val markerTop = if (11 in tile.tithis) {
-                    root.resources.getDimensionPixelSize(R.dimen.carbon_spacing_02) + (2 * density).roundToInt()
+                    root.resources.getDimensionPixelSize(R.dimen.md_spacing_02) + (2 * density).roundToInt()
                 } else {
                     tilePad
                 }
@@ -340,7 +340,7 @@ object FrozenPanchangaBinder {
                 button.isChecked = active
                 button.backgroundTintList = ColorStateList.valueOf(
                     root.context.getColor(
-                        if (active) R.color.carbon_layer_selected else R.color.carbon_layer_01
+                        if (active) R.color.md_layer_selected else R.color.md_layer_01
                     )
                 )
                 button.strokeWidth = 0

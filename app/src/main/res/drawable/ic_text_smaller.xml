@@ -1,1 +1,7 @@
-<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24"><path android:fillColor="#FFFFFFFF" android:pathData="M2,18h2l1.2,-3h4.6L11,18h2L8.5,6h-2zM6,13l1.5,-4 1.5,4zM14,10h8v2h-8z" /></vector>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Google Material Symbols Outlined: text_decrease, weight 400, FILL 0, opsz 24; Apache-2.0. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="960" android:viewportHeight="960">
+    <group android:translateX="-0.0" android:translateY="960.0">
+        <path android:fillColor="#000000" android:pathData="m40-200 210-560h100l210 560h-96l-51-143H187l-51 143H40Zm176-224h168l-82-232h-4l-82 232Zm384-16v-80h320v80H600Z" />
+    </group>
+</vector>

@@ -347,8 +347,8 @@ class ContentReaderActivity : AppCompatActivity() {
     }
 
     private fun buildFullSandhyaSpannable(): CharSequence {
-        val textPrimary = getColor(R.color.carbon_text)
-        val textSecondary = getColor(R.color.carbon_text_secondary)
+        val textPrimary = getColor(R.color.md_text)
+        val textSecondary = getColor(R.color.md_text_secondary)
         val sb = SpannableStringBuilder()
         sandhyaSteps.forEachIndexed { index, step ->
             if (index > 0) sb.append("\n\n")
@@ -524,7 +524,7 @@ class ContentReaderActivity : AppCompatActivity() {
         angaTabs.removeAllTabs()
         angaTabs.addTab(angaTabs.newTab().setText("ಪೂರ್ವಾಂಗ"), startTab == 0)
         angaTabs.addTab(angaTabs.newTab().setText("ಉತ್ತರಾಂಗ"), startTab == 1)
-        CarbonTabs.equalizeLeft(angaTabs)
+        MdTabs.equalizeLeft(angaTabs)
         angaTabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 showAnga(tab.position)
@@ -554,15 +554,15 @@ class ContentReaderActivity : AppCompatActivity() {
 
     private fun paintToggleChrome(btn: MaterialButton, active: Boolean) {
         btn.backgroundTintList = ColorStateList.valueOf(
-            getColor(if (active) R.color.carbon_layer_selected else android.R.color.transparent)
+            getColor(if (active) R.color.md_layer_selected else android.R.color.transparent)
         )
         btn.iconTint = ColorStateList.valueOf(
-            getColor(if (active) R.color.carbon_interactive else R.color.carbon_icon_secondary)
+            getColor(if (active) R.color.md_interactive else R.color.md_icon_secondary)
         )
         btn.strokeColor = ColorStateList.valueOf(
-            getColor(if (active) R.color.carbon_border_interactive else R.color.carbon_border_strong)
+            getColor(if (active) R.color.md_border_interactive else R.color.md_border_strong)
         )
-        btn.strokeWidth = resources.getDimensionPixelSize(R.dimen.carbon_border_width).coerceAtLeast(1)
+        btn.strokeWidth = resources.getDimensionPixelSize(R.dimen.md_border_width).coerceAtLeast(1)
     }
 
     private fun withoutRepeatedHeading(body: String, heading: String): String {

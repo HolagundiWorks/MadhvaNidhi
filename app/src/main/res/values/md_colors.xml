@@ -1,71 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Legacy Carbon resource names remapped onto Material 3 roles (seed #BA4E00). -->
+<!-- Legacy Material resource names remapped onto Material 3 roles (seed #BA4E00). -->
 <resources>
-    <color name="carbon_background">@color/md_theme_background</color>
-    <color name="carbon_background_hover">@color/md_theme_hover</color>
-    <color name="carbon_layer">@color/md_theme_surfaceContainer</color>
-    <color name="carbon_layer_01">@color/md_theme_surfaceContainer</color>
-    <color name="carbon_layer_02">@color/md_theme_surfaceContainerHigh</color>
-    <color name="carbon_layer_03">@color/md_theme_surfaceContainerHighest</color>
-    <color name="carbon_layer_high">@color/md_theme_surfaceContainerHigh</color>
-    <color name="carbon_layer_selected">@color/md_theme_secondaryContainer</color>
-    <color name="carbon_layer_accent">@color/md_theme_surfaceContainerHigh</color>
-    <color name="carbon_layer_hover">@color/md_theme_surfaceContainerHighest</color>
-    <color name="carbon_layer_active">@color/md_theme_surfaceVariant</color>
-    <color name="carbon_field">@color/md_theme_surfaceContainerHighest</color>
-    <color name="carbon_field_02">@color/md_theme_surfaceContainerHigh</color>
+    <color name="md_background">@color/md_theme_background</color>
+    <color name="md_background_hover">@color/md_theme_hover</color>
+    <color name="md_layer">@color/md_theme_surfaceContainer</color>
+    <color name="md_layer_01">@color/md_theme_surfaceContainer</color>
+    <color name="md_layer_02">@color/md_theme_surfaceContainerHigh</color>
+    <color name="md_layer_03">@color/md_theme_surfaceContainerHighest</color>
+    <color name="md_layer_high">@color/md_theme_surfaceContainerHigh</color>
+    <color name="md_layer_selected">@color/md_theme_secondaryContainer</color>
+    <color name="md_layer_accent">@color/md_theme_surfaceContainerHigh</color>
+    <color name="md_layer_hover">@color/md_theme_surfaceContainerHighest</color>
+    <color name="md_layer_active">@color/md_theme_surfaceVariant</color>
+    <color name="md_field">@color/md_theme_surfaceContainerHighest</color>
+    <color name="md_field_02">@color/md_theme_surfaceContainerHigh</color>
 
-    <color name="carbon_border">@color/md_theme_outlineVariant</color>
-    <color name="carbon_border_subtle">@color/md_theme_outlineVariant</color>
-    <color name="carbon_border_strong">@color/md_theme_outline</color>
-    <color name="carbon_outline">@color/md_theme_outline</color>
-    <color name="carbon_border_interactive">@color/md_theme_primary</color>
-    <color name="carbon_border_disabled">@color/md_theme_outlineVariant</color>
+    <color name="md_border">@color/md_theme_outlineVariant</color>
+    <color name="md_border_subtle">@color/md_theme_outlineVariant</color>
+    <color name="md_border_strong">@color/md_theme_outline</color>
+    <color name="md_outline">@color/md_theme_outline</color>
+    <color name="md_border_interactive">@color/md_theme_primary</color>
+    <color name="md_border_disabled">@color/md_theme_outlineVariant</color>
 
-    <color name="carbon_text">@color/md_theme_onSurface</color>
-    <color name="carbon_text_primary">@color/md_theme_onSurface</color>
-    <color name="carbon_text_secondary">@color/md_theme_onSurfaceVariant</color>
-    <color name="carbon_text_helper">@color/md_theme_onSurfaceVariant</color>
-    <color name="carbon_text_inverse">@color/md_theme_inverseOnSurface</color>
-    <color name="carbon_text_disabled">#61000000</color>
-    <color name="carbon_text_placeholder">#99000000</color>
-    <color name="carbon_text_error">@color/md_theme_error</color>
-    <color name="carbon_text_on_color">@color/md_theme_onPrimary</color>
-    <color name="carbon_icon_primary">@color/md_theme_onSurface</color>
-    <color name="carbon_icon_secondary">@color/md_theme_onSurfaceVariant</color>
-    <color name="carbon_icon_on_color">@color/md_theme_onPrimary</color>
+    <color name="md_text">@color/md_theme_onSurface</color>
+    <color name="md_text_primary">@color/md_theme_onSurface</color>
+    <color name="md_text_secondary">@color/md_theme_onSurfaceVariant</color>
+    <color name="md_text_helper">@color/md_theme_onSurfaceVariant</color>
+    <color name="md_text_inverse">@color/md_theme_inverseOnSurface</color>
+    <color name="md_text_disabled">#61000000</color>
+    <color name="md_text_placeholder">#99000000</color>
+    <color name="md_text_error">@color/md_theme_error</color>
+    <color name="md_text_on_color">@color/md_theme_onPrimary</color>
+    <color name="md_icon_primary">@color/md_theme_onSurface</color>
+    <color name="md_icon_secondary">@color/md_theme_onSurfaceVariant</color>
+    <color name="md_icon_on_color">@color/md_theme_onPrimary</color>
 
-    <color name="carbon_interactive">@color/md_theme_primary</color>
-    <color name="carbon_orange">@color/md_theme_primary</color>
-    <color name="carbon_button_primary">@color/md_theme_primary</color>
-    <color name="carbon_button_primary_hover">#9A4100</color>
-    <color name="carbon_button_primary_active">#7A3400</color>
-    <color name="carbon_button_tertiary">@color/md_theme_primary</color>
-    <color name="carbon_button_tertiary_hover">#9A4100</color>
-    <color name="carbon_link_primary">@color/md_theme_primary</color>
-    <color name="carbon_link_primary_hover">#9A4100</color>
-    <color name="carbon_orange_container">@color/md_theme_primaryContainer</color>
-    <color name="carbon_on_orange_container">@color/md_theme_onPrimaryContainer</color>
-    <color name="carbon_on_accent">@color/md_theme_onPrimary</color>
+    <color name="md_interactive">@color/md_theme_primary</color>
+    <color name="md_orange">@color/md_theme_primary</color>
+    <color name="md_button_primary">@color/md_theme_primary</color>
+    <color name="md_button_primary_hover">#9A4100</color>
+    <color name="md_button_primary_active">#7A3400</color>
+    <color name="md_button_tertiary">@color/md_theme_primary</color>
+    <color name="md_button_tertiary_hover">#9A4100</color>
+    <color name="md_link_primary">@color/md_theme_primary</color>
+    <color name="md_link_primary_hover">#9A4100</color>
+    <color name="md_orange_container">@color/md_theme_primaryContainer</color>
+    <color name="md_on_orange_container">@color/md_theme_onPrimaryContainer</color>
+    <color name="md_on_accent">@color/md_theme_onPrimary</color>
 
-    <color name="carbon_error">@color/md_theme_error</color>
-    <color name="carbon_error_container">@color/md_theme_errorContainer</color>
-    <color name="carbon_support_error">@color/md_theme_error</color>
-    <color name="carbon_support_success">#3B6D11</color>
-    <color name="carbon_support_warning">#6F5B00</color>
-    <color name="carbon_support_warning_inverse">#F1C21B</color>
-    <color name="carbon_support_info">@color/md_theme_primary</color>
-    <color name="carbon_ekadashi">#6F5B00</color>
+    <color name="md_error">@color/md_theme_error</color>
+    <color name="md_error_container">@color/md_theme_errorContainer</color>
+    <color name="md_support_error">@color/md_theme_error</color>
+    <color name="md_support_success">#3B6D11</color>
+    <color name="md_support_warning">#6F5B00</color>
+    <color name="md_support_warning_inverse">#F1C21B</color>
+    <color name="md_support_info">@color/md_theme_primary</color>
+    <color name="md_ekadashi">#6F5B00</color>
 
-    <color name="carbon_focus">@color/md_theme_primary</color>
-    <color name="carbon_focus_inset">@color/md_theme_onPrimary</color>
-    <color name="carbon_overlay">#80000000</color>
-    <color name="carbon_shadow">#4D000000</color>
+    <color name="md_focus">@color/md_theme_primary</color>
+    <color name="md_focus_inset">@color/md_theme_onPrimary</color>
+    <color name="md_overlay">#80000000</color>
+    <color name="md_shadow">#4D000000</color>
 
-    <!-- Material 3 medium corner (replaces Carbon productive 0dp). -->
-    <dimen name="carbon_corner_radius">12dp</dimen>
-    <dimen name="carbon_border_width">1dp</dimen>
-    <dimen name="carbon_layout_size_height_sm">32dp</dimen>
-    <dimen name="carbon_layout_size_height_md">40dp</dimen>
-    <dimen name="carbon_layout_size_height_lg">48dp</dimen>
+    <!-- Material 3 medium corner (replaces Material productive 0dp). -->
+    <dimen name="md_corner_radius">12dp</dimen>
+    <dimen name="md_border_width">1dp</dimen>
+    <dimen name="md_layout_size_height_sm">32dp</dimen>
+    <dimen name="md_layout_size_height_md">40dp</dimen>
+    <dimen name="md_layout_size_height_lg">48dp</dimen>
 </resources>

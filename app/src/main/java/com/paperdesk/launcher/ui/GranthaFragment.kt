@@ -25,7 +25,7 @@ class GranthaFragment : Fragment(R.layout.page_grantha_tabs) {
         destinations.forEachIndexed { index, id ->
             tabs.addTab(tabs.newTab().setText(OsLang.ui(id, lang)), index == selected)
         }
-        CarbonTabs.equalizeLeft(tabs)
+        MdTabs.equalizeLeft(tabs)
         fun show(index: Int) {
             selected = index
             val page = PageFactory.create(destinations[index])

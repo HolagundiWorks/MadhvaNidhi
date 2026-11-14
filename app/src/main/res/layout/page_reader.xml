@@ -17,9 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="@dimen/carbon_spacing_05"
-            android:paddingTop="@dimen/carbon_spacing_04"
-            android:paddingBottom="@dimen/carbon_spacing_03"
+            android:paddingHorizontal="@dimen/md_spacing_05"
+            android:paddingTop="@dimen/md_spacing_04"
+            android:paddingBottom="@dimen/md_spacing_03"
             android:background="@color/md_theme_surfaceContainer">
 
             <com.google.android.material.textview.MaterialTextView
@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
                 android:textColor="@color/md_theme_onSurface"
-                android:layout_marginBottom="@dimen/carbon_spacing_03"
+                android:layout_marginBottom="@dimen/md_spacing_03"
                 android:visibility="gone" />
 
             <com.google.android.material.button.MaterialButtonToggleGroup
@@ -45,10 +45,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:minHeight="@dimen/carbon_layout_size_height_lg"
+                    android:minHeight="@dimen/md_layout_size_height_lg"
                     android:contentDescription="ಪ್ರಾತಃ ಸಂಧ್ಯಾವಂದನೆ"
                     android:text="ಪ್ರಾತಃ"
-                    app:cornerRadius="@dimen/carbon_corner_radius"
+                    app:cornerRadius="@dimen/md_corner_radius"
                     app:icon="@drawable/ic_morning" />
 
                 <com.google.android.material.button.MaterialButton
@@ -57,10 +57,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:minHeight="@dimen/carbon_layout_size_height_lg"
+                    android:minHeight="@dimen/md_layout_size_height_lg"
                     android:contentDescription="ಮಾಧ್ಯಾಹ್ನಿಕ ಸಂಧ್ಯಾವಂದನೆ"
                     android:text="ಮಧ್ಯಾಹ್ನ"
-                    app:cornerRadius="@dimen/carbon_corner_radius"
+                    app:cornerRadius="@dimen/md_corner_radius"
                     app:icon="@drawable/ic_noon" />
 
                 <com.google.android.material.button.MaterialButton
@@ -69,10 +69,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:minHeight="@dimen/carbon_layout_size_height_lg"
+                    android:minHeight="@dimen/md_layout_size_height_lg"
                     android:contentDescription="ಸಾಯಂ ಸಂಧ್ಯಾವಂದನೆ"
                     android:text="ಸಾಯಂ"
-                    app:cornerRadius="@dimen/carbon_corner_radius"
+                    app:cornerRadius="@dimen/md_corner_radius"
                     app:icon="@drawable/ic_evening" />
             </com.google.android.material.button.MaterialButtonToggleGroup>
 
@@ -82,10 +82,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="ಓದುವ ಪಠ್ಯ ಆಯ್ಕೆ"
-                app:boxCornerRadiusBottomEnd="@dimen/carbon_corner_radius"
-                app:boxCornerRadiusBottomStart="@dimen/carbon_corner_radius"
-                app:boxCornerRadiusTopEnd="@dimen/carbon_corner_radius"
-                app:boxCornerRadiusTopStart="@dimen/carbon_corner_radius">
+                app:boxCornerRadiusBottomEnd="@dimen/md_corner_radius"
+                app:boxCornerRadiusBottomStart="@dimen/md_corner_radius"
+                app:boxCornerRadiusTopEnd="@dimen/md_corner_radius"
+                app:boxCornerRadiusTopStart="@dimen/md_corner_radius">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/readerItem"
@@ -100,25 +100,25 @@
                 style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="@dimen/carbon_layout_size_height_lg"
+                android:minHeight="@dimen/md_layout_size_height_lg"
                 android:text="ಆಯ್ಕೆಮಾಡಿ"
                 android:visibility="gone"
-                app:cornerRadius="@dimen/carbon_corner_radius" />
+                app:cornerRadius="@dimen/md_corner_radius" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/readerSelectBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="@dimen/carbon_layout_size_height_lg"
+                android:minHeight="@dimen/md_layout_size_height_lg"
                 android:text="ಆಯ್ಕೆಮಾಡಿ"
                 android:visibility="gone"
-                app:cornerRadius="@dimen/carbon_corner_radius" />
+                app:cornerRadius="@dimen/md_corner_radius" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/readerSelectLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/carbon_spacing_03"
+                android:layout_marginBottom="@dimen/md_spacing_03"
                 android:text=""
                 android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                 android:visibility="gone" />
@@ -137,9 +137,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:minHeight="@dimen/carbon_layout_size_height_lg"
+                    android:minHeight="@dimen/md_layout_size_height_lg"
                     android:text=""
-                    app:cornerRadius="@dimen/carbon_corner_radius" />
+                    app:cornerRadius="@dimen/md_corner_radius" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/subpageStotras"
@@ -147,9 +147,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:minHeight="@dimen/carbon_layout_size_height_lg"
+                    android:minHeight="@dimen/md_layout_size_height_lg"
                     android:text=""
-                    app:cornerRadius="@dimen/carbon_corner_radius" />
+                    app:cornerRadius="@dimen/md_corner_radius" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/subpageSuktas"
@@ -157,15 +157,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:minHeight="@dimen/carbon_layout_size_height_lg"
+                    android:minHeight="@dimen/md_layout_size_height_lg"
                     android:text=""
-                    app:cornerRadius="@dimen/carbon_corner_radius" />
+                    app:cornerRadius="@dimen/md_corner_radius" />
             </com.google.android.material.button.MaterialButtonToggleGroup>
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/carbon_border_width"
+            android:layout_height="@dimen/md_border_width"
             android:background="@color/md_theme_outlineVariant" />
 
         <!-- Portrait Browse List (shown directly for catalogue/puja selection) -->
@@ -175,9 +175,9 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:clipToPadding="false"
-            android:paddingHorizontal="@dimen/carbon_spacing_04"
-            android:paddingTop="@dimen/carbon_spacing_03"
-            android:paddingBottom="@dimen/carbon_spacing_04" />
+            android:paddingHorizontal="@dimen/md_spacing_04"
+            android:paddingTop="@dimen/md_spacing_03"
+            android:paddingBottom="@dimen/md_spacing_04" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/selectorEmpty"
@@ -185,7 +185,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:padding="@dimen/carbon_spacing_05"
+            android:padding="@dimen/md_spacing_05"
             android:text=""
             android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
             android:textColor="@color/md_theme_onSurfaceVariant"
@@ -204,13 +204,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="@dimen/carbon_spacing_05">
+                android:padding="@dimen/md_spacing_05">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/readerHead"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/carbon_spacing_03"
+                    android:layout_marginBottom="@dimen/md_spacing_03"
                     android:text=""
                     android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall" />
 
@@ -218,7 +218,7 @@
                     android:id="@+id/readerBody"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/carbon_spacing_03"
+                    android:layout_marginBottom="@dimen/md_spacing_03"
                     android:ellipsize="end"
                     android:lineSpacingMultiplier="1.45"
                     android:maxLines="8"
@@ -229,7 +229,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/carbon_border_width"
+            android:layout_height="@dimen/md_border_width"
             android:background="@color/md_theme_outlineVariant" />
 
         <!-- Selection summary -->
@@ -239,8 +239,8 @@
             android:layout_height="wrap_content"
             android:background="@color/md_theme_surfaceContainer"
             android:orientation="vertical"
-            android:paddingHorizontal="@dimen/carbon_spacing_05"
-            android:paddingVertical="@dimen/carbon_spacing_03">
+            android:paddingHorizontal="@dimen/md_spacing_05"
+            android:paddingVertical="@dimen/md_spacing_03">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/readerSelectedTitle"
@@ -255,8 +255,8 @@
                 android:id="@+id/readerCrumb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/carbon_spacing_01"
-                android:layout_marginBottom="@dimen/carbon_spacing_03"
+                android:layout_marginTop="@dimen/md_spacing_01"
+                android:layout_marginBottom="@dimen/md_spacing_03"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text=""

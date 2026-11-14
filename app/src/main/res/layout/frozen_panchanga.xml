@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/carbon_spacing_04">
+        android:padding="@dimen/md_spacing_04">
 
         <!-- Era, Facts, and Day's Special -->
         <com.google.android.material.card.MaterialCardView
@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/carbon_spacing_04">
+            android:padding="@dimen/md_spacing_04">
 
             <LinearLayout
                 android:id="@+id/eraAndFacts"
@@ -53,7 +53,7 @@
                         android:id="@+id/samvatsaraText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/carbon_spacing_01"
+                        android:layout_marginTop="@dimen/md_spacing_01"
                         android:ellipsize="end"
                         android:maxLines="1"
                         android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
@@ -63,19 +63,19 @@
                         android:id="@+id/eraMasa"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/carbon_spacing_03"
+                        android:layout_marginTop="@dimen/md_spacing_03"
                         android:orientation="vertical">
 
                         <View
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/carbon_border_width"
+                            android:layout_height="@dimen/md_border_width"
                             android:background="@color/md_theme_outlineVariant" />
 
                         <LinearLayout
                             android:id="@+id/masaRow"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginVertical="@dimen/carbon_spacing_02"
+                            android:layout_marginVertical="@dimen/md_spacing_02"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
 
@@ -106,7 +106,7 @@
 
                         <View
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/carbon_border_width"
+                            android:layout_height="@dimen/md_border_width"
                             android:background="@color/md_theme_outlineVariant" />
                     </LinearLayout>
                 </LinearLayout>
@@ -192,7 +192,7 @@
                     android:id="@+id/panchangaFacts"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/carbon_spacing_03"
+                    android:layout_marginTop="@dimen/md_spacing_03"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -201,12 +201,12 @@
                         android:baselineAligned="false"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingVertical="@dimen/carbon_spacing_02">
+                        android:paddingVertical="@dimen/md_spacing_02">
 
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="@dimen/shell_fact_label_width"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/carbon_spacing_04"
+                            android:layout_marginEnd="@dimen/md_spacing_04"
                             android:text="ರಾಶಿ"
                             android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                             android:textColor="@color/md_theme_onSurfaceVariant" />
@@ -217,12 +217,12 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                            android:textColor="@color/carbon_text_helper" />
+                            android:textColor="@color/md_text_helper" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/carbon_border_width"
+                        android:layout_height="@dimen/md_border_width"
                         android:background="@color/md_theme_outlineVariant" />
 
                     <LinearLayout
@@ -230,12 +230,12 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingVertical="@dimen/carbon_spacing_02">
+                        android:paddingVertical="@dimen/md_spacing_02">
 
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="@dimen/shell_fact_label_width"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/carbon_spacing_04"
+                            android:layout_marginEnd="@dimen/md_spacing_04"
                             android:text="ನಕ್ಷತ್ರ"
                             android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                             android:textColor="@color/md_theme_onSurfaceVariant" />
@@ -246,12 +246,12 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                            android:textColor="@color/carbon_text_helper" />
+                            android:textColor="@color/md_text_helper" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/carbon_border_width"
+                        android:layout_height="@dimen/md_border_width"
                         android:background="@color/md_theme_outlineVariant" />
 
                     <LinearLayout
@@ -259,12 +259,12 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingVertical="@dimen/carbon_spacing_02">
+                        android:paddingVertical="@dimen/md_spacing_02">
 
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="@dimen/shell_fact_label_width"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/carbon_spacing_04"
+                            android:layout_marginEnd="@dimen/md_spacing_04"
                             android:text="ನಕ್ಷತ್ರ ಪಾದ"
                             android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                             android:textColor="@color/md_theme_onSurfaceVariant" />
@@ -275,12 +275,12 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                            android:textColor="@color/carbon_text_helper" />
+                            android:textColor="@color/md_text_helper" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/carbon_border_width"
+                        android:layout_height="@dimen/md_border_width"
                         android:background="@color/md_theme_outlineVariant" />
 
                     <LinearLayout
@@ -288,12 +288,12 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingVertical="@dimen/carbon_spacing_02">
+                        android:paddingVertical="@dimen/md_spacing_02">
 
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="@dimen/shell_fact_label_width"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/carbon_spacing_04"
+                            android:layout_marginEnd="@dimen/md_spacing_04"
                             android:text="ಕರಣ"
                             android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                             android:textColor="@color/md_theme_onSurfaceVariant" />
@@ -304,7 +304,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                            android:textColor="@color/carbon_text_helper" />
+                            android:textColor="@color/md_text_helper" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -312,15 +312,15 @@
             <View
                 android:id="@+id/contextRule"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/carbon_border_width"
-                android:layout_marginTop="@dimen/carbon_spacing_03"
+                android:layout_height="@dimen/md_border_width"
+                android:layout_marginTop="@dimen/md_spacing_03"
                 android:background="@color/md_theme_outlineVariant" />
 
             <LinearLayout
                 android:id="@+id/dayEventsCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/carbon_spacing_03"
+                android:layout_marginTop="@dimen/md_spacing_03"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -342,7 +342,7 @@
                         android:id="@+id/dayEvent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/carbon_spacing_01"
+                        android:layout_marginTop="@dimen/md_spacing_01"
                         android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
                         android:textColor="@color/md_theme_onSurface" />
 
@@ -350,7 +350,7 @@
                         android:id="@+id/dayEventSummary"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/carbon_spacing_01"
+                        android:layout_marginTop="@dimen/md_spacing_01"
                         android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                         android:textColor="@color/md_theme_onSurfaceVariant"
                         android:visibility="gone" />
@@ -359,8 +359,8 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/eventDetails"
                     style="@style/Widget.Material3.Button.TextButton"
-                    android:layout_width="@dimen/carbon_layout_size_height_lg"
-                    android:layout_height="@dimen/carbon_layout_size_height_lg"
+                    android:layout_width="@dimen/md_layout_size_height_lg"
+                    android:layout_height="@dimen/md_layout_size_height_lg"
                     android:contentDescription="Show day’s event and significance"
                     android:insetBottom="0dp"
                     android:insetTop="0dp"
@@ -380,7 +380,7 @@
             android:id="@+id/panchangaCalendar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/carbon_spacing_04"
+            android:layout_marginTop="@dimen/md_spacing_04"
             android:orientation="vertical">
 
             <LinearLayout
@@ -417,7 +417,7 @@
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingHorizontal="@dimen/carbon_spacing_03"
+                            android:paddingHorizontal="@dimen/md_spacing_03"
                             android:text="→"
                             android:textColor="@color/md_theme_onSurfaceVariant"
                             android:textSize="14sp" />
@@ -434,7 +434,7 @@
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingHorizontal="@dimen/carbon_spacing_03"
+                            android:paddingHorizontal="@dimen/md_spacing_03"
                             android:text="→"
                             android:textColor="@color/md_theme_onSurfaceVariant"
                             android:textSize="14sp" />
@@ -452,28 +452,28 @@
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/chooseDate"
                         style="@style/Widget.Material3.Button.OutlinedButton"
-                        android:layout_width="@dimen/carbon_layout_size_height_lg"
-                        android:layout_height="@dimen/carbon_layout_size_height_lg"
+                        android:layout_width="@dimen/md_layout_size_height_lg"
+                        android:layout_height="@dimen/md_layout_size_height_lg"
                         android:contentDescription="ದಿನಾಂಕ ಆಯ್ಕೆಮಾಡಿ · Choose date"
                         android:insetBottom="0dp"
                         android:insetTop="0dp"
                         android:minWidth="0dp"
                         android:padding="0dp"
-                        app:cornerRadius="@dimen/carbon_corner_radius"
+                        app:cornerRadius="@dimen/md_corner_radius"
                         app:icon="@drawable/ic_calendar"
                         app:iconGravity="textStart"
                         app:iconPadding="0dp"
                         app:iconSize="20dp"
                         app:iconTint="@color/md_theme_onSurfaceVariant"
                         app:strokeColor="@color/md_theme_outline"
-                        app:strokeWidth="@dimen/carbon_border_width" />
+                        app:strokeWidth="@dimen/md_border_width" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/pakshaToggle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/carbon_spacing_03"
+                    android:layout_marginTop="@dimen/md_spacing_03"
                     android:background="@drawable/bg_paksha_toggle"
                     android:orientation="horizontal">
 
@@ -483,7 +483,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:minHeight="@dimen/carbon_layout_size_height_lg"
+                        android:minHeight="@dimen/md_layout_size_height_lg"
                         android:checkable="true"
                         android:contentDescription="Shukla paksha"
                         android:text="ಶುಕ್ಲಪಕ್ಷ"
@@ -492,7 +492,7 @@
                         app:iconSize="16dp" />
 
                     <View
-                        android:layout_width="@dimen/carbon_border_width"
+                        android:layout_width="@dimen/md_border_width"
                         android:layout_height="match_parent"
                         android:background="@color/md_theme_outlineVariant" />
 
@@ -502,7 +502,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:minHeight="@dimen/carbon_layout_size_height_lg"
+                        android:minHeight="@dimen/md_layout_size_height_lg"
                         android:checkable="true"
                         android:contentDescription="Krishna paksha"
                         android:text="ಕೃಷ್ಣಪಕ್ಷ"
@@ -517,8 +517,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="240dp"
-                android:layout_marginTop="@dimen/carbon_spacing_03"
-                android:padding="@dimen/carbon_spacing_02">
+                android:layout_marginTop="@dimen/md_spacing_03"
+                android:padding="@dimen/md_spacing_02">
 
                 <FrameLayout
                     android:id="@+id/shuklaCalendarRow"

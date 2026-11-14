@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="@dimen/carbon_spacing_05">
+    android:padding="@dimen/md_spacing_05">
 
     <TextView
         android:layout_width="match_parent"
@@ -49,8 +49,8 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/carbon_border_width"
-        android:layout_marginVertical="@dimen/carbon_spacing_03"
+        android:layout_height="@dimen/md_border_width"
+        android:layout_marginVertical="@dimen/md_spacing_03"
         android:background="@color/md_theme_outlineVariant" />
 
     <TextView
@@ -64,7 +64,7 @@
         android:id="@+id/dialogJapaCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/carbon_spacing_02"
+        android:layout_marginTop="@dimen/md_spacing_02"
         android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
         android:textColor="@color/md_theme_onSurface" />
 
@@ -78,7 +78,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/carbon_spacing_03"
+        android:layout_marginTop="@dimen/md_spacing_03"
         android:orientation="horizontal">
 
         <com.google.android.material.button.MaterialButton
@@ -86,14 +86,14 @@
             style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/carbon_spacing_02"
+            android:layout_marginStart="@dimen/md_spacing_02"
             android:text="@string/dashboard_open_japa" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/carbon_border_width"
-        android:layout_marginVertical="@dimen/carbon_spacing_03"
+        android:layout_height="@dimen/md_border_width"
+        android:layout_marginVertical="@dimen/md_spacing_03"
         android:background="@color/md_theme_outlineVariant" />
 
     <TextView

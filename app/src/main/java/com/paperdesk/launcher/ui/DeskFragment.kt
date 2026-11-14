@@ -155,9 +155,9 @@ class DeskFragment : Fragment() {
                 setTextColor(
                     requireContext().getColor(
                         when {
-                            accent -> R.color.carbon_ekadashi
-                            pending -> R.color.carbon_text_helper
-                            else -> R.color.carbon_text
+                            accent -> R.color.md_ekadashi
+                            pending -> R.color.md_text_helper
+                            else -> R.color.md_text
                         }
                     )
                 )
@@ -320,12 +320,12 @@ class DeskFragment : Fragment() {
         v.findViewById<TextView>(R.id.selectedTithi).apply {
             text = tithiLabel
             DeskType.apply(this, DeskType.SEMIBOLD)
-            setTextColor(requireContext().getColor(if (ekadashi) R.color.carbon_ekadashi else R.color.carbon_text))
+            setTextColor(requireContext().getColor(if (ekadashi) R.color.md_ekadashi else R.color.md_text))
         }
         v.findViewById<TextView>(R.id.selectedWeekday).apply {
             text = weekday
             DeskType.apply(this, DeskType.SEMIBOLD)
-            setTextColor(requireContext().getColor(R.color.carbon_text))
+            setTextColor(requireContext().getColor(R.color.md_text))
         }
         v.findViewById<TextView>(R.id.selectedMeta).text = "$tithiLabel · $weekday"
         val year = PanchangaStore.shakaYear(day).toString()
@@ -334,12 +334,12 @@ class DeskFragment : Fragment() {
         v.findViewById<TextView>(R.id.shakaYear).apply {
             text = "ಶ್ರೀ ಶಾಲಿವಾಹನ ಗತಶಕೆ-$year"
             DeskType.apply(this, DeskType.SEMIBOLD)
-            setTextColor(requireContext().getColor(R.color.carbon_text))
+            setTextColor(requireContext().getColor(R.color.md_text))
         }
         v.findViewById<TextView>(R.id.samvatsaraText).apply {
             text = "ಶ್ರೀ $samvatsara ನಾಮ ಸಂವತ್ಸರ"
             DeskType.apply(this, DeskType.SEMIBOLD)
-            setTextColor(requireContext().getColor(R.color.carbon_text_secondary))
+            setTextColor(requireContext().getColor(R.color.md_text_secondary))
         }
         v.findViewById<TextView>(R.id.masaValue).apply {
             text = masa
@@ -357,7 +357,7 @@ class DeskFragment : Fragment() {
                 DeskType.apply(this, if (pending) DeskType.REGULAR else DeskType.SEMIBOLD)
                 setTextColor(
                     requireContext().getColor(
-                        if (pending) R.color.carbon_text_helper else R.color.carbon_text
+                        if (pending) R.color.md_text_helper else R.color.md_text
                     )
                 )
             }
@@ -387,7 +387,7 @@ class DeskFragment : Fragment() {
             text = detailsEvent
             DeskType.apply(this, DeskType.SEMIBOLD)
             setTextColor(
-                requireContext().getColor(if (ekadashi) R.color.carbon_ekadashi else R.color.carbon_text)
+                requireContext().getColor(if (ekadashi) R.color.md_ekadashi else R.color.md_text)
             )
         }
         v.findViewById<TextView>(R.id.dayEventSummary).visibility = View.GONE

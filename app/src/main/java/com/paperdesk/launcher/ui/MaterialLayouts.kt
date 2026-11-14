@@ -9,10 +9,10 @@ import kotlin.math.floor
 object MaterialLayouts {
     fun bind(root: View) {
         configure(root, R.id.aayadiGrid, 360f, 1)
-        configure(root, R.id.aayadiInputsGrid, 150f, 2, gapToken = R.dimen.carbon_spacing_03)
-        configure(root, R.id.aayadiResultsGrid, 156f, 3, gapToken = R.dimen.carbon_spacing_03)
+        configure(root, R.id.aayadiInputsGrid, 150f, 2, gapToken = R.dimen.md_spacing_03)
+        configure(root, R.id.aayadiResultsGrid, 156f, 3, gapToken = R.dimen.md_spacing_03)
         configure(root, R.id.settingsGrid, 360f, 2)
-        configure(root, R.id.profileFieldsGrid, 280f, 2, gapToken = R.dimen.carbon_spacing_03)
+        configure(root, R.id.profileFieldsGrid, 280f, 2, gapToken = R.dimen.md_spacing_03)
         fun centerIcons(view: View) {
             if (view is com.google.android.material.button.MaterialButton && view.text.isNullOrEmpty() && view.icon != null) {
                 view.iconGravity = com.google.android.material.button.MaterialButton.ICON_GRAVITY_TEXT_START
@@ -24,7 +24,7 @@ object MaterialLayouts {
     }
 
     private fun configure(root: View, id: Int, minimumWidth: Float, maximum: Int,
-                          firstSpans: Boolean = false, gapToken: Int = R.dimen.carbon_spacing_05) {
+                          firstSpans: Boolean = false, gapToken: Int = R.dimen.md_spacing_05) {
         val grid = root.findViewById<GridLayout>(id) ?: return
         var previousColumns = 0
         var previousWidth = 0

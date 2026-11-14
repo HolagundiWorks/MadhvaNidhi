@@ -40,7 +40,7 @@ object DeskType {
         val value = tv.text.toString().replace('\n', ' ')
         val ink = android.graphics.Rect()
         if (value.isNotBlank()) tv.paint.getTextBounds(value, 0, value.length, ink)
-        // Carbon's nominal line height, with a measured minimum for Indic marks.
+        // Material's nominal line height, with a measured minimum for Indic marks.
         androidx.core.widget.TextViewCompat.setLineHeight(tv, maxOf(nominal, ink.height() + 4))
     }
 

@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Carbon skip-forward 32 — Apache-2.0, see assets/licenses/carbon-icons.txt -->
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="32dp"
-    android:height="32dp"
-    android:viewportWidth="32"
-    android:viewportHeight="32">
-    <path
-        android:fillColor="#FF000000"
-        android:pathData="M5,28a1,1 0,0 1,-1 -1V5a1,1 0,0 1,0.5 -0.87,1 1,0 0,1 1,0l19,11a1,1 0,0 1,0 1.74l-19,11A1,1 0,0 1,5 28ZM6,6.73v18.54L22,16ZM28,4h2v24h-2z" />
+<!-- Google Material Symbols Outlined: skip_next, weight 400, FILL 0, opsz 24; Apache-2.0. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="960" android:viewportHeight="960">
+    <group android:translateX="-0.0" android:translateY="960.0">
+        <path android:fillColor="#000000" android:pathData="M660-240v-480h80v480h-80Zm-440 0v-480l360 240-360 240Zm80-240Zm0 90 136-90-136-90v180Z" />
+    </group>
 </vector>

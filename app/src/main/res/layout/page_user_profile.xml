@@ -6,14 +6,14 @@
     android:fillViewport="true"
     android:clipToPadding="false"
     android:background="@color/md_theme_background"
-    android:padding="@dimen/carbon_spacing_05"
-    android:paddingBottom="@dimen/carbon_spacing_07">
+    android:padding="@dimen/md_spacing_05"
+    android:paddingBottom="@dimen/md_spacing_07">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingBottom="@dimen/carbon_spacing_07">
+        android:paddingBottom="@dimen/md_spacing_07">
 
         <TextView
             android:layout_width="match_parent"
@@ -25,7 +25,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/carbon_spacing_02"
+            android:layout_marginTop="@dimen/md_spacing_02"
             android:text="Profile details are encrypted on this device. Use Edit · Save to update them."
             android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
             android:textColor="@color/md_theme_onSurfaceVariant" />
@@ -43,27 +43,27 @@
             android:layout_marginBottom="16dp"
             android:text="These preferences save automatically."
             android:textAppearance="@style/TextAppearance.Material3.BodySmall" />
-<com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/carbon_spacing_05" app:cardCornerRadius="@dimen/carbon_corner_radius" app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four" app:cardBackgroundColor="@color/md_theme_surfaceContainer">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/carbon_spacing_05">
-                    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/carbon_spacing_05" android:hint="@string/settings_veda" style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu" app:boxCornerRadiusTopStart="@dimen/carbon_corner_radius" app:boxCornerRadiusTopEnd="@dimen/carbon_corner_radius" app:boxCornerRadiusBottomStart="@dimen/carbon_corner_radius" app:boxCornerRadiusBottomEnd="@dimen/carbon_corner_radius">
+<com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" app:cardCornerRadius="@dimen/md_corner_radius" app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four" app:cardBackgroundColor="@color/md_theme_surfaceContainer">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/md_spacing_05">
+                    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:hint="@string/settings_veda" style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu" app:boxCornerRadiusTopStart="@dimen/md_corner_radius" app:boxCornerRadiusTopEnd="@dimen/md_corner_radius" app:boxCornerRadiusBottomStart="@dimen/md_corner_radius" app:boxCornerRadiusBottomEnd="@dimen/md_corner_radius">
                         <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@+id/settingsVeda" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="none" android:maxLines="3" />
                     </com.google.android.material.textfield.TextInputLayout>
-                    <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:text="@string/settings_veda_hint" android:layout_marginBottom="@dimen/carbon_spacing_03" />
+                    <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:text="@string/settings_veda_hint" android:layout_marginBottom="@dimen/md_spacing_03" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
-<com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/carbon_spacing_05" app:cardCornerRadius="@dimen/carbon_corner_radius" app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four" app:cardBackgroundColor="@color/md_theme_surfaceContainer">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/carbon_spacing_05">
-                    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/carbon_spacing_05" android:hint="@string/settings_panchanga" style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu" app:boxCornerRadiusTopStart="@dimen/carbon_corner_radius" app:boxCornerRadiusTopEnd="@dimen/carbon_corner_radius" app:boxCornerRadiusBottomStart="@dimen/carbon_corner_radius" app:boxCornerRadiusBottomEnd="@dimen/carbon_corner_radius">
+<com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" app:cardCornerRadius="@dimen/md_corner_radius" app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four" app:cardBackgroundColor="@color/md_theme_surfaceContainer">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/md_spacing_05">
+                    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:hint="@string/settings_panchanga" style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu" app:boxCornerRadiusTopStart="@dimen/md_corner_radius" app:boxCornerRadiusTopEnd="@dimen/md_corner_radius" app:boxCornerRadiusBottomStart="@dimen/md_corner_radius" app:boxCornerRadiusBottomEnd="@dimen/md_corner_radius">
                         <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@+id/settingsPanchanga" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="none" android:maxLines="3" />
                     </com.google.android.material.textfield.TextInputLayout>
-                    <com.google.android.material.textview.MaterialTextView android:id="@+id/settingsPanchangaHint" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:text="" android:layout_marginBottom="@dimen/carbon_spacing_03" />
+                    <com.google.android.material.textview.MaterialTextView android:id="@+id/settingsPanchangaHint" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:text="" android:layout_marginBottom="@dimen/md_spacing_03" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/carbon_spacing_05"
+            android:layout_marginTop="@dimen/md_spacing_05"
             android:orientation="horizontal"
             android:gravity="end">
 
@@ -79,7 +79,7 @@
                 style="@style/Widget.Material3.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/carbon_spacing_03"
+                android:layout_marginStart="@dimen/md_spacing_03"
                 android:text="Save"
                 android:visibility="gone" />
 
@@ -88,46 +88,46 @@
                 style="@style/Widget.Material3.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/carbon_spacing_03"
-                android:minHeight="@dimen/carbon_layout_size_height_lg"
+                android:layout_marginStart="@dimen/md_spacing_03"
+                android:minHeight="@dimen/md_layout_size_height_lg"
                 android:text="Cancel"
                 android:visibility="gone"
-                app:cornerRadius="@dimen/carbon_corner_radius" />
+                app:cornerRadius="@dimen/md_corner_radius" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/userViewMode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/carbon_spacing_05"
+            android:layout_marginTop="@dimen/md_spacing_05"
             android:orientation="vertical"
             android:background="@color/md_theme_surfaceContainer"
-            android:padding="@dimen/carbon_spacing_05"
-            android:paddingBottom="@dimen/carbon_spacing_06">
+            android:padding="@dimen/md_spacing_05"
+            android:paddingBottom="@dimen/md_spacing_06">
 
             <TextView android:id="@+id/viewNameLabel" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Name · ಹೆಸರು" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:textColor="@color/md_theme_onSurfaceVariant" />
-            <TextView android:id="@+id/viewName" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/carbon_spacing_05" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" />
+            <TextView android:id="@+id/viewName" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" />
 
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Gotra · ಗೋತ್ರ" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:textColor="@color/md_theme_onSurfaceVariant" />
-            <TextView android:id="@+id/viewGotra" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/carbon_spacing_05" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" />
+            <TextView android:id="@+id/viewGotra" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" />
 
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Marital · ವೈವಾಹಿಕ" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:textColor="@color/md_theme_onSurfaceVariant" />
-            <TextView android:id="@+id/viewMarital" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/carbon_spacing_05" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" />
+            <TextView android:id="@+id/viewMarital" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" />
 
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Rashi · ರಾಶಿ" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:textColor="@color/md_theme_onSurfaceVariant" />
-            <TextView android:id="@+id/viewRashi" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/carbon_spacing_05" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" />
+            <TextView android:id="@+id/viewRashi" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" />
 
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Nakshatra · ನಕ್ಷತ್ರ" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:textColor="@color/md_theme_onSurfaceVariant" />
-            <TextView android:id="@+id/viewNakshatra" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/carbon_spacing_05" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" />
+            <TextView android:id="@+id/viewNakshatra" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" />
 
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Veda · ವೇದ" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:textColor="@color/md_theme_onSurfaceVariant" />
-            <TextView android:id="@+id/viewVeda" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/carbon_spacing_05" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" />
+            <TextView android:id="@+id/viewVeda" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" />
 
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Matha · ಮಠ" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:textColor="@color/md_theme_onSurfaceVariant" />
-            <TextView android:id="@+id/viewMatha" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/carbon_spacing_05" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" />
+            <TextView android:id="@+id/viewMatha" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" />
 
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/carbon_spacing_05" android:text="Japa / diksha · ಜಪ ದೀಕ್ಷಾ" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:textColor="@color/md_theme_onSurfaceVariant" />
-            <TextView android:id="@+id/viewDiksha" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/carbon_spacing_05" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/md_spacing_05" android:text="Japa / diksha · ಜಪ ದೀಕ್ಷಾ" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:textColor="@color/md_theme_onSurfaceVariant" />
+            <TextView android:id="@+id/viewDiksha" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md_spacing_05" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurface" />
 
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Japa targets · ಜಪ ಗುರಿ" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:textColor="@color/md_theme_onSurfaceVariant" />
             <LinearLayout android:id="@+id/viewJapaTargets" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" />
@@ -137,7 +137,7 @@
             android:id="@+id/userEditMode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/carbon_spacing_05"
+            android:layout_marginTop="@dimen/md_spacing_05"
             android:orientation="vertical"
             android:visibility="gone">
 
@@ -157,7 +157,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/carbon_spacing_03"
+                android:layout_marginTop="@dimen/md_spacing_03"
                 android:hint="Gotra · ಗೋತ್ರ"
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -170,7 +170,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/carbon_spacing_03"
+                android:layout_marginTop="@dimen/md_spacing_03"
                 android:hint="Marital · ವೈವಾಹಿಕ"
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -183,7 +183,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/carbon_spacing_03"
+                android:layout_marginTop="@dimen/md_spacing_03"
                 android:hint="Rashi"
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -196,7 +196,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/carbon_spacing_03"
+                android:layout_marginTop="@dimen/md_spacing_03"
                 android:hint="Nakshatra"
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -209,7 +209,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/carbon_spacing_03"
+                android:layout_marginTop="@dimen/md_spacing_03"
                 android:hint="Veda"
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -222,7 +222,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/carbon_spacing_03"
+                android:layout_marginTop="@dimen/md_spacing_03"
                 android:hint="Matha"
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -235,13 +235,13 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/carbon_spacing_05"
+                android:layout_marginTop="@dimen/md_spacing_05"
                 android:hint="Japa / diksha · ಜಪ ದೀಕ್ಷಾ"
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                app:boxCornerRadiusTopStart="@dimen/carbon_corner_radius"
-                app:boxCornerRadiusTopEnd="@dimen/carbon_corner_radius"
-                app:boxCornerRadiusBottomStart="@dimen/carbon_corner_radius"
-                app:boxCornerRadiusBottomEnd="@dimen/carbon_corner_radius">
+                app:boxCornerRadiusTopStart="@dimen/md_corner_radius"
+                app:boxCornerRadiusTopEnd="@dimen/md_corner_radius"
+                app:boxCornerRadiusBottomStart="@dimen/md_corner_radius"
+                app:boxCornerRadiusBottomEnd="@dimen/md_corner_radius">
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/editDiksha"
                     android:layout_width="match_parent"
@@ -262,7 +262,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/carbon_spacing_05"
+                android:layout_marginTop="@dimen/md_spacing_05"
                 android:text="Japa targets"
                 android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                 android:textColor="@color/md_theme_onSurfaceVariant" />
@@ -272,14 +272,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="@dimen/carbon_spacing_03" />
+                android:layout_marginTop="@dimen/md_spacing_03" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/userStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/carbon_spacing_05"
+            android:layout_marginTop="@dimen/md_spacing_05"
             android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
             android:textColor="@color/md_theme_onSurfaceVariant" />
     </LinearLayout>

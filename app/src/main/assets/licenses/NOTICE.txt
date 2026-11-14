@@ -16,12 +16,6 @@ Internet may be used for optional live Panchanga tradition data when selected an
 reachable. The app does not sell personal data. See in-app Legal → Privacy for the
 full declaration.
 
-IBM Carbon icons
-----------------
-Selected icon SVGs are derived from IBM Carbon Design System icons.
-Copyright IBM Corp. Licensed under the Apache License, Version 2.0.
-See carbon-icons.txt in this folder.
-
 Haridasa lyric imports
 ----------------------
 Classical Haridasa compositions are public-domain literary works.
@@ -42,13 +36,13 @@ Retain source attributions recorded in docs/CATALOGUE_AUDIT.md and individual
 text headers where present. Do not assume a single open license for the entire
 library corpus.
 
-Google Material Symbols
+Google Material Symbols (all app icons)
 -----------------------
 award_star (Outlined, FILL 1, default weight 400, optical size 24) and eda
 (Outlined, FILL 0, weight 100, GRAD 0, optical size 24) are from Google’s
 Material Symbols repository, licensed under Apache License 2.0.
 Source: https://github.com/google/material-design-icons/tree/master/symbols/web
-See material-symbols-license.txt in this folder.
+See material-symbols-license.txt and material-symbols-icons.txt (icon list) in this folder.
 
 Navigation Material Symbols Outlined (FILL 0, weight 400, opsz 24):
 home, calendar_month, self_improvement, spa, menu_book, music_note,

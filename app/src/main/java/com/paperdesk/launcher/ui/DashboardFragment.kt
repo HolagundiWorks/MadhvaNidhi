@@ -54,7 +54,7 @@ class DashboardFragment : Fragment() {
             view.findViewById<TextView>(R.id.dashboardGreeting).text = profile.name.ifBlank { "MadhvaNidhi" }
         }
 
-        CarbonMotion.fadeIn(view)
+        MdMotion.fadeIn(view)
         viewLifecycleOwner.lifecycleScope.launch {
             val app = requireContext().applicationContext
             val store = withContext(Dispatchers.IO) {
@@ -123,9 +123,9 @@ class DashboardFragment : Fragment() {
         view.findViewById<TextView>(R.id.dashboardTodayCount).text = "$todayCount / 3"
         view.findViewById<LinearProgressIndicator>(R.id.dashboardTodayProgress).progress = todayCount
         val density = resources.displayMetrics.density
-        val gap = resources.getDimensionPixelSize(R.dimen.carbon_spacing_02)
-        val padH = resources.getDimensionPixelSize(R.dimen.carbon_spacing_03)
-        val padV = resources.getDimensionPixelSize(R.dimen.carbon_spacing_02)
+        val gap = resources.getDimensionPixelSize(R.dimen.md_spacing_02)
+        val padH = resources.getDimensionPixelSize(R.dimen.md_spacing_03)
+        val padV = resources.getDimensionPixelSize(R.dimen.md_spacing_02)
         val todayKey = PanchangaStore.dateKey()
         val completeDays = practice.weeklySandhyaCompleteCount()
         val weeklyBadge = DashboardBadges.evaluate(DashboardBadges.WEEKLY_TIERS, completeDays.toLong())
@@ -147,7 +147,7 @@ class DashboardFragment : Fragment() {
             val isToday = key == todayKey
             val pendingToday = isToday && done < 3
             val dayComplete = done == 3
-            val status = CarbonStatus.sandhyaDay(done, future, pendingToday)
+            val status = DayStatus.sandhyaDay(done, future, pendingToday)
             val dayName = knDays[day.get(Calendar.DAY_OF_WEEK) - 1]
 
             // Fitts ≥48dp rows; Von Restorff: today outlined; completed quiet (not full orange flood).
@@ -172,10 +172,10 @@ class DashboardFragment : Fragment() {
                 isClickable = !future
                 isFocusable = !future
                 contentDescription = when (status) {
-                    CarbonStatus.FUTURE -> "$dayName · upcoming"
-                    CarbonStatus.COMPLETE -> "$dayName · complete · $done of 3"
-                    CarbonStatus.SKIPPED -> "$dayName · incomplete · $done of 3"
-                    CarbonStatus.PENDING -> "$dayName · $done of 3 · tap to view"
+                    DayStatus.FUTURE -> "$dayName · upcoming"
+                    DayStatus.COMPLETE -> "$dayName · complete · $done of 3"
+                    DayStatus.SKIPPED -> "$dayName · incomplete · $done of 3"
+                    DayStatus.PENDING -> "$dayName · $done of 3 · tap to view"
                 }
             }
 
@@ -221,7 +221,7 @@ class DashboardFragment : Fragment() {
             if (!future) {
                 val dateForCell = key
                 row.setOnClickListener {
-                    CarbonMotion.pressFlash(it)
+                    MdMotion.pressFlash(it)
                     showProgressDialog(dateForCell)
                 }
             }
@@ -403,7 +403,7 @@ class DashboardFragment : Fragment() {
                 gravity = Gravity.CENTER
                 setTextAppearance(com.google.android.material.R.style.TextAppearance_Material3_TitleMedium)
                 setTextColor(foreground)
-                setPadding(0, resources.getDimensionPixelSize(R.dimen.carbon_spacing_01), 0, 0)
+                setPadding(0, resources.getDimensionPixelSize(R.dimen.md_spacing_01), 0, 0)
             })
 
             cell.addView(LinearProgressIndicator(requireContext()).apply {
@@ -411,7 +411,7 @@ class DashboardFragment : Fragment() {
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
                 ).apply {
-                    topMargin = resources.getDimensionPixelSize(R.dimen.carbon_spacing_02)
+                    topMargin = resources.getDimensionPixelSize(R.dimen.md_spacing_02)
                 }
                 max = 100
                 progress = pct
@@ -427,7 +427,7 @@ class DashboardFragment : Fragment() {
                 gravity = Gravity.CENTER
                 setTextAppearance(com.google.android.material.R.style.TextAppearance_Material3_LabelSmall)
                 setTextColor(secondary)
-                setPadding(0, resources.getDimensionPixelSize(R.dimen.carbon_spacing_01), 0, 0)
+                setPadding(0, resources.getDimensionPixelSize(R.dimen.md_spacing_01), 0, 0)
             })
 
             cell.addView(TextView(requireContext()).apply {
@@ -435,14 +435,14 @@ class DashboardFragment : Fragment() {
                 gravity = Gravity.CENTER
                 setTextAppearance(com.google.android.material.R.style.TextAppearance_Material3_LabelMedium)
                 setTextColor(secondary)
-                setPadding(0, resources.getDimensionPixelSize(R.dimen.carbon_spacing_02), 0, 0)
+                setPadding(0, resources.getDimensionPixelSize(R.dimen.md_spacing_02), 0, 0)
             })
             androidx.core.view.ViewCompat.setStateDescription(cell, status)
             cell.contentDescription =
                 "$label. $status. ${countFormat.format(counts.daily)} of ${countFormat.format(target)}. " +
                     "Cumulative ${countFormat.format(counts.cumulative)}. Tap to open japa."
             cell.setOnClickListener {
-                CarbonMotion.pressFlash(it)
+                MdMotion.pressFlash(it)
                 store.setActiveMantraId(entry.id)
                 (activity as? LauncherActivity)?.navigateTo("japa")
             }
@@ -452,7 +452,7 @@ class DashboardFragment : Fragment() {
     private fun styleJapaCard(card: com.google.android.material.card.MaterialCardView, complete: Boolean) {
         card.setCardBackgroundColor(requireContext().getColor(
             R.color.md_theme_surfaceContainer))
-        card.strokeWidth = if (complete) resources.getDimensionPixelSize(R.dimen.carbon_border_width) else 0
+        card.strokeWidth = if (complete) resources.getDimensionPixelSize(R.dimen.md_border_width) else 0
         card.strokeColor = requireContext().getColor(R.color.md_theme_primary)
     }
 

@@ -19,6 +19,6 @@ object NityaDayChrome {
         btn.strokeColor = ColorStateList.valueOf(
             ctx.getColor(if (active) R.color.md_theme_primary else R.color.md_theme_outline)
         )
-        btn.strokeWidth = ctx.resources.getDimensionPixelSize(R.dimen.carbon_border_width).coerceAtLeast(1)
+        btn.strokeWidth = ctx.resources.getDimensionPixelSize(R.dimen.md_border_width).coerceAtLeast(1)
     }
 }

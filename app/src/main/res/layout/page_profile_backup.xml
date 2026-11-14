@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/carbon_spacing_05">
+        android:padding="@dimen/md_spacing_05">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/backupPassword"
@@ -21,7 +21,7 @@
             android:id="@+id/backupPasswordConfirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/carbon_spacing_05"
+            android:layout_marginTop="@dimen/md_spacing_05"
             android:inputType="textPassword"
             android:saveEnabled="false"
             android:hint="Confirm passphrase" />
@@ -31,7 +31,7 @@
             style="@style/Widget.Material3.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/carbon_spacing_05"
+            android:layout_marginTop="@dimen/md_spacing_05"
             android:text="Create profile backup" />
 
         <com.google.android.material.button.MaterialButton

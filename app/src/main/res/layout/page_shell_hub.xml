@@ -23,7 +23,7 @@
             android:id="@+id/hubSubtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/carbon_spacing_02"
+            android:layout_marginTop="@dimen/md_spacing_02"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             android:textColor="@color/md_theme_onSurfaceVariant" />
 
@@ -31,7 +31,7 @@
             android:id="@+id/hubChildren"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/carbon_spacing_05"
+            android:layout_marginTop="@dimen/md_spacing_05"
             android:columnCount="2"
             android:alignmentMode="alignBounds"
             android:useDefaultMargins="false" />
@@ -40,7 +40,7 @@
             android:id="@+id/hubEmptyStates"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/carbon_spacing_05"
+            android:layout_marginTop="@dimen/md_spacing_05"
             android:orientation="vertical" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

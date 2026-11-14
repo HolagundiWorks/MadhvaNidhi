@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewPropertyAnimator
 import com.paperdesk.launcher.R
 
-/** Carbon productive motion helper for Views. */
-object CarbonMotion {
+/** Material productive motion helper for Views. */
+object MdMotion {
     fun reduced(context: Context): Boolean =
         Settings.Global.getFloat(
             context.contentResolver,
@@ -20,14 +20,14 @@ object CarbonMotion {
         return context.resources.getInteger(resId).toLong()
     }
 
-    fun fadeIn(view: View, durationRes: Int = R.integer.carbon_duration_fast_02): ViewPropertyAnimator {
+    fun fadeIn(view: View, durationRes: Int = R.integer.md_duration_fast_02): ViewPropertyAnimator {
         val d = ms(view.context, durationRes)
         view.alpha = 0f
         return view.animate().alpha(1f).setDuration(d)
     }
 
     fun pressFlash(view: View) {
-        val d = ms(view.context, R.integer.carbon_duration_fast_01)
+        val d = ms(view.context, R.integer.md_duration_fast_01)
         if (d == 0L) return
         view.animate().cancel()
         view.animate().alpha(0.72f).setDuration(d).withEndAction {
