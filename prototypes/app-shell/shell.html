@@ -8,12 +8,12 @@
 <link rel="stylesheet" href="../ibm-plex.css">
 <link rel="stylesheet" href="./carbon-theme.css">
 <link rel="stylesheet" href="../carbon-app.css?v=tabs-equal-left">
-<link rel="stylesheet" href="./shell.css">
+<link rel="stylesheet" href="./shell.css?v=portrait-1">
 <script src="./theme.js"></script>
 <body>
 <div id="app">
   <header class="app-header">
-    <button type="button" id="nav-toggle" class="icon header-nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation">
+    <button type="button" id="nav-toggle" class="icon header-nav-toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open navigation">
       <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M28,4H4A2,2,0,0,0,2,6V26a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V6A2,2,0,0,0,28,4Zm0,22H12V6H28Z"/></svg>
     </button>
     <h1 id="page-title">ಮುಖಪುಟ</h1>
@@ -23,6 +23,11 @@
       <span id="header-tithi">ಏಕಾದಶಿ</span>
     </p>
   </header>
+
+  <aside id="nav-drawer" class="nav-drawer" hidden aria-label="Navigation">
+    <button type="button" id="nav-drawer-close" class="cds--btn cds--btn--ghost nav-drawer-close" aria-label="Close navigation">Navigation</button>
+    <nav id="drawer-links" class="drawer-links" aria-label="App destinations"></nav>
+  </aside>
 
   <aside id="side-nav" class="side-nav" aria-label="App navigation">
     <nav id="nav-links" class="nav-links">
@@ -733,7 +738,7 @@ Catalogue-backed namavali reader.</p>
 <script src="../practice-day.js"></script>
 <script src="../japa-session.js"></script>
 <script src="../dashboard-japa.js"></script>
-<script src="./shell.js?v=settings-dashboard-4"></script>
+<script src="./shell.js?v=portrait-1"></script>
 <script src="../reader-text-size.js"></script>
 </body>
 </html>

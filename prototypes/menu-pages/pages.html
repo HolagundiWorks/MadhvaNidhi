@@ -8,45 +8,14 @@
 <link rel="stylesheet" href="../ibm-plex.css">
 <link rel="stylesheet" href="./carbon-theme.css">
 <link rel="stylesheet" href="../carbon-app.css?v=tabs-equal-left">
-<link rel="stylesheet" href="./pages.css">
+<link rel="stylesheet" href="./pages.css?v=portrait-1">
 <script src="./theme.js"></script>
 <body>
 <div id="app">
-  <aside id="side-nav" class="side-nav" aria-label="App navigation">
-    <button type="button" id="nav-toggle" class="cds--btn cds--btn--ghost" aria-expanded="false" aria-controls="nav-links" aria-label="Expand navigation">
+  <header class="app-header">
+    <button type="button" id="nav-toggle" class="icon header-nav-toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open navigation">
       <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M28,4H4A2,2,0,0,0,2,6V26a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V6A2,2,0,0,0,28,4Zm0,22H12V6H28Z"/></svg>
     </button>
-    <nav id="nav-links" class="nav-links">
-      <button type="button" class="nav-button" data-page="nityakarma" aria-current="page" aria-label="ನಿತ್ಯಕರ್ಮ">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M23.586 13 21 10.414 21 6 23 6 23 9.586 25 11.586 23.586 13z"/><path d="M22,18a8,8,0,1,1,8-8A8.0092,8.0092,0,0,1,22,18ZM22,4a6,6,0,1,0,6,6A6.0066,6.0066,0,0,0,22,4Z"/><path d="M8.63,18l7,6H30V22H16.37l-7-6H4V2H2V28a2.0025,2.0025,0,0,0,2,2H30V28H4V18Z"/></svg>
-        <span class="nav-label">ನಿತ್ಯಕರ್ಮ</span>
-      </button>
-      <button type="button" class="nav-button" data-page="puja" aria-label="ಪೂಜೆ">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M23,17v-2h-2.1c-0.1-0.6-0.4-1.2-0.7-1.8l1.5-1.5l-1.4-1.4l-1.5,1.5c-0.5-0.3-1.1-0.6-1.8-0.7V9h-2v2.1 c-0.6,0.1-1.2,0.4-1.8,0.7l-1.5-1.5l-1.4,1.4l1.5,1.5c-0.3,0.5-0.6,1.1-0.7,1.8H9v2h2.1c0.1,0.6,0.4,1.2,0.7,1.8l-1.5,1.5l1.4,1.4 l1.5-1.5c0.5,0.3,1.1,0.6,1.8,0.7V23h2v-2.1c0.6-0.1,1.2-0.4,1.8-0.7l1.5,1.5l1.4-1.4l-1.5-1.5c0.3-0.5,0.6-1.1,0.7-1.8H23z M16,19 c-1.7,0-3-1.3-3-3s1.3-3,3-3s3,1.3,3,3S17.7,19,16,19z"/><path d="M16,2v2c6.6,0,12,5.4,12,12s-5.4,12-12,12v2c7.7,0,14-6.3,14-14S23.7,2,16,2z"/><path d="M8.2,25.1L7,26.7c1.2,1,2.6,1.9,4.2,2.4l0.7-1.9C10.5,26.7,9.3,26,8.2,25.1z"/><path d="M4.2,18l-2,0.4C2.5,20,3.1,21.6,3.9,23l1.7-1C4.9,20.8,4.4,19.4,4.2,18z"/><path d="M5.6,10L3.9,9c-0.8,1.4-1.4,3-1.6,4.6l2,0.3C4.4,12.5,4.9,11.2,5.6,10z"/><path d="M11.8,4.8l-0.7-1.9C9.6,3.5,8.2,4.3,7,5.3l1.3,1.5C9.3,6,10.5,5.3,11.8,4.8z"/></svg>
-        <span class="nav-label">ಪೂಜೆ</span>
-      </button>
-      <button type="button" class="nav-button" data-page="grantha" aria-label="ಗ್ರಂಥ">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 6H4V26H2z"/><path d="M6 4H8V28H6z"/><path d="M14 22H26V24H14z"/><path d="M14 16H26V18H14z"/><path d="M29.7,9.3l-7-7C22.5,2.1,22.3,2,22,2H12c-1.1,0-2,0.9-2,2v24c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V10 C30,9.7,29.9,9.5,29.7,9.3z M22,4.4l5.6,5.6H22V4.4z M28,28H12V4h8v6c0,1.1,0.9,2,2,2h6V28z"/></svg>
-        <span class="nav-label">ಗ್ರಂಥ</span>
-      </button>
-      <button type="button" class="nav-button" data-page="sangeeta" aria-label="ಭಕ್ತಿ ಸಂಗೀತ">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M25,4H10A2.002,2.002,0,0,0,8,6V20.5563A3.9551,3.9551,0,0,0,6,20a4,4,0,1,0,4,4V12H25v8.5562A3.9545,3.9545,0,0,0,23,20a4,4,0,1,0,4,4V6A2.0023,2.0023,0,0,0,25,4ZM6,26a2,2,0,1,1,2-2A2.0023,2.0023,0,0,1,6,26ZM23,26a2,2,0,1,1,2-2A2.0027,2.0027,0,0,1,23,26ZM10,6H25v4H10Z"/></svg>
-        <span class="nav-label">ಭಕ್ತಿ ಸಂಗೀತ</span>
-      </button>
-      <button type="button" class="nav-button" data-page="samskruti" aria-label="ಗೃಹ ಸಂಸ್ಕೃತಿ">
-        <!-- Carbon MacCommand — Apache-2.0 -->
-        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M24,13a4,4,0,0,0,4-4V8a4,4,0,0,0-4-4H23a4,4,0,0,0-4,4v3H13V8A4,4,0,0,0,9,4H8A4,4,0,0,0,4,8V9a4,4,0,0,0,4,4h3v6H8a4,4,0,0,0-4,4v1a4,4,0,0,0,4,4H9a4,4,0,0,0,4-4V21h6v3a4,4,0,0,0,4,4h1a4,4,0,0,0,4-4V23a4,4,0,0,0-4-4H21V13ZM21,8a2,2,0,0,1,2-2h1a2,2,0,0,1,2,2V9a2,2,0,0,1-2,2H21ZM8,11A2,2,0,0,1,6,9V8A2,2,0,0,1,8,6H9a2,2,0,0,1,2,2v3H8Zm3,13a2,2,0,0,1-2,2H8a2,2,0,0,1-2-2V23a2,2,0,0,1,2-2h3Zm8-5H13V13h6Zm2,2h3a2,2,0,0,1,2,2v1a2,2,0,0,1-2,2H23a2,2,0,0,1-2-2Z"/></svg>
-        <span class="nav-label">ಗೃಹ ಸಂಸ್ಕೃತಿ</span>
-      </button>
-<button type="button" class="nav-button" data-page="settings" aria-label="ಸೆಟ್ಟಿಂಗ್‌ಗಳು">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M30 8h-4.1c-.5-2.3-2.5-4-4.9-4s-4.4 1.7-4.9 4H2v2h14.1c.5 2.3 2.5 4 4.9 4s4.4-1.7 4.9-4H30V8zM21 12c-1.7 0-3-1.3-3-3s1.3-3 3-3 3 1.3 3 3S22.7 12 21 12zM2 24h4.1c.5 2.3 2.5 4 4.9 4s4.4-1.7 4.9-4H30v-2H15.9c-.5-2.3-2.5-4-4.9-4s-4.4 1.7-4.9 4H2V24zM11 20c1.7 0 3 1.3 3 3s-1.3 3-3 3-3-1.3-3-3S9.3 20 11 20z" fill="currentColor" stroke="none"/></svg>
-        <span class="nav-label">ಸೆಟ್ಟಿಂಗ್‌ಗಳು</span>
-      </button>
-    </nav>
-  </aside>
-  <button type="button" id="nav-backdrop" class="nav-backdrop" aria-label="Close navigation" hidden></button>
-
-  <header class="app-header">
     <h1 id="page-title">ನಿತ್ಯಕರ್ಮ</h1>
     <p class="header-date" id="header-date">
       <span id="header-date-value">೧೨ ನವೆಂಬರ್ ೨೦೨೬</span>
@@ -54,6 +23,12 @@
       <span id="header-tithi">ಏಕಾದಶಿ</span>
     </p>
   </header>
+
+  <aside id="nav-drawer" class="nav-drawer" hidden aria-label="Navigation">
+    <button type="button" id="nav-drawer-close" class="cds--btn cds--btn--ghost nav-drawer-close" aria-label="Close navigation">Navigation</button>
+    <nav id="drawer-links" class="drawer-links" aria-label="App destinations"></nav>
+  </aside>
+  <button type="button" id="nav-backdrop" class="nav-backdrop" aria-label="Close navigation" hidden></button>
 
   <div class="workspace">
     <!-- Nitya Karma · Carbon tabs for children -->
@@ -667,6 +642,35 @@ Catalogue-backed namavali reader.</p>
 <p class="user-vault-status" id="user-vault-status" role="status" aria-live="polite"></p>
 </section>
   </div>
+
+  <aside id="side-nav" class="side-nav" aria-label="App navigation">
+    <nav id="nav-links" class="nav-links">
+      <button type="button" class="nav-button" data-page="nityakarma" aria-current="page" aria-label="ನಿತ್ಯಕರ್ಮ">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M23.586 13 21 10.414 21 6 23 6 23 9.586 25 11.586 23.586 13z"/><path d="M22,18a8,8,0,1,1,8-8A8.0092,8.0092,0,0,1,22,18ZM22,4a6,6,0,1,0,6,6A6.0066,6.0066,0,0,0,22,4Z"/><path d="M8.63,18l7,6H30V22H16.37l-7-6H4V2H2V28a2.0025,2.0025,0,0,0,2,2H30V28H4V18Z"/></svg>
+        <span class="nav-label">ನಿತ್ಯಕರ್ಮ</span>
+      </button>
+      <button type="button" class="nav-button" data-page="puja" aria-label="ಪೂಜೆ">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M23,17v-2h-2.1c-0.1-0.6-0.4-1.2-0.7-1.8l1.5-1.5l-1.4-1.4l-1.5,1.5c-0.5-0.3-1.1-0.6-1.8-0.7V9h-2v2.1 c-0.6,0.1-1.2,0.4-1.8,0.7l-1.5-1.5l-1.4,1.4l1.5,1.5c-0.3,0.5-0.6,1.1-0.7,1.8H9v2h2.1c0.1,0.6,0.4,1.2,0.7,1.8l-1.5,1.5l1.4,1.4 l1.5-1.5c0.5,0.3,1.1,0.6,1.8,0.7V23h2v-2.1c0.6-0.1,1.2-0.4,1.8-0.7l1.5,1.5l1.4-1.4l-1.5-1.5c0.3-0.5,0.6-1.1,0.7-1.8H23z M16,19 c-1.7,0-3-1.3-3-3s1.3-3,3-3s3,1.3,3,3S17.7,19,16,19z"/><path d="M16,2v2c6.6,0,12,5.4,12,12s-5.4,12-12,12v2c7.7,0,14-6.3,14-14S23.7,2,16,2z"/><path d="M8.2,25.1L7,26.7c1.2,1,2.6,1.9,4.2,2.4l0.7-1.9C10.5,26.7,9.3,26,8.2,25.1z"/><path d="M4.2,18l-2,0.4C2.5,20,3.1,21.6,3.9,23l1.7-1C4.9,20.8,4.4,19.4,4.2,18z"/><path d="M5.6,10L3.9,9c-0.8,1.4-1.4,3-1.6,4.6l2,0.3C4.4,12.5,4.9,11.2,5.6,10z"/><path d="M11.8,4.8l-0.7-1.9C9.6,3.5,8.2,4.3,7,5.3l1.3,1.5C9.3,6,10.5,5.3,11.8,4.8z"/></svg>
+        <span class="nav-label">ಪೂಜೆ</span>
+      </button>
+      <button type="button" class="nav-button" data-page="grantha" aria-label="ಗ್ರಂಥ">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 6H4V26H2z"/><path d="M6 4H8V28H6z"/><path d="M14 22H26V24H14z"/><path d="M14 16H26V18H14z"/><path d="M29.7,9.3l-7-7C22.5,2.1,22.3,2,22,2H12c-1.1,0-2,0.9-2,2v24c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V10 C30,9.7,29.9,9.5,29.7,9.3z M22,4.4l5.6,5.6H22V4.4z M28,28H12V4h8v6c0,1.1,0.9,2,2,2h6V28z"/></svg>
+        <span class="nav-label">ಗ್ರಂಥ</span>
+      </button>
+      <button type="button" class="nav-button" data-page="sangeeta" aria-label="ಭಕ್ತಿ ಸಂಗೀತ">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M25,4H10A2.002,2.002,0,0,0,8,6V20.5563A3.9551,3.9551,0,0,0,6,20a4,4,0,1,0,4,4V12H25v8.5562A3.9545,3.9545,0,0,0,23,20a4,4,0,1,0,4,4V6A2.0023,2.0023,0,0,0,25,4ZM6,26a2,2,0,1,1,2-2A2.0023,2.0023,0,0,1,6,26ZM23,26a2,2,0,1,1,2-2A2.0027,2.0027,0,0,1,23,26ZM10,6H25v4H10Z"/></svg>
+        <span class="nav-label">ಭಕ್ತಿ ಸಂಗೀತ</span>
+      </button>
+      <button type="button" class="nav-button" data-page="samskruti" aria-label="ಗೃಹ ಸಂಸ್ಕೃತಿ">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M24,13a4,4,0,0,0,4-4V8a4,4,0,0,0-4-4H23a4,4,0,0,0-4,4v3H13V8A4,4,0,0,0,9,4H8A4,4,0,0,0,4,8V9a4,4,0,0,0,4,4h3v6H8a4,4,0,0,0-4,4v1a4,4,0,0,0,4,4H9a4,4,0,0,0,4-4V21h6v3a4,4,0,0,0,4,4h1a4,4,0,0,0,4-4V23a4,4,0,0,0-4-4H21V13ZM21,8a2,2,0,0,1,2-2h1a2,2,0,0,1,2,2V9a2,2,0,0,1-2,2H21ZM8,11A2,2,0,0,1,6,9V8A2,2,0,0,1,8,6H9a2,2,0,0,1,2,2v3H8Zm3,13a2,2,0,0,1-2,2H8a2,2,0,0,1-2-2V23a2,2,0,0,1,2-2h3Zm8-5H13V13h6Zm2,2h3a2,2,0,0,1,2,2v1a2,2,0,0,1-2,2H23a2,2,0,0,1-2-2Z"/></svg>
+        <span class="nav-label">ಗೃಹ ಸಂಸ್ಕೃತಿ</span>
+      </button>
+      <button type="button" class="nav-button" data-page="settings" aria-label="ಸೆಟ್ಟಿಂಗ್‌ಗಳು">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M30 8h-4.1c-.5-2.3-2.5-4-4.9-4s-4.4 1.7-4.9 4H2v2h14.1c.5 2.3 2.5 4 4.9 4s4.4-1.7 4.9-4H30V8zM21 12c-1.7 0-3-1.3-3-3s1.3-3 3-3 3 1.3 3 3S22.7 12 21 12zM2 24h4.1c.5 2.3 2.5 4 4.9 4s4.4-1.7 4.9-4H30v-2H15.9c-.5-2.3-2.5-4-4.9-4s-4.4 1.7-4.9 4H2V24zM11 20c1.7 0 3 1.3 3 3s-1.3 3-3 3-3-1.3-3-3S9.3 20 11 20z" fill="currentColor" stroke="none"/></svg>
+        <span class="nav-label">ಸೆಟ್ಟಿಂಗ್‌ಗಳು</span>
+      </button>
+    </nav>
+  </aside>
 </div>
 <script src="../puja-workflow.js"></script>
 <script src="../samskruti-tabs.js"></script>
@@ -677,7 +681,7 @@ Catalogue-backed namavali reader.</p>
 <script src="../user-vault.js"></script>
 <script src="../practice-day.js"></script>
 <script src="../japa-session.js"></script>
-<script src="./pages.js?v=ux-nav-ia"></script>
+<script src="./pages.js?v=portrait-1"></script>
 <script src="../reader-text-size.js"></script>
 </body>
 </html>

@@ -53,22 +53,38 @@
     window.parent.postMessage({ type: 'menu-scale', scale }, '*');
   }
 
+  function syncDrawer() {
+    const drawer = byId('drawer-links');
+    const source = byId('nav-links');
+    if (!drawer || !source) return;
+    drawer.replaceChildren();
+    source.querySelectorAll('.nav-button').forEach((button) => {
+      const clone = button.cloneNode(true);
+      clone.addEventListener('click', () => {
+        const pageId = button.dataset.page;
+        closeNav();
+        if (pageId) navigate(pageId);
+      });
+      drawer.append(clone);
+    });
+  }
+
   function closeNav() {
-    const nav = byId('side-nav');
+    const drawer = byId('nav-drawer');
     const toggle = byId('nav-toggle');
     const backdrop = byId('nav-backdrop');
-    if (!nav) return;
-    nav.classList.remove('is-expanded');
+    if (drawer) drawer.hidden = true;
+    byId('side-nav')?.classList.remove('is-expanded');
     if (toggle) toggle.setAttribute('aria-expanded', 'false');
     if (backdrop) backdrop.hidden = true;
   }
 
   function openNav() {
-    const nav = byId('side-nav');
+    const drawer = byId('nav-drawer');
     const toggle = byId('nav-toggle');
     const backdrop = byId('nav-backdrop');
-    if (!nav) return;
-    nav.classList.add('is-expanded');
+    syncDrawer();
+    if (drawer) drawer.hidden = false;
     if (toggle) toggle.setAttribute('aria-expanded', 'true');
     if (backdrop) backdrop.hidden = false;
   }
@@ -98,8 +114,8 @@
   }
 
   function goBack() {
-    const nav = byId('side-nav');
-    if (nav?.classList.contains('is-expanded')) {
+    const drawer = byId('nav-drawer');
+    if (drawer && !drawer.hidden) {
       closeNav();
       return;
     }
@@ -204,12 +220,13 @@
 
   function bindNav() {
     byId('nav-toggle').addEventListener('click', () => {
-      const nav = byId('side-nav');
-      if (nav.classList.contains('is-expanded')) closeNav();
+      const drawer = byId('nav-drawer');
+      if (drawer && !drawer.hidden) closeNav();
       else openNav();
     });
+    byId('nav-drawer-close')?.addEventListener('click', closeNav);
     byId('nav-backdrop').addEventListener('click', closeNav);
-    document.querySelectorAll('button[data-page]').forEach((el) => {
+    document.querySelectorAll('#nav-links button[data-page]').forEach((el) => {
       el.addEventListener('click', () => navigate(el.dataset.page));
     });
   }
