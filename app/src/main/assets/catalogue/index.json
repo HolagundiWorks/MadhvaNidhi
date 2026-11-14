@@ -1381,17 +1381,6 @@
           "file": "songs/rao_purandara_vittala_250.txt"
         },
         {
-          "id": "rao_purandara_vittala_anyarobbara_kaane",
-          "kn": "ಅಪರಾಧ ಹತ್ತಕೆ ಅಭಿಷೇಕ ಉದಕ",
-          "sa": "",
-          "en": "purandara vittala APARADHA HATTAKE UGABHOGA",
-          "type": "dasara_pada",
-          "deity": "",
-          "script": "kn",
-          "url": "https://raocollectionssongs.blogspot.com/2021/06/purandara-vittala-anyarobbara-kaane.html",
-          "file": "songs/rao_purandara_vittala_anyarobbara_kaane.txt"
-        },
-        {
           "id": "rao_ankita_shree_krishna_29",
           "kn": "ಅಪರಾಧವೆನ್ನದೈಯ ಹೇ ಜೀಯ ಕೃಷ್ಣ",
           "sa": "",
@@ -1705,6 +1694,17 @@
           "script": "kn",
           "url": "https://raocollectionssongs.blogspot.com/2019/12/ankita-purandara-vittala.html",
           "file": "songs/rao_ankita_purandara_vittala.txt"
+        },
+        {
+          "id": "rao_purandara_vittala_anyarobbara_kaane",
+          "kn": "ಅಪರಾಧ ಹತ್ತಕೆ ಅಭಿಷೇಕ ಉದಕ",
+          "sa": "",
+          "en": "purandara vittala APARADHA HATTAKE UGABHOGA",
+          "type": "ugabhoga",
+          "deity": "",
+          "script": "kn",
+          "url": "https://raocollectionssongs.blogspot.com/2021/06/purandara-vittala-anyarobbara-kaane.html",
+          "file": "songs/rao_purandara_vittala_anyarobbara_kaane.txt"
         }
       ]
     },
