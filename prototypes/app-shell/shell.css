@@ -980,3 +980,25 @@ html { font-size: calc(16px * var(--device-font-scale, 1)); }
   border-bottom: 1px solid var(--cds-border-subtle-01);
 }
 #view-sangeeta .song-list .cds--label { display: block; }
+
+/* Knowledge hub mockup: Wiki, Notifications, Achievements (Carbon tokens, 4px rhythm) */
+[data-wiki-root] ul,
+[data-achieve-root] ul,
+[data-wiki-root] ol,
+[data-notify-root] ul { list-style: none; margin: 0; padding: 0; }
+.wiki-chips { display: flex; flex-wrap: wrap; gap: var(--cds-spacing-03); margin: var(--cds-spacing-04) 0; }
+.wiki-chip { min-height: 32px; }
+.wiki-list, .achieve-list { display: grid; gap: var(--cds-spacing-03); }
+.wiki-item, .achieve-tile {
+  display: grid; gap: var(--cds-spacing-02, 2px); width: 100%; text-align: left;
+  padding: var(--cds-spacing-04); background: var(--cds-layer-01); border: 1px solid var(--cds-border-subtle-01);
+  color: inherit; cursor: pointer; min-height: 64px;
+}
+.achieve-tile:disabled { cursor: default; opacity: 0.7; }
+.achieve-bar { height: 4px; background: var(--cds-border-subtle-01); margin-top: var(--cds-spacing-02, 2px); }
+.achieve-bar > span { display: block; height: 100%; background: var(--cds-interactive); }
+.achieve-preview { width: 100%; max-width: 360px; height: auto; display: block; margin: var(--cds-spacing-04) 0; border: 1px solid var(--cds-border-subtle-01); }
+.wiki-toolbar { display: flex; flex-wrap: wrap; gap: var(--cds-spacing-03); align-items: center; margin: var(--cds-spacing-04) 0; }
+.wiki-section { margin: var(--cds-spacing-03) 0; padding: var(--cds-spacing-04); background: var(--cds-layer-01); }
+.wiki-sources li { padding: var(--cds-spacing-02, 2px) 0; }
+.notify-row { display: flex; justify-content: space-between; align-items: center; gap: var(--cds-spacing-03); min-height: 40px; }

@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "note": "Milestone configuration. Add entries here to extend achievements without code changes. Series are kept separate: Gayatri Japa counts never feed general Japa milestones unless configured.",
+  "series": [
+    {
+      "id": "sandhya-daily",
+      "kind": "daily",
+      "category": "sandhya",
+      "title_en": "Daily Sandhyavandana",
+      "message_en": "I completed my Sandhyavandana today.",
+      "milestone": 1
+    },
+    {
+      "id": "sandhya-streak",
+      "kind": "streak",
+      "category": "sandhya",
+      "title_en": "Sandhyavandana streak",
+      "milestones": [7, 14, 25, 30, 50, 100, 365],
+      "message_template": "{n} Days of Sandhyavandana — A Journey of Daily Discipline."
+    },
+    {
+      "id": "gayatri-japa",
+      "kind": "cumulative",
+      "category": "gayatri",
+      "title_en": "Gayatri Japa",
+      "milestones": [1008, 10000, 25000, 50000, 100000, 250000, 500000, 1000000],
+      "message_template": "{n} Gayatri Japa completed with steady devotion.",
+      "status": "configure",
+      "note": "Initial ladder mirrors the general Japa ladder; confirm the Gayatri target before enabling."
+    },
+    {
+      "id": "japa-general",
+      "kind": "cumulative",
+      "category": "japa",
+      "title_en": "General Japa",
+      "milestones": [1008, 10000, 25000, 50000, 100000, 250000, 500000, 1000000],
+      "message_template": "{n} Japa recorded in your practice."
+    }
+  ],
+  "demo": {
+    "sandhya_streak_days": 25,
+    "gayatri_cumulative": 27000,
+    "japa_cumulative": 104500
+  }
+}

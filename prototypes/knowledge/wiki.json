@@ -1,0 +1,206 @@
+{
+  "version": 1,
+  "note": "Structured wiki model for the MadhvaNidhi knowledge hub. Every fact must carry a citation before its status becomes 'sourced'. Entries marked 'pending' are structure placeholders; do not present them as verified.",
+  "statuses": {
+    "sourced": "Facts checked against a cited source",
+    "traditional": "Traditional account; label it as such in the UI",
+    "pending": "Structure only; no verified content yet"
+  },
+  "categories": [
+    { "id": "madhvacharya", "title_en": "Sri Madhvacharya", "title_kn": "ಶ್ರೀ ಮಧ್ವಾಚಾರ್ಯರು" },
+    { "id": "dvaita", "title_en": "Dvaita Vedanta", "title_kn": "ದ್ವೈತ ವೇದಾಂತ" },
+    { "id": "mathas", "title_en": "Mathas", "title_kn": "ಮಠಗಳು" },
+    { "id": "peethadhipatis", "title_en": "Peethadhipatis", "title_kn": "ಪೀಠಾಧಿಪತಿಗಳು" },
+    { "id": "places", "title_en": "Places", "title_kn": "ಸ್ಥಳಗಳು" }
+  ],
+  "articles": [
+    {
+      "id": "madhvacharya",
+      "category": "madhvacharya",
+      "title_en": "Sri Madhvacharya",
+      "title_kn": "ಶ್ರೀ ಮಧ್ವಾಚಾರ್ಯರು",
+      "status": "pending",
+      "summary": "Founder of the Dvaita school of Vedanta and the Madhva Sampradaya.",
+      "sections": [
+        { "heading": "Biography and background", "status": "pending", "body": "" },
+        { "heading": "Birthplace and timeline", "status": "pending", "body": "" },
+        { "heading": "Teachings and contributions", "status": "pending", "body": "" },
+        { "heading": "Major works and commentaries", "status": "pending", "body": "" },
+        { "heading": "Disciples and lineage", "status": "pending", "body": "" },
+        { "heading": "Associated places", "status": "pending", "body": "" }
+      ],
+      "related": ["dvaita-vedanta", "ashta-mathas", "guru-parampara"],
+      "sources": []
+    },
+    {
+      "id": "dvaita-vedanta",
+      "category": "dvaita",
+      "title_en": "Dvaita Vedanta",
+      "title_kn": "ದ್ವೈತ ವೇದಾಂತ",
+      "status": "pending",
+      "summary": "Introduction to the philosophy of Dvaita Vedanta.",
+      "sections": [
+        { "heading": "Introduction", "status": "pending", "body": "" },
+        { "heading": "Fundamental principles", "status": "pending", "body": "" },
+        { "heading": "Pancha Bheda (five eternal distinctions)", "status": "pending", "body": "" },
+        { "heading": "Taratamya (gradation)", "status": "pending", "body": "" },
+        { "heading": "Jiva, Ishvara and Jagat", "status": "pending", "body": "" },
+        { "heading": "Bhakti, Jnana and Moksha", "status": "pending", "body": "" },
+        { "heading": "Comparison with other Vedanta schools", "status": "pending", "body": "" }
+      ],
+      "related": ["madhvacharya", "pancha-bheda", "taratamya"],
+      "sources": []
+    },
+    {
+      "id": "pancha-bheda",
+      "category": "dvaita",
+      "title_en": "Pancha Bheda",
+      "title_kn": "ಪಂಚಭೇದ",
+      "status": "pending",
+      "summary": "The five eternal distinctions taught in Dvaita.",
+      "sections": [{ "heading": "Definition", "status": "pending", "body": "" }],
+      "related": ["dvaita-vedanta", "taratamya"],
+      "sources": []
+    },
+    {
+      "id": "taratamya",
+      "category": "dvaita",
+      "title_en": "Taratamya",
+      "title_kn": "ತಾರತಮ್ಯ",
+      "status": "pending",
+      "summary": "The gradation of souls and deities in Dvaita.",
+      "sections": [{ "heading": "Definition", "status": "pending", "body": "" }],
+      "related": ["dvaita-vedanta", "pancha-bheda"],
+      "sources": []
+    },
+    {
+      "id": "ashta-mathas",
+      "category": "mathas",
+      "title_en": "Ashta Mathas of Udupi",
+      "title_kn": "ಅಷ್ಟ ಮಠಗಳು",
+      "status": "pending",
+      "summary": "The eight mathas of Udupi founded in the Madhva tradition.",
+      "sections": [{ "heading": "Overview", "status": "pending", "body": "" }],
+      "related": ["madhvacharya", "pejavara", "palimaru", "adamaru", "puttige", "shirur", "sode", "kaniyooru", "krishnapura"],
+      "sources": []
+    },
+    {
+      "id": "pejavara",
+      "category": "mathas",
+      "title_en": "Pejavara Matha",
+      "title_kn": "ಪೇಜಾವರ ಮಠ",
+      "status": "pending",
+      "summary": "One of the Ashta Mathas of Udupi.",
+      "sections": [
+        { "heading": "Official and alternative names", "status": "pending", "body": "" },
+        { "heading": "History and establishment", "status": "pending", "body": "" },
+        { "heading": "Founder and Guru Parampara", "status": "pending", "body": "" },
+        { "heading": "Presiding deity", "status": "pending", "body": "" },
+        { "heading": "Current Peethadhipati", "status": "pending", "body": "" },
+        { "heading": "Headquarters, branches and contact", "status": "pending", "body": "" },
+        { "heading": "Temples, festivals and traditions", "status": "pending", "body": "" }
+      ],
+      "location": { "place": "Udupi", "lat": null, "lng": null, "status": "pending" },
+      "related": ["ashta-mathas", "madhvacharya"],
+      "sources": []
+    },
+    {
+      "id": "palimaru",
+      "category": "mathas",
+      "title_en": "Palimaru Matha",
+      "title_kn": "ಪಲಿಮಾರು ಮಠ",
+      "status": "pending",
+      "summary": "One of the Ashta Mathas of Udupi.",
+      "sections": [{ "heading": "Matha details", "status": "pending", "body": "" }],
+      "location": { "place": "Udupi", "lat": null, "lng": null, "status": "pending" },
+      "related": ["ashta-mathas"],
+      "sources": []
+    },
+    {
+      "id": "adamaru",
+      "category": "mathas",
+      "title_en": "Adamaru Matha",
+      "title_kn": "ಅದಮಾರು ಮಠ",
+      "status": "pending",
+      "summary": "One of the Ashta Mathas of Udupi.",
+      "sections": [{ "heading": "Matha details", "status": "pending", "body": "" }],
+      "location": { "place": "Udupi", "lat": null, "lng": null, "status": "pending" },
+      "related": ["ashta-mathas"],
+      "sources": []
+    },
+    {
+      "id": "puttige",
+      "category": "mathas",
+      "title_en": "Puttige Matha",
+      "title_kn": "ಪುತ್ತಿಗೆ ಮಠ",
+      "status": "pending",
+      "summary": "One of the Ashta Mathas of Udupi.",
+      "sections": [{ "heading": "Matha details", "status": "pending", "body": "" }],
+      "location": { "place": "Udupi", "lat": null, "lng": null, "status": "pending" },
+      "related": ["ashta-mathas"],
+      "sources": []
+    },
+    {
+      "id": "shirur",
+      "category": "mathas",
+      "title_en": "Shirur Matha",
+      "title_kn": "ಶಿರೂರು ಮಠ",
+      "status": "pending",
+      "summary": "One of the Ashta Mathas of Udupi.",
+      "sections": [{ "heading": "Matha details", "status": "pending", "body": "" }],
+      "location": { "place": "Udupi", "lat": null, "lng": null, "status": "pending" },
+      "related": ["ashta-mathas"],
+      "sources": []
+    },
+    {
+      "id": "sode",
+      "category": "mathas",
+      "title_en": "Sode Matha",
+      "title_kn": "ಸೋದೆ ಮಠ",
+      "status": "pending",
+      "summary": "One of the Ashta Mathas of Udupi.",
+      "sections": [{ "heading": "Matha details", "status": "pending", "body": "" }],
+      "location": { "place": "Udupi", "lat": null, "lng": null, "status": "pending" },
+      "related": ["ashta-mathas"],
+      "sources": []
+    },
+    {
+      "id": "kaniyooru",
+      "category": "mathas",
+      "title_en": "Kaniyooru Matha",
+      "title_kn": "ಕಣಿಯೂರು ಮಠ",
+      "status": "pending",
+      "summary": "One of the Ashta Mathas of Udupi.",
+      "sections": [{ "heading": "Matha details", "status": "pending", "body": "" }],
+      "location": { "place": "Udupi", "lat": null, "lng": null, "status": "pending" },
+      "related": ["ashta-mathas"],
+      "sources": []
+    },
+    {
+      "id": "krishnapura",
+      "category": "mathas",
+      "title_en": "Krishnapura Matha",
+      "title_kn": "ಕೃಷ್ಣಾಪುರ ಮಠ",
+      "status": "pending",
+      "summary": "One of the Ashta Mathas of Udupi.",
+      "sections": [{ "heading": "Matha details", "status": "pending", "body": "" }],
+      "location": { "place": "Udupi", "lat": null, "lng": null, "status": "pending" },
+      "related": ["ashta-mathas"],
+      "sources": []
+    },
+    {
+      "id": "guru-parampara",
+      "category": "peethadhipatis",
+      "title_en": "Guru Parampara",
+      "title_kn": "ಗುರು ಪರಂಪರೆ",
+      "status": "pending",
+      "summary": "Chronological lineage and Peethadhipati directory, matha by matha.",
+      "sections": [
+        { "heading": "Matha-wise lists", "status": "pending", "body": "" },
+        { "heading": "Period of leadership", "status": "pending", "body": "" }
+      ],
+      "related": ["madhvacharya", "ashta-mathas"],
+      "sources": []
+    }
+  ]
+}
