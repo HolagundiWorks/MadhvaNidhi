@@ -17,6 +17,7 @@ object PageFactory {
         "suktas" -> CatalogueListFragment.create("suktas")
         "mantras" -> CatalogueListFragment.create("mantras")
         "namavali" -> CatalogueListFragment.create("namavali")
+        "wiki" -> WikiFragment()
         "sangeeta", "hadugalu" -> SongLibraryFragment.create()
         "favorites", "playlists" -> SongLibraryFragment.create(favorites = true)
         "aayadi" -> AayadiFragment()

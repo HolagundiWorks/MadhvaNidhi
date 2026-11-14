@@ -177,7 +177,7 @@ class FrozenShell(private val activity: LauncherActivity) {
             "desk" -> "desk"
             "sandhya", "japa", "nitya", "nityakarma" -> "nityakarma"
             "puja" -> "puja"
-            "stotra", "suktas", "mantras", "namavali", "grantha" -> "grantha"
+            "stotra", "suktas", "mantras", "namavali", "wiki", "grantha" -> "grantha"
             "hadugalu", "playlists", "favorites", "sangeeta" -> "sangeeta"
             "aayadi", "rangavalli", "recipes", "samskruti" -> "samskruti"
             "user", "settings" -> "settings"
@@ -193,7 +193,7 @@ class FrozenShell(private val activity: LauncherActivity) {
             "puja" -> R.drawable.ic_nav_puja
             "nitya" -> R.drawable.ic_nav_library
             "grantha" -> R.drawable.ic_nav_library
-            "stotra", "suktas", "mantras", "namavali" -> R.drawable.ic_nav_library
+            "stotra", "suktas", "mantras", "namavali", "wiki" -> R.drawable.ic_nav_library
             "sangeeta", "hadugalu", "playlists", "favorites" -> R.drawable.ic_nav_songs
             "samskruti" -> R.drawable.ic_nav_culture
             "aayadi" -> R.drawable.ic_nav_culture

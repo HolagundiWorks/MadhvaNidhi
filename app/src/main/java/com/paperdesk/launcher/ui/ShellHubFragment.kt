@@ -80,7 +80,7 @@ class ShellHubFragment : Fragment() {
 
         fun childrenFor(hub: String): List<String> = when (hub) {
             "nityakarma" -> listOf("sandhya", "japa", "nitya")
-            "grantha" -> listOf("stotra", "suktas", "mantras", "namavali")
+            "grantha" -> listOf("stotra", "suktas", "mantras", "namavali", "wiki")
             "sangeeta" -> listOf("hadugalu", "favorites")
             "samskruti" -> listOf("aayadi", "rangavalli", "recipes")
             else -> emptyList()

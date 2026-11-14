@@ -1,0 +1,590 @@
+{
+  "version": 1,
+  "note": "Structured wiki model for the MadhvaNidhi knowledge hub. Every fact must carry a citation before its status becomes 'sourced'. Entries marked 'pending' are structure placeholders; do not present them as verified.",
+  "statuses": {
+    "sourced": "Facts checked against a cited source",
+    "traditional": "Traditional account; label it as such in the UI",
+    "pending": "Structure only; no verified content yet",
+    "partial": "Some sections sourced, others still pending"
+  },
+  "categories": [
+    {
+      "id": "madhvacharya",
+      "title_en": "Sri Madhvacharya",
+      "title_kn": "ಶ್ರೀ ಮಧ್ವಾಚಾರ್ಯರು"
+    },
+    {
+      "id": "dvaita",
+      "title_en": "Dvaita Vedanta",
+      "title_kn": "ದ್ವೈತ ವೇದಾಂತ"
+    },
+    {
+      "id": "mathas",
+      "title_en": "Mathas",
+      "title_kn": "ಮಠಗಳು"
+    },
+    {
+      "id": "peethadhipatis",
+      "title_en": "Peethadhipatis",
+      "title_kn": "ಪೀಠಾಧಿಪತಿಗಳು"
+    },
+    {
+      "id": "places",
+      "title_en": "Places",
+      "title_kn": "ಸ್ಥಳಗಳು"
+    }
+  ],
+  "articles": [
+    {
+      "id": "madhvacharya",
+      "category": "madhvacharya",
+      "title_en": "Sri Madhvacharya",
+      "title_kn": "ಶ್ರೀ ಮಧ್ವಾಚಾರ್ಯರು",
+      "status": "sourced",
+      "summary": "Founder of the Dvaita school of Vedanta, born at Pajaka near Udupi on the west coast of Karnataka.",
+      "sections": [
+        {
+          "heading": "Biography and background",
+          "status": "sourced",
+          "body": "Born at Pajaka, near Udupi on the west coast of present-day Karnataka, in 13th-century India. Sources disagree on his dates: c. 1199–1278 CE in some, c. 1238–1317 CE in others; the later range is the more common."
+        },
+        {
+          "heading": "Birthplace and timeline",
+          "status": "sourced",
+          "body": "Birthplace: Pajaka, near Udupi. Dates are disputed (see biography). Further life events are not yet sourced."
+        },
+        {
+          "heading": "Teachings and contributions",
+          "status": "sourced",
+          "body": "Taught Dvaita: five fundamental distinctions (Pancha Bheda) and graded pluralism (taratamya). See Dvaita Vedanta."
+        },
+        {
+          "heading": "Major works and commentaries",
+          "status": "sourced",
+          "body": "Credited with 37 Dvaita texts, including thirteen commentaries on the principal Upanishads, the Brahma Sutra commentary (Madhva-bhasya), the Gita commentary (Gita-bhasya), a commentary on the Bhagavata Purana, and devotional hymns. Considered masterpiece: Anu-Vyakhyana, a supplement to the Brahma Sutra commentary. Four major works against Advaita include Upadhikhandana and Tattvadyota."
+        },
+        {
+          "heading": "Disciples and lineage",
+          "status": "sourced",
+          "body": "Madhva's direct disciples are named as Adhokshaja, Hrishikesha, Narasimha, Upendra, Rama, Vamana and Janardhana Tirthas, plus his brother Vishnu Tirtha. Padmanabha Tirtha was made head of a matha outside Tulunadu, with Narahari, Madhava and Akshobhya Tirtha named as his successors. Jayatirtha succeeded to the main matha after Akshobhya Tirtha; Uttaradi, Vyasaraja and Raghavendra mathas descend from him."
+        },
+        {
+          "heading": "Associated places",
+          "status": "sourced",
+          "body": "Pajaka (birthplace) and Udupi (Ashta Mathas). Coordinates not yet recorded."
+        }
+      ],
+      "related": [
+        "dvaita-vedanta",
+        "ashta-mathas",
+        "guru-parampara"
+      ],
+      "sources": [
+        {
+          "title": "Madhvacharya — Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Madhvacharya",
+          "accessed": "2026-11-14",
+          "note": "Read for birthplace, dates, works, disciples and doctrine sections"
+        },
+        {
+          "title": "Madhva Sampradaya — Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Madhva_Sampradaya",
+          "accessed": "2026-11-14",
+          "note": "Read for guru lineage and matha context (first 100,000 characters read); no full chronological list on the page"
+        }
+      ]
+    },
+    {
+      "id": "dvaita-vedanta",
+      "category": "dvaita",
+      "title_en": "Dvaita Vedanta",
+      "title_kn": "ದ್ವೈತ ವೇದಾಂತ",
+      "status": "sourced",
+      "summary": "Introduction to the philosophy of Dvaita Vedanta.",
+      "sections": [
+        {
+          "heading": "Introduction",
+          "status": "sourced",
+          "body": "Dvaita Vedanta, also called Dvaitavada or Tattvavada, was founded by Madhvacharya."
+        },
+        {
+          "heading": "Fundamental principles",
+          "status": "sourced",
+          "body": "Reality contains five fundamental distinctions, each treated as real and permanent rather than provisional. Full treatment of the principles is pending."
+        },
+        {
+          "heading": "Pancha Bheda (five eternal distinctions)",
+          "status": "sourced",
+          "body": "Per Wikipedia: (1) between material things; (2) between matter and soul; (3) between matter and God; (4) between souls; (5) between soul and God. Other sources word this list differently; see the Pancha Bheda entry."
+        },
+        {
+          "heading": "Taratamya (gradation)",
+          "status": "sourced",
+          "body": "The graded nature of pluralism. Every being differs inherently from every other. These differences decide whether a soul is eligible for liberation, rebirth, or darkness, and the bliss in liberation varies with a soul's knowledge and perfection."
+        },
+        {
+          "heading": "Jiva, Ishvara and Jagat",
+          "status": "sourced",
+          "body": "Jivas (souls) are eternal and infinite in number, reflections of God but never identical to God, even in liberation. Ishvara is Vishnu (Narayana), the independent reality, personal, almighty, all-knowing and compassionate. Jagat is the dependent reality: fully real with its own essence, and subject to cycles of creation and dissolution. Madhva divides souls into three classes: those capable of liberation, those bound to endless rebirth, and those condemned to eternal suffering."
+        },
+        {
+          "heading": "Bhakti, Jnana and Moksha",
+          "status": "sourced",
+          "body": "Devotion is central, and liberation comes through God's grace, which the soul earns partly through its own effort, including devotion and righteous conduct. Moksha means realising one's innate bliss, obscured by ignorance, and recognising total dependence on the Supreme. Jnana is direct experiential knowledge of God, built by hearing, reflecting on and meditating on scripture. Liberation needs both jnana and divine grace."
+        },
+        {
+          "heading": "Comparison with other Vedanta schools",
+          "status": "sourced",
+          "body": "Against Advaita: Madhva rejects the claim that ignorance explains the appearance of multiplicity in one Brahman, arguing that it makes liberation incoherent and places ignorance within Brahman. Against Vishishtadvaita: Madhva accepts Ramanuja's real world and personal God but rejects qualified non-dualism as inconsistent; Dvaita insists on complete, eternal separation between God, souls and matter."
+        }
+      ],
+      "related": [
+        "madhvacharya",
+        "pancha-bheda",
+        "taratamya"
+      ],
+      "sources": [
+        {
+          "title": "Madhvacharya — Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Madhvacharya",
+          "accessed": "2026-11-14",
+          "note": "Read for birthplace, dates, works, disciples and doctrine sections"
+        },
+        {
+          "title": "Dvaita — Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Dvaita",
+          "accessed": "2026-11-14",
+          "note": "Read for Jiva, Ishvara, Jagat, Bhakti, Jnana, Moksha and Advaita/Vishishtadvaita comparisons (first 100,000 characters read)"
+        }
+      ]
+    },
+    {
+      "id": "pancha-bheda",
+      "category": "dvaita",
+      "title_en": "Pancha Bheda",
+      "title_kn": "ಪಂಚಭೇದ",
+      "status": "sourced",
+      "summary": "The five eternal distinctions taught in Dvaita.",
+      "sections": [
+        {
+          "heading": "Definition",
+          "status": "sourced",
+          "body": "Madhva taught five eternal distinctions: between material things; between matter and soul; between matter and God; between souls; and between soul and God. Each is real and permanent. Wording varies between sources."
+        }
+      ],
+      "related": [
+        "dvaita-vedanta",
+        "taratamya"
+      ],
+      "sources": [
+        {
+          "title": "Madhvacharya — Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Madhvacharya",
+          "accessed": "2026-11-14",
+          "note": "Read for birthplace, dates, works, disciples and doctrine sections"
+        }
+      ]
+    },
+    {
+      "id": "taratamya",
+      "category": "dvaita",
+      "title_en": "Taratamya",
+      "title_kn": "ತಾರತಮ್ಯ",
+      "status": "sourced",
+      "summary": "The gradation of souls and deities in Dvaita.",
+      "sections": [
+        {
+          "heading": "Definition",
+          "status": "sourced",
+          "body": "Madhva's term for graded pluralism: every being differs inherently from every other, and these differences determine eligibility for liberation, rebirth, or darkness."
+        }
+      ],
+      "related": [
+        "dvaita-vedanta",
+        "pancha-bheda"
+      ],
+      "sources": [
+        {
+          "title": "Madhvacharya — Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Madhvacharya",
+          "accessed": "2026-11-14",
+          "note": "Read for birthplace, dates, works, disciples and doctrine sections"
+        }
+      ]
+    },
+    {
+      "id": "ashta-mathas",
+      "category": "mathas",
+      "title_en": "Ashta Mathas of Udupi",
+      "title_kn": "ಅಷ್ಟ ಮಠಗಳು",
+      "status": "partial",
+      "summary": "The eight mathas of Udupi founded in the Madhva tradition.",
+      "sections": [
+        {
+          "heading": "Overview",
+          "status": "sourced",
+          "body": "Eight of the twelve Tuluva mathas form the Ashta Mathas of Udupi, founded by Madhva's direct disciples and named after their villages of origin: Pejavara, Palimaru, Adamaru, Puttige, Shirur, Sode, Kaniyooru and Krishnapura. They administer the Udupi Krishna temple by rotation (paryaya)."
+        },
+        {
+          "heading": "Rotation period",
+          "body": "Conflict between sources: the Madhva Sampradaya page says the mathas take turns every two years; the Ashta Mathas page gives no period. Pending confirmation from a primary source.",
+          "status": "pending"
+        }
+      ],
+      "related": [
+        "madhvacharya",
+        "pejavara",
+        "palimaru",
+        "adamaru",
+        "puttige",
+        "shirur",
+        "sode",
+        "kaniyooru",
+        "krishnapura"
+      ],
+      "sources": [
+        {
+          "title": "Ashta Mathas of Udupi — Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Ashta_Mathas_of_Udupi",
+          "accessed": "2026-11-14",
+          "note": "Read for the eight mathas and first sannyasi; rotation period and founding date not stated"
+        },
+        {
+          "title": "Madhva Sampradaya — Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Madhva_Sampradaya",
+          "accessed": "2026-11-14",
+          "note": "Read for guru lineage and matha context (first 100,000 characters read); no full chronological list on the page"
+        }
+      ]
+    },
+    {
+      "id": "pejavara",
+      "category": "mathas",
+      "title_en": "Pejavara Matha",
+      "title_kn": "ಪೇಜಾವರ ಮಠ",
+      "status": "partial",
+      "summary": "One of the Ashta Mathas of Udupi. First sannyasi (founding disciple): Sri Adhokshaja Teertha.",
+      "sections": [
+        {
+          "heading": "Founder (first sannyasi)",
+          "status": "sourced",
+          "body": "Sri Adhokshaja Teertha (per Wikipedia, Ashta Mathas of Udupi)."
+        },
+        {
+          "heading": "Matha details",
+          "status": "pending",
+          "body": "History, presiding deity, current Peethadhipati, contact and festivals not yet sourced."
+        }
+      ],
+      "location": {
+        "place": "Udupi",
+        "lat": null,
+        "lng": null,
+        "status": "pending"
+      },
+      "related": [
+        "ashta-mathas",
+        "madhvacharya"
+      ],
+      "sources": [
+        {
+          "title": "Ashta Mathas of Udupi — Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Ashta_Mathas_of_Udupi",
+          "accessed": "2026-11-14",
+          "note": "Read for the eight mathas and first sannyasi; rotation period and founding date not stated"
+        }
+      ]
+    },
+    {
+      "id": "palimaru",
+      "category": "mathas",
+      "title_en": "Palimaru Matha",
+      "title_kn": "ಪಲಿಮಾರು ಮಠ",
+      "status": "partial",
+      "summary": "One of the Ashta Mathas of Udupi. First sannyasi (founding disciple): Sri Hrishikesha Teertha.",
+      "sections": [
+        {
+          "heading": "Founder (first sannyasi)",
+          "status": "sourced",
+          "body": "Sri Hrishikesha Teertha (per Wikipedia, Ashta Mathas of Udupi)."
+        },
+        {
+          "heading": "Matha details",
+          "status": "pending",
+          "body": "History, presiding deity, current Peethadhipati, contact and festivals not yet sourced."
+        }
+      ],
+      "location": {
+        "place": "Udupi",
+        "lat": null,
+        "lng": null,
+        "status": "pending"
+      },
+      "related": [
+        "ashta-mathas"
+      ],
+      "sources": [
+        {
+          "title": "Ashta Mathas of Udupi — Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Ashta_Mathas_of_Udupi",
+          "accessed": "2026-11-14",
+          "note": "Read for the eight mathas and first sannyasi; rotation period and founding date not stated"
+        }
+      ]
+    },
+    {
+      "id": "adamaru",
+      "category": "mathas",
+      "title_en": "Adamaru Matha",
+      "title_kn": "ಅದಮಾರು ಮಠ",
+      "status": "partial",
+      "summary": "One of the Ashta Mathas of Udupi. First sannyasi (founding disciple): Sri Narasimha Teertha.",
+      "sections": [
+        {
+          "heading": "Founder (first sannyasi)",
+          "status": "sourced",
+          "body": "Sri Narasimha Teertha (per Wikipedia, Ashta Mathas of Udupi)."
+        },
+        {
+          "heading": "Matha details",
+          "status": "pending",
+          "body": "History, presiding deity, current Peethadhipati, contact and festivals not yet sourced."
+        }
+      ],
+      "location": {
+        "place": "Udupi",
+        "lat": null,
+        "lng": null,
+        "status": "pending"
+      },
+      "related": [
+        "ashta-mathas"
+      ],
+      "sources": [
+        {
+          "title": "Ashta Mathas of Udupi — Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Ashta_Mathas_of_Udupi",
+          "accessed": "2026-11-14",
+          "note": "Read for the eight mathas and first sannyasi; rotation period and founding date not stated"
+        }
+      ]
+    },
+    {
+      "id": "puttige",
+      "category": "mathas",
+      "title_en": "Puttige Matha",
+      "title_kn": "ಪುತ್ತಿಗೆ ಮಠ",
+      "status": "partial",
+      "summary": "One of the Ashta Mathas of Udupi. First sannyasi (founding disciple): Sri Upendra Teertha.",
+      "sections": [
+        {
+          "heading": "Founder (first sannyasi)",
+          "status": "sourced",
+          "body": "Sri Upendra Teertha (per Wikipedia, Ashta Mathas of Udupi)."
+        },
+        {
+          "heading": "Matha details",
+          "status": "pending",
+          "body": "History, presiding deity, current Peethadhipati, contact and festivals not yet sourced."
+        }
+      ],
+      "location": {
+        "place": "Udupi",
+        "lat": null,
+        "lng": null,
+        "status": "pending"
+      },
+      "related": [
+        "ashta-mathas"
+      ],
+      "sources": [
+        {
+          "title": "Ashta Mathas of Udupi — Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Ashta_Mathas_of_Udupi",
+          "accessed": "2026-11-14",
+          "note": "Read for the eight mathas and first sannyasi; rotation period and founding date not stated"
+        }
+      ]
+    },
+    {
+      "id": "shirur",
+      "category": "mathas",
+      "title_en": "Shirur Matha",
+      "title_kn": "ಶಿರೂರು ಮಠ",
+      "status": "partial",
+      "summary": "One of the Ashta Mathas of Udupi. First sannyasi (founding disciple): Sri Vamana Teertha Swamiji.",
+      "sections": [
+        {
+          "heading": "Founder (first sannyasi)",
+          "status": "sourced",
+          "body": "Sri Vamana Teertha Swamiji (per Wikipedia, Ashta Mathas of Udupi)."
+        },
+        {
+          "heading": "Matha details",
+          "status": "pending",
+          "body": "History, presiding deity, current Peethadhipati, contact and festivals not yet sourced."
+        }
+      ],
+      "location": {
+        "place": "Udupi",
+        "lat": null,
+        "lng": null,
+        "status": "pending"
+      },
+      "related": [
+        "ashta-mathas"
+      ],
+      "sources": [
+        {
+          "title": "Ashta Mathas of Udupi — Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Ashta_Mathas_of_Udupi",
+          "accessed": "2026-11-14",
+          "note": "Read for the eight mathas and first sannyasi; rotation period and founding date not stated"
+        }
+      ]
+    },
+    {
+      "id": "sode",
+      "category": "mathas",
+      "title_en": "Sode Matha",
+      "title_kn": "ಸೋದೆ ಮಠ",
+      "status": "partial",
+      "summary": "One of the Ashta Mathas of Udupi. First sannyasi (founding disciple): Sri Vishnu Teertha Swamiji.",
+      "sections": [
+        {
+          "heading": "Founder (first sannyasi)",
+          "status": "sourced",
+          "body": "Sri Vishnu Teertha Swamiji (per Wikipedia, Ashta Mathas of Udupi)."
+        },
+        {
+          "heading": "Matha details",
+          "status": "pending",
+          "body": "History, presiding deity, current Peethadhipati, contact and festivals not yet sourced."
+        }
+      ],
+      "location": {
+        "place": "Udupi",
+        "lat": null,
+        "lng": null,
+        "status": "pending"
+      },
+      "related": [
+        "ashta-mathas"
+      ],
+      "sources": [
+        {
+          "title": "Ashta Mathas of Udupi — Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Ashta_Mathas_of_Udupi",
+          "accessed": "2026-11-14",
+          "note": "Read for the eight mathas and first sannyasi; rotation period and founding date not stated"
+        }
+      ]
+    },
+    {
+      "id": "kaniyooru",
+      "category": "mathas",
+      "title_en": "Kaniyooru Matha",
+      "title_kn": "ಕಣಿಯೂರು ಮಠ",
+      "status": "partial",
+      "summary": "One of the Ashta Mathas of Udupi. First sannyasi (founding disciple): Sri Rama Teertha Swamiji.",
+      "sections": [
+        {
+          "heading": "Founder (first sannyasi)",
+          "status": "sourced",
+          "body": "Sri Rama Teertha Swamiji (per Wikipedia, Ashta Mathas of Udupi)."
+        },
+        {
+          "heading": "Matha details",
+          "status": "pending",
+          "body": "History, presiding deity, current Peethadhipati, contact and festivals not yet sourced."
+        }
+      ],
+      "location": {
+        "place": "Udupi",
+        "lat": null,
+        "lng": null,
+        "status": "pending"
+      },
+      "related": [
+        "ashta-mathas"
+      ],
+      "sources": [
+        {
+          "title": "Ashta Mathas of Udupi — Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Ashta_Mathas_of_Udupi",
+          "accessed": "2026-11-14",
+          "note": "Read for the eight mathas and first sannyasi; rotation period and founding date not stated"
+        }
+      ]
+    },
+    {
+      "id": "krishnapura",
+      "category": "mathas",
+      "title_en": "Krishnapura Matha",
+      "title_kn": "ಕೃಷ್ಣಾಪುರ ಮಠ",
+      "status": "partial",
+      "summary": "One of the Ashta Mathas of Udupi. First sannyasi (founding disciple): Sri Janardhana Teertha Swamiji.",
+      "sections": [
+        {
+          "heading": "Founder (first sannyasi)",
+          "status": "sourced",
+          "body": "Sri Janardhana Teertha Swamiji (per Wikipedia, Ashta Mathas of Udupi)."
+        },
+        {
+          "heading": "Matha details",
+          "status": "pending",
+          "body": "History, presiding deity, current Peethadhipati, contact and festivals not yet sourced."
+        }
+      ],
+      "location": {
+        "place": "Udupi",
+        "lat": null,
+        "lng": null,
+        "status": "pending"
+      },
+      "related": [
+        "ashta-mathas"
+      ],
+      "sources": [
+        {
+          "title": "Ashta Mathas of Udupi — Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Ashta_Mathas_of_Udupi",
+          "accessed": "2026-11-14",
+          "note": "Read for the eight mathas and first sannyasi; rotation period and founding date not stated"
+        }
+      ]
+    },
+    {
+      "id": "guru-parampara",
+      "category": "peethadhipatis",
+      "title_en": "Guru Parampara",
+      "title_kn": "ಗುರು ಪರಂಪರೆ",
+      "status": "partial",
+      "summary": "Chronological lineage and Peethadhipati directory, matha by matha.",
+      "sections": [
+        {
+          "heading": "Matha-wise lists",
+          "status": "sourced",
+          "body": "Lineage per Wikipedia: the Udupi Ashta Mathas and the twelve Tuluva mathas descend from Madhva's disciples. The Mathatraya (Uttaradi, Vyasaraja, Raghavendra) are regarded as the premier institutions of Dvaita, with Jayatirtha as their source. Full matha-by-matha succession lists are pending."
+        },
+        {
+          "heading": "Period of leadership",
+          "status": "pending",
+          "body": "Not yet sourced. The Wikipedia page gives dates for only a few figures, such as Vyasatirtha (1469–1539), Chaitanya Mahaprabhu (1496–1534) and Madhva (1238–1317 as one of the cited dates)."
+        }
+      ],
+      "related": [
+        "madhvacharya",
+        "ashta-mathas"
+      ],
+      "sources": [
+        {
+          "title": "Madhva Sampradaya — Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Madhva_Sampradaya",
+          "accessed": "2026-11-14",
+          "note": "Read for guru lineage and matha context (first 100,000 characters read); no full chronological list on the page"
+        }
+      ]
+    }
+  ]
+}
