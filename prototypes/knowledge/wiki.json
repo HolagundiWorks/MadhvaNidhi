@@ -294,7 +294,7 @@
         {
           "heading": "Current Peethadhipati",
           "status": "pending",
-          "body": "Not yet sourced."
+          "body": "Pending. Sources name Sri Vishwaprasanna Teertha as the successor of Vishwesha Teertha, who died in December 2019, but the sources are from around 2019 and the lineage numbering conflicts. Not verified as current."
         },
         {
           "heading": "Headquarters and location",
@@ -314,14 +314,16 @@
         {
           "heading": "Official website and contact",
           "status": "pending",
-          "body": "Not yet sourced."
+          "body": "Pending. Wikipedia lists pejavaraparyaya2016.org, which it reports as not working. No working official site found on 14 Nov 2026."
         }
       ],
       "location": {
-        "place": "Udupi",
-        "lat": null,
-        "lng": null,
-        "status": "pending"
+        "place": "Udupi (town centre)",
+        "lat": 13.3389,
+        "lng": 74.7451,
+        "status": "sourced",
+        "note": "Town-level coordinates for Udupi, from Wikipedia. The matha address is in Udupi (directory listing); the exact site is not given.",
+        "accessed": "2026-11-14"
       },
       "related": [
         "ashta-mathas",
@@ -397,10 +399,12 @@
         }
       ],
       "location": {
-        "place": "Udupi",
-        "lat": null,
-        "lng": null,
-        "status": "pending"
+        "place": "Palimar village, Udupi district",
+        "lat": 13.167785,
+        "lng": 74.778217,
+        "status": "sourced",
+        "note": "Village-level coordinates from Wikipedia (Palimar). The matha is in the village.",
+        "accessed": "2026-11-14"
       },
       "related": [
         "ashta-mathas"
@@ -481,10 +485,12 @@
         }
       ],
       "location": {
-        "place": "Udupi",
-        "lat": null,
-        "lng": null,
-        "status": "pending"
+        "place": "Adamaru village, Udupi district",
+        "lat": 13.1270026,
+        "lng": 74.8154783,
+        "status": "sourced",
+        "note": "Village-level coordinates from Wikipedia (Adamaru).",
+        "accessed": "2026-11-14"
       },
       "related": [
         "ashta-mathas"
@@ -559,10 +565,12 @@
         }
       ],
       "location": {
-        "place": "Udupi",
+        "place": "Puthige near Hiriyadka, Udupi district",
         "lat": null,
         "lng": null,
-        "status": "pending"
+        "status": "pending",
+        "note": "Coordinates not yet sourced. The official site gives an Udupi address; the moola matha is near Hiriyadka per Wikipedia.",
+        "accessed": "2026-11-14"
       },
       "related": [
         "ashta-mathas"
@@ -643,10 +651,12 @@
         }
       ],
       "location": {
-        "place": "Udupi",
+        "place": "Shiroor village, Byndoor taluk",
         "lat": null,
         "lng": null,
-        "status": "pending"
+        "status": "pending",
+        "note": "Coordinates not on the Wikipedia village page. Pending a source.",
+        "accessed": "2026-11-14"
       },
       "related": [
         "ashta-mathas"
@@ -703,7 +713,7 @@
         {
           "heading": "Current Peethadhipati",
           "status": "pending",
-          "body": "Not yet sourced."
+          "body": "Pending. The official page does not state the seer. Other sources conflict on the current pontiff and are undated."
         },
         {
           "heading": "Headquarters and location",
@@ -722,15 +732,17 @@
         },
         {
           "heading": "Official website and contact",
-          "status": "pending",
-          "body": "Not yet sourced."
+          "status": "sourced",
+          "body": "Official website: sodematha.in (the page shows the matha name; no contact or seer details on it)."
         }
       ],
       "location": {
-        "place": "Udupi",
+        "place": "Sonda (Sode), near Sirsi, Uttara Kannada",
         "lat": null,
         "lng": null,
-        "status": "pending"
+        "status": "pending",
+        "note": "Coordinates not yet sourced. Wikipedia names Sonda near Sirsi as the matha location.",
+        "accessed": "2026-11-14"
       },
       "related": [
         "ashta-mathas"
@@ -747,6 +759,12 @@
           "url": "https://en.wikipedia.org/wiki/Ashta_Mathas_of_Udupi",
           "accessed": "2026-11-14",
           "note": "First sannyasi for each matha"
+        },
+        {
+          "title": "Sri Sode Vadiraja Matha — official website",
+          "url": "https://sodematha.in",
+          "accessed": "2026-11-14",
+          "note": "Checked 14 Nov 2026. The page loads with the matha name only; seer, address and festivals are not on it."
         }
       ]
     },
@@ -805,10 +823,12 @@
         }
       ],
       "location": {
-        "place": "Udupi",
-        "lat": null,
-        "lng": null,
-        "status": "pending"
+        "place": "Kaniyooru village, Kadaba taluk",
+        "lat": 12.71861,
+        "lng": 75.365,
+        "status": "sourced",
+        "note": "Village-level coordinates from Wikipedia (Kaniyuru).",
+        "accessed": "2026-11-14"
       },
       "related": [
         "ashta-mathas"
@@ -889,10 +909,12 @@
         }
       ],
       "location": {
-        "place": "Udupi",
+        "place": "Krishnapura (Sankesha), near Surathkal",
         "lat": null,
         "lng": null,
-        "status": "pending"
+        "status": "pending",
+        "note": "Coordinates not yet sourced. Wikipedia places the main matha about 3 km from Surathkal.",
+        "accessed": "2026-11-14"
       },
       "related": [
         "ashta-mathas"
