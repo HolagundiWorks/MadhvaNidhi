@@ -15,13 +15,83 @@
   /* ---------- Wiki ---------- */
   const wikiRoot = document.querySelector('[data-wiki-root]');
   let wiki = null;
-  let wikiState = { category: 'all', query: '', article: null };
+  let wikiState = { category: 'all', query: '', article: null, view: 'list', lineageNode: 'madhva' };
+  let lineage = null;
 
   async function loadWiki() {
     if (wiki) return wiki;
-    const res = await fetch('../knowledge/wiki.json');
-    wiki = await res.json();
+    const [w, l] = await Promise.all([
+      fetch('../knowledge/wiki.json').then(r => r.json()),
+      fetch('../knowledge/lineage.json').then(r => r.json()).catch(() => null)
+    ]);
+    wiki = w;
+    lineage = l;
     return wiki;
+  }
+
+  function openArticle(id) {
+    wikiState.article = id;
+    wikiState.view = 'list';
+    renderWiki();
+  }
+
+  const LIN = { x0: 70, dx: 96, y0: 60, dy: 110 };
+  function linPos(n) { return { x: LIN.x0 + n.col * LIN.dx, y: LIN.y0 + n.row * LIN.dy }; }
+  const EDGE_STYLE = {
+    disciple: 'stroke-width:1.5;stroke:var(--cds-border-strong-01,#8d8d8d)',
+    first_sannyasi: 'stroke-width:1;stroke:var(--cds-border-subtle-01,#525252)',
+    appointed: 'stroke-width:1.5;stroke-dasharray:4 3;stroke:var(--cds-border-strong-01,#8d8d8d)',
+    successor: 'stroke-width:1.5;stroke-dasharray:2 3;stroke:var(--cds-border-strong-01,#8d8d8d)',
+    succeeded: 'stroke-width:2;stroke:var(--cds-interactive,#ff4f18)',
+    descends: 'stroke-width:2;stroke:var(--cds-interactive,#ff4f18)'
+  };
+
+  function renderLineage() {
+    if (!lineage) return '<p class="cds--body-01">Lineage data could not be loaded.</p>';
+    const nodes = Object.fromEntries(lineage.nodes.map(n => [n.id, n]));
+    const width = 60 + 9 * LIN.dx, height = 60 + 9 * LIN.dy;
+    const edges = lineage.edges.map(e => {
+      const a = linPos(nodes[e.from]), b = linPos(nodes[e.to]);
+      const my = (a.y + b.y) / 2;
+      return `<path d="M${a.x},${a.y + 22} C${a.x},${my} ${b.x},${my} ${b.x},${b.y - 22}" fill="none" style="${EDGE_STYLE[e.type] || ''}"/>`;
+    }).join('');
+    const selected = nodes[wikiState.lineageNode] || nodes.madhva;
+    const circles = lineage.nodes.map(n => {
+      const p = linPos(n);
+      const r = n.kind === 'founder' ? 28 : 22;
+      const dashed = n.status === 'disputed' ? 'stroke-dasharray:4 3;' : '';
+      const isSel = n.id === selected.id;
+      const fill = n.kind === 'founder' ? 'var(--cds-interactive,#ff4f18)' : n.kind === 'matha' ? 'var(--cds-layer-02,#262626)' : 'var(--cds-layer-01,#262626)';
+      const stroke = isSel ? 'var(--cds-focus,#ffffff)' : 'var(--cds-border-interactive,#ff4f18)';
+      return `<g class="lin-node" role="button" tabindex="0" data-lin-node="${esc(n.id)}" aria-label="${esc(n.label)}" aria-pressed="${isSel}">
+        <circle cx="${p.x}" cy="${p.y}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="${isSel ? 3 : 2}" style="${dashed}"/>
+        <text x="${p.x}" y="${p.y + r + 16}" text-anchor="middle" style="font-size:13px;fill:var(--cds-text-primary,#f4f4f4)">${esc(n.label)}</text>
+      </g>`;
+    }).join('');
+    const src = lineage.sources[selected.source];
+    const open = selected.article ? `<button type="button" class="cds--btn cds--btn--primary" data-lin-open="${esc(selected.article)}">Open article</button>` : '';
+    return `
+      <div class="lineage-legend" aria-label="Legend">
+        <span>Solid: sourced</span><span>Dashed circle: dates disputed</span>
+        <span>Dotted line: named successor</span><span>Orange line: succession or descent</span>
+      </div>
+      <div class="lineage-scroll">
+        <svg viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" role="img" aria-label="Guru parampara graph">
+          ${edges}${circles}
+        </svg>
+      </div>
+      <section class="cds--tile lineage-detail" aria-live="polite">
+        <h3 class="cds--heading-03">${esc(selected.label)}</h3>
+        <p class="cds--label-01">${esc(selected.kind)}${selected.dates ? ' · ' + esc(selected.dates) : ''}</p>
+        <p class="cds--body-01">${esc(selected.note || '')}</p>
+        ${src ? `<p class="cds--label-01">Source: <a href="${esc(src.url)}" target="_blank" rel="noopener">${esc(src.title)}</a> · accessed ${esc(src.accessed)}</p>` : ''}
+        ${open}
+      </section>`;
+  }
+
+  function viewToggle() {
+    const btn = (id, label) => `<button type="button" class="cds--btn cds--btn--ghost" aria-pressed="${wikiState.view === id}" data-wiki-view="${id}">${label}</button>`;
+    return `<div class="wiki-chips" role="group" aria-label="View">${btn('list', 'List')}${btn('lineage', 'Lineage · ಗುರು ಪರಂಪರೆ')}</div>`;
   }
 
   function articleById(id) { return wiki.articles.find(a => a.id === id); }
@@ -30,6 +100,7 @@
     if (!wikiRoot || !wiki) return;
     const bookmarks = store.get(KEY_BOOKMARKS, []);
     if (wikiState.article) { wikiRoot.innerHTML = renderArticle(articleById(wikiState.article), bookmarks); return; }
+    if (wikiState.view === 'lineage') { wikiRoot.innerHTML = viewToggle() + renderLineage(); return; }
     const q = wikiState.query.trim().toLowerCase();
     const items = wiki.articles.filter(a =>
       (wikiState.category === 'all' || a.category === wikiState.category) &&
@@ -37,6 +108,7 @@
     const chips = [{ id: 'all', title_en: 'All', title_kn: 'ಎಲ್ಲ' }, ...wiki.categories].map(c =>
       `<button type="button" class="cds--btn cds--btn--ghost wiki-chip" aria-pressed="${wikiState.category === c.id}" data-wiki-cat="${esc(c.id)}">${esc(c.title_en)}</button>`).join('');
     wikiRoot.innerHTML = `
+      ${viewToggle()}
       <div class="cds--form-item">
         <label class="cds--label" for="wiki-search">Search · ಹುಡುಕಿ</label>
         <input class="cds--text-input" id="wiki-search" type="search" value="${esc(wikiState.query)}" placeholder="Matha, Peethadhipati, concept">
@@ -282,9 +354,17 @@
   }
 
   /* ---------- Event wiring ---------- */
+  wikiRoot?.addEventListener('keydown', e => {
+    const node = e.target.closest?.('[data-lin-node]');
+    if (node && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); node.dispatchEvent(new MouseEvent('click', { bubbles: true })); }
+  });
   wikiRoot?.addEventListener('click', e => {
+    const lin = e.target.closest?.('[data-lin-node]');
+    if (lin) { wikiState.lineageNode = lin.dataset.linNode; renderWiki(); return; }
     const t = e.target.closest('button');
     if (!t) return;
+    if (t.dataset.linOpen) { openArticle(t.dataset.linOpen); return; }
+    if (t.dataset.wikiView) { wikiState.view = t.dataset.wikiView; renderWiki(); return; }
     if (t.dataset.wikiCat) { wikiState.category = t.dataset.wikiCat; wikiState.article = null; renderWiki(); }
     else if (t.dataset.wikiOpen) { wikiState.article = t.dataset.wikiOpen; renderWiki(); }
     else if (t.hasAttribute('data-wiki-back')) { wikiState.article = null; renderWiki(); }

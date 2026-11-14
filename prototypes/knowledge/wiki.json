@@ -217,7 +217,7 @@
       "category": "mathas",
       "title_en": "Ashta Mathas of Udupi",
       "title_kn": "ಅಷ್ಟ ಮಠಗಳು",
-      "status": "partial",
+      "status": "sourced",
       "summary": "The eight mathas of Udupi founded in the Madhva tradition.",
       "sections": [
         {
@@ -226,9 +226,9 @@
           "body": "Eight of the twelve Tuluva mathas form the Ashta Mathas of Udupi, founded by Madhva's direct disciples and named after their villages of origin: Pejavara, Palimaru, Adamaru, Puttige, Shirur, Sode, Kaniyooru and Krishnapura. They administer the Udupi Krishna temple by rotation (paryaya)."
         },
         {
-          "heading": "Rotation period",
-          "body": "Conflict between sources: the Madhva Sampradaya page says the mathas take turns every two years; the Ashta Mathas page gives no period. Pending confirmation from a primary source.",
-          "status": "pending"
+          "heading": "Rotation (paryaya)",
+          "body": "Mathas take turns running the Udupi Krishna temple. Order: Palimaru, Adamaru, Krishnapura, Puthige, Shiroor, Sodhe, Kaniyooru, Pejawara. Each seer serves two years; handover occurs in even-numbered Gregorian years (example: 18 January 2014). Source: Wikipedia Paryaya.",
+          "status": "sourced"
         }
       ],
       "related": [
@@ -254,6 +254,12 @@
           "url": "https://en.wikipedia.org/wiki/Madhva_Sampradaya",
           "accessed": "2026-11-14",
           "note": "Read for guru lineage and matha context (first 100,000 characters read); no full chronological list on the page"
+        },
+        {
+          "title": "Paryaya — Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Paryaya",
+          "accessed": "2026-11-14",
+          "note": "Read for rotation order, two-year period, even-year handover and the 2014 handover example. Does not cover the two-month origin or the 1522 change."
         }
       ]
     },
@@ -381,13 +387,13 @@
         },
         {
           "heading": "Festivals and traditions",
-          "status": "pending",
-          "body": "Not yet sourced."
+          "status": "sourced",
+          "body": "The official site lists Madhwa Jayanti and Chaturmaasya among its observances (2026 notices)."
         },
         {
           "heading": "Official website and contact",
-          "status": "pending",
-          "body": "Not yet sourced."
+          "status": "sourced",
+          "body": "Official website: sripalimarumatha.org. Address: Car Street, Udupi 576101, Karnataka (site listing)."
         }
       ],
       "location": {
@@ -411,6 +417,12 @@
           "url": "https://en.wikipedia.org/wiki/Ashta_Mathas_of_Udupi",
           "accessed": "2026-11-14",
           "note": "First sannyasi for each matha"
+        },
+        {
+          "title": "Sri Palimaru Matha — official website",
+          "url": "https://sripalimarumatha.org/",
+          "accessed": "2026-11-14",
+          "note": "Official site (checked on 14 Nov 2026). Address and festival notices taken from the site; contact details other than the address are not recorded here."
         }
       ]
     },

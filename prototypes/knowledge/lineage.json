@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "note": "Guru lineage graph. Each edge reflects a statement in a cited source; nothing is inferred. Nodes with status 'disputed' show a dashed outline. Rows and columns are layout hints only.",
+  "sources": {
+    "madhva_sampradaya": { "title": "Madhva Sampradaya — Wikipedia", "url": "https://en.wikipedia.org/wiki/Madhva_Sampradaya", "accessed": "2026-11-14" },
+    "ashta": { "title": "Ashta Mathas of Udupi — Wikipedia", "url": "https://en.wikipedia.org/wiki/Ashta_Mathas_of_Udupi", "accessed": "2026-11-14" },
+    "madhvacharya": { "title": "Madhvacharya — Wikipedia", "url": "https://en.wikipedia.org/wiki/Madhvacharya", "accessed": "2026-11-14" }
+  },
+  "nodes": [
+    { "id": "madhva", "label": "Madhvacharya", "kind": "founder", "row": 0, "col": 4, "status": "disputed", "dates": "1238–1317 or 1199–1278 (disputed)", "article": "madhvacharya", "source": "madhvacharya", "note": "Sources differ on dates." },
+    { "id": "adhokshaja", "label": "Adhokshaja", "kind": "disciple", "row": 1, "col": 0, "status": "sourced", "article": "pejavara", "source": "madhva_sampradaya", "note": "Direct disciple; first sannyasi of Pejavara." },
+    { "id": "hrishikesha", "label": "Hrishikesha", "kind": "disciple", "row": 1, "col": 1, "status": "sourced", "article": "palimaru", "source": "madhva_sampradaya", "note": "Direct disciple; first sannyasi of Palimaru." },
+    { "id": "narasimha", "label": "Narasimha", "kind": "disciple", "row": 1, "col": 2, "status": "sourced", "article": "adamaru", "source": "madhva_sampradaya", "note": "Direct disciple; first sannyasi of Adamaru." },
+    { "id": "upendra", "label": "Upendra", "kind": "disciple", "row": 1, "col": 3, "status": "sourced", "article": "puttige", "source": "madhva_sampradaya", "note": "Direct disciple; first pontiff of Puttige." },
+    { "id": "rama", "label": "Rama", "kind": "disciple", "row": 1, "col": 4, "status": "sourced", "article": "kaniyooru", "source": "madhva_sampradaya", "note": "Direct disciple; first pontiff of Kaniyooru." },
+    { "id": "vamana", "label": "Vamana", "kind": "disciple", "row": 1, "col": 5, "status": "sourced", "article": "shirur", "source": "madhva_sampradaya", "note": "Direct disciple; first sannyasi of Shirur." },
+    { "id": "janardhana", "label": "Janardhana", "kind": "disciple", "row": 1, "col": 6, "status": "sourced", "article": "krishnapura", "source": "madhva_sampradaya", "note": "Direct disciple; first swami of Krishnapura, 1317–1319 per Wikipedia." },
+    { "id": "vishnu", "label": "Vishnu", "kind": "disciple", "row": 1, "col": 7, "status": "sourced", "article": "sode", "source": "madhva_sampradaya", "note": "Madhva's brother and disciple; first sannyasi of Sode." },
+    { "id": "padmanabha", "label": "Padmanabha", "kind": "disciple", "row": 1, "col": 8, "status": "sourced", "article": null, "source": "madhva_sampradaya", "note": "Made head of a matha outside Tulunadu." },
+
+    { "id": "pejavara", "label": "Pejavara", "kind": "matha", "row": 2, "col": 0, "status": "sourced", "article": "pejavara", "source": "ashta", "note": "Ashta Matha" },
+    { "id": "palimaru", "label": "Palimaru", "kind": "matha", "row": 2, "col": 1, "status": "sourced", "article": "palimaru", "source": "ashta", "note": "Ashta Matha" },
+    { "id": "adamaru", "label": "Adamaru", "kind": "matha", "row": 2, "col": 2, "status": "sourced", "article": "adamaru", "source": "ashta", "note": "Ashta Matha" },
+    { "id": "puttige", "label": "Puttige", "kind": "matha", "row": 2, "col": 3, "status": "sourced", "article": "puttige", "source": "ashta", "note": "Ashta Matha" },
+    { "id": "kaniyooru", "label": "Kaniyooru", "kind": "matha", "row": 2, "col": 4, "status": "sourced", "article": "kaniyooru", "source": "ashta", "note": "Ashta Matha" },
+    { "id": "shirur", "label": "Shirur", "kind": "matha", "row": 2, "col": 5, "status": "sourced", "article": "shirur", "source": "ashta", "note": "Ashta Matha" },
+    { "id": "krishnapura", "label": "Krishnapura", "kind": "matha", "row": 2, "col": 6, "status": "sourced", "article": "krishnapura", "source": "ashta", "note": "Ashta Matha" },
+    { "id": "sode", "label": "Sode", "kind": "matha", "row": 2, "col": 7, "status": "sourced", "article": "sode", "source": "ashta", "note": "Ashta Matha" },
+
+    { "id": "narahari", "label": "Narahari", "kind": "successor", "row": 2, "col": 8, "status": "sourced", "article": null, "source": "madhva_sampradaya", "note": "Named by Madhva as a future successor of Padmanabha." },
+    { "id": "madhava", "label": "Madhava", "kind": "successor", "row": 3, "col": 8, "status": "sourced", "article": null, "source": "madhva_sampradaya", "note": "Named by Madhva as a future successor of Padmanabha." },
+    { "id": "akshobhya", "label": "Akshobhya", "kind": "successor", "row": 4, "col": 8, "status": "sourced", "article": null, "source": "madhva_sampradaya", "note": "Named by Madhva as a future successor of Padmanabha." },
+    { "id": "jayatirtha", "label": "Jayatirtha", "kind": "successor", "row": 5, "col": 8, "status": "sourced", "article": "guru-parampara", "source": "madhva_sampradaya", "note": "Succeeded to the main matha after Akshobhya Tirtha." },
+
+    { "id": "uttaradi", "label": "Uttaradi", "kind": "mathatraya", "row": 6, "col": 6, "status": "sourced", "article": "guru-parampara", "source": "madhva_sampradaya", "note": "Mathatraya; descends from Jayatirtha." },
+    { "id": "vyasaraja", "label": "Vyasaraja", "kind": "mathatraya", "row": 6, "col": 7, "status": "sourced", "article": "guru-parampara", "source": "madhva_sampradaya", "note": "Mathatraya; descends from Jayatirtha." },
+    { "id": "raghavendra", "label": "Raghavendra", "kind": "mathatraya", "row": 6, "col": 8, "status": "sourced", "article": "guru-parampara", "source": "madhva_sampradaya", "note": "Mathatraya; descends from Jayatirtha." },
+
+    { "id": "vyasatirtha", "label": "Vyasatirtha", "kind": "successor", "row": 7, "col": 4, "status": "sourced", "dates": "1469–1539", "article": "guru-parampara", "source": "madhva_sampradaya", "note": "Dated in Wikipedia; link to the Vyasaraja line is not stated on the page." },
+    { "id": "lakshmipati", "label": "Lakshmipati", "kind": "successor", "row": 8, "col": 4, "status": "sourced", "article": "guru-parampara", "source": "madhva_sampradaya", "note": "Disciple of Vyasatirtha, per Wikipedia." }
+  ],
+  "edges": [
+    { "from": "madhva", "to": "adhokshaja", "type": "disciple" },
+    { "from": "madhva", "to": "hrishikesha", "type": "disciple" },
+    { "from": "madhva", "to": "narasimha", "type": "disciple" },
+    { "from": "madhva", "to": "upendra", "type": "disciple" },
+    { "from": "madhva", "to": "rama", "type": "disciple" },
+    { "from": "madhva", "to": "vamana", "type": "disciple" },
+    { "from": "madhva", "to": "janardhana", "type": "disciple" },
+    { "from": "madhva", "to": "vishnu", "type": "disciple" },
+    { "from": "madhva", "to": "padmanabha", "type": "appointed" },
+    { "from": "adhokshaja", "to": "pejavara", "type": "first_sannyasi" },
+    { "from": "hrishikesha", "to": "palimaru", "type": "first_sannyasi" },
+    { "from": "narasimha", "to": "adamaru", "type": "first_sannyasi" },
+    { "from": "upendra", "to": "puttige", "type": "first_sannyasi" },
+    { "from": "rama", "to": "kaniyooru", "type": "first_sannyasi" },
+    { "from": "vamana", "to": "shirur", "type": "first_sannyasi" },
+    { "from": "janardhana", "to": "krishnapura", "type": "first_sannyasi" },
+    { "from": "vishnu", "to": "sode", "type": "first_sannyasi" },
+    { "from": "padmanabha", "to": "narahari", "type": "successor" },
+    { "from": "padmanabha", "to": "madhava", "type": "successor" },
+    { "from": "padmanabha", "to": "akshobhya", "type": "successor" },
+    { "from": "akshobhya", "to": "jayatirtha", "type": "succeeded" },
+    { "from": "jayatirtha", "to": "uttaradi", "type": "descends" },
+    { "from": "jayatirtha", "to": "vyasaraja", "type": "descends" },
+    { "from": "jayatirtha", "to": "raghavendra", "type": "descends" },
+    { "from": "vyasatirtha", "to": "lakshmipati", "type": "disciple" }
+  ]
+}
