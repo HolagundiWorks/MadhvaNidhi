@@ -20,6 +20,7 @@
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/appHeader"
                 style="@style/Widget.MadhvaNidhi.Toolbar"
+                android:background="@android:color/transparent"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/shell_toolbar_height"
                 android:minHeight="@dimen/shell_toolbar_height"

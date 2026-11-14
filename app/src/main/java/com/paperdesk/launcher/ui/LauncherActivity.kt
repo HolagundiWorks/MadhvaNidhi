@@ -17,6 +17,7 @@ import com.paperdesk.launcher.alarm.AlarmScheduler
 import com.paperdesk.launcher.data.IndicScript
 import com.paperdesk.launcher.data.OsLang
 import com.paperdesk.launcher.data.PanchangaStore
+import com.paperdesk.launcher.data.ProfileStore
 import com.paperdesk.launcher.data.SettingsStore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -202,12 +203,12 @@ class LauncherActivity : AppCompatActivity() {
         headerDate.text = dateLine
         headerDateJob?.cancel()
         headerDateJob = lifecycleScope.launch {
-            val day = withContext(Dispatchers.IO) {
-                PanchangaStore.forDate(applicationContext, PanchangaStore.dateKey())
+            val matha = withContext(Dispatchers.IO) {
+                ProfileStore(applicationContext).active().matha.trim()
             }
             if (isFinishing) return@launch
-            val tithi = OsLang.script(day.tithi.ifBlank { "—" }, lang)
-            headerDate.text = "$dateLine · $tithi"
+            // The bar shows the sadhaka's matha in place of the date; the date stays if no matha is set.
+            headerDate.text = matha.ifBlank { dateLine }
         }
     }
 

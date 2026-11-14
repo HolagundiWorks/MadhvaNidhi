@@ -306,6 +306,23 @@ class DeskFragment : Fragment() {
             text = dateLabel
             DeskType.apply(this, DeskType.SEMIBOLD)
         }
+        // Header: Samvatsara name with its year range; masa name with the months it spans.
+        val dayCal = PanchangaStore.parse(day.date)
+        val yearValue = dayCal.get(java.util.Calendar.YEAR)
+        val yearRange = if (dayCal.get(java.util.Calendar.MONTH) >= java.util.Calendar.MARCH) {
+            "$yearValue-${((yearValue + 1) % 100).toString().padStart(2, '0')}"
+        } else {
+            "${yearValue - 1}-${(yearValue % 100).toString().padStart(2, '0')}"
+        }
+        v.findViewById<TextView>(R.id.panchangaSamvatsaraName).text = OsLang.script(day.samvatsara, lang)
+        v.findViewById<TextView>(R.id.panchangaYearRange).text = yearRange
+        v.findViewById<TextView>(R.id.panchangaMasaName).text =
+            OsLang.script(day.masa.uppercase().replace("KARTEEKA", "KARTIKA"), lang)
+        val monthNames = listOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+        val first = PanchangaStore.parse(cycle.start).get(java.util.Calendar.MONTH)
+        val last = PanchangaStore.parse(cycle.end).get(java.util.Calendar.MONTH)
+        val monthRange = if (first == last) monthNames[first] else "${monthNames[first]}-${monthNames[last]}"
+        v.findViewById<TextView>(R.id.panchangaMonthRange).text = monthRange
         val phase = if (day.paksha.contains("KRISHNA", true)) 1 else 0
         val phaseLabel = if (phase == 0) "ಶುಕ್ಲಪಕ್ಷ" else "ಕೃಷ್ಣಪಕ್ಷ"
         val tithiLabel = OsLang.script(

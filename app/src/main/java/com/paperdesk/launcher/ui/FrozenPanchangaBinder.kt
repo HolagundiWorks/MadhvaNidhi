@@ -24,7 +24,139 @@ object FrozenPanchangaBinder {
             if (phase == 0) "ಪೌರ್ಣಿಮಾ" else "ಅಮಾವಾಸ್ಯೆ"
         } else names[tithi - 1]
 
+    /**
+     * Month view: 5 columns, 6 rows (15 Shukla tithis then 15 Krishna tithis).
+     * Built in a fresh vertical container placed where the old paksha area sits.
+     */
+    private fun renderMonth(root: View, cycle: PanchangaCalendar.Cycle, selected: String, onPick: (String) -> Unit) {
+        listOf(R.id.phaseCycle, R.id.calendarPrevious, R.id.calendarNext, R.id.pakshaToggle, R.id.pakshaScroll)
+            .forEach { root.findViewById<View>(it)?.visibility = View.GONE }
+        val old = root.findViewById<View>(R.id.pakshaScroll)
+        val parent = old.parent as? android.view.ViewGroup ?: return
+        parent.findViewWithTag<View>("month-view")?.let { parent.removeView(it) }
+        val ctx = root.context
+        val lang = OsLang.get(ctx)
+        val density = root.resources.displayMetrics.density
+        val gap = (6 * density).toInt()
+        val cellHeight = (84 * density).toInt()
+        val pad = (4 * density).toInt()
+        val month = android.widget.LinearLayout(ctx).apply {
+            orientation = android.widget.LinearLayout.VERTICAL
+            tag = "month-view"
+            // Keep the last row clear of the floating dock.
+            setPadding(0, 0, 0, root.resources.getDimensionPixelSize(R.dimen.ds_dock_clearance))
+        }
+        // (phase, tithi 1..15, dates): 15 Shukla then 15 Krishna. A tithi on two dates is one box spanning two columns.
+        val tiles: List<Triple<Int, Int, List<String>>> =
+            cycle.shukla.mapIndexed { i, dates -> Triple(0, i + 1, dates) } +
+                cycle.krishna.mapIndexed { i, dates -> Triple(1, i + 1, dates) }
+        // One box per tithi: a tithi on two dates is merged into a single box, so 30 tithis fill exactly 6 rows of 5.
+        fun spanOf(dates: List<String>) = 1
+        val rows = mutableListOf<MutableList<Triple<Int, Int, List<String>>>>()
+        var filled = 0
+        for (tile in tiles) {
+            if (rows.isEmpty() || filled + spanOf(tile.third) > 5) {
+                rows.add(mutableListOf())
+                filled = 0
+            }
+            rows.last().add(tile)
+            filled += spanOf(tile.third)
+        }
+        fun label(value: String, size: Float, color: Int) = android.widget.TextView(ctx).apply {
+            text = value
+            textSize = size
+            gravity = Gravity.CENTER
+            maxLines = 1
+            includeFontPadding = false
+            setTextColor(color)
+            DeskType.apply(this, DeskType.REGULAR)
+        }
+        for (row in rows) {
+            val line = android.widget.LinearLayout(ctx).apply {
+                orientation = android.widget.LinearLayout.HORIZONTAL
+            }
+            for ((phase, tithi, dates) in row) {
+                val dayText = dates
+                    .joinToString("–") { PanchangaStore.parse(it).get(Calendar.DAY_OF_MONTH).toString() }
+                    .ifBlank { "—" }
+                val weekday = dates
+                    .map { OsLang.weekdayShort(PanchangaStore.parse(it), lang) }
+                    .distinct().joinToString("/").ifBlank { "—" }
+                val name = tithiName(tithi, phase)
+                val isEkadashi = tithi == 11
+                val isFullOrNew = tithi == 15
+                val card = com.google.android.material.card.MaterialCardView(ctx).apply {
+                    radius = 12 * density
+                    cardElevation = 0f
+                    strokeWidth = 0
+                    setCardBackgroundColor(ColorStateList.valueOf(
+                        ctx.getColor(if (selected in dates) R.color.md_layer_selected else R.color.md_layer_01)
+                    ))
+                    isClickable = dates.isNotEmpty()
+                    alpha = if (dates.isNotEmpty()) 1f else .38f
+                    setOnClickListener { dates.firstOrNull()?.let(onPick) }
+                    // Date, weekday, tithi name: stacked and centred, so padding is equal above and below.
+                    addView(android.widget.LinearLayout(ctx).apply {
+                        orientation = android.widget.LinearLayout.VERTICAL
+                        gravity = Gravity.CENTER
+                        setPadding(pad, pad, pad, pad)
+                        addView(label(dayText, 17f, ctx.getColor(R.color.md_theme_primary)))
+                        addView(label(weekday, 11f, ctx.getColor(R.color.md_text_secondary)))
+                        addView(label(name, 11f, ctx.getColor(
+                            if (isEkadashi) R.color.md_ekadashi else R.color.md_text_primary
+                        )))
+                    }, android.widget.FrameLayout.LayoutParams(
+                        android.widget.FrameLayout.LayoutParams.MATCH_PARENT,
+                        android.widget.FrameLayout.LayoutParams.MATCH_PARENT
+                    ))
+                    if (isEkadashi) {
+                        addView(View(ctx).apply {
+                            setBackgroundColor(ctx.getColor(R.color.md_support_warning_inverse))
+                            importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
+                        }, android.widget.FrameLayout.LayoutParams(
+                            android.widget.FrameLayout.LayoutParams.MATCH_PARENT,
+                            (4 * density).toInt(),
+                            Gravity.TOP
+                        ))
+                    }
+                    if (isEkadashi || isFullOrNew) {
+                        val size = (14 * density).toInt()
+                        addView(android.widget.ImageView(ctx).apply {
+                            setImageResource(
+                                when {
+                                    isEkadashi -> R.drawable.ic_transparency_01
+                                    phase == 0 -> R.drawable.ic_full_moon
+                                    else -> R.drawable.ic_new_moon
+                                }
+                            )
+                            imageTintList = ColorStateList.valueOf(ctx.getColor(
+                                if (isEkadashi) R.color.md_support_warning_inverse else R.color.md_text_primary
+                            ))
+                            importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
+                        }, android.widget.FrameLayout.LayoutParams(size, size, Gravity.TOP or Gravity.END).apply {
+                            topMargin = pad
+                            rightMargin = pad
+                        })
+                    }
+                }
+                line.addView(card, android.widget.LinearLayout.LayoutParams(0, cellHeight, spanOf(dates).toFloat())
+                    .apply { setMargins(gap / 2, 0, gap / 2, 0) })
+            }
+            val used = row.sumOf { spanOf(it.third) }
+            if (used < 5) {
+                line.addView(View(ctx), android.widget.LinearLayout.LayoutParams(0, 0, (5 - used).toFloat()))
+            }
+            month.addView(line, android.widget.LinearLayout.LayoutParams(
+                android.widget.LinearLayout.LayoutParams.MATCH_PARENT,
+                android.widget.LinearLayout.LayoutParams.WRAP_CONTENT
+            ).apply { bottomMargin = gap })
+        }
+        parent.addView(month, parent.indexOfChild(old) + 1)
+    }
+
     fun bind(root: View, cycle: PanchangaCalendar.Cycle, selected: String, onPick: (String) -> Unit) {
+        renderMonth(root, cycle, selected, onPick)
+        return
         val area = root.findViewById<View>(R.id.pakshaScroll)
         val density = root.resources.displayMetrics.density
         val gap = root.resources.getDimensionPixelSize(R.dimen.ds_space_2)
