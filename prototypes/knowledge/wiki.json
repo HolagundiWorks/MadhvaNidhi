@@ -373,7 +373,7 @@
         {
           "heading": "Current Peethadhipati",
           "status": "pending",
-          "body": "Wikipedia lists Sri Vidyadheesha Teertha as the 31st and present pontiff, with no dates. Not verified; leave pending until confirmed by the matha."
+          "body": "Pending. The official site lists the 30th, 31st and 32nd pontiffs without saying which one currently holds the seat. Wikipedia names the 31st as present, undated. Not yet verified."
         },
         {
           "heading": "Headquarters and location",
@@ -534,8 +534,8 @@
         },
         {
           "heading": "Current Peethadhipati",
-          "status": "pending",
-          "body": "Wikipedia names Sri Sugunendra Tirtha as the 29th pontiff, with no tenure dates. Not verified; leave pending until confirmed by the matha."
+          "status": "sourced",
+          "body": "Shri Sugunendra Theertha Swamiji, listed as the 30th pontiff on the official site. The site gives no date for his tenure."
         },
         {
           "heading": "Headquarters and location",
@@ -554,8 +554,8 @@
         },
         {
           "heading": "Official website and contact",
-          "status": "pending",
-          "body": "Not yet sourced."
+          "status": "sourced",
+          "body": "Official website: sriputhige.org. Address: Car Street, Udupi 576101, Karnataka (site listing)."
         }
       ],
       "location": {
@@ -579,6 +579,12 @@
           "url": "https://en.wikipedia.org/wiki/Ashta_Mathas_of_Udupi",
           "accessed": "2026-11-14",
           "note": "First sannyasi for each matha"
+        },
+        {
+          "title": "Shri Puthige Matha — official website",
+          "url": "https://sriputhige.org/",
+          "accessed": "2026-11-14",
+          "note": "Checked 14 Nov 2026. Seer and address from the site; the site gives no tenure date."
         }
       ]
     },
@@ -597,8 +603,8 @@
         },
         {
           "heading": "History and establishment",
-          "status": "pending",
-          "body": "The matha history is not described in the village article. Not yet sourced."
+          "status": "traditional",
+          "body": "Traditional account: founded by Sri Vamana Teertha at Shiroor village on the Swarna River, reportedly ordained by Madhvacharya. Source is a third-party site; not confirmed by a primary source."
         },
         {
           "heading": "Founder and first sannyasi",
@@ -607,18 +613,18 @@
         },
         {
           "heading": "Presiding deity",
-          "status": "pending",
-          "body": "Not yet sourced."
+          "status": "traditional",
+          "body": "Traditional account: Madhvacharya gave Vamana Teertha a Vittala idol, called Vamana Vittala, along with Sri Devi and Bhudevi."
         },
         {
           "heading": "Current Peethadhipati",
           "status": "pending",
-          "body": "Not yet sourced."
+          "body": "Pending. Sources conflict: one names Sri Lakshmivara Teertha as the 30th pontiff, another names Sri Vedavardhana Teertha as reigning. Not verified."
         },
         {
           "heading": "Headquarters and location",
-          "status": "sourced",
-          "body": "Shiroor village in Byndoor taluk, Udupi district, Karnataka."
+          "status": "traditional",
+          "body": "Shiroor village, about 21 km from Udupi town, near Hiriadka in Udupi taluk (third-party site)."
         },
         {
           "heading": "Associated institutions",
@@ -657,6 +663,12 @@
           "url": "https://en.wikipedia.org/wiki/Ashta_Mathas_of_Udupi",
           "accessed": "2026-11-14",
           "note": "First sannyasi for each matha"
+        },
+        {
+          "title": "Sri Shiroor Matha, Udupi — Karnataka.com",
+          "url": "https://www.karnataka.com/udupi/sri-shiroor-matha-udupi/",
+          "accessed": "2026-11-14",
+          "note": "Third-party tourism site. Founding and idol accounts are traditional. Pontiff list conflicts with other sources."
         }
       ]
     },
