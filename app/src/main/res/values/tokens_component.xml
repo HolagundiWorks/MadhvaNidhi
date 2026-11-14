@@ -7,18 +7,13 @@
 
     <!-- Buttons -->
     <dimen name="ds_button_height">@dimen/ds_size_control</dimen>
-    <dimen name="ds_button_height_compact">@dimen/ds_size_control_compact</dimen>
     <dimen name="ds_button_radius">@dimen/ds_shape_md</dimen>
-    <dimen name="ds_icon_button_size">@dimen/ds_size_touch</dimen>
 
     <!-- Cards -->
     <dimen name="ds_card_radius">@dimen/ds_shape_lg</dimen>
     <dimen name="ds_card_padding">@dimen/ds_space_5</dimen>
-    <dimen name="ds_card_gap">@dimen/ds_space_3</dimen>
 
     <!-- Navigation (floating bottom bar) -->
-    <dimen name="ds_nav_height">@dimen/ds_size_bar</dimen>
-    <dimen name="ds_nav_inset">@dimen/ds_space_4</dimen>
     <!-- Half the bar height, so the bar ends are full semicircles matching the circle buttons. -->
     <dimen name="ds_nav_radius">40dp</dimen>
     <dimen name="ds_nav_item_size">40dp</dimen>
@@ -41,34 +36,21 @@
     <dimen name="ds_nav_elevation">@dimen/ds_elevation_low</dimen>
 
     <!-- Dashboard widgets -->
-    <dimen name="ds_widget_radius">@dimen/ds_shape_lg</dimen>
-    <dimen name="ds_widget_padding">@dimen/ds_space_4</dimen>
-    <dimen name="ds_widget_gap">@dimen/ds_space_3</dimen>
 
     <!-- Progress indicators -->
-    <dimen name="ds_progress_height">@dimen/ds_space_1</dimen>
-    <dimen name="ds_progress_radius">@dimen/ds_shape_xs</dimen>
     <color name="ds_progress_track">@color/ds_border_subtle</color>
     <color name="ds_progress_indicator">@color/ds_interaction_accent</color>
 
     <!-- Tabs: seamless browser chrome (tab strip = page colour, active tab = content colour) -->
-    <color name="ds_tab_strip">@color/ds_bg_page</color>
-    <color name="ds_tab_active">@color/ds_bg_raised</color>
-    <dimen name="ds_tab_radius">@dimen/ds_shape_md</dimen>
 
     <!-- Layout roles -->
-    <dimen name="ds_page_gutter">@dimen/ds_space_4</dimen>
     <dimen name="ds_section_gap">@dimen/ds_space_6</dimen>
-    <dimen name="ds_item_gap">@dimen/ds_space_3</dimen>
 
     <!-- Legacy names used by existing layouts; aliases of the component and foundation tokens -->
     <dimen name="ds_radius_card">@dimen/ds_card_radius</dimen>
     <dimen name="ds_radius_control">@dimen/ds_button_radius</dimen>
-    <dimen name="ds_radius_surface">@dimen/ds_shape_xl</dimen>
     <dimen name="ds_control_height">@dimen/ds_button_height</dimen>
-    <dimen name="ds_control_height_compact">@dimen/ds_button_height_compact</dimen>
     <dimen name="ds_touch_min">@dimen/ds_size_touch</dimen>
-    <dimen name="ds_icon_size">@dimen/ds_size_icon</dimen>
 
     <!-- Text hierarchy: one name per role, each backed by a Material 3 type style -->
 

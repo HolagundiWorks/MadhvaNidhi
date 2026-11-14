@@ -7,10 +7,7 @@
 <resources>
 
     <!-- Palette (brand + neutrals) -->
-    <color name="ds_palette_orange">#FF4F18</color>
-    <color name="ds_palette_on_orange">#000000</color>
     <color name="ds_palette_black">#000000</color>
-    <color name="ds_palette_white">#FFFFFF</color>
     <color name="ds_palette_mark_cream">#F5E7CC</color>
     <color name="ds_palette_mark_brown">#8A3F2B</color>
 
@@ -25,24 +22,17 @@
     <dimen name="ds_space_8">32dp</dimen>
     <dimen name="ds_space_10">40dp</dimen>
     <dimen name="ds_space_12">48dp</dimen>
-    <dimen name="ds_space_16">64dp</dimen>
 
     <!-- Shape scale (Material 3 corner sizes) -->
-    <dimen name="ds_shape_xs">4dp</dimen>
-    <dimen name="ds_shape_sm">8dp</dimen>
     <dimen name="ds_shape_md">12dp</dimen>
     <dimen name="ds_shape_lg">16dp</dimen>
-    <dimen name="ds_shape_xl">28dp</dimen>
 
     <!-- Size scale -->
     <dimen name="ds_size_touch">48dp</dimen>
     <dimen name="ds_size_control">56dp</dimen>
-    <dimen name="ds_size_control_compact">40dp</dimen>
     <dimen name="ds_size_icon">24dp</dimen>
-    <dimen name="ds_size_bar">80dp</dimen>
 
     <!-- Elevation scale -->
-    <dimen name="ds_elevation_none">0dp</dimen>
     <dimen name="ds_elevation_low">6dp</dimen>
 
     <!-- Type scale (sp) -->
@@ -59,14 +49,6 @@
     <!-- Typography scale: size and line height per role (sp) -->
     <dimen name="ds_font_display_large_size">57sp</dimen>
     <dimen name="ds_font_display_large_line">64sp</dimen>
-    <dimen name="ds_font_display_medium_size">45sp</dimen>
-    <dimen name="ds_font_display_medium_line">52sp</dimen>
-    <dimen name="ds_font_display_small_size">36sp</dimen>
-    <dimen name="ds_font_display_small_line">44sp</dimen>
-    <dimen name="ds_font_headline_large_size">32sp</dimen>
-    <dimen name="ds_font_headline_large_line">40sp</dimen>
-    <dimen name="ds_font_headline_medium_size">28sp</dimen>
-    <dimen name="ds_font_headline_medium_line">36sp</dimen>
     <dimen name="ds_font_headline_small_size">24sp</dimen>
     <dimen name="ds_font_headline_small_line">32sp</dimen>
     <dimen name="ds_font_title_large_size">22sp</dimen>
@@ -85,13 +67,21 @@
     <dimen name="ds_font_label_large_line">20sp</dimen>
     <dimen name="ds_font_label_medium_size">12sp</dimen>
     <dimen name="ds_font_label_medium_line">16sp</dimen>
-    <dimen name="ds_font_label_small_size">11sp</dimen>
-    <dimen name="ds_font_label_small_line">16sp</dimen>
 
     <!-- Content typefaces: scripture and mantra sizes -->
     <dimen name="ds_font_mantra_size">20sp</dimen>
     <dimen name="ds_font_mantra_line">36sp</dimen>
-    <dimen name="ds_font_scripture_size">18sp</dimen>
-    <dimen name="ds_font_scripture_line">32sp</dimen>
 
+    <dimen name="ds_font_display_medium_line">52sp</dimen>
+    <dimen name="ds_font_display_medium_size">45sp</dimen>
+    <dimen name="ds_font_display_small_line">44sp</dimen>
+    <dimen name="ds_font_display_small_size">36sp</dimen>
+    <dimen name="ds_font_headline_large_line">40sp</dimen>
+    <dimen name="ds_font_headline_large_size">32sp</dimen>
+    <dimen name="ds_font_headline_medium_line">36sp</dimen>
+    <dimen name="ds_font_headline_medium_size">28sp</dimen>
+    <dimen name="ds_font_label_small_line">16sp</dimen>
+    <dimen name="ds_font_label_small_size">11sp</dimen>
+    <dimen name="ds_font_scripture_line">32sp</dimen>
+    <dimen name="ds_font_scripture_size">18sp</dimen>
 </resources>

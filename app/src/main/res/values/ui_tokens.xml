@@ -1,40 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Acharya composition tokens: content geometry follows an 8dp unit. -->
-    <dimen name="ui_grid_1">8dp</dimen>
-    <dimen name="ui_grid_2">16dp</dimen>
-    <dimen name="ui_grid_3">24dp</dimen>
-    <dimen name="ui_grid_4">32dp</dimen>
-    <dimen name="ui_grid_5">40dp</dimen>
-    <dimen name="ui_grid_6">48dp</dimen>
-    <dimen name="ui_grid_7">56dp</dimen>
-    <dimen name="ui_grid_8">64dp</dimen>
-    <dimen name="ui_content_inset">16dp</dimen>
-    <dimen name="ui_section_gap">16dp</dimen>
-    <dimen name="ui_component_gap">8dp</dimen>
     <!-- 1.25x treatment of the original 48dp border and 40dp medallions. -->
-    <dimen name="ui_footer_height">60dp</dimen>
-    <dimen name="ui_footer_control">50dp</dimen>
-    <dimen name="ui_footer_motto_height">40dp</dimen>
-    <dimen name="ui_rounded_safe">8dp</dimen>
 
     <!-- Warm white paper canvas with restrained earthen accents. -->
     <color name="earth_canvas_desk">@color/md_theme_background</color>
-    <color name="earth_canvas_sandhya">#FFFDF8</color>
-    <color name="earth_canvas_nitya">#FFFDF8</color>
-    <color name="earth_canvas_mantras">#FFFDF8</color>
-    <color name="earth_canvas_puja">#FFFDF8</color>
-    <color name="earth_canvas_hadugalu">#FFFDF8</color>
-    <color name="earth_canvas_japa">#FFFDF8</color>
-    <color name="earth_canvas_aayadi">#FFFDF8</color>
     <color name="earth_accent_desk">@color/md_theme_primary</color>
-    <color name="earth_accent_sandhya">#C96F45</color>
-    <color name="earth_accent_nitya">#C96F45</color>
-    <color name="earth_accent_mantras">#C96F45</color>
-    <color name="earth_accent_puja">#C96F45</color>
-    <color name="earth_accent_hadugalu">#C96F45</color>
-    <color name="earth_accent_japa">#C96F45</color>
-    <color name="earth_accent_aayadi">#C96F45</color>
     <color name="earth_footer_base">#F1E6DB</color>
     <color name="earth_footer_shadow">#211A16</color>
 </resources>

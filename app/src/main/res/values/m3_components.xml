@@ -44,7 +44,7 @@
         <item name="tabSelectedTextColor">@color/ds_text_primary</item>
         <item name="tabTextColor">@color/ds_text_secondary</item>
         <item name="tabRippleColor">@color/md_theme_hover</item>
-        <item name="tabTextAppearance">@style/TextAppearance.Material3.TitleSmall</item>
+        <item name="tabTextAppearance">@style/TextAppearance.Material3.LabelMedium</item>
     </style>
 
     <!-- Button shapes: icon-only buttons are fully round; labelled buttons use a 12dp rounded rectangle. -->

@@ -357,25 +357,8 @@ class DashboardFragment : Fragment() {
         }
     }
 
-    private fun applyAwardIcon(icon: ImageView, tier: DashboardBadges.Tier) {
-        icon.setImageResource(R.drawable.ic_award_star)
-        val color = when (DashboardBadges.finishFor(tier)) {
-            DashboardBadges.Finish.BROWN -> R.color.award_brown
-            DashboardBadges.Finish.SILVER -> R.color.award_silver
-            DashboardBadges.Finish.GOLD -> R.color.award_gold
-        }
-        icon.imageTintList = android.content.res.ColorStateList.valueOf(
-            ContextCompat.getColor(requireContext(), color)
-        )
-    }
 
-    private fun compactBadgeValue(item: DashboardBadges.Earned): String = when (item.tier.kind) {
-        DashboardBadges.Kind.STREAK -> countFormat.format(item.value)
-        DashboardBadges.Kind.WEEKLY -> "${item.value}/7"
-        DashboardBadges.Kind.JAPA -> compactThreshold(item.value)
-    }
 
-    private fun compactThreshold(value: Long): String = countFormat.format(value)
 
     private fun bindJapaRow(view: View) {
         val store = japa ?: return
@@ -451,12 +434,6 @@ class DashboardFragment : Fragment() {
         }
     }
 
-    private fun styleJapaCard(card: com.google.android.material.card.MaterialCardView, complete: Boolean) {
-        card.setCardBackgroundColor(requireContext().getColor(
-            R.color.md_theme_surfaceContainer))
-        card.strokeWidth = if (complete) resources.getDimensionPixelSize(R.dimen.md_border_width) else 0
-        card.strokeColor = requireContext().getColor(R.color.md_theme_primary)
-    }
 
     private fun showProgressDialog(date: String = PanchangaStore.dateKey()) {
         val content = layoutInflater.inflate(R.layout.dialog_dashboard_progress, null, false)

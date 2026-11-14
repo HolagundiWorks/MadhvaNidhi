@@ -2,62 +2,14 @@
 <resources>
     <dimen name="space_4">3.2dp</dimen>
     <dimen name="space_8">6.4dp</dimen>
-    <dimen name="space_12">9.6dp</dimen>
     <dimen name="space_16">12.8dp</dimen>
-    <dimen name="space_24">19.2dp</dimen>
-    <dimen name="space_32">25.6dp</dimen>
-    <dimen name="space_48">38.4dp</dimen>
 
     <!-- Compact landscape scale for the Galaxy A10s (about 837 x 397 dp usable). -->
-    <dimen name="page_pad_h">16dp</dimen>
-    <dimen name="page_pad_top">4dp</dimen>
-    <dimen name="page_pad_bottom">0dp</dimen>
-    <dimen name="japa_pad_top">4dp</dimen>
-    <dimen name="japa_pad_bottom">60dp</dimen>
-    <dimen name="chrome_bar">60dp</dimen>
-    <dimen name="footer_bar">60dp</dimen>
-    <dimen name="entry_pad">16dp</dimen>
 
-    <dimen name="radius_sm">0dp</dimen>
-    <dimen name="radius_md">0dp</dimen>
-    <dimen name="radius_lg">0dp</dimen>
 
-    <dimen name="stroke">0.5dp</dimen>
-    <dimen name="stroke_hairline">0.5dp</dimen>
-    <dimen name="stroke_standard">1dp</dimen>
-    <dimen name="stroke_emphasis">1.5dp</dimen>
-    <dimen name="stroke_strong">2dp</dimen>
 
     <dimen name="touch">40dp</dimen>
-    <dimen name="btn_h">32dp</dimen>
-    <dimen name="nav_slot">40dp</dimen>
-    <dimen name="fab">40dp</dimen>
-    <dimen name="icon_btn">40dp</dimen>
-    <dimen name="icon_glyph">16dp</dimen>
-    <dimen name="icon_pad">8dp</dimen>
-    <dimen name="row_h">40dp</dimen>
-    <dimen name="field_h">40dp</dimen>
-    <dimen name="check">16dp</dimen>
-    <dimen name="key_gap">2.4dp</dimen>
-    <dimen name="chip_h">32dp</dimen>
-    <dimen name="day_h">35.2dp</dimen>
 
-    <dimen name="type_clock">35.2sp</dimen>
     <!-- Six-level reading hierarchy: display, page, section, body, secondary, metadata. -->
-    <dimen name="type_title_lg">22.4sp</dimen>
-    <dimen name="type_title">18.4sp</dimen>
-    <dimen name="type_section">15.2sp</dimen>
-    <dimen name="type_card">14.4sp</dimen>
-    <dimen name="type_display">22.4sp</dimen>
-    <dimen name="type_body">14.4sp</dimen>
-    <dimen name="type_body2">12.8sp</dimen>
-    <dimen name="type_meta">11.2sp</dimen>
-    <dimen name="type_btn">12.8sp</dimen>
-    <dimen name="type_table_head">11.2sp</dimen>
-    <dimen name="type_table">12sp</dimen>
-    <dimen name="type_key">14.4sp</dimen>
 
-    <dimen name="type_reader_body">15.2sp</dimen>
-    <dimen name="type_subpage">13.6sp</dimen>
-    <dimen name="type_breadcrumb">11.2sp</dimen>
 </resources>

@@ -7,7 +7,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.google.android.material.tabs.TabLayout
 import com.paperdesk.launcher.R
-import kotlin.math.ceil
 
 /**
  * Contained Material tabs: left-aligned strip; equal tab widths within one TabLayout
@@ -29,57 +28,5 @@ object MdTabs {
         }
     }
 
-    private fun applyEqualWidths(tabs: TabLayout) {
-        val count = tabs.tabCount
-        if (count == 0) return
-        val pad = tabs.resources.getDimensionPixelSize(R.dimen.ds_space_4) * 2
-        var maxText = 0
-        for (i in 0 until count) {
-            val tab = tabs.getTabAt(i) ?: continue
-            val label = tab.text?.toString().orEmpty()
-            val tv = findLabel(tab.view)
-            val measured = if (tv != null) {
-                ceil(tv.paint.measureText(label)).toInt()
-            } else {
-                tab.view.measure(
-                    View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
-                    View.MeasureSpec.makeMeasureSpec(
-                        tabs.height.coerceAtLeast(1),
-                        View.MeasureSpec.EXACTLY
-                    )
-                )
-                (tab.view.measuredWidth - pad).coerceAtLeast(0)
-            }
-            maxText = maxOf(maxText, measured)
-        }
-        val width = (maxText + pad).coerceAtLeast(
-            tabs.resources.getDimensionPixelSize(R.dimen.ds_space_8)
-        )
-        for (i in 0 until count) {
-            val tabView = tabs.getTabAt(i)?.view ?: continue
-            tabView.minimumWidth = width
-            val tlp = tabView.layoutParams
-            if (tlp is LinearLayout.LayoutParams) {
-                tlp.width = width
-                tlp.weight = 0f
-                tabView.layoutParams = tlp
-            } else {
-                tabView.layoutParams =
-                    LinearLayout.LayoutParams(width, ViewGroup.LayoutParams.MATCH_PARENT)
-            }
-            tabView.gravity = Gravity.START or Gravity.CENTER_VERTICAL
-            findLabel(tabView)?.gravity = Gravity.START or Gravity.CENTER_VERTICAL
-        }
-        tabs.requestLayout()
-    }
 
-    private fun findLabel(root: View): TextView? {
-        if (root is TextView) return root
-        if (root is ViewGroup) {
-            for (i in 0 until root.childCount) {
-                findLabel(root.getChildAt(i))?.let { return it }
-            }
-        }
-        return null
-    }
 }
