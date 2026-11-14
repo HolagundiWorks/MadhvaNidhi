@@ -69,14 +69,14 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/userEdit"
-                style="@style/Widget.Material3.Button.OutlinedButton"
+                style="@style/Widget.MadhvaNidhi.Button.Outlined"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Edit" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/userSave"
-                style="@style/Widget.Material3.Button"
+                style="@style/Widget.MadhvaNidhi.Button.Filled"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/md_spacing_03"
@@ -85,7 +85,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/userCancel"
-                style="@style/Widget.Material3.Button.TextButton"
+                style="@style/Widget.MadhvaNidhi.Button.Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/md_spacing_03"

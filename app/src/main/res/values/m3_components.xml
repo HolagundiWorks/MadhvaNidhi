@@ -48,6 +48,17 @@
         <item name="tabMinWidth">0dp</item>
     </style>
 
+    <!-- Button shapes: icon-only buttons are fully round; labelled buttons use a 12dp rounded rectangle. -->
+    <style name="ShapeAppearance.MadhvaNidhi.Round" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="ShapeAppearance.MadhvaNidhi.Medium" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
     <style name="Widget.MadhvaNidhi.Button.Filled" parent="Widget.Material3.Button">
         <item name="cornerRadius">12dp</item>
         <item name="android:minHeight">48dp</item>
@@ -88,6 +99,7 @@
         <item name="iconTint">@color/md_theme_onSecondaryContainer</item>
         <item name="backgroundTint">@color/md_theme_secondaryContainer</item>
         <item name="rippleColor">@color/md_theme_hover</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.MadhvaNidhi.Round</item>
     </style>
 
     <style name="Widget.MadhvaNidhi.IconButton.Standard" parent="Widget.Material3.Button.IconButton">
@@ -95,6 +107,7 @@
         <item name="android:minHeight">48dp</item>
         <item name="iconTint">@color/md_theme_onSurface</item>
         <item name="rippleColor">@color/md_theme_hover</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.MadhvaNidhi.Round</item>
     </style>
 
     <style name="Widget.MadhvaNidhi.TextField.Outlined" parent="Widget.Material3.TextInputLayout.OutlinedBox">

@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/md_layout_size_height_lg"
                 android:text="@string/back"
-                style="@style/Widget.Material3.Button.TextButton"
+                style="@style/Widget.MadhvaNidhi.Button.Text"
                 app:cornerRadius="@dimen/md_corner_radius" />
 
             <com.google.android.material.textview.MaterialTextView

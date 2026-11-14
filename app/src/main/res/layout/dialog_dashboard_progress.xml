@@ -37,7 +37,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/dialogOpenSandhya"
-        style="@style/Widget.Material3.Button.TextButton"
+        style="@style/Widget.MadhvaNidhi.Button.Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Open Sandhyavandana" />
@@ -83,7 +83,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/dialogOpenJapa"
-            style="@style/Widget.Material3.Button.TextButton"
+            style="@style/Widget.MadhvaNidhi.Button.Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/md_spacing_02"
@@ -119,7 +119,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/dialogOpenGrantha"
-        style="@style/Widget.Material3.Button.TextButton"
+        style="@style/Widget.MadhvaNidhi.Button.Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dashboard_resume_reading" />

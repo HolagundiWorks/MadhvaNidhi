@@ -28,7 +28,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/exportProfiles"
-            style="@style/Widget.Material3.Button"
+            style="@style/Widget.MadhvaNidhi.Button.Filled"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/md_spacing_05"
@@ -36,7 +36,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/importProfiles"
-            style="@style/Widget.Material3.Button.TextButton"
+            style="@style/Widget.MadhvaNidhi.Button.Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Restore profiles from backup" />

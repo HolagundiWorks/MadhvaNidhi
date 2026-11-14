@@ -32,7 +32,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/parayanaSkip"
-            style="@style/Widget.Material3.Button.OutlinedButton"
+            style="@style/Widget.MadhvaNidhi.Button.Outlined"
             android:layout_width="@dimen/md_layout_size_height_lg"
             android:layout_height="@dimen/md_layout_size_height_lg"
             android:layout_marginStart="@dimen/md_spacing_05"
@@ -50,7 +50,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/parayanaComplete"
-            style="@style/Widget.Material3.Button.OutlinedButton"
+            style="@style/Widget.MadhvaNidhi.Button.Outlined"
             android:layout_width="@dimen/md_layout_size_height_lg"
             android:layout_height="@dimen/md_layout_size_height_lg"
             android:layout_marginStart="@dimen/md_spacing_03"
@@ -96,7 +96,7 @@
                 android:lineSpacingMultiplier="1.5" />
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/parayanaRead"
-                style="@style/Widget.Material3.Button"
+                style="@style/Widget.MadhvaNidhi.Button.Filled"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"

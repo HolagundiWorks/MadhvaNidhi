@@ -5,6 +5,7 @@
             <com.google.android.material.textview.MaterialTextView android:id="@+id/catalogueRowTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Material3.TitleMedium" android:textColor="@color/md_theme_onSurface" />
             <com.google.android.material.textview.MaterialTextView android:id="@+id/catalogueRowMeta" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/md_theme_onSurfaceVariant" />
         </LinearLayout>
-        <com.google.android.material.button.MaterialButton android:id="@+id/catalogueRowFavorite" style="@style/Widget.Material3.Button.TextButton" android:layout_width="56dp" android:layout_height="56dp" android:minWidth="0dp" android:padding="0dp" android:insetTop="0dp" android:insetBottom="0dp" app:icon="@drawable/ic_favorite_outline" app:iconGravity="textStart" app:iconPadding="0dp" app:iconSize="24dp" app:iconTint="@color/md_theme_onSurfaceVariant" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/catalogueRowFavorite" style="@style/Widget.MadhvaNidhi.Button.Text" android:layout_width="56dp" android:layout_height="56dp" android:minWidth="0dp" android:padding="0dp" android:insetTop="0dp" android:insetBottom="0dp" app:icon="@drawable/ic_favorite_outline" app:iconGravity="textStart" app:iconPadding="0dp" app:iconSize="24dp" app:iconTint="@color/md_theme_onSurfaceVariant" 
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.MadhvaNidhi.Round"/>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
