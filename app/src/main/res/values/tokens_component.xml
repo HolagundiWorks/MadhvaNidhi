@@ -24,8 +24,17 @@
     <dimen name="ds_nav_item_size">40dp</dimen>
     <dimen name="ds_nav_item_radius">20dp</dimen>
     <dimen name="ds_dock_padding">@dimen/ds_space_3</dimen>
+    <!-- Centre Dashboard button: filled icon button, raised so half of it sits above the dock (40dp = half the 80dp bar). -->
+    <dimen name="ds_dock_center_size">56dp</dimen>
+    <dimen name="ds_dock_center_lift">40dp</dimen>
+    <dimen name="ds_dock_center_elevation">6dp</dimen>
+    <!-- Space above the bar so the raised centre button is drawn inside the dock bounds. -->
+    <dimen name="ds_dock_lift_space">0dp</dimen>
+    <!-- Overlay offset from the bottom: dock inset (16dp) + bar height (80dp) - half the button (28dp). -->
+    <dimen name="ds_dock_center_offset">68dp</dimen>
+    <dimen name="ds_dock_total_height">80dp</dimen>
     <!-- Page bottom clearance: dock height + its bottom inset + a gap, so content ends above the floating dock. -->
-    <dimen name="ds_dock_clearance">104dp</dimen>
+    <dimen name="ds_dock_clearance">132dp</dimen>
     <dimen name="ds_glass_stroke">1dp</dimen>
     <dimen name="ds_scroll_track_size">3dp</dimen>
     <dimen name="ds_scroll_track_radius">1.5dp</dimen>

@@ -284,7 +284,7 @@ class LauncherActivity : AppCompatActivity() {
         "aayadi", "rangavalli", "recipes" -> "samskruti"
         "user" -> "settings"
         "dashboard" -> null
-        else -> if (pageId in ShellHubFragment.RAIL_IDS || pageId == "desk") "dashboard" else null
+        else -> if (pageId in ShellHubFragment.RAIL_IDS || pageId == "desk" || pageId == "settings") "dashboard" else null
     }
 
     @Deprecated("Deprecated in Java")

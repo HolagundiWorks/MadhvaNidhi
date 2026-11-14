@@ -19,6 +19,7 @@ class FrozenShell(private val activity: LauncherActivity) {
     private var built = false
 
     init {
+        bindCenterOverlay()
         activity.findViewById<View>(R.id.sidePanelToggle).setOnClickListener { open(true) }
         activity.findViewById<View>(R.id.closeSidePanel).setOnClickListener { open(false) }
         backdrop.setOnClickListener { open(false) }
@@ -95,10 +96,16 @@ class FrozenShell(private val activity: LauncherActivity) {
             for (id in entries) {
                 val lp = if (labeled) {
                     LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, row)
+                } else if (id == CENTER_ID) {
+                    LinearLayout.LayoutParams(activity.resources.getDimensionPixelSize(R.dimen.ds_dock_center_size), LinearLayout.LayoutParams.MATCH_PARENT)
                 } else {
                     LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f)
                 }
-                host.addView(createButton(id, labeled, density), lp)
+                val child: View = if (!labeled && id == CENTER_ID) {
+                    // The centre destination is an overlay button above the dock; keep its slot here.
+                    View(activity).apply { tag = CENTER_ID }
+                } else createButton(id, labeled, density)
+                host.addView(child, lp)
             }
         } else if (current == lastCurrent && activeRail == lastActiveRail) {
             return key
@@ -121,18 +128,32 @@ class FrozenShell(private val activity: LauncherActivity) {
             val total = host.childCount
             if (avail <= 0 || total == 0) return@Runnable
             val minSlot = (40 * density).toInt()
-            val fit = (avail / minSlot).coerceIn(1, total)
+            val centerIdx = (0 until total).firstOrNull { host.getChildAt(it).tag == CENTER_ID } ?: -1
+            val centerW = if (centerIdx >= 0) activity.resources.getDimensionPixelSize(R.dimen.ds_dock_center_size) else 0
+            val others = (0 until total).filter { it != centerIdx }
+            val fit = ((avail - centerW) / minSlot).coerceIn(0, others.size)
+            val shown = others.take(fit).toMutableSet()
             val activeIdx = (0 until total).firstOrNull { (host.getChildAt(it) as? MaterialButton)?.tag == activeId } ?: -1
-            val visible = (0 until fit).toMutableSet()
-            if (activeIdx >= fit) { visible.remove(fit - 1); visible.add(activeIdx) }
+            if (activeIdx >= 0 && activeIdx != centerIdx && activeIdx !in shown && shown.isNotEmpty()) {
+                shown.remove(shown.last()); shown.add(activeIdx)
+            }
             for (i in 0 until total) {
-                host.getChildAt(i).visibility = if (i in visible) View.VISIBLE else View.GONE
+                val visible = i == centerIdx || i in shown
+                host.getChildAt(i).visibility = if (visible) View.VISIBLE else View.GONE
             }
         }
         host.post(apply)
         if (host.getTag(R.id.railFitListener) == null) {
             host.setTag(R.id.railFitListener, true)
             host.addOnLayoutChangeListener { _, l, _, r, _, ol, _, or, _ -> if (r - l != or - ol) host.post(apply) }
+        }
+    }
+
+    /** Wires the raised centre button (overlay above the dock) to the dashboard. */
+    private fun bindCenterOverlay() {
+        activity.findViewById<View>(R.id.dashboardCenterFab)?.setOnClickListener {
+            close()
+            activity.navigateTo(CENTER_ID)
         }
     }
 
@@ -175,6 +196,15 @@ class FrozenShell(private val activity: LauncherActivity) {
                     this, 10, 14, 1, android.util.TypedValue.COMPLEX_UNIT_SP
                 )
             }
+            if (!labeled && id == CENTER_ID) {
+                val size = activity.resources.getDimensionPixelSize(R.dimen.ds_dock_center_size)
+                minimumWidth = size
+                minimumHeight = size
+                setBackgroundResource(R.drawable.ds_dock_center_fill)
+                cornerRadius = size / 2  // true circle: radius is half the button size
+                elevation = activity.resources.getDimension(R.dimen.ds_dock_center_elevation)
+                translationY = -activity.resources.getDimension(R.dimen.ds_dock_center_lift)
+            }
             androidx.core.view.ViewCompat.setTooltipText(this, label)
             setOnClickListener {
                 close()
@@ -185,6 +215,11 @@ class FrozenShell(private val activity: LauncherActivity) {
     }
 
     private fun paintButton(button: MaterialButton, active: Boolean, labeled: Boolean) {
+        if (!labeled && button.tag == CENTER_ID) {
+            button.isSelected = active
+            button.iconTint = ColorStateList.valueOf(activity.getColor(R.color.md_theme_onPrimary))
+            return
+        }
         button.isSelected = active
         androidx.core.view.ViewCompat.setStateDescription(button, if (active) "Current destination" else null)
         val color = activity.getColor(
@@ -196,6 +231,9 @@ class FrozenShell(private val activity: LauncherActivity) {
     }
 
     companion object {
+        /** The centre dock destination, raised and filled. */
+        const val CENTER_ID = "dashboard"
+
         fun railForPage(pageId: String): String = when (pageId) {
             "dashboard" -> "dashboard"
             "desk" -> "desk"

@@ -99,14 +99,13 @@
         <!-- Material 3 floating bottom navigation bar: inset, rounded and elevated. -->
         <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/ds_nav_height"
+            android:layout_height="@dimen/ds_dock_total_height"
             android:layout_gravity="bottom"
             android:layout_marginStart="@dimen/ds_space_4"
             android:layout_marginEnd="@dimen/ds_space_4"
             android:layout_marginBottom="@dimen/ds_space_4"
-            android:background="@drawable/bg_floating_nav"
-            android:clipToOutline="true"
-            android:elevation="@dimen/ds_nav_elevation"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:fillViewport="true"
             android:overScrollMode="never"
             android:scrollbars="horizontal"
@@ -118,6 +117,10 @@
                 android:id="@+id/railDestinations"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/ds_dock_lift_space"
+                android:background="@drawable/bg_floating_nav"
+                android:elevation="@dimen/ds_nav_elevation"
+                android:clipChildren="false"
                 android:paddingStart="@dimen/ds_dock_padding"
                 android:paddingEnd="@dimen/ds_dock_padding"
                 android:gravity="center_vertical"
@@ -125,6 +128,30 @@
                 android:paddingTop="0dp"
                 android:paddingBottom="0dp" />
         </HorizontalScrollView>
+
+        <!-- Raised centre Dashboard button: a true circle (oval fill, 56dp), above the dock, half over the bar's top edge. -->
+        <FrameLayout
+            android:id="@+id/dashboardCenterFab"
+            android:layout_width="@dimen/ds_dock_center_size"
+            android:layout_height="@dimen/ds_dock_center_size"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="@dimen/ds_dock_center_offset"
+            android:background="@drawable/ds_dock_center_fill"
+            android:clickable="true"
+            android:contentDescription="Dashboard"
+            android:elevation="@dimen/ds_dock_center_elevation"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless">
+
+            <ImageView
+                android:layout_width="@dimen/ds_size_icon"
+                android:layout_height="@dimen/ds_size_icon"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_dashboard"
+                app:tint="@color/md_theme_onPrimary" />
+        </FrameLayout>
 
         <View
             android:id="@+id/sidePanelBackdrop"
