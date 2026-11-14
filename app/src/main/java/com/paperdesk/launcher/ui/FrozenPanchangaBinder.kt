@@ -257,7 +257,7 @@ object FrozenPanchangaBinder {
                 val image = ImageView(root.context).apply {
                     setImageResource(
                         when {
-                            11 in tile.tithis -> R.drawable.ic_status_partial_fail
+                            11 in tile.tithis -> R.drawable.ic_transparency_01
                             index == 0 -> R.drawable.ic_full_moon
                             else -> R.drawable.ic_new_moon
                         }

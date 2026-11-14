@@ -4,6 +4,7 @@
  */
 (() => {
   const PRESETS = [
+    { id: "m115f-logical", label: "Galaxy M11 app · 854 × 387 · 90% text", w: 1495 / 1.75, h: 678 / 1.75, fontScale: 0.9 },
     { id: "phone-sm", label: "Phone Landscape · 640 × 360", w: 640, h: 360 },
     { id: "phone", label: "Phone Landscape · 800 × 480", w: 800, h: 480 },
     { id: "phone-lg", label: "Phone Landscape · 960 × 540", w: 960, h: 540 },
@@ -38,10 +39,11 @@
     select.appendChild(opt);
   });
 
-  let state = { preset: "m115f", customW: 1560, customH: 720 };
+  let state = { preset: "m115f-logical", customW: 1495 / 1.75, customH: 678 / 1.75 };
   try {
     const saved = JSON.parse(localStorage.getItem(storageKey));
     if (saved) state = { ...state, ...saved };
+    if (["m115f", "m115f-app"].includes(state.preset)) state.preset = "m115f-logical";
   } catch {}
 
   select.value = state.preset;
@@ -94,6 +96,10 @@
     const availableH = Math.max(160, stage.clientHeight - pad);
     const zoom = Math.min(1, availableW / w, availableH / h);
 
+    const deviceFontScale = PRESETS.find(p => p.id === state.preset)?.fontScale || 1;
+    try {
+      frame.contentDocument.documentElement.style.setProperty('--device-font-scale', String(deviceFontScale));
+    } catch {}
     frame.style.width = `${w}px`;
     frame.style.height = `${h}px`;
     frame.style.transform = `scale(${zoom})`;
@@ -103,7 +109,7 @@
       wrap.style.height = `${h * zoom}px`;
     }
     if (dims) {
-      dims.textContent = `${w} × ${h} · ${Math.round(zoom * 100)}% fit`;
+      dims.textContent = `${Math.round(w)} × ${Math.round(h)} CSS px · ${Math.round(zoom * 100)}% fit`;
     }
     save();
   }
@@ -121,7 +127,13 @@
     state.customH = Number(customH.value);
   });
 
-  frame.addEventListener("load", fit);
+  frame.addEventListener("load", () => {
+    fit();
+    const screen = new URLSearchParams(location.search).get("screen");
+    if (screen) frame.contentWindow.madhvaShell?.navigate(screen);
+    const tab = new URLSearchParams(location.search).get("tab");
+    if (screen === "settings" && tab) frame.contentWindow.selectSettingsTab?.(tab);
+  });
   new ResizeObserver(fit).observe(stage);
   fit();
 })();

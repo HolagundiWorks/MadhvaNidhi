@@ -133,6 +133,22 @@ header.app-header {
   border-right: var(--cds-border-width) solid var(--cds-border-subtle-01);
 }
 
+/* Carbon productive motion (web parity with carbon_motion.xml) */
+:root {
+  --cds-duration-fast-01: 70ms;
+  --cds-duration-fast-02: 110ms;
+  --cds-duration-moderate-01: 150ms;
+  --cds-duration-moderate-02: 240ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --cds-duration-fast-01: 0ms;
+    --cds-duration-fast-02: 0ms;
+    --cds-duration-moderate-01: 0ms;
+    --cds-duration-moderate-02: 0ms;
+  }
+}
+
 /* Rail collapse / expand — full action target ($button-height / 48px) */
 #nav-toggle {
   --nav-toggle-size: var(--cds-button-height, 3rem);
@@ -1462,3 +1478,91 @@ button:disabled svg,
   z-index: 1;
   flex-shrink: 0;
 }
+
+[data-settings-japa-slots] { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--cds-spacing-04); }
+[data-settings-japa-slots] > label { display: flex; flex-direction: column; min-width: 0; gap: var(--cds-spacing-02); }
+[data-settings-japa-slots] > label:first-child { grid-column: 1 / -1; }
+[data-settings-japa-slots] select { width: 100%; min-width: 0; }
+.settings-japa-records { margin-bottom: var(--cds-spacing-06); }
+
+.songs-browse, .songs-reader { min-height: 0; height: 100%; box-sizing: border-box; }
+.songs-browse { display: flex; flex-direction: column; }
+.songs-browse[hidden], .songs-reader[hidden] { display: none; }
+.songs-toolbar { display: grid; grid-template-columns: 2fr 1fr; gap: var(--cds-spacing-05); }
+.songs-toolbar label { display: flex; flex-direction: column; }
+.songs-toolbar input, .songs-toolbar select { width: 100%; min-width: 0; }
+.songs-list { overflow-y: auto; flex: 1; min-height: 0; }
+.songs-row {
+  display: flex; flex-direction: column; align-items: flex-start; text-align: start;
+  width: 100%; min-height: 48px; padding: var(--cds-spacing-04);
+  background: var(--cds-layer-01); color: var(--cds-text-primary);
+  border: 0; border-bottom: 1px solid var(--cds-border-subtle-01); cursor: pointer;
+}
+.songs-row:hover { background: var(--cds-layer-hover-01); }
+.songs-row:focus-visible { outline: 2px solid var(--cds-focus); outline-offset: -2px; }
+.songs-row span { color: var(--cds-text-secondary); }
+.songs-reader { overflow-y: auto; }
+.songs-lyrics { white-space: pre-wrap; line-height: 1.8; font-size: 1.125rem; }
+.songs-reader-actions { display: flex; justify-content: space-between; margin-top: var(--cds-spacing-05); }
+:is(#view-sangeeta, .page[data-page="sangeeta"]).is-active > [data-song-collection]:not([hidden]) {
+  flex: 1; min-height: 0; overflow: hidden;
+}
+
+.songs-list .songs-row { display: grid; grid-template-columns: minmax(0, 1fr) 44px; padding: 0; }
+.song-open { display: flex; flex-direction: column; align-items: flex-start; text-align: start; min-width: 0; width: 100%; padding: var(--cds-spacing-04); border: 0; color: var(--cds-text-primary); background: transparent; cursor: pointer; }
+.song-open:hover { background: var(--cds-layer-hover-01); }
+.song-favorite { min-width: 44px; min-height: 44px; padding: 0; font-size: 24px; }
+.song-favorite[aria-pressed="true"] { color: var(--cds-interactive); }
+.song-open:focus-visible { outline: 2px solid var(--cds-focus); outline-offset: -2px; }
+
+.puja-workflow { display: flex; flex-direction: column; height: 100%; min-height: 0; background: var(--cds-background); }
+.puja-workflow-toolbar { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: var(--cds-spacing-05); padding: var(--cds-spacing-04); border-bottom: 1px solid var(--cds-border-subtle-01); }
+.puja-workflow-toolbar label { display: flex; flex-direction: column; }
+.puja-workflow-toolbar select { width: 100%; min-width: 0; }
+.puja-section-status { display: flex; flex-direction: column; justify-content: center; gap: var(--cds-spacing-03); }
+.puja-section-status progress { width: 100%; height: 4px; accent-color: var(--cds-interactive); }
+.puja-workflow-panes { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 7fr); flex: 1; min-height: 0; }
+.puja-sections { overflow-y: auto; border-right: 1px solid var(--cds-border-subtle-01); }
+.puja-section-link { display: block; width: 100%; min-height: 44px; text-align: start; padding: var(--cds-spacing-04); background: var(--cds-layer-01); color: var(--cds-text-primary); border: 0; border-bottom: 1px solid var(--cds-border-subtle-01); cursor: pointer; }
+.puja-section-link[aria-current] { background: var(--cds-layer-selected-01); box-shadow: inset 3px 0 var(--cds-interactive); }
+.puja-section-link:focus-visible { outline: 2px solid var(--cds-focus); outline-offset: -2px; }
+.puja-section-reader { overflow-y: auto; min-height: 0; padding: var(--cds-spacing-05); }
+.puja-section-reader h2 { margin: 0 0 var(--cds-spacing-04); }
+.puja-section-body { white-space: pre-wrap; line-height: 1.7; }
+.puja-workflow-footer { display: flex; justify-content: space-between; padding: var(--cds-spacing-03); border-top: 1px solid var(--cds-border-subtle-01); }
+:is(#view-puja, .page[data-page="puja"]).is-active { min-height: 0; height: 100%; }
+
+.puja-section-status progress { appearance: none; border: 0; background: var(--cds-border-subtle-01); }
+.puja-section-status progress::-webkit-progress-bar { background: var(--cds-border-subtle-01); }
+.puja-section-status progress::-webkit-progress-value { background: var(--cds-interactive); }
+.puja-section-status progress::-moz-progress-bar { background: var(--cds-interactive); }
+.puja-section-reader:focus { outline: none; }
+.puja-section-reader:focus-visible { outline: 2px solid var(--cds-focus); outline-offset: -2px; }
+
+.content-text-host { position: relative; }
+.content-text-host > :not(.content-text-anchor) { margin-right: 60px; }
+.content-text-anchor { position: sticky; top: 0; height: 0; flex: 0 0 0; align-self: stretch; z-index: 3; }
+.content-text-controls { position: absolute; right: 0; top: 0; display: flex; flex-direction: column; gap: var(--cds-spacing-02); }
+.content-text-controls button.cds--btn { width: 44px; min-width: 44px; height: 44px; min-height: 44px; padding: 0; justify-content: center; background: var(--cds-layer-01); font-size: 16px; }
+.content-text-controls button:disabled { cursor: default; }
+
+.puja-workflow-toolbar { grid-template-columns: minmax(0, 1fr); gap: var(--cds-spacing-03); }
+.puja-section-status .cds--breadcrumb { display: flex; flex-wrap: wrap; gap: var(--cds-spacing-02); color: var(--cds-text-secondary); font-size: .875rem; }
+.puja-section-status [aria-current="location"] { color: var(--cds-text-primary); }
+.puja-progress-line { display: flex; align-items: center; gap: var(--cds-spacing-04); }
+.puja-progress-line progress { flex: 1; min-width: 0; }
+.puja-progress-line [data-puja-position] { white-space: nowrap; }
+.puja-workflow-panes { grid-template-columns: minmax(0, 1fr); }
+
+.puja-section-status {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  align-items: center;
+  gap: var(--cds-spacing-04);
+}
+.puja-section-status .cds--breadcrumb { min-width: 0; }
+.puja-progress-line { min-width: 0; width: 100%; }
+
+.puja-section-status .cds--breadcrumb { align-items: center; flex-wrap: nowrap; }
+.puja-breadcrumb-select.cds--select-input { min-width: 0; width: auto; flex: 1; padding: 0 20px 0 4px; min-height: 44px; height: 44px; background-color: transparent; border: 0; }
+.puja-section-status [data-puja-breadcrumb-name] { min-width: 0; overflow-wrap: anywhere; }

@@ -44,6 +44,7 @@
                 android:orientation="horizontal" />
         </LinearLayout>
 
+        <!-- Quiet streak — consistency signal; must not compete with the week matrix. -->
         <LinearLayout
             android:id="@+id/dashStreak"
             android:layout_width="0dp"
@@ -51,59 +52,35 @@
             android:layout_marginStart="@dimen/carbon_spacing_03"
             android:layout_weight="1"
             android:background="@color/carbon_layer"
+            android:gravity="center"
             android:orientation="vertical"
-            android:padding="@dimen/carbon_spacing_02">
+            android:padding="@dimen/carbon_spacing_03"
+            android:contentDescription="Sandhyavandana streak">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ಸರಣಿ · Streak"
+                android:textAppearance="@style/TextAppearance.Carbon.Label01"
+                android:textColor="@color/carbon_text_secondary" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Current streak"
-                    android:textAppearance="@style/TextAppearance.Carbon.Label01"
-                    android:textColor="@color/carbon_text_secondary" />
+            <TextView
+                android:id="@+id/dashStreakCurrent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/carbon_spacing_02"
+                android:text="0"
+                android:textAppearance="@style/TextAppearance.Carbon.BodyCompact01"
+                android:textColor="@color/carbon_text_secondary" />
 
-                <TextView
-                    android:id="@+id/dashStreakCurrent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0 days"
-                    android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
-                    android:textColor="@color/carbon_text" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/carbon_border_width"
-                android:background="@color/carbon_border_subtle" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Best streak"
-                    android:textAppearance="@style/TextAppearance.Carbon.Label01"
-                    android:textColor="@color/carbon_text_secondary" />
-
-                <TextView
-                    android:id="@+id/dashStreakBest"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0 days"
-                    android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
-                    android:textColor="@color/carbon_text" />
-            </LinearLayout>
+            <TextView
+                android:id="@+id/dashStreakBest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/carbon_spacing_02"
+                android:text="best 0"
+                android:textAppearance="@style/TextAppearance.Carbon.Label01"
+                android:textColor="@color/carbon_text_secondary" />
         </LinearLayout>
     </LinearLayout>
 

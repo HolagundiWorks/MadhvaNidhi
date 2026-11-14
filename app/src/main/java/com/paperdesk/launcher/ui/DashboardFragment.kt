@@ -43,8 +43,10 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         practice = PracticeDayStore(requireContext())
         view.findViewById<MaterialButton>(R.id.dashProgress).setOnClickListener {
+            CarbonMotion.pressFlash(it)
             showProgressDialog()
         }
+        CarbonMotion.fadeIn(view)
         refreshAll(view)
         viewLifecycleOwner.lifecycleScope.launch {
             val app = requireContext().applicationContext
@@ -80,7 +82,13 @@ class DashboardFragment : Fragment() {
             val c = store.counts(first)
             "${countFormat.format(c.daily)}/${countFormat.format(c.dailyTarget)}"
         } ?: "—"
-        btn.text = "ದಿನದ ಅಭ್ಯಾಸ · $done/3 ಸಂಧ್ಯಾ · ಜಪ $japaLine"
+        val remain = 3 - done
+        btn.text = when {
+            done == 3 -> "ಇಂದು ಪೂರ್ಣ · 3/3 ಸಂಧ್ಯಾ · ಜಪ $japaLine"
+            done == 0 -> "ಉಳಿದಿದೆ · 3 ಸಂಧ್ಯಾ · ಜಪ $japaLine"
+            else -> "ಮುಗಿದಿದೆ $done · ಉಳಿದಿದೆ $remain · ಜಪ $japaLine"
+        }
+        btn.contentDescription = "Daily progress. Sandhya $done of 3. Japa $japaLine."
     }
 
     private fun bindShortcuts(view: View) {
@@ -101,32 +109,10 @@ class DashboardFragment : Fragment() {
             cell.setOnClickListener {
                 (activity as? LauncherActivity)?.navigateTo(destId)
             }
-            cell.setOnLongClickListener {
-                pickShortcut(index, settings) { bindShortcuts(view) }
-                true
-            }
+
         }
     }
 
-    private fun pickShortcut(index: Int, settings: SettingsStore, onDone: () -> Unit) {
-        val lang = OsLang.get(requireContext())
-        val ids = SettingsStore.DASHBOARD_SHORTCUT_IDS
-        val labels = ids.map { OsLang.ui(it, lang) }.toTypedArray()
-        val current = settings.dashboardShortcuts().getOrElse(index) { "desk" }
-        val checked = ids.indexOf(current).coerceAtLeast(0)
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle(R.string.dashboard_shortcut_pick)
-            .setSingleChoiceItems(labels, checked) { dialog, which ->
-                val next = settings.dashboardShortcuts().toMutableList()
-                while (next.size < 3) next += SettingsStore.DASHBOARD_SHORTCUT_DEFAULTS[next.size]
-                next[index] = ids[which]
-                settings.setDashboardShortcuts(next)
-                dialog.dismiss()
-                onDone()
-            }
-            .setNegativeButton(android.R.string.cancel, null)
-            .show()
-    }
 
     private fun bindWeek(view: View) {
         val week = view.findViewById<LinearLayout>(R.id.dashboardWeek)
@@ -142,31 +128,34 @@ class DashboardFragment : Fragment() {
             val done = marks.count { it }
             val future = key > todayKey
             val pendingToday = key == todayKey && done < 3
-            val statusColor = when {
-                done == 3 -> R.color.carbon_support_success
-                future || (done == 0 && !pendingToday && key == todayKey) -> R.color.carbon_border_strong
-                done == 0 && !future -> R.color.carbon_border_strong
-                pendingToday -> R.color.carbon_border_strong
-                else -> R.color.carbon_support_error
+            val status = CarbonStatus.sandhyaDay(done, future, pendingToday)
+            val markText = when (status) {
+                CarbonStatus.FUTURE -> "– – –"
+                CarbonStatus.PENDING -> marks.joinToString(" ") { if (it) "✓" else "–" }
+                CarbonStatus.COMPLETE -> "✓ ✓ ✓"
+                CarbonStatus.SKIPPED -> marks.joinToString(" ") { if (it) "✓" else "×" }
             }
-            val markText = when {
-                future -> "– – –"
-                pendingToday -> marks.joinToString(" ") { if (it) "✓" else "–" }
-                else -> marks.joinToString(" ") { if (it) "✓" else "×" }
-            }
+            val dayName = knDays[day.get(Calendar.DAY_OF_WEEK) - 1]
 
             val wrap = LinearLayout(requireContext()).apply {
                 orientation = LinearLayout.VERTICAL
                 background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_sandhya_day)
                 isClickable = !future
                 isFocusable = !future
+                contentDescription = when (status) {
+                    CarbonStatus.FUTURE -> "$dayName · upcoming"
+                    CarbonStatus.COMPLETE -> "$dayName · complete"
+                    CarbonStatus.SKIPPED -> "$dayName · incomplete"
+                    CarbonStatus.PENDING -> "$dayName · $done of 3 · tap to record"
+                }
+                minimumWidth = resources.getDimensionPixelSize(R.dimen.carbon_layout_size_height_lg)
             }
             wrap.addView(View(requireContext()).apply {
                 layoutParams = LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     (3 * density).toInt()
                 )
-                setBackgroundColor(ContextCompat.getColor(requireContext(), statusColor))
+                setBackgroundColor(ContextCompat.getColor(requireContext(), status.accent))
             })
             val body = LinearLayout(requireContext()).apply {
                 orientation = LinearLayout.VERTICAL
@@ -174,7 +163,7 @@ class DashboardFragment : Fragment() {
                 setPadding(0, (6 * density).toInt(), 0, (6 * density).toInt())
             }
             body.addView(TextView(requireContext()).apply {
-                text = knDays[day.get(Calendar.DAY_OF_WEEK) - 1]
+                text = dayName
                 gravity = Gravity.CENTER
                 setTextAppearance(R.style.TextAppearance_Carbon_BodyCompact01)
                 setTextColor(ContextCompat.getColor(requireContext(), R.color.carbon_text))
@@ -192,7 +181,10 @@ class DashboardFragment : Fragment() {
             ))
             if (!future) {
                 val dateForCell = key
-                wrap.setOnClickListener { showProgressDialog(dateForCell) }
+                wrap.setOnClickListener {
+                    CarbonMotion.pressFlash(it)
+                    showProgressDialog(dateForCell)
+                }
             }
             week.addView(
                 wrap,
@@ -207,8 +199,10 @@ class DashboardFragment : Fragment() {
     private fun bindStreak(view: View) {
         val current = practice.currentStreak()
         val best = practice.bestStreak()
-        view.findViewById<TextView>(R.id.dashStreakCurrent).text = "$current days"
-        view.findViewById<TextView>(R.id.dashStreakBest).text = "$best days"
+        view.findViewById<TextView>(R.id.dashStreakCurrent).text = countFormat.format(current)
+        view.findViewById<TextView>(R.id.dashStreakBest).text = "best ${countFormat.format(best)}"
+        view.findViewById<View>(R.id.dashStreak).contentDescription =
+            "Current streak ${countFormat.format(current)} days. Best ${countFormat.format(best)}."
     }
 
     private fun bindJapaRow(view: View) {
@@ -220,20 +214,24 @@ class DashboardFragment : Fragment() {
             val entry = JapaCatalog.entries.firstOrNull { it.id == mantraId }
                 ?: JapaCatalog.entries.first()
             val counts = store.counts(entry.id)
+            val target = counts.dailyTarget.coerceAtLeast(1)
+            val pct = ((counts.daily * 100) / target).toInt().coerceIn(0, 100)
+            val label = if (index == 0) "ಗಾಯತ್ರೀ" else shortLabel(entry.label)
             cell.removeAllViews()
             cell.gravity = Gravity.BOTTOM
+            // Daily, Sankalpa and cumulative match the approved mockup.
             cell.addView(TextView(requireContext()).apply {
-                text = countFormat.format(counts.daily)
+                text = "Daily "+countFormat.format(counts.daily)+"/"+countFormat.format(target)
                 setTextAppearance(R.style.TextAppearance_Carbon_HeadingCompact01)
                 setTextColor(requireContext().getColor(R.color.carbon_text))
             })
             cell.addView(TextView(requireContext()).apply {
-                text = "/ ${countFormat.format(counts.dailyTarget)}"
+                text = "Sankalpa "+countFormat.format(counts.sankalpa)+"\nCumulative "+countFormat.format(counts.cumulative)
                 setTextAppearance(R.style.TextAppearance_Carbon_Label01)
                 setTextColor(requireContext().getColor(R.color.carbon_text_secondary))
             })
             cell.addView(TextView(requireContext()).apply {
-                text = if (index == 0) "ಗಾಯತ್ರೀ" else shortLabel(entry.label)
+                text = label
                 setTextAppearance(R.style.TextAppearance_Carbon_BodyCompact01)
                 setTextColor(requireContext().getColor(R.color.carbon_text))
                 setPadding(0, resources.getDimensionPixelSize(R.dimen.carbon_spacing_02), 0, 0)
@@ -245,15 +243,14 @@ class DashboardFragment : Fragment() {
                     LinearLayout.LayoutParams.WRAP_CONTENT
                 )
             })
+            cell.contentDescription =
+                "$label $pct percent. Next target ${countFormat.format(target)}. Tap to open japa."
             cell.setOnClickListener {
+                CarbonMotion.pressFlash(it)
                 store.setActiveMantraId(entry.id)
                 (activity as? LauncherActivity)?.navigateTo("japa")
             }
-            cell.setOnLongClickListener {
-                store.add(1, entry.id)
-                bindJapaRow(view)
-                true
-            }
+
         }
     }
 

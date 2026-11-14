@@ -51,7 +51,7 @@
   let dest = 'dashboard';
 
   function applyScale(value) {
-    scale = Math.min(1.5, Math.max(1, value));
+    scale = Math.min(2, Math.max(1, value));
     root.style.setProperty('--scale', String(scale));
     const label = Math.round(scale * 100) + '%';
     const sizeValue = byId('size-value');
@@ -344,7 +344,6 @@
 
     riteSelect?.addEventListener('change', () => {
       rite = riteSelect.value || 'nitya';
-      practice?.setPujaDay?.(false, false);
       render();
     });
 
@@ -406,6 +405,7 @@
   }
 
   function goBack() {
+    if (window.consumeSongsBack?.()) return;
     const nav = byId('side-nav');
     if (nav?.classList.contains('is-expanded')) {
       closeNav();
@@ -423,9 +423,10 @@
     }
     if (granthaIds.includes(id)) { child = id; id = "grantha"; }
     if (granthaIds.includes(child)) id = "grantha";
-    if (id === 'playlists' || child === 'playlists') {
+    if (sangeetaIds.includes(id) || sangeetaIds.includes(child)) {
+      selectSangeetaTab(sangeetaIds.includes(id) ? id : child);
       id = 'sangeeta';
-      child = 'playlists';
+      child = undefined;
     }
     if (id === 'user') {
       window.selectSettingsTab('users');
@@ -546,29 +547,8 @@
   }
 
   function bindJapaSample() {
-    const label = byId('dash-japa-count');
-    const meta = byId('dash-japa-meta');
-    const readCount = () => {
-      try {
-        const raw = JSON.parse(localStorage.getItem('madhvanidhi-japa-session') || '{}');
-        return Math.max(0, Number(raw.count) || 0);
-      } catch {
-        return 0;
-      }
-    };
-    const writeCount = (count) => {
-      try {
-        const raw = JSON.parse(localStorage.getItem('madhvanidhi-japa-session') || '{}');
-        raw.count = count;
-        localStorage.setItem('madhvanidhi-japa-session', JSON.stringify(raw));
-      } catch {}
-      if (label) label.textContent = String(count);
-      if (meta) meta.textContent = `today · ${count}`;
-      window.madhvaPractice?.paintDashboard?.();
-    };
-    writeCount(readCount());
-    byId('dash-japa-inc')?.addEventListener('click', () => writeCount(readCount() + 1));
-    byId('dash-japa-undo')?.addEventListener('click', () => writeCount(Math.max(0, readCount() - 1)));
+    byId('dash-japa-inc')?.addEventListener('click', () => window.dispatchEvent(new CustomEvent('dashboard-japa-bump', {detail: 1})));
+    byId('dash-japa-undo')?.addEventListener('click', () => window.dispatchEvent(new CustomEvent('dashboard-japa-bump', {detail: -1})));
   }
 
   function bindPracticeDialog() {
@@ -692,33 +672,23 @@
     savePractice(map);
     const curEl = byId('dash-streak-current');
     const bestEl = byId('dash-streak-best');
-    if (curEl) curEl.textContent = `${current} days`;
-    if (bestEl) bestEl.textContent = `${best} days`;
+    if (curEl) curEl.textContent = String(current);
+    if (bestEl) bestEl.textContent = `best ${best}`;
 
-    const slots = ['gayatri', 'narayana', 'rama', 'hanuman', 'raghavendra'];
-    let cum = {};
-    try { cum = JSON.parse(localStorage.getItem('madhvanidhi-japa-cumulative') || '{}') || {}; } catch {}
-    let session = {};
-    try { session = JSON.parse(localStorage.getItem('madhvanidhi-japa-session') || '{}') || {}; } catch {}
-    document.querySelectorAll('.dash-japa-slot').forEach((btn, i) => {
-      const id = btn.dataset.mantra || slots[i];
-      const target = Number(session.dailyTarget) || 108;
-      const count = id === (session.mantraId || session.mantra || 'gayatri')
-        ? (Number(session.count) || 0)
-        : 0;
-      const countEl = btn.querySelector('.dash-japa-count');
-      const targetEl = btn.querySelector('.dash-japa-target');
-      if (countEl) countEl.textContent = String(count);
-      if (targetEl) targetEl.textContent = `/ ${target}`;
-      void cum;
-    });
+    const session = window.madhvaJapaSession.loadSession();
+    window.paintDashboardJapas?.();
     const progress = document.querySelector('.dash-progress');
     if (progress) {
       const flags = sandhyaFlags(map, today);
       const done = flags.filter(Boolean).length;
+      const remain = 3 - done;
       const japa = Number(session.count) || 0;
       const goal = Number(session.dailyTarget) || 108;
-      progress.textContent = `ದಿನದ ಅಭ್ಯಾಸ · ${done}/3 ಸಂಧ್ಯಾ · ಜಪ ${japa}/${goal}`;
+      progress.textContent = done === 3
+        ? `ಇಂದು ಪೂರ್ಣ · 3/3 ಸಂಧ್ಯಾ · ಜಪ ${japa}/${goal}`
+        : done === 0
+          ? `ಉಳಿದಿದೆ · 3 ಸಂಧ್ಯಾ · ಜಪ ${japa}/${goal}`
+          : `ಮುಗಿದಿದೆ ${done} · ಉಳಿದಿದೆ ${remain} · ಜಪ ${japa}/${goal}`;
     }
   }
   window.madhvaPractice = {
@@ -773,10 +743,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    try {
-      const saved = Number(localStorage.getItem('madhvanidhi-shell-scale'));
-      if (saved >= 1 && saved <= 1.5) scale = saved;
-    } catch {}
+
     applyScale(scale);
     bindNav();
     bindNityaTabs();
@@ -832,20 +799,9 @@
       });
     };
     paint();
-    document.querySelectorAll('[data-shortcut-slot]').forEach(btn => {
-      btn.addEventListener('contextmenu', e => {
-        e.preventDefault();
-        const i = Number(btn.dataset.shortcutSlot);
-        const labels = SHORTCUT_CHOICES.map(c => c.label).join('\n');
-        const pick = window.prompt(`Shortcut ${i + 1} — enter number:\n` + SHORTCUT_CHOICES.map((c, n) => `${n + 1}. ${c.label}`).join('\n'), '1');
-        const n = Number(pick) - 1;
-        if (n >= 0 && n < SHORTCUT_CHOICES.length) {
-          slots[i] = SHORTCUT_CHOICES[n].id;
-          try { localStorage.setItem(key, JSON.stringify(slots)); } catch {}
-          paint();
-        }
-        void labels;
-      });
+    window.addEventListener('dashboard-shortcuts-changed', () => {
+      try { slots = JSON.parse(localStorage.getItem(key)) || defaults.slice(); } catch {}
+      paint();
     });
   }
 

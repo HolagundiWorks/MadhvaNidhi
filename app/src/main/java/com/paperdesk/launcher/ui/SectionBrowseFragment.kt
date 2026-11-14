@@ -144,42 +144,18 @@ class SectionBrowseFragment : Fragment() {
                 body = getString(R.string.rangavalli_packs_body)
             )
         )
-        RECIPES -> {
-            val festival = MadhwaStore.inCategory("festival")
-            val puja = MadhwaStore.inCategory("puja")
-            val guides = (festival + puja).filter { item ->
-                val hay = "${item.title} ${item.note} ${item.file}".lowercase()
-                "festival" in item.file || "ನೈವೇದ್ಯ" in item.note || "naivedya" in hay ||
-                    "puja" in item.file || item.file.contains("festival_")
-            }.distinctBy { it.id }
-            val fromAssets = guides.map { item ->
-                Entry(
-                    id = item.id,
-                    title = MadhwaStore.label(item, lang),
-                    body = MadhwaStore.body(requireContext(), item, lang).ifBlank {
-                        MadhwaStore.note(item, lang).ifBlank { getString(R.string.section_recipes_fallback) }
-                    },
-                    actionLabel = getString(R.string.section_open_puja),
-                    file = item.file
-                )
-            }
-            listOf(
-                Entry(
-                    id = "naivedya_intro",
-                    title = getString(R.string.recipes_intro_title),
-                    body = getString(R.string.recipes_intro_body)
-                )
-            ) + fromAssets.ifEmpty {
-                listOf(
-                    Entry(
-                        id = "common",
-                        title = getString(R.string.recipes_common_title),
-                        body = getString(R.string.recipes_common_body),
-                        actionLabel = getString(R.string.section_open_puja)
-                    )
-                )
-            }
-        }
+        RECIPES -> listOf(
+            Entry(
+                id = "naivedya_intro",
+                title = getString(R.string.recipes_intro_title),
+                body = getString(R.string.recipes_intro_body)
+            ),
+            Entry(
+                id = "common",
+                title = getString(R.string.recipes_common_title),
+                body = getString(R.string.recipes_common_body)
+            )
+        )
         else -> emptyList()
     }
 

@@ -143,7 +143,7 @@ object SettingsScreenBinder {
         }
     }
 
-    private fun bindJapaTables(root: View, context: Context, settings: SettingsStore) {
+    fun bindJapaTables(root: View, context: Context, settings: SettingsStore) {
         root.findViewById<LinearLayout>(R.id.settingsJapaTargetsTable)?.let {
             JapaTargetsTable.paintReadonly(it, context)
         }

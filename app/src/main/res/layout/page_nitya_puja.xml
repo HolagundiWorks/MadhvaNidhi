@@ -1,146 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/carbon_background">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="@dimen/carbon_spacing_05"
-        android:background="@color/carbon_layer">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:minHeight="@dimen/carbon_layout_size_height_lg">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="ಪೂಜಾ ಕ್ರಮ"
-                style="@style/Widget.Carbon.TextInput.ExposedDropdown">
-
-                <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                    android:id="@+id/pujaRite"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="none"
-                    android:maxLines="1" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/pujaSkip"
-                style="@style/Widget.Carbon.Button.Tertiary.Icon"
-                android:layout_width="@dimen/carbon_layout_size_height_lg"
-                android:layout_height="@dimen/carbon_layout_size_height_lg"
-                android:layout_marginStart="@dimen/carbon_spacing_05"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:minWidth="0dp"
-                android:padding="0dp"
-                android:contentDescription="Skip today"
-                app:icon="@drawable/ic_skip"
-                app:iconGravity="textStart"
-                app:iconPadding="0dp"
-                app:cornerRadius="@dimen/carbon_corner_radius"
-                app:strokeColor="@color/carbon_border"
-                app:strokeWidth="@dimen/carbon_border_width" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/pujaComplete"
-                style="@style/Widget.Carbon.Button.Tertiary.Icon"
-                android:layout_width="@dimen/carbon_layout_size_height_lg"
-                android:layout_height="@dimen/carbon_layout_size_height_lg"
-                android:layout_marginStart="@dimen/carbon_spacing_03"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:minWidth="0dp"
-                android:padding="0dp"
-                android:contentDescription="Completed for today"
-                app:icon="@drawable/ic_check"
-                app:iconGravity="textStart"
-                app:iconPadding="0dp"
-                app:cornerRadius="@dimen/carbon_corner_radius"
-                app:strokeColor="@color/carbon_border"
-                app:strokeWidth="@dimen/carbon_border_width" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/carbon_background">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/carbon_spacing_04">
+        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Carbon.TextInput.ExposedDropdown" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="ಪೂಜಾ ಕ್ರಮ · Select Puja">
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@+id/pujaRite" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="none" android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:baselineAligned="false" android:layout_marginTop="@dimen/carbon_spacing_03">
+            <TextView android:id="@+id/pujaBreadcrumb" android:clickable="true" android:focusable="true" android:minHeight="48dp" android:gravity="center_vertical" android:background="?attr/selectableItemBackground" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="4" android:layout_marginEnd="@dimen/carbon_spacing_04" android:textAppearance="@style/TextAppearance.Carbon.Label01" android:textColor="@color/carbon_text_secondary" />
+            <ProgressBar android:id="@+id/pujaSectionProgress" style="?android:attr/progressBarStyleHorizontal" android:layout_width="0dp" android:layout_height="4dp" android:layout_weight="6" android:max="100" android:progressTint="@color/carbon_interactive" android:progressBackgroundTint="@color/carbon_border" />
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/carbon_spacing_05"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
-
-            <TextView
-                android:id="@+id/pujaStep"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
-                android:textColor="@color/carbon_text"
-                android:text="ಸಂಕಲ್ಪ" />
-
-            <ProgressBar
-                android:id="@+id/pujaProgress"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/carbon_spacing_03"
-                android:layout_weight="7"
-                android:layout_marginStart="@dimen/carbon_spacing_05"
-                android:max="100"
-                android:progress="25"
-                android:progressTint="@color/carbon_interactive"
-                android:progressBackgroundTint="@color/carbon_border" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="@dimen/carbon_spacing_05"
-            android:background="@color/carbon_border" />
     </LinearLayout>
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:fillViewport="true"
-        android:clipToPadding="false">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/carbon_spacing_05"
-            android:paddingBottom="@dimen/carbon_spacing_07">
-
-            <TextView
-                android:id="@+id/pujaCrumb"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.Carbon.Label01"
-                android:textColor="@color/carbon_text_secondary"
-                android:text="ಪೂಜೆ" />
-
-            <TextView
-                android:id="@+id/pujaBody"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/carbon_spacing_05"
-                android:lineSpacingMultiplier="1.35"
-                android:textAppearance="@style/TextAppearance.Carbon.Body01"
-                android:textColor="@color/carbon_text"
-                android:textIsSelectable="true" />
+    <FrameLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+        <androidx.core.widget.NestedScrollView android:id="@+id/pujaScroll" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/carbon_spacing_05" android:paddingEnd="72dp">
+                <TextView android:id="@+id/pujaSectionHeading" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01" android:textColor="@color/carbon_text" android:layout_marginBottom="@dimen/carbon_spacing_04" />
+                <TextView android:id="@+id/pujaBody" android:layout_width="match_parent" android:layout_height="wrap_content" android:lineSpacingMultiplier="1.5" android:textAppearance="@style/TextAppearance.Carbon.Body01" android:textColor="@color/carbon_text" android:textIsSelectable="true" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+        <LinearLayout android:layout_width="48dp" android:layout_height="wrap_content" android:layout_gravity="top|end" android:layout_margin="@dimen/carbon_spacing_03" android:orientation="vertical">
+            <com.google.android.material.button.MaterialButton android:id="@+id/pujaTextIncrease" style="@style/Widget.Carbon.Button.Tertiary" android:layout_width="match_parent" android:layout_height="48dp" android:minWidth="0dp" android:padding="0dp" android:text="A+" android:contentDescription="Increase reading text size" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/pujaTextDecrease" style="@style/Widget.Carbon.Button.Tertiary" android:layout_width="match_parent" android:layout_height="48dp" android:minWidth="0dp" android:padding="0dp" android:layout_marginTop="@dimen/carbon_spacing_02" android:text="A−" android:contentDescription="Decrease reading text size" />
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+    </FrameLayout>
+
 </LinearLayout>

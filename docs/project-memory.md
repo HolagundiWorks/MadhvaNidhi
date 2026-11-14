@@ -1,6 +1,6 @@
 # MadhvaNidhi project memory
 
-Updated 13 November 2026. UX audit pass complete: practice day flags (Sandhya skip, Japa/Puja/Parayana), Sandhya 48dp pathya hit + no auto-complete, backup passphrase confirm, nav toggle 48dp, hierarchical Back. Verify Git status before changing code.
+Updated 13 November 2026. Carbon Android UX layer (Views): see `docs/carbon-android-ux.md`. Motion tokens + `CarbonStatus`/`CarbonMotion`; dashboard quieter streak and japa % + next target. Verify Git status before changing code.
 
 ## Current authority
 
@@ -41,3 +41,21 @@ From the repository: `python -m http.server 8767 --bind 127.0.0.1 --directory pr
 For changes, run JavaScript syntax checks, local asset/route checks, then inspect the browser. Do not claim Android or device validation from web-only checks. Preserve untracked user captures; do not add them to a preview package. Current validation results belong in the generated verification report, not in assumed persistent claims.
 
 Rail icon update (after 9d3b242): Nitya Karma uses Carbon TimePlot, Puja uses TransformInstructions, and Grantha uses DocumentMultiple_01 in the shell and menu preview. Child destinations retain their own icons.
+
+Latest mockup audit, 14 November 2026, is recorded in docs/implementation-audit.md. The numeric daily/Sankalpa/cumulative dashboard is the current approved mockup iteration. Android still renders percentage/next-target tiles. Automatic Sankalpa caps at 10,00,001 to match JapaGoals. Dashboard Japa selections open their corresponding counters.
+
+14 November implementation update: Android Settings now has UI Settings, Dashboard, Users, Backup and Legal. The full-width Dashboard tab hosts the Japa target table, five Japa slot configuration rows and three shortcut pickers. Dashboard tile long-press customization/count mutation was removed. Numeric Japa tiles show Daily, Sankalpa and Cumulative. Ekadashi uses the official Carbon Transparency_01 pictogram from @carbon/pictograms 12.88.0 in both Android and the web calendar.
+
+Puja catalogue update: Gruha Paddhati / Recipes now contains its Naivedya introduction and common guidance only. Puja includes all distinct Puja/festival catalogue entries, removing the old three-rite cap. Debug tests/install passed; phone verified full-width Dashboard Settings and Puja selector loading.
+
+Songs navigation update: Hadugalu moved out of Grantha to the Bhakti Sangeeta / Songs menu. Songs now has Hadugalu and Playlists tabs. Grantha contains Stotra, Suktas, Mantras and Namavali. Native and both web previews route existing Hadugalu links into the Songs tab host. Debug build, unit tests and install passed; Galaxy M11 UI hierarchy verified two Songs tabs with the first selected.
+
+Songs browse design pass: mockup menu tabs now follow the actual catalogue groups Dasara Padagalu, Suladigalu and Ugabhogagalu, plus existing Playlists. Search by title/author and author filtering precede a scrollable song list. Selecting a song opens bundled lyrics with Previous/Next and Back preserving list/filter position. Escape returns from reader to list first. Only entries with a bundled readable body are included in prototypes/songs-catalogue.json. Android has not yet received this browse-flow redesign.
+
+Songs Favorites design: replaced the Playlists tab with Favorites in both web previews. Official Carbon Star / StarFilled controls appear in song rows and the lyrics view. Favorites persist in local browser storage and the Favorites collection updates when returning from the reader. Android still needs this approved browse/Favorites flow ported.
+
+Puja Krama simplification: removed Skip/Complete, their progress indicator, and duplicate selected-rite heading/crumb in Android and both mockups. Kept the rite dropdown and procedure body. Switching a rite no longer resets completion flags. User phrase “selected puja” was interpreted as the repeated heading.
+
+Puja Krama redesign, mockup first: Select Puja dropdown, 30:70 section-list/reader split, Section X of Y progress, Previous/Next and per-Puja reading position. Uses 20 bundled catalogue procedures and existing source headings. Deva Puja has eight sections. Texts without structured headings retain a single introduction section. Progress denotes reading position. Skip/Complete controls remain removed. Android still uses the earlier continuous reader until this design is approved for implementation.
+
+Latest Puja implementation: no bottom navigation buttons. Section selection is available by tapping the breadcrumb, with a standard single-choice dialog. Selected Puja content loads on demand. Debug tests/install passed and the phone verified the section picker. Songs collection/Favorites and non-Puja floating reader controls remain web-only.

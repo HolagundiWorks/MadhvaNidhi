@@ -27,7 +27,7 @@
     nityakarma: 'nityakarma', sandhya: 'nityakarma', japa: 'nityakarma', nitya: 'nityakarma',
     puja: 'puja',
     grantha: 'grantha', stotra: 'grantha', suktas: 'grantha',
-    mantras: 'grantha', namavali: 'grantha', hadugalu: 'grantha',
+    mantras: 'grantha', namavali: 'grantha', hadugalu: 'sangeeta',
     sangeeta: 'sangeeta', playlists: 'sangeeta',
     samskruti: 'samskruti', aayadi: 'samskruti', rangavalli: 'samskruti', recipes: 'samskruti',
     user: 'user',
@@ -40,7 +40,7 @@
   let page = 'nityakarma';
 
   function applyScale(value) {
-    scale = Math.min(1.5, Math.max(1, value));
+    scale = Math.min(2, Math.max(1, value));
     root.style.setProperty('--scale', String(scale));
     const label = Math.round(scale * 100) + '%';
     const sizeValue = byId('size-value');
@@ -118,7 +118,7 @@
       selectGranthaTab(id);
       id = 'grantha';
     }
-    if (id === 'playlists') id = 'sangeeta';
+    if (sangeetaIds.includes(id)) { selectSangeetaTab(id); id = 'sangeeta'; }
     if (id === 'user') {
       window.selectSettingsTab('users');
       id = 'settings';
@@ -434,7 +434,6 @@
 
     riteSelect?.addEventListener('change', () => {
       rite = riteSelect.value || 'nitya';
-      practice?.setPujaDay?.(false, false);
       render();
     });
 
@@ -495,10 +494,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    try {
-      const saved = Number(localStorage.getItem('madhvanidhi-menu-scale'));
-      if (saved >= 1 && saved <= 1.5) scale = saved;
-    } catch {}
+
     applyScale(scale);
     if (window.madhvaTheme) byId('theme-select').value = window.madhvaTheme.get();
     bindNav();

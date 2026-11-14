@@ -1,5 +1,5 @@
 /* User profile vault · docs/frozen-user-profile.md
- * 2026-11-12 freeze + 2026-11-12 design pass: japa daily/major targets table. */
+ * 2026-11-12 freeze + 2026-11-12 design pass: japa daily/Sankalpas table. */
 (() => {
   'use strict';
 
@@ -28,7 +28,12 @@
   const DAILY_TARGETS = [11, 101, 1001, 5001];
   const MAJOR_TARGETS = [5001, 10001, 50001, 100001, 1000001];
   const DEFAULT_DAILY = 101;
-  const DEFAULT_MAJOR = 100001;
+  const DEFAULT_MAJOR = 0;
+  function sankalpa(explicit, total) {
+    if (Number(explicit) > 0) return Number(explicit);
+    return MAJOR_TARGETS.find(level => level > total)
+      || MAJOR_TARGETS[MAJOR_TARGETS.length - 1];
+  }
 
   /** Indian numbering: 50,001 · 1,00,001 · 10,00,001 (hundreds / thousand / lakh / crore) */
   function formatIndianCount(value) {
@@ -399,12 +404,15 @@
       majorSelect.className = 'cds--select-input';
       majorSelect.dataset.japaMajor = '';
       majorSelect.dataset.japaId = id;
-      majorSelect.setAttribute('aria-label', `${nameTd.textContent} major target`);
-      majorSelect.append(...optionList(MAJOR_TARGETS, current[id].major));
+      majorSelect.setAttribute('aria-label', `${nameTd.textContent} Sankalpa`);
+      const total = window.madhvaJapaSession.getCumulative(id);
+      majorSelect.append(new Option('Auto · ' + formatIndianCount(sankalpa(0, total)), '0', false, !current[id].major), ...optionList(MAJOR_TARGETS, current[id].major));
       majorWrap.append(majorSelect);
       majorTd.append(majorWrap);
 
-      row.append(nameTd, dailyTd, majorTd);
+      const totalCell = document.createElement('td');
+      totalCell.textContent = formatIndianCount(total);
+      row.append(nameTd, dailyTd, majorTd, totalCell);
       body.append(row);
     });
     if (block) block.hidden = ids.length === 0;
@@ -422,13 +430,13 @@
     }
     const table = document.createElement('table');
     table.className = 'cds--data-table cds--data-table--sm cds--data-table--zebra';
-    table.innerHTML = '<thead><tr><th>Japa</th><th>Daily</th><th>Major</th></tr></thead>';
+    table.innerHTML = '<thead><tr><th>Japa</th><th>Daily</th><th>Sankalpa</th><th>Cumulative</th></tr></thead>';
     const tbody = document.createElement('tbody');
     const labelMap = Object.fromEntries(DIKSHA_MANTRAS.map((item) => [item.id, item.label]));
     data.dikshaMantras.forEach((id) => {
       const tr = document.createElement('tr');
       const t = data.japaTargets[id] || { daily: DEFAULT_DAILY, major: DEFAULT_MAJOR };
-      tr.innerHTML = `<td>${(labelMap[id] || id).split(' · ')[0]}</td><td>${formatIndianCount(t.daily)}</td><td>${formatIndianCount(t.major)}</td>`;
+      tr.innerHTML = `<td>${(labelMap[id] || id).split(' · ')[0]}</td><td>${formatIndianCount(t.daily)}</td><td>${t.major ? "" : "Auto · "}${formatIndianCount(sankalpa(t.major, window.madhvaJapaSession.getCumulative(id)))}</td><td>${formatIndianCount(window.madhvaJapaSession.getCumulative(id))}</td>`;
       tbody.append(tr);
     });
     table.append(tbody);
@@ -649,6 +657,7 @@
         setFluidMenuOpen(form.querySelector('[data-fluid-multiselect="diksha"]'), false);
         setEditing(false);
         form.dispatchEvent(new Event('change', { bubbles: true }));
+        window.dispatchEvent(new Event('japa-profile-saved'));
         setStatus(status, `Saved · encrypted locally · ${new Date(when).toLocaleString()}`, 'ok');
       } catch (err) {
         setStatus(status, err.message || 'Could not save locally', 'error');
@@ -694,6 +703,7 @@
         captureSnapshot();
         setEditing(false);
         form.dispatchEvent(new Event('change', { bubbles: true }));
+        window.dispatchEvent(new Event('japa-profile-saved'));
         setStatus(status, 'Restored from backup · encrypted copy saved on this device', 'ok');
       } catch (err) {
         setStatus(status, err.message || 'Restore failed', 'error');
@@ -734,6 +744,7 @@
     DIKSHA_MANTRAS,
     DAILY_TARGETS,
     MAJOR_TARGETS,
+    sankalpa,
     DEFAULT_DAILY,
     DEFAULT_MAJOR,
     formatIndianCount,
@@ -746,6 +757,7 @@
     dikshaLabels,
     normalizeJapaTargets,
     syncJapaTargetsTable,
+    renderJapaTargetsView,
     loadLanguage,
     saveLanguage,
     bindLanguageSelect,

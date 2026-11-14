@@ -6,7 +6,7 @@
   const CUMULATIVE_KEY = 'madhvanidhi-japa-cumulative';
   const MALA_SIZE = 108;
   const DEFAULT_DAILY = 101;
-  const DEFAULT_MAJOR = 100001;
+  const DEFAULT_MAJOR = 0;
 
   const STEPS = {
     poorvanga: {
@@ -87,7 +87,7 @@
         ...data,
         count: Math.max(0, Number(data.count) || 0),
         dailyTarget: Math.max(1, Number(data.dailyTarget) || DEFAULT_DAILY),
-        majorTarget: Math.max(1, Number(data.majorTarget) || DEFAULT_MAJOR),
+        majorTarget: Number(data.majorTarget) || DEFAULT_MAJOR,
         step
       };
     } catch {
@@ -95,15 +95,25 @@
     }
   }
 
+  function dayRecords() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY + '-days') || '{}');
+      return saved.date === todayKey() ? saved.records || {} : {};
+    } catch { return {}; }
+  }
+
   function saveSession(session) {
     try {
+      const records = dayRecords();
+      records[session.mantra] = { count: session.count, dailyTarget: session.dailyTarget };
+      localStorage.setItem(STORAGE_KEY + '-days', JSON.stringify({date: session.date, records}));
       localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
     } catch {}
   }
 
   function progressStats(count, dailyTarget, cumulative, majorTarget) {
     const daily = Math.max(1, dailyTarget || DEFAULT_DAILY);
-    const major = Math.max(1, majorTarget || DEFAULT_MAJOR);
+    const major = window.madhvaUserVault.sankalpa(majorTarget, cumulative);
     const malas = Math.floor(count / MALA_SIZE);
     const dailyPct = Math.min(100, Math.round((count / daily) * 100));
     const majorPct = Math.min(100, Math.round((cumulative / major) * 100));
@@ -181,10 +191,17 @@
       });
     }
 
+    function selectMantra(id) {
+      session.mantra = id;
+      session.count = dayRecords()[id]?.count || 0;
+    }
+
     function render() {
       const cumulative = getCumulative(session.mantra);
       const stats = progressStats(session.count, session.dailyTarget, cumulative, session.majorTarget);
       renderProgressPair(countEl, session.count, stats.daily);
+      const record = q('[data-japa-record]');
+      if (record) record.textContent = 'Cumulative ' + formatCount(cumulative) + ' · Sankalpa ' + formatCount(stats.major);
       renderAngaTabs();
 
       if (mantraSelect && session.mantra) {
@@ -192,6 +209,7 @@
         if (has) mantraSelect.value = session.mantra;
       }
       saveSession(session);
+      window.dispatchEvent(new Event('japa-record-changed'));
     }
 
     function applyTargetsFromProfile(profile, mantra) {
@@ -206,6 +224,10 @@
     }
 
     function bump(delta) {
+      if (session.date !== todayKey()) {
+        session.date = todayKey();
+        session.count = 0;
+      }
       const next = Math.max(0, session.count + delta);
       const applied = next - session.count;
       session.lastDelta = delta > 0 ? delta : session.lastDelta;
@@ -263,7 +285,7 @@
     });
 
     mantraSelect?.addEventListener('change', async () => {
-      session.mantra = mantraSelect.value;
+      selectMantra(mantraSelect.value);
       try {
         const profile = (await window.madhvaUserVault?.loadLocal()) || window.madhvaUserVault?.DEFAULTS;
         applyTargetsFromProfile(profile, session.mantra);
@@ -278,7 +300,7 @@
         const profile = (await vault.loadLocal()) || vault.DEFAULTS;
         vault.fillJapaMantraSelect(mantraSelect, profile);
         if (![...mantraSelect.options].some((o) => o.value === session.mantra)) {
-          session.mantra = mantraSelect.options[0]?.value || 'gayatri';
+          selectMantra(mantraSelect.options[0]?.value || 'gayatri');
         }
         mantraSelect.value = session.mantra;
         applyTargetsFromProfile(profile, session.mantra);
@@ -292,6 +314,20 @@
 
     render();
     syncMantras();
+    window.addEventListener('japa-profile-saved', syncMantras);
+    window.addEventListener('japa-select', async event => {
+      const id = event.detail;
+      const entry = window.madhvaUserVault.DIKSHA_MANTRAS.find(item => item.id === id);
+      if (!entry) return;
+      selectMantra(id);
+      if (![...mantraSelect.options].some(option => option.value === id)) {
+        mantraSelect.add(new Option(entry.label, id));
+      }
+      const profile = await window.madhvaUserVault.loadLocal().catch(() => null);
+      applyTargetsFromProfile(profile || window.madhvaUserVault.DEFAULTS, id);
+      render();
+    });
+    window.addEventListener('dashboard-japa-bump', event => bump(event.detail));
 
     return {
       render,
@@ -301,6 +337,8 @@
   }
 
   window.madhvaJapaSession = {
+    getCumulative,
+    dayRecords,
     MALA_SIZE,
     STEPS,
     loadSession,

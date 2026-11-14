@@ -1,4 +1,4 @@
-const granthaIds = ['stotra', 'suktas', 'mantras', 'hadugalu', 'namavali'];
+const granthaIds = ['stotra', 'suktas', 'mantras', 'namavali'];
 function selectGranthaTab(id) {
   const current = ({ sukta: 'suktas', mantra: 'mantras' })[id] || id;
   for (const key of granthaIds) {

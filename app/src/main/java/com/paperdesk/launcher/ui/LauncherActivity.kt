@@ -151,7 +151,7 @@ class LauncherActivity : AppCompatActivity() {
         val page = currentPageId
         // Tab hubs show their own hubTitle; practice hubs have in-panel chrome.
         val hideHeader = page in setOf(
-            "dashboard", "nityakarma", "puja", "settings", "grantha", "samskruti", "sangeeta"
+            "dashboard", "nityakarma", "puja", "settings", "grantha", "samskruti", "sangeeta", "sangeeta"
         )
         appHeader.visibility = if (hideHeader) View.GONE else View.VISIBLE
         headerRule.visibility = if (hideHeader) View.GONE else View.VISIBLE

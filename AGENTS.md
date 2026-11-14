@@ -48,6 +48,8 @@ MadhvaNidhi is landscape-exclusive on mockup and device.
 
 ## Design system
 
+UX principles and motion checklist: [`docs/carbon-android-ux.md`](docs/carbon-android-ux.md). Keep Carbon language; polish journeys in mockups before Android. Compose design-system pilot is deferred.
+
 **Authority: IBM Carbon Design System only** — colours, spacing, type, hierarchy, and components.
 
 - Use `carbon_*` tokens and `Widget.Carbon.*` / `TextAppearance.Carbon.*` styles only

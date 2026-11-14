@@ -164,8 +164,8 @@ class FrozenShell(private val activity: LauncherActivity) {
             "desk" -> "desk"
             "sandhya", "japa", "nitya", "nityakarma" -> "nityakarma"
             "puja" -> "puja"
-            "stotra", "suktas", "mantras", "namavali", "hadugalu", "grantha" -> "grantha"
-            "playlists", "sangeeta" -> "sangeeta"
+            "stotra", "suktas", "mantras", "namavali", "grantha" -> "grantha"
+            "hadugalu", "playlists", "sangeeta" -> "sangeeta"
             "aayadi", "rangavalli", "recipes", "samskruti" -> "samskruti"
             "user", "settings" -> "settings"
             else -> pageId
