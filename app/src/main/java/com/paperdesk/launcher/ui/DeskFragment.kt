@@ -46,119 +46,9 @@ class DeskFragment : Fragment() {
             if (view.width <= 0 || view.height <= 0) return
             val dm = resources.displayMetrics
             val px = dm.density
-            // Mock density: clamp(0.55, min(vw/960, vh/540), 1.75) — CSS px ≈ dp
-            val scale = minOf(view.width / px / 960f, view.height / px / 540f)
-                .coerceIn(0.55f, 1.75f)
+            val scale = (view.width / px / 400f).coerceIn(0.85f, 1.35f)
             val fitKey = "${view.width}x${view.height}:${"%.4f".format(scale)}"
             if (view.getTag(R.id.panchangaFacts) == fitKey) return
-            fun spx(baseDp: Float, floorDp: Float = 0f): Int =
-                (maxOf(floorDp, baseDp * scale) * px).toInt()
-
-            val pageInset = spx(24f, 8f)
-            val pagePadBlock = spx(16f, 4f)
-            val paneGap = spx(24f, 8f)
-            val ctxGap = spx(16f, 4f)
-            val calendarGap = spx(12f, 4f)
-            val control = spx(48f, 32f)
-            val switcherH = spx(40f, 28f)
-            val moon = spx(16f, 10f)
-            val factLabel = spx(88f, 52f)
-            val factPad = spx(8f, 2f)
-            val factGap = spx(16f, 8f)
-            val typeLabel = maxOf(10f, 12f * scale) * dm.scaledDensity
-            val typeBody = maxOf(11f, 14f * scale) * dm.scaledDensity
-            val typeTitle = maxOf(14f, 16f * scale) * dm.scaledDensity
-            val eventTitle = maxOf(12f, 14f * scale) * dm.scaledDensity
-
-            fun setPad(target: View, l: Int, t: Int, r: Int, b: Int) {
-                if (target.paddingLeft != l || target.paddingTop != t ||
-                    target.paddingRight != r || target.paddingBottom != b
-                ) {
-                    target.setPadding(l, t, r, b)
-                }
-            }
-            fun setMarginTop(target: View, top: Int) {
-                val lp = target.layoutParams as? android.view.ViewGroup.MarginLayoutParams ?: return
-                if (lp.topMargin != top) {
-                    lp.topMargin = top
-                    target.layoutParams = lp
-                }
-            }
-            fun setSize(target: View, w: Int, h: Int) {
-                val lp = target.layoutParams ?: return
-                if (lp.width != w || lp.height != h) {
-                    lp.width = w
-                    lp.height = h
-                    target.layoutParams = lp
-                }
-            }
-
-            setPad(view, pageInset, pagePadBlock, pageInset, pagePadBlock)
-            setPad(view.findViewById(R.id.panchangaContext), 0, 0, paneGap, 0)
-            setPad(view.findViewById(R.id.panchangaCalendar), paneGap, 0, 0, 0)
-
-            val divider = resources.getDimensionPixelSize(R.dimen.carbon_border_width)
-            val usable = (view.width - view.paddingLeft - view.paddingRight - divider).coerceAtLeast(0)
-            val minContext = (208 * px * scale.coerceAtLeast(0.7f)).toInt().coerceAtMost(usable / 2)
-            val contextWidth = when {
-                usable <= 0 -> minContext
-                else -> maxOf(minContext.coerceAtMost(usable / 2), (usable * .3f).toInt())
-                    .coerceAtMost((usable * .5f).toInt())
-                    .coerceAtMost(usable)
-            }
-            val guide = view.findViewById<androidx.constraintlayout.widget.Guideline>(R.id.contextGuide)
-            if (guide.layoutParams.let { (it as androidx.constraintlayout.widget.ConstraintLayout.LayoutParams).guideBegin } != contextWidth) {
-                guide.setGuidelineBegin(contextWidth)
-            }
-
-            listOf(R.id.shakaYear, R.id.samvatsaraText, R.id.masaValue).forEach { id ->
-                view.findViewById<TextView>(id).setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, typeTitle)
-            }
-            listOf(R.id.rashiValue, R.id.nakshatraValue, R.id.bhavaValue, R.id.karanaValue).forEach { id ->
-                view.findViewById<TextView>(id).setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, typeBody)
-            }
-            view.findViewById<TextView>(R.id.todayEventsTitle)
-                .setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, typeLabel)
-            view.findViewById<TextView>(R.id.dayEvent)
-                .setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, eventTitle)
-
-            view.findViewById<View>(R.id.panchangaFacts).let { facts ->
-                setMarginTop(facts, ctxGap)
-                for (i in 0 until (facts as android.view.ViewGroup).childCount) {
-                    val row = facts.getChildAt(i)
-                    if (row is android.view.ViewGroup && row.childCount >= 2) {
-                        setPad(row, 0, factPad, 0, factPad)
-                        val label = row.getChildAt(0)
-                        val lp = label.layoutParams
-                        val needsWidth = lp.width != factLabel
-                        val needsEnd = (lp as? android.view.ViewGroup.MarginLayoutParams)?.marginEnd != factGap
-                        if (needsWidth || needsEnd) {
-                            if (lp is android.view.ViewGroup.MarginLayoutParams) lp.marginEnd = factGap
-                            lp.width = factLabel
-                            label.layoutParams = lp
-                        }
-                    }
-                }
-            }
-            setMarginTop(view.findViewById(R.id.contextRule), ctxGap)
-            setMarginTop(view.findViewById(R.id.pakshaScroll), calendarGap)
-            setPad(
-                view.findViewById(R.id.pakshaScroll),
-                spx(16f, 4f), spx(16f, 4f), spx(16f, 4f), spx(16f, 4f)
-            )
-
-            setSize(view.findViewById(R.id.chooseDate), control, control)
-            setSize(view.findViewById(R.id.eventDetails), control, control)
-            listOf(R.id.calendarPrevious, R.id.calendarNext).forEach { id ->
-                val btn = view.findViewById<com.google.android.material.button.MaterialButton>(id)
-                if (btn.minHeight != switcherH) btn.minHeight = switcherH
-                setPad(btn, factGap, 0, factGap, 0)
-                btn.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, typeBody)
-                if (btn.iconSize != moon) btn.iconSize = moon
-            }
-            listOf(R.id.phaseMoonStart, R.id.phaseMoonMid, R.id.phaseMoonEnd, R.id.masaWeather).forEach { id ->
-                setSize(view.findViewById(id), moon, moon)
-            }
             view.setTag(R.id.panchangaScreen, scale)
             view.setTag(R.id.panchangaFacts, fitKey)
         }
@@ -171,6 +61,7 @@ class DeskFragment : Fragment() {
         view.findViewById<View>(R.id.dayEvent).setOnClickListener { showDetails() }
         view.findViewById<View>(R.id.dayEventsCard).setOnClickListener { showDetails() }
         view.findViewById<View>(R.id.eventDetails).setOnClickListener { showDetails() }
+        view.findViewById<View>(R.id.panchangaOpenContent).setOnClickListener { openDetailsInReader() }
         view.findViewById<View>(R.id.chooseDate).setOnClickListener { showDatePicker() }
         parentFragmentManager.setFragmentResultListener("panchangaDate", viewLifecycleOwner) { _, result ->
             selectedDate = result.getString("date") ?: selectedDate
@@ -283,7 +174,65 @@ class DeskFragment : Fragment() {
         com.google.android.material.dialog.MaterialAlertDialogBuilder(requireContext())
             .setView(content)
             .setPositiveButton("ಸರಿ", null)
+            .setNeutralButton(OsLang.ui("open_content", lang)) { _, _ -> openDetailsInReader() }
             .show()
+    }
+
+    private fun openDetailsInReader() {
+        val day = detailsDay ?: run {
+            loadPanchanga()
+            return
+        }
+        if (!isAdded) return
+        val lang = OsLang.get(requireContext())
+        val cal = PanchangaStore.parse(day.date)
+        val dateText = OsLang.dateLine(cal, lang)
+        val phase = if (day.paksha.contains("KRISHNA", true)) OsLang.ui("krishna", lang) else OsLang.ui("shukla", lang)
+        val tithi = OsLang.script(
+            day.tithi.uppercase()
+                .replace("DWITEEYA", "DWITIYA")
+                .replace("TRUTEEYA", "TRITIYA")
+                .replace("THRITEEYA", "TRITIYA"),
+            lang
+        )
+        val masa = OsLang.script(day.masa.uppercase().replace("KARTEEKA", "KARTIKA"), lang) + "ಮಾಸ"
+        val year = PanchangaStore.shakaYear(day).toString()
+        val samvatsara = OsLang.script(PanchangaStore.samvatsaraFor(day), lang)
+        val rashi = OsLang.script(PanchangaStore.chandraRashi(day.date), lang)
+        val nakshatra = OsLang.script(
+            day.nakshatra.replace(Regex("^(PURVA|UTTARA)(PHALGUNI|ASHADHA|BHADRAPADA)$"), "$1 $2"),
+            lang
+        ).ifBlank { "ಜೋಡಣೆ ಬಾಕಿ" }
+        val pada = OsLang.digits(PanchangaStore.nakshatraPada(day.date), lang)
+        val karana = OsLang.script(day.karana, lang).ifBlank { "ಜೋಡಣೆ ಬಾಕಿ" }
+        val yoga = OsLang.script(day.yoga, lang).ifBlank { "ಜೋಡಣೆ ಬಾಕಿ" }
+        val special = detailsEvent.ifBlank { "ವಿಶೇಷ ಕಾರ್ಯಕ್ರಮ ದಾಖಲಾಗಿಲ್ಲ" }
+        val body = buildString {
+            appendLine("ಶ್ರೀ ಶಾಲಿವಾಹನ ಗತಶಕೆ-$year")
+            appendLine("ಶ್ರೀ $samvatsara ನಾಮ ಸಂವತ್ಸರ")
+            appendLine()
+            appendLine("$masa · $phase · $tithi")
+            appendLine()
+            appendLine("ರಾಶಿ: $rashi")
+            appendLine("ನಕ್ಷತ್ರ: $nakshatra (ಪಾದ $pada)")
+            appendLine("ಕರಣ: $karana")
+            appendLine("ಯೋಗ: $yoga")
+            appendLine()
+            appendLine("ದಿನದ ವಿಶೇಷ:")
+            appendLine(special)
+            if (detailsSummary.isNotBlank()) {
+                appendLine()
+                appendLine(detailsSummary)
+            }
+        }
+        startActivity(
+            ContentReaderActivity.forInline(
+                requireContext(),
+                "$tithi · $dateText",
+                OsLang.ui("panchanga", lang),
+                body.trim()
+            )
+        )
     }
 
     fun bindLang() {

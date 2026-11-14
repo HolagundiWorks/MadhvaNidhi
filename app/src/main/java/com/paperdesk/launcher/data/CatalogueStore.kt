@@ -84,20 +84,8 @@ object CatalogueStore {
 
     fun groupsFor(page: String): List<CatalogueGroup> {
         val songs = setOf("dasara_padagalu", "suladhigalu", "ugabhogagalu")
-        return when (page) {
-            "hadugalu" -> groups.filter { it.id in songs }
-            "mantras" -> groups.filter { group ->
-                items.any { it.group == group.id && it.file.isNotBlank() && subpageFor(it) == "mantras" }
-            }
-            "stotra" -> groups.filter { group ->
-                items.any { it.group == group.id && it.file.isNotBlank() && subpageFor(it) == "stotra" }
-            }
-            "suktas" -> groups.filter { group ->
-                items.any { it.group == group.id && it.file.isNotBlank() && subpageFor(it) == "suktas" }
-            }
-            "namavali" -> groups.filter { it.id == "namavalis" }
-            else -> groups.filter { it.id !in songs }
-        }
+        return if (page == "hadugalu") groups.filter { it.id in songs }
+        else groups.filter { it.id !in songs }
     }
 
     fun item(id: String): CatalogueItem? = byId[id]
@@ -139,13 +127,8 @@ object CatalogueStore {
     private fun subpageFor(item: CatalogueItem): String {
         val searchable = "${item.id} ${item.kn} ${item.sa} ${item.en}".lowercase()
         return when {
-            item.type.equals("namavali", true) || item.group == "namavalis" -> "namavali"
             item.group == "rigveda_suktas" || "sukta" in searchable || "सूक्त" in searchable || "ಸೂಕ್ತ" in searchable -> "suktas"
-            item.type.equals("stotra", true) || item.group == "stotras" || item.group == "sanskrit_parayana" ||
-                item.group in setOf(
-                    "rama_raksha", "narasimha_stotras", "vishnu_sahasranama",
-                    "suprabhatams", "krishna_stotras", "ashtottara_stotras"
-                ) -> "stotra"
+            item.type.equals("stotra", true) || item.group == "stotras" || item.group == "sanskrit_parayana" -> "stotra"
             else -> "mantras"
         }
     }
@@ -162,20 +145,12 @@ object CatalogueStore {
         IndicScript.Lang.EN -> item.en.ifBlank { item.kn.ifBlank { item.sa } }
     }
 
-    private val bodyCache = object : LinkedHashMap<String, String>(32, 0.75f, true) {
-        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, String>?): Boolean = size > 24
-    }
-
     fun body(context: Context, item: CatalogueItem, lang: IndicScript.Lang): String {
         if (item.file.isBlank()) return ""
-        val cacheKey = "${item.id}|${lang.name}|${item.file}"
-        synchronized(bodyCache) {
-            bodyCache[cacheKey]?.let { return it }
-        }
         val raw = read(context, item.file)
         if (raw.isBlank()) return ""
         val tidy = RitualText.tidy(raw, kannada = item.script == "kn")
-        val out = if (item.script == "kn") {
+        return if (item.script == "kn") {
             when (lang) {
                 // Some imported Kannada catalogue files contain Devanagari lines.
                 // Normalising the whole body keeps mixed-script texts consistent.
@@ -190,8 +165,6 @@ object CatalogueStore {
                 IndicScript.Lang.SA -> IndicScript.convert(tidy, IndicScript.Lang.SA)
             }
         }
-        synchronized(bodyCache) { bodyCache[cacheKey] = out }
-        return out
     }
 
     private fun read(context: Context, file: String): String {

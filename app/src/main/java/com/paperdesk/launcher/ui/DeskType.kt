@@ -31,17 +31,7 @@ object DeskType {
         tv.typeface = assetFace(tv.context, lang, weight)
         tv.includeFontPadding = true
         tv.paint.isFakeBoldText = false
-    }
-
-    fun reading(tv: TextView, lineHeightSp: Float = 24f) {
-        apply(tv, REGULAR)
-        val nominal = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_SP,
-            lineHeightSp, tv.resources.displayMetrics).toInt()
-        val value = tv.text.toString().replace('\n', ' ')
-        val ink = android.graphics.Rect()
-        if (value.isNotBlank()) tv.paint.getTextBounds(value, 0, value.length, ink)
-        // Carbon's nominal line height, with a measured minimum for Indic marks.
-        androidx.core.widget.TextViewCompat.setLineHeight(tv, maxOf(nominal, ink.height() + 4))
+        tv.setLineSpacing(0f, 1f)
     }
 
     fun primary(tv: TextView) {

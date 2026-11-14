@@ -95,6 +95,15 @@ class PujaFragment : Fragment() {
             pujaIndex = steps.lastIndex.coerceAtLeast(0)
             paintPuja(root)
         }
+        root.findViewById<com.google.android.material.button.MaterialButton>(R.id.pujaOpenContent).apply {
+            text = OsLang.ui("open_content", OsLang.get(requireContext()))
+            setOnClickListener {
+                val riteId = rites.getOrNull(pujaRite)?.id.orEmpty()
+                if (riteId.isNotBlank()) {
+                    startActivity(ContentReaderActivity.forPuja(requireContext(), riteId, pujaIndex))
+                }
+            }
+        }
         paintPuja(root)
     }
 

@@ -131,17 +131,29 @@ class NityaKarmaFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        sandhyaRoot?.let { root ->
+            if (SandhyaStore.session(requireContext(), kalaId)?.steps?.isNotEmpty() == true) {
+                sandhyaDone = practice.isSandhyaSessionDone(kalaId)
+                refreshSandhya(root)
+            }
+        }
+    }
+
+    private var sandhyaPaintCallback: (() -> Unit)? = null
+
+    private fun refreshSandhya(root: View) {
+        sandhyaPaintCallback?.invoke() ?: paintSandhyaChrome(root)
+    }
+
     private fun bindSandhya(root: View) {
-        // Carbon sm (32) FABs — five controls + pathya must fit landscape phone chrome.
-        val fab = resources.getDimensionPixelSize(R.dimen.carbon_layout_size_height_sm)
-        listOf(
-            R.id.sandhyaKalaPratah, R.id.sandhyaKalaMadhya, R.id.sandhyaKalaSayam,
-            R.id.sandhyaSkip, R.id.sandhyaComplete
-        ).forEach { id ->
+        val fab = resources.getDimensionPixelSize(R.dimen.carbon_layout_size_height_lg)
+        listOf(R.id.sandhyaSkip, R.id.sandhyaComplete).forEach { id ->
             root.findViewById<MaterialButton>(id).apply {
                 minimumWidth = 0
                 minimumHeight = 0
-                iconSize = (16 * resources.displayMetrics.density).toInt().coerceAtMost(fab - 8)
+                iconSize = (18 * resources.displayMetrics.density).toInt().coerceAtMost(fab - 12)
                 layoutParams = layoutParams.apply {
                     width = fab
                     height = fab
@@ -180,8 +192,11 @@ class NityaKarmaFragment : Fragment() {
                     SandhyaStore.label(step.title, lang())
                 ).filter { it.isNotBlank() }.joinToString(" · ")
             root.findViewById<ProgressBar>(R.id.sandhyaProgress).progress = pct
+            root.findViewById<MaterialButton>(R.id.sandhyaOpenContent).text =
+                OsLang.ui("open_content", lang())
             paintSandhyaChrome(root)
         }
+        sandhyaPaintCallback = { paint() }
         fun selectKala(id: String) {
             kalaId = id
             sandhyaIndex = 0
@@ -214,6 +229,16 @@ class NityaKarmaFragment : Fragment() {
                 }
                 paint()
             }
+        }
+        root.findViewById<View>(R.id.sandhyaOpenContent).setOnClickListener {
+            startActivity(
+                ContentReaderActivity.forSandhya(
+                    requireContext(),
+                    kalaId = kalaId,
+                    stepIndex = sandhyaIndex,
+                    fullSession = false
+                )
+            )
         }
         root.findViewById<View>(R.id.sandhyaKalaPratah).setOnClickListener { selectKala(SandhyaStore.PRATAH) }
         root.findViewById<View>(R.id.sandhyaKalaMadhya).setOnClickListener { selectKala(SandhyaStore.MADHYA) }
@@ -260,6 +285,9 @@ class NityaKarmaFragment : Fragment() {
             )
             btn.iconTint = ColorStateList.valueOf(
                 ctx.getColor(if (active) R.color.carbon_interactive else R.color.carbon_icon_secondary)
+            )
+            btn.setTextColor(
+                ctx.getColor(if (active) R.color.carbon_text_primary else R.color.carbon_text_secondary)
             )
             btn.strokeColor = ColorStateList.valueOf(
                 ctx.getColor(if (active) R.color.carbon_border_interactive else R.color.carbon_border_strong)

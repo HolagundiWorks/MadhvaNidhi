@@ -14,25 +14,27 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <!-- Collapsed Carbon UI Shell rail · 56dp -->
+            <!-- Portrait Carbon UI Shell Header: menu toggle + title + date · tithi -->
             <LinearLayout
-                android:layout_width="@dimen/shell_rail_width"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:background="@color/carbon_layer"
-                android:paddingTop="@dimen/carbon_spacing_02">
+                android:id="@+id/appHeader"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/shell_toolbar_height"
+                android:minHeight="@dimen/shell_toolbar_height"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/carbon_spacing_02"
+                android:paddingEnd="@dimen/carbon_spacing_04"
+                android:background="@color/carbon_layer">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/sidePanelToggle"
                     style="@style/Widget.Carbon.Button.Icon"
-                    android:layout_width="@dimen/shell_nav_toggle_size"
-                    android:layout_height="@dimen/shell_nav_toggle_size"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="@dimen/carbon_spacing_03"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp"
+                    android:layout_width="@dimen/carbon_layout_size_height_lg"
+                    android:layout_height="@dimen/carbon_layout_size_height_lg"
+                    android:minWidth="@dimen/carbon_layout_size_height_lg"
+                    android:minHeight="@dimen/carbon_layout_size_height_lg"
                     android:padding="0dp"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
@@ -43,92 +45,66 @@
                     app:iconPadding="0dp"
                     app:iconTint="@color/carbon_icon_primary" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/carbon_border_width"
-                    android:layout_marginStart="@dimen/carbon_spacing_03"
-                    android:layout_marginEnd="@dimen/carbon_spacing_03"
-                    android:layout_marginBottom="@dimen/carbon_spacing_03"
-                    android:background="@color/carbon_border_subtle" />
-
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/headerTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:scrollbars="none"
-                    android:overScrollMode="never">
+                    android:layout_marginStart="@dimen/carbon_spacing_02"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
+                    android:textColor="@color/carbon_text_primary" />
 
-                    <LinearLayout
-                        android:id="@+id/railDestinations"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:showDividers="middle"
-                        android:divider="@drawable/shell_rail_gap" />
-                </ScrollView>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/headerDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/carbon_spacing_03"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.Carbon.Label01"
+                    android:textColor="@color/carbon_text_secondary" />
             </LinearLayout>
 
             <View
-                android:layout_width="@dimen/carbon_border_width"
-                android:layout_height="match_parent"
+                android:id="@+id/headerRule"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/carbon_border_width"
                 android:background="@color/carbon_border_subtle" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/pageHost"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
-                <!-- Mockup app-header: title + date · tithi -->
+            <FrameLayout
+                android:id="@+id/contentControlsHost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/carbon_border_width"
+                android:background="@color/carbon_border_subtle" />
+
+            <!-- Portrait Carbon Bottom Navigation Rail · 56dp height -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/shell_rail_width"
+                android:background="@color/carbon_layer"
+                android:fillViewport="true"
+                android:overScrollMode="never"
+                android:scrollbars="none">
+
                 <LinearLayout
-                    android:id="@+id/appHeader"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/shell_toolbar_height"
-                    android:minHeight="@dimen/shell_toolbar_height"
-                    android:orientation="horizontal"
+                    android:id="@+id/railDestinations"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:paddingStart="@dimen/carbon_spacing_05"
-                    android:paddingEnd="@dimen/carbon_spacing_05"
-                    android:background="@color/carbon_background">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/headerTitle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
-                        android:textColor="@color/carbon_text_primary" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/headerDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/carbon_spacing_05"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:textAppearance="@style/TextAppearance.Carbon.Label01"
-                        android:textColor="@color/carbon_text_secondary" />
-                </LinearLayout>
-
-                <View
-                    android:id="@+id/headerRule"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/carbon_border_width"
-                    android:background="@color/carbon_border_subtle" />
-
-                <androidx.fragment.app.FragmentContainerView
-                    android:id="@+id/pageHost"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-                <FrameLayout
-                    android:id="@+id/contentControlsHost"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+                    android:orientation="horizontal" />
+            </HorizontalScrollView>
         </LinearLayout>
 
         <View

@@ -6,12 +6,17 @@ import android.content.Context
 object NityaParayanaStore {
     data class Section(val title: String, val body: String)
 
+    @Volatile private var cached: List<Section>? = null
+
     fun load(context: Context): List<Section> {
+        cached?.let { return it }
         val raw = runCatching {
             context.assets.open("madhwa/texts/nitya_parayana_shlokas.txt")
                 .bufferedReader().use { it.readText() }
         }.getOrDefault("")
-        return parse(raw)
+        val parsed = parse(raw)
+        if (parsed.isNotEmpty()) cached = parsed
+        return parsed
     }
 
     fun parse(raw: String): List<Section> {

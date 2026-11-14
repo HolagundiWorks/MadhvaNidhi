@@ -1,4 +1,4 @@
-# MadhvaNidhi catalogue audit
+# AcharyaOS catalogue audit
 
 Audit date: 2026-08-28
 
@@ -8,7 +8,7 @@ The audit covers the runtime catalogue under `app/src/main/assets/library`, the
 Madhwa collection under `app/src/main/assets/madhwa`, and the curated navigation
 index under `app/src/main/assets/catalogue`.
 
-Devanagari source text is valid: MadhvaNidhi converts it to Kannada at runtime via
+Devanagari source text is valid: AcharyaOS converts it to Kannada at runtime via
 `IndicScript`. A body is therefore considered Kannada-capable when it contains
 either Kannada or Devanagari source characters.
 
@@ -71,14 +71,10 @@ are not relabelled as Rigveda merely because individual verses also occur there.
   <https://sanskritdocuments.org/doc_vishhnu/vAtapuranAthAShTakam.pdf>
 - Kannada Haridasa discovery catalogue:
   <https://dasasahithyamahithi.com/lyrics_and_audio/search/>
-- Kannada Wikisource Haridasa pads (CC BY-SA 4.0) — Phase 1 import:
-  see `docs/haridasa-import-plan.md`, `docs/haridasa-import-manifest.csv`,
-  and `app/src/main/assets/licenses/haridasa-wikisource.txt`.
-  Bodies live under `madhwa/texts/haridasa/`. Sampada.net was not scraped.
 - Sumadhwa Seva — Yagnopaveeta Dharana Vidhi:
   <https://www.sumadhwaseva.com/wp-content/uploads/2009/08/yagnopaveeta-dharana-english1.pdf>
 
-Run the maintained checks from the repo root:
+Run the maintained checks from `acharya-os`:
 
 ```powershell
 node tools/audit-catalogue.mjs

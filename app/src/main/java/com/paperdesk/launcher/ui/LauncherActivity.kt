@@ -149,21 +149,13 @@ class LauncherActivity : AppCompatActivity() {
         if (!::headerTitle.isInitialized) return
         val lang = OsLang.get(this)
         val page = currentPageId
-        val hideHeader = page in setOf("dashboard", "nityakarma", "puja", "settings", "grantha", "samskruti")
-        appHeader.visibility = if (hideHeader) View.GONE else View.VISIBLE
-        headerRule.visibility = if (hideHeader) View.GONE else View.VISIBLE
+        appHeader.visibility = View.VISIBLE
+        headerRule.visibility = View.VISIBLE
         headerTitle.text =
             if (resources.configuration.fontScale > 1.5f) "" else OsLang.ui(page, lang)
         refreshHeaderDate(lang)
         if (::shell.isInitialized) shell.bind()
-        findViewById<View>(R.id.contentControlsHost).visibility =
-            if (page == "desk" || page == "dashboard" || page == "user" || page in ShellHubFragment.RAIL_IDS ||
-                page == "nityakarma" || page == "puja"
-            ) View.GONE else View.VISIBLE
-        findViewById<View>(R.id.pageHost).post {
-            val current = supportFragmentManager.findFragmentById(R.id.pageHost)?.view
-            if (current != null) ScreenPages.attachControls(current, findViewById(R.id.contentControlsHost))
-        }
+        findViewById<View>(R.id.contentControlsHost).visibility = View.GONE
     }
 
     private fun refreshHeaderDate(lang: IndicScript.Lang) {

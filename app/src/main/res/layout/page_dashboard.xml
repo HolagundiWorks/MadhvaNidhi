@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Practice dashboard · 5×3 grid parity with prototypes/app-shell; row 2 = japa slots. -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Portrait Practice Dashboard · scrollable Carbon grid -->
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/practiceDashboard"
+    android:id="@+id/practiceDashboardScroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/carbon_background"
-    android:orientation="vertical"
-    android:padding="@dimen/carbon_spacing_03">
+    android:fillViewport="true">
 
-    <!-- Row 1: week (4) + streak (1) -->
     <LinearLayout
+        android:id="@+id/practiceDashboard"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:baselineAligned="false"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/carbon_spacing_04">
 
+        <!-- Weekly Sandhya overview -->
         <LinearLayout
             android:id="@+id/dashWeek"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="104dp"
             android:background="@color/carbon_layer"
             android:orientation="vertical"
-            android:padding="@dimen/carbon_spacing_03">
+            android:padding="@dimen/carbon_spacing_04">
 
             <TextView
                 android:id="@+id/dashWeekTitle"
@@ -37,29 +36,30 @@
             <LinearLayout
                 android:id="@+id/dashboardWeek"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="@dimen/carbon_spacing_02"
-                android:layout_weight="1"
+                android:layout_height="64dp"
+                android:layout_marginTop="@dimen/carbon_spacing_03"
                 android:gravity="center"
                 android:orientation="horizontal" />
         </LinearLayout>
 
+        <!-- Streak strip: 2 columns -->
         <LinearLayout
             android:id="@+id/dashStreak"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/carbon_spacing_03"
-            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/carbon_spacing_03"
             android:background="@color/carbon_layer"
-            android:orientation="vertical"
-            android:padding="@dimen/carbon_spacing_02">
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:padding="@dimen/carbon_spacing_03">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/carbon_spacing_02">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -72,22 +72,24 @@
                     android:id="@+id/dashStreakCurrent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/carbon_spacing_01"
                     android:text="0 days"
                     android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
                     android:textColor="@color/carbon_text" />
             </LinearLayout>
 
             <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/carbon_border_width"
+                android:layout_width="@dimen/carbon_border_width"
+                android:layout_height="match_parent"
                 android:background="@color/carbon_border_subtle" />
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/carbon_spacing_02">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -100,205 +102,236 @@
                     android:id="@+id/dashStreakBest"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/carbon_spacing_01"
                     android:text="0 days"
                     android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
                     android:textColor="@color/carbon_text" />
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-    <!-- Row 2: Gayatri + 4 customizable japa slots -->
-    <LinearLayout
-        android:id="@+id/dashboardJapaRow"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/carbon_spacing_03"
-        android:layout_weight="1"
-        android:baselineAligned="false"
-        android:orientation="horizontal">
-
+        <!-- Japa slots: Gayatri + 2x2 grid -->
         <LinearLayout
-            android:id="@+id/dashboardJapaSlot0"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/carbon_layer"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="bottom"
-            android:orientation="vertical"
-            android:padding="@dimen/carbon_spacing_03" />
+            android:id="@+id/dashboardJapaRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/carbon_spacing_03"
+            android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/dashboardJapaSlot1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/carbon_spacing_03"
-            android:layout_weight="1"
-            android:background="@color/carbon_layer"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="bottom"
-            android:orientation="vertical"
-            android:padding="@dimen/carbon_spacing_03" />
-
-        <LinearLayout
-            android:id="@+id/dashboardJapaSlot2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/carbon_spacing_03"
-            android:layout_weight="1"
-            android:background="@color/carbon_layer"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="bottom"
-            android:orientation="vertical"
-            android:padding="@dimen/carbon_spacing_03" />
-
-        <LinearLayout
-            android:id="@+id/dashboardJapaSlot3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/carbon_spacing_03"
-            android:layout_weight="1"
-            android:background="@color/carbon_layer"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="bottom"
-            android:orientation="vertical"
-            android:padding="@dimen/carbon_spacing_03" />
-
-        <LinearLayout
-            android:id="@+id/dashboardJapaSlot4"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/carbon_spacing_03"
-            android:layout_weight="1"
-            android:background="@color/carbon_layer"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="bottom"
-            android:orientation="vertical"
-            android:padding="@dimen/carbon_spacing_03" />
-    </LinearLayout>
-
-    <!-- Row 3: 3 customizable shortcut panels + daily progress (2) -->
-    <LinearLayout
-        android:id="@+id/dashboardBottomRow"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/carbon_spacing_03"
-        android:layout_weight="1"
-        android:baselineAligned="false"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:id="@+id/dashboardShortcut0"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/carbon_layer"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="bottom"
-            android:orientation="vertical"
-            android:padding="@dimen/carbon_spacing_03">
-
-            <TextView
+            <LinearLayout
+                android:id="@+id/dashboardJapaSlot0"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ತ್ವರಿತ"
-                android:textAppearance="@style/TextAppearance.Carbon.Label01"
-                android:textColor="@color/carbon_text_secondary" />
+                android:minHeight="80dp"
+                android:background="@color/carbon_layer"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="bottom"
+                android:orientation="vertical"
+                android:padding="@dimen/carbon_spacing_04" />
 
-            <TextView
-                android:id="@+id/dashboardShortcutLabel0"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/carbon_spacing_02"
-                android:text="ಪಂಚಾಂಗ"
-                android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
-                android:textColor="@color/carbon_text" />
+                android:layout_marginTop="@dimen/carbon_spacing_03"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/dashboardJapaSlot1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="84dp"
+                    android:layout_weight="1"
+                    android:background="@color/carbon_layer"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="bottom"
+                    android:orientation="vertical"
+                    android:padding="@dimen/carbon_spacing_03" />
+
+                <LinearLayout
+                    android:id="@+id/dashboardJapaSlot2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="84dp"
+                    android:layout_marginStart="@dimen/carbon_spacing_03"
+                    android:layout_weight="1"
+                    android:background="@color/carbon_layer"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="bottom"
+                    android:orientation="vertical"
+                    android:padding="@dimen/carbon_spacing_03" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/carbon_spacing_03"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/dashboardJapaSlot3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="84dp"
+                    android:layout_weight="1"
+                    android:background="@color/carbon_layer"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="bottom"
+                    android:orientation="vertical"
+                    android:padding="@dimen/carbon_spacing_03" />
+
+                <LinearLayout
+                    android:id="@+id/dashboardJapaSlot4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="84dp"
+                    android:layout_marginStart="@dimen/carbon_spacing_03"
+                    android:layout_weight="1"
+                    android:background="@color/carbon_layer"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="bottom"
+                    android:orientation="vertical"
+                    android:padding="@dimen/carbon_spacing_03" />
+            </LinearLayout>
         </LinearLayout>
 
+        <!-- 3 Shortcuts + Daily Progress CTA -->
         <LinearLayout
-            android:id="@+id/dashboardShortcut1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/carbon_spacing_03"
-            android:layout_weight="1"
-            android:background="@color/carbon_layer"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="bottom"
-            android:orientation="vertical"
-            android:padding="@dimen/carbon_spacing_03">
+            android:id="@+id/dashboardBottomRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/carbon_spacing_03"
+            android:orientation="vertical">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ತ್ವರಿತ"
-                android:textAppearance="@style/TextAppearance.Carbon.Label01"
-                android:textColor="@color/carbon_text_secondary" />
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/dashboardShortcutLabel1"
+                <LinearLayout
+                    android:id="@+id/dashboardShortcut0"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="80dp"
+                    android:layout_weight="1"
+                    android:background="@color/carbon_layer"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="bottom"
+                    android:orientation="vertical"
+                    android:padding="@dimen/carbon_spacing_03">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="ತ್ವರಿತ"
+                        android:textAppearance="@style/TextAppearance.Carbon.Label01"
+                        android:textColor="@color/carbon_text_secondary" />
+
+                    <TextView
+                        android:id="@+id/dashboardShortcutLabel0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/carbon_spacing_02"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:text="ಪಂಚಾಂಗ"
+                        android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
+                        android:textColor="@color/carbon_text" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/dashboardShortcut1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="80dp"
+                    android:layout_marginStart="@dimen/carbon_spacing_03"
+                    android:layout_weight="1"
+                    android:background="@color/carbon_layer"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="bottom"
+                    android:orientation="vertical"
+                    android:padding="@dimen/carbon_spacing_03">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="ತ್ವರಿತ"
+                        android:textAppearance="@style/TextAppearance.Carbon.Label01"
+                        android:textColor="@color/carbon_text_secondary" />
+
+                    <TextView
+                        android:id="@+id/dashboardShortcutLabel1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/carbon_spacing_02"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:text="ಜಪ"
+                        android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
+                        android:textColor="@color/carbon_text" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/dashboardShortcut2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="80dp"
+                    android:layout_marginStart="@dimen/carbon_spacing_03"
+                    android:layout_weight="1"
+                    android:background="@color/carbon_layer"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="bottom"
+                    android:orientation="vertical"
+                    android:padding="@dimen/carbon_spacing_03">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="ತ್ವರಿತ"
+                        android:textAppearance="@style/TextAppearance.Carbon.Label01"
+                        android:textColor="@color/carbon_text_secondary" />
+
+                    <TextView
+                        android:id="@+id/dashboardShortcutLabel2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/carbon_spacing_02"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:text="ಗ್ರಂಥ"
+                        android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
+                        android:textColor="@color/carbon_text" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/dashProgress"
+                style="@style/Widget.Carbon.Button.Tertiary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/carbon_spacing_02"
-                android:text="ಜಪ"
+                android:minHeight="56dp"
+                android:layout_marginTop="@dimen/carbon_spacing_03"
+                android:backgroundTint="@color/carbon_layer"
+                android:ellipsize="end"
+                android:gravity="start|center_vertical"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:maxLines="2"
+                android:padding="@dimen/carbon_spacing_04"
+                android:text="ದಿನದ ಅಭ್ಯಾಸ · Daily progress"
                 android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
-                android:textColor="@color/carbon_text" />
+                android:textColor="@color/carbon_text"
+                app:cornerRadius="@dimen/carbon_corner_radius"
+                app:strokeWidth="0dp" />
         </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/dashboardShortcut2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/carbon_spacing_03"
-            android:layout_weight="1"
-            android:background="@color/carbon_layer"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="bottom"
-            android:orientation="vertical"
-            android:padding="@dimen/carbon_spacing_03">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ತ್ವರಿತ"
-                android:textAppearance="@style/TextAppearance.Carbon.Label01"
-                android:textColor="@color/carbon_text_secondary" />
-
-            <TextView
-                android:id="@+id/dashboardShortcutLabel2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/carbon_spacing_02"
-                android:text="ಗ್ರಂಥ"
-                android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
-                android:textColor="@color/carbon_text" />
-        </LinearLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/dashProgress"
-            style="@style/Widget.Carbon.Button.Tertiary"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/carbon_spacing_03"
-            android:layout_weight="2"
-            android:backgroundTint="@color/carbon_layer"
-            android:gravity="start|bottom"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:padding="@dimen/carbon_spacing_03"
-            android:maxLines="3"
-            android:ellipsize="end"
-            android:text="ದಿನದ ಅಭ್ಯಾಸ · Daily progress"
-            android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
-            android:textColor="@color/carbon_text"
-            app:cornerRadius="@dimen/carbon_corner_radius"
-            app:strokeWidth="0dp" />
     </LinearLayout>
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>

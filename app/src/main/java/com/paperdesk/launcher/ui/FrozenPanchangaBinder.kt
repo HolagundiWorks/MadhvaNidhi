@@ -31,8 +31,14 @@ object FrozenPanchangaBinder {
         fun mockScale(): Float {
             (root.getTag(R.id.panchangaScreen) as? Float)?.let { return it }
             if (root.width <= 0 || root.height <= 0) return 1f
-            return minOf(root.width / density / 960f, root.height / density / 540f)
-                .coerceIn(0.55f, 1.75f)
+            val portrait = root.resources.configuration.orientation ==
+                android.content.res.Configuration.ORIENTATION_PORTRAIT
+            return if (portrait) {
+                (root.width / density / 400f).coerceIn(0.85f, 1.35f)
+            } else {
+                minOf(root.width / density / 960f, root.height / density / 540f)
+                    .coerceIn(0.55f, 1.75f)
+            }
         }
         val groups = listOf(PanchangaCalendar.tiles(cycle.shukla), PanchangaCalendar.tiles(cycle.krishna))
         val grids = listOf(
@@ -363,22 +369,42 @@ object FrozenPanchangaBinder {
                 )
                 column += span
             }
+            val usedRows = (rowIndex + 1).coerceAtLeast(1)
+            val totalGridHeight = usedRows * side + gap * (usedRows - 1)
+            host.layoutParams = host.layoutParams.apply {
+                height = totalGridHeight
+            }
             forceTileLayout(host)
             host.tag = "${area.width}:$side:$index"
         }
         fun reflow() {
-            if (area.width <= 0 || area.height <= 0 || !root.isAttachedToWindow) return
-            val rowCount = groups.maxOf { rows(it) }
-            val side = minOf((area.width - gap * 4) / 5, (area.height - gap * (rowCount - 1)) / rowCount)
+            if (area.width <= 0 || !root.isAttachedToWindow) return
+            val rowCount = groups.maxOf { rows(it) }.coerceAtLeast(1)
+            val usableW = (area.width - area.paddingLeft - area.paddingRight).coerceAtLeast(0)
+            val portrait = area.resources.configuration.orientation ==
+                android.content.res.Configuration.ORIENTATION_PORTRAIT
+            val side = if (portrait) {
+                (usableW - gap * 4) / 5
+            } else {
+                val usableH = (area.height - area.paddingTop - area.paddingBottom).coerceAtLeast(0)
+                if (usableH <= 0) return
+                minOf((usableW - gap * 4) / 5, (usableH - gap * (rowCount - 1)) / rowCount)
+            }
             if (side <= 0) return
-            val key = "${area.width}:${area.height}:$phase:$selected"
+            if (portrait) {
+                val targetAreaH = rowCount * side + gap * (rowCount - 1) + area.paddingTop + area.paddingBottom
+                if (area.layoutParams.height != targetAreaH) {
+                    area.layoutParams = area.layoutParams.apply { height = targetAreaH }
+                }
+            }
+            val key = "${usableW}:$side:$phase:$selected"
             val hostVisible = grids[phase]
             if (signature == key && hostVisible.childCount > 0 &&
                 (0 until hostVisible.childCount).any { hostVisible.getChildAt(it).width > 0 }
             ) return
             val structureKey = "${area.width}:$side:$phase"
             val selectionOnly =
-                signature.startsWith("${area.width}:${area.height}:$phase:") &&
+                signature.startsWith("${usableW}:$side:$phase:") &&
                     hostVisible.childCount > 0 &&
                     hostVisible.tag == structureKey
             signature = key

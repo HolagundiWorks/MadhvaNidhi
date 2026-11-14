@@ -1,68 +1,76 @@
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:clipToPadding="false">
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/carbon_spacing_05" android:paddingBottom="@dimen/carbon_spacing_07">
-        <com.google.android.material.button.MaterialButton android:id="@+id/settingsBack" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/carbon_layout_size_height_lg" android:text="@string/back" style="@style/Widget.Carbon.Button.Ghost" app:cornerRadius="@dimen/carbon_corner_radius" />
-        <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Carbon.Heading03" android:text="@string/settings_title" android:layout_marginBottom="@dimen/carbon_spacing_03" android:id="@+id/settingsPageTitle" />
-        <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Carbon.Body02" android:text="@string/settings_summary" android:visibility="gone" android:layout_marginBottom="@dimen/carbon_spacing_03" />
-        <GridLayout android:id="@+id/settingsGrid" android:layout_width="match_parent" android:layout_height="wrap_content" android:columnCount="1" android:alignmentMode="alignMargins" android:useDefaultMargins="false">
-            <com.google.android.material.card.MaterialCardView android:id="@+id/settingsJapaCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/carbon_spacing_05" app:cardCornerRadius="@dimen/carbon_corner_radius" app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four" app:cardBackgroundColor="@color/carbon_layer">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/carbon_spacing_05">
-                    <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01" android:text="@string/settings_japa_targets" />
-                    <LinearLayout android:id="@+id/settingsJapaTargetsTable" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="@dimen/carbon_spacing_03" />
-                    <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/carbon_spacing_05" android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01" android:text="@string/settings_dashboard_japa" />
-                    <LinearLayout android:id="@+id/settingsDashboardJapaSlots" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="@dimen/carbon_spacing_03" />
-                    <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/carbon_spacing_05" android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01" android:text="@string/settings_dashboard_shortcuts" />
-                    <LinearLayout android:id="@+id/settingsDashboardShortcuts" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="@dimen/carbon_spacing_03" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-            <com.google.android.material.card.MaterialCardView android:id="@+id/settingsProfileCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/carbon_spacing_05" app:cardCornerRadius="@dimen/carbon_corner_radius" app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four" app:cardBackgroundColor="@color/carbon_layer">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/carbon_spacing_05">
-                    <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/profile_register_title" android:textAppearance="@style/TextAppearance.Carbon.Heading02" />
-                    <com.google.android.material.textview.MaterialTextView android:id="@+id/settingsProfileSummary" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Carbon.Label01" android:layout_marginTop="@dimen/carbon_spacing_03" android:text="@string/profile_summary_empty" />
-                    <com.google.android.material.button.MaterialButton android:id="@+id/settingsOpenProfile" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/carbon_layout_size_height_lg" android:layout_marginTop="@dimen/carbon_spacing_03" android:text="@string/profile_open" app:cornerRadius="@dimen/carbon_corner_radius" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-            <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/carbon_spacing_05" app:cardCornerRadius="@dimen/carbon_corner_radius" app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four" app:cardBackgroundColor="@color/carbon_layer">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/carbon_spacing_05">
-                    <com.google.android.material.textview.MaterialTextView android:id="@+id/settingsTextSizeLabel" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ಅಕ್ಷರ ಗಾತ್ರ · 100%" android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01" />
-                    <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ಹಿರಿಯರ ಓದಿಗಾಗಿ ಅಕ್ಷರ ಗಾತ್ರವನ್ನು ಹೆಚ್ಚಿಸಿ. ಎಲ್ಲ ಪುಟಗಳಿಗೂ ಅನ್ವಯಿಸುತ್ತದೆ." android:textAppearance="@style/TextAppearance.Carbon.Label01" android:layout_marginTop="@dimen/carbon_spacing_03" />
-                    <com.google.android.material.slider.Slider android:id="@+id/settingsTextSize" android:saveEnabled="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:contentDescription="ಅಕ್ಷರ ಗಾತ್ರ, ನೂರರಿಂದ ಇನ್ನೂರು ಶೇಕಡಾ" />
-                    <com.google.android.material.button.MaterialButton android:id="@+id/settingsTextApply" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/carbon_layout_size_height_lg" android:text="ಅನ್ವಯಿಸಿ" style="@style/Widget.Carbon.Button.Ghost" app:cornerRadius="@dimen/carbon_corner_radius" />
-                    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/carbon_spacing_05" android:hint="Carbon theme" style="@style/Widget.Carbon.TextInput.ExposedDropdown" app:boxCornerRadiusTopStart="@dimen/carbon_corner_radius" app:boxCornerRadiusTopEnd="@dimen/carbon_corner_radius" app:boxCornerRadiusBottomStart="@dimen/carbon_corner_radius" app:boxCornerRadiusBottomEnd="@dimen/carbon_corner_radius">
-                        <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@+id/settingsTheme" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="none" android:maxLines="2" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/carbon_spacing_05" android:hint="Language · ಭಾಷೆ" style="@style/Widget.Carbon.TextInput.ExposedDropdown" app:boxCornerRadiusTopStart="@dimen/carbon_corner_radius" app:boxCornerRadiusTopEnd="@dimen/carbon_corner_radius" app:boxCornerRadiusBottomStart="@dimen/carbon_corner_radius" app:boxCornerRadiusBottomEnd="@dimen/carbon_corner_radius">
-                        <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@+id/settingsLang" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="none" android:maxLines="2" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                    <com.google.android.material.materialswitch.MaterialSwitch android:id="@+id/settingsDarkTheme" android:visibility="gone" app:thumbIcon="@drawable/theme_switch_icon" app:thumbIconSize="16dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="@dimen/carbon_layout_size_height_lg" android:layout_marginTop="@dimen/carbon_spacing_05" android:text="ಡಾರ್ಕ್ ಥೀಮ್" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-            <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/carbon_spacing_05" app:cardCornerRadius="@dimen/carbon_corner_radius" app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four" app:cardBackgroundColor="@color/carbon_layer">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/carbon_spacing_05">
-                    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/carbon_spacing_05" android:hint="@string/settings_veda" style="@style/Widget.Carbon.TextInput.ExposedDropdown" app:boxCornerRadiusTopStart="@dimen/carbon_corner_radius" app:boxCornerRadiusTopEnd="@dimen/carbon_corner_radius" app:boxCornerRadiusBottomStart="@dimen/carbon_corner_radius" app:boxCornerRadiusBottomEnd="@dimen/carbon_corner_radius">
-                        <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@+id/settingsVeda" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="none" android:maxLines="3" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                    <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Carbon.Label01" android:text="@string/settings_veda_hint" android:layout_marginBottom="@dimen/carbon_spacing_03" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-            <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/carbon_spacing_05" app:cardCornerRadius="@dimen/carbon_corner_radius" app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four" app:cardBackgroundColor="@color/carbon_layer">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/carbon_spacing_05">
-                    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/carbon_spacing_05" android:hint="@string/settings_panchanga" style="@style/Widget.Carbon.TextInput.ExposedDropdown" app:boxCornerRadiusTopStart="@dimen/carbon_corner_radius" app:boxCornerRadiusTopEnd="@dimen/carbon_corner_radius" app:boxCornerRadiusBottomStart="@dimen/carbon_corner_radius" app:boxCornerRadiusBottomEnd="@dimen/carbon_corner_radius">
-                        <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@+id/settingsPanchanga" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="none" android:maxLines="3" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                    <com.google.android.material.textview.MaterialTextView android:id="@+id/settingsPanchangaHint" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Carbon.Label01" android:text="" android:layout_marginBottom="@dimen/carbon_spacing_03" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-            <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/carbon_spacing_05" app:cardCornerRadius="@dimen/carbon_corner_radius" app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four" app:cardBackgroundColor="@color/carbon_layer">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/carbon_spacing_05">
-                    <com.google.android.material.materialswitch.MaterialSwitch android:id="@+id/settingsAlwaysOn" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="@dimen/carbon_layout_size_height_lg" android:text="ಪರದೆ ಸದಾ ಆನ್" />
-                    <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ಮಾಧ್ಯಮ ಧ್ವನಿ" android:textAppearance="@style/TextAppearance.Carbon.Heading02" android:layout_marginTop="@dimen/carbon_spacing_05" />
-                    <com.google.android.material.slider.Slider android:id="@+id/settingsVolume" android:layout_width="match_parent" android:layout_height="wrap_content" android:contentDescription="ಮಾಧ್ಯಮ ಧ್ವನಿ" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-        </GridLayout>
-        <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Carbon.Heading02" android:text="@string/brand_developer" android:layout_marginBottom="@dimen/carbon_spacing_03" />
-        <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Carbon.Label01" android:text="@string/brand_made_in" android:layout_marginBottom="@dimen/carbon_spacing_03" />
-        <com.google.android.material.textview.MaterialTextView android:id="@+id/settingsVersion" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Carbon.Label01" android:text="" android:layout_marginBottom="@dimen/carbon_spacing_03" />
-        <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Carbon.Label01" android:text="@string/legal_footer_hint" android:layout_marginBottom="@dimen/carbon_spacing_03" />
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/earth_canvas_desk"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/page_pad_h"
+        android:paddingTop="@dimen/page_pad_top"
+        android:paddingRight="@dimen/page_pad_h"
+        android:paddingBottom="@dimen/chrome_bar">
+
+        <TextView android:id="@+id/settingsBack" style="@style/Desk.Link"
+            android:layout_width="wrap_content" android:layout_height="@dimen/touch"
+            android:gravity="center_vertical" android:text="@string/back" />
+
+        <TextView style="@style/Desk.Title" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="@string/settings_title" />
+
+        <TextView style="@style/Desk.Meta" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_4"
+            android:text="@string/settings_summary" />
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_16" android:background="@drawable/bg_card"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:padding="@dimen/space_16">
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1.15" android:orientation="vertical">
+                <TextView style="@style/Desk.Section" android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:text="@string/settings_veda"
+                    android:textColor="@color/accent" />
+                <TextView style="@style/Desk.Meta" android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_4"
+                    android:text="@string/settings_veda_hint" />
+            </LinearLayout>
+            <Spinner android:id="@+id/settingsVeda" android:layout_width="0dp"
+                android:layout_height="@dimen/touch" android:layout_marginLeft="@dimen/space_16"
+                android:layout_weight="0.85"
+                android:background="@drawable/bg_dropdown" android:popupBackground="@color/surface_2" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_8" android:background="@drawable/bg_card"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:padding="@dimen/space_16">
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1.15" android:orientation="vertical">
+                <TextView style="@style/Desk.Section" android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:text="@string/settings_panchanga"
+                    android:textColor="@color/accent" />
+                <TextView android:id="@+id/settingsPanchangaHint" style="@style/Desk.Meta"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_4" />
+            </LinearLayout>
+            <Spinner android:id="@+id/settingsPanchanga" android:layout_width="0dp"
+                android:layout_height="@dimen/touch" android:layout_marginLeft="@dimen/space_16"
+                android:layout_weight="0.85"
+                android:background="@drawable/bg_dropdown" android:popupBackground="@color/surface_2" />
+        </LinearLayout>
+
+        <TextView style="@style/Desk.Section" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_16"
+            android:text="@string/brand_developer" android:textColor="@color/white" />
+        <TextView style="@style/Desk.Meta" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_4"
+            android:text="@string/brand_made_in" />
+        <TextView android:id="@+id/settingsVersion" style="@style/Desk.Meta"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_4" />
     </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+</ScrollView>

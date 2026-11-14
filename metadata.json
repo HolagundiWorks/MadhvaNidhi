@@ -1,0 +1,8 @@
+{
+  "name": "MadhvaNidhi",
+  "description": "Daily Madhwa Panchanga, Sandhyavandana, Pooja, and Devotional Library app",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

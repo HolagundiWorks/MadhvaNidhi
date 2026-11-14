@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/readerActivityRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/carbon_background"
+    android:orientation="vertical">
+
+    <!-- Landscape Reader Toolbar: Back to menu + Title/Crumb + Text Size A- / % / A+ -->
+    <LinearLayout
+        android:id="@+id/readerToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/carbon_layout_size_height_lg"
+        android:background="@color/carbon_layer"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/carbon_spacing_03"
+        android:paddingEnd="@dimen/carbon_spacing_05"
+        android:paddingTop="@dimen/carbon_spacing_02"
+        android:paddingBottom="@dimen/carbon_spacing_02">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/readerMenuBack"
+            style="@style/Widget.Carbon.Button.Ghost"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/carbon_layout_size_height_lg"
+            android:minWidth="@dimen/carbon_layout_size_height_lg"
+            android:paddingStart="@dimen/carbon_spacing_03"
+            android:paddingEnd="@dimen/carbon_spacing_04"
+            android:text="@string/back_to_menu"
+            android:contentDescription="@string/back_to_menu"
+            app:cornerRadius="@dimen/carbon_corner_radius"
+            app:icon="@drawable/ic_nav_prev"
+            app:iconPadding="@dimen/carbon_spacing_02"
+            app:iconTint="@color/carbon_icon_primary" />
+
+        <View
+            android:layout_width="@dimen/carbon_border_width"
+            android:layout_height="28dp"
+            android:layout_marginStart="@dimen/carbon_spacing_02"
+            android:layout_marginEnd="@dimen/carbon_spacing_04"
+            android:background="@color/carbon_border_subtle" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/readerContentTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
+                android:textColor="@color/carbon_text_primary" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/readerContentCrumb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.Carbon.Label01"
+                android:textColor="@color/carbon_text_secondary" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/readerFontControls"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/carbon_spacing_04"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/readerFontDecrease"
+                style="@style/Widget.Carbon.Button.Tertiary.Icon"
+                android:layout_width="@dimen/carbon_layout_size_height_lg"
+                android:layout_height="@dimen/carbon_layout_size_height_lg"
+                android:contentDescription="@string/text_smaller"
+                app:cornerRadius="@dimen/carbon_corner_radius"
+                app:icon="@drawable/ic_text_smaller"
+                app:iconSize="20dp"
+                app:iconTint="@color/carbon_icon_primary"
+                app:strokeColor="@color/carbon_border_strong"
+                app:strokeWidth="@dimen/carbon_border_width" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/readerFontSizeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="48dp"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/carbon_spacing_02"
+                android:text="100%"
+                android:textAppearance="@style/TextAppearance.Carbon.Label01"
+                android:textColor="@color/carbon_text_secondary" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/readerFontIncrease"
+                style="@style/Widget.Carbon.Button.Tertiary.Icon"
+                android:layout_width="@dimen/carbon_layout_size_height_lg"
+                android:layout_height="@dimen/carbon_layout_size_height_lg"
+                android:contentDescription="@string/text_larger"
+                app:cornerRadius="@dimen/carbon_corner_radius"
+                app:icon="@drawable/ic_text_larger"
+                app:iconSize="20dp"
+                app:iconTint="@color/carbon_icon_primary"
+                app:strokeColor="@color/carbon_border_strong"
+                app:strokeWidth="@dimen/carbon_border_width" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/carbon_border_width"
+        android:background="@color/carbon_border_subtle" />
+
+    <!-- Optional stepped ritual bar (Sandhya / Puja) -->
+    <LinearLayout
+        android:id="@+id/readerStepBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/carbon_layer_01"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/carbon_spacing_05"
+        android:paddingEnd="@dimen/carbon_spacing_05"
+        android:paddingTop="@dimen/carbon_spacing_02"
+        android:paddingBottom="@dimen/carbon_spacing_02"
+        android:visibility="gone">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/readerStepPrev"
+            style="@style/Widget.Carbon.Button.Tertiary.Icon"
+            android:layout_width="@dimen/carbon_layout_size_height_lg"
+            android:layout_height="@dimen/carbon_layout_size_height_lg"
+            android:contentDescription="Previous step"
+            app:cornerRadius="@dimen/carbon_corner_radius"
+            app:icon="@drawable/ic_nav_prev"
+            app:iconTint="@color/carbon_icon_primary" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="@dimen/carbon_spacing_04"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/readerStepTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.Carbon.BodyCompact01"
+                android:textColor="@color/carbon_text_primary" />
+
+            <ProgressBar
+                android:id="@+id/readerStepProgress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/carbon_spacing_02"
+                android:layout_marginTop="@dimen/carbon_spacing_02"
+                android:max="100"
+                android:progress="25"
+                android:progressDrawable="@drawable/carbon_progress_horizontal" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/readerStepNext"
+            style="@style/Widget.Carbon.Button.Tertiary.Icon"
+            android:layout_width="@dimen/carbon_layout_size_height_lg"
+            android:layout_height="@dimen/carbon_layout_size_height_lg"
+            android:contentDescription="Next step"
+            app:cornerRadius="@dimen/carbon_corner_radius"
+            app:icon="@drawable/ic_nav_next"
+            app:iconTint="@color/carbon_icon_primary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/readerStepAll"
+            style="@style/Widget.Carbon.Button.Tertiary"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/carbon_layout_size_height_lg"
+            android:minHeight="@dimen/carbon_layout_size_height_lg"
+            android:layout_marginStart="@dimen/carbon_spacing_03"
+            android:paddingHorizontal="@dimen/carbon_spacing_03"
+            android:text="ಸಂಪೂರ್ಣ"
+            app:cornerRadius="@dimen/carbon_corner_radius" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/readerModeSkip"
+            style="@style/Widget.Carbon.Button.Tertiary.Icon"
+            android:layout_width="@dimen/carbon_layout_size_height_lg"
+            android:layout_height="@dimen/carbon_layout_size_height_lg"
+            android:layout_marginStart="@dimen/carbon_spacing_03"
+            android:contentDescription="Skip today"
+            app:cornerRadius="@dimen/carbon_corner_radius"
+            app:icon="@drawable/ic_skip"
+            app:iconTint="@color/carbon_icon_secondary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/readerModeComplete"
+            style="@style/Widget.Carbon.Button.Tertiary.Icon"
+            android:layout_width="@dimen/carbon_layout_size_height_lg"
+            android:layout_height="@dimen/carbon_layout_size_height_lg"
+            android:layout_marginStart="@dimen/carbon_spacing_02"
+            android:contentDescription="Completed for today"
+            app:cornerRadius="@dimen/carbon_corner_radius"
+            app:icon="@drawable/ic_check"
+            app:iconTint="@color/carbon_icon_secondary" />
+    </LinearLayout>
+
+    <!-- Optional Japa Anga switcher -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/readerAngaTabs"
+        style="@style/Widget.Carbon.TabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/carbon_layout_size_height_md"
+        android:visibility="gone"
+        app:tabGravity="start"
+        app:tabMode="scrollable" />
+
+    <View
+        android:id="@+id/readerModeDivider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/carbon_border_width"
+        android:background="@color/carbon_border_subtle"
+        android:visibility="gone" />
+
+    <!-- Scrollable landscape reading area -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/readerContentScroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/carbon_spacing_07"
+            android:paddingVertical="@dimen/carbon_spacing_05">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/readerContentHead"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/carbon_spacing_04"
+                android:textAppearance="@style/TextAppearance.Carbon.Heading03"
+                android:textColor="@color/carbon_interactive" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/readerContentBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/carbon_spacing_08"
+                android:textAppearance="@style/TextAppearance.Carbon.Body02"
+                android:textColor="@color/carbon_text_primary"
+                android:textIsSelectable="true" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

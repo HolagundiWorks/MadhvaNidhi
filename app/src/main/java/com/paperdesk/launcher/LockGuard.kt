@@ -19,13 +19,21 @@ object LockGuard {
         }
         activity.window.addFlags(
             WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+                or WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
                 or WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
                 or WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
         disableKeyguard(activity)
     }
 
-    fun disableKeyguard(context: Context) = Unit
+    @Suppress("DEPRECATION")
+    fun disableKeyguard(context: Context) {
+        try {
+            val km = context.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
+            km.newKeyguardLock("vishwakarma").disableKeyguard()
+        } catch (_: Exception) {
+        }
+    }
 
     fun showDesk(context: Context) {
         disableKeyguard(context)

@@ -48,6 +48,7 @@ class SectionBrowseFragment : Fragment() {
         adapter.submit(entries, selectedId)
         paintDetail()
         view.findViewById<MaterialButton>(R.id.sectionAction).setOnClickListener { runAction() }
+        view.findViewById<MaterialButton>(R.id.sectionOpenContent).setOnClickListener { openEntryInReader() }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -66,6 +67,9 @@ class SectionBrowseFragment : Fragment() {
         val entry = entries.firstOrNull { it.id == selectedId } ?: entries.firstOrNull()
         view.findViewById<TextView>(R.id.sectionDetailTitle).text = entry?.title.orEmpty()
         view.findViewById<TextView>(R.id.sectionDetailBody).text = entry?.body.orEmpty()
+        val openBtn = view.findViewById<MaterialButton>(R.id.sectionOpenContent)
+        openBtn.text = OsLang.ui("open_content", lang)
+        openBtn.isEnabled = entry != null
         val action = view.findViewById<MaterialButton>(R.id.sectionAction)
         if (entry?.actionLabel.isNullOrBlank()) {
             action.visibility = View.GONE
@@ -73,6 +77,26 @@ class SectionBrowseFragment : Fragment() {
             action.visibility = View.VISIBLE
             action.text = entry?.actionLabel
         }
+    }
+
+    private fun openEntryInReader() {
+        val entry = entries.firstOrNull { it.id == selectedId } ?: entries.firstOrNull() ?: return
+        val body = if (sectionId == PLAYLISTS) {
+            val songs = CatalogueStore.inGroup(entry.id)
+            if (songs.isNotEmpty()) {
+                entry.body + "\n\n" + songs.joinToString("\n") { "• ${CatalogueStore.label(it, lang)}" }
+            } else entry.body
+        } else {
+            entry.body
+        }
+        startActivity(
+            ContentReaderActivity.forInline(
+                requireContext(),
+                entry.title,
+                OsLang.ui(sectionId, lang),
+                body
+            )
+        )
     }
 
     private fun runAction() {

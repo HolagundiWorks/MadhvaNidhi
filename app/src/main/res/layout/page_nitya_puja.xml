@@ -3,29 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/carbon_background">
+    android:background="@color/carbon_background"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/carbon_layer"
         android:orientation="vertical"
-        android:padding="@dimen/carbon_spacing_05"
-        android:background="@color/carbon_layer">
+        android:padding="@dimen/carbon_spacing_04">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:minHeight="@dimen/carbon_layout_size_height_lg">
+            android:minHeight="@dimen/carbon_layout_size_height_lg"
+            android:orientation="horizontal">
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Carbon.TextInput.ExposedDropdown"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="ಪೂಜಾ ಕ್ರಮ"
-                style="@style/Widget.Carbon.TextInput.ExposedDropdown">
+                android:hint="ಪೂಜಾ ಕ್ರಮ">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/pujaRite"
@@ -40,16 +40,16 @@
                 style="@style/Widget.Carbon.Button.Tertiary.Icon"
                 android:layout_width="@dimen/carbon_layout_size_height_lg"
                 android:layout_height="@dimen/carbon_layout_size_height_lg"
-                android:layout_marginStart="@dimen/carbon_spacing_05"
+                android:layout_marginStart="@dimen/carbon_spacing_03"
+                android:contentDescription="Reset step"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:minWidth="0dp"
                 android:padding="0dp"
-                android:contentDescription="Skip today"
+                app:cornerRadius="@dimen/carbon_corner_radius"
                 app:icon="@drawable/ic_nav_next"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
-                app:cornerRadius="@dimen/carbon_corner_radius"
                 app:strokeColor="@color/carbon_border"
                 app:strokeWidth="@dimen/carbon_border_width" />
 
@@ -58,16 +58,16 @@
                 style="@style/Widget.Carbon.Button.Tertiary.Icon"
                 android:layout_width="@dimen/carbon_layout_size_height_lg"
                 android:layout_height="@dimen/carbon_layout_size_height_lg"
-                android:layout_marginStart="@dimen/carbon_spacing_03"
+                android:layout_marginStart="@dimen/carbon_spacing_02"
+                android:contentDescription="Completed for today"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:minWidth="0dp"
                 android:padding="0dp"
-                android:contentDescription="Completed for today"
+                app:cornerRadius="@dimen/carbon_corner_radius"
                 app:icon="@drawable/ic_check"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
-                app:cornerRadius="@dimen/carbon_corner_radius"
                 app:strokeColor="@color/carbon_border"
                 app:strokeWidth="@dimen/carbon_border_width" />
         </LinearLayout>
@@ -75,40 +75,71 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/carbon_spacing_05"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:layout_marginTop="@dimen/carbon_spacing_04"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/pujaStep"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/pujaPrev"
+                style="@style/Widget.Carbon.Button.Tertiary.Icon"
+                android:layout_width="@dimen/carbon_layout_size_height_lg"
+                android:layout_height="@dimen/carbon_layout_size_height_lg"
+                android:contentDescription="Previous step"
+                app:cornerRadius="@dimen/carbon_corner_radius"
+                app:icon="@drawable/ic_nav_prev"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:strokeColor="@color/carbon_border"
+                app:strokeWidth="@dimen/carbon_border_width" />
+
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
-                android:textColor="@color/carbon_text"
-                android:text="ಸಂಕಲ್ಪ" />
+                android:layout_marginHorizontal="@dimen/carbon_spacing_03"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-            <ProgressBar
-                android:id="@+id/pujaProgress"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/carbon_spacing_03"
-                android:layout_weight="7"
-                android:layout_marginStart="@dimen/carbon_spacing_05"
-                android:max="100"
-                android:progress="25"
-                android:progressTint="@color/carbon_interactive"
-                android:progressBackgroundTint="@color/carbon_border" />
+                <TextView
+                    android:id="@+id/pujaStep"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="ಸಂಕಲ್ಪ"
+                    android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
+                    android:textColor="@color/carbon_text" />
+
+                <ProgressBar
+                    android:id="@+id/pujaProgress"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/carbon_spacing_02"
+                    android:layout_marginTop="@dimen/carbon_spacing_02"
+                    android:max="100"
+                    android:progress="25"
+                    android:progressBackgroundTint="@color/carbon_border"
+                    android:progressTint="@color/carbon_interactive" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/pujaNext"
+                style="@style/Widget.Carbon.Button.Tertiary.Icon"
+                android:layout_width="@dimen/carbon_layout_size_height_lg"
+                android:layout_height="@dimen/carbon_layout_size_height_lg"
+                android:contentDescription="Next step"
+                app:cornerRadius="@dimen/carbon_corner_radius"
+                app:icon="@drawable/ic_nav_next"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:strokeColor="@color/carbon_border"
+                app:strokeWidth="@dimen/carbon_border_width" />
         </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="@dimen/carbon_spacing_05"
-            android:background="@color/carbon_border" />
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/carbon_border_width"
+        android:background="@color/carbon_border_subtle" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -126,70 +157,43 @@
                 android:id="@+id/pujaCrumb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="ಪೂಜೆ"
                 android:textAppearance="@style/TextAppearance.Carbon.Label01"
-                android:textColor="@color/carbon_text_secondary"
-                android:text="ಪೂಜೆ" />
+                android:textColor="@color/carbon_text_secondary" />
 
             <TextView
                 android:id="@+id/pujaBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/carbon_spacing_05"
+                android:layout_marginTop="@dimen/carbon_spacing_04"
                 android:lineSpacingMultiplier="1.35"
                 android:textAppearance="@style/TextAppearance.Carbon.Body01"
-                android:textColor="@color/carbon_text"
-                android:textIsSelectable="true" />
+                android:textColor="@color/carbon_text" />
         </LinearLayout>
     </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/carbon_border_width"
+        android:background="@color/carbon_border_subtle" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingStart="@dimen/carbon_spacing_05"
-        android:paddingEnd="@dimen/carbon_spacing_05"
-        android:paddingTop="@dimen/carbon_spacing_03"
-        android:paddingBottom="@dimen/carbon_spacing_03"
-        android:background="@color/carbon_layer">
+        android:background="@color/carbon_layer"
+        android:paddingHorizontal="@dimen/carbon_spacing_05"
+        android:paddingVertical="@dimen/carbon_spacing_03">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/pujaPrev"
-            style="@style/Widget.Carbon.Button.Tertiary.Icon"
-            android:layout_width="@dimen/carbon_layout_size_height_lg"
-            android:layout_height="@dimen/carbon_layout_size_height_lg"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:minWidth="0dp"
-            android:padding="0dp"
-            android:contentDescription="Previous step"
-            app:icon="@drawable/ic_nav_prev"
-            app:iconGravity="textStart"
-            app:iconPadding="0dp"
+            android:id="@+id/pujaOpenContent"
+            style="@style/Widget.Carbon.Button.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/carbon_layout_size_height_lg"
+            android:text="@string/open_content"
             app:cornerRadius="@dimen/carbon_corner_radius"
-            app:strokeColor="@color/carbon_border"
-            app:strokeWidth="@dimen/carbon_border_width" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/pujaNext"
-            style="@style/Widget.Carbon.Button.Tertiary.Icon"
-            android:layout_width="@dimen/carbon_layout_size_height_lg"
-            android:layout_height="@dimen/carbon_layout_size_height_lg"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:minWidth="0dp"
-            android:padding="0dp"
-            android:contentDescription="Next step"
-            app:icon="@drawable/ic_nav_next"
-            app:iconGravity="textStart"
-            app:iconPadding="0dp"
-            app:cornerRadius="@dimen/carbon_corner_radius"
-            app:strokeColor="@color/carbon_border"
-            app:strokeWidth="@dimen/carbon_border_width" />
+            app:icon="@drawable/ic_launch"
+            app:iconGravity="textEnd"
+            app:iconPadding="@dimen/carbon_spacing_03" />
     </LinearLayout>
 </LinearLayout>

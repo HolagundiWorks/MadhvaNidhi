@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Legacy aliases resolve through carbon_* night tokens. -->
-    <color name="black">@color/carbon_background</color>
-    <color name="white">@color/carbon_text</color>
-    <color name="accent">@color/carbon_button_primary</color>
-    <color name="white_90">@color/carbon_text</color>
-    <color name="white_70">@color/carbon_text_secondary</color>
-    <color name="white_55">@color/carbon_text_helper</color>
-    <color name="white_45">@color/carbon_text_helper</color>
-    <color name="accent_90">@color/carbon_button_primary</color>
-    <color name="accent_70">@color/carbon_button_primary_hover</color>
-    <color name="scrim">@color/carbon_overlay</color>
-    <color name="clock_face">@color/carbon_background</color>
-    <color name="clock_ink">@color/carbon_text</color>
-    <color name="leaf">@color/carbon_background</color>
-    <color name="leaf_fibre">@color/carbon_text</color>
-    <color name="leaf_hole">@color/carbon_text</color>
-    <color name="moon_lit">@color/carbon_layer_high</color>
-    <color name="moon_shade">@color/carbon_text_helper</color>
+    <color name="black">#FFFDF8</color>
+    <color name="white">#211A16</color>
+    <color name="accent">#C96F45</color>
+    <color name="white_90">#E6211A16</color>
+    <color name="white_70">#B3211A16</color>
+    <color name="white_55">#8C211A16</color>
+    <color name="white_45">#73211A16</color>
+    <color name="accent_90">#E6C96F45</color>
+    <color name="accent_70">#B3C96F45</color>
+    <color name="scrim">#99000000</color>
+    <color name="clock_face">#FFFDF8</color>
+    <color name="clock_ink">#211A16</color>
+    <color name="leaf">#FFFDF8</color>
+    <color name="leaf_fibre">#211A16</color>
+    <color name="leaf_hole">#211A16</color>
+    <color name="moon_lit">#D8C8BA</color>
+    <color name="moon_shade">#6D5D51</color>
 </resources>
