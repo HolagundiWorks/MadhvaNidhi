@@ -43,6 +43,12 @@ Related previews / freezes:
 - Publishing, signing, or Play Store release unless explicitly asked
 - Rewriting web mockups to Material without an explicit request
 
+## Work ownership (set 14 Nov 2026)
+
+- **Songs** (`prototypes/songs-catalogue.json`, `app/src/main/assets/madhwa/texts/haridasa/`, and the `rao_collection` group): owned by the songs session. Other sessions do not edit or restore these files.
+- **UI fixes and app builds** (Gradle builds, `installDebug`, phone checks, Android Kotlin/XML UI changes): owned by the UI worker session. Other sessions do not build or install the app.
+- **Commits:** each owner commits only its own paths. Do not stage unrelated files or use `git add -A`.
+
 ## Portrait-first
 
 MadhvaNidhi main shell is portrait on mockup and device (top header + content + bottom destination rail; left drawer for labeled nav). Do not force landscape-only studio presets or lock the launcher to landscape.
