@@ -85,9 +85,8 @@ class CatalogueListFragment : Fragment(R.layout.page_catalogue_list) {
         override fun onCreateViewHolder(parent:ViewGroup,type:Int)=Holder(LayoutInflater.from(parent.context).inflate(R.layout.item_catalogue_list,parent,false) as MaterialCardView)
         override fun onBindViewHolder(holder:Holder,position:Int){
             val item=items[position];val title=CatalogueStore.label(item,lang)
-            val group=CatalogueStore.groups().firstOrNull{it.id==item.group}?.let{CatalogueStore.groupLabel(it,lang)}.orEmpty()
             holder.card.findViewById<TextView>(R.id.catalogueRowTitle).text=title
-            holder.card.findViewById<TextView>(R.id.catalogueRowMeta).text=listOf(item.author,group).filter{it.isNotBlank()}.joinToString(" · ")
+            holder.card.findViewById<TextView>(R.id.catalogueRowMeta).apply{text=item.author;visibility=if(item.author.isBlank())View.GONE else View.VISIBLE}
             holder.card.contentDescription="$title. ಅಡ್ಡ ಪರದೆಯಲ್ಲಿ ಓದಿ"
             holder.card.setOnClickListener{open(item)}
             holder.card.findViewById<MaterialButton>(R.id.catalogueRowFavorite).apply{

@@ -31,9 +31,9 @@ class SongLibraryFragment : Fragment(R.layout.page_song_library) {
                 CatalogueStore.groupsFor("hadugalu").filter { it.id !in CatalogueClassification.MAIN_SONG_GROUPS }.map { it.id }
             }
             keys.clear(); keys.addAll(CatalogueClassification.MAIN_SONG_GROUPS); keys.add("favorites")
-            if (extraGroups.isNotEmpty()) keys.add("other")
+            keys.add("other")
             val tabs = view.findViewById<TabLayout>(R.id.songCollectionTabs)
-            val names = mapOf("dasara_padagalu" to "ದಾಸರ ಪದಗಳು", "suladhigalu" to "ಸುಳಾದಿಗಳು", "ugabhogagalu" to "ಉಗಾಭೋಗಗಳು", "favorites" to "ಮೆಚ್ಚಿನವು", "other" to "ಇತರೆ ಹಾಡುಗಳು")
+            val names = mapOf("dasara_padagalu" to "ದಾಸರ ಪದಗಳು", "suladhigalu" to "ಸುಳಾದಿಗಳು", "ugabhogagalu" to "ಉಗಾಭೋಗಗಳು", "favorites" to "ಮೆಚ್ಚಿನವು", "other" to "ವರ್ಗೀಕರಿಸದ")
             keys.forEach { key -> tabs.addTab(tabs.newTab().setText(names[key]).setTag(key),false) }
             tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab) { selected=tab.tag as String; showCollection() }

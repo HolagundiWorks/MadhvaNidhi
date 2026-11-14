@@ -30,6 +30,11 @@ MadhvaNidhi is not affiliated with Saaranga Infotech LLP or sampada.net.
 Those sites were used only as discovery references; their page bodies were not
 scraped into this application.
 
+RAO Collections (with permission)
+-----------------------------
+Song lyrics from https://raocollectionssongs.blogspot.com/ were used with the
+permission of the developer (stated 14 Nov 2026). The blog has no licence notice.
+
 Other bundled stotra / mantra / library texts
 ---------------------------------------------
 Retain source attributions recorded in docs/CATALOGUE_AUDIT.md and individual
