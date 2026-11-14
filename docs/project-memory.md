@@ -1,6 +1,6 @@
 # MadhvaNidhi project memory
 
-Updated 14 November 2026. Android visual system is Material Design 3 (seed `#BA4E00`); mockups remain Carbon structure reference. Journey patterns: `docs/carbon-android-ux.md`. Restore tag before M3 pass: `restore/portrait-mock-pre-m3`. Verify Git status before changing code.
+Updated 14 November 2026. Android visual system is Material Design 3 (orange accent `#FF4F18`, updated by the user); mockups remain Carbon structure reference. Journey patterns: `docs/carbon-android-ux.md`. Restore tag before M3 pass: `restore/portrait-mock-pre-m3`. Verify Git status before changing code.
 
 ## Current authority
 
@@ -42,7 +42,7 @@ Primary rail, in order: Dashboard → Panchanga → Nitya Karma → Puja → Gra
 
 Portrait-first shell (header + bottom rail; left drawer for labeled nav). Content readers may use landscape. Android dashboard uses the mockup &lt;720dp 2-column stack (week/streak/progress full-width); Japa stacks anga above counter on phone. Dashboard gamification: Sandhya weekly score (X/7) + streak/japa badges via `DashboardBadges` (streak 1→365, weekly 3/5/7, japa cumulative 108→10,00,001).
 
-**Android:** Pure dark/light neutrals (black / white / grey) with orange accent `#BA4E00` only — no warm brown tonal surfaces. `Widget.MadhvaNidhi.*` styles; flat filled cards (no elevation overlays); Material Icons Outlined for shell/common actions. Restore point: git tag `restore/portrait-mock-pre-m3`.
+**Android:** Pure dark/light neutrals (black / white / grey) with orange accent `#FF4F18` only — no warm brown tonal surfaces. `Widget.MadhvaNidhi.*` styles; flat filled cards (no elevation overlays); Material Icons Outlined for shell/common actions. Restore point: git tag `restore/portrait-mock-pre-m3`.
 
 **Mockups / freeze docs:** IBM Carbon remains the structure reference (productive square corners, interactive `#BA4E00`). Use freeze docs and `docs/frozen-design-tokens.json` for density, spacing, type and IA. The old AppleDash/1.5× corner-marker iteration is superseded: frozen Panchanga uses `WatsonHealthStatusPartialFail` for Ekadashi.
 
