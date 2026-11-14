@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ದಿನದ ಅಭ್ಯಾಸ · Daily progress"
-        android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
-        android:textColor="@color/carbon_text" />
+        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+        android:textColor="@color/md_theme_onSurface" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/dialogSandhyaPratah"
@@ -38,29 +38,29 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/carbon_border_width"
         android:layout_marginVertical="@dimen/carbon_spacing_03"
-        android:background="@color/carbon_border_subtle" />
+        android:background="@color/md_theme_outlineVariant" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/dashboard_japa"
-        android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
-        android:textColor="@color/carbon_text" />
+        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+        android:textColor="@color/md_theme_onSurface" />
 
     <TextView
         android:id="@+id/dialogJapaCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/carbon_spacing_02"
-        android:textAppearance="@style/TextAppearance.Carbon.Heading03"
-        android:textColor="@color/carbon_text" />
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+        android:textColor="@color/md_theme_onSurface" />
 
     <TextView
         android:id="@+id/dialogJapaMeta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.Carbon.Label01"
-        android:textColor="@color/carbon_text_secondary" />
+        android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+        android:textColor="@color/md_theme_onSurfaceVariant" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -70,14 +70,14 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/dialogJapaInc"
-            style="@style/Widget.Carbon.Button.Primary"
+            style="@style/Widget.Material3.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="+1" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/dialogJapaUndo"
-            style="@style/Widget.Carbon.Button.Tertiary"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/carbon_spacing_02"
@@ -85,7 +85,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/dialogOpenJapa"
-            style="@style/Widget.Carbon.Button.Ghost"
+            style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/carbon_spacing_02"
@@ -96,14 +96,14 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/carbon_border_width"
         android:layout_marginVertical="@dimen/carbon_spacing_03"
-        android:background="@color/carbon_border_subtle" />
+        android:background="@color/md_theme_outlineVariant" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/dashboard_stotra"
-        android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
-        android:textColor="@color/carbon_text" />
+        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+        android:textColor="@color/md_theme_onSurface" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/dialogStotra1"
@@ -121,7 +121,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/dialogOpenGrantha"
-        style="@style/Widget.Carbon.Button.Ghost"
+        style="@style/Widget.Material3.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dashboard_resume_reading" />

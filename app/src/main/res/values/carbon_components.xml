@@ -1,65 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<!-- Carbon component styles mapped onto Material 3 widgets. -->
+<!-- Legacy Widget.Carbon.* names retained for layouts; visuals are Material 3. -->
 <resources>
-    <!-- Style name chain roots required by AAPT for Widget.Carbon.* -->
     <style name="Widget.Carbon" parent="" />
-    <style name="Widget.Carbon.Button" parent="Widget.Material3.Button" />
+    <style name="Widget.Carbon.Button" parent="Widget.MadhvaNidhi.Button.Filled" />
 
-    <!-- Carbon btn cds btn primary -->
-    <style name="Widget.Carbon.Button.Primary" parent="Widget.Material3.Button">
-        <item name="cornerRadius">@dimen/carbon_corner_radius</item>
-        <item name="backgroundTint">@color/carbon_button_primary</item>
-        <item name="android:textColor">@color/carbon_text_on_color</item>
-        <item name="iconTint">@color/carbon_icon_on_color</item>
-        <item name="rippleColor">@color/carbon_button_primary_hover</item>
-        <item name="android:minHeight">@dimen/carbon_layout_size_height_lg</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="android:textAppearance">@style/TextAppearance.Carbon.BodyCompact01</item>
-        <item name="android:letterSpacing">0.02</item>
+    <style name="Widget.Carbon.Button.Primary" parent="Widget.MadhvaNidhi.Button.Filled" />
+
+    <style name="Widget.Carbon.Button.Ghost" parent="Widget.MadhvaNidhi.Button.Text">
+        <item name="android:textColor">@color/md_theme_primary</item>
+        <item name="iconTint">@color/md_theme_onSurface</item>
     </style>
 
-    <!-- Carbon btn cds btn ghost -->
-    <style name="Widget.Carbon.Button.Ghost" parent="Widget.Material3.Button.TextButton">
-        <item name="cornerRadius">@dimen/carbon_corner_radius</item>
-        <item name="android:textColor">@color/carbon_link_primary</item>
-        <item name="iconTint">@color/carbon_icon_primary</item>
-        <item name="rippleColor">@color/carbon_background_hover</item>
-        <item name="android:minHeight">@dimen/carbon_layout_size_height_lg</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="android:textAppearance">@style/TextAppearance.Carbon.BodyCompact01</item>
+    <style name="Widget.Carbon.Button.Tertiary" parent="Widget.MadhvaNidhi.Button.Outlined">
+        <item name="android:textColor">@color/md_theme_primary</item>
+        <item name="iconTint">@color/md_theme_primary</item>
     </style>
 
-    <!-- Carbon btn cds btn tertiary (outlined) -->
-    <style name="Widget.Carbon.Button.Tertiary" parent="Widget.Material3.Button.OutlinedButton">
-        <item name="cornerRadius">@dimen/carbon_corner_radius</item>
-        <item name="strokeColor">@color/carbon_button_primary</item>
-        <item name="strokeWidth">@dimen/carbon_border_width</item>
-        <item name="android:textColor">@color/carbon_button_primary</item>
-        <item name="iconTint">@color/carbon_button_primary</item>
-        <item name="rippleColor">@color/carbon_background_hover</item>
-        <item name="android:minHeight">@dimen/carbon_layout_size_height_lg</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="android:textAppearance">@style/TextAppearance.Carbon.BodyCompact01</item>
-    </style>
-
-    <!-- Icon-only ghost control (toolbar / 48dp targets) -->
-    <style name="Widget.Carbon.Button.Icon" parent="Widget.Carbon.Button.Ghost">
-        <item name="android:minWidth">@dimen/carbon_layout_size_height_lg</item>
-        <item name="android:minHeight">@dimen/carbon_layout_size_height_lg</item>
+    <style name="Widget.Carbon.Button.Icon" parent="Widget.MadhvaNidhi.IconButton.Standard">
         <item name="android:padding">0dp</item>
         <item name="iconPadding">0dp</item>
         <item name="iconGravity">textStart</item>
-        <item name="iconTint">@color/carbon_icon_primary</item>
     </style>
 
-    <!-- Icon-only tertiary (outlined · Nitya chrome FABs · Carbon md / 40) -->
     <style name="Widget.Carbon.Button.Tertiary.Icon" parent="Widget.Carbon.Button.Tertiary">
-        <item name="strokeColor">@color/carbon_border_strong</item>
-        <item name="android:textColor">@color/carbon_text</item>
-        <item name="iconTint">@color/carbon_icon_secondary</item>
+        <item name="strokeColor">@color/md_theme_outline</item>
+        <item name="android:textColor">@color/md_theme_onSurface</item>
+        <item name="iconTint">@color/md_theme_onSurfaceVariant</item>
         <item name="iconSize">16dp</item>
         <item name="android:minWidth">@dimen/carbon_layout_size_height_md</item>
         <item name="android:minHeight">@dimen/carbon_layout_size_height_md</item>
@@ -70,128 +36,74 @@
         <item name="cornerRadius">@dimen/carbon_corner_radius</item>
     </style>
 
-    <!-- Contained tabs · left-aligned; equal widths applied per screen via CarbonTabs -->
-    <style name="Widget.Carbon.TabLayout" parent="Widget.Material3.TabLayout">
-        <item name="android:background">@color/carbon_layer_accent</item>
-        <item name="android:layout_gravity">start</item>
-        <item name="tabBackground">@drawable/bg_carbon_tab</item>
-        <item name="tabIndicatorHeight">0dp</item>
-        <item name="tabIndicatorFullWidth">true</item>
-        <item name="tabMode">scrollable</item>
-        <item name="tabGravity">start</item>
-        <item name="tabSelectedTextColor">@color/carbon_text_primary</item>
-        <item name="tabTextColor">@color/carbon_text_secondary</item>
-        <item name="tabRippleColor">@color/carbon_background_hover</item>
-        <item name="tabTextAppearance">@style/TextAppearance.Carbon.BodyCompact01</item>
-        <item name="tabPaddingStart">@dimen/carbon_spacing_05</item>
-        <item name="tabPaddingEnd">@dimen/carbon_spacing_05</item>
-        <item name="tabMinWidth">0dp</item>
-        <item name="tabMaxWidth">10000dp</item>
-        <item name="tabContentStart">0dp</item>
-    </style>
+    <style name="Widget.Carbon.TabLayout" parent="Widget.MadhvaNidhi.TabLayout" />
 
-    <!-- Exposed select (square · Carbon field) -->
-    <style name="Widget.Carbon.TextInput.ExposedDropdown" parent="Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
-        <item name="boxCornerRadiusTopStart">@dimen/carbon_corner_radius</item>
-        <item name="boxCornerRadiusTopEnd">@dimen/carbon_corner_radius</item>
-        <item name="boxCornerRadiusBottomStart">@dimen/carbon_corner_radius</item>
-        <item name="boxCornerRadiusBottomEnd">@dimen/carbon_corner_radius</item>
-        <item name="boxStrokeColor">@color/carbon_border_strong</item>
-        <item name="hintTextColor">@color/carbon_text_helper</item>
-        <item name="android:textColorHint">@color/carbon_text_placeholder</item>
-    </style>
+    <style name="Widget.Carbon.TextInput.ExposedDropdown" parent="Widget.MadhvaNidhi.TextField.Exposed" />
 
-    <!-- Side rail destination · 48dp row, $spacing-05 pad, left accent when selected -->
     <style name="Widget.Carbon.RailButton" parent="Widget.Material3.Button.TextButton">
-        <item name="cornerRadius">0dp</item>
+        <item name="cornerRadius">@dimen/carbon_corner_radius</item>
         <item name="android:minWidth">0dp</item>
         <item name="android:minHeight">@dimen/carbon_layout_size_height_lg</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
         <item name="android:paddingStart">@dimen/carbon_spacing_05</item>
         <item name="android:paddingEnd">@dimen/carbon_spacing_05</item>
-        <item name="iconTint">@color/carbon_icon_secondary</item>
-        <item name="android:textColor">@color/carbon_text_secondary</item>
-        <item name="rippleColor">@color/carbon_background_hover</item>
+        <item name="iconTint">@color/md_theme_onSurfaceVariant</item>
+        <item name="android:textColor">@color/md_theme_onSurfaceVariant</item>
+        <item name="rippleColor">@color/md_theme_hover</item>
         <item name="backgroundTint">@null</item>
         <item name="android:background">@drawable/bg_rail_item</item>
     </style>
 
-    <!-- Carbon tile / cds tile clickable -->
-    <style name="Widget.Carbon.Tile" parent="Widget.Material3.CardView.Filled">
-        <item name="cardBackgroundColor">@color/carbon_layer</item>
-        <item name="cardElevation">0dp</item>
-        <item name="cardCornerRadius">@dimen/carbon_corner_radius</item>
-        <item name="strokeWidth">0dp</item>
-        <item name="rippleColor">@color/carbon_background_hover</item>
-    </style>
+    <style name="Widget.Carbon.Tile" parent="Widget.MadhvaNidhi.SurfaceCard" />
 
-    <style name="Widget.Carbon.Tile.Clickable" parent="Widget.Material3.Button.TextButton">
-        <item name="cornerRadius">@dimen/carbon_corner_radius</item>
-        <item name="backgroundTint">@color/carbon_layer</item>
-        <item name="android:textColor">@color/carbon_text</item>
-        <item name="iconTint">@color/carbon_icon_primary</item>
-        <item name="rippleColor">@color/carbon_layer_hover</item>
+    <style name="Widget.Carbon.Tile.Clickable" parent="Widget.MadhvaNidhi.Button.Tonal">
         <item name="android:gravity">start|center_vertical</item>
         <item name="android:textAlignment">viewStart</item>
-        <item name="android:minHeight">@dimen/carbon_layout_size_height_lg</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
         <item name="android:paddingStart">@dimen/carbon_spacing_05</item>
         <item name="android:paddingEnd">@dimen/carbon_spacing_05</item>
-        <item name="android:textAppearance">@style/TextAppearance.Carbon.Body01</item>
+        <item name="android:textAppearance">@style/TextAppearance.Material3.BodyLarge</item>
     </style>
 
-    <!-- Carbon tag -->
-    <style name="Widget.Carbon.Tag" parent="Widget.Material3.Button.TonalButton">
-        <item name="cornerRadius">@dimen/carbon_corner_radius</item>
-        <item name="backgroundTint">@color/carbon_layer_high</item>
-        <item name="android:textColor">@color/carbon_text</item>
+    <style name="Widget.Carbon.Tag" parent="Widget.MadhvaNidhi.Button.Tonal">
+        <item name="backgroundTint">@color/md_theme_secondaryContainer</item>
+        <item name="android:textColor">@color/md_theme_onSecondaryContainer</item>
         <item name="android:minHeight">@dimen/carbon_layout_size_height_sm</item>
         <item name="android:minWidth">0dp</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
         <item name="android:paddingStart">@dimen/carbon_spacing_03</item>
         <item name="android:paddingEnd">@dimen/carbon_spacing_03</item>
-        <item name="android:textAppearance">@style/TextAppearance.Carbon.Label01</item>
+        <item name="android:textAppearance">@style/TextAppearance.Material3.LabelMedium</item>
         <item name="android:textAllCaps">false</item>
     </style>
 
-    <!-- Carbon tag red / warning (Ekadashi) -->
     <style name="Widget.Carbon.Tag.Warning" parent="Widget.Carbon.Tag">
-        <item name="backgroundTint">@color/carbon_layer_high</item>
-        <item name="android:textColor">@color/carbon_ekadashi</item>
-        <item name="iconTint">@color/carbon_ekadashi</item>
+        <item name="backgroundTint">@color/md_theme_tertiaryContainer</item>
+        <item name="android:textColor">@color/md_theme_onTertiaryContainer</item>
+        <item name="iconTint">@color/md_theme_onTertiaryContainer</item>
     </style>
 
-    <!-- Empty / helper panel -->
     <style name="Widget.Carbon.EmptyState">
-        <item name="android:background">@color/carbon_layer</item>
+        <item name="android:background">@color/md_theme_surfaceContainer</item>
         <item name="android:padding">@dimen/carbon_spacing_05</item>
-        <item name="android:textAppearance">@style/TextAppearance.Carbon.Body01</item>
-        <item name="android:textColor">@color/carbon_text_secondary</item>
+        <item name="android:textAppearance">@style/TextAppearance.Material3.BodyLarge</item>
+        <item name="android:textColor">@color/md_theme_onSurfaceVariant</item>
     </style>
 
-    <!-- Form field (filled) -->
     <style name="Widget.Carbon.TextInput" parent="Widget.Material3.TextInputLayout.FilledBox">
-        <item name="boxBackgroundColor">@color/carbon_field</item>
-        <item name="boxCornerRadiusTopStart">@dimen/carbon_corner_radius</item>
-        <item name="boxCornerRadiusTopEnd">@dimen/carbon_corner_radius</item>
-        <item name="boxCornerRadiusBottomStart">0dp</item>
-        <item name="boxCornerRadiusBottomEnd">0dp</item>
-        <item name="boxStrokeColor">@color/carbon_border_strong</item>
-        <item name="hintTextColor">@color/carbon_text_helper</item>
-        <item name="android:textColorHint">@color/carbon_text_placeholder</item>
+        <item name="boxBackgroundColor">@color/md_theme_surfaceContainerHighest</item>
+        <item name="boxCornerRadiusTopStart">4dp</item>
+        <item name="boxCornerRadiusTopEnd">4dp</item>
+        <item name="boxCornerRadiusBottomStart">4dp</item>
+        <item name="boxCornerRadiusBottomEnd">4dp</item>
+        <item name="boxStrokeColor">@color/md_theme_outline</item>
+        <item name="hintTextColor">@color/md_theme_primary</item>
+        <item name="android:textColorHint">@color/md_theme_onSurfaceVariant</item>
     </style>
 
-    <!-- Outlined field (square · Carbon) -->
-    <style name="Widget.Carbon.TextInput.Outlined" parent="Widget.Material3.TextInputLayout.OutlinedBox">
-        <item name="boxCornerRadiusTopStart">@dimen/carbon_corner_radius</item>
-        <item name="boxCornerRadiusTopEnd">@dimen/carbon_corner_radius</item>
-        <item name="boxCornerRadiusBottomStart">@dimen/carbon_corner_radius</item>
-        <item name="boxCornerRadiusBottomEnd">@dimen/carbon_corner_radius</item>
-        <item name="boxStrokeColor">@color/carbon_border_strong</item>
-        <item name="hintTextColor">@color/carbon_text_helper</item>
-        <item name="android:textColorHint">@color/carbon_text_placeholder</item>
+    <style name="Widget.Carbon.ContentSwitcher.Item" parent="Widget.MadhvaNidhi.Segmented.Item">
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="strokeWidth">0dp</item>
     </style>
+
+    <style name="Widget.Carbon.TextInput.Outlined" parent="Widget.MadhvaNidhi.TextField.Outlined" />
 </resources>

@@ -12,10 +12,12 @@ Approved web-mockup contract for the **ಜಪ** tab inside Nitya Karma. Layout c
 ## Screen structure
 
 1. **Toolbar**: mantra `cds--select` (left) · Skip · Complete (right)
-2. **50:50 landscape split**
-   - **Left:** Carbon **contained** tabs ಪೂರ್ವಾಂಗ / ಉತ್ತರಾಂಗ + anga body
-   - **Right:** pad tiles — count `done/target` (completed count **2.5×** target type size, centred); goal tiles **11 · 101 · 1,001** (add to daily goal, not count); reset tile restores **daily goal from profile**; large **+** increments count by 1
-3. Fit viewport — **no scroll**; equal `$spacing-05` gaps/padding
+2. **Body**
+   - **Wide (≥720px):** 50:50 split — anga tabs left · counter pad right
+   - **Portrait phone:** stack anga (~40%) above counter; divider between panes
+   - Anga: Carbon **contained** tabs ಪೂರ್ವಾಂಗ / ಉತ್ತರಾಂಗ + body
+   - Counter: count `done/target` (completed count **2.5×** target type size, centred); goal tiles **11 · 101 · 1,001** (add to daily goal, not count); reset restores **daily goal from profile**; large **+** increments count by 1
+3. Fit viewport on wide; portrait may scroll anga body; equal `$spacing-05` gaps/padding
 4. Indian digit grouping on large numbers where shown
 
 ## Behaviour

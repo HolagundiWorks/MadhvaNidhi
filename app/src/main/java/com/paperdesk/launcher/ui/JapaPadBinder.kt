@@ -82,16 +82,6 @@ object JapaPadBinder {
             override fun onTabUnselected(tab: TabLayout.Tab) = Unit
             override fun onTabReselected(tab: TabLayout.Tab) = Unit
         })
-        root.findViewById<View>(R.id.japaOpenAnga)?.setOnClickListener {
-            val activeLabel = entries.firstOrNull { it.id == activeId }?.label ?: OsLang.ui("japa", lang)
-            host.startActivity(
-                ContentReaderActivity.forJapaAnga(
-                    context,
-                    activeLabel,
-                    angaTabs.selectedTabPosition.coerceAtLeast(0)
-                )
-            )
-        }
 
         fun addGoal(delta: Long) {
             dailyGoal = (dailyGoal + delta).coerceAtMost(JapaGoals.SANKALPA.last())

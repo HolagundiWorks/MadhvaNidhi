@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Carbon rail current: $layer-selected + inset 3px interactive -->
+<!-- Material 3 drawer selected: secondary container + start primary indicator -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
+    <item android:left="4dp" android:right="4dp" android:top="4dp" android:bottom="4dp">
         <shape android:shape="rectangle">
-            <solid android:color="@color/carbon_layer_selected" />
+            <solid android:color="@color/md_theme_secondaryContainer" />
+            <corners android:radius="12dp" />
         </shape>
     </item>
-    <item android:gravity="start" android:width="3dp">
+    <item android:gravity="start" android:width="3dp" android:top="10dp" android:bottom="10dp" android:left="4dp">
         <shape android:shape="rectangle">
-            <solid android:color="@color/carbon_border_interactive" />
+            <solid android:color="@color/md_theme_primary" />
+            <corners android:radius="2dp" />
         </shape>
     </item>
 </layer-list>

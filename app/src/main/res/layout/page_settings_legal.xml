@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/legal_title"
-            android:textAppearance="@style/TextAppearance.Carbon.Heading03"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
             android:layout_marginBottom="@dimen/carbon_spacing_05" />
 
         <com.google.android.material.card.MaterialCardView
@@ -26,7 +26,7 @@
             android:layout_marginBottom="@dimen/carbon_spacing_05"
             app:cardCornerRadius="@dimen/carbon_corner_radius"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four"
-            app:cardBackgroundColor="@color/carbon_layer">
+            app:cardBackgroundColor="@color/md_theme_surfaceContainer">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,7 +38,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/legal_developer_heading"
-                    android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01" />
+                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/legalDeveloperBody"
@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/carbon_spacing_03"
                     android:text="@string/legal_developer_body"
-                    android:textAppearance="@style/TextAppearance.Carbon.Body01"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                     android:textIsSelectable="true" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -54,7 +54,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/carbon_spacing_03"
-                    android:textAppearance="@style/TextAppearance.Carbon.Label01"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                     android:text="" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -65,7 +65,7 @@
             android:layout_marginBottom="@dimen/carbon_spacing_05"
             app:cardCornerRadius="@dimen/carbon_corner_radius"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four"
-            app:cardBackgroundColor="@color/carbon_layer">
+            app:cardBackgroundColor="@color/md_theme_surfaceContainer">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -77,7 +77,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/legal_privacy_heading"
-                    android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01" />
+                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/legalPrivacyBody"
@@ -85,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/carbon_spacing_03"
                     android:text="@string/legal_privacy_body"
-                    android:textAppearance="@style/TextAppearance.Carbon.Body01"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                     android:textIsSelectable="true" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -96,7 +96,7 @@
             android:layout_marginBottom="@dimen/carbon_spacing_05"
             app:cardCornerRadius="@dimen/carbon_corner_radius"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four"
-            app:cardBackgroundColor="@color/carbon_layer">
+            app:cardBackgroundColor="@color/md_theme_surfaceContainer">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -108,7 +108,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/legal_license_heading"
-                    android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01" />
+                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/legalLicenseBody"
@@ -116,7 +116,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/carbon_spacing_03"
                     android:text="@string/legal_license_body"
-                    android:textAppearance="@style/TextAppearance.Carbon.Body01"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                     android:textIsSelectable="true" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -125,6 +125,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/brand_made_in"
-            android:textAppearance="@style/TextAppearance.Carbon.Label01" />
+            android:textAppearance="@style/TextAppearance.Material3.LabelMedium" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

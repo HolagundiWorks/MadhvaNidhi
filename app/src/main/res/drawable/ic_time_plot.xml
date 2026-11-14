@@ -1,6 +1,11 @@
-<!-- Carbon TimePlot 32, Apache-2.0; see assets/licenses/carbon-icons.txt -->
-<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="32dp" android:height="32dp" android:viewportWidth="32" android:viewportHeight="32">
-    <path android:fillColor="#FF000000" android:pathData="M23.586 13 21 10.414 21 6 23 6 23 9.586 25 11.586 23.586 13z" />
-    <path android:fillColor="#FF000000" android:pathData="M22,18a8,8,0,1,1,8-8A8.0092,8.0092,0,0,1,22,18ZM22,4a6,6,0,1,0,6,6A6.0066,6.0066,0,0,0,22,4Z" />
-    <path android:fillColor="#FF000000" android:pathData="M8.63,18l7,6H30V22H16.37l-7-6H4V2H2V28a2.0025,2.0025,0,0,0,2,2H30V28H4V18Z" />
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Material Icons Outlined (schedule) — Apache-2.0 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M11.99,2C6.47,2 2,6.48 2,12s4.47,10 9.99,10C17.52,22 22,17.52 22,12S17.52,2 11.99,2zM12,20c-4.42,0 -8,-3.58 -8,-8s3.58,-8 8,-8s8,3.58 8,8S16.42,20 12,20zM12.5,7H11v6l5.25,3.15l0.75,-1.23l-4.5,-2.67V7z" />
 </vector>

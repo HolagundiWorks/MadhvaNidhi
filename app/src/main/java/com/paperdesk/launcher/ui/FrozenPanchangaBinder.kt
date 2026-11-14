@@ -114,8 +114,8 @@ object FrozenPanchangaBinder {
                 OsLang.weekdayShort(PanchangaStore.parse(it), IndicScript.Lang.KN)
             }.distinct().joinToString("/").ifBlank { "—" }
             val tithi = tile.tithis.joinToString(" + ") { tithiName(it, index) }
-            // Live mock append order: .date (civil) → .weekday → .num (tithi)
-            val text = "$civil\n$weekday\n$tithi"
+            // Freeze: tithi name → civil date number → weekday
+            val text = "$tithi\n$civil\n$weekday"
             val scale = mockScale()
             // Mock density CSS clamps — keep ranges ordered so tiny cells never crash coerceIn.
             fun clampPx(preferred: Float, minPx: Float, maxPx: Float): Int {

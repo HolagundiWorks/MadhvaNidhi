@@ -1,12 +1,14 @@
 # MadhvaNidhi project memory
 
-Updated 13 November 2026. Carbon Android UX layer (Views): see `docs/carbon-android-ux.md`. Motion tokens + `CarbonStatus`/`CarbonMotion`; dashboard quieter streak and japa % + next target. Verify Git status before changing code.
+Updated 14 November 2026. Android visual system is Material Design 3 (seed `#BA4E00`); mockups remain Carbon structure reference. Journey patterns: `docs/carbon-android-ux.md`. Restore tag before M3 pass: `restore/portrait-mock-pre-m3`. Verify Git status before changing code.
 
 ## Current authority
 
-Read root `AGENTS.md` first. The current phase is approved mockup → Android implementation (`MOCKUP_ONLY = false`). Android implementation, debug builds and connected-device validation are authorized. Publishing, release signing, portrait layouts and a Material visual restyle remain out of scope. Material widgets may host Carbon styles; layouts must use `Widget.Carbon.*`, `TextAppearance.Carbon.*` and `carbon_*` tokens.
+Read root `AGENTS.md` first. The current phase is approved mockup → Android implementation (`MOCKUP_ONLY = false`). Android implementation, debug builds and connected-device validation are authorized. Publishing and release signing remain out of scope unless asked.
 
-Use the current repository mockups as the design authority. The earlier external `latest-commit-preview` ZIP/patch based on `5adf7ea` is superseded and must not be applied over the newer source. Earlier chat claims about unresolved native split clipping describe that old intermediate build, not a verified diagnosis of this checkout. No Android build or device test was rerun for this web-preview refresh.
+**Android visuals:** Material Design 3 (`Theme.Material3.DayNight.NoActionBar`, `Widget.Material3.*`, `md_theme_*`). Legacy `carbon_*` / `Widget.Carbon.*` names may bridge to M3. **Mockups:** Carbon (`cds--*`) for layout/IA; do not Material-restyle mockups unless asked.
+
+Use the current repository mockups as the layout/IA authority. The earlier external `latest-commit-preview` ZIP/patch based on `5adf7ea` is superseded and must not be applied over the newer source.
 
 ## Recent commits reviewed
 
@@ -30,7 +32,11 @@ Primary rail, in order: Dashboard → Panchanga → Nitya Karma → Puja → Gra
 
 ## Visual contract
 
-Portrait-first shell (header + bottom rail; left drawer for labeled nav). Content readers may use landscape. IBM Carbon is the sole visual authority. Productive surfaces have square corners (`0`), not the older 4px design. Orange maps to the Carbon interactive slot; domain alert yellow remains separate. Use the exact current freeze docs and `docs/frozen-design-tokens.json` for density, spacing, type, icons and colours. The old AppleDash/1.5× corner-marker iteration is superseded: current frozen Panchanga uses `WatsonHealthStatusPartialFail` for Ekadashi and its selected state is layer-selected only.
+Portrait-first shell (header + bottom rail; left drawer for labeled nav). Content readers may use landscape. Android dashboard uses the mockup &lt;720dp 2-column stack (week/streak/progress full-width); Japa stacks anga above counter on phone. Dashboard gamification: Sandhya weekly score (X/7) + streak/japa badges via `DashboardBadges` (streak 1→365, weekly 3/5/7, japa cumulative 108→10,00,001).
+
+**Android:** Pure dark/light neutrals (black / white / grey) with orange accent `#BA4E00` only — no warm brown tonal surfaces. `Widget.MadhvaNidhi.*` styles; flat filled cards (no elevation overlays); Material Icons Outlined for shell/common actions. Restore point: git tag `restore/portrait-mock-pre-m3`.
+
+**Mockups / freeze docs:** IBM Carbon remains the structure reference (productive square corners, interactive `#BA4E00`). Use freeze docs and `docs/frozen-design-tokens.json` for density, spacing, type and IA. The old AppleDash/1.5× corner-marker iteration is superseded: frozen Panchanga uses `WatsonHealthStatusPartialFail` for Ekadashi.
 
 Canonical preview: `prototypes/app-shell/index.html` (studio), `shell.html` (screen). Shared assets: `prototypes/carbon-app.css`, `ibm-plex.css`, `studio.js`, `studio.css`, `user-vault.js`, `japa-session.js`. Menu and Panchanga previews are parity/reference surfaces. Preserve freeze markers and do not redesign frozen screens without a new user-directed design pass.
 

@@ -28,7 +28,7 @@ Primary rail destinations: Dashboard, Panchanga, Nitya Karma, Puja, Grantha, Bha
 | corner | **0** (`--cds-border-radius`) | Square productive surfaces |
 | border stroke | 1px (`--cds-border-width`) | Subtle / strong / tile tokens only |
 | focus | 2px `$focus` outline | Not a layout border |
-| context / calendar | **30:70** | Panchanga screen only · Min context width ~208px where space allows · other destinations are full-width |
+| context / calendar | **30:70** (wide) · **stacked** (portrait phone) | Panchanga screen only · On portrait shell Android stacks context above calendar; 30:70 applies when width allows · other destinations are full-width |
 | spacing scale | 2–64px | Carbon `$spacing-01`…`$spacing-10` |
 | tile columns | 5 | One complete 15-tithi paksha |
 | tile gap | `$spacing-03` (8px) | Between day tiles |
@@ -131,7 +131,7 @@ This is especially important on phones with notches or teardrops in landscape: t
 
 ## Landscape-only + responsive density
 
-All studio presets are landscape (`width > height`). No portrait layouts or rotation. See `AGENTS.md` for preset sizes.
+Studio presets are portrait-first (`height > width`). Content readers may use landscape. See `AGENTS.md`.
 
 Reference polish size: **960×540**. On the Panchanga screen, all landscape sizes keep the same **30:70** structure and scale chrome + tiles via:
 

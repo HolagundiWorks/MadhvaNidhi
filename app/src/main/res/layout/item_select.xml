@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/selectTitle"
-        style="@style/Desk.Body"
+        style="@style/TextAppearance.Material3.BodyLarge"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/space_8"

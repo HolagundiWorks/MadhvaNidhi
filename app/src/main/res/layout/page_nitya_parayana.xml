@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/carbon_background">
+    android:background="@color/md_theme_background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,7 +12,7 @@
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:padding="@dimen/carbon_spacing_05"
-        android:background="@color/carbon_layer"
+        android:background="@color/md_theme_surfaceContainer"
         android:minHeight="@dimen/carbon_layout_size_height_lg">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -32,7 +32,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/parayanaSkip"
-            style="@style/Widget.Carbon.Button.Tertiary.Icon"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="@dimen/carbon_layout_size_height_lg"
             android:layout_height="@dimen/carbon_layout_size_height_lg"
             android:layout_marginStart="@dimen/carbon_spacing_05"
@@ -50,7 +50,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/parayanaComplete"
-            style="@style/Widget.Carbon.Button.Tertiary.Icon"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="@dimen/carbon_layout_size_height_lg"
             android:layout_height="@dimen/carbon_layout_size_height_lg"
             android:layout_marginStart="@dimen/carbon_spacing_03"
@@ -83,8 +83,8 @@
                 android:id="@+id/parayanaCrumb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.Carbon.Label01"
-                android:textColor="@color/carbon_text_secondary"
+                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                android:textColor="@color/md_theme_onSurfaceVariant"
                 android:text="ನಿತ್ಯಕರ್ಮ · ನಿತ್ಯ ಪಾರಾಯಣ" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -92,7 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/carbon_spacing_05"
-                android:textAppearance="@style/TextAppearance.Carbon.Body02"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                 android:lineSpacingMultiplier="1.5" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

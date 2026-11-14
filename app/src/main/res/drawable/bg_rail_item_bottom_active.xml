@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Carbon bottom navigation current item: $layer-selected + top 3dp interactive accent -->
+<!-- Material 3 NavigationBar-style active indicator pill -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
+    <item
+        android:gravity="center_horizontal|top"
+        android:width="56dp"
+        android:height="32dp"
+        android:top="8dp">
         <shape android:shape="rectangle">
-            <solid android:color="@color/carbon_layer_selected" />
-        </shape>
-    </item>
-    <item android:gravity="top" android:height="3dp">
-        <shape android:shape="rectangle">
-            <solid android:color="@color/carbon_border_interactive" />
+            <solid android:color="@color/md_theme_secondaryContainer" />
+            <corners android:radius="16dp" />
         </shape>
     </item>
 </layer-list>

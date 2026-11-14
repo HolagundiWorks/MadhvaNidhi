@@ -94,6 +94,21 @@ class PracticeDayStore(context: Context) {
         return current
     }
 
+    /** Complete Sandhya days in the rolling last-7 window (today inclusive). */
+    fun weeklySandhyaCompleteCount(): Int {
+        var done = 0
+        val cursor = Calendar.getInstance()
+        repeat(7) {
+            if (sandhyaComplete(PanchangaStore.dateKey(cursor))) done++
+            cursor.add(Calendar.DATE, -1)
+        }
+        return done
+    }
+
+    /** Sessions completed today (0–3). */
+    fun todaySandhyaSessionCount(date: String = PanchangaStore.dateKey()): Int =
+        sandhya(date).toList().count { it }
+
     fun bestStreak(): Int {
         val stored = prefs.getInt(KEY_BEST_STREAK, 0)
         val live = currentStreak()

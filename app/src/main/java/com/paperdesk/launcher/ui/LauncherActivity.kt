@@ -151,7 +151,7 @@ class LauncherActivity : AppCompatActivity() {
         val page = currentPageId
         // Tab hubs show their own hubTitle; practice hubs have in-panel chrome.
         val hideHeader = page in setOf(
-            "dashboard", "nityakarma", "puja", "settings", "grantha", "samskruti", "sangeeta", "sangeeta"
+            "dashboard", "nityakarma", "puja", "settings", "grantha", "samskruti", "sangeeta"
         )
         appHeader.visibility = if (hideHeader) View.GONE else View.VISIBLE
         headerRule.visibility = if (hideHeader) View.GONE else View.VISIBLE
@@ -194,15 +194,19 @@ class LauncherActivity : AppCompatActivity() {
     }
 
     fun navigateTo(pageId: String) {
-        if (!SettingsStore.isKnownPage(pageId)) return
-        val nityaTab = when (pageId) {
-            "sandhya", "japa", "nitya" -> pageId
+        val id = when (pageId) {
+            "panchanga" -> "desk"
+            else -> pageId
+        }
+        if (!SettingsStore.isKnownPage(id)) return
+        val nityaTab = when (id) {
+            "sandhya", "japa", "nitya" -> id
             "nityakarma" -> "sandhya"
             else -> null
         }
         val targetId = when {
             nityaTab != null -> "nityakarma"
-            else -> pageId
+            else -> id
         }
         showPage(targetId, nityaTab)
     }

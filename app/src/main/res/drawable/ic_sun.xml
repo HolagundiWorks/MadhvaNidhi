@@ -1,35 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Carbon sun 32 — Apache-2.0, see assets/licenses/carbon-icons.txt -->
+<!-- Material Icons Outlined (wb_sunny) — Apache-2.0 -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="32dp"
-    android:height="32dp"
-    android:viewportWidth="32"
-    android:viewportHeight="32">
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
     <path
         android:fillColor="#FF000000"
-        android:pathData="M16,12a4,4 0,1 1,-4 4,4.0045 4.0045,0 0,1 4,-4m0,-2a6,6 0,1 0,6 6,6 6,0 0,0 -6,-6Z" />
-    <path
-        android:fillColor="#FF000000"
-        android:pathData="M16,4a1,1 0,0 0,-1 1v2a1,1 0,0 0,2 0V5A1,1 0,0 0,16 4Z" />
-    <path
-        android:fillColor="#FF000000"
-        android:pathData="M16,24a1,1 0,0 0,-1 1v2a1,1 0,1 0,2 0V25A1,1 0,0 0,16 24Z" />
-    <path
-        android:fillColor="#FF000000"
-        android:pathData="M8.22,7.51a1,1 0,0 0,-1.41 0L5.39,8.92a1,1 0,0 0,1.42 1.42L8.22,8.93A1,1 0,0 0,8.22 7.51Z" />
-    <path
-        android:fillColor="#FF000000"
-        android:pathData="M26.61,22.66a1,1 0,0 0,-1.41 0l-1.42,1.41a1,1 0,1 0,1.42 1.42l1.41,-1.42A1,1 0,0 0,26.61 22.66Z" />
-    <path
-        android:fillColor="#FF000000"
-        android:pathData="M4,15H6a1,1 0,0 1,0 2H4a1,1 0,0 1,0 -2Z" />
-    <path
-        android:fillColor="#FF000000"
-        android:pathData="M26,15h2a1,1 0,0 1,0 2H26a1,1 0,0 1,0 -2Z" />
-    <path
-        android:fillColor="#FF000000"
-        android:pathData="M8.22,24.49l-1.41,1.41a1,1 0,1 0,1.41 1.42l1.42,-1.42a1,1 0,0 0,-1.42 -1.41Z" />
-    <path
-        android:fillColor="#FF000000"
-        android:pathData="M26.61,9.34L25.2,7.93a1,1 0,0 0,-1.42 1.42l1.42,1.41a1,1 0,0 0,1.41 -1.42Z" />
+        android:pathData="M6.76,4.84l-1.8,-1.79l-1.41,1.41l1.79,1.79l1.42,-1.41zM1,10.5h3v2H1V10.5zM11,0.55h2V3.5h-2V0.55zM19.04,3.045l1.41,1.41l-1.79,1.8l-1.41,-1.41l1.79,-1.8zM17.24,18.16l1.79,1.8l1.41,-1.41l-1.8,-1.79l-1.4,1.4zM20,10.5h3v2h-3V10.5zM12,5.5c-3.31,0 -6,2.69 -6,6s2.69,6 6,6s6,-2.69 6,-6S15.31,5.5 12,5.5zM12,15.5c-2.21,0 -4,-1.79 -4,-4s1.79,-4 4,-4s4,1.79 4,4S14.21,15.5 12,15.5zM11,19.45h2V22.4h-2V19.45zM3.55,18.155l1.41,1.41l1.79,-1.8l-1.41,-1.41l-1.79,1.8z" />
 </vector>

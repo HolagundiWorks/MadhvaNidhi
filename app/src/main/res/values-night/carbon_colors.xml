@@ -1,72 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Carbon Design System — Gray 100 theme (cds g100).
-     Brand orange maps onto interactive / button-primary (frozen contract).
-     Ekadashi uses support-warning. -->
+<!-- Legacy Carbon resource names remapped onto Material 3 dark roles (seed #BA4E00). -->
 <resources>
-    <!-- Core surfaces -->
-    <color name="carbon_background">#161616</color>
-    <color name="carbon_background_hover">#288D8D8D</color>
-    <color name="carbon_layer">#262626</color>
-    <color name="carbon_layer_01">#262626</color>
-    <color name="carbon_layer_02">#393939</color>
-    <color name="carbon_layer_03">#525252</color>
-    <color name="carbon_layer_high">#393939</color>
-    <color name="carbon_layer_selected">#393939</color>
-    <color name="carbon_layer_accent">#393939</color>
-    <color name="carbon_layer_hover">#333333</color>
-    <color name="carbon_layer_active">#525252</color>
-    <color name="carbon_field">#262626</color>
-    <color name="carbon_field_02">#393939</color>
+    <color name="carbon_background">@color/md_theme_background</color>
+    <color name="carbon_background_hover">@color/md_theme_hover</color>
+    <color name="carbon_layer">@color/md_theme_surfaceContainer</color>
+    <color name="carbon_layer_01">@color/md_theme_surfaceContainer</color>
+    <color name="carbon_layer_02">@color/md_theme_surfaceContainerHigh</color>
+    <color name="carbon_layer_03">@color/md_theme_surfaceContainerHighest</color>
+    <color name="carbon_layer_high">@color/md_theme_surfaceContainerHigh</color>
+    <color name="carbon_layer_selected">@color/md_theme_secondaryContainer</color>
+    <color name="carbon_layer_accent">@color/md_theme_surfaceContainerHigh</color>
+    <color name="carbon_layer_hover">@color/md_theme_surfaceContainerHighest</color>
+    <color name="carbon_layer_active">@color/md_theme_surfaceVariant</color>
+    <color name="carbon_field">@color/md_theme_surfaceContainerHighest</color>
+    <color name="carbon_field_02">@color/md_theme_surfaceContainerHigh</color>
 
-    <!-- Borders -->
-    <color name="carbon_border">#525252</color>
-    <color name="carbon_border_subtle">#393939</color>
-    <color name="carbon_border_strong">#6F6F6F</color>
-    <color name="carbon_outline">#8D8D8D</color>
-    <color name="carbon_border_interactive">#FF832B</color>
-    <color name="carbon_border_disabled">#808D8D8D</color>
+    <color name="carbon_border">@color/md_theme_outlineVariant</color>
+    <color name="carbon_border_subtle">@color/md_theme_outlineVariant</color>
+    <color name="carbon_border_strong">@color/md_theme_outline</color>
+    <color name="carbon_outline">@color/md_theme_outline</color>
+    <color name="carbon_border_interactive">@color/md_theme_primary</color>
+    <color name="carbon_border_disabled">@color/md_theme_outlineVariant</color>
 
-    <!-- Text / icon -->
-    <color name="carbon_text">#F4F4F4</color>
-    <color name="carbon_text_primary">#F4F4F4</color>
-    <color name="carbon_text_secondary">#C6C6C6</color>
-    <color name="carbon_text_helper">#A8A8A8</color>
-    <color name="carbon_text_inverse">#161616</color>
-    <color name="carbon_text_disabled">#40F4F4F4</color>
-    <color name="carbon_text_placeholder">#66F4F4F4</color>
-    <color name="carbon_text_error">#FF8389</color>
-    <color name="carbon_text_on_color">#161616</color>
-    <color name="carbon_icon_primary">#F4F4F4</color>
-    <color name="carbon_icon_secondary">#C6C6C6</color>
-    <color name="carbon_icon_on_color">#161616</color>
+    <color name="carbon_text">@color/md_theme_onSurface</color>
+    <color name="carbon_text_primary">@color/md_theme_onSurface</color>
+    <color name="carbon_text_secondary">@color/md_theme_onSurfaceVariant</color>
+    <color name="carbon_text_helper">@color/md_theme_onSurfaceVariant</color>
+    <color name="carbon_text_inverse">@color/md_theme_inverseOnSurface</color>
+    <color name="carbon_text_disabled">#61FFFFFF</color>
+    <color name="carbon_text_placeholder">#99FFFFFF</color>
+    <color name="carbon_text_error">@color/md_theme_error</color>
+    <color name="carbon_text_on_color">@color/md_theme_onPrimary</color>
+    <color name="carbon_icon_primary">@color/md_theme_onSurface</color>
+    <color name="carbon_icon_secondary">@color/md_theme_onSurfaceVariant</color>
+    <color name="carbon_icon_on_color">@color/md_theme_onPrimary</color>
 
-    <!-- Interactive / brand (orange replaces Carbon blue) -->
-    <color name="carbon_interactive">#FF832B</color>
-    <color name="carbon_orange">#FF832B</color>
-    <color name="carbon_button_primary">#FF832B</color>
-    <color name="carbon_button_primary_hover">#FA6800</color>
-    <color name="carbon_button_primary_active">#EB6200</color>
-    <color name="carbon_button_tertiary">#FFFFFF</color>
-    <color name="carbon_button_tertiary_hover">#F4F4F4</color>
-    <color name="carbon_link_primary">#FF832B</color>
-    <color name="carbon_link_primary_hover">#FFB784</color>
-    <color name="carbon_orange_container">#5E2900</color>
-    <color name="carbon_on_orange_container">#FFD9BE</color>
-    <color name="carbon_on_accent">#161616</color>
+    <color name="carbon_interactive">@color/md_theme_primary</color>
+    <color name="carbon_orange">@color/md_theme_primary</color>
+    <color name="carbon_button_primary">@color/md_theme_primary</color>
+    <color name="carbon_button_primary_hover">#FFCFAD</color>
+    <color name="carbon_button_primary_active">#FFE0CC</color>
+    <color name="carbon_button_tertiary">@color/md_theme_primary</color>
+    <color name="carbon_button_tertiary_hover">#FFCFAD</color>
+    <color name="carbon_link_primary">@color/md_theme_primary</color>
+    <color name="carbon_link_primary_hover">#FFCFAD</color>
+    <color name="carbon_orange_container">@color/md_theme_primaryContainer</color>
+    <color name="carbon_on_orange_container">@color/md_theme_onPrimaryContainer</color>
+    <color name="carbon_on_accent">@color/md_theme_onPrimary</color>
 
-    <!-- Support -->
-    <color name="carbon_error">#FF8389</color>
-    <color name="carbon_error_container">#750E13</color>
-    <color name="carbon_support_error">#FA4D56</color>
-    <color name="carbon_support_success">#42BE65</color>
-    <color name="carbon_support_warning">#F1C21B</color>
+    <color name="carbon_error">@color/md_theme_error</color>
+    <color name="carbon_error_container">@color/md_theme_errorContainer</color>
+    <color name="carbon_support_error">@color/md_theme_error</color>
+    <color name="carbon_support_success">#81D47A</color>
+    <color name="carbon_support_warning">#E5C66A</color>
     <color name="carbon_support_warning_inverse">#F1C21B</color>
-    <color name="carbon_support_info">#FF832B</color>
-    <color name="carbon_ekadashi">#F1C21B</color>
+    <color name="carbon_support_info">@color/md_theme_primary</color>
+    <color name="carbon_ekadashi">#E5C66A</color>
 
-    <!-- Focus / overlay -->
-    <color name="carbon_focus">#FFFFFF</color>
-    <color name="carbon_focus_inset">#161616</color>
+    <color name="carbon_focus">@color/md_theme_primary</color>
+    <color name="carbon_focus_inset">@color/md_theme_onPrimary</color>
     <color name="carbon_overlay">#99000000</color>
-    <color name="carbon_shadow">#CC000000</color>
+    <color name="carbon_shadow">#66000000</color>
 </resources>

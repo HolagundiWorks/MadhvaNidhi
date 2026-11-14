@@ -8,7 +8,7 @@ import com.paperdesk.launcher.DeskLock
 import com.paperdesk.launcher.R
 import com.paperdesk.launcher.data.OsLang
 
-/** Carbon side rail and overlay panel. Primary destinations match the HTML shell sim. */
+/** Material 3 side rail and overlay panel. Primary destinations match the HTML shell sim. */
 class FrozenShell(private val activity: LauncherActivity) {
     private val panel: View = activity.findViewById(R.id.sidePanel)
     private val backdrop: View = activity.findViewById(R.id.sidePanelBackdrop)
@@ -118,7 +118,6 @@ class FrozenShell(private val activity: LauncherActivity) {
             null,
             com.google.android.material.R.attr.borderlessButtonStyle
         ).apply {
-            // Prefer Carbon rail style tokens when available via theme; fall back to manual.
             tag = id
             text = if (labeled) label else ""
             contentDescription = label
@@ -132,8 +131,8 @@ class FrozenShell(private val activity: LauncherActivity) {
             insetBottom = 0
             val pad = if (labeled) activity.resources.getDimensionPixelSize(R.dimen.carbon_spacing_05) else 0
             setPadding(pad, 0, pad, 0)
-            cornerRadius = 0
-            rippleColor = ColorStateList.valueOf(activity.getColor(R.color.carbon_background_hover))
+            cornerRadius = (12 * density).toInt()
+            rippleColor = ColorStateList.valueOf(activity.getColor(R.color.md_theme_hover))
             backgroundTintList = null
             setBackgroundResource(if (labeled) R.drawable.bg_rail_item else R.drawable.bg_rail_item_bottom)
             maxLines = 1
@@ -159,14 +158,10 @@ class FrozenShell(private val activity: LauncherActivity) {
     private fun paintButton(button: MaterialButton, active: Boolean) {
         button.isSelected = active
         val color = activity.getColor(
-            if (active) R.color.carbon_interactive else R.color.carbon_icon_secondary
+            if (active) R.color.md_theme_onSecondaryContainer else R.color.md_theme_onSurfaceVariant
         )
         button.iconTint = ColorStateList.valueOf(color)
-        button.setTextColor(
-            activity.getColor(
-                if (active) R.color.carbon_text_primary else R.color.carbon_text_secondary
-            )
-        )
+        button.setTextColor(color)
     }
 
     companion object {

@@ -6,13 +6,17 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
 import android.os.Bundle
+import com.paperdesk.launcher.data.DemoUser
 import com.paperdesk.launcher.data.SettingsStore
+import kotlin.concurrent.thread
 
 class PaperDeskApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
         com.paperdesk.launcher.DeskTheme.apply(this)
+        // Seed demo sadhaka (profile + streaks + japa) before UI binds Sankalpa/Puja.
+        thread(name = "demo-user-seed") { DemoUser.ensure(this) }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 ALARM_CHANNEL,

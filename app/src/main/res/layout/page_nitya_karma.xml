@@ -4,15 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/carbon_background">
+    android:background="@color/md_theme_background">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/nityaTabs"
-        style="@style/Widget.Carbon.TabLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/carbon_layout_size_height_md"
+        style="@style/Widget.MadhvaNidhi.TabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
         android:layout_gravity="start"
-        android:minHeight="@dimen/carbon_layout_size_height_md"
+        android:minHeight="48dp"
         app:tabMode="scrollable"
         app:tabGravity="start"
         app:tabInlineLabel="true" />
@@ -22,5 +22,5 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/carbon_layer" />
+        android:background="@color/md_theme_background" />
 </LinearLayout>

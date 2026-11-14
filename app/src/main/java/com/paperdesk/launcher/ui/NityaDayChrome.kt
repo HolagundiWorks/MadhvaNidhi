@@ -9,13 +9,13 @@ object NityaDayChrome {
     fun paint(btn: MaterialButton, active: Boolean) {
         val ctx = btn.context
         btn.backgroundTintList = ColorStateList.valueOf(
-            ctx.getColor(if (active) R.color.carbon_layer_selected else android.R.color.transparent)
+            ctx.getColor(if (active) R.color.md_theme_secondaryContainer else android.R.color.transparent)
         )
         btn.iconTint = ColorStateList.valueOf(
-            ctx.getColor(if (active) R.color.carbon_interactive else R.color.carbon_icon_secondary)
+            ctx.getColor(if (active) R.color.md_theme_primary else R.color.md_theme_onSurfaceVariant)
         )
         btn.strokeColor = ColorStateList.valueOf(
-            ctx.getColor(if (active) R.color.carbon_border_interactive else R.color.carbon_border_strong)
+            ctx.getColor(if (active) R.color.md_theme_primary else R.color.md_theme_outline)
         )
         btn.strokeWidth = ctx.resources.getDimensionPixelSize(R.dimen.carbon_border_width).coerceAtLeast(1)
     }

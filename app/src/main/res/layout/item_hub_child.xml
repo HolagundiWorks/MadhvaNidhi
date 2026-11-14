@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.button.MaterialButton xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/Widget.Carbon.Tile.Clickable"
+    style="@style/Widget.Material3.Button.TonalButton"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/carbon_spacing_03"
     app:iconGravity="start"
     app:iconPadding="@dimen/carbon_spacing_04"
     app:iconSize="20dp"
-    app:iconTint="@color/carbon_icon_primary" />
+    app:iconTint="@color/md_theme_onSurface" />

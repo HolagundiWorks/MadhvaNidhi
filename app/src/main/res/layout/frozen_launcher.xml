@@ -4,7 +4,7 @@
     android:id="@+id/launcherRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/carbon_background">
+    android:background="@color/md_theme_background">
 
     <FrameLayout
         android:id="@+id/materialContent"
@@ -16,62 +16,70 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <!-- Portrait Carbon UI Shell Header: menu toggle + title + date · tithi -->
-            <LinearLayout
+            <!-- Material 3 top app bar -->
+            <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/appHeader"
+                style="@style/Widget.MadhvaNidhi.Toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/shell_toolbar_height"
                 android:minHeight="@dimen/shell_toolbar_height"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:paddingStart="@dimen/carbon_spacing_02"
-                android:paddingEnd="@dimen/carbon_spacing_04"
-                android:background="@color/carbon_layer">
+                android:elevation="0dp"
+                app:contentInsetStart="0dp"
+                app:contentInsetStartWithNavigation="0dp">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/sidePanelToggle"
-                    style="@style/Widget.Carbon.Button.Icon"
-                    android:layout_width="@dimen/carbon_layout_size_height_lg"
-                    android:layout_height="@dimen/carbon_layout_size_height_lg"
-                    android:minWidth="@dimen/carbon_layout_size_height_lg"
-                    android:minHeight="@dimen/carbon_layout_size_height_lg"
-                    android:padding="0dp"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:contentDescription="Open navigation"
-                    app:icon="@drawable/ic_open_panel_filled_left"
-                    app:iconSize="@dimen/shell_nav_toggle_icon"
-                    app:iconGravity="textStart"
-                    app:iconPadding="0dp"
-                    app:iconTint="@color/carbon_icon_primary" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/carbon_spacing_02"
+                    android:paddingEnd="@dimen/carbon_spacing_04">
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/headerTitle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="@dimen/carbon_spacing_02"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
-                    android:textColor="@color/carbon_text_primary" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/sidePanelToggle"
+                        style="@style/Widget.MadhvaNidhi.IconButton.Standard"
+                        android:layout_width="@dimen/carbon_layout_size_height_lg"
+                        android:layout_height="@dimen/carbon_layout_size_height_lg"
+                        android:contentDescription="Open navigation"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:minWidth="@dimen/carbon_layout_size_height_lg"
+                        android:minHeight="@dimen/carbon_layout_size_height_lg"
+                        android:padding="0dp"
+                        app:icon="@drawable/ic_open_panel_filled_left"
+                        app:iconGravity="textStart"
+                        app:iconPadding="0dp"
+                        app:iconSize="@dimen/shell_nav_toggle_icon"
+                        app:iconTint="@color/md_theme_onSurface" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/headerDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/carbon_spacing_03"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:textAppearance="@style/TextAppearance.Carbon.Label01"
-                    android:textColor="@color/carbon_text_secondary" />
-            </LinearLayout>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/headerTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/carbon_spacing_02"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                        android:textColor="@color/md_theme_onSurface" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/headerDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/carbon_spacing_03"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                        android:textColor="@color/md_theme_onSurfaceVariant" />
+                </LinearLayout>
+            </com.google.android.material.appbar.MaterialToolbar>
 
             <View
                 android:id="@+id/headerRule"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/carbon_border_width"
-                android:background="@color/carbon_border_subtle" />
+                android:background="@color/md_theme_outlineVariant" />
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/pageHost"
@@ -84,26 +92,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/carbon_border_width"
-                android:background="@color/carbon_border_subtle" />
-
-            <!-- Portrait Carbon Bottom Navigation Rail · 56dp height -->
+            <!-- Material 3 bottom navigation bar -->
             <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/shell_rail_width"
-                android:background="@color/carbon_layer"
+                android:layout_height="80dp"
+                android:background="@color/md_theme_surfaceContainer"
+                android:elevation="0dp"
                 android:fillViewport="true"
                 android:overScrollMode="never"
                 android:scrollbars="none">
 
                 <LinearLayout
                     android:id="@+id/railDestinations"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal" />
+                    android:orientation="horizontal"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="12dp" />
             </HorizontalScrollView>
         </LinearLayout>
 
@@ -112,42 +118,54 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/carbon_overlay"
-            android:visibility="gone"
-            android:importantForAccessibility="no" />
+            android:importantForAccessibility="no"
+            android:visibility="gone" />
 
-        <LinearLayout
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/sidePanel"
+            style="@style/Widget.MadhvaNidhi.SurfaceCard.Elevated"
             android:layout_width="@dimen/shell_drawer_width"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@color/carbon_layer"
-            android:elevation="8dp"
-            android:visibility="gone">
+            android:layout_gravity="start"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/md_theme_surfaceContainerHigh"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/closeSidePanel"
-                style="@style/Widget.Carbon.Button.Ghost"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/carbon_layout_size_height_lg"
-                android:text="Navigation"
-                android:textColor="@color/carbon_text_primary"
-                android:contentDescription="Close navigation"
-                app:icon="@drawable/ic_open_panel_filled_left"
-                app:iconTint="@color/carbon_icon_primary" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-
-                <LinearLayout
-                    android:id="@+id/panelDestinations"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/closeSidePanel"
+                    style="@style/Widget.MadhvaNidhi.Button.Text"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:showDividers="middle"
-                    android:divider="@drawable/shell_rail_gap" />
-            </ScrollView>
-        </LinearLayout>
+                    android:layout_height="@dimen/carbon_layout_size_height_lg"
+                    android:contentDescription="Close navigation"
+                    android:gravity="start|center_vertical"
+                    android:text="ಮುಚ್ಚಿ"
+                    android:textColor="@color/md_theme_onSurface"
+                    app:icon="@drawable/ic_nav_prev"
+                    app:iconGravity="textStart"
+                    app:iconTint="@color/md_theme_onSurface" />
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:id="@+id/panelDestinations"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:divider="@drawable/shell_rail_gap"
+                        android:orientation="vertical"
+                        android:paddingBottom="@dimen/carbon_spacing_05"
+                        android:showDividers="middle" />
+                </ScrollView>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
     </FrameLayout>
 </LinearLayout>

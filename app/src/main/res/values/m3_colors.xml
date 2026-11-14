@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pure light theme: white / grey surfaces · orange accent #BA4E00 only. -->
+<resources>
+    <color name="md_theme_primary">#BA4E00</color>
+    <color name="md_theme_onPrimary">#FFFFFF</color>
+    <color name="md_theme_primaryContainer">#FFE8D6</color>
+    <color name="md_theme_onPrimaryContainer">#3D1900</color>
+
+    <color name="md_theme_secondary">#616161</color>
+    <color name="md_theme_onSecondary">#FFFFFF</color>
+    <color name="md_theme_secondaryContainer">#E0E0E0</color>
+    <color name="md_theme_onSecondaryContainer">#212121</color>
+
+    <color name="md_theme_tertiary">#757575</color>
+    <color name="md_theme_onTertiary">#FFFFFF</color>
+    <color name="md_theme_tertiaryContainer">#EEEEEE</color>
+    <color name="md_theme_onTertiaryContainer">#212121</color>
+
+    <color name="md_theme_error">#B3261E</color>
+    <color name="md_theme_onError">#FFFFFF</color>
+    <color name="md_theme_errorContainer">#F9DEDC</color>
+    <color name="md_theme_onErrorContainer">#410E0B</color>
+
+    <color name="md_theme_background">#FFFFFF</color>
+    <color name="md_theme_onBackground">#000000</color>
+    <color name="md_theme_surface">#FFFFFF</color>
+    <color name="md_theme_onSurface">#000000</color>
+    <color name="md_theme_surfaceVariant">#EEEEEE</color>
+    <color name="md_theme_onSurfaceVariant">#616161</color>
+
+    <color name="md_theme_outline">#9E9E9E</color>
+    <color name="md_theme_outlineVariant">#E0E0E0</color>
+    <color name="md_theme_inverseSurface">#121212</color>
+    <color name="md_theme_inverseOnSurface">#FFFFFF</color>
+    <color name="md_theme_inversePrimary">#FFB68C</color>
+    <color name="md_theme_scrim">#000000</color>
+    <color name="md_theme_shadow">#000000</color>
+
+    <color name="md_theme_surfaceDim">#E0E0E0</color>
+    <color name="md_theme_surfaceBright">#FFFFFF</color>
+    <color name="md_theme_surfaceContainerLowest">#FFFFFF</color>
+    <color name="md_theme_surfaceContainerLow">#FAFAFA</color>
+    <color name="md_theme_surfaceContainer">#F5F5F5</color>
+    <color name="md_theme_surfaceContainerHigh">#EEEEEE</color>
+    <color name="md_theme_surfaceContainerHighest">#E0E0E0</color>
+
+    <color name="md_theme_primary_fixed">#FFE8D6</color>
+    <color name="md_theme_onPrimary_fixed">#3D1900</color>
+    <color name="md_theme_primary_fixed_dim">#FFB68C</color>
+    <color name="md_theme_secondary_fixed">#E0E0E0</color>
+    <color name="md_theme_onSecondary_fixed">#212121</color>
+    <color name="md_theme_secondary_fixed_dim">#9E9E9E</color>
+
+    <color name="md_theme_hover">#1FBA4E00</color>
+    <color name="md_theme_pressed">#33BA4E00</color>
+    <color name="md_theme_focus">#1FBA4E00</color>
+</resources>

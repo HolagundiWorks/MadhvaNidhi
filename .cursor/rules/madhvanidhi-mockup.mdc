@@ -1,5 +1,5 @@
 ---
-description: MadhvaNidhi authorized Android port from Carbon mockups — portrait shell, freeze contracts
+description: MadhvaNidhi authorized Android port from Carbon mockups — portrait shell, Material3 Android visuals
 alwaysApply: true
 ---
 
@@ -11,21 +11,21 @@ alwaysApply: true
 
 - **Write:** `app/**`, freeze docs under `docs/`, mockup freeze marks under `prototypes/**`, `AGENTS.md`, `CLAUDE.md`, this rule
 - **Allowed tooling:** `gradlew`, `adb`, debug install
-- UI source of truth = frozen mockups; implement in Android
+- UI layout/IA source of truth = frozen mockups; Android visuals = Material Design 3
 
 ## Studio (mockup)
 
 - Chrome = portrait screen-size selector + live iframe preview only
 - Presets portrait only; custom `height > width`
 
-## Design (Carbon only)
+## Design
 
-- IBM Carbon tokens/visuals/components only; square corners; `$spacing-05` tile padding
-- Android: `Widget.Carbon.*` + `carbon_*` only — Material host OK, no Material3/custom style names in layouts
-- No custom components, Desk chrome, or non-Carbon colours/radii/paddings
-- Mockup: `cds--*` / `--cds-*` only (moon glyph circle is the sole domain exception)
+- **Android:** Material Design 3 — `Theme.Material3.*`, `Widget.Material3.*`, `md_theme_*` (seed `#BA4E00`); rounded M3 corners; Material Icons Outlined
+- Legacy `Widget.Carbon.*` / `carbon_*` may exist as M3 bridges; do not restore Carbon 0dp productive chrome on Android
+- **Mockup:** `cds--*` / `--cds-*` only (moon glyph circle is the sole domain exception); do not redesign mockups to Material unless asked
+- No Desk chrome or inventing non-M3 Android colours outside the seed palette
 
-## Frozen screens (no redesign without new design pass)
+## Frozen screens (no layout redesign without new design pass)
 
 - Panchanga — `docs/frozen-panchanga-shell.md`
 - User profile — `docs/frozen-user-profile.md`

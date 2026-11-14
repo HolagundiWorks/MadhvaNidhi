@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/carbon_background">
+    android:background="@color/md_theme_background">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
         android:paddingEnd="@dimen/carbon_spacing_05"
         android:paddingTop="@dimen/carbon_spacing_03"
         android:paddingBottom="@dimen/carbon_spacing_03"
-        android:background="@color/carbon_layer">
+        android:background="@color/md_theme_surfaceContainer">
 
         <!-- Actions first so pathya can layout_toStartOf them (mockup single toolbar row). -->
         <LinearLayout
@@ -30,10 +30,10 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/sandhyaKalaPratah"
-                style="@style/Widget.Carbon.Button.Tertiary.Icon"
-                android:theme="@style/ThemeOverlay.Carbon.NityaFab"
-                android:layout_width="@dimen/carbon_layout_size_height_sm"
-                android:layout_height="@dimen/carbon_layout_size_height_sm"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:theme="@style/ThemeOverlay.Material3.Button"
+                android:layout_width="@dimen/carbon_layout_size_height_lg"
+                android:layout_height="@dimen/carbon_layout_size_height_lg"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:insetLeft="0dp"
@@ -46,17 +46,17 @@
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
                 app:iconSize="16dp"
-                app:iconTint="@color/carbon_icon_secondary"
+                app:iconTint="@color/md_theme_onSurfaceVariant"
                 app:cornerRadius="@dimen/carbon_corner_radius"
-                app:strokeColor="@color/carbon_border_strong"
+                app:strokeColor="@color/md_theme_outline"
                 app:strokeWidth="@dimen/carbon_border_width" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/sandhyaKalaMadhya"
-                style="@style/Widget.Carbon.Button.Tertiary.Icon"
-                android:theme="@style/ThemeOverlay.Carbon.NityaFab"
-                android:layout_width="@dimen/carbon_layout_size_height_sm"
-                android:layout_height="@dimen/carbon_layout_size_height_sm"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:theme="@style/ThemeOverlay.Material3.Button"
+                android:layout_width="@dimen/carbon_layout_size_height_lg"
+                android:layout_height="@dimen/carbon_layout_size_height_lg"
                 android:layout_marginStart="@dimen/carbon_spacing_03"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
@@ -70,17 +70,17 @@
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
                 app:iconSize="16dp"
-                app:iconTint="@color/carbon_icon_secondary"
+                app:iconTint="@color/md_theme_onSurfaceVariant"
                 app:cornerRadius="@dimen/carbon_corner_radius"
-                app:strokeColor="@color/carbon_border_strong"
+                app:strokeColor="@color/md_theme_outline"
                 app:strokeWidth="@dimen/carbon_border_width" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/sandhyaKalaSayam"
-                style="@style/Widget.Carbon.Button.Tertiary.Icon"
-                android:theme="@style/ThemeOverlay.Carbon.NityaFab"
-                android:layout_width="@dimen/carbon_layout_size_height_sm"
-                android:layout_height="@dimen/carbon_layout_size_height_sm"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:theme="@style/ThemeOverlay.Material3.Button"
+                android:layout_width="@dimen/carbon_layout_size_height_lg"
+                android:layout_height="@dimen/carbon_layout_size_height_lg"
                 android:layout_marginStart="@dimen/carbon_spacing_03"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
@@ -94,17 +94,17 @@
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
                 app:iconSize="16dp"
-                app:iconTint="@color/carbon_icon_secondary"
+                app:iconTint="@color/md_theme_onSurfaceVariant"
                 app:cornerRadius="@dimen/carbon_corner_radius"
-                app:strokeColor="@color/carbon_border_strong"
+                app:strokeColor="@color/md_theme_outline"
                 app:strokeWidth="@dimen/carbon_border_width" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/sandhyaSkip"
-                style="@style/Widget.Carbon.Button.Tertiary.Icon"
-                android:theme="@style/ThemeOverlay.Carbon.NityaFab"
-                android:layout_width="@dimen/carbon_layout_size_height_sm"
-                android:layout_height="@dimen/carbon_layout_size_height_sm"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:theme="@style/ThemeOverlay.Material3.Button"
+                android:layout_width="@dimen/carbon_layout_size_height_lg"
+                android:layout_height="@dimen/carbon_layout_size_height_lg"
                 android:layout_marginStart="@dimen/carbon_spacing_05"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
@@ -118,17 +118,17 @@
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
                 app:iconSize="16dp"
-                app:iconTint="@color/carbon_icon_secondary"
+                app:iconTint="@color/md_theme_onSurfaceVariant"
                 app:cornerRadius="@dimen/carbon_corner_radius"
-                app:strokeColor="@color/carbon_border_strong"
+                app:strokeColor="@color/md_theme_outline"
                 app:strokeWidth="@dimen/carbon_border_width" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/sandhyaComplete"
-                style="@style/Widget.Carbon.Button.Tertiary.Icon"
-                android:theme="@style/ThemeOverlay.Carbon.NityaFab"
-                android:layout_width="@dimen/carbon_layout_size_height_sm"
-                android:layout_height="@dimen/carbon_layout_size_height_sm"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:theme="@style/ThemeOverlay.Material3.Button"
+                android:layout_width="@dimen/carbon_layout_size_height_lg"
+                android:layout_height="@dimen/carbon_layout_size_height_lg"
                 android:layout_marginStart="@dimen/carbon_spacing_03"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
@@ -142,9 +142,9 @@
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
                 app:iconSize="16dp"
-                app:iconTint="@color/carbon_icon_secondary"
+                app:iconTint="@color/md_theme_onSurfaceVariant"
                 app:cornerRadius="@dimen/carbon_corner_radius"
-                app:strokeColor="@color/carbon_border_strong"
+                app:strokeColor="@color/md_theme_outline"
                 app:strokeWidth="@dimen/carbon_border_width" />
         </LinearLayout>
 
@@ -158,8 +158,8 @@
             android:layout_marginEnd="@dimen/carbon_spacing_05"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact02"
-            android:textColor="@color/carbon_text"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+            android:textColor="@color/md_theme_onSurface"
             android:text="ಆಚಮನ" />
     </RelativeLayout>
 
@@ -167,7 +167,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/carbon_background">
+        android:background="@color/md_theme_background">
 
         <ScrollView
             android:id="@+id/sandhyaScroll"
@@ -187,8 +187,8 @@
                     android:id="@+id/sandhyaCrumb"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAppearance="@style/TextAppearance.Carbon.Label01"
-                    android:textColor="@color/carbon_text_secondary"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                    android:textColor="@color/md_theme_onSurfaceVariant"
                     android:text="ನಿತ್ಯಕರ್ಮ · ಸಂಧ್ಯಾವಂದನೆ" />
 
                 <TextView
@@ -197,8 +197,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/carbon_spacing_05"
                     android:lineSpacingMultiplier="1.43"
-                    android:textAppearance="@style/TextAppearance.Carbon.Body01"
-                    android:textColor="@color/carbon_text"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="@color/md_theme_onSurface"
                     android:textIsSelectable="true" />
             </LinearLayout>
         </ScrollView>

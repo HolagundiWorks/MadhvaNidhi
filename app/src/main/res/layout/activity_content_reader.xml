@@ -4,7 +4,7 @@
     android:id="@+id/readerActivityRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/carbon_background"
+    android:background="@color/md_theme_background"
     android:orientation="vertical">
 
     <!-- Landscape Reader Toolbar: Back to menu + Title/Crumb + Text Size A- / % / A+ -->
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="@dimen/carbon_layout_size_height_lg"
-        android:background="@color/carbon_layer"
+        android:background="@color/md_theme_surfaceContainer"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingStart="@dimen/carbon_spacing_03"
@@ -23,7 +23,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/readerMenuBack"
-            style="@style/Widget.Carbon.Button.Ghost"
+            style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/carbon_layout_size_height_lg"
             android:minWidth="@dimen/carbon_layout_size_height_lg"
@@ -34,14 +34,14 @@
             app:cornerRadius="@dimen/carbon_corner_radius"
             app:icon="@drawable/ic_nav_prev"
             app:iconPadding="@dimen/carbon_spacing_02"
-            app:iconTint="@color/carbon_icon_primary" />
+            app:iconTint="@color/md_theme_onSurface" />
 
         <View
             android:layout_width="@dimen/carbon_border_width"
             android:layout_height="28dp"
             android:layout_marginStart="@dimen/carbon_spacing_02"
             android:layout_marginEnd="@dimen/carbon_spacing_04"
-            android:background="@color/carbon_border_subtle" />
+            android:background="@color/md_theme_outlineVariant" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -55,8 +55,8 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
-                android:textColor="@color/carbon_text_primary" />
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                android:textColor="@color/md_theme_onSurface" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/readerContentCrumb"
@@ -64,8 +64,8 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:textAppearance="@style/TextAppearance.Carbon.Label01"
-                android:textColor="@color/carbon_text_secondary" />
+                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                android:textColor="@color/md_theme_onSurfaceVariant" />
         </LinearLayout>
 
         <LinearLayout
@@ -78,15 +78,15 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/readerFontDecrease"
-                style="@style/Widget.Carbon.Button.Tertiary.Icon"
+                style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="@dimen/carbon_layout_size_height_lg"
                 android:layout_height="@dimen/carbon_layout_size_height_lg"
                 android:contentDescription="@string/text_smaller"
                 app:cornerRadius="@dimen/carbon_corner_radius"
                 app:icon="@drawable/ic_text_smaller"
                 app:iconSize="20dp"
-                app:iconTint="@color/carbon_icon_primary"
-                app:strokeColor="@color/carbon_border_strong"
+                app:iconTint="@color/md_theme_onSurface"
+                app:strokeColor="@color/md_theme_outline"
                 app:strokeWidth="@dimen/carbon_border_width" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -97,20 +97,20 @@
                 android:gravity="center"
                 android:paddingHorizontal="@dimen/carbon_spacing_02"
                 android:text="100%"
-                android:textAppearance="@style/TextAppearance.Carbon.Label01"
-                android:textColor="@color/carbon_text_secondary" />
+                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                android:textColor="@color/md_theme_onSurfaceVariant" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/readerFontIncrease"
-                style="@style/Widget.Carbon.Button.Tertiary.Icon"
+                style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="@dimen/carbon_layout_size_height_lg"
                 android:layout_height="@dimen/carbon_layout_size_height_lg"
                 android:contentDescription="@string/text_larger"
                 app:cornerRadius="@dimen/carbon_corner_radius"
                 app:icon="@drawable/ic_text_larger"
                 app:iconSize="20dp"
-                app:iconTint="@color/carbon_icon_primary"
-                app:strokeColor="@color/carbon_border_strong"
+                app:iconTint="@color/md_theme_onSurface"
+                app:strokeColor="@color/md_theme_outline"
                 app:strokeWidth="@dimen/carbon_border_width" />
         </LinearLayout>
     </LinearLayout>
@@ -118,14 +118,14 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/carbon_border_width"
-        android:background="@color/carbon_border_subtle" />
+        android:background="@color/md_theme_outlineVariant" />
 
     <!-- Optional stepped ritual bar (Sandhya / Puja) -->
     <LinearLayout
         android:id="@+id/readerStepBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/carbon_layer_01"
+        android:background="@color/md_theme_surfaceContainer"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingStart="@dimen/carbon_spacing_05"
@@ -136,13 +136,13 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/readerStepPrev"
-            style="@style/Widget.Carbon.Button.Tertiary.Icon"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="@dimen/carbon_layout_size_height_lg"
             android:layout_height="@dimen/carbon_layout_size_height_lg"
             android:contentDescription="Previous step"
             app:cornerRadius="@dimen/carbon_corner_radius"
             app:icon="@drawable/ic_nav_prev"
-            app:iconTint="@color/carbon_icon_primary" />
+            app:iconTint="@color/md_theme_onSurface" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -157,8 +157,8 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:textAppearance="@style/TextAppearance.Carbon.BodyCompact01"
-                android:textColor="@color/carbon_text_primary" />
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                android:textColor="@color/md_theme_onSurface" />
 
             <ProgressBar
                 android:id="@+id/readerStepProgress"
@@ -173,17 +173,17 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/readerStepNext"
-            style="@style/Widget.Carbon.Button.Tertiary.Icon"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="@dimen/carbon_layout_size_height_lg"
             android:layout_height="@dimen/carbon_layout_size_height_lg"
             android:contentDescription="Next step"
             app:cornerRadius="@dimen/carbon_corner_radius"
             app:icon="@drawable/ic_nav_next"
-            app:iconTint="@color/carbon_icon_primary" />
+            app:iconTint="@color/md_theme_onSurface" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/readerStepAll"
-            style="@style/Widget.Carbon.Button.Tertiary"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/carbon_layout_size_height_lg"
             android:minHeight="@dimen/carbon_layout_size_height_lg"
@@ -194,31 +194,31 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/readerModeSkip"
-            style="@style/Widget.Carbon.Button.Tertiary.Icon"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="@dimen/carbon_layout_size_height_lg"
             android:layout_height="@dimen/carbon_layout_size_height_lg"
             android:layout_marginStart="@dimen/carbon_spacing_03"
             android:contentDescription="Skip today"
             app:cornerRadius="@dimen/carbon_corner_radius"
             app:icon="@drawable/ic_skip"
-            app:iconTint="@color/carbon_icon_secondary" />
+            app:iconTint="@color/md_theme_onSurfaceVariant" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/readerModeComplete"
-            style="@style/Widget.Carbon.Button.Tertiary.Icon"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="@dimen/carbon_layout_size_height_lg"
             android:layout_height="@dimen/carbon_layout_size_height_lg"
             android:layout_marginStart="@dimen/carbon_spacing_02"
             android:contentDescription="Completed for today"
             app:cornerRadius="@dimen/carbon_corner_radius"
             app:icon="@drawable/ic_check"
-            app:iconTint="@color/carbon_icon_secondary" />
+            app:iconTint="@color/md_theme_onSurfaceVariant" />
     </LinearLayout>
 
     <!-- Optional Japa Anga switcher -->
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/readerAngaTabs"
-        style="@style/Widget.Carbon.TabLayout"
+        style="@style/Widget.Material3.TabLayout.Secondary"
         android:layout_width="match_parent"
         android:layout_height="@dimen/carbon_layout_size_height_md"
         android:visibility="gone"
@@ -229,7 +229,7 @@
         android:id="@+id/readerModeDivider"
         android:layout_width="match_parent"
         android:layout_height="@dimen/carbon_border_width"
-        android:background="@color/carbon_border_subtle"
+        android:background="@color/md_theme_outlineVariant"
         android:visibility="gone" />
 
     <!-- Scrollable landscape reading area -->
@@ -253,16 +253,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/carbon_spacing_04"
-                android:textAppearance="@style/TextAppearance.Carbon.Heading03"
-                android:textColor="@color/carbon_interactive" />
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+                android:textColor="@color/md_theme_primary" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/readerContentBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/carbon_spacing_08"
-                android:textAppearance="@style/TextAppearance.Carbon.Body02"
-                android:textColor="@color/carbon_text_primary"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                android:textColor="@color/md_theme_onSurface"
                 android:textIsSelectable="true" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

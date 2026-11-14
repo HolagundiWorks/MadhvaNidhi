@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/carbon_background"
+    android:background="@color/md_theme_background"
     android:orientation="vertical">
 
     <!-- Portrait section selection list -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/carbon_layer"
+        android:background="@color/md_theme_surfaceContainer"
         android:orientation="vertical"
         android:paddingHorizontal="@dimen/carbon_spacing_05"
         android:paddingTop="@dimen/carbon_spacing_04"
@@ -20,22 +20,22 @@
             android:id="@+id/sectionTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.Carbon.Heading03"
-            android:textColor="@color/carbon_text" />
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+            android:textColor="@color/md_theme_onSurface" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/sectionSubtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/carbon_spacing_01"
-            android:textAppearance="@style/TextAppearance.Carbon.Body01"
-            android:textColor="@color/carbon_text_secondary" />
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="@color/md_theme_onSurfaceVariant" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/carbon_border_width"
-        android:background="@color/carbon_border_subtle" />
+        android:background="@color/md_theme_outlineVariant" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/sectionList"
@@ -55,7 +55,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/carbon_layer"
+        android:background="@color/md_theme_surfaceContainer"
         android:orientation="vertical"
         android:paddingHorizontal="@dimen/carbon_spacing_05"
         android:paddingVertical="@dimen/carbon_spacing_03">
@@ -66,8 +66,8 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textAppearance="@style/TextAppearance.Carbon.HeadingCompact01"
-            android:textColor="@color/carbon_text" />
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            android:textColor="@color/md_theme_onSurface" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/sectionDetailBody"
@@ -77,8 +77,8 @@
             android:ellipsize="end"
             android:lineSpacingMultiplier="1.3"
             android:maxLines="3"
-            android:textAppearance="@style/TextAppearance.Carbon.Body01"
-            android:textColor="@color/carbon_text_secondary" />
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="@color/md_theme_onSurfaceVariant" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -88,7 +88,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/sectionAction"
-                style="@style/Widget.Carbon.Button.Tertiary"
+                style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/carbon_spacing_03"
@@ -98,7 +98,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/sectionOpenContent"
-                style="@style/Widget.Carbon.Button.Primary"
+                style="@style/Widget.Material3.Button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

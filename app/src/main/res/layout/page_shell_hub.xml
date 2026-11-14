@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/carbon_background"
+    android:background="@color/md_theme_background"
     android:padding="@dimen/shell_page_inset">
 
     <LinearLayout
@@ -15,16 +15,16 @@
             android:id="@+id/hubTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.Carbon.Heading03"
-            android:textColor="@color/carbon_text" />
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+            android:textColor="@color/md_theme_onSurface" />
 
         <TextView
             android:id="@+id/hubSubtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/carbon_spacing_02"
-            android:textAppearance="@style/TextAppearance.Carbon.Body01"
-            android:textColor="@color/carbon_text_secondary" />
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="@color/md_theme_onSurfaceVariant" />
 
         <GridLayout
             android:id="@+id/hubChildren"
