@@ -44,6 +44,7 @@ class DashboardFragment : Fragment() {
         view.findViewById<View>(R.id.dashboardMenu).setOnClickListener { (activity as? LauncherActivity)?.openNavigation() }
         view.findViewById<View>(R.id.dashboardProfile).setOnClickListener { (activity as? LauncherActivity)?.navigateTo("user") }
         view.findViewById<View>(R.id.dashboardSettings).setOnClickListener { (activity as? LauncherActivity)?.navigateTo("settings") }
+        view.findViewById<View>(R.id.dashShare).setOnClickListener { showShareSheet() }
         viewLifecycleOwner.lifecycleScope.launch {
             val app = requireContext().applicationContext
             val profile = withContext(Dispatchers.IO) { com.paperdesk.launcher.data.ProfileStore(app).active() }
@@ -274,6 +275,50 @@ class DashboardFragment : Fragment() {
             )
             day.add(Calendar.DATE, 1)
         }
+    }
+
+    private fun showShareSheet() {
+        val templates = com.paperdesk.launcher.share.ShareCards.Template.values()
+        com.google.android.material.dialog.MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Share as image")
+            .setItems(templates.map { it.label }.toTypedArray()) { _, which ->
+                val template = templates[which]
+                val app = requireContext().applicationContext
+                viewLifecycleOwner.lifecycleScope.launch {
+                    val share = withContext(Dispatchers.IO) {
+                        val data = buildShareData(app)
+                        com.paperdesk.launcher.share.ShareCards.shareIntent(
+                            app, com.paperdesk.launcher.share.ShareCards.render(app, template, data)
+                        )
+                    }
+                    startActivity(android.content.Intent.createChooser(share, "Share progress"))
+                }
+            }
+            .show()
+    }
+
+    private fun buildShareData(app: android.content.Context): com.paperdesk.launcher.share.ShareCards.Data {
+        val lang = OsLang.get(app)
+        val day = PanchangaStore.forDate(app, PanchangaStore.dateKey())
+        val (morningOnly, allThree) = practice.sandhyaPatternCounts()
+        val japaDays = practice.japaCompleteDays()
+        val lines = mutableListOf<String>()
+        DashboardBadges.DAY_MILESTONES.forEach { t ->
+            if (allThree >= t.threshold) lines += "Gold sun · ${t.threshold} days"
+            if (morningOnly >= t.threshold) lines += "Silver sun · ${t.threshold} days"
+            if (japaDays >= t.threshold) lines += "Japa · ${t.threshold} days"
+        }
+        return com.paperdesk.launcher.share.ShareCards.Data(
+            matha = com.paperdesk.launcher.data.ProfileStore(app).active().matha.trim().ifBlank { "MadhvaNidhi" },
+            date = OsLang.dateLine(java.util.Calendar.getInstance(), lang),
+            current = practice.currentStreak(),
+            best = practice.bestStreak(),
+            sessionsToday = practice.todaySandhyaSessionCount(),
+            tithi = OsLang.script(day.tithi.uppercase().ifBlank { "-" }, lang),
+            nakshatra = OsLang.nakshatra(day.nakshatra, lang),
+            badgeCount = lines.size,
+            badgeLines = lines
+        )
     }
 
     private var badgesExpanded = false
