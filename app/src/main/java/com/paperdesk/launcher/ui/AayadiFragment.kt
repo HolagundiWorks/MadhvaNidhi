@@ -71,9 +71,14 @@ class AayadiFragment : Fragment() {
             Aayadi.Problem.EMPTY -> "ಉದ್ದ ಮತ್ತು ಅಗಲ ಸೊನ್ನೆಗಿಂತ ಹೆಚ್ಚಿರಬೇಕು"
             Aayadi.Problem.INCHES -> "ಇಂಚು 0, 3, 6 ಅಥವಾ 9 ಆಗಿರಬೇಕು"
             Aayadi.Problem.AREA -> {
-                val options = Aayadi.wholeAreaBreadthInches(number(R.id.aayadiLengthFt), number(R.id.aayadiLengthIn), number(R.id.aayadiBreadthFt))
-                if (options.isEmpty()) "ಕ್ಷೇತ್ರಫಲ ಪೂರ್ಣ ಚದರ ಅಡಿ ಆಗಬೇಕು. ಈ ಉದ್ದಕ್ಕೆ ಯಾವ ಅಗಲ ಇಂಚೂ ಸರಿಹೊಂದುವುದಿಲ್ಲ; ಉದ್ದ ಬದಲಿಸಿ"
-                else "ಕ್ಷೇತ್ರಫಲ ಪೂರ್ಣ ಚದರ ಅಡಿ ಆಗಬೇಕು. ಈ ಉದ್ದಕ್ಕೆ ಅಗಲದ ಇಂಚು ಆಯ್ಕೆ ಮಾಡಿ: ${options.joinToString(", ")}"
+                val lf = number(R.id.aayadiLengthFt)
+                val li = number(R.id.aayadiLengthIn)
+                val bf = number(R.id.aayadiBreadthFt)
+                val bi = number(R.id.aayadiBreadthIn)
+                val options = Aayadi.wholeAreaBreadthInches(lf, li, bf)
+                val measured = "${fmt.format(lf)} ಅಡಿ ${fmt.format(li)} ಇಂಚು × ${fmt.format(bf)} ಅಡಿ ${fmt.format(bi)} ಇಂಚು"
+                if (options.isEmpty()) "ಕ್ಷೇತ್ರಫಲ ಪೂರ್ಣ ಚದರ ಅಡಿ ಅಲ್ಲ ($measured). ಈ ಉದ್ದಕ್ಕೆ ಯಾವ ಅಗಲದ ಇಂಚೂ ಸರಿಹೊಂದುವುದಿಲ್ಲ; ಉದ್ದವನ್ನು ಬದಲಿಸಿ"
+                else "ಕ್ಷೇತ್ರಫಲ ಪೂರ್ಣ ಚದರ ಅಡಿ ಅಲ್ಲ ($measured). ಅಗಲದ ಇಂಚನ್ನು ${options.joinToString(" ಅಥವಾ ")} ಕ್ಕೆ ಬದಲಿಸಿ"
             }
             null -> ""
         }

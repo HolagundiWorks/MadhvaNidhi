@@ -75,20 +75,26 @@ samskrutiIds.forEach((id, index) => {
       byId(id).style.color = ok ? '' : '#da1e28';
     }
 
+    // Names the measurements entered and the breadth inch to change (same wording as AayadiFragment.kt).
+    function areaMessage(lf, li, bf, bi, options) {
+      const measured = `${fmt(lf)} ಅಡಿ ${fmt(li)} ಇಂಚು × ${fmt(bf)} ಅಡಿ ${fmt(bi)} ಇಂಚು`;
+      return options.length
+        ? `ಕ್ಷೇತ್ರಫಲ ಪೂರ್ಣ ಚದರ ಅಡಿ ಅಲ್ಲ (${measured}). ಅಗಲದ ಇಂಚನ್ನು ${options.join(' ಅಥವಾ ')} ಕ್ಕೆ ಬದಲಿಸಿ`
+        : `ಕ್ಷೇತ್ರಫಲ ಪೂರ್ಣ ಚದರ ಅಡಿ ಅಲ್ಲ (${measured}). ಈ ಉದ್ದಕ್ಕೆ ಯಾವ ಅಗಲದ ಇಂಚೂ ಸರಿಹೊಂದುವುದಿಲ್ಲ; ಉದ್ದವನ್ನು ಬದಲಿಸಿ`;
+    }
+
     function render() {
-      const r = calculate(
-        Number(byId('len-ft').value) || 0, Number(byId('len-in').value),
-        Number(byId('br-ft').value) || 0, Number(byId('br-in').value)
-      );
+      const lf = Number(byId('len-ft').value) || 0, li = Number(byId('len-in').value);
+      const bf = Number(byId('br-ft').value) || 0, bi = Number(byId('br-in').value);
+      const r = calculate(lf, li, bf, bi);
       const failed = !!r.problem;
       byId('aayadi-error').hidden = !failed;
-      byId('aayadi-error').textContent = {
-        empty: 'ಉದ್ದ ಮತ್ತು ಅಗಲ ಸೊನ್ನೆಗಿಂತ ಹೆಚ್ಚಿರಬೇಕು',
-        inches: 'ಇಂಚು 0, 3, 6 ಅಥವಾ 9 ಆಗಿರಬೇಕು',
-        area: r.breadthOptions && r.breadthOptions.length
-          ? `ಕ್ಷೇತ್ರಫಲ ಪೂರ್ಣ ಚದರ ಅಡಿ ಆಗಬೇಕು. ಈ ಉದ್ದಕ್ಕೆ ಅಗಲದ ಇಂಚು ಆಯ್ಕೆ ಮಾಡಿ: ${r.breadthOptions.join(', ')}`
-          : 'ಕ್ಷೇತ್ರಫಲ ಪೂರ್ಣ ಚದರ ಅಡಿ ಆಗಬೇಕು. ಈ ಉದ್ದಕ್ಕೆ ಯಾವ ಅಗಲ ಇಂಚೂ ಸರಿಹೊಂದುವುದಿಲ್ಲ; ಉದ್ದ ಬದಲಿಸಿ',
-      }[r.problem] || '';
+      byId('aayadi-error').textContent = r.problem === 'area'
+        ? areaMessage(lf, li, bf, bi, r.breadthOptions)
+        : ({
+            empty: 'ಉದ್ದ ಮತ್ತು ಅಗಲ ಸೊನ್ನೆಗಿಂತ ಹೆಚ್ಚಿರಬೇಕು',
+            inches: 'ಇಂಚು 0, 3, 6 ಅಥವಾ 9 ಆಗಿರಬೇಕು',
+          }[r.problem] || '');
       byId('aayadi-results').hidden = failed;
       if (failed) return;
       byId('aayadi-padam').textContent = fmt(r.padam);
