@@ -35,6 +35,15 @@ object Aayadi {
 
     class InputProblem(val problem: Problem) : IllegalArgumentException(problem.name)
 
+    /** Breadth inch steps (0, 3, 6, 9) that give a whole-square-foot area with this length. */
+    fun wholeAreaBreadthInches(lengthFeet: Double, lengthInches: Double, breadthFeet: Double): List<Int> {
+        val length = lengthFeet + lengthInches / 12.0
+        return INCH_STEPS.map { it.toInt() }.filter { inches ->
+            val area = length * (breadthFeet + inches / 12.0)
+            area % 1.0 == 0.0
+        }
+    }
+
     fun calculate(lengthFeet: Double, breadthFeet: Double): Result = calculate(lengthFeet, 0.0, breadthFeet, 0.0)
 
     fun calculate(lengthFeet: Double, lengthInches: Double, breadthFeet: Double, breadthInches: Double): Result {

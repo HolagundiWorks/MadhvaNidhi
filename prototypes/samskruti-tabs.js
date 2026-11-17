@@ -43,7 +43,11 @@ samskrutiIds.forEach((id, index) => {
       const breadth = breadthFt + breadthIn / 12;
       if (!(length > 0 && breadth > 0)) return { problem: 'empty' };
       const padam = length * breadth;
-      if (padam % 1 !== 0) return { problem: 'area' };
+      if (padam % 1 !== 0) {
+        // Breadth inch steps that give a whole area with this length (as Aayadi.wholeAreaBreadthInches).
+        const breadthOptions = INCH_STEPS.filter(i => (length * (breadthFt + i / 12)) % 1 === 0);
+        return { problem: 'area', breadthOptions };
+      }
       const aaya = rem(padam * 9, 8);
       const dhana = rem(padam * 8, 12);
       const runa = rem(padam * 3, 8);
@@ -81,7 +85,9 @@ samskrutiIds.forEach((id, index) => {
       byId('aayadi-error').textContent = {
         empty: 'ಉದ್ದ ಮತ್ತು ಅಗಲ ಸೊನ್ನೆಗಿಂತ ಹೆಚ್ಚಿರಬೇಕು',
         inches: 'ಇಂಚು 0, 3, 6 ಅಥವಾ 9 ಆಗಿರಬೇಕು',
-        area: 'ಕ್ಷೇತ್ರಫಲ ಪೂರ್ಣ ಚದರ ಅಡಿ ಆಗಬೇಕು. ಇಂಚನ್ನು ಬದಲಿಸಿ (ಉದಾ: 30 ಅಡಿ 3 ಇಂಚು × 40 ಅಡಿ)',
+        area: r.breadthOptions && r.breadthOptions.length
+          ? `ಕ್ಷೇತ್ರಫಲ ಪೂರ್ಣ ಚದರ ಅಡಿ ಆಗಬೇಕು. ಈ ಉದ್ದಕ್ಕೆ ಅಗಲದ ಇಂಚು ಆಯ್ಕೆ ಮಾಡಿ: ${r.breadthOptions.join(', ')}`
+          : 'ಕ್ಷೇತ್ರಫಲ ಪೂರ್ಣ ಚದರ ಅಡಿ ಆಗಬೇಕು. ಈ ಉದ್ದಕ್ಕೆ ಯಾವ ಅಗಲ ಇಂಚೂ ಸರಿಹೊಂದುವುದಿಲ್ಲ; ಉದ್ದ ಬದಲಿಸಿ',
       }[r.problem] || '';
       byId('aayadi-results').hidden = failed;
       if (failed) return;

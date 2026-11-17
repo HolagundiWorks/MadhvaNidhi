@@ -106,6 +106,11 @@ class AayadiTest {
         assertThrows(IllegalArgumentException::class.java) { Aayadi.calculate(30.0, 3.0, 40.0, 6.0) }
     }
 
+    @Test fun suggestsBreadthInchesThatGiveWholeArea() {
+        // 30 ft x 40 ft + 3 in = 1207.5 (no); + 6 in = 1215 (yes); + 9 in = 1222.5 (no).
+        assertEquals(listOf(0, 6), Aayadi.wholeAreaBreadthInches(30.0, 0.0, 40.0))
+    }
+
     @Test fun zeroDimensionIsRejected() {
         assertThrows(IllegalArgumentException::class.java) { Aayadi.calculate(0.0, 20.0) }
     }
