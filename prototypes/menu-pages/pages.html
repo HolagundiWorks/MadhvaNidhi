@@ -321,19 +321,24 @@ Catalogue-backed namavali reader.</p>
 <div class="panel" role="tabpanel" id="samskruti-panel-aayadi" aria-labelledby="samskruti-tab-aayadi">
       <p class="hub-sub">ಅಳತೆ ನಮೂದಿಸಿ · Enter site measure</p>
       <div class="cds--tile">
-        <div class="cds--form-item"><label for="len-ft">ಉದ್ದ · ಅಡಿ</label><input id="len-ft" type="number" value="30" min="1"></div>
-        <div class="cds--form-item"><label for="len-in">ಉದ್ದ · ಇಂಚು</label><select id="len-in"><option>0</option><option selected>6</option><option>9</option></select></div>
-        <div class="cds--form-item"><label for="br-ft">ಅಗಲ · ಅಡಿ</label><input id="br-ft" type="number" value="20" min="1"></div>
-        <div class="cds--form-item"><label for="br-in">ಅಗಲ · ಇಂಚು</label><select id="br-in"><option selected>0</option><option>3</option><option>6</option></select></div>
+        <div class="cds--form-item"><label for="len-ft">ಉದ್ದ · ಅಡಿ</label><input id="len-ft" type="number" value="30" min="0"></div>
+        <div class="cds--form-item"><label for="len-in">ಉದ್ದ · ಇಂಚು</label><select id="len-in"><option selected>0</option><option>3</option><option>6</option><option>9</option></select></div>
+        <div class="cds--form-item"><label for="br-ft">ಅಗಲ · ಅಡಿ</label><input id="br-ft" type="number" value="40" min="0"></div>
+        <div class="cds--form-item"><label for="br-in">ಅಗಲ · ಇಂಚು</label><select id="br-in"><option selected>0</option><option>3</option><option>6</option><option>9</option></select></div>
         <button type="button" class="cds--btn cds--btn--primary" id="aayadi-calc">ಆಯಾದಿ ಲೆಕ್ಕ ಹಾಕಿ</button>
       </div>
-      <div class="results" id="aayadi-results" hidden>
+      <p class="cds--tag" id="aayadi-error" hidden>ಸರಿಯಾದ ಉದ್ದ ಮತ್ತು ಅಗಲ ಆಯ್ಕೆಮಾಡಿ</p>
+      <div class="results" id="aayadi-results">
+        <div class="cds--label">ಆಯಾದಿ ಫಲಿತಾಂಶ</div>
         <div class="result-tile"><div class="cds--label">ಪದಂ</div><strong id="aayadi-padam">—</strong></div>
         <div class="result-tile"><div class="cds--label">ಆಯ</div><strong id="aayadi-aaya">—</strong></div>
+        <div class="result-tile"><div class="cds--label">ವ್ಯಯ</div><strong id="aayadi-vyaya">—</strong></div>
         <div class="result-tile"><div class="cds--label">ಧನ</div><strong id="aayadi-dhana">—</strong></div>
         <div class="result-tile"><div class="cds--label">ಋಣ</div><strong id="aayadi-rina">—</strong></div>
+        <div class="result-tile"><div class="cds--label">ಆಯುಷ್ಯ</div><strong id="aayadi-ayush">—</strong></div>
+        <p class="cds--tag" id="aayadi-summary"></p>
       </div>
-      <p class="cds--tag" style="margin-top:var(--cds-spacing-04)">Illustrative calc · Android uses Aayadi engine</p>
+      <p class="cds--tag" style="margin-top:var(--cds-spacing-04)">Same formulas as the Android Aayadi engine (Karnataka Navavarga convention). Confirm with a qualified guide before construction.</p>
     </div>
 <div class="panel" role="tabpanel" id="samskruti-panel-rangavalli" aria-labelledby="samskruti-tab-rangavalli" hidden>
       <div class="cds--empty-state">
