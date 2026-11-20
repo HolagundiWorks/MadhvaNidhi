@@ -13,7 +13,8 @@ object PageIcons {
         "puja" -> R.drawable.ic_nav_puja
         "nitya" -> R.drawable.ic_nav_library
         "grantha" -> R.drawable.ic_nav_library
-        "stotra", "suktas", "mantras", "namavali", "wiki" -> R.drawable.ic_nav_library
+        "wiki" -> R.drawable.ic_book
+        "stotra", "suktas", "mantras", "namavali" -> R.drawable.ic_nav_library
         "sangeeta", "hadugalu", "playlists", "favorites" -> R.drawable.ic_nav_songs
         "samskruti" -> R.drawable.ic_nav_culture
         "rangavalli" -> R.drawable.ic_dashboard

@@ -220,3 +220,10 @@ Decisions in section 7a were taken as recommended. Commits are on branch `madhva
 | Dvija reminders | Done: list, add (time picker or typed time) and remove, in settings. Alarms are exact when the system allows it (`SCHEDULE_EXACT_ALARM`), otherwise a window | A reminder for 21:33 fired at 21:33:00.012 with a heads-up notification on the Madhva Dvija alarm channel |
 | Dvija AlarmScheduler | Changed from a 10-minute window to an exact alarm: the window let Samsung delay a reminder | The fix was needed after the first 21:27 test was still pending at 21:27:48 |
 | Still open | Nidhi's practice stores and the reader's Sandhya mode are unreachable from the UI but still in the code (kept because the reader's confirmation flow is shared). Dvija reminder strings need native review. Dvija's asset pruning and the shared design system are not done. The upgrade test from the released Nidhi package has not been run | — |
+
+## 14. Continuation: upgrade test, asset pruning, icons
+
+- **Upgrade test (not done).** Installing the old build on the phone needed a clean data state for Madhva Nidhi, which means clearing the app's data on the test device. That step was refused and not forced. The test needs a decision: either clear the test device's Nidhi data (then the test runs with a fresh old build), or use a device without data.
+- **Dvija assets pruned.** Removed the Gita text, the Wiki knowledge files, the Rangavalli and Naivedya assets, and the songs texts, together with the Dvija copies of the Wiki, Rangavalli, Naivedya, songs and profile-backup screens. Kept the library, madhwa, catalogue and font assets that Dvija's Sandhya, Japa and Puja screens read. Release APK: 6.4 MB to 5.9 MB; AAB 7.1 MB. Verified on the phone: Sandhya, Japa and Puja render, no crash.
+- **Wiki dock icon** now uses the book icon; Grantha keeps the library icon.
+- Release outputs in `dist/` are rebuilt; the signature verifies with the Dvija upload key.
