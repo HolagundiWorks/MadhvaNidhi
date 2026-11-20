@@ -262,3 +262,27 @@ Owner decision: profile, dashboard and gamification belong to Madhva Dvija. Nidh
 - Fixed: pages now stop above the raised Home button (`dvija_dock_clearance` 132dp in `dvija/src/main/res/values/dock_clearance.xml`). On the device the Japa count button label is fully visible; the dashboard Share card scrolls above the button.
 - Build: `:dvija:assembleDebug` and `:dvija:testDebugUnitTest` pass; the debug build was installed over the existing data (`install -r`).
 - Not covered: the Dvija dashboard side-panel button (still a no-op), tests on other screen sizes.
+
+## 16. Screen-by-screen UI audit (device R9ZN608PGKD, 720x1560)
+
+Method: each screen captured with adb after a cold start; pixels sampled where a colour was in doubt. Frozen contracts (Panchanga, User, Nitya Sandhya/Japa/Parayana, Puja) were not redesigned; only defects were fixed.
+
+| Screen | Result | Action |
+| --- | --- | --- |
+| Nidhi home (tiles) | Correct. No centre button. | None |
+| Nidhi dock (6 rail items) | Correct after a fresh install. An earlier capture showed a centre button from a stale install. | None |
+| Nidhi Panchanga | Correct. Day dialog OK button rendered magenta (#FF00FF). | Fixed: dialog buttons use `Widget.PaperDesk.Button.TextButton.Dialog` (orange `md_theme_primary`). Verified: 0 magenta pixels, 120 orange. |
+| Nidhi Grantha (tabs) | Tab labels wrapped mid-word ("ನಾಮಾವಳಿಗ / ಳು"). | Fixed: scrollable, start-aligned tabs (`GranthaFragment`). Verified on one line. |
+| Nidhi Sangeeta (tabs) | Same mid-word wrap ("ಉಗಾಭೋಗ / ಗಳು"). | Fixed: `page_song_library.xml` uses scrollable tabs. Verified on one line. |
+| Nidhi Wiki, Puja, Samskruti | Correct. Samskruti tabs also now one line. | None |
+| Dvija dashboard | Correct after warm start. Share card and reminder card render. | None |
+| Dvija Sandhya / Parayana / Japa | Correct. Japa count button clears the raised Home (commit e97caa6). | None |
+| Dvija Puja | Shows Skip/Complete header. This is in the frozen Puja contract (`docs/frozen-nitya-puja.md`). | Left as is |
+| Dvija User | Correct. Mixed Kannada/English labels follow the app's bilingual pattern. | Left as is |
+| Dvija Settings | Opens straight on the Japa card with no page heading; the Japa targets table shows "—" when empty. | Not changed; see open items |
+
+**Open items (not fixed):**
+- Cold start shows a white frame for about a second before the dark theme applies. The system draws the starting window before `DvijaApp` sets night mode (`DeskTheme.apply`). Fix needs a launch-window decision.
+- Dvija reminder day label "EVERY DAY" (`AlarmStore.kt`) is English on a Kannada screen.
+- Dvija Settings has no page heading and an empty Japa targets table shows "—". Needs a design decision.
+- Dvija dashboard side-panel button is still a no-op.

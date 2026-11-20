@@ -26,6 +26,10 @@ class GranthaFragment : Fragment(R.layout.page_grantha_tabs) {
             tabs.addTab(tabs.newTab().setText(OsLang.ui(id, lang)), index == selected)
         }
         MdTabs.equalizeLeft(tabs)
+        // Five long Kannada labels cannot share a fixed row without breaking mid-word: scroll the strip instead.
+        tabs.tabMode = com.google.android.material.tabs.TabLayout.MODE_SCROLLABLE
+        tabs.tabGravity = com.google.android.material.tabs.TabLayout.GRAVITY_START
+        tabs.isTabIndicatorFullWidth = false
         fun show(index: Int) {
             selected = index
             val page = PageFactory.create(destinations[index])
