@@ -8,25 +8,40 @@
                 <com.google.android.material.button.MaterialButton android:id="@+id/aayadiInfo" style="@style/Widget.MadhvaNidhi.Button.Text" android:layout_width="@dimen/md_layout_size_height_lg" android:layout_height="wrap_content" android:minWidth="48dp" android:minHeight="48dp" android:padding="0dp" android:contentDescription="ಆಯಾದಿ ಮಾಹಿತಿ" app:icon="@drawable/ic_information" app:iconGravity="textStart" app:iconPadding="0dp" app:cornerRadius="@dimen/md_corner_radius" />
             </LinearLayout>
 
-            <!-- Step 1: the two inputs, the only thing the user must do -->
+            <!-- Step 1: the inputs, feet and inches for each side -->
             <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ds_space_4" app:cardCornerRadius="@dimen/md_corner_radius" app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four" app:cardBackgroundColor="@color/md_theme_surfaceContainer">
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/ds_space_4">
-                    <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Caption" android:text="ಕಟ್ಟಡದ ಅಳತೆ (ಪೂರ್ಣ ಅಡಿ)" android:layout_marginBottom="@dimen/ds_space_2" />
-                    <GridLayout android:id="@+id/aayadiInputsGrid" android:layout_width="match_parent" android:layout_height="wrap_content" android:columnCount="1" android:alignmentMode="alignMargins" android:useDefaultMargins="false">
-                        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ds_space_2" android:hint="ಉದ್ದ" style="@style/Widget.MadhvaNidhi.TextInput.Outlined" app:boxCornerRadiusTopStart="@dimen/md_corner_radius" app:boxCornerRadiusTopEnd="@dimen/md_corner_radius" app:boxCornerRadiusBottomStart="@dimen/md_corner_radius" app:boxCornerRadiusBottomEnd="@dimen/md_corner_radius">
+                    <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Caption" android:text="ಕಟ್ಟಡದ ಅಳತೆ (ಅಡಿ ಮತ್ತು ಇಂಚು)" android:layout_marginBottom="@dimen/ds_space_2" />
+                    <GridLayout android:id="@+id/aayadiInputsGrid" android:layout_width="match_parent" android:layout_height="wrap_content" android:columnCount="2" android:alignmentMode="alignMargins" android:useDefaultMargins="false">
+                        <com.google.android.material.textfield.TextInputLayout android:layout_width="0dp" android:layout_columnWeight="1" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/ds_space_2" android:layout_marginBottom="@dimen/ds_space_2" android:hint="ಉದ್ದ · ಅಡಿ" style="@style/Widget.MadhvaNidhi.TextInput.Outlined" app:boxCornerRadiusTopStart="@dimen/md_corner_radius" app:boxCornerRadiusTopEnd="@dimen/md_corner_radius" app:boxCornerRadiusBottomStart="@dimen/md_corner_radius" app:boxCornerRadiusBottomEnd="@dimen/md_corner_radius">
                             <com.google.android.material.textfield.TextInputEditText android:id="@+id/aayadiLengthFt" android:textAppearance="@style/TextAppearance.DS.BodyMedium" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:inputType="number" android:maxLines="1" android:maxLength="6" android:imeOptions="actionDone" />
                         </com.google.android.material.textfield.TextInputLayout>
-                        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ds_space_2" android:hint="ಅಗಲ" style="@style/Widget.MadhvaNidhi.TextInput.Outlined" app:boxCornerRadiusTopStart="@dimen/md_corner_radius" app:boxCornerRadiusTopEnd="@dimen/md_corner_radius" app:boxCornerRadiusBottomStart="@dimen/md_corner_radius" app:boxCornerRadiusBottomEnd="@dimen/md_corner_radius">
+                        <com.google.android.material.textfield.TextInputLayout android:layout_width="0dp" android:layout_columnWeight="1" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ds_space_2" android:hint="ಉದ್ದ · ಇಂಚು" style="@style/Widget.MadhvaNidhi.TextInput.ExposedDropdown" app:boxCornerRadiusTopStart="@dimen/md_corner_radius" app:boxCornerRadiusTopEnd="@dimen/md_corner_radius" app:boxCornerRadiusBottomStart="@dimen/md_corner_radius" app:boxCornerRadiusBottomEnd="@dimen/md_corner_radius">
+                            <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@+id/aayadiLengthIn" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:inputType="none" android:maxLines="1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout android:layout_width="0dp" android:layout_columnWeight="1" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/ds_space_2" android:layout_marginBottom="@dimen/ds_space_2" android:hint="ಅಗಲ · ಅಡಿ" style="@style/Widget.MadhvaNidhi.TextInput.Outlined" app:boxCornerRadiusTopStart="@dimen/md_corner_radius" app:boxCornerRadiusTopEnd="@dimen/md_corner_radius" app:boxCornerRadiusBottomStart="@dimen/md_corner_radius" app:boxCornerRadiusBottomEnd="@dimen/md_corner_radius">
                             <com.google.android.material.textfield.TextInputEditText android:id="@+id/aayadiBreadthFt" android:textAppearance="@style/TextAppearance.DS.BodyMedium" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:inputType="number" android:maxLines="1" android:maxLength="6" android:imeOptions="actionDone" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout android:layout_width="0dp" android:layout_columnWeight="1" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ds_space_2" android:hint="ಅಗಲ · ಇಂಚು" style="@style/Widget.MadhvaNidhi.TextInput.ExposedDropdown" app:boxCornerRadiusTopStart="@dimen/md_corner_radius" app:boxCornerRadiusTopEnd="@dimen/md_corner_radius" app:boxCornerRadiusBottomStart="@dimen/md_corner_radius" app:boxCornerRadiusBottomEnd="@dimen/md_corner_radius">
+                            <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@+id/aayadiBreadthIn" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:inputType="none" android:maxLines="1" />
                         </com.google.android.material.textfield.TextInputLayout>
                     </GridLayout>
                     <com.google.android.material.textview.MaterialTextView android:id="@+id/aayadiError" android:textColor="@color/md_error" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Body" android:text="ಸರಿಯಾದ ಉದ್ದ ಮತ್ತು ಅಗಲ ಆಯ್ಕೆಮಾಡಿ" android:visibility="gone" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Step 2: the verdict first, then the three checked values -->
+            <!-- Summary: the conversion, the search range and the counts -->
+            <com.google.android.material.card.MaterialCardView android:id="@+id/aayadiSummaryCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ds_space_4" app:cardCornerRadius="@dimen/md_corner_radius" app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four" app:cardBackgroundColor="@color/md_theme_surfaceContainer">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/ds_space_4">
+                    <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Caption" android:text="ಸಾರಾಂಶ" android:layout_marginBottom="@dimen/ds_space_2" />
+                    <com.google.android.material.textview.MaterialTextView android:id="@+id/aayadiSummaryText" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Body" android:text="" />
+                    <com.google.android.material.textview.MaterialTextView android:id="@+id/aayadiConfigError" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/md_error" android:textAppearance="@style/TextAppearance.DS.Body" android:layout_marginTop="@dimen/ds_space_2" android:visibility="gone" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Step 2: the entered size's own result -->
             <LinearLayout android:id="@+id/aayadiResults" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
-                <com.google.android.material.textview.MaterialTextView android:id="@+id/aayadiResultTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Title" android:text="ಫಲಿತಾಂಶ" android:layout_marginBottom="@dimen/ds_space_2" />
+                <com.google.android.material.textview.MaterialTextView android:id="@+id/aayadiResultTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Title" android:text="ನೀಡಿದ ಅಳತೆಯ ಫಲಿತಾಂಶ" android:layout_marginBottom="@dimen/ds_space_2" />
                 <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ds_space_4" app:cardCornerRadius="@dimen/md_corner_radius" app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four" app:cardBackgroundColor="@color/md_theme_surfaceContainer">
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/ds_space_4">
                         <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Caption" android:text="ತೀರ್ಮಾನ" android:layout_marginBottom="@dimen/ds_space_2" />
@@ -58,18 +73,18 @@
                     </com.google.android.material.card.MaterialCardView>
                 </GridLayout>
 
-                <!-- Details are hidden until asked for, so the first screen stays short -->
+                <!-- Details are hidden until asked for -->
                 <com.google.android.material.button.MaterialButton android:id="@+id/aayadiDetailsToggle" style="@style/Widget.MadhvaNidhi.Button.Text" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:text="ವಿವರ ತೋರಿಸಿ" android:layout_marginBottom="@dimen/ds_space_2" />
                 <LinearLayout android:id="@+id/aayadiDetails" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
                     <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ds_space_2" app:cardCornerRadius="@dimen/md_corner_radius" app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four" app:cardBackgroundColor="@color/md_theme_surfaceContainer">
                         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/ds_space_4">
-                            <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Caption" android:text="ಪದಂ · ಚದರ ಅಡಿ" android:layout_marginBottom="@dimen/ds_space_2" />
+                            <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Caption" android:text="ಪದಂ · ಚದರ ಹಸ್ತ" android:layout_marginBottom="@dimen/ds_space_2" />
                             <com.google.android.material.textview.MaterialTextView android:id="@+id/aayadiPadam" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Body" android:text="" />
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
                     <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ds_space_2" app:cardCornerRadius="@dimen/md_corner_radius" app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four" app:cardBackgroundColor="@color/md_theme_surfaceContainer">
                         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/ds_space_4">
-                            <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Caption" android:text="ಧನ · ಋಣ (ಧನ > ಋಣ ಶುಭ)" android:layout_marginBottom="@dimen/ds_space_2" />
+                            <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Caption" android:text="ಧನ · ಋಣ" android:layout_marginBottom="@dimen/ds_space_2" />
                             <com.google.android.material.textview.MaterialTextView android:id="@+id/aayadiDhana" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Body" android:text="" />
                             <com.google.android.material.textview.MaterialTextView android:id="@+id/aayadiRuna" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Body" android:text="" />
                         </LinearLayout>
@@ -77,6 +92,18 @@
                     <com.google.android.material.textview.MaterialTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Caption" android:text="ಶೇಷ 0 ಬಂದರೆ ಭಾಜಕ ಸಂಖ್ಯೆಯನ್ನೇ ಆಯ ವರ್ಗವಾಗಿ ತೆಗೆದುಕೊಳ್ಳಲಾಗುತ್ತದೆ." android:layout_marginBottom="@dimen/ds_space_4" />
                 </LinearLayout>
             </LinearLayout>
+
+            <!-- Step 3: sizes within one foot either side of the entered size that pass every mandatory rule -->
+            <com.google.android.material.textview.MaterialTextView android:id="@+id/aayadiTableTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Title" android:text="ಶುಭ ಅಳತೆಗಳು (ಉದ್ದ ಮತ್ತು ಅಗಲ ±1 ಅಡಿ)" android:layout_marginBottom="@dimen/ds_space_2" android:visibility="gone" />
+            <com.google.android.material.materialswitch.MaterialSwitch android:id="@+id/aayadiSortSwitch" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:text="ದೊಡ್ಡ ವಿಸ್ತೀರ್ಣ ಮೊದಲು" android:layout_marginBottom="@dimen/ds_space_2" android:visibility="gone" />
+            <com.google.android.material.card.MaterialCardView android:id="@+id/aayadiTableCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ds_space_4" app:cardCornerRadius="@dimen/md_corner_radius" app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four" app:cardBackgroundColor="@color/md_theme_surfaceContainer">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/ds_space_4">
+                    <com.google.android.material.textview.MaterialTextView android:id="@+id/aayadiTableEmpty" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Body" android:text="" />
+                    <HorizontalScrollView android:id="@+id/aayadiTableScroll" android:layout_width="match_parent" android:layout_height="wrap_content" android:scrollbars="horizontal" android:visibility="gone">
+                        <GridLayout android:id="@+id/aayadiTableGrid" android:layout_width="wrap_content" android:layout_height="wrap_content" android:columnCount="11" android:useDefaultMargins="false" />
+                    </HorizontalScrollView>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
         </GridLayout>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

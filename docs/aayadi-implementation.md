@@ -1,0 +1,52 @@
+# Aayadi calculator: implementation plan
+
+Source: "Āyādi Calculator — Developer Implementation Guide" (Downloads copy, read 20 November 2026).
+
+## What
+Bring the Aayadi screen in line with the guide, keeping the existing View/XML screen.
+
+## Decisions (agreed with the user, 20 November 2026)
+- **UI toolkit:** keep Android Views and XML. The guide's Compose request is not adopted.
+- **Hasta:** exact rational arithmetic. Totals are integer inches; hasta = inches / 18 as a fraction (40 ft = 80/3). No rounding before a formula. Earlier whole-hasta rounding is withdrawn.
+- **Scope:** the full screen now, with the Karnataka rule pack still DRAFT. The viable table therefore stays empty and a configuration error is shown until the pack is reviewed.
+
+## Areas touched
+- `domain/measure/`: `FeetInches`, `Rational` (BigInteger), `HastaStandard` (18 in, cited as the conventional standard).
+- `domain/aayadi/`: `RulePack` model, `Verdict` (PASS, FAIL, UNDETERMINED), `ParameterResult`, `CandidateResult`, evaluator, pack validation.
+- `domain/search/`: 25 x 25 inch-step candidates, inclusive bounds, duplicates excluded, sorting, largest-area option.
+- `data/rules/`: Karnataka Shodashavarga pack (Kotlin definition; JSON loading deferred).
+- `ui/AayadiFragment.kt`, `res/layout/page_aayadi.xml`: summary, results table, detail sheet, empty and configuration-error states, filter.
+- `test/`: unit tests for measurement, search, verdicts, pack gating and sorting.
+
+## Rules
+- A pack with missing mandatory formulas, labels or fractional policy, or with `reviewStatus = DRAFT`, produces UNDETERMINED for every parameter. It never produces PASS or FAIL.
+- Only PASS candidates enter the viable table. UNDETERMINED keeps its reason in diagnostics.
+- Parameters absent from the pack show "Not applicable" and never a value.
+- The vyaya < aaya rule is not in the cited book, so it is UNDETERMINED until a source is supplied.
+
+## Acceptance (guide section 10)
+1. 40′0″ = 480 in; 30′0″ = 360 in.
+2. 480/18 = 80/3 hasta; 360/18 = 20 hasta.
+3. 625 candidates when all dimensions are positive.
+4. Bounds inclusive: L-12, L+12, B-12, B+12.
+5. The input candidate appears exactly once.
+6. Zero or negative candidates excluded.
+7. No premature rounding.
+8. Missing classification gives UNDETERMINED, never PASS.
+9. Only PASS candidates in the viable table.
+10. Golden fixtures match the cited source. Not possible until the pack is reviewed; reported as open.
+11. No PASS candidates gives the empty state.
+12. Results stable and independent of locale.
+13. Whole-hasta formulas do not accept fractional hasta.
+14. Feet/inches round-trip to the integer-inch candidate.
+
+## Out of scope / open
+- Compose UI (declined). JSON rule packs (deferred). Review of the Karnataka pack and golden fixtures (needs the source). Yoni, Nakshatra, Vara and Tithi rules (no source in the pack, so Not applicable). Web prototype parity. Kannada wording needs native review.
+
+## Result (20 November 2026)
+- Built: `domain/measure` (FeetInches, exact Rational, HastaStandard), `domain/aayadi` (RulePack, Verdict, Evaluator with per-parameter working), `domain/search` (625 inclusive candidates, two sort orders), `data/rules/KarnatakaShodashavargaPack` (DRAFT), and the View screen with summary, decision, sort switch, table, empty and configuration-error states, and detail dialog.
+- Removed: `data/Aayadi.kt` (replaced by the domain layer).
+- Tests: `AayadiTest`, 23 tests, all pass. They cover feet/inches, exact hasta, 625 candidates, inclusive bounds, duplicates, zero exclusion, round trip, sort order, DRAFT gating, Not applicable, fractional refusal, the book table's remainders, and PASS/FAIL logic on a sourced test pack.
+- On the phone (SM-M115F): 30′0″ × 40′0″ shows 20 × 80/3 hasta, 625 evaluated, 0 viable, the DRAFT configuration error, and the empty table state. Aaya shows "—" for the entered size because its area is fractional.
+- Not reached on the phone: a viable row and its detail dialog, because the pack is DRAFT.
+- Open: Karnataka pack review and golden fixtures; vyaya < aaya and dhana/runa comparisons need a source; JSON pack loading; Yoni, Nakṣatra, Vāra and Tithi rules; web prototype parity; Kannada wording (incl. the info text, still feet-only) needs native review; Compose declined.
