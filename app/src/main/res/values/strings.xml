@@ -78,4 +78,6 @@
     <string name="text_larger">ಅಕ್ಷರ ದೊಡ್ಡದು</string>
     <string name="practice_export">ಅಭ್ಯಾಸ ದತ್ತಾಂಶ ರಫ್ತು (ಮಾಧ್ವ ದ್ವಿಜ)</string>
     <string name="practice_export_failed">ರಫ್ತು ಮಾಡಲಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</string>
+    <string name="home_today">ಇಂದು</string>
+    <string name="home_explore">ಅನ್ವೇಷಿಸಿ</string>
 </resources>

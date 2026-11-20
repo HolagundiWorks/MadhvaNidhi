@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 /** Creates workspace destinations. One fragment at a time — not a ViewPager roster. */
 object PageFactory {
     fun create(pageId: String): Fragment = when (pageId) {
-        "dashboard" -> DashboardFragment()
+        "dashboard" -> NidhiHomeFragment()
         "nityakarma" -> NityaKarmaFragment.create(NityaKarmaFragment.TAB_SANDHYA)
         "puja" -> ReaderFragment.create(ReaderFragment.PUJA)
         "grantha" -> GranthaFragment()
