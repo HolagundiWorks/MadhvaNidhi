@@ -233,3 +233,8 @@ Decisions in section 7a were taken as recommended. Commits are on branch `madhva
 - Upgrade: the phase-4 build installed over it with `install -r` (same signing key).
 - After upgrade: dark theme still on; the home screen renders; the dock has the Wiki icon and no Nitya Karma; Settings shows UI Settings, Backup and Legal; no crash logged; the process is running.
 - Not covered: favourites and reader positions were not created in the old build, so their migration is untested. Dvija was not touched.
+
+### Second upgrade check: reader text size (no data cleared)
+- The old build (`main`) was installed over the phase-4 build's data. In its reader, the text size was raised twice; it saved `reader_scale` 1.3.
+- The phase-4 build was installed over it. After the upgrade: `reader_scale` is still 1.3, the reader shows 130%, the dark theme is still on, and no crash is logged.
+- Still not covered: favourites (none were created), and reader page positions (the reader saves a position only when the page changes).
