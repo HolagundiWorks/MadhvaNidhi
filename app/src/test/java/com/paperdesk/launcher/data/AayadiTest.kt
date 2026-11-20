@@ -60,7 +60,7 @@ class AayadiTest {
         assertEquals(12.0, r.dhana, 0.0001)
         assertEquals(8.0, r.runa, 0.0001)
         assertEquals(120.0, r.ayush, 0.0001)
-        assertEquals(10.0, r.vyaya!!, 0.0001)
+        assertEquals(10.0, r.vyaya, 0.0001)
     }
 
     @Test fun alertFlagsFollowTheParameters() {
@@ -83,35 +83,8 @@ class AayadiTest {
         assertEquals(false, ayushAlert.ayushOk)
     }
 
-    @Test fun quarterFeetGiveAWholeAreaAndAreAccepted() {
-        // 30'3" x 40' = 30.25 x 40 = 1210 sq ft: whole, so accepted.
-        val r = Aayadi.calculate(30.0, 3.0, 40.0, 0.0)
-        assertEquals(1210.0, r.padam, 0.0001)
-        assertEquals(30.25, r.length, 0.0001)
-    }
-
-    @Test fun otherInchValuesAreRefused() {
-        assertThrows(IllegalArgumentException::class.java) { Aayadi.calculate(30.0, 2.0, 40.0, 0.0) }
-    }
-
-    @Test fun fractionalLengthGivesNoVyaya() {
-        // 30'3" x 40': the length is 30.25 ft, so vyaya is not calculated (shown as a dash, no alert).
-        val r = Aayadi.calculate(30.0, 3.0, 40.0, 0.0)
-        assertEquals(null, r.vyaya)
-        assertEquals(null, r.vyayaOk)
-    }
-
-    @Test fun wholeAreaIsRequired() {
-        // 30'3" x 40'6" = 30.25 x 40.5 = 1225.125 sq ft: not whole, so refused.
-        assertThrows(IllegalArgumentException::class.java) { Aayadi.calculate(30.0, 3.0, 40.0, 6.0) }
-    }
-
-    @Test fun suggestsBreadthInchesThatGiveWholeArea() {
-        // 30 ft x 40 ft + 3 in = 1207.5 (no); + 6 in = 1215 (yes); + 9 in = 1222.5 (no).
-        assertEquals(listOf(0, 6), Aayadi.wholeAreaBreadthInches(30.0, 0.0, 40.0))
-    }
-
     @Test fun zeroDimensionIsRejected() {
         assertThrows(IllegalArgumentException::class.java) { Aayadi.calculate(0.0, 20.0) }
+        assertThrows(IllegalArgumentException::class.java) { Aayadi.calculate(20.0, 0.0) }
     }
 }

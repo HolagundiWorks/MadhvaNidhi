@@ -33,27 +33,16 @@ samskrutiIds.forEach((id, index) => {
     };
     const fmt = n => String(Number(n.toFixed(2)));
 
-    // Shodashavarga table (Kannada book, page 97): area is length x breadth in square feet. Inches only 0, 3, 6, 9,
-    // and the area must be whole. As in Aayadi.kt.
-    const INCH_STEPS = [0, 3, 6, 9];
-    function calculate(lengthFt, lengthIn, breadthFt, breadthIn) {
-      if (![lengthFt, lengthIn, breadthFt, breadthIn].every(v => Number.isFinite(v) && v >= 0)) return { problem: 'empty' };
-      if (!INCH_STEPS.includes(lengthIn) || !INCH_STEPS.includes(breadthIn)) return { problem: 'inches' };
-      const length = lengthFt + lengthIn / 12;
-      const breadth = breadthFt + breadthIn / 12;
-      if (!(length > 0 && breadth > 0)) return { problem: 'empty' };
+    // Shodashavarga table (Kannada book, page 97): area is length x breadth in square feet, whole feet only.
+    // As in Aayadi.kt.
+    function calculate(length, breadth) {
+      if (![length, breadth].every(v => Number.isFinite(v) && v > 0)) return { problem: 'empty' };
       const padam = length * breadth;
-      if (padam % 1 !== 0) {
-        // Breadth inch steps that give a whole area with this length (as Aayadi.wholeAreaBreadthInches).
-        const breadthOptions = INCH_STEPS.filter(i => (length * (breadthFt + i / 12)) % 1 === 0);
-        return { problem: 'area', breadthOptions };
-      }
       const aaya = rem(padam * 9, 8);
       const dhana = rem(padam * 8, 12);
       const runa = rem(padam * 3, 8);
       const ayush = rem(padam * 9, 120);
-      // Vyaya is defined on whole numbers only: null when the length is not whole feet.
-      const vyaya = length % 1 === 0 ? rem(length * 9, 10) : null;
+      const vyaya = rem(length * 9, 10);
       const whole = Math.trunc(aaya);
       const ordinal = Math.abs(aaya - whole) < 0.001 ? whole : null;
       const aayaName = ordinal >= 1 && ordinal <= 8 ? NAMES[ordinal] : 'ಭಿನ್ನಾಂಶ ಫಲ';
@@ -65,7 +54,7 @@ samskrutiIds.forEach((id, index) => {
       return {
         padam, aaya, vyaya, dhana, runa, ayush, aayaName, summary: tests.join('  ·  '),
         aayaOk: GOOD.includes(ordinal),
-        vyayaOk: vyaya === null ? null : vyaya < aaya,
+        vyayaOk: vyaya < aaya,
         ayushOk: ayush > 60,
       };
     }
@@ -75,37 +64,24 @@ samskrutiIds.forEach((id, index) => {
       byId(id).style.color = ok ? '' : '#da1e28';
     }
 
-    // Names the measurements entered and the breadth inch to change (same wording as AayadiFragment.kt).
-    function areaMessage(lf, li, bf, bi, options) {
-      const measured = `${fmt(lf)} ಅಡಿ ${fmt(li)} ಇಂಚು × ${fmt(bf)} ಅಡಿ ${fmt(bi)} ಇಂಚು`;
-      return options.length
-        ? `ಕ್ಷೇತ್ರಫಲ ಪೂರ್ಣ ಚದರ ಅಡಿ ಅಲ್ಲ (${measured}). ಅಗಲದ ಇಂಚನ್ನು ${options.join(' ಅಥವಾ ')} ಕ್ಕೆ ಬದಲಿಸಿ`
-        : `ಕ್ಷೇತ್ರಫಲ ಪೂರ್ಣ ಚದರ ಅಡಿ ಅಲ್ಲ (${measured}). ಈ ಉದ್ದಕ್ಕೆ ಯಾವ ಅಗಲದ ಇಂಚೂ ಸರಿಹೊಂದುವುದಿಲ್ಲ; ಉದ್ದವನ್ನು ಬದಲಿಸಿ`;
-    }
-
     function render() {
-      const lf = Number(byId('len-ft').value) || 0, li = Number(byId('len-in').value);
-      const bf = Number(byId('br-ft').value) || 0, bi = Number(byId('br-in').value);
-      const r = calculate(lf, li, bf, bi);
+      const lf = Number(byId('len-ft').value) || 0;
+      const bf = Number(byId('br-ft').value) || 0;
+      const r = calculate(lf, bf);
       const failed = !!r.problem;
       byId('aayadi-error').hidden = !failed;
-      byId('aayadi-error').textContent = r.problem === 'area'
-        ? areaMessage(lf, li, bf, bi, r.breadthOptions)
-        : ({
-            empty: 'ಉದ್ದ ಮತ್ತು ಅಗಲ ಸೊನ್ನೆಗಿಂತ ಹೆಚ್ಚಿರಬೇಕು',
-            inches: 'ಇಂಚು 0, 3, 6 ಅಥವಾ 9 ಆಗಿರಬೇಕು',
-          }[r.problem] || '');
+      byId('aayadi-error').textContent = failed ? 'ಉದ್ದ ಮತ್ತು ಅಗಲ ಸೊನ್ನೆಗಿಂತ ಹೆಚ್ಚಿರಬೇಕು' : '';
       byId('aayadi-results').hidden = failed;
       if (failed) return;
       byId('aayadi-padam').textContent = fmt(r.padam);
       byId('aayadi-aaya').textContent = `${fmt(r.aaya)}  ·  ${r.aayaName}`;
-      byId('aayadi-vyaya').textContent = r.vyaya === null ? '—' : fmt(r.vyaya);
+      byId('aayadi-vyaya').textContent = fmt(r.vyaya);
       byId('aayadi-dhana').textContent = fmt(r.dhana);
       byId('aayadi-rina').textContent = fmt(r.runa);
       byId('aayadi-ayush').textContent = fmt(r.ayush);
       byId('aayadi-summary').textContent = r.summary;
       alertColour('aayadi-aaya', r.aayaOk);
-      alertColour('aayadi-vyaya', r.vyayaOk !== false);
+      alertColour('aayadi-vyaya', r.vyayaOk);
       alertColour('aayadi-ayush', r.ayushOk);
     }
 
