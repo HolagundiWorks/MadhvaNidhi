@@ -1,0 +1,69 @@
+{
+  "id": "karnataka-shodashavarga",
+  "displayName": "ಷೋಡಶವರ್ಗ (ಕರ್ನಾಟಕ)",
+  "version": "0.1-draft",
+  "source": {
+    "title": "Kannada book, Shodashavarga table",
+    "chapter": "not recorded",
+    "verseOrPage": "p.97",
+    "edition": "not recorded",
+    "translatorOrEditor": ""
+  },
+  "reviewStatus": "DRAFT",
+  "hasta": {
+    "inchesPerHasta": 18,
+    "citation": "Conventional configuration; not a universal textual standard"
+  },
+  "fractionalPolicy": "WHOLE_HASTA_ONLY",
+  "parameters": [
+    {
+      "key": "aaya",
+      "displayName": "ಆಯ",
+      "formula": { "operand": "PADAM", "multiplier": 9, "modulus": 8 },
+      "labels": {
+        "1": "ಧ್ವಜ", "2": "ಧೂಮ", "3": "ಸಿಂಹ", "4": "ಶ್ವಾನ",
+        "5": "ವೃಷಭ", "6": "ಖರ", "7": "ಗಜ", "8": "ಕಾಕ"
+      },
+      "criterion": { "type": "in", "set": [1, 3, 5, 7] },
+      "mandatory": true,
+      "sourceRef": "Kannada book, Shodashavarga table, p.97: auspicious set 1,3,5,7 not yet verified"
+    },
+    {
+      "key": "dhana",
+      "displayName": "ಧನ",
+      "formula": { "operand": "PADAM", "multiplier": 8, "modulus": 12 },
+      "labels": {},
+      "criterion": { "type": "unsourced", "reason": "ಧನ ಮತ್ತು ಋಣ ಹೋಲಿಕೆಯ ನಿಯಮ ಮೂಲದಲ್ಲಿ ದೃಢಪಟ್ಟಿಲ್ಲ" },
+      "mandatory": true,
+      "sourceRef": "Kannada book, Shodashavarga table, p.97: value column; comparison not verified"
+    },
+    {
+      "key": "runa",
+      "displayName": "ಋಣ",
+      "formula": { "operand": "PADAM", "multiplier": 3, "modulus": 8 },
+      "labels": {},
+      "criterion": { "type": "unsourced", "reason": "ಧನ ಮತ್ತು ಋಣ ಹೋಲಿಕೆಯ ನಿಯಮ ಮೂಲದಲ್ಲಿ ದೃಢಪಟ್ಟಿಲ್ಲ" },
+      "mandatory": true,
+      "sourceRef": "Kannada book, Shodashavarga table, p.97: value column; comparison not verified"
+    },
+    {
+      "key": "ayush",
+      "displayName": "ಆಯುಷ್ಯ",
+      "formula": { "operand": "PADAM", "multiplier": 9, "modulus": 120 },
+      "labels": {},
+      "criterion": { "type": "above", "threshold": 60 },
+      "mandatory": true,
+      "sourceRef": "Kannada book, Shodashavarga table, p.97: ಆಯವರ್ಗದಲ್ಲಿ 60 ಮೇಲ್ಪಟ್ಟು ಆಯಸ್ಸು"
+    },
+    {
+      "key": "vyaya",
+      "displayName": "ವ್ಯಯ",
+      "formula": { "operand": "LENGTH_HASTA", "multiplier": 9, "modulus": 10 },
+      "labels": {},
+      "criterion": { "type": "unsourced", "reason": "ವ್ಯಯ < ಆಯ ನಿಯಮ ಮೂಲ ಗ್ರಂಥದಲ್ಲಿ ಇಲ್ಲ" },
+      "mandatory": true,
+      "sourceRef": "Kannada book, Shodashavarga table, p.97: value column; vyaya < aaya not in the book"
+    }
+  ],
+  "notApplicable": ["yoni", "nakshatra", "vara", "tithi"]
+}

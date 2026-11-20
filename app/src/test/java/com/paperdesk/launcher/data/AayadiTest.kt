@@ -1,6 +1,6 @@
 package com.paperdesk.launcher.data
 
-import com.paperdesk.launcher.data.rules.KarnatakaShodashavargaPack
+import com.paperdesk.launcher.data.rules.RulePackLoader
 import com.paperdesk.launcher.domain.aayadi.Criterion
 import com.paperdesk.launcher.domain.aayadi.Evaluator
 import com.paperdesk.launcher.domain.aayadi.ReviewStatus
@@ -18,7 +18,8 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class AayadiTest {
-    private val draft = KarnatakaShodashavargaPack.draft
+    // Read from the same JSON asset the app ships, so the tests check the real pack.
+    private val draft: RulePack = RulePackLoader.parse(java.io.File("src/main/assets/rules/karnataka-shodashavarga.json").readText())
 
     /** Book table rows (length x breadth, as whole hasta): aaya, name, dhana, runa, ayush. */
     private data class Row(val l: Int, val b: Int, val aaya: Long, val dhana: Long, val runa: Long, val ayush: Long)
@@ -185,6 +186,19 @@ class AayadiTest {
         val reviewed = draft.copy(reviewStatus = ReviewStatus.REVIEWED, translatorOrEditor = "test")
         assertEquals(Verdict.UNDETERMINED, Evaluator.evaluate(17 * 18L, 21 * 18L, reviewed).verdict)
         assertTrue(reviewed.parameters.any { it.criterion is Criterion.Unsourced })
+    }
+
+    @Test fun jsonPackMatchesTheDraftRules() {
+        assertEquals(ReviewStatus.DRAFT, draft.reviewStatus)
+        assertEquals(18L, draft.hastaStandard.inchesPerHasta)
+        assertEquals(listOf("aaya", "dhana", "runa", "ayush", "vyaya"), draft.parameters.map { it.key })
+        assertEquals(listOf("yoni", "nakshatra", "vara", "tithi"), draft.notApplicable)
+        val aaya = draft.parameters.first { it.key == "aaya" }
+        assertEquals(9L, aaya.formula.multiplier)
+        assertEquals(8L, aaya.formula.modulus)
+        assertEquals("ಕಾಕ", aaya.labels[8L])
+        assertEquals(Criterion.RemainderIn(setOf(1L, 3L, 5L, 7L)), aaya.criterion)
+        assertTrue(draft.validate().isNotEmpty())
     }
 
     @Test fun zeroOrNegativeCandidateIsRejected() {

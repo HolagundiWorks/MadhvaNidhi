@@ -19,7 +19,7 @@ import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textview.MaterialTextView
 import com.paperdesk.launcher.R
-import com.paperdesk.launcher.data.rules.KarnatakaShodashavargaPack
+import com.paperdesk.launcher.data.rules.RulePackLoader
 import com.paperdesk.launcher.domain.aayadi.CandidateResult
 import com.paperdesk.launcher.domain.aayadi.Evaluator
 import com.paperdesk.launcher.domain.aayadi.ParameterResult
@@ -32,7 +32,9 @@ import java.text.DecimalFormat
 class AayadiFragment : Fragment() {
     private val fmt = DecimalFormat("0.##")
     private val inches = (0..11).map { it.toString() }
-    private val pack: RulePack = KarnatakaShodashavargaPack.draft
+    /** The shipped rule pack, or null when it could not be read (then a configuration error is shown). */
+    private var pack: RulePack? = null
+    private var packError: String? = null
     private var sortOrder = SortOrder.VARIATION
 
     /** Columns of the viable table, in the guide's order. Yoni, Nakṣatra, Vāra and Tithi are listed for completeness. */
@@ -47,6 +49,10 @@ class AayadiFragment : Fragment() {
     override fun onViewCreated(view: View, state: Bundle?) {
         PagePalette.apply(view, "aayadi")
         MaterialLayouts.bind(view)
+        runCatching { RulePackLoader.load(requireContext()) }.also {
+            pack = it.getOrNull()
+            packError = it.exceptionOrNull()?.message
+        }
         listOf(R.id.aayadiTitle, R.id.aayadiResultTitle).forEach { DeskType.apply(view.findViewById(it), DeskType.SEMIBOLD) }
         view.findViewById<TextView>(R.id.aayadiLengthFt).text = "30"
         view.findViewById<TextView>(R.id.aayadiBreadthFt).text = "40"
@@ -104,14 +110,27 @@ class AayadiFragment : Fragment() {
             .forEach { v.findViewById<View>(it).visibility = if (valid) View.VISIBLE else View.GONE }
         if (!valid) return
 
-        val original = Evaluator.evaluate(lt, bt, pack)
-        val all = Search.evaluateAll(lt, bt, pack)
+        val rules = pack
+        if (rules == null) {
+            // The pack could not be read: a configuration error, and no judgments or results.
+            v.findViewById<View>(R.id.aayadiResults).visibility = View.GONE
+            v.findViewById<TextView>(R.id.aayadiSummaryText).text = ""
+            v.findViewById<TextView>(R.id.aayadiConfigError).apply {
+                text = "ನಿಯಮ ಪಟ್ಟಿ ಓದಲಾಗಲಿಲ್ಲ: ${packError ?: ""}"
+                visibility = View.VISIBLE
+            }
+            fillTable(v, emptyList(), packIncomplete = true)
+            return
+        }
+
+        val original = Evaluator.evaluate(lt, bt, rules)
+        val all = Search.evaluateAll(lt, bt, rules)
         val viable = Search.sort(all.filter { it.verdict == Verdict.PASS }, lt, bt, sortOrder)
-        val problems = pack.validate()
+        val problems = rules.validate()
 
         v.findViewById<TextView>(R.id.aayadiSummaryText).text = buildString {
             appendLine("ನೀಡಿದ ಅಳತೆ: ${original.length} × ${original.breadth}")
-            appendLine("ಹಸ್ತ: ${original.lengthHasta} × ${original.breadthHasta} (1 ಹಸ್ತ = ${pack.hastaStandard.inchesPerHasta} ಇಂಚು)")
+            appendLine("ಹಸ್ತ: ${original.lengthHasta} × ${original.breadthHasta} (1 ಹಸ್ತ = ${rules.hastaStandard.inchesPerHasta} ಇಂಚು)")
             appendLine("ಹುಡುಕಾಟ ವ್ಯಾಪ್ತಿ: ±1 ಅಡಿ, ${all.size} ಅಳತೆ")
             append("ಮೌಲ್ಯಮಾಪನ: ${all.size} · ಶುಭ: ${viable.size} · ತೀರ್ಮಾನ ಬಾಕಿ: ${all.count { it.verdict == Verdict.UNDETERMINED }}")
         }

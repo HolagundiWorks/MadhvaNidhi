@@ -80,4 +80,6 @@ dependencies {
     implementation("androidx.security:security-crypto:1.1.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
     testImplementation("junit:junit:4.13.2")
+    // The rule pack is read with org.json; the Android stub is not usable on the JVM test classpath.
+    testImplementation("org.json:json:20240303")
 }

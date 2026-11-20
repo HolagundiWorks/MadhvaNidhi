@@ -322,21 +322,34 @@ Catalogue-backed namavali reader.</p>
       <p class="hub-sub">ಅಳತೆ ನಮೂದಿಸಿ · Enter site measure</p>
       <div class="cds--tile">
         <div class="cds--form-item"><label for="len-ft">ಉದ್ದ · ಅಡಿ</label><input id="len-ft" type="number" value="30" min="0"></div>
+        <div class="cds--form-item"><label for="len-in">ಉದ್ದ · ಇಂಚು</label><select id="len-in"><option selected>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option></select></div>
         <div class="cds--form-item"><label for="br-ft">ಅಗಲ · ಅಡಿ</label><input id="br-ft" type="number" value="40" min="0"></div>
+        <div class="cds--form-item"><label for="br-in">ಅಗಲ · ಇಂಚು</label><select id="br-in"><option selected>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option></select></div>
         <button type="button" class="cds--btn cds--btn--primary" id="aayadi-calc">ಆಯಾದಿ ಲೆಕ್ಕ ಹಾಕಿ</button>
       </div>
       <p class="cds--tag" id="aayadi-error" hidden>ಸರಿಯಾದ ಉದ್ದ ಮತ್ತು ಅಗಲ ಆಯ್ಕೆಮಾಡಿ</p>
+      <div class="cds--tile" id="aayadi-summary-card">
+        <div class="cds--label">ಸಾರಾಂಶ</div>
+        <pre id="aayadi-summary-text" style="white-space:pre-wrap;font:inherit;margin:0"></pre>
+        <p class="cds--tag" id="aayadi-config-error" hidden></p>
+      </div>
       <div class="results" id="aayadi-results">
-        <div class="cds--label">ಆಯಾದಿ ಫಲಿತಾಂಶ</div>
+        <div class="cds--label">ನೀಡಿದ ಅಳತೆಯ ಫಲಿತಾಂಶ</div>
+        <p class="cds--tag" id="aayadi-summary"></p>
         <div class="result-tile"><div class="cds--label">ಪದಂ</div><strong id="aayadi-padam">—</strong></div>
-        <div class="result-tile"><div class="cds--label">ಆಯ</div><strong id="aayadi-aaya">—</strong></div>
-        <div class="result-tile"><div class="cds--label">ವ್ಯಯ</div><strong id="aayadi-vyaya">—</strong></div>
+        <div class="result-tile"><div class="cds--label">ಆಯ · ಅನುಕೂಲ: 1, 3, 5, 7</div><strong id="aayadi-aaya">—</strong></div>
+        <div class="result-tile"><div class="cds--label">ವ್ಯಯ · ಆಯಕ್ಕಿಂತ ಕಡಿಮೆ</div><strong id="aayadi-vyaya">—</strong></div>
         <div class="result-tile"><div class="cds--label">ಧನ</div><strong id="aayadi-dhana">—</strong></div>
         <div class="result-tile"><div class="cds--label">ಋಣ</div><strong id="aayadi-rina">—</strong></div>
-        <div class="result-tile"><div class="cds--label">ಆಯುಷ್ಯ</div><strong id="aayadi-ayush">—</strong></div>
-        <p class="cds--tag" id="aayadi-summary"></p>
+        <div class="result-tile"><div class="cds--label">ಆಯುಷ್ಯ · 60 ಕ್ಕಿಂತ ಹೆಚ್ಚು</div><strong id="aayadi-ayush">—</strong></div>
       </div>
-      <p class="cds--tag" style="margin-top:var(--cds-spacing-04)">Same formulas as the Android Aayadi engine (Karnataka Navavarga convention). Confirm with a qualified guide before construction.</p>
+      <div class="cds--tile" id="aayadi-table-card">
+        <div class="cds--label">ಶುಭ ಅಳತೆಗಳು (ಉದ್ದ ಮತ್ತು ಅಗಲ ±1 ಅಡಿ)</div>
+        <label class="cds--checkbox-label"><input type="checkbox" id="aayadi-sort"> ದೊಡ್ಡ ವಿಸ್ತೀರ್ಣ ಮೊದಲು</label>
+        <p class="cds--tag" id="aayadi-table-empty"></p>
+        <div id="aayadi-table-wrap" hidden style="overflow-x:auto"><table class="cds--data-table" id="aayadi-table"></table></div>
+      </div>
+      <p class="cds--tag" style="margin-top:var(--cds-spacing-04)">Exact hasta arithmetic (1 ಹಸ್ತ = 18 ಇಂಚು). The Karnataka rule pack is DRAFT, so no size is judged yet. Confirm with a qualified guide before construction.</p>
     </div>
 <div class="panel" role="tabpanel" id="samskruti-panel-rangavalli" aria-labelledby="samskruti-tab-rangavalli" hidden>
       <div class="cds--empty-state">
