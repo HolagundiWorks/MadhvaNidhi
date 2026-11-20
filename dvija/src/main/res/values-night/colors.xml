@@ -6,15 +6,4 @@
     <color name="white_90">#E6FFFFFF</color>
     <color name="white_70">#B3FFFFFF</color>
     <color name="white_55">#8CFFFFFF</color>
-    <color name="white_45">#73FFFFFF</color>
-    <color name="accent_90">#E6FF8A3D</color>
-    <color name="accent_70">#B3FF8A3D</color>
-    <color name="scrim">#99000000</color>
-    <color name="clock_face">@color/md_theme_surface</color>
-    <color name="clock_ink">@color/md_theme_onSurface</color>
-    <color name="leaf">@color/md_theme_surface</color>
-    <color name="leaf_fibre">@color/md_theme_onSurface</color>
-    <color name="leaf_hole">@color/md_theme_onSurface</color>
-    <color name="moon_lit">#E0E0E0</color>
-    <color name="moon_shade">#616161</color>
 </resources>

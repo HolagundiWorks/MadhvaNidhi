@@ -8,4 +8,5 @@
     <color name="white_90">#E6000000</color>
     <color name="white_70">#B3000000</color>
     <color name="white_55">#8C000000</color>
+    <color name="leaf">@color/md_theme_surface</color>
 </resources>

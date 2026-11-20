@@ -174,3 +174,37 @@ Phase 3 comes before Phase 4, as the guideline asks: Dvija is built and verified
 - The dependency scan in section 4 matched **file names** only. It missed types declared inside a file and used elsewhere. Example: `CatalogueClassification` uses `CatalogueGroup` and `CatalogueItem`, which are declared in `CatalogueStore.kt`. Those two data classes moved to `shared/core` (`CatalogueModels.kt`). Treat section 4 as a starting point and confirm each edge by compiling.
 - `JapaCountMathTest` depends on `JapaGoals`, which depends on `Sankalpa`, so it stays in the app until those move.
 - Phase 2b so far: `shared/core` holds `RitualText`, `PanchangaTraditions`, `MadhwaDays`, `KannadaPhonetic`, `JapaCatalog`, `IndicScript`, `DashboardBadges`, `CatalogueClassification`, `CatalogueModels`. Its 13 tests pass; the app's 38 tests pass; `assembleDebug` succeeds. Baseline was 51 tests, so the total is unchanged.
+
+## 12. Status after the autonomous implementation pass
+
+Decisions in section 7a were taken as recommended. Commits are on branch `madhva-split-audit` (not pushed).
+
+| Phase | State | Evidence |
+|---|---|---|
+| 1 Audit | Done | `6e6b7a9`, this file |
+| 2a Baseline | Done: 51 Nidhi unit tests pass; debug build succeeds | Gradle runs in this pass |
+| 2b Shared code | Partly: `shared/core` holds pure logic (calendar traditions, Kannada text helpers, catalogue classification and models, Japa catalogue, dashboard badges, practice transfer codec, passphrase crypto). 28 core tests pass. The reader, the design system and the navigation chrome are still in each app | `c98fba0`, `e37151c`, `3f09120` |
+| 3a Madhva Dvija app | Done: `:dvija`, application ID `in.hcworks.madhvadvija`, own host, copied practice screens and stores, bottom navigation (Home, Sandhya, Japa, Nitya Puja, profile, settings). 14 practice tests pass. Dashboard, Sandhya, Japa and Nitya Puja checked on the phone | `5de418d`, `787e474`, `e107180` |
+| 3b Data transfer | Done: export from Madhva Nidhi, encrypted with a passphrase; import into Madhva Dvija with validation, duplicate refusal and a no-history rule. Checked on the phone (350 records) with the encrypted file, and the duplicate refusal | `e37151c`, `3f09120` |
+| 4 Refocus Nidhi | Partly: home is now a content-discovery screen (today's Panchanga, library entries, settings entry). Demo practice seeding and the demo data classes are removed. **Not done:** removing Nitya Karma from the dock and the page list, the Dashboard and Users settings tabs (they still show Japa configuration and profile), and the profile part of the Backup tab | `b6c09c0`, `4b95134` |
+| 5 Notifications and migration verification | **Not done:** Nidhi's practice reminders (`paperdesk_alarms`) are not cancelled when Dvija takes over, and Dvija's reminder screens are not verified. The upgrade test from the installed Nidhi build has not been run | — |
+| 6 Release | Dvija release AAB and APK built, signed with its own upload key, and checked on the phone (dashboard). Madhva Nidhi release signing is unchanged. Dvija still uses the Madhva launcher icon and a copy of all Nidhi assets (APK about 6.4 MB) | `dist/madhva-dvija-1.0.0.*` (ignored folder) |
+
+### Decisions taken autonomously, and their effect
+- The practice export is encrypted (PBKDF2-SHA256, AES-256-GCM). The earlier plain-text export is not used by any release.
+- Import is refused when the device already has practice history. Defaults written at first launch do not count.
+- Dvija does not request the internet permission, so Panchanga uses local calculation only.
+- Dvija does not seed demo data.
+
+### Known issues
+- Import and export messages (some passphrase and refusal texts) are in English, or mixed with Kannada. Native review is pending.
+- Dialog OK buttons use the default accent colour, not the brand colour.
+- Dvija's dashboard menu button does nothing yet, because the side panel is not ported. The dashboard shortcut for Panchanga falls back to the dashboard.
+- Dvija keeps every Nidhi asset. Unused assets should be pruned by usage after the Nidhi removals in Phase 4.
+- The debug and release builds of Madhva Nidhi were installed on the phone over the same package during these checks; the upgrade path from the released package has not been tested.
+
+### Next steps, in order
+1. Remove Nitya Karma from Nidhi's dock and page list; remove the Dashboard and Users settings tabs; remove the profile part of Nidhi's Backup tab, keeping favourites with the owner's decision.
+2. Cancel Nidhi's practice reminders on Dvija's first launch, using separate channels, and verify no duplicates.
+3. Prune Dvija's assets and adopt the shared design system (`DesignSystem`) in both Madhva apps, keeping the brand override.
+4. Run the upgrade test from the installed Nidhi build, with real data, and write the verification report.
