@@ -1,98 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Madhva Dvija host: one page at a time, with a bottom bar to the practice screens. -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Madhva Dvija host: one page at a time, with the floating dock (same shape as Madhva Nidhi's). -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="?android:attr/colorBackground">
 
+    <!-- Pages stop above the dock, so the last items stay reachable. -->
     <FrameLayout
         android:id="@+id/pageHost"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/ds_dock_total_height" />
 
     <LinearLayout
-        android:id="@+id/dvijaNav"
+        android:id="@+id/dvijaDock"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/ds_dock_total_height"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="@dimen/ds_space_4"
+        android:layout_marginEnd="@dimen/ds_space_4"
+        android:layout_marginBottom="@dimen/ds_space_4"
+        android:background="@drawable/bg_floating_nav"
+        android:elevation="@dimen/ds_nav_elevation"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingStart="@dimen/ds_space_2"
-        android:paddingEnd="@dimen/ds_space_2"
-        android:paddingTop="@dimen/ds_space_1"
-        android:paddingBottom="@dimen/ds_space_1">
+        android:paddingStart="@dimen/ds_dock_padding"
+        android:paddingEnd="@dimen/ds_dock_padding">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/navDashboard"
-            style="@style/Widget.MadhvaNidhi.Button.Text"
+        <ImageButton
+            android:id="@+id/dockSandhya"
+            style="@style/Widget.MadhvaNidhi.IconButton"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:minHeight="@dimen/ds_touch_min"
-            android:textSize="11sp"
-            app:icon="@drawable/ic_nav_home"
-            app:iconGravity="top"
-            app:iconPadding="0dp" />
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="@dimen/ds_space_2"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_sun" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/navSandhya"
-            style="@style/Widget.MadhvaNidhi.Button.Text"
+        <ImageButton
+            android:id="@+id/dockJapa"
+            style="@style/Widget.MadhvaNidhi.IconButton"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:minHeight="@dimen/ds_touch_min"
-            android:textSize="11sp"
-            app:icon="@drawable/ic_sun"
-            app:iconGravity="top"
-            app:iconPadding="0dp" />
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="@dimen/ds_space_2"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_japa_eda" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/navJapa"
-            style="@style/Widget.MadhvaNidhi.Button.Text"
+        <ImageButton
+            android:id="@+id/dockPuja"
+            style="@style/Widget.MadhvaNidhi.IconButton"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:minHeight="@dimen/ds_touch_min"
-            android:textSize="11sp"
-            app:icon="@drawable/ic_japa_eda"
-            app:iconGravity="top"
-            app:iconPadding="0dp" />
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="@dimen/ds_space_2"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_nav_puja" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/navPuja"
-            style="@style/Widget.MadhvaNidhi.Button.Text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:minHeight="@dimen/ds_touch_min"
-            android:textSize="11sp"
-            app:icon="@drawable/ic_nav_puja"
-            app:iconGravity="top"
-            app:iconPadding="0dp" />
+        <!-- Space for the raised Home button in the middle. -->
+        <View
+            android:layout_width="@dimen/ds_dock_center_size"
+            android:layout_height="match_parent" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/navProfile"
-            style="@style/Widget.MadhvaNidhi.Button.Text"
+        <ImageButton
+            android:id="@+id/dockProfile"
+            style="@style/Widget.MadhvaNidhi.IconButton"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:minHeight="@dimen/ds_touch_min"
-            android:textSize="11sp"
-            app:icon="@drawable/ic_user"
-            app:iconGravity="top"
-            app:iconPadding="0dp" />
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="@dimen/ds_space_2"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_user" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/navSettings"
-            style="@style/Widget.MadhvaNidhi.Button.Text"
+        <ImageButton
+            android:id="@+id/dockSettings"
+            style="@style/Widget.MadhvaNidhi.IconButton"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:minHeight="@dimen/ds_touch_min"
-            android:textSize="11sp"
-            app:icon="@drawable/ic_nav_settings"
-            app:iconGravity="top"
-            app:iconPadding="0dp" />
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="@dimen/ds_space_2"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_nav_settings" />
     </LinearLayout>
-</LinearLayout>
+
+    <!-- Raised circular Home button, half over the bar's top edge. -->
+    <FrameLayout
+        android:id="@+id/dockHome"
+        android:layout_width="@dimen/ds_dock_center_size"
+        android:layout_height="@dimen/ds_dock_center_size"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="@dimen/ds_dock_center_offset"
+        android:background="@drawable/ds_dock_center_fill"
+        android:clickable="true"
+        android:focusable="true"
+        android:elevation="@dimen/ds_dock_center_elevation"
+        android:foreground="?attr/selectableItemBackgroundBorderless">
+
+        <ImageView
+            android:id="@+id/dockHomeIcon"
+            android:layout_width="@dimen/ds_size_icon"
+            android:layout_height="@dimen/ds_size_icon"
+            android:layout_gravity="center"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_nav_home" />
+    </FrameLayout>
+</FrameLayout>

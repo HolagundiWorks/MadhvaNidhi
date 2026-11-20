@@ -254,3 +254,10 @@ Owner decision: profile, dashboard and gamification belong to Madhva Dvija. Nidh
 | Tests | Practice tests removed from Nidhi (they are in Dvija). Nidhi: build and unit tests pass. |
 
 **Left on the test device, deliberately not deleted:** Nidhi's encrypted profile file (`madhvanidhi_profiles_encrypted`), the old Wiki points file, and the old practice files that the export tool can still read. Deleting them is a decision for the owner.
+
+### Floating dock and home button (uncommitted until the owner approves)
+- Madhva Nidhi: the raised orange centre button (the dashboard entry) is removed from the shell. The dock has no Home button.
+- Madhva Dvija: the bottom navigation is replaced by a floating dock (Sandhya, Japa, Puja, Profile, Settings) with a raised Home (dashboard) button in the centre.
+- Device check (720x1560, Samsung SM-M115F): the dashboard shows the dock; tapping Japa opens the Japa page and highlights its icon; no fatal errors in logcat.
+- Open issue: on the Japa page the raised Home button covers the label of the orange count-start button. Not fixed yet; the page's bottom button needs room above the dock's centre button.
+- Not covered: the Dvija dashboard side-panel button (still a no-op), tests on other screen sizes.

@@ -19,7 +19,6 @@ class FrozenShell(private val activity: LauncherActivity) {
     private var built = false
 
     init {
-        bindCenterOverlay()
         activity.findViewById<View>(R.id.sidePanelToggle).setOnClickListener { open(true) }
         activity.findViewById<View>(R.id.closeSidePanel).setOnClickListener { open(false) }
         backdrop.setOnClickListener { open(false) }
@@ -146,14 +145,6 @@ class FrozenShell(private val activity: LauncherActivity) {
         if (host.getTag(R.id.railFitListener) == null) {
             host.setTag(R.id.railFitListener, true)
             host.addOnLayoutChangeListener { _, l, _, r, _, ol, _, or, _ -> if (r - l != or - ol) host.post(apply) }
-        }
-    }
-
-    /** Wires the raised centre button (overlay above the dock) to the dashboard. */
-    private fun bindCenterOverlay() {
-        activity.findViewById<View>(R.id.dashboardCenterFab)?.setOnClickListener {
-            close()
-            activity.navigateTo(CENTER_ID)
         }
     }
 

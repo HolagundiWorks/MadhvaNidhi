@@ -130,29 +130,6 @@
                 android:paddingBottom="0dp" />
         </HorizontalScrollView>
 
-        <!-- Raised centre Dashboard button: a true circle (oval fill, 56dp), above the dock, half over the bar's top edge. -->
-        <FrameLayout
-            android:id="@+id/dashboardCenterFab"
-            android:layout_width="@dimen/ds_dock_center_size"
-            android:layout_height="@dimen/ds_dock_center_size"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginBottom="@dimen/ds_dock_center_offset"
-            android:background="@drawable/ds_dock_center_fill"
-            android:clickable="true"
-            android:contentDescription="Dashboard"
-            android:elevation="@dimen/ds_dock_center_elevation"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackgroundBorderless">
-
-            <ImageView
-                android:layout_width="@dimen/ds_size_icon"
-                android:layout_height="@dimen/ds_size_icon"
-                android:layout_gravity="center"
-                android:contentDescription="@null"
-                android:importantForAccessibility="no"
-                android:src="@drawable/ic_dashboard"
-                app:tint="@color/md_theme_onPrimary" />
-        </FrameLayout>
 
         <View
             android:id="@+id/sidePanelBackdrop"

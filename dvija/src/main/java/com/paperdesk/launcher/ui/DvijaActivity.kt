@@ -1,16 +1,18 @@
 package com.paperdesk.launcher.ui
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.google.android.material.button.MaterialButton
 import com.paperdesk.launcher.R
 import com.paperdesk.launcher.data.OsLang
 
 /**
- * Madhva Dvija host: one page at a time, with a bottom bar to the practice screens. The dashboard is the home page.
- * The side panel of Madhva Nidhi is not ported; the dashboard's menu button has no effect yet (see docs/split/AUDIT.md).
+ * Madhva Dvija host: one page at a time. The floating dock switches between the practice screens; the raised
+ * centre button is the home (dashboard) page.
  */
 class DvijaActivity : AppCompatActivity(), PageNavigator {
 
@@ -20,7 +22,7 @@ class DvijaActivity : AppCompatActivity(), PageNavigator {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dvija)
         currentPage = savedInstanceState?.getString(STATE_PAGE) ?: HOME
-        bindBar()
+        bindDock()
         if (savedInstanceState == null) show(HOME) else highlight(currentPage)
     }
 
@@ -38,39 +40,46 @@ class DvijaActivity : AppCompatActivity(), PageNavigator {
         if (currentPage != HOME) show(HOME) else super.onBackPressed()
     }
 
-    private fun bindBar() {
+    /** Each dock icon names its page for screen readers and shows a tooltip. */
+    private fun bindDock() {
         val lang = OsLang.get(this)
-        val buttons = linkedMapOf(
-            R.id.navDashboard to "dashboard",
-            R.id.navSandhya to "sandhya",
-            R.id.navJapa to "japa",
-            R.id.navPuja to "puja",
-            R.id.navProfile to "user",
-            R.id.navSettings to "settings"
+        val icons = linkedMapOf(
+            R.id.dockSandhya to "sandhya",
+            R.id.dockJapa to "japa",
+            R.id.dockPuja to "puja",
+            R.id.dockProfile to "user",
+            R.id.dockSettings to "settings"
         )
-        for ((id, page) in buttons) {
-            findViewById<MaterialButton>(id).apply {
-                text = OsLang.ui(page, lang)
+        for ((id, page) in icons) {
+            findViewById<ImageButton>(id).apply {
+                contentDescription = OsLang.ui(page, lang)
+                tooltipText = OsLang.ui(page, lang)
                 setOnClickListener { show(page) }
             }
         }
+        findViewById<View>(R.id.dockHome).apply {
+            contentDescription = OsLang.ui("dashboard", lang)
+            tooltipText = OsLang.ui("dashboard", lang)
+            setOnClickListener { show(HOME) }
+        }
     }
 
-    /** The selected page's button is at full strength; the others are dimmed. */
+    /** The current page's icon is in the primary colour; the others are muted. */
     private fun highlight(page: String) {
-        val buttons = mapOf(
-            "dashboard" to R.id.navDashboard,
-            "sandhya" to R.id.navSandhya,
-            "nitya" to R.id.navSandhya,
-            "japa" to R.id.navJapa,
-            "puja" to R.id.navPuja,
-            "user" to R.id.navProfile,
-            "settings" to R.id.navSettings
-        )
-        val selected = buttons[page]
-        for (id in listOf(R.id.navDashboard, R.id.navSandhya, R.id.navJapa, R.id.navPuja, R.id.navProfile, R.id.navSettings)) {
-            findViewById<View>(id).alpha = if (id == selected) 1f else 0.55f
+        val selected = when (page) {
+            "sandhya", "nitya", "nityakarma" -> R.id.dockSandhya
+            "japa" -> R.id.dockJapa
+            "puja" -> R.id.dockPuja
+            "user" -> R.id.dockProfile
+            "settings" -> R.id.dockSettings
+            else -> null
         }
+        val primary = ContextCompat.getColor(this, R.color.md_theme_primary)
+        val muted = ContextCompat.getColor(this, R.color.md_theme_onSurfaceVariant)
+        for (id in listOf(R.id.dockSandhya, R.id.dockJapa, R.id.dockPuja, R.id.dockProfile, R.id.dockSettings)) {
+            findViewById<ImageButton>(id).imageTintList = ColorStateList.valueOf(if (id == selected) primary else muted)
+        }
+        findViewById<View>(R.id.dockHomeIcon).alpha = if (selected == null) 1f else 0.85f
     }
 
     private fun show(pageId: String) {

@@ -92,7 +92,7 @@ class ShellHubFragment : Fragment() {
         fun emptyMessages(hub: String): List<String> = emptyList()
 
         val RAIL_IDS = listOf(
-            "desk", "wiki", "puja", "home", "grantha", "sangeeta", "samskruti"
+            "desk", "wiki", "puja", "grantha", "sangeeta", "samskruti"
         )
     }
 }
