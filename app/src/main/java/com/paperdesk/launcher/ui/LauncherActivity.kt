@@ -17,7 +17,6 @@ import com.paperdesk.launcher.alarm.AlarmScheduler
 import com.paperdesk.launcher.data.IndicScript
 import com.paperdesk.launcher.data.OsLang
 import com.paperdesk.launcher.data.PanchangaStore
-import com.paperdesk.launcher.data.ProfileStore
 import com.paperdesk.launcher.data.SettingsStore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -36,7 +35,7 @@ class LauncherActivity : AppCompatActivity(), PageNavigator {
     private lateinit var headerRule: View
     private lateinit var shell: FrozenShell
     private lateinit var pages: List<String>
-    private var currentPageId = "dashboard"
+    private var currentPageId = "home"
     private var selectorOpen = false
     private var footerAction: (() -> Unit)? = null
     private var headerDateJob: Job? = null
@@ -148,7 +147,7 @@ class LauncherActivity : AppCompatActivity(), PageNavigator {
         val page = currentPageId
         // One header pattern: the shared app bar carries the destination title on every page.
         // Dashboard has no top bar: its own greeting row carries the navigation button.
-        val showHeader = page != "dashboard"
+        val showHeader = page != "home"
         appHeader.visibility = if (showHeader) View.VISIBLE else View.GONE
         headerRule.visibility = if (showHeader) View.VISIBLE else View.GONE
         headerTitle.text =
@@ -156,7 +155,7 @@ class LauncherActivity : AppCompatActivity(), PageNavigator {
         refreshHeaderDate(lang)
         if (::shell.isInitialized) shell.bind()
         findViewById<View>(R.id.contentControlsHost).visibility =
-            if (page == "desk" || page == "dashboard" || page == "user" || page in ShellHubFragment.RAIL_IDS ||
+            if (page == "desk" || page == "home" || page == "user" || page in ShellHubFragment.RAIL_IDS ||
                 page == "nityakarma" || page == "puja"
             ) View.GONE else View.VISIBLE
         findViewById<View>(R.id.pageHost).post {
@@ -189,14 +188,6 @@ class LauncherActivity : AppCompatActivity(), PageNavigator {
         val dateLine = OsLang.dateLine(cal, lang)
         headerDate.text = dateLine
         headerDateJob?.cancel()
-        headerDateJob = lifecycleScope.launch {
-            val matha = withContext(Dispatchers.IO) {
-                ProfileStore(applicationContext).active().matha.trim()
-            }
-            if (isFinishing) return@launch
-            // The bar shows the sadhaka's matha in place of the date; the date stays if no matha is set.
-            headerDate.text = matha.ifBlank { dateLine }
-        }
     }
 
     fun setSelectorOpen(open: Boolean) {
@@ -228,13 +219,12 @@ class LauncherActivity : AppCompatActivity(), PageNavigator {
     }
 
     fun goHome() {
-        supportFragmentManager.fragments.filterIsInstance<ReaderFragment>().forEach { it.closeSelector() }
-        navigateTo("dashboard")
-        if ("dashboard" !in pages) showPage(pages.first())
+        navigateTo("home")
+        if ("home" !in pages) showPage(pages.first())
     }
 
     fun applyLockChrome() {
-        if (DeskLock.isLocked(this)) showPage(pages.firstOrNull() ?: "dashboard")
+        if (DeskLock.isLocked(this)) showPage(pages.firstOrNull() ?: "home")
         else bindNavigation()
     }
 
@@ -271,14 +261,13 @@ class LauncherActivity : AppCompatActivity(), PageNavigator {
         "stotra", "suktas", "mantras", "namavali" -> "grantha"
         "rangavalli", "recipes" -> "samskruti"
         "user" -> "settings"
-        "dashboard" -> null
-        else -> if (pageId in ShellHubFragment.RAIL_IDS || pageId == "desk" || pageId == "settings") "dashboard" else null
+        "home" -> null
+        else -> if (pageId in ShellHubFragment.RAIL_IDS || pageId == "desk" || pageId == "settings") "home" else null
     }
 
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (::shell.isInitialized && shell.close()) return
-        if (supportFragmentManager.fragments.filterIsInstance<ReaderFragment>().any { it.closeSelector() }) return
         if (DeskLock.isLocked(this)) return
         if ((supportFragmentManager.findFragmentById(R.id.pageHost) as? SettingsFragment)?.consumeBack() == true) return
         val parent = parentPage(currentPageId)

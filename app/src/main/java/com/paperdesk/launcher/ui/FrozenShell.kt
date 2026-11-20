@@ -232,10 +232,10 @@ class FrozenShell(private val activity: LauncherActivity) {
 
     companion object {
         /** The centre dock destination, raised and filled. */
-        const val CENTER_ID = "dashboard"
+        const val CENTER_ID = "home"
 
         fun railForPage(pageId: String): String = when (pageId) {
-            "dashboard" -> "dashboard"
+            "home" -> "home"
             "desk" -> "desk"
             "sandhya", "japa", "nitya", "nityakarma" -> "nityakarma"
             "puja" -> "puja"

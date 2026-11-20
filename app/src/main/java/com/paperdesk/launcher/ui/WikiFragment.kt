@@ -33,16 +33,6 @@ class WikiFragment : Fragment() {
         .setAllCornerSizes(dp(16).toFloat())
         .build()
 
-    /** Each article read once earns 10 points. */
-    private fun readIds(context: android.content.Context): Set<String> =
-        context.getSharedPreferences("wiki_points", 0).getStringSet("read", emptySet()) ?: emptySet()
-
-    private fun markRead(context: android.content.Context, id: String) {
-        val ids = readIds(context).toMutableSet()
-        if (ids.add(id)) context.getSharedPreferences("wiki_points", 0).edit().putStringSet("read", ids).apply()
-    }
-
-    private fun points(context: android.content.Context) = readIds(context).size * 10
 
     private var book: WikiStore.Book? = null
     private var category = "all"
@@ -131,8 +121,6 @@ class WikiFragment : Fragment() {
             (category == "all" || a.category == category) &&
                 (q.isEmpty() || listOf(a.titleEn, a.titleKn, a.summary).joinToString(" ").lowercase().contains(q))
         }
-        listHost.addView(label("${points(requireContext())} points · ${readIds(requireContext()).size} articles read",
-            R.style.TextAppearance_DS_Label, secondary = true))
         if (items.isEmpty()) listHost.addView(label("No matching article.", R.style.TextAppearance_DS_Body, secondary = true))
         items.forEach { a ->
             val card = MaterialCardView(requireContext()).apply {
@@ -156,7 +144,6 @@ class WikiFragment : Fragment() {
         val context = requireContext()
         val bookmarks = WikiStore.bookmarks(context)
         val saved = a.id in bookmarks
-        markRead(context, a.id)
 
         val toolbar = LinearLayout(context).apply { orientation = LinearLayout.HORIZONTAL; gravity = Gravity.CENTER_VERTICAL }
         toolbar.addView(MaterialButton(context, null, com.google.android.material.R.attr.materialButtonOutlinedStyle).apply {

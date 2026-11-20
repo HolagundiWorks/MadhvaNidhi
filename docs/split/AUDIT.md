@@ -238,3 +238,19 @@ Decisions in section 7a were taken as recommended. Commits are on branch `madhva
 - The old build (`main`) was installed over the phase-4 build's data. In its reader, the text size was raised twice; it saved `reader_scale` 1.3.
 - The phase-4 build was installed over it. After the upgrade: `reader_scale` is still 1.3, the reader shows 130%, the dark theme is still on, and no crash is logged.
 - Still not covered: favourites (none were created), and reader page positions (the reader saves a position only when the page changes).
+
+## 15. Madhva Nidhi without dashboard, profile or gamification (branch madhva-nidhi-no-dashboard)
+
+Owner decision: profile, dashboard and gamification belong to Madhva Dvija. Nidhi keeps the public library, Panchanga, puja texts, the Wiki, favourites and the backup of favourites.
+
+| Item | Change |
+|---|---|
+| Home page | The page id `dashboard` is now `home` (saved layouts migrate, `pagesRev` 19). Panchanga card and library entries only. |
+| Reader | Practice modes removed (Sandhya, Japa, Nitya Parayana). Puja texts are plain: no personal sankalpa, no completion buttons. Catalogue and puja reading and text size are kept. |
+| Puja | New puja list (`PujaListFragment`) replaces the reader selector. |
+| Profile | `ProfileStore`, sankalpa, the matha header and the profile backup content removed. |
+| Gamification | Wiki points and read counts removed. Practice days, streaks, badges and the dashboard share cards removed from Nidhi (Dvija has them). |
+| Favourites | One device list. Earlier per-profile lists are merged once, so nothing is lost. |
+| Tests | Practice tests removed from Nidhi (they are in Dvija). Nidhi: build and unit tests pass. |
+
+**Left on the test device, deliberately not deleted:** Nidhi's encrypted profile file (`madhvanidhi_profiles_encrypted`), the old Wiki points file, and the old practice files that the export tool can still read. Deleting them is a decision for the owner.

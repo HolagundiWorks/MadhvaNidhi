@@ -118,6 +118,7 @@ object OsLang {
 
     private val EN = mapOf(
         "dashboard" to "Dashboard",
+        "home" to "Home",
         "user" to "User",
         "desk" to "Panchanga",
         "schedule" to "Scheduler",
@@ -212,6 +213,7 @@ object OsLang {
 
     private val SA = mapOf(
         "dashboard" to "मुखपृष्ठम्",
+        "home" to "मुखपृष्ठम्",
         "user" to "उपयोक्ता",
         "desk" to "पञ्चाङ्गम्",
         "schedule" to "कार्यक्रमसूची",
@@ -306,6 +308,7 @@ object OsLang {
 
     private val KN = mapOf(
         "dashboard" to "ಮುಖಪುಟ",
+        "home" to "ಮುಖಪುಟ",
         "desk" to "ಪಂಚಾಂಗ",
         "schedule" to "ವೇಳಾಪಟ್ಟಿ",
         "grantha" to "ಗ್ರಂಥ",

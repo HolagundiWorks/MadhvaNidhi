@@ -17,7 +17,7 @@ import com.paperdesk.launcher.data.PanchangaStore
 class NidhiHomeFragment : Fragment(R.layout.page_nidhi_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        PagePalette.apply(view, "dashboard")
+        PagePalette.apply(view, "home")
         val ctx = requireContext()
         val lang = OsLang.get(ctx)
 

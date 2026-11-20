@@ -5,7 +5,7 @@ import com.paperdesk.launcher.R
 /** Icon for each shell page or shortcut. Shared by the shell and by practice screens, which must not depend on the shell class. */
 object PageIcons {
     fun iconFor(id: String): Int = when (id) {
-        "dashboard" -> R.drawable.ic_nav_home
+        "home" -> R.drawable.ic_nav_home
         "desk" -> R.drawable.ic_nav_calendar
         "nityakarma" -> R.drawable.ic_nav_daily
         "sandhya" -> R.drawable.ic_sun

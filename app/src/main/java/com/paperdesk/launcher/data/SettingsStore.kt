@@ -54,6 +54,12 @@ class SettingsStore(context: Context) {
             obj.put("pagesRev", 17)
             dirty = true
         }
+        // The home page replaces the dashboard; practice pages and profile moved to Madhva Dvija.
+        if (obj.optInt("pagesRev", 0) < 19) {
+            obj.put("pages", JSONArray(PAGE_IDS))
+            obj.put("pagesRev", 19)
+            dirty = true
+        }
         // Madhva Nidhi is the public library: practice pages moved to Madhva Dvija; profile is Dvija's.
         if (obj.optInt("pagesRev", 0) < 18) {
             obj.put("pages", JSONArray(PAGE_IDS))
@@ -172,7 +178,7 @@ class SettingsStore(context: Context) {
 
         /** Shipped destinations — Nitya Karma (Sandhya/Japa/Parayana) + standalone Puja. */
         val PAGE_IDS = listOf(
-            "dashboard", "desk",
+            "home", "desk",
             "puja",
             "grantha", "stotra", "suktas", "mantras", "namavali", "wiki",
             "sangeeta", "hadugalu", "favorites",
@@ -195,7 +201,7 @@ class SettingsStore(context: Context) {
         )
 
         val PAGE_LABELS = mapOf(
-            "dashboard" to "DASHBOARD",
+            "home" to "HOME",
             "desk" to "PANCHANGA",
             "nityakarma" to "NITYA KARMA",
             "sandhya" to "SANDHYAVANDANA",
@@ -226,7 +232,7 @@ class SettingsStore(context: Context) {
         }
 
         fun canonicalizePageId(id: String): String = when (id) {
-            "sandhya", "japa", "nitya", "nityakarma" -> "dashboard"
+            "dashboard", "sandhya", "japa", "nitya", "nityakarma" -> "home"
             "panchanga" -> "desk"
             "playlists" -> "favorites"
             "user" -> "settings"
