@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Sandhyavandana instruction lines (how to perform the rite), shown apart from the recitation. -->
+    <color name="reader_instruction">#00695C</color>
+</resources>

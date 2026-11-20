@@ -12,6 +12,9 @@ object SandhyaStore {
     data class Session(val id: String, val title: String, val steps: List<Step>)
     data class Step(val id: String, val n: Int, val title: String, val body: String)
 
+    /** Prefix on source lines that are instructions rather than recitation (shown in a separate colour). */
+    const val INSTRUCTION_MARK = "§"
+
     @Volatile private var loaded = false
     var sessions: List<Session> = emptyList()
         private set

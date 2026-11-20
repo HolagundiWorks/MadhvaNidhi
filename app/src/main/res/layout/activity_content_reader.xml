@@ -195,6 +195,17 @@
                 app:iconPadding="0dp" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/readerInstructionToggle"
+            style="@style/Widget.MadhvaNidhi.Button.Outlined"
+            android:layout_width="@dimen/md_layout_size_height_lg"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/ds_space_2"
+            android:contentDescription="Instructions"
+            app:cornerRadius="@dimen/md_corner_radius"
+            app:icon="@drawable/ic_information"
+            app:iconTint="@color/md_icon_secondary" />
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/readerStepAll"
             style="@style/Widget.MadhvaNidhi.Button.Outlined"
             android:layout_width="wrap_content"

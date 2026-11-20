@@ -33,3 +33,11 @@ Approved web-mockup contract for the **ಸಂಧ್ಯಾವಂದನೆ** tab i
 - Debug build installed on connected Galaxy M11; offline unit suite 52 tests passed.
 - On-device SandhyaFlowInstrumentation passed: entry loaded, removed entry controls absent, cancel/dismiss inert for skip/complete and undo, confirm callbacks execute once. Test uses callbacks without writing practice flags.
 - Actual entry, confirmation dialog and landscape section chooser checked on the phone. Full cross-screen smoke suite was not rerun.
+
+## Instruction text (20 November 2026)
+
+- Source: `app/src/main/assets/madhwa/texts/yajurveda_sandhyavandana.txt`. A line that starts with `§` is an instruction (how to perform the rite), not recitation. The marker is stripped in the reader.
+- Reader: instruction lines are drawn in `@color/reader_instruction` (italic). The info button in the step bar (`readerInstructionToggle`) shows or hides them. The choice is stored as `showInstructions` in the settings JSON (default on).
+- Only the Krishna Yajurveda source carries `§` markers at present. The Rigveda source has none, so the toggle changes nothing there.
+- Verified: unit tests `SandhyaInstructionTest` (2) pass; on the phone, the Yajurveda morning session shows instruction lines in teal italic, and hides them when toggled off.
+- Not done: the nyasa mudra instructions (karanyasa/angaanyasa) and the japa-counting instructions from the supplied scan are not added. Their OCR is interleaved with mantra text, so they need a clean source first.

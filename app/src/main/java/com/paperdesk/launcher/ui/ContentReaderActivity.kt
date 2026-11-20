@@ -295,6 +295,11 @@ class ContentReaderActivity : AppCompatActivity() {
                 paintSandhya(practice)
             }
         }
+        findViewById<MaterialButton>(R.id.readerInstructionToggle).setOnClickListener {
+            val settings = SettingsStore(this)
+            settings.setShowInstructions(!settings.showInstructions())
+            paintSandhya(practice)
+        }
         skipBtn.setOnClickListener { confirmStatus(false) }
         completeBtn.setOnClickListener { confirmStatus(true) }
     }
@@ -316,6 +321,10 @@ class ContentReaderActivity : AppCompatActivity() {
         allBtn.text = if (lang == IndicScript.Lang.EN) "Sections" else "ಭಾಗಗಳು"
         paintToggleChrome(skipBtn, sandhyaSkipped)
         paintToggleChrome(completeBtn, sandhyaDone && !sandhyaSkipped)
+        val showInstructions = SettingsStore(this).showInstructions()
+        val instructionBtn = findViewById<MaterialButton>(R.id.readerInstructionToggle)
+        paintToggleChrome(instructionBtn, showInstructions)
+        instructionBtn.contentDescription = if (showInstructions) "Hide instructions" else "Show instructions"
 
         val baseCrumb = "${OsLang.ui("nityakarma", lang)}  ›  ${OsLang.ui("sandhya", lang)}  ›  $sandhyaTitle"
         titleView.text = sandhyaTitle
@@ -341,9 +350,33 @@ class ContentReaderActivity : AppCompatActivity() {
             crumbView.text = "$baseCrumb  ›  $stepName"
             headView.visibility = View.VISIBLE
             headView.text = "$num. $stepName"
-            bodyView.text = SandhyaStore.body(this, step, sandhyaKala, lang)
+            bodyView.text = styledSandhyaBody(SandhyaStore.body(this, step, sandhyaKala, lang))
         }
         applyReaderScale()
+    }
+
+    /**
+     * Lines marked with the section sign are instructions (how to perform the rite). They are drawn in
+     * the instruction colour, and left out entirely when the instruction toggle is off.
+     */
+    private fun styledSandhyaBody(text: String): CharSequence {
+        val show = SettingsStore(this).showInstructions()
+        val instructionColour = getColor(R.color.reader_instruction)
+        val sb = SpannableStringBuilder()
+        text.split('\n').forEach { line ->
+            val isInstruction = line.startsWith(SandhyaStore.INSTRUCTION_MARK)
+            if (isInstruction && !show) return@forEach
+            // Avoid a gap where hidden instructions were, by not starting a second blank line.
+            if (line.isBlank() && (sb.isEmpty() || sb.last() == '\n')) return@forEach
+            if (sb.isNotEmpty()) sb.append('\n')
+            val start = sb.length
+            sb.append(if (isInstruction) line.removePrefix(SandhyaStore.INSTRUCTION_MARK).trimStart() else line)
+            if (isInstruction) {
+                sb.setSpan(ForegroundColorSpan(instructionColour), start, sb.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                sb.setSpan(StyleSpan(Typeface.ITALIC), start, sb.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            }
+        }
+        return sb
     }
 
     private fun buildFullSandhyaSpannable(): CharSequence {
@@ -361,7 +394,8 @@ class ContentReaderActivity : AppCompatActivity() {
             sb.setSpan(ForegroundColorSpan(textPrimary), headingStart, headingEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
             sb.setSpan(StyleSpan(Typeface.BOLD), headingStart, headingEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
             sb.setSpan(RelativeSizeSpan(1.18f), headingStart, headingEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-            sb.append("\n$body")
+            sb.append("\n")
+            sb.append(styledSandhyaBody(body))
             if (body.startsWith("ಸೂಚನೆ:") || body.startsWith("सूचना:") || body.startsWith("Note:")) {
                 val noteStart = headingEnd + 1
                 val noteEnd = noteStart + body.indexOf('\n').takeIf { it >= 0 }.let { it ?: body.length }

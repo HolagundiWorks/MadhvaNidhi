@@ -102,6 +102,13 @@ class SettingsStore(context: Context) {
         save(json().put("veda", value))
     }
 
+    /** Sandhyavandana instruction lines (marked in the source text) are shown in the reader when true. */
+    fun showInstructions(): Boolean = json().optBoolean("showInstructions", true)
+
+    fun setShowInstructions(on: Boolean) {
+        save(json().put("showInstructions", on))
+    }
+
     fun panchangaTradition(): String =
         json().optString("panchangaTradition", PanchangaTraditions.SRS)
 
