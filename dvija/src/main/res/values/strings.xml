@@ -85,4 +85,9 @@
     <string name="practice_passphrase_short">ಗುಪ್ತಪದ ಕನಿಷ್ಠ 6 ಅಕ್ಷರಗಳಿರಬೇಕು.</string>
     <string name="practice_import_passphrase_note">ಫೈಲ್ ರಫ್ತು ಮಾಡುವಾಗ ಹೊಂದಿಸಿದ ಗುಪ್ತಪದವನ್ನು ನಮೂದಿಸಿ.</string>
     <string name="practice_file_unreadable">ಫೈಲ್ ಓದಲಾಗಲಿಲ್ಲ.</string>
+    <string name="reminder_title">ಜ್ಞಾಪನೆಗಳು</string>
+    <string name="reminder_none">ಇನ್ನೂ ಜ್ಞಾಪನೆ ಇಲ್ಲ.</string>
+    <string name="reminder_add">ಜ್ಞಾಪನೆ ಸೇರಿಸಿ</string>
+    <string name="reminder_remove">ತೆಗೆದುಹಾಕಿ</string>
+    <string name="reminder_remove_question">%1$s ರ ಜ್ಞಾಪನೆಯನ್ನು ತೆಗೆದುಹಾಕಬೇಕೇ?</string>
 </resources>

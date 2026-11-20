@@ -97,7 +97,7 @@ class LauncherActivity : AppCompatActivity(), PageNavigator {
             showPage(startId, nityaTab, force = true)
             if (requested != null && requested != startId && nityaTab == null) navigateTo(requested)
             shell.bind()
-            Thread({ AlarmScheduler.rescheduleAll(applicationContext) }, "alarm-reschedule").start()
+            Thread({ AlarmScheduler.disableAll(applicationContext) }, "alarm-disable").start()
         }
         if (Build.VERSION.SDK_INT >= 33 &&
             checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
@@ -123,18 +123,9 @@ class LauncherActivity : AppCompatActivity(), PageNavigator {
             else (host as? GranthaFragment)?.selectReader(pageId)
             return
         }
-        if (pageId == "user") {
-            showPage("settings")
-            (supportFragmentManager.findFragmentById(R.id.pageHost) as? SettingsFragment)?.openUsers()
-            return
-        }
         val target = if (pageId in pages) pageId else SettingsStore.canonicalizePageId(pageId)
             .takeIf { it in pages } ?: return
         if (!force && currentPageId == target) {
-            if (nityaTab != null) {
-                (supportFragmentManager.findFragmentById(R.id.pageHost) as? NityaKarmaFragment)
-                    ?.selectTab(nityaTab)
-            }
             bindNavigation()
             return
         }
@@ -144,10 +135,6 @@ class LauncherActivity : AppCompatActivity(), PageNavigator {
             .setReorderingAllowed(true)
             .replace(R.id.pageHost, fragment, target)
             .commitNowAllowingStateLoss()
-        if (nityaTab != null) {
-            (supportFragmentManager.findFragmentById(R.id.pageHost) as? NityaKarmaFragment)
-                ?.selectTab(nityaTab)
-        }
         bindNavigation()
     }
 

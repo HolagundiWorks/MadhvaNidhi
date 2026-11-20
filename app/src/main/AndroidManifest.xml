@@ -36,13 +36,6 @@
             android:theme="@style/Theme.PaperDesk"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboard|keyboardHidden"
             android:screenOrientation="sensorLandscape" />
-        <activity
-            android:name=".ui.ProfileRegisterActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/Theme.PaperDesk.Entry"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".ui.AlarmAlertActivity"
             android:excludeFromRecents="true"
             android:exported="false"

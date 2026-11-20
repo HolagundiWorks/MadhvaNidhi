@@ -20,6 +20,6 @@ class UiSettingsFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        view?.let { SettingsScreenBinder.refreshProfileSummary(it, requireContext()) }
+
     }
 }

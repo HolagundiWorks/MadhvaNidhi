@@ -54,6 +54,12 @@ class SettingsStore(context: Context) {
             obj.put("pagesRev", 17)
             dirty = true
         }
+        // Madhva Nidhi is the public library: practice pages moved to Madhva Dvija; profile is Dvija's.
+        if (obj.optInt("pagesRev", 0) < 18) {
+            obj.put("pages", JSONArray(PAGE_IDS))
+            obj.put("pagesRev", 18)
+            dirty = true
+        }
         if (dirty) {
             prefs.edit().putString("json", obj.toString()).apply()
         }
@@ -167,11 +173,10 @@ class SettingsStore(context: Context) {
         /** Shipped destinations — Nitya Karma (Sandhya/Japa/Parayana) + standalone Puja. */
         val PAGE_IDS = listOf(
             "dashboard", "desk",
-            "nityakarma", "puja",
-            "grantha", "stotra", "suktas", "mantras", "namavali",
+            "puja",
+            "grantha", "stotra", "suktas", "mantras", "namavali", "wiki",
             "sangeeta", "hadugalu", "favorites",
             "samskruti", "rangavalli", "recipes",
-            "user",
             "settings"
         )
 
@@ -221,9 +226,10 @@ class SettingsStore(context: Context) {
         }
 
         fun canonicalizePageId(id: String): String = when (id) {
-            "sandhya", "japa", "nitya" -> "nityakarma"
+            "sandhya", "japa", "nitya", "nityakarma" -> "dashboard"
             "panchanga" -> "desk"
             "playlists" -> "favorites"
+            "user" -> "settings"
             else -> id
         }
 

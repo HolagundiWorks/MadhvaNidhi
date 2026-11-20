@@ -6,13 +6,11 @@ import androidx.fragment.app.Fragment
 object PageFactory {
     fun create(pageId: String): Fragment = when (pageId) {
         "dashboard" -> NidhiHomeFragment()
-        "nityakarma" -> NityaKarmaFragment.create(NityaKarmaFragment.TAB_SANDHYA)
         "puja" -> ReaderFragment.create(ReaderFragment.PUJA)
         "grantha" -> GranthaFragment()
         "samskruti" -> GranthaFragment().apply {
             arguments = android.os.Bundle().apply { putString("group", pageId) }
         }
-        "nitya" -> NityaKarmaFragment.create(NityaKarmaFragment.TAB_NITYA)
         "stotra" -> CatalogueListFragment.create("stotra")
         "suktas" -> CatalogueListFragment.create("suktas")
         "mantras" -> CatalogueListFragment.create("mantras")
@@ -22,7 +20,6 @@ object PageFactory {
         "favorites", "playlists" -> SongLibraryFragment.create(favorites = true)
         "rangavalli" -> RangavalliFragment()
         "recipes" -> NaivedyaFragment()
-        "user" -> UserProfileFragment()
         "settings" -> SettingsFragment()
         "desk" -> DeskFragment()
         else -> DeskFragment()

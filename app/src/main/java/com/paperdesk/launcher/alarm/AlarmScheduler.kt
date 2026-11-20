@@ -6,6 +6,11 @@ import android.content.Context
 import android.content.Intent
 
 object AlarmScheduler {
+    /** Madhva Nidhi no longer schedules reminders: practice reminders belong to Madhva Dvija. Pending ones are cancelled. */
+    fun disableAll(context: Context) {
+        AlarmStore(context).load().forEach { cancel(context, it.id) }
+    }
+
     fun rescheduleAll(context: Context) {
         val store = AlarmStore(context)
         store.load().forEach { schedule(context, it) }

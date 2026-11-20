@@ -2,17 +2,11 @@ package com.paperdesk.launcher.ui
 
 import android.content.Context
 import android.view.View
-import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
-import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.paperdesk.launcher.DeskTheme
 import com.paperdesk.launcher.R
 import com.paperdesk.launcher.data.IndicScript
-import com.paperdesk.launcher.data.JapaCatalog
 import com.paperdesk.launcher.data.OsLang
-import com.paperdesk.launcher.data.PanchangaTraditions
-import com.paperdesk.launcher.data.ProfileStore
 import com.paperdesk.launcher.data.SettingsStore
 
 object SettingsScreenBinder {
@@ -20,12 +14,6 @@ object SettingsScreenBinder {
         MaterialLayouts.bind(root)
         root.findViewById<View>(R.id.settingsPageTitle).visibility = if (showBack) View.VISIBLE else View.GONE
         val settings = SettingsStore(context)
-        refreshProfileSummary(root, context)
-        bindJapaTables(root, context, settings)
-        root.findViewById<View>(R.id.settingsOpenProfile).setOnClickListener {
-            (context as? LauncherActivity)?.navigateTo("user")
-                ?: context.startActivity(ProfileRegisterActivity.intent(context))
-        }
         root.findViewById<View>(R.id.settingsBack).apply {
             visibility = if (showBack) View.VISIBLE else View.GONE
             setOnClickListener { onBack() }
@@ -63,126 +51,5 @@ object SettingsScreenBinder {
             R.string.settings_version,
             context.packageManager.getPackageInfo(context.packageName, 0).versionName ?: "1.0.0"
         )
-    }
-
-    fun bindUserPracticeSettings(root: View, context: Context) {
-        val settings = SettingsStore(context)
-        val vedaChoices = listOf("ಋಗ್ವೇದ — ಆಶ್ವಲಾಯನ", "ಕೃಷ್ಣ ಯಜುರ್ವೇದ — ತೈತ್ತಿರೀಯ")
-        MaterialChoices.bind(root.findViewById(R.id.settingsVeda), vedaChoices,
-            SettingsStore.VEDA_IDS.indexOf(settings.veda()).coerceAtLeast(0)) { settings.setVeda(SettingsStore.VEDA_IDS[it]) }
-        MaterialChoices.wrapLabel(root.findViewById(R.id.settingsVeda))
-        val hint = root.findViewById<TextView>(R.id.settingsPanchangaHint)
-        fun showHint(index: Int) {
-            hint.setText(if (PanchangaTraditions.all[index].liveDailyData) R.string.settings_panchanga_live else R.string.settings_panchanga_reference)
-        }
-        val selected = PanchangaTraditions.all.indexOfFirst { it.id == settings.panchangaTradition() }.coerceAtLeast(0)
-        MaterialChoices.bind(root.findViewById(R.id.settingsPanchanga), PanchangaTraditions.all.map { it.kn }, selected) {
-            settings.setPanchangaTradition(PanchangaTraditions.all[it].id)
-            showHint(it)
-        }
-        MaterialChoices.wrapLabel(root.findViewById(R.id.settingsPanchanga))
-        showHint(selected)
-    }
-
-    fun refreshProfileSummary(root: View, context: Context) {
-        val summary = root.findViewById<TextView>(R.id.settingsProfileSummary) ?: return
-        val p = ProfileStore(context).active()
-        val parts = buildList {
-            add(p.name)
-            if (p.gotra.isNotBlank() && p.gotra != "ತಿಳಿಸಿಲ್ಲ") add("${p.gotra} ಗೋತ್ರ")
-            if (p.rashi.isNotBlank() && p.rashi != "ತಿಳಿಸಿಲ್ಲ") add("${p.rashi} ರಾಶಿ")
-            if (p.nakshatra.isNotBlank() && p.nakshatra != "ತಿಳಿಸಿಲ್ಲ") add("${p.nakshatra} ನಕ್ಷತ್ರ")
-            if (p.yearOfBirth > 0) add(p.yearOfBirth.toString())
-            if (p.placeOfBirth.isNotBlank()) add(p.placeOfBirth)
-        }
-        summary.text =
-            if (parts.size <= 1 && (p.name == "ಸಾಧಕ" || p.name.isBlank())) {
-                context.getString(R.string.profile_summary_empty)
-            } else {
-                parts.joinToString(" · ")
-            }
-        root.findViewById<LinearLayout>(R.id.settingsJapaTargetsTable)?.let {
-            JapaTargetsTable.paintReadonly(it, context)
-        }
-    }
-
-    fun bindJapaTables(root: View, context: Context, settings: SettingsStore) {
-        root.findViewById<LinearLayout>(R.id.settingsJapaTargetsTable)?.let {
-            JapaTargetsTable.paintReadonly(it, context)
-        }
-        val host = root.findViewById<LinearLayout>(R.id.settingsDashboardJapaSlots) ?: return
-        host.removeAllViews()
-        val slots = settings.dashboardJapaSlots().toMutableList()
-        val labels = JapaCatalog.entries.map { it.label }
-        val ids = JapaCatalog.entries.map { it.id }
-        slots.forEachIndexed { index, mantraId ->
-            val row = LinearLayout(context).apply {
-                orientation = LinearLayout.HORIZONTAL
-                gravity = android.view.Gravity.CENTER_VERTICAL
-                setPadding(0, 0, 0, context.resources.getDimensionPixelSize(R.dimen.ds_space_2))
-            }
-            row.addView(TextView(context).apply {
-                text = "${index + 1}"
-                setTextAppearance(R.style.TextAppearance_MadhvaNidhi_Label01)
-                setTextColor(context.getColor(R.color.md_text_secondary))
-                layoutParams = LinearLayout.LayoutParams(
-                    context.resources.getDimensionPixelSize(R.dimen.ds_space_12),
-                    ViewGroup.LayoutParams.WRAP_CONTENT
-                )
-            })
-            if (index == 0) {
-                row.addView(TextView(context).apply {
-                    text = JapaCatalog.entries.firstOrNull { it.id == "gayatri" }?.label ?: "ಗಾಯತ್ರೀ ಮಂತ್ರ"
-                    layoutParams = LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f)
-                    setTextAppearance(R.style.TextAppearance_MadhvaNidhi_BodyCompact01)
-                    setTextColor(context.getColor(R.color.md_text))
-                })
-            } else {
-                val picker = MaterialAutoCompleteTextView(context)
-                val selected = ids.indexOf(mantraId).coerceAtLeast(0)
-                MaterialChoices.bind(picker, labels, selected) { choice ->
-                    slots[index] = ids[choice]
-                    slots[0] = "gayatri"
-                    settings.setDashboardJapaSlots(slots)
-                }
-                MaterialChoices.wrapLabel(picker)
-                row.addView(picker, LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f))
-            }
-            host.addView(row)
-        }
-        bindShortcutPickers(root, context, settings)
-    }
-
-    private fun bindShortcutPickers(root: View, context: Context, settings: SettingsStore) {
-        val host = root.findViewById<LinearLayout>(R.id.settingsDashboardShortcuts) ?: return
-        host.removeAllViews()
-        val slots = settings.dashboardShortcuts().toMutableList()
-        val ids = SettingsStore.DASHBOARD_SHORTCUT_IDS
-        val lang = com.paperdesk.launcher.data.OsLang.get(context)
-        val labels = ids.map { com.paperdesk.launcher.data.OsLang.ui(it, lang) }
-        slots.forEachIndexed { index, destId ->
-            val row = LinearLayout(context).apply {
-                orientation = LinearLayout.HORIZONTAL
-                gravity = android.view.Gravity.CENTER_VERTICAL
-                setPadding(0, 0, 0, context.resources.getDimensionPixelSize(R.dimen.ds_space_2))
-            }
-            row.addView(TextView(context).apply {
-                text = "${index + 1}"
-                setTextAppearance(R.style.TextAppearance_MadhvaNidhi_Label01)
-                setTextColor(context.getColor(R.color.md_text_secondary))
-                layoutParams = LinearLayout.LayoutParams(
-                    context.resources.getDimensionPixelSize(R.dimen.ds_space_8),
-                    ViewGroup.LayoutParams.WRAP_CONTENT
-                )
-            })
-            val picker = MaterialAutoCompleteTextView(context)
-            val selected = ids.indexOf(destId).coerceAtLeast(0)
-            MaterialChoices.bind(picker, labels, selected) { choice ->
-                slots[index] = ids[choice]
-                settings.setDashboardShortcuts(slots)
-            }
-            row.addView(picker, LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f))
-            host.addView(row)
-        }
     }
 }

@@ -8,9 +8,6 @@ import com.paperdesk.launcher.R
 
 class SettingsFragment : Fragment(R.layout.page_settings_tabs) {
     private var selected = 0
-    fun openUsers() {
-        view?.findViewById<TabLayout>(R.id.settingsTabs)?.getTabAt(2)?.select()
-    }
 
     /** Back from Users/Backup/Legal returns to UI Settings before leaving the hub. */
     fun consumeBack(): Boolean {
@@ -25,8 +22,6 @@ class SettingsFragment : Fragment(R.layout.page_settings_tabs) {
         val tabs = view.findViewById<TabLayout>(R.id.settingsTabs)
         listOf(
             "UI Settings",
-            "Dashboard",
-            "Users",
             "Backup",
             getString(R.string.settings_tab_legal)
         ).forEachIndexed { index, label ->
@@ -36,10 +31,8 @@ class SettingsFragment : Fragment(R.layout.page_settings_tabs) {
         fun show(index: Int) {
             selected = index
             val page = when (index) {
-                1 -> DashboardSettingsFragment()
-                2 -> UserProfileFragment()
-                3 -> ProfileBackupFragment()
-                4 -> LegalSettingsFragment()
+                1 -> BackupFragment()
+                2 -> LegalSettingsFragment()
                 else -> UiSettingsFragment()
             }
             childFragmentManager.beginTransaction().replace(R.id.settingsPanelHost, page).commitNow()

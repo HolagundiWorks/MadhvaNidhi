@@ -208,3 +208,15 @@ Decisions in section 7a were taken as recommended. Commits are on branch `madhva
 2. Cancel Nidhi's practice reminders on Dvija's first launch, using separate channels, and verify no duplicates.
 3. Prune Dvija's assets and adopt the shared design system (`DesignSystem`) in both Madhva apps, keeping the brand override.
 4. Run the upgrade test from the installed Nidhi build, with real data, and write the verification report.
+
+## 13. Phase 4 and 5 progress (branch madhva-split-phase4)
+
+| Item | State | Evidence |
+|---|---|---|
+| Nidhi page list | Done: Nitya Karma and the profile page are removed from the page list and the dock; Wiki is on the dock; `pagesRev` 18 rewrites saved layouts. Old page ids map to home or settings | `SettingsStore`, `ShellHubFragment`, `PageFactory` |
+| Nidhi settings tabs | Done: UI Settings, Backup, Legal. The Backup tab holds the practice export and a favourites-only backup | Phone check of the Backup tab |
+| Nidhi profile code | Removed: profile registration screen, profile settings page, the profile part of the backup (older backups still restore their favourites) | Build |
+| Nidhi reminders | Stopped: Nidhi no longer schedules alarms at boot or launch; pending ones are cancelled. Stored items are kept, not deleted. Nidhi has no alarms registered with the system after launch | `dumpsys alarm` |
+| Dvija reminders | Done: list, add (time picker or typed time) and remove, in settings. Alarms are exact when the system allows it (`SCHEDULE_EXACT_ALARM`), otherwise a window | A reminder for 21:33 fired at 21:33:00.012 with a heads-up notification on the Madhva Dvija alarm channel |
+| Dvija AlarmScheduler | Changed from a 10-minute window to an exact alarm: the window let Samsung delay a reminder | The fix was needed after the first 21:27 test was still pending at 21:27:48 |
+| Still open | Nidhi's practice stores and the reader's Sandhya mode are unreachable from the UI but still in the code (kept because the reader's confirmation flow is shared). Dvija reminder strings need native review. Dvija's asset pruning and the shared design system are not done. The upgrade test from the released Nidhi package has not been run | — |

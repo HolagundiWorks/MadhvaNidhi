@@ -2,6 +2,7 @@ package com.paperdesk.launcher.alarm
 
 import android.app.AlarmManager
 import android.app.PendingIntent
+import android.os.Build
 import android.content.Context
 import android.content.Intent
 
@@ -19,7 +20,13 @@ object AlarmScheduler {
             return
         }
         val whenMs = alarm.nextTriggerMs()
-        am.setWindow(AlarmManager.RTC_WAKEUP, whenMs, 10 * 60_000L, pi)
+        // A practice reminder should ring at its time. Use an exact alarm when the system allows it (Android 12+ can
+        // withhold that permission); otherwise fall back to a window, which the system may stretch by up to 10 minutes.
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S || am.canScheduleExactAlarms()) {
+            am.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, whenMs, pi)
+        } else {
+            am.setWindow(AlarmManager.RTC_WAKEUP, whenMs, 10 * 60_000L, pi)
+        }
     }
 
     fun cancel(context: Context, id: String) {
