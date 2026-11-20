@@ -47,6 +47,23 @@
       "evidence_url": "https://github.com/hrishikeshrt/chanda/blob/3a9607c6e7a23d60c03d10f839913d01f8bd7ee2/LICENSE",
       "readme_url": "https://github.com/hrishikeshrt/chanda/blob/3a9607c6e7a23d60c03d10f839913d01f8bd7ee2/README.md",
       "body_imported": false
+    },
+    {
+      "id": "ashta_mahamantra_vishnutirtha_2000",
+      "repository": null,
+      "revision": null,
+      "kind": "printed-book-reference",
+      "title": "ಅಷ್ಟಮಹಾಮಂತ್ರಗಳು : ಜಪಾನುಷ್ಠಾನ ಕ್ರಮ (Ashta Mahamantragalu: japa anushthana krama)",
+      "author": "ಶ್ರೀ ಪಿ. ವಿಷ್ಣುತೀರ್ಥರು, ನವವೃಂದಾವನ",
+      "publisher": "ವಾಸುದೇವಪದಸಂತತಸಂಗೀ, ಆನಂದ್ ಪ್ರಿಂಟರ್ಸ್, Bengaluru (5-11-2000, 500 copies)",
+      "licence": "copyright notice in the scanned copy (© on the title page); no redistribution grant identified",
+      "rights_status": "redistribution-rights-review-required",
+      "evidence_url": null,
+      "readme_url": null,
+      "scan_file": "local OCR text of the scanned book; not committed",
+      "ocr_text_lines": 4436,
+      "body_imported": false,
+      "catalogue_doc": "docs/catalogue/ashta-mahamantra-contents-2026-11-20.md"
     }
   ],
   "summary": {
