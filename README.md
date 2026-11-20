@@ -1,6 +1,6 @@
 # MadhvaNidhi
 
-MadhvaNidhi is a priest-friendly landscape Android app for Madhva-sampradaya daily practice. It brings Panchanga, Veda-specific Sandhyavandana, mantras, stotras, suktas, pooja procedures, songs, japa and Aayadi into one large-text interface.
+MadhvaNidhi is a priest-friendly landscape Android app for Madhva-sampradaya daily practice. It brings Panchanga, Veda-specific Sandhyavandana, mantras, stotras, suktas, pooja procedures, songs and japa into one large-text interface. The Aayadi house-size calculator is a separate app, the Aaya Calculator, in its own repository.
 
 Developed by **Human Centric Works** — [hcworks.in](https://hcworks.in). Made with love in Hospet.
 

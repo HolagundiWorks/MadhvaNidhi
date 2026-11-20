@@ -96,7 +96,7 @@ Verify against the dated notes before changing these; the detailed contracts liv
 - **Dashboard:** full-width peer tiles; dashboard progress dialogs are read-only; no tile count mutation. Numeric Japa tiles show Daily / Sankalpa / Cumulative; completion is per mantra.
 - **Settings:** UI Settings (Light/Dark only), Dashboard, Users, Backup, Legal. Veda Shakha and Panchanga Parampara live under Users → Practice preferences.
 - **Panchanga:** the field labelled "Nakshatra pāda" is intentional (user-confirmed). Local nakshatra/rashi/Yoga/Karana are estimates and must stay labelled as such.
-- **Samskruti:** Aayadi, Rangavalli (offline gallery, original PNGs), Naivedya recipes (five offline Kannada cards with source links).
+- **Samskruti:** Rangavalli (offline gallery, original PNGs), Naivedya recipes (five offline Kannada cards with source links).
 - **Backups:** Android uses passphrase-protected `.mnprofiles`; keep the AES-GCM vault and existing backup formats readable.
 
 ## Knowledge hub and achievements (planned, Phase 1 mockup done)

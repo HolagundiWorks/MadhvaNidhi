@@ -5,8 +5,8 @@ Updated 17 November 2026 (Asia/Calcutta). This is the current implementation sum
 ## Repository and sync state
 
 - Correct checkout: `D:/Work Development/Repos/MadhvaNidhi`; remote: `https://github.com/HolagundiWorks/MadhvaNidhi.git`. The neighboring PaperDesk repository is not this app's checkout.
-- Reviewed local HEAD: `c7ae0cb` (17 November), Aayadi house-size table calculation. Reviewed `origin/main`: `1484618` (16 November), dashboard image sharing.
-- On 17 November, fetch and `git pull --ff-only origin main` completed with Already up to date. Local main is one commit ahead and zero behind; the Aayadi commit has not been pushed. No tracked edits existed before this memory refresh.
+- Reviewed `origin/main`: `1484618` (16 November), dashboard image sharing. The Aayadi calculator was removed in `9937ee8`; see "Aayadi moved out" below.
+- Sync state at the 17 November refresh is historical; check `git status` and `git log` for the current state.
 - `2144f8b` is the earlier broad Material/practice/content update, not the latest revision. Public GitHub search indexing is not needed to fetch commits.
 - Neon was connected by mistake and the user disconnected it. Do not use Neon or add a cloud backend for MadhvaNidhi without a new request. Ritual data remains local.
 
@@ -31,7 +31,7 @@ Updated 17 November 2026 (Asia/Calcutta). This is the current implementation sum
 - Nitya tabs: Sandhyavandana, Japa, Nitya Parayana. Puja is standalone.
 - Grantha tabs: Stotra, Suktas, Mantras, Namavali, Wiki. Songs are outside Grantha. The native Wiki was added in `3b6b8d9`; it is no longer only a planned web page.
 - Bhakti Sangeeta: Dasara Padagalu, Suladhi, Ugabhoga, Favorites; additional explicitly classified song groups can use Other Songs. Legacy playlist links redirect to Favorites. Title search opens the landscape reader directly; stars work in lists and reader, persist per profile and participate in encrypted profile backups.
-- Samskruti tabs: Aayadi, Rangavalli, Recipes/Naivedya.
+- Samskruti tabs: Rangavalli, Recipes/Naivedya.
 - Settings tabs: UI Settings, Dashboard, Users, Backup, Legal. Veda Shakha and Panchanga Parampara are under Users / practice preferences. Dashboard japa targets and shortcuts are configured in Settings; dashboard cards do not mutate practice counts.
 
 ## Practice and dashboard
@@ -51,11 +51,10 @@ Updated 17 November 2026 (Asia/Calcutta). This is the current implementation sum
 - Attribution and redistribution restrictions remain in bundled licence notices and `docs/catalogue/source-review-2026-11-14.md`. Bibliographic source references are not blanket permission to redistribute transcriptions. Check provenance before publication.
 - Rangavalli: six original offline PNG line studies, editable vectors and source links. Naivedya: five offline Kannada recipe cards with cited ingredient facts and original concise preparation text. External blog photos/article bodies are not bundled. See `docs/rangavalli-artwork-2026-11-14.md` and `docs/naivedya-cookbook-2026-11-14.md`.
 
-## Latest Aayadi change (local commit)
+## Aayadi moved out
 
-- `c7ae0cb`: house-size calculations follow the referenced Shodashavarga table (p.97), as documented in Aayadi.kt. Inputs allow inches 0/3/6/9 and require whole-square-foot area; invalid inputs produce specific errors. Zero remainder is reported as the divisor.
-- Results update as measurements change; there is no separate Calculate step. Aaya/Vyaya/Ayush indicators and expandable detailed values replace the old output flow. Fractional-foot length withholds Vyaya; code documents its separate basis from the book's table. Native and Samskruti prototypes were changed together; AayadiTest expanded.
-- This memory pass reviewed that implementation; it did not validate the referenced book independently or run its tests.
+- The Aayadi house-size calculator is no longer part of MadhvaNidhi. It was removed in `9937ee8` and lives in its own app, the Aaya Calculator (repository `AayadiCalculator`, `https://github.com/HolagundiWorks/AayadiCalculator.git`). Do not re-add it here.
+- The earlier Aayadi commits (`c7ae0cb` and the commits before `9937ee8`) describe the old in-app screen and are superseded.
 
 ## Verification for this memory refresh
 

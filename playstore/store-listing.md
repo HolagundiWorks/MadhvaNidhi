@@ -20,7 +20,7 @@ Matha tradition and clear source labeling.
 The offline devotional library includes mantras, Rigveda suktas, stotras,
 namavalis, Vishnu Sahasranama, Rama Raksha, Venkatesha Suprabhata, Narasimha and
 Krishna collections, Nitya Parayana, festival Puja procedures and Haridasa works.
-Japa counting and Aayadi tools are included for daily practice.
+Japa counting is included for daily practice.
 
 Designed for large, legible Kannada text with a Material Design 3 light/dark interface and an orange accent.
 
