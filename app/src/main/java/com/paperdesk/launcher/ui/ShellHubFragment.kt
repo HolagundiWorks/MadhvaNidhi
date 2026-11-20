@@ -82,7 +82,7 @@ class ShellHubFragment : Fragment() {
             "nityakarma" -> listOf("sandhya", "japa", "nitya")
             "grantha" -> listOf("stotra", "suktas", "mantras", "namavali", "wiki")
             "sangeeta" -> listOf("hadugalu", "favorites")
-            "samskruti" -> listOf("aayadi", "rangavalli", "recipes")
+            "samskruti" -> listOf("rangavalli", "recipes")
             else -> emptyList()
         }
 

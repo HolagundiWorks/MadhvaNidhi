@@ -8,7 +8,6 @@ import kotlin.math.floor
 /** Reflows stock GridLayouts using usable width and the actual configured text size. */
 object MaterialLayouts {
     fun bind(root: View) {
-        configure(root, R.id.aayadiGrid, 360f, 1)
         configure(root, R.id.settingsGrid, 360f, 2)
         configure(root, R.id.profileFieldsGrid, 280f, 2, gapToken = R.dimen.ds_space_2)
         fun centerIcons(view: View) {

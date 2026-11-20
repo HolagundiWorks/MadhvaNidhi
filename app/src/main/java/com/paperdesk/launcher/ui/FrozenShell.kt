@@ -241,7 +241,7 @@ class FrozenShell(private val activity: LauncherActivity) {
             "puja" -> "puja"
             "stotra", "suktas", "mantras", "namavali", "wiki", "grantha" -> "grantha"
             "hadugalu", "playlists", "favorites", "sangeeta" -> "sangeeta"
-            "aayadi", "rangavalli", "recipes", "samskruti" -> "samskruti"
+            "rangavalli", "recipes", "samskruti" -> "samskruti"
             "user", "settings" -> "settings"
             else -> pageId
         }
@@ -258,7 +258,6 @@ class FrozenShell(private val activity: LauncherActivity) {
             "stotra", "suktas", "mantras", "namavali", "wiki" -> R.drawable.ic_nav_library
             "sangeeta", "hadugalu", "playlists", "favorites" -> R.drawable.ic_nav_songs
             "samskruti" -> R.drawable.ic_nav_culture
-            "aayadi" -> R.drawable.ic_nav_culture
             "rangavalli" -> R.drawable.ic_dashboard
             "recipes" -> R.drawable.ic_nav_puja
             "user" -> R.drawable.ic_user

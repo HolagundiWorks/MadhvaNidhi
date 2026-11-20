@@ -170,7 +170,7 @@ class SettingsStore(context: Context) {
             "nityakarma", "puja",
             "grantha", "stotra", "suktas", "mantras", "namavali",
             "sangeeta", "hadugalu", "favorites",
-            "samskruti", "aayadi", "rangavalli", "recipes",
+            "samskruti", "rangavalli", "recipes",
             "user",
             "settings"
         )
@@ -207,7 +207,6 @@ class SettingsStore(context: Context) {
             "sangeeta" to "BHAKTI SANGEETA",
             "japa" to "JAPA",
             "samskruti" to "GRUHA SAMSKRUTI",
-            "aayadi" to "AAYADI",
             "rangavalli" to "RANGAVALLI",
             "recipes" to "RECIPES",
             "user" to "USER",

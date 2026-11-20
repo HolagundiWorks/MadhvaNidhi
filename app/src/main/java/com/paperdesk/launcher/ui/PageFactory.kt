@@ -20,7 +20,6 @@ object PageFactory {
         "wiki" -> WikiFragment()
         "sangeeta", "hadugalu" -> SongLibraryFragment.create()
         "favorites", "playlists" -> SongLibraryFragment.create(favorites = true)
-        "aayadi" -> AayadiFragment()
         "rangavalli" -> RangavalliFragment()
         "recipes" -> NaivedyaFragment()
         "user" -> UserProfileFragment()

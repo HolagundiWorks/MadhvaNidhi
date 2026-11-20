@@ -282,7 +282,7 @@ class LauncherActivity : AppCompatActivity() {
     private fun parentPage(pageId: String): String? = when (pageId) {
         "playlists", "favorites", "hadugalu" -> "sangeeta"
         "stotra", "suktas", "mantras", "namavali" -> "grantha"
-        "aayadi", "rangavalli", "recipes" -> "samskruti"
+        "rangavalli", "recipes" -> "samskruti"
         "user" -> "settings"
         "dashboard" -> null
         else -> if (pageId in ShellHubFragment.RAIL_IDS || pageId == "desk" || pageId == "settings") "dashboard" else null
