@@ -10,5 +10,6 @@
                     <LinearLayout android:id="@+id/settingsDashboardShortcuts" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="@dimen/ds_space_2" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
+<com.google.android.material.button.MaterialButton android:id="@+id/practiceExport" style="@style/Widget.MadhvaNidhi.Button.Outlined" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ds_dock_clearance" android:text="@string/practice_export" android:minHeight="@dimen/ds_touch_min" />
 </LinearLayout>
 </androidx.core.widget.NestedScrollView>

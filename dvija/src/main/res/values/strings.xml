@@ -77,4 +77,8 @@
     <string name="text_smaller">ಅಕ್ಷರ ಚಿಕ್ಕದು</string>
     <string name="text_larger">ಅಕ್ಷರ ದೊಡ್ಡದು</string>
     <string name="dvija_app_name">Madhva Dvija</string>
+    <string name="dvija_import_practice">ಮಾಧ್ವ ನಿಧಿಯಿಂದ ಅಭ್ಯಾಸ ದತ್ತಾಂಶ ಆಮದು</string>
+    <string name="dvija_import_title">ಅಭ್ಯಾಸ ದತ್ತಾಂಶ ಆಮದು</string>
+    <string name="dvija_import_done">%1$d ದಾಖಲೆಗಳನ್ನು ಆಮದು ಮಾಡಲಾಗಿದೆ.</string>
+    <string name="dvija_import_refused">ಆಮದು ಮಾಡಲಾಗಲಿಲ್ಲ: %1$s</string>
 </resources>
