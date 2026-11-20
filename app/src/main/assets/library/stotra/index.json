@@ -3738,6 +3738,13 @@
           "rights_status": "redistribution-rights-review-required"
         }
       ]
+    },
+    {
+      "id": "HanumatKavacham",
+      "title": "श्रीहनुमत्कवचम्",
+      "section": "hanuman",
+      "preview": "श्रीहनुमत्कवचम् ॥ शिव उवाच पार्वतीं प्रति : एकदा सुखमासीनं शंकरं लोकशंकरं ॥",
+      "sourceReferences": []
     }
   ],
   "audit": "Sanitized by tools/sanitize-catalogue.mjs",

@@ -650,6 +650,13 @@
           "rights_status": "redistribution-rights-review-required"
         }
       ]
+    },
+    {
+      "id": "ManyuSuktam",
+      "title": "मन्युसूक्तम्",
+      "section": "mantras",
+      "preview": "मन्युसूक्तम् ऋग्वेदः १०.८३–८४ यस्ते मन्योऽविधद्वज्र सायक सह ओजः पुष्यति विश्वमानुषक् । साह्याम दासमार्यं त्वया युजा सहस्कृतेन सहसा सहस्वता ॥",
+      "sourceReferences": []
     }
   ],
   "audit": "Sanitized by tools/sanitize-catalogue.mjs",
