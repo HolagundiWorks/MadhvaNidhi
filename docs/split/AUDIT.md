@@ -227,3 +227,9 @@ Decisions in section 7a were taken as recommended. Commits are on branch `madhva
 - **Dvija assets pruned.** Removed the Gita text, the Wiki knowledge files, the Rangavalli and Naivedya assets, and the songs texts, together with the Dvija copies of the Wiki, Rangavalli, Naivedya, songs and profile-backup screens. Kept the library, madhwa, catalogue and font assets that Dvija's Sandhya, Japa and Puja screens read. Release APK: 6.4 MB to 5.9 MB; AAB 7.1 MB. Verified on the phone: Sandhya, Japa and Puja render, no crash.
 - **Wiki dock icon** now uses the book icon; Grantha keeps the library icon.
 - Release outputs in `dist/` are rebuilt; the signature verifies with the Dvija upload key.
+
+### Upgrade test result (run after the owner approved clearing Madhva Nidhi's data on the test phone)
+- Clean state: Madhva Nidhi data cleared; old build (`main`, 9937ee8 to c10d252 line) installed; dark theme turned on (stored as `g100`).
+- Upgrade: the phase-4 build installed over it with `install -r` (same signing key).
+- After upgrade: dark theme still on; the home screen renders; the dock has the Wiki icon and no Nitya Karma; Settings shows UI Settings, Backup and Legal; no crash logged; the process is running.
+- Not covered: favourites and reader positions were not created in the old build, so their migration is untested. Dvija was not touched.
