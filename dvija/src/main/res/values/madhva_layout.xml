@@ -1,0 +1,48 @@
+<resources>
+    <style name="TextAppearance.MadhvaNidhi.Label01" parent="TextAppearance.Material3.LabelSmall">
+        <item name="android:textSize">12sp</item><item name="lineHeight">16sp</item>
+        <item name="android:textStyle">normal</item><item name="android:textColor">@color/md_text_secondary</item>
+    </style>
+    <style name="TextAppearance.MadhvaNidhi.Label02" parent="TextAppearance.MadhvaNidhi.Label01">
+        <item name="android:textSize">14sp</item><item name="lineHeight">18sp</item>
+    </style>
+    <style name="TextAppearance.MadhvaNidhi.Body01" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textSize">14sp</item><item name="lineHeight">20sp</item>
+        <item name="android:textColor">@color/md_text</item>
+    </style>
+    <style name="TextAppearance.MadhvaNidhi.BodyCompact01" parent="TextAppearance.MadhvaNidhi.Body01">
+        <item name="lineHeight">18sp</item>
+    </style>
+    <style name="TextAppearance.MadhvaNidhi.Body02" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:textSize">16sp</item><item name="lineHeight">24sp</item>
+        <item name="android:textColor">@color/md_text</item>
+    </style>
+    <!-- Material heading-compact-01: 14/18 @ 600 -->
+    <style name="TextAppearance.MadhvaNidhi.HeadingCompact01" parent="TextAppearance.MadhvaNidhi.BodyCompact01">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">18sp</item>
+    </style>
+    <!-- Material heading-compact-02: 16/22 @ 600 -->
+    <style name="TextAppearance.MadhvaNidhi.HeadingCompact02" parent="TextAppearance.MadhvaNidhi.Body02">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">22sp</item>
+    </style>
+    <style name="TextAppearance.MadhvaNidhi.Heading01" parent="TextAppearance.MadhvaNidhi.Body01">
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="TextAppearance.MadhvaNidhi.Heading02" parent="TextAppearance.MadhvaNidhi.Body02">
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="TextAppearance.MadhvaNidhi.Heading03" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textSize">20sp</item><item name="lineHeight">28sp</item>
+        <item name="android:textStyle">normal</item><item name="android:textColor">@color/md_text</item>
+    </style>
+    <style name="TextAppearance.MadhvaNidhi.Heading04" parent="TextAppearance.MadhvaNidhi.Heading03">
+        <item name="android:textSize">28sp</item><item name="lineHeight">36sp</item>
+    </style>
+    <style name="TextAppearance.MadhvaNidhi.Heading05" parent="TextAppearance.MadhvaNidhi.Heading03">
+        <item name="android:textSize">32sp</item><item name="lineHeight">40sp</item>
+    </style>
+</resources>

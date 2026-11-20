@@ -1,0 +1,18 @@
+Haridasa lyric imports — attribution
+
+Composition authors (e.g. Purandara Dāsa, Vyāsarāya) lived centuries ago;
+the underlying literary works are in the public domain.
+
+Digital Kannada texts imported under this folder from Kannada Wikisource
+(https://kn.wikisource.org/) are used under Creative Commons Attribution-
+ShareAlike 4.0 International (CC BY-SA 4.0):
+
+  https://creativecommons.org/licenses/by-sa/4.0/
+
+Attribution: Kannada Wikisource contributors.
+ShareAlike: adaptations of those Wikisource pages remain under CC BY-SA 4.0.
+
+MadhvaNidhi does not claim ownership of Sampada / Saaranga Infotech content.
+Sampada.net was not scraped for these bodies.
+
+See docs/haridasa-import-manifest.csv and docs/haridasa-import-plan.md.

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Legacy Material resource names remapped onto Material 3 roles (seed #BA4E00). -->
+<resources>
+    <color name="md_layer">@color/md_theme_surfaceContainer</color>
+    <color name="md_layer_01">@color/md_theme_surfaceContainer</color>
+    <color name="md_layer_high">@color/md_theme_surfaceContainerHigh</color>
+    <color name="md_layer_selected">@color/md_theme_secondaryContainer</color>
+
+    <color name="md_border">@color/md_theme_outlineVariant</color>
+    <color name="md_border_subtle">@color/md_theme_outlineVariant</color>
+    <color name="md_border_strong">@color/md_theme_outline</color>
+    <color name="md_border_interactive">@color/md_theme_primary</color>
+
+    <color name="md_text">@color/md_theme_onSurface</color>
+    <color name="md_text_primary">@color/md_theme_onSurface</color>
+    <color name="md_text_secondary">@color/md_theme_onSurfaceVariant</color>
+    <color name="md_text_helper">@color/md_theme_onSurfaceVariant</color>
+    <color name="md_text_disabled">#61000000</color>
+    <color name="md_icon_secondary">@color/md_theme_onSurfaceVariant</color>
+
+    <color name="md_interactive">@color/md_theme_primary</color>
+    <color name="md_orange">@color/md_theme_primary</color>
+
+    <color name="md_error">@color/md_theme_error</color>
+    <color name="md_support_error">@color/md_theme_error</color>
+    <color name="md_support_success">#3B6D11</color>
+    <color name="md_support_warning_inverse">#F1C21B</color>
+    <color name="md_ekadashi">#6F5B00</color>
+
+    <color name="md_overlay">#80000000</color>
+
+    <!-- Material 3 medium corner (replaces Material productive 0dp). -->
+    <dimen name="md_corner_radius">12dp</dimen>
+    <dimen name="md_border_width">1dp</dimen>
+    <dimen name="md_layout_size_height_md">40dp</dimen>
+    <dimen name="md_layout_size_height_lg">48dp</dimen>
+    <dimen name="md_button_height">56dp</dimen>
+    <dimen name="md_layout_size_height_sm">32dp</dimen>
+</resources>

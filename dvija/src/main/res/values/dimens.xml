@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="space_4">3.2dp</dimen>
+    <dimen name="space_8">6.4dp</dimen>
+    <dimen name="space_16">12.8dp</dimen>
+
+    <!-- Compact landscape scale for the Galaxy A10s (about 837 x 397 dp usable). -->
+
+
+
+    <dimen name="touch">40dp</dimen>
+
+    <!-- Six-level reading hierarchy: display, page, section, body, secondary, metadata. -->
+
+</resources>

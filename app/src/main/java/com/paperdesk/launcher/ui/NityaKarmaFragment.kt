@@ -60,7 +60,7 @@ class NityaKarmaFragment : Fragment() {
 
         val tabs = view.findViewById<TabLayout>(R.id.nityaTabs)
         TABS.forEach { tag ->
-            tabs.addTab(tabs.newTab().setText(OsLang.ui(tag, OsLang.get(requireContext()))).setIcon(FrozenShell.iconFor(tag)).setTag(tag), false)
+            tabs.addTab(tabs.newTab().setText(OsLang.ui(tag, OsLang.get(requireContext()))).setIcon(PageIcons.iconFor(tag)).setTag(tag), false)
         }
         tabs.tabMode = TabLayout.MODE_FIXED
         tabs.tabGravity = TabLayout.GRAVITY_FILL
@@ -89,7 +89,7 @@ class NityaKarmaFragment : Fragment() {
 
     fun selectTab(tab: String) {
         if (tab == "puja") {
-            (activity as? LauncherActivity)?.navigateTo("puja")
+            (activity as? PageNavigator)?.navigateTo("puja")
             return
         }
         val tabs = view?.findViewById<TabLayout>(R.id.nityaTabs) ?: return

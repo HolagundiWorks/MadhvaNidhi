@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ShapeAppearance.PaperDesk" parent="ShapeAppearance.Material3.Corner.Medium">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="ShapeAppearance.PaperDesk.Small" parent="ShapeAppearance.Material3.Corner.Small">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="ShapeAppearance.PaperDesk.Large" parent="ShapeAppearance.Material3.Corner.Large">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MadhvaNidhi.Four" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="Theme.PaperDesk.Base" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="viewInflaterClass">androidx.appcompat.app.AppCompatViewInflater</item>
+
+        <item name="colorPrimary">@color/md_theme_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_onPrimaryContainer</item>
+        <item name="colorSecondary">@color/md_theme_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_onTertiaryContainer</item>
+        <item name="colorError">@color/md_theme_error</item>
+        <item name="colorOnError">@color/md_theme_onError</item>
+        <item name="colorErrorContainer">@color/md_theme_errorContainer</item>
+        <item name="colorOnErrorContainer">@color/md_theme_onErrorContainer</item>
+        <item name="android:colorBackground">@color/md_theme_background</item>
+        <item name="colorOnBackground">@color/md_theme_onBackground</item>
+        <item name="colorSurface">@color/md_theme_surface</item>
+        <item name="colorOnSurface">@color/md_theme_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_onSurfaceVariant</item>
+        <item name="colorOutline">@color/md_theme_outline</item>
+        <item name="colorOutlineVariant">@color/md_theme_outlineVariant</item>
+        <item name="colorSurfaceInverse">@color/md_theme_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_inverseOnSurface</item>
+        <item name="colorPrimaryInverse">@color/md_theme_inversePrimary</item>
+        <item name="colorSurfaceContainer">@color/md_theme_surfaceContainer</item>
+        <item name="colorSurfaceContainerHigh">@color/md_theme_surfaceContainerHigh</item>
+        <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
+        <item name="colorSurfaceContainerLow">@color/md_theme_surfaceContainerLow</item>
+        <item name="colorSurfaceContainerLowest">@color/md_theme_surfaceContainerLowest</item>
+        <item name="colorSurfaceBright">@color/md_theme_surfaceBright</item>
+        <item name="colorSurfaceDim">@color/md_theme_surfaceDim</item>
+
+        <!-- Compat / legacy attrs still read by older layouts -->
+        <item name="colorPrimaryVariant">@color/md_theme_primary</item>
+        <item name="colorSecondaryVariant">@color/md_theme_secondary</item>
+        <item name="colorPrimaryDark">@color/md_theme_surface</item>
+        <item name="colorAccent">@color/md_theme_primary</item>
+        <item name="android:windowBackground">@color/md_theme_background</item>
+        <item name="android:textColorPrimary">@color/md_theme_onSurface</item>
+        <item name="android:textColorSecondary">@color/md_theme_onSurfaceVariant</item>
+        <item name="android:textColorHint">@color/md_theme_onSurfaceVariant</item>
+        <item name="android:editTextColor">@color/md_theme_onSurface</item>
+        <item name="android:textColor">@color/md_theme_onSurface</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="colorControlNormal">@color/md_theme_onSurfaceVariant</item>
+        <item name="colorControlActivated">@color/md_theme_primary</item>
+        <item name="colorControlHighlight">@color/md_theme_hover</item>
+        <item name="colorButtonNormal">@color/md_theme_surfaceContainerHighest</item>
+        <item name="rippleColor">@color/md_theme_hover</item>
+        <!-- Flat solid surfaces — no tonal elevation overlays / soft gradients -->
+        <item name="elevationOverlayEnabled">false</item>
+
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.PaperDesk.Small</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.PaperDesk</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.PaperDesk.Large</item>
+
+        <item name="materialButtonStyle">@style/Widget.MadhvaNidhi.Button.Filled</item>
+        <item name="borderlessButtonStyle">@style/Widget.MadhvaNidhi.Button.Text</item>
+        <item name="materialCardViewStyle">@style/Widget.MadhvaNidhi.SurfaceCard</item>
+        <item name="checkboxStyle">@style/Widget.Material3.CompoundButton.CheckBox</item>
+        <item name="textInputStyle">@style/Widget.MadhvaNidhi.TextField.Outlined</item>
+        <item name="floatingActionButtonStyle">@style/Widget.Material3.FloatingActionButton.Primary</item>
+        <item name="toolbarStyle">@style/Widget.MadhvaNidhi.Toolbar</item>
+        <item name="tabStyle">@style/Widget.MadhvaNidhi.TabLayout</item>
+        <item name="materialSwitchStyle">@style/Widget.Material3.CompoundButton.MaterialSwitch</item>
+
+        <item name="android:statusBarColor">@color/md_theme_surface</item>
+        <item name="android:navigationBarColor">@color/md_theme_surface</item>
+        <item name="android:colorBackgroundCacheHint">@color/md_theme_background</item>
+        <item name="android:itemBackground">@color/md_theme_surface</item>
+        <item name="android:windowShowWallpaper">false</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowContentTransitions">false</item>
+        <item name="android:colorEdgeEffect">@color/md_theme_primary</item>
+        <item name="android:textColorHighlight">@color/md_theme_primaryContainer</item>
+        <item name="android:alertDialogTheme">@style/Theme.PaperDesk.Dialog</item>
+        <item name="alertDialogTheme">@style/Theme.PaperDesk.Dialog</item>
+        <item name="materialAlertDialogTheme">@style/Theme.PaperDesk.Dialog</item>
+    </style>
+
+    <style name="Theme.PaperDesk" parent="Theme.PaperDesk.Base">
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.PaperDesk.Entry" parent="Theme.PaperDesk">
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+
+    <style name="Theme.PaperDesk.Dialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorPrimary">@color/md_theme_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
+        <item name="colorSurface">@color/md_theme_surfaceContainerHigh</item>
+        <item name="colorOnSurface">@color/md_theme_onSurface</item>
+        <item name="android:colorBackground">@color/md_theme_surfaceContainerHigh</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.PaperDesk</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.Material3.Button.TextButton.Dialog</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.Material3.Button.TextButton.Dialog</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Widget.Material3.Button.TextButton.Dialog</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.5</item>
+    </style>
+
+    <!-- Nitya chrome FAB overlay (was undefined ThemeOverlay.MadhvaNidhi.NityaFab). -->
+    <style name="ThemeOverlay.MadhvaNidhi.NityaFab" parent="ThemeOverlay.Material3.Button">
+        <item name="colorPrimary">@color/md_theme_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_onPrimaryContainer</item>
+        <item name="materialButtonStyle">@style/Widget.Material3.Button.OutlinedButton</item>
+    </style>
+
+    <!-- Desk.* kept as thin Material3 bridges for residual layouts. -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</resources>

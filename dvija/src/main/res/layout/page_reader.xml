@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_theme_background">
+
+    <!-- Portrait selection flow -->
+    <LinearLayout
+        android:id="@+id/readerMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/readerHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/ds_space_4"
+            android:paddingTop="@dimen/ds_space_3"
+            android:paddingBottom="@dimen/ds_space_2"
+            android:background="@color/md_theme_surfaceContainer">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/readerTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.DS.Headline"
+                android:textColor="@color/md_theme_onSurface"
+                android:layout_marginBottom="@dimen/ds_space_2"
+                android:visibility="gone" />
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/readerKalaField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/kalaMorning"
+                    style="@style/Widget.MadhvaNidhi.Button.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minHeight="@dimen/md_button_height"
+                    android:contentDescription="ಪ್ರಾತಃ ಸಂಧ್ಯಾವಂದನೆ"
+                    android:text="ಪ್ರಾತಃ"
+                    app:cornerRadius="@dimen/md_corner_radius"
+                    app:icon="@drawable/ic_morning" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/kalaNoon"
+                    style="@style/Widget.MadhvaNidhi.Button.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minHeight="@dimen/md_button_height"
+                    android:contentDescription="ಮಾಧ್ಯಾಹ್ನಿಕ ಸಂಧ್ಯಾವಂದನೆ"
+                    android:text="ಮಧ್ಯಾಹ್ನ"
+                    app:cornerRadius="@dimen/md_corner_radius"
+                    app:icon="@drawable/ic_noon" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/kalaEvening"
+                    style="@style/Widget.MadhvaNidhi.Button.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minHeight="@dimen/md_button_height"
+                    android:contentDescription="ಸಾಯಂ ಸಂಧ್ಯಾವಂದನೆ"
+                    android:text="ಸಾಯಂ"
+                    app:cornerRadius="@dimen/md_corner_radius"
+                    app:icon="@drawable/ic_evening" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/readerItemField"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="ಓದುವ ಪಠ್ಯ ಆಯ್ಕೆ"
+                app:boxCornerRadiusBottomEnd="@dimen/md_corner_radius"
+                app:boxCornerRadiusBottomStart="@dimen/md_corner_radius"
+                app:boxCornerRadiusTopEnd="@dimen/md_corner_radius"
+                app:boxCornerRadiusTopStart="@dimen/md_corner_radius">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/readerItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:maxLines="2" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/readerSelect"
+                style="@style/Widget.MadhvaNidhi.Button.Outlined"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/md_button_height"
+                android:text="ಆಯ್ಕೆಮಾಡಿ"
+                android:visibility="gone"
+                app:cornerRadius="@dimen/md_corner_radius" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/readerSelectBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/md_button_height"
+                android:text="ಆಯ್ಕೆಮಾಡಿ"
+                android:visibility="gone"
+                app:cornerRadius="@dimen/md_corner_radius" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/readerSelectLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/ds_space_2"
+                android:text=""
+                android:textAppearance="@style/TextAppearance.DS.Body"
+                android:visibility="gone" />
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/readerSubpages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/subpageMantras"
+                    style="@style/Widget.MadhvaNidhi.Button.Outlined"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minHeight="@dimen/md_button_height"
+                    android:text=""
+                    app:cornerRadius="@dimen/md_corner_radius" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/subpageStotras"
+                    style="@style/Widget.MadhvaNidhi.Button.Outlined"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minHeight="@dimen/md_button_height"
+                    android:text=""
+                    app:cornerRadius="@dimen/md_corner_radius" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/subpageSuktas"
+                    style="@style/Widget.MadhvaNidhi.Button.Outlined"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minHeight="@dimen/md_button_height"
+                    android:text=""
+                    app:cornerRadius="@dimen/md_corner_radius" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/md_border_width"
+            android:background="@color/md_theme_outlineVariant" />
+
+        <!-- Portrait Browse List (shown directly for catalogue/puja selection) -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/selectorList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:paddingHorizontal="@dimen/ds_space_3"
+            android:paddingTop="@dimen/ds_space_2"
+            android:paddingBottom="@dimen/ds_space_3" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/selectorEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/ds_space_4"
+            android:text=""
+            android:textAppearance="@style/TextAppearance.DS.Body"
+            android:textColor="@color/md_theme_onSurfaceVariant"
+            android:visibility="gone" />
+
+        <!-- Fallback/preview scroll when Sandhya or empty -->
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/readerScroll"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/ds_space_4">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/readerHead"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/ds_space_2"
+                    android:text=""
+                    android:textAppearance="@style/TextAppearance.DS.Headline" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/readerBody"
+                    android:textAppearance="@style/TextAppearance.DS.MantraText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/ds_space_2"
+                    android:ellipsize="end"
+                    android:lineSpacingMultiplier="1.45"
+                    android:maxLines="8"
+                    android:text="" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/md_border_width"
+            android:background="@color/md_theme_outlineVariant" />
+
+        <!-- Selection summary -->
+        <LinearLayout
+            android:id="@+id/readerActionBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/md_theme_surfaceContainer"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/ds_space_4"
+            android:paddingVertical="@dimen/ds_space_2">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/readerSelectedTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.DS.Subtitle"
+                android:textColor="@color/md_theme_onSurface" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/readerCrumb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ds_space_half"
+                android:layout_marginBottom="@dimen/ds_space_2"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text=""
+                android:textAppearance="@style/TextAppearance.DS.Caption"
+                android:textColor="@color/md_theme_onSurfaceVariant" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Hidden legacy overlay holder kept for API compatibility -->
+    <LinearLayout
+        android:id="@+id/selectorPage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/selectorBack"
+            style="@style/Widget.MadhvaNidhi.Button.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/back" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/selectorTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</FrameLayout>

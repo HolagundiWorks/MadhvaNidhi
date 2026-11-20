@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.button.MaterialButton xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sectionRow"
+    style="@style/Widget.MadhvaNidhi.Button.Tonal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="start|center_vertical"
+    android:minHeight="@dimen/md_button_height"
+    android:paddingStart="@dimen/ds_space_2"
+    android:paddingEnd="@dimen/ds_space_2"
+    android:textAlignment="viewStart"
+    android:textAppearance="@style/TextAppearance.DS.BodyMedium"
+    app:icon="@drawable/ic_chevron_right"
+    app:iconGravity="end"
+    app:iconTint="@color/md_theme_onSurfaceVariant"
+    app:cornerRadius="@dimen/md_corner_radius" />

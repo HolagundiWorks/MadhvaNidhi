@@ -1,0 +1,255 @@
+package com.paperdesk.launcher.data
+
+import android.content.Context
+import org.json.JSONObject
+
+/** Madhwa Festivals master catalogue. Titles from the catalogue; bodies from local texts only. */
+object CatalogueStore {
+    @Volatile private var loaded = false
+    private var groups: List<CatalogueGroup> = emptyList()
+    private var items: List<CatalogueItem> = emptyList()
+    private var byId: Map<String, CatalogueItem> = emptyMap()
+
+    @Synchronized
+    fun load(context: Context): List<CatalogueItem> {
+        if (loaded) return items
+        val raw = runCatching {
+            context.assets.open("catalogue/index.json").bufferedReader().use { it.readText() }
+        }.getOrDefault("")
+        val root = runCatching { JSONObject(raw) }.getOrNull()
+        val gOut = ArrayList<CatalogueGroup>()
+        val iOut = ArrayList<CatalogueItem>()
+        val gArr = root?.optJSONArray("groups")
+        if (gArr != null) {
+            for (i in 0 until gArr.length()) {
+                val g = gArr.optJSONObject(i) ?: continue
+                val gid = g.optString("id")
+                if (gid.isBlank()) continue
+                gOut += CatalogueGroup(
+                    id = gid,
+                    kn = g.optString("kn"),
+                    sa = g.optString("sa"),
+                    en = g.optString("en"),
+                    collection = g.optString("collection")
+                )
+                val arr = g.optJSONArray("items") ?: continue
+                for (j in 0 until arr.length()) {
+                    val o = arr.optJSONObject(j) ?: continue
+                    val id = o.optString("id").ifBlank { continueId(gid, j) }
+                    iOut += CatalogueItem(
+                        id = id,
+                        group = gid,
+                        kn = o.optString("kn"),
+                        sa = o.optString("sa"),
+                        en = o.optString("en"),
+                        type = o.optString("type", gid),
+                        deity = o.optString("deity"),
+                        author = o.optString("author"),
+                        file = o.optString("file"),
+                        script = o.optString("script", "sa"),
+                        url = o.optString("url")
+                    )
+                }
+            }
+        }
+        groups = gOut
+        items = iOut
+        byId = iOut.associateBy { it.id }
+        loaded = true
+        augment(context)
+        return items
+    }
+
+    fun groups(): List<CatalogueGroup> = groups
+
+    fun groupsFor(page: String): List<CatalogueGroup> {
+        return groups.filter { CatalogueClassification.isSongGroup(it, items) == (page == "hadugalu") }
+    }
+
+    fun item(id: String): CatalogueItem? = byId[id]
+
+    fun first(): CatalogueItem? = items.firstOrNull()
+
+    fun firstReadable(): CatalogueItem? =
+        items.firstOrNull { it.file.isNotBlank() } ?: items.firstOrNull()
+
+    fun firstReadable(page: String): CatalogueItem? {
+        val allowed = groupsFor(page).map { it.id }.toSet()
+        val mine = items.filter { it.group in allowed }
+        return mine.firstOrNull { it.file.isNotBlank() } ?: mine.firstOrNull()
+    }
+
+    fun firstReadable(page: String, subpage: String): CatalogueItem? {
+        val allowed = groupsFor(page).map { it.id }.toSet()
+        val mine = items.filter { it.group in allowed && subpageFor(it) == subpage }
+        return mine.firstOrNull { it.file.isNotBlank() } ?: mine.firstOrNull()
+    }
+
+    fun groupsForSubpage(page: String, subpage: String): List<CatalogueGroup> {
+        val allowed = groupsFor(page)
+        return allowed.filter { group ->
+            items.any { it.group == group.id && it.file.isNotBlank() && subpageFor(it) == subpage }
+        }
+    }
+
+    fun inGroup(group: String): List<CatalogueItem> {
+        val base = if (group.isBlank()) items else items.filter { it.group == group }
+        return base.filter { it.file.isNotBlank() }
+    }
+
+    fun inGroup(group: String, subpage: String): List<CatalogueItem> =
+        inGroup(group).filter { subpageFor(it) == subpage }
+
+    fun belongsToSubpage(item: CatalogueItem, subpage: String): Boolean = subpageFor(item) == subpage
+
+    private fun subpageFor(item: CatalogueItem): String = CatalogueClassification.subpage(item)
+
+    fun groupLabel(group: CatalogueGroup, lang: IndicScript.Lang): String = when (lang) {
+        IndicScript.Lang.KN -> group.kn.ifBlank { group.en }
+        IndicScript.Lang.SA -> group.sa.ifBlank { group.en }
+        IndicScript.Lang.EN -> group.en.ifBlank { group.kn }
+    }
+
+    fun label(item: CatalogueItem, lang: IndicScript.Lang): String = when (lang) {
+        IndicScript.Lang.KN -> item.kn.ifBlank { item.en.ifBlank { item.sa } }
+        IndicScript.Lang.SA -> item.sa.ifBlank { item.kn.ifBlank { item.en } }
+        IndicScript.Lang.EN -> item.en.ifBlank { item.kn.ifBlank { item.sa } }
+    }
+
+    fun body(context: Context, item: CatalogueItem, lang: IndicScript.Lang): String {
+        if (item.file.isBlank()) return ""
+        val raw = read(context, item.file)
+        if (raw.isBlank()) return ""
+        val tidy = RitualText.tidy(raw, kannada = item.script == "kn")
+        return if (item.script == "kn") {
+            when (lang) {
+                // Some imported Kannada catalogue files contain Devanagari lines.
+                // Normalising the whole body keeps mixed-script texts consistent.
+                IndicScript.Lang.KN -> IndicScript.convert(tidy, IndicScript.Lang.KN)
+                IndicScript.Lang.EN -> IndicScript.convert(tidy, IndicScript.Lang.EN)
+                IndicScript.Lang.SA -> ""
+            }
+        } else {
+            when (lang) {
+                IndicScript.Lang.KN -> IndicScript.convert(tidy, IndicScript.Lang.KN)
+                IndicScript.Lang.EN -> IndicScript.convert(tidy, IndicScript.Lang.EN)
+                IndicScript.Lang.SA -> IndicScript.convert(tidy, IndicScript.Lang.SA)
+            }
+        }
+    }
+
+    private fun read(context: Context, file: String): String {
+        if (file.startsWith("lib:")) {
+            val rest = file.removePrefix("lib:")
+            val slash = rest.indexOf('/')
+            if (slash <= 0) return ""
+            return LibraryStore.text(
+                context,
+                rest.substring(0, slash),
+                rest.substring(slash + 1),
+                IndicScript.Lang.SA
+            )
+        }
+        val path = when {
+            file.startsWith("madhwa/") -> file
+            file.endsWith(".txt") -> "madhwa/texts/$file"
+            else -> "madhwa/texts/$file"
+        }
+        return runCatching {
+            context.assets.open(path).bufferedReader().use { it.readText() }
+        }.getOrDefault("")
+    }
+
+    private fun augment(context: Context) {
+        val requestedGroups = listOf(
+            CatalogueGroup("rama_raksha", "ಶ್ರೀ ರಾಮರಕ್ಷಾ ಸ್ತೋತ್ರ", "श्रीरामरक्षास्तोत्रम्", "Rama Raksha Stotra"),
+            CatalogueGroup("narasimha_stotras", "ಶ್ರೀ ನರಸಿಂಹ ಸ್ತೋತ್ರಗಳು", "श्रीनृसिंहस्तोत्राणि", "Narasimha Stotras"),
+            CatalogueGroup("vishnu_sahasranama", "ಶ್ರೀ ವಿಷ್ಣು ಸಹಸ್ರನಾಮ", "श्रीविष्णुसहस्रनाम", "Vishnu Sahasranama"),
+            CatalogueGroup("suprabhatams", "ಸುಪ್ರಭಾತಗಳು", "सुप्रभातानि", "Suprabhatams"),
+            CatalogueGroup("krishna_stotras", "ಶ್ರೀ ಕೃಷ್ಣ ಸ್ತೋತ್ರಗಳು", "श्रीकृष्णस्तोत्राणि", "Krishna Stotras"),
+            CatalogueGroup("ashtottara_stotras", "ಅಷ್ಟೋತ್ತರ ಶತನಾಮ ಸ್ತೋತ್ರಗಳು", "अष्टोत्तरशतनामस्तोत्राणि", "Ashtottara Shatanama Stotras")
+        )
+        requestedGroups.forEach { group ->
+            if (groups.none { it.id == group.id }) groups = groups + group
+        }
+        if (groups.none { it.id == "namavalis" }) {
+            groups = groups + CatalogueGroup("namavalis", "ನಾಮಾವಳಿಗಳು", "नामावलयः", "Namavalis")
+        }
+        val rigveda = setOf(
+            // Core Rigveda or Rigveda-khila texts in the bundled source. Suktas whose
+            // files explicitly identify a Yajurveda source remain in the general mantra group.
+            "PurushaSuktam", "ShriSuktam", "VarunaSuktam", "VishnuSuktam"
+        )
+        if (groups.none { it.id == "rigveda_suktas" }) {
+            groups = groups + CatalogueGroup("rigveda_suktas", "ಋಗ್ವೇದ ಸೂಕ್ತಗಳು", "ऋग्वेदसूक्तानि", "Rigveda Suktas")
+        }
+        if (groups.none { it.id == "sanskrit_parayana" }) {
+            groups = groups + CatalogueGroup("sanskrit_parayana", "ಸಂಸ್ಕೃತ ಪಾರಾಯಣ", "संस्कृतपारायणम्", "Sanskrit Parayana")
+        }
+        items = items.map { item ->
+            if (item.type.equals("stotra", true) && item.deity.contains("Narasimha", true) && item.file.isNotBlank()) {
+                item.copy(group = "narasimha_stotras")
+            } else item
+        }
+        val skip = setOf(
+            "Sandhyavandanam", "SandhyavandanaPrayoga", "SandhyavandanaMantrah",
+            "SandhyopasthanaMantrah", "Aupasanam", "MahaNyasah", "LaghuNyasah",
+            "RudraPrashnah", "RudraPadaPatha", "ChamakaPrashnah",
+            "shiva-puja-with-basic-mahanyasa", "UdakaShanti", "YajurUpakarma"
+        )
+        val extra = ArrayList<CatalogueItem>()
+        LibraryStore.load(context, LibraryStore.MANTRAS).forEach { lib ->
+            if (lib.id in skip) return@forEach
+            val file = "lib:mantras/${lib.id}"
+            if (items.any { it.file == file || it.id == lib.id || it.id == "lib_${lib.id}" }) return@forEach
+            extra += CatalogueItem(
+                id = "lib_${lib.id}",
+                group = if (lib.id in rigveda) "rigveda_suktas" else "mantras",
+                kn = IndicScript.convert(lib.title, IndicScript.Lang.KN),
+                sa = lib.title,
+                en = IndicScript.convert(lib.title, IndicScript.Lang.EN),
+                type = "mantra",
+                deity = "",
+                author = "",
+                file = file,
+                script = "sa",
+                url = ""
+            )
+        }
+        LibraryStore.load(context, LibraryStore.NAMAVALI).forEach { lib ->
+            val file = "lib:namavali/${lib.id}"
+            if (items.any { it.file == file } || extra.any { it.file == file }) return@forEach
+            extra += CatalogueItem(
+                id = "lib_namavali_${lib.id}", group = "namavalis",
+                kn = IndicScript.convert(lib.title, IndicScript.Lang.KN), sa = lib.title,
+                en = IndicScript.convert(lib.title, IndicScript.Lang.EN), type = "namavali",
+                deity = "", author = "", file = file, script = "sa", url = ""
+            )
+        }
+        LibraryStore.load(context, LibraryStore.STOTRA).forEach { lib ->
+            val targetGroup = when {
+                lib.id == "RamarakshaStotram" -> "rama_raksha"
+                lib.id.contains("Nrisimha", true) || lib.id.contains("Narasimha", true) -> "narasimha_stotras"
+                lib.id == "VishnuSahasranamaStotram" -> "vishnu_sahasranama"
+                lib.id == "VenkateshaSuprabhatam" -> "suprabhatams"
+                lib.section.equals("krishna", true) -> "krishna_stotras"
+                lib.id.contains("Ashtottara", true) -> "ashtottara_stotras"
+                lib.id == "AdityaHrdayam" -> "sanskrit_parayana"
+                else -> return@forEach
+            }
+            val file = "lib:stotra/${lib.id}"
+            if (items.any { it.file == file } || extra.any { it.file == file }) return@forEach
+            extra += CatalogueItem(
+                id = "lib_stotra_${lib.id}", group = targetGroup,
+                kn = IndicScript.convert(lib.title, IndicScript.Lang.KN), sa = lib.title,
+                en = IndicScript.convert(lib.title, IndicScript.Lang.EN), type = "stotra",
+                deity = "", author = "", file = file, script = "sa", url = ""
+            )
+        }
+        if (extra.isEmpty()) return
+        items = items + extra
+        byId = items.associateBy { it.id }
+    }
+
+    private fun continueId(group: String, index: Int): String = "${group}_$index"
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pure light theme: white / grey surfaces · orange accent #FF4F18 only. -->
+<resources>
+    <color name="md_theme_primary">#FF4F18</color>
+    <color name="md_theme_onPrimary">#000000</color>
+    <color name="md_theme_primaryContainer">#FFE4DC</color>
+    <color name="md_theme_onPrimaryContainer">#351000</color>
+
+    <color name="md_theme_secondary">#616161</color>
+    <color name="md_theme_onSecondary">#FFFFFF</color>
+    <color name="md_theme_secondaryContainer">#E0E0E0</color>
+    <color name="md_theme_onSecondaryContainer">#212121</color>
+
+    <color name="md_theme_tertiary">#757575</color>
+    <color name="md_theme_onTertiary">#FFFFFF</color>
+    <color name="md_theme_tertiaryContainer">#EEEEEE</color>
+    <color name="md_theme_onTertiaryContainer">#212121</color>
+
+    <color name="md_theme_error">#B3261E</color>
+    <color name="md_theme_onError">#FFFFFF</color>
+    <color name="md_theme_errorContainer">#F9DEDC</color>
+    <color name="md_theme_onErrorContainer">#410E0B</color>
+
+    <color name="md_theme_background">#FFFFFF</color>
+    <color name="md_theme_onBackground">#000000</color>
+    <color name="md_theme_surface">#FFFFFF</color>
+    <color name="md_theme_onSurface">#000000</color>
+    <color name="md_theme_surfaceVariant">#EEEEEE</color>
+    <color name="md_theme_onSurfaceVariant">#616161</color>
+
+    <color name="md_theme_outline">#9E9E9E</color>
+    <color name="md_theme_outlineVariant">#E0E0E0</color>
+    <color name="md_theme_inverseSurface">#121212</color>
+    <color name="md_theme_inverseOnSurface">#FFFFFF</color>
+    <color name="md_theme_inversePrimary">#FFA68B</color>
+
+    <color name="md_theme_surfaceDim">#E0E0E0</color>
+    <color name="md_theme_surfaceBright">#FFFFFF</color>
+    <color name="md_theme_surfaceContainerLowest">#FFFFFF</color>
+    <color name="md_theme_surfaceContainerLow">#FAFAFA</color>
+    <color name="md_theme_surfaceContainer">#F5F5F5</color>
+    <color name="md_theme_surfaceContainerHigh">#EEEEEE</color>
+    <color name="md_theme_surfaceContainerHighest">#E0E0E0</color>
+
+
+    <color name="md_theme_hover">#1FFF4F18</color>
+</resources>

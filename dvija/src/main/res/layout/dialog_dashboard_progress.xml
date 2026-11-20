@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/ds_space_4">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ದಿನದ ಅಭ್ಯಾಸ · Daily progress"
+        android:textAppearance="@style/TextAppearance.DS.Subtitle"
+        android:textColor="@color/md_theme_onSurface" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/dialogSandhyaPratah"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="44dp"
+        android:text="@string/pratah_label" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/dialogSandhyaMadhyahna"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="44dp"
+        android:text="@string/madhyahna_label" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/dialogSandhyaSayam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="44dp"
+        android:text="@string/sayam_label" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/dialogOpenSandhya"
+        style="@style/Widget.MadhvaNidhi.Button.Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open Sandhyavandana" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Read-only overview. Mark completion in Sandhyavandana or Japa."
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/md_border_width"
+        android:layout_marginVertical="@dimen/ds_space_2"
+        android:background="@color/md_theme_outlineVariant" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dashboard_japa"
+        android:textAppearance="@style/TextAppearance.DS.Subtitle"
+        android:textColor="@color/md_theme_onSurface" />
+
+    <TextView
+        android:id="@+id/dialogJapaCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ds_space_1"
+        android:textAppearance="@style/TextAppearance.DS.Headline"
+        android:textColor="@color/md_theme_onSurface" />
+
+    <TextView
+        android:id="@+id/dialogJapaMeta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.DS.Caption"
+        android:textColor="@color/md_theme_onSurfaceVariant" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ds_space_2"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/dialogOpenJapa"
+            style="@style/Widget.MadhvaNidhi.Button.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/ds_space_1"
+            android:text="@string/dashboard_open_japa" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/md_border_width"
+        android:layout_marginVertical="@dimen/ds_space_2"
+        android:background="@color/md_theme_outlineVariant" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dashboard_stotra"
+        android:textAppearance="@style/TextAppearance.DS.Subtitle"
+        android:textColor="@color/md_theme_onSurface" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/dialogStotra1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="44dp"
+        android:text="@string/dashboard_stotra_1" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/dialogStotra2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="44dp"
+        android:text="@string/dashboard_stotra_2" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/dialogOpenGrantha"
+        style="@style/Widget.MadhvaNidhi.Button.Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dashboard_resume_reading" />
+</LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

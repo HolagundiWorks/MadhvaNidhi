@@ -1,0 +1,46 @@
+Material Symbols icons used by MadhvaNidhi Android
+==================================================
+Source: Google Fonts icons, https://fonts.google.com/icons (Material Symbols Outlined)
+Repository: https://github.com/google/material-design-icons (symbols/web)
+Licence: Apache License 2.0 (full text in material-symbols-license.txt)
+Copyright Google LLC. Icons are converted to Android vector drawables under res/drawable.
+Style: Outlined, weight 400, FILL 0, optical size 24 (filled star and eda variants as noted in each file header).
+
+Icon names used:
+  - arrow_back
+  - arrow_forward
+  - award_star_fill1_24px
+  - bedtime
+  - brightness_1
+  - brightness_4
+  - calendar_month
+  - check
+  - chevron_right
+  - contrast
+  - dark_mode
+  - dashboard
+  - eda_wght100_24px
+  - event_repeat
+  - expand_more
+  - home
+  - info
+  - menu
+  - menu_book
+  - music_note
+  - open_in_new
+  - person
+  - radio_button_unchecked
+  - self_improvement
+  - settings
+  - skip_next
+  - spa
+  - star
+  - star_fill1_24px
+  - temple_hindu
+  - text_decrease
+  - text_increase
+  - today
+  - wb_sunny
+  - wb_twilight
+
+The app mark (ic_madhvanidhi) is custom branding and is not part of Material Symbols.

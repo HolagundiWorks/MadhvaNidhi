@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- App-facing Material 3 component styles (seed #BA4E00). -->
+<resources>
+    <style name="Widget.MadhvaNidhi.SurfaceCard" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@color/md_theme_surfaceContainer</item>
+        <item name="cardElevation">0dp</item>
+        <item name="cardCornerRadius">@dimen/ds_radius_card</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="rippleColor">@color/md_theme_hover</item>
+    </style>
+
+    <style name="Widget.MadhvaNidhi.SurfaceCard.Elevated" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@color/md_theme_surfaceContainerHigh</item>
+        <item name="cardElevation">0dp</item>
+        <item name="cardCornerRadius">@dimen/ds_radius_card</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="rippleColor">@color/md_theme_hover</item>
+    </style>
+
+    <style name="Widget.MadhvaNidhi.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@color/md_theme_surfaceContainer</item>
+        <item name="android:elevation">0dp</item>
+        <item name="titleTextAppearance">@style/TextAppearance.Material3.TitleMedium</item>
+        <item name="subtitleTextAppearance">@style/TextAppearance.Material3.LabelMedium</item>
+        <item name="titleTextColor">@color/md_theme_onSurface</item>
+        <item name="subtitleTextColor">@color/md_theme_onSurfaceVariant</item>
+        <item name="navigationIconTint">@color/md_theme_onSurface</item>
+    </style>
+
+    <style name="Widget.MadhvaNidhi.BottomBar" parent="">
+        <item name="android:background">@color/md_theme_surfaceContainer</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:minHeight">80dp</item>
+    </style>
+
+    <!-- Standard Material 3 tabs: equal-width tabs, a line under the active tab. -->
+    <style name="Widget.MadhvaNidhi.TabLayout" parent="Widget.Material3.TabLayout.Secondary">
+        <item name="tabIndicatorColor">@color/md_theme_primary</item>
+        <item name="tabIndicatorHeight">3dp</item>
+        <item name="tabIndicatorGravity">bottom</item>
+        <item name="tabIndicatorFullWidth">true</item>
+        <item name="tabMode">fixed</item>
+        <item name="tabGravity">fill</item>
+        <item name="tabSelectedTextColor">@color/ds_text_primary</item>
+        <item name="tabTextColor">@color/ds_text_secondary</item>
+        <item name="tabRippleColor">@color/md_theme_hover</item>
+        <item name="tabTextAppearance">@style/TextAppearance.Material3.LabelMedium</item>
+    </style>
+
+    <!-- Button shapes: icon-only buttons are fully round; labelled buttons use a 12dp rounded rectangle. -->
+    <style name="ShapeAppearance.MadhvaNidhi.Round" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="ShapeAppearance.MadhvaNidhi.Medium" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="Widget.MadhvaNidhi.Button.Filled" parent="Widget.Material3.Button">
+        <item name="cornerRadius">@dimen/ds_radius_control</item>
+        <item name="android:minHeight">@dimen/ds_control_height</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.DS.ButtonText</item>
+    </style>
+
+    <style name="Widget.MadhvaNidhi.Button.Tonal" parent="Widget.Material3.Button.TonalButton">
+        <item name="cornerRadius">@dimen/ds_radius_control</item>
+        <item name="android:minHeight">@dimen/ds_control_height</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.DS.ButtonText</item>
+    </style>
+
+    <style name="Widget.MadhvaNidhi.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="cornerRadius">@dimen/ds_radius_control</item>
+        <item name="strokeColor">@color/md_theme_outline</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="android:minHeight">@dimen/ds_control_height</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.DS.ButtonText</item>
+    </style>
+
+    <style name="Widget.MadhvaNidhi.Button.Text" parent="Widget.Material3.Button.TextButton">
+        <item name="cornerRadius">@dimen/ds_radius_control</item>
+        <item name="android:minHeight">@dimen/ds_control_height</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.DS.ButtonText</item>
+    </style>
+
+    <style name="Widget.MadhvaNidhi.IconButton" parent="Widget.Material3.Button.IconButton.Filled.Tonal">
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">@dimen/ds_control_height</item>
+        <item name="iconTint">@color/md_theme_onSecondaryContainer</item>
+        <item name="backgroundTint">@color/md_theme_secondaryContainer</item>
+        <item name="rippleColor">@color/md_theme_hover</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.MadhvaNidhi.Round</item>
+    </style>
+
+    <style name="Widget.MadhvaNidhi.IconButton.Standard" parent="Widget.Material3.Button.IconButton">
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">@dimen/ds_control_height</item>
+        <item name="iconTint">@color/md_theme_onSurface</item>
+        <item name="rippleColor">@color/md_theme_hover</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.MadhvaNidhi.Round</item>
+    </style>
+
+    <style name="Widget.MadhvaNidhi.TextField.Outlined" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">4dp</item>
+        <item name="boxCornerRadiusTopEnd">4dp</item>
+        <item name="boxCornerRadiusBottomStart">4dp</item>
+        <item name="boxCornerRadiusBottomEnd">4dp</item>
+        <item name="boxStrokeColor">@color/md_theme_outline</item>
+        <item name="hintTextColor">@color/md_theme_primary</item>
+        <item name="android:textColorHint">@color/md_theme_onSurfaceVariant</item>
+    </style>
+
+    <style name="Widget.MadhvaNidhi.TextField.Exposed" parent="Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="boxCornerRadiusTopStart">4dp</item>
+        <item name="boxCornerRadiusTopEnd">4dp</item>
+        <item name="boxCornerRadiusBottomStart">4dp</item>
+        <item name="boxCornerRadiusBottomEnd">4dp</item>
+        <item name="boxStrokeColor">@color/md_theme_outline</item>
+        <item name="hintTextColor">@color/md_theme_primary</item>
+        <item name="android:textColorHint">@color/md_theme_onSurfaceVariant</item>
+    </style>
+
+    <style name="Widget.MadhvaNidhi.Segmented.Item" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="cornerRadius">@dimen/ds_radius_control</item>
+        <item name="strokeColor">@color/md_theme_outline</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:minHeight">@dimen/ds_control_height</item>
+        <item name="android:textAppearance">@style/TextAppearance.DS.ButtonText</item>
+        <item name="backgroundTint">@color/md_theme_surface</item>
+    </style>
+</resources>

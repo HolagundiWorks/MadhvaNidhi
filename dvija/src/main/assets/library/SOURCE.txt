@@ -1,0 +1,3 @@
+Texts forked from Stotra Samhita (https://github.com/stotrasamhita)
+vedamantra-book / puja-vidhanam / stotra-sangrahah / namavali-manjari
+Converted from XeLaTeX for on-device reading.

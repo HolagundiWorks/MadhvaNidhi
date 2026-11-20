@@ -41,9 +41,9 @@ class DashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         practice = PracticeDayStore(requireContext())
-        view.findViewById<View>(R.id.dashboardMenu).setOnClickListener { (activity as? LauncherActivity)?.openNavigation() }
-        view.findViewById<View>(R.id.dashboardProfile).setOnClickListener { (activity as? LauncherActivity)?.navigateTo("user") }
-        view.findViewById<View>(R.id.dashboardSettings).setOnClickListener { (activity as? LauncherActivity)?.navigateTo("settings") }
+        view.findViewById<View>(R.id.dashboardMenu).setOnClickListener { (activity as? PageNavigator)?.openNavigation() }
+        view.findViewById<View>(R.id.dashboardProfile).setOnClickListener { (activity as? PageNavigator)?.navigateTo("user") }
+        view.findViewById<View>(R.id.dashboardSettings).setOnClickListener { (activity as? PageNavigator)?.navigateTo("settings") }
         view.findViewById<View>(R.id.dashShare).setOnClickListener { showShareSheet() }
         viewLifecycleOwner.lifecycleScope.launch {
             val app = requireContext().applicationContext
@@ -104,12 +104,12 @@ class DashboardFragment : Fragment() {
             icon.setImageResource(shortcutIcon(destId))
             cell.contentDescription = OsLang.ui(destId, lang)
             cell.setOnClickListener {
-                (activity as? LauncherActivity)?.navigateTo(destId)
+                (activity as? PageNavigator)?.navigateTo(destId)
             }
         }
     }
 
-    private fun shortcutIcon(destId: String): Int = FrozenShell.iconFor(
+    private fun shortcutIcon(destId: String): Int = PageIcons.iconFor(
         when (destId) {
             "panchanga", "schedule" -> "desk"
             else -> destId
@@ -436,7 +436,7 @@ class DashboardFragment : Fragment() {
                 setOnClickListener {
                     MdMotion.pressFlash(it)
                     store.setActiveMantraId(entry.id)
-                    (activity as? LauncherActivity)?.navigateTo("japa")
+                    (activity as? PageNavigator)?.navigateTo("japa")
                 }
             }
             // Column 1: japa name
@@ -515,7 +515,7 @@ class DashboardFragment : Fragment() {
         fun open(id: Int, page: String) {
             content.findViewById<MaterialButton>(id).setOnClickListener {
                 dialog.dismiss()
-                (activity as? LauncherActivity)?.navigateTo(page)
+                (activity as? PageNavigator)?.navigateTo(page)
             }
         }
         open(R.id.dialogOpenSandhya, "sandhya")

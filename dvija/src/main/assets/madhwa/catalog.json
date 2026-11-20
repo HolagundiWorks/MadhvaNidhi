@@ -1,0 +1,691 @@
+{
+  "source": "local",
+  "langs": [
+    "kn",
+    "en",
+    "sa"
+  ],
+  "items": [
+    {
+      "id": "sampradaya",
+      "category": "sampradaya",
+      "title": "माध्व सम्प्रदायः",
+      "author": "मध्वाचार्यः",
+      "note": "",
+      "file": "sampradaya.txt"
+    },
+    {
+      "id": "hks_full",
+      "category": "sampradaya",
+      "title": "श्री हरिकथामृतसारः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks.txt"
+    },
+    {
+      "id": "hks_vigneshwara",
+      "category": "sampradaya",
+      "title": "विघ्नेश्वर स्तोत्र सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_vigneshwara.txt"
+    },
+    {
+      "id": "anu_hks",
+      "category": "sampradaya",
+      "title": "अणु हरिकथामृतसारः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "anu_hks.txt"
+    },
+    {
+      "id": "hks_index",
+      "category": "sampradaya",
+      "title": "हरिकथामृतसार सन्धि सूची",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_index.txt"
+    },
+    {
+      "id": "hari_vayu_stuti",
+      "category": "stotra",
+      "title": "श्री हरिवायुस्तुतिः",
+      "author": "त्रिविक्रम पण्डिताचार्यः",
+      "note": "",
+      "file": "hari_vayu_stuti.txt"
+    },
+    {
+      "id": "nakha_stuti",
+      "category": "stotra",
+      "title": "नखस्तुतिः",
+      "author": "मध्वाचार्यः",
+      "note": "",
+      "file": "nakha_stuti.txt"
+    },
+    {
+      "id": "dvadasha_stotra",
+      "category": "stotra",
+      "title": "द्वादशस्तोत्रम्",
+      "author": "मध्वाचार्यः",
+      "note": "",
+      "file": "dvadasha_stotra.txt"
+    },
+    {
+      "id": "yantrodharaka",
+      "category": "stotra",
+      "title": "यन्त्रोद्धारक हनूमत्स्तोत्रम्",
+      "author": "व्यासराजः",
+      "note": "",
+      "file": "yantrodharaka.txt"
+    },
+    {
+      "id": "yantrodharaka_page",
+      "category": "stotra",
+      "title": "यन्त्रोद्धारक स्तोत्रम् (कन्नड)",
+      "author": "व्यासराजः",
+      "note": "",
+      "file": "stotra_yantrodharaka_page.txt"
+    },
+    {
+      "id": "nrisimha_mantra",
+      "category": "mantra",
+      "title": "श्री नृसिंह महामन्त्रः",
+      "author": "",
+      "note": "",
+      "file": "nrisimha_mantra.txt"
+    },
+    {
+      "id": "pratah_sankalpa",
+      "category": "mantra",
+      "title": "प्रातः सङ्कल्प गद्यम्",
+      "author": "",
+      "note": "",
+      "file": "pratah_sankalpa.txt"
+    },
+    {
+      "id": "dasara_jagadodharana",
+      "category": "dasara",
+      "title": "जगदोद्धारण",
+      "author": "पुरन्दरदासः",
+      "note": "",
+      "file": "dasara_jagadodharana.txt"
+    },
+    {
+      "id": "dasara_bhagyada",
+      "category": "dasara",
+      "title": "भाग्यद लक्ष्मी बारम्मा",
+      "author": "पुरन्दरदासः",
+      "note": "",
+      "file": "dasara_bhagyada_lakshmi.txt"
+    },
+    {
+      "id": "dasara_mahalakshmi",
+      "category": "dasara",
+      "title": "दासरा पदगळु — महालक्ष्मी पूजा",
+      "author": "हरिदासाः",
+      "note": "",
+      "file": "puja_mahalakshmi_padagalu.txt"
+    },
+    {
+      "id": "ugabhoga_favorite",
+      "category": "ugabhoga",
+      "title": "इष्ट उगभोग सङ्ग्रहः",
+      "author": "हरिदासाः",
+      "note": "",
+      "file": "ugabhoga_favorite.txt"
+    },
+    {
+      "id": "ugabhoga_sripadaraja",
+      "category": "ugabhoga",
+      "title": "उगभोग — श्रीपादराजः",
+      "author": "श्रीपादराजः",
+      "note": "",
+      "file": "ugabhoga_sripadaraja.txt"
+    },
+    {
+      "id": "ugabhoga_note",
+      "category": "ugabhoga",
+      "title": "उगभोग",
+      "author": "हरिदासाः",
+      "note": "",
+      "file": "ugabhoga.txt"
+    },
+    {
+      "id": "suladhi_madhwa_matha",
+      "category": "suladhi",
+      "title": "श्रीमन्माध्वमत महिमा सुळादि",
+      "author": "विजयदासः",
+      "note": "",
+      "file": "suladhi_madhwa_matha.txt"
+    },
+    {
+      "id": "suladhi_nrisimha",
+      "category": "suladhi",
+      "title": "नरसिंह देवर सुळादि",
+      "author": "विजयदासः",
+      "note": "",
+      "file": "suladhi_nrisimha.txt"
+    },
+    {
+      "id": "suladhi_durga",
+      "category": "suladhi",
+      "title": "दुर्गा सुळादि",
+      "author": "",
+      "note": "",
+      "file": "suladhi_durga.txt"
+    },
+    {
+      "id": "suladhi_raghavendra",
+      "category": "suladhi",
+      "title": "राघवेन्द्र सुळादि",
+      "author": "गोपालदासः",
+      "note": "",
+      "file": "suladhi_raghavendra.txt"
+    },
+    {
+      "id": "suladhi_vayu_traya",
+      "category": "suladhi",
+      "title": "वायुदेव अवतारत्रय सुळादि",
+      "author": "राघवेन्द्रतीर्थः",
+      "note": "",
+      "file": "suladhi_vayu_traya.txt"
+    },
+    {
+      "id": "suladhi_madhwacharya",
+      "category": "suladhi",
+      "title": "मध्वाचार्य सुळादि",
+      "author": "पुरन्दरदासः",
+      "note": "",
+      "file": "suladhi_madhwacharya.txt"
+    },
+    {
+      "id": "suladhi_hanumanta",
+      "category": "suladhi",
+      "title": "हनुमन्त सुळादि",
+      "author": "पुरन्दरदासः",
+      "note": "",
+      "file": "suladhi_hanumanta.txt"
+    },
+    {
+      "id": "suladhi_hasthodhaka",
+      "category": "suladhi",
+      "title": "हस्तोदक सुळादि",
+      "author": "",
+      "note": "",
+      "file": "suladhi_hasthodhaka.txt"
+    },
+    {
+      "id": "suladhi_vivaha",
+      "category": "suladhi",
+      "title": "विवाह सुळादि",
+      "author": "",
+      "note": "",
+      "file": "suladhi_vivaha.txt"
+    },
+    {
+      "id": "suladhi_pancharatna",
+      "category": "suladhi",
+      "title": "पञ्चरत्न सुळादिगळु",
+      "author": "विजयदासः",
+      "note": "",
+      "file": "suladhi_pancharatna.txt"
+    },
+    {
+      "id": "kesava_nama",
+      "category": "kesava",
+      "title": "केशवनाम",
+      "author": "",
+      "note": "",
+      "file": "kesava_nama.txt"
+    },
+    {
+      "id": "kesava_nama_page",
+      "category": "kesava",
+      "title": "केशव नाम — दासर पद",
+      "author": "कनकदासः",
+      "note": "",
+      "file": "kesava_nama_page.txt"
+    },
+    {
+      "id": "yathigalu",
+      "category": "yathi",
+      "title": "माध्व यतिगळु गुरुगळु",
+      "author": "",
+      "note": "",
+      "file": "yathigalu.txt"
+    },
+    {
+      "id": "festivals",
+      "category": "festival",
+      "title": "माध्व उत्सवाः",
+      "author": "",
+      "note": "",
+      "file": "festivals.txt"
+    },
+    {
+      "id": "festival_krishna_janmashtami",
+      "category": "festival",
+      "title": "ಶ್ರೀಕೃಷ್ಣ ಜನ್ಮಾಷ್ಟಮಿ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ಅಷ್ಟಮಿ ನಿರ್ಣಯ ಮತ್ತು ಪಾರಣೆಗೆ ಸ್ಥಳೀಯ ಮಾಧ್ವ ಮಠದ ಪಂಚಾಂಗ ಅನುಸರಿಸಿ.",
+      "file": "festival_krishna_janmashtami.txt"
+    },
+    {
+      "id": "festival_ganesha_chaturthi",
+      "category": "festival",
+      "title": "ಶ್ರೀಗಣೇಶ ಚತುರ್ಥೀ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ಎರಡು ಗಣೇಶ ಪೂಜೆ ವಿನಂತಿಗಳನ್ನು ಒಂದೇ ಸಂಪೂರ್ಣ ಕ್ರಮವಾಗಿ ಸಂಯೋಜಿಸಲಾಗಿದೆ.",
+      "file": "festival_ganesha_chaturthi.txt"
+    },
+    {
+      "id": "festival_varamahalakshmi",
+      "category": "festival",
+      "title": "ಶ್ರೀವರಮಹಾಲಕ್ಷ್ಮೀ ವ್ರತ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ಕುಟುಂಬಪರಂಪರೆಯ ವ್ರತಕ್ಕೆ ಪುರೋಹಿತರ ಮಾರ್ಗದರ್ಶನ ಅಗತ್ಯ.",
+      "file": "festival_varamahalakshmi.txt"
+    },
+    {
+      "id": "festival_deepavali",
+      "category": "festival",
+      "title": "ದೀಪಾವಳಿ ಶ್ರೀಮಹಾಲಕ್ಷ್ಮೀ–ಕುಬೇರ ಪೂಜೆ",
+      "author": "",
+      "note": "ನರಕಚತುರ್ದಶೀ ಸ್ನಾನ ಮತ್ತು ಅಮಾವಾಸ್ಯಾ ಸಂಜೆ ಪೂಜೆಯ ಸಂಕ್ಷಿಪ್ತ ಕ್ರಮ.",
+      "file": "festival_deepavali.txt"
+    },
+    {
+      "id": "festival_dasara_navaratri",
+      "category": "festival",
+      "title": "ದಸರಾ–ನವರಾತ್ರಿ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ಪ್ರತಿಪದೆಯಿಂದ ವಿಜಯದಶಮಿವರೆಗಿನ ಮಾಧ್ವ ಆಚರಣಾ ರೂಪರೇಖೆ.",
+      "file": "festival_dasara_navaratri.txt"
+    },
+    {
+      "id": "festival_saraswati_puja",
+      "category": "festival",
+      "title": "ಶ್ರೀಸರಸ್ವತೀ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ಮೂಲಾ ನಕ್ಷತ್ರದ ಆವಾಹನೆ ಮತ್ತು ವಿಜಯದಶಮಿಯ ಪುನಃಪೂಜೆ.",
+      "file": "festival_saraswati_puja.txt"
+    },
+    {
+      "id": "festival_ayudha_puja",
+      "category": "festival",
+      "title": "ಆಯುಧ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ಸಾಧನ, ವಾಹನ ಮತ್ತು ವಿದ್ಯುತ್ ಉಪಕರಣಗಳ ಸುರಕ್ಷಿತ ಪೂಜೆ.",
+      "file": "festival_ayudha_puja.txt"
+    },
+    {
+      "id": "festival_durga_puja",
+      "category": "festival",
+      "title": "ದುರ್ಗಾಷ್ಟಮಿ ಶ್ರೀದುರ್ಗಾ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ಮಾಧ್ವ ತಾರತಮ್ಯಾನುಸಾರ ಪರಿವಾರದೇವತಾ ಪೂಜೆ.",
+      "file": "festival_durga_puja.txt"
+    },
+    {
+      "id": "festival_vijayadashami",
+      "category": "festival",
+      "title": "ವಿಜಯದಶಮಿ–ಮಧ್ವಜಯಂತಿ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ಮಧ್ವಜಯಂತಿ, ಶಮೀಪೂಜೆ ಮತ್ತು ವಿದ್ಯಾರಂಭ.",
+      "file": "festival_vijayadashami.txt"
+    },
+    {
+      "id": "festival_tulasi_puja",
+      "category": "festival",
+      "title": "ಶ್ರೀತುಳಸೀ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ದೈನಂದಿನ ಮತ್ತು ಕಾರ್ತಿಕ ತುಳಸೀ ಆರಾಧನೆಗೆ ಶೋಡಶೋಪಚಾರ ಕ್ರಮ.",
+      "file": "festival_tulasi_puja.txt"
+    },
+    {
+      "id": "festival_naga_panchami",
+      "category": "festival",
+      "title": "ನಾಗರ ಚತುರ್ಥೀ–ನಾಗಪಂಚಮೀ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ನಾಗ–ಗರುಡ ಸ್ಮರಣೆಯ ಮಾಧ್ವ ಗೃಹಪೂಜಾ ಕ್ರಮ.",
+      "file": "festival_naga_panchami.txt"
+    },
+    {
+      "id": "festival_shivaratri",
+      "category": "festival",
+      "title": "ಮಹಾಶಿವರಾತ್ರಿ ರುದ್ರದೇವರ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ರುದ್ರದೇವರನ್ನು ಶ್ರೀಹರಿಯ ಪರಮಭಕ್ತನಾಗಿ ತಾರತಮ್ಯಾನುಸಾರ ಪೂಜಿಸುವ ಕ್ರಮ.",
+      "file": "festival_shivaratri.txt"
+    },
+    {
+      "id": "festival_narasimha_jayanti",
+      "category": "festival",
+      "title": "ಶ್ರೀನರಸಿಂಹ ಜಯಂತಿ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ವೈಶಾಖ ಶುಕ್ಲ ಚತುರ್ದಶಿಯ ಪೂಜೆ ಮತ್ತು ಮಾಧ್ವ ಪಾರಾಯಣಗಳು.",
+      "file": "festival_narasimha_jayanti.txt"
+    },
+    {
+      "id": "festival_satyanarayana_vrata",
+      "category": "festival",
+      "title": "ಶ್ರೀಸತ್ಯನಾರಾಯಣ ವ್ರತ ಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ಸರಳ ಗೃಹಪೂಜೆ; ಪೂರ್ಣ ಕಲಶವ್ರತಕ್ಕೆ ಪುರೋಹಿತರ ಮಾರ್ಗದರ್ಶನ ಪಡೆಯಿರಿ.",
+      "file": "festival_satyanarayana_vrata.txt"
+    },
+    {
+      "id": "puja_yajnopavita",
+      "category": "puja",
+      "title": "ಯಜ್ಞೋಪವೀತ ಧಾರಣ ವಿಧಿ",
+      "author": "ವಿದ್ವಾನ್ ಶ್ರೀ ಎಸ್. ಎನ್. ರಾಮಚಂದ್ರಾಚಾರ್",
+      "note": "ಮಧ್ವ ಸಂಪ್ರದಾಯ; ಕುಟುಂಬದ ಆಚಾರ್ಯರ ಮಾರ್ಗದರ್ಶನಕ್ಕೆ ಆದ್ಯತೆ ನೀಡಿ.",
+      "file": "yajnopavita_dharana.txt"
+    },
+    {
+      "id": "puja_anushtana",
+      "category": "puja",
+      "title": "पूजा अनुष्ठानम्",
+      "author": "",
+      "note": "",
+      "file": "puja_anushtana.txt"
+    },
+    {
+      "id": "puja_udupi",
+      "category": "puja",
+      "title": "उडुपी कृष्ण पूजा हाडु",
+      "author": "",
+      "note": "",
+      "file": "puja_udupi_krishna.txt"
+    },
+    {
+      "id": "books_note",
+      "category": "books",
+      "title": "माध्व ग्रन्थाः",
+      "author": "",
+      "note": "",
+      "file": "books.txt"
+    },
+    {
+      "id": "hks_01",
+      "category": "books",
+      "title": "हरिकथामृतसारः 1 — मङ्गलाचरण सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_01.txt"
+    },
+    {
+      "id": "hks_02",
+      "category": "books",
+      "title": "हरिकथामृतसारः 2 — करुणा सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_02.txt"
+    },
+    {
+      "id": "hks_03",
+      "category": "books",
+      "title": "हरिकथामृतसारः 3 — व्याप्ति सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_03.txt"
+    },
+    {
+      "id": "hks_04",
+      "category": "books",
+      "title": "हरिकथामृतसारः 4 — भोजन सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_04.txt"
+    },
+    {
+      "id": "hks_05",
+      "category": "books",
+      "title": "हरिकथामृतसारः 5 — विभूति सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_05.txt"
+    },
+    {
+      "id": "hks_06",
+      "category": "books",
+      "title": "हरिकथामृतसारः 6 — पञ्चमहायज्ञ सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_06.txt"
+    },
+    {
+      "id": "hks_07",
+      "category": "books",
+      "title": "हरिकथामृतसारः 7 — पञ्चतन्मात्र सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_07.txt"
+    },
+    {
+      "id": "hks_08",
+      "category": "books",
+      "title": "हरिकथामृतसारः 8 — मातृका सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_08.txt"
+    },
+    {
+      "id": "hks_09",
+      "category": "books",
+      "title": "हरिकथामृतसारः 9 — वर्णप्रक्रिया सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_09.txt"
+    },
+    {
+      "id": "hks_10",
+      "category": "books",
+      "title": "हरिकथामृतसारः 10 — सर्वप्रतीक सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_10.txt"
+    },
+    {
+      "id": "hks_11",
+      "category": "books",
+      "title": "हरिकथामृतसारः 11 — स्थावरजङ्गम सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_11.txt"
+    },
+    {
+      "id": "hks_12",
+      "category": "books",
+      "title": "हरिकथामृतसारः 12 — नाडीप्रकरण सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_12.txt"
+    },
+    {
+      "id": "hks_13",
+      "category": "books",
+      "title": "हरिकथामृतसारः 13 — नामस्मरण सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_13.txt"
+    },
+    {
+      "id": "hks_14",
+      "category": "books",
+      "title": "हरिकथामृतसारः 14 — पितृगण सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_14.txt"
+    },
+    {
+      "id": "hks_15",
+      "category": "books",
+      "title": "हरिकथामृतसारः 15 — श्वास सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_15.txt"
+    },
+    {
+      "id": "hks_16",
+      "category": "books",
+      "title": "हरिकथामृतसारः 16 — दत्तस्वातन्त्र्य सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_16.txt"
+    },
+    {
+      "id": "hks_17",
+      "category": "books",
+      "title": "हरिकथामृतसारः 17 — स्वगतस्वातन्त्र्य सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_17.txt"
+    },
+    {
+      "id": "hks_18",
+      "category": "books",
+      "title": "हरिकथामृतसारः 18 — क्रीडाविलास सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_18.txt"
+    },
+    {
+      "id": "hks_19",
+      "category": "books",
+      "title": "हरिकथामृतसारः 19 — बिम्बापरोक्ष सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_19.txt"
+    },
+    {
+      "id": "hks_20",
+      "category": "books",
+      "title": "हरिकथामृतसारः 20 — गुणतारतम्य सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_20.txt"
+    },
+    {
+      "id": "hks_21",
+      "category": "books",
+      "title": "हरिकथामृतसारः 21 — कर्मविमोचन सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_21.txt"
+    },
+    {
+      "id": "hks_22",
+      "category": "books",
+      "title": "हरिकथामृतसारः 22 — भक्तापराधसहिष्णु सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_22.txt"
+    },
+    {
+      "id": "hks_23",
+      "category": "books",
+      "title": "हरिकथामृतसारः 23 — बृहत्तारतम्य सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_23.txt"
+    },
+    {
+      "id": "hks_24",
+      "category": "books",
+      "title": "हरिकथामृतसारः 24 — कल्पसाधन सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_24.txt"
+    },
+    {
+      "id": "hks_25",
+      "category": "books",
+      "title": "हरिकथामृतसारः 25 — आरोहण तारतम्य सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_25.txt"
+    },
+    {
+      "id": "hks_26",
+      "category": "books",
+      "title": "हरिकथामृतसारः 26 — अवरोहण तारतम्य सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_26.txt"
+    },
+    {
+      "id": "hks_27",
+      "category": "books",
+      "title": "हरिकथामृतसारः 27 — अनुक्रमणिका तारतम्य सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_27.txt"
+    },
+    {
+      "id": "hks_28",
+      "category": "books",
+      "title": "हरिकथामृतसारः 28 — विघ्नेश्वर स्तोत्र सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_28.txt"
+    },
+    {
+      "id": "hks_29",
+      "category": "books",
+      "title": "हरिकथामृतसारः 29 — अणुतारतम्य सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_29.txt"
+    },
+    {
+      "id": "hks_30",
+      "category": "books",
+      "title": "हरिकथामृतसारः 30 — दैत्यतारतम्य सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_30.txt"
+    },
+    {
+      "id": "hks_31",
+      "category": "books",
+      "title": "हरिकथामृतसारः 31 — नैवेद्यप्रकरण सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_31.txt"
+    },
+    {
+      "id": "hks_32",
+      "category": "books",
+      "title": "हरिकथामृतसारः 32 — कक्षातारतम्य सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_32.txt"
+    },
+    {
+      "id": "hks_33",
+      "category": "books",
+      "title": "हरिकथामृतसारः 33 — फलश्रुति सन्धिः",
+      "author": "जगन्नाथदासः",
+      "note": "",
+      "file": "hks_33.txt"
+    },
+    {
+      "id": "rig_yajur_vaishvadeva",
+      "category": "puja",
+      "title": "ಋಗ್ವೇದೀಯ–ಯಜುರ್ವೇದೀಯ ವೈಶ್ವದೇವ ವಿಧಾನ ಮತ್ತು ಬಲಿಹರಣ",
+      "author": "",
+      "note": "ಪ್ರಾತಃ–ಸಾಯಂ ವೈಶ್ವದೇವ, ಋಗ್ವೇದೀಯ ಮತ್ತು ಯಜುರ್ವೇದೀಯ ಕ್ರಮಗಳು ಹಾಗೂ ಬಲಿಹರಣ ವಿಧಾನ.",
+      "file": "rig_yajur_vaishvadeva.txt"
+    },
+    {
+      "id": "madhwa_deva_pooja_guide",
+      "category": "puja",
+      "title": "ದೇವಪೂಜಾ ವಿಧಾನ",
+      "author": "",
+      "note": "ನಿರ್ಮಾಲ್ಯ ವಿಸರ್ಜನೆಯಿಂದ ಸಮಾಪನೆಯವರೆಗಿನ ಸಂಪೂರ್ಣ ಪೂಜಾಕ್ರಮ.",
+      "file": "madhwa_deva_pooja_guide.txt"
+    }
+  ],
+  "audit": "Duplicate aliases and non-Kannada blog indexes removed"
+}

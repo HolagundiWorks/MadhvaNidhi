@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/md_theme_background">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/settingsTabs"
+        style="@style/Widget.MadhvaNidhi.TabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="start"
+        android:minHeight="48dp"
+        app:tabMode="fixed"
+        app:tabGravity="fill"
+        app:tabInlineLabel="true" />
+
+    <FrameLayout
+        android:id="@+id/settingsPanelHost"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/md_theme_background" />
+</LinearLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Legacy names → neutral grey / orange accent. -->
+    <color name="black">@color/md_theme_background</color>
+    <color name="white">@color/md_theme_onSurface</color>
+    <color name="accent">@color/md_theme_primary</color>
+    <color name="calendar_month_previous">@color/md_theme_onSurfaceVariant</color>
+    <color name="white_90">#E6000000</color>
+    <color name="white_70">#B3000000</color>
+    <color name="white_55">#8C000000</color>
+</resources>

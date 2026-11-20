@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- IBM Material productive motion — durations only (Views phase). -->
+<resources>
+    <integer name="md_duration_fast_01">70</integer>
+    <integer name="md_duration_fast_02">110</integer>
+</resources>

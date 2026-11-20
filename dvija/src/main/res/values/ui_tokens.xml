@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Acharya composition tokens: content geometry follows an 8dp unit. -->
+    <!-- 1.25x treatment of the original 48dp border and 40dp medallions. -->
+
+    <!-- Warm white paper canvas with restrained earthen accents. -->
+    <color name="earth_canvas_desk">@color/md_theme_background</color>
+    <color name="earth_accent_desk">@color/md_theme_primary</color>
+    <color name="earth_footer_base">#F1E6DB</color>
+    <color name="earth_footer_shadow">#211A16</color>
+</resources>

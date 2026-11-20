@@ -25,7 +25,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Calendar
 
-class LauncherActivity : AppCompatActivity() {
+class LauncherActivity : AppCompatActivity(), PageNavigator {
     override fun attachBaseContext(newBase: android.content.Context) {
         super.attachBaseContext(AppTextSize.wrap(newBase))
     }
@@ -151,7 +151,7 @@ class LauncherActivity : AppCompatActivity() {
         bindNavigation()
     }
 
-    fun openNavigation() {
+    override fun openNavigation() {
         if (::shell.isInitialized) shell.openPanel()
     }
 
@@ -221,7 +221,7 @@ class LauncherActivity : AppCompatActivity() {
         footerAction = action
     }
 
-    fun navigateTo(pageId: String) {
+    override fun navigateTo(pageId: String) {
         val id = when (pageId) {
             "panchanga" -> "desk"
             "playlists" -> "favorites"

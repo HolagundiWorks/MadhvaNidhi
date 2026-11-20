@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Dark theme overrides for the glass tokens. -->
+<resources>
+    <color name="ds_glass_surface">#E61C1B1F</color>
+    <color name="ds_glass_border">#33FFFFFF</color>
+</resources>
