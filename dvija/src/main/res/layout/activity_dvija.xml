@@ -1,7 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Madhva Dvija host: one page at a time (dashboard and practice screens). -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/pageHost"
+<!-- Madhva Dvija host: one page at a time, with a bottom bar to the practice screens. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/colorBackground" />
+    android:orientation="vertical"
+    android:background="?android:attr/colorBackground">
+
+    <FrameLayout
+        android:id="@+id/pageHost"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/dvijaNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/ds_space_2"
+        android:paddingEnd="@dimen/ds_space_2"
+        android:paddingTop="@dimen/ds_space_1"
+        android:paddingBottom="@dimen/ds_space_1">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/navDashboard"
+            style="@style/Widget.MadhvaNidhi.Button.Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minHeight="@dimen/ds_touch_min"
+            android:textSize="11sp"
+            app:icon="@drawable/ic_nav_home"
+            app:iconGravity="top"
+            app:iconPadding="0dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/navSandhya"
+            style="@style/Widget.MadhvaNidhi.Button.Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minHeight="@dimen/ds_touch_min"
+            android:textSize="11sp"
+            app:icon="@drawable/ic_sun"
+            app:iconGravity="top"
+            app:iconPadding="0dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/navJapa"
+            style="@style/Widget.MadhvaNidhi.Button.Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minHeight="@dimen/ds_touch_min"
+            android:textSize="11sp"
+            app:icon="@drawable/ic_japa_eda"
+            app:iconGravity="top"
+            app:iconPadding="0dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/navPuja"
+            style="@style/Widget.MadhvaNidhi.Button.Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minHeight="@dimen/ds_touch_min"
+            android:textSize="11sp"
+            app:icon="@drawable/ic_nav_puja"
+            app:iconGravity="top"
+            app:iconPadding="0dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/navProfile"
+            style="@style/Widget.MadhvaNidhi.Button.Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minHeight="@dimen/ds_touch_min"
+            android:textSize="11sp"
+            app:icon="@drawable/ic_user"
+            app:iconGravity="top"
+            app:iconPadding="0dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/navSettings"
+            style="@style/Widget.MadhvaNidhi.Button.Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minHeight="@dimen/ds_touch_min"
+            android:textSize="11sp"
+            app:icon="@drawable/ic_nav_settings"
+            app:iconGravity="top"
+            app:iconPadding="0dp" />
+    </LinearLayout>
+</LinearLayout>
