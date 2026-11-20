@@ -60,3 +60,15 @@ Bring the Aayadi screen in line with the guide, keeping the existing View/XML sc
 - Screen: Section A (original dimensions, each parameter Pass or Fail, overall) and Section B (recommended table: Length, Breadth, Aaya, Dhana, Runa / Vyaya, Aayushu, Result; closest first; original row in bold when it passes; empty message "No valid combinations found within ±1 foot.").
 - Verified: 28 unit tests pass; on the phone, 30′0″ × 40′0″ gives 625 evaluated, 4 Pass, and the original Fails (aaya 8, dhana 20/3, vyaya 10). The web script gives the same counts and decision in Node, not in a browser.
 - Hasta standard (fixed, pasted specification): 1 hasta = 18 inches = 24 angula. Now a constant (`domain/measure/Measure.kt`, object `Hasta`); no longer configurable and removed from the rule pack JSON. Unit tests (28) pass and the phone shows the same results.
+
+## UI hierarchy (redesign, requested 20 November 2026)
+Principles: one primary action per screen (the inputs), the verdict before the detail, progressive disclosure for working, status shown by text and shape as well as colour, touch targets of 48 dp.
+
+Order, top to bottom:
+1. Header: title and info.
+2. Input card: Length and Breadth as two rows, each with feet and inches. Changes update the results as the user types.
+3. Section A, "ನೀಡಿದ ಅಳತೆ": the entered size in feet and inches (headline), its hasta conversion (caption), one verdict chip with a sentence naming any failing parameters, the parameter list (value, remainder, Pass/Fail chip), and a collapsed "ಲೆಕ್ಕದ ವಿವರ" section for the exact working.
+4. Section B, "ಶಿಫಾರಸು ಮಾಡಿದ ಅಳತೆ": a count line, a two-option sort control (closest, largest area), and one card per passing size (feet-and-inches headline, Pass chip, the four values in a 2 x 2 grid, "ನಿಮ್ಮ ಅಳತೆ" tag for the original). Tapping a card opens the derivation. Cards replace the wide table, which needed horizontal scrolling on a phone.
+5. Empty state: "No valid combinations found within ±1 foot."
+
+Out of scope for this change: the web prototype (it stays Carbon, per the project rules).

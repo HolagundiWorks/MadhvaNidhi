@@ -1,0 +1,27 @@
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/candidateCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ds_space_2" android:clickable="true" android:focusable="true" app:cardCornerRadius="@dimen/md_corner_radius" app:cardBackgroundColor="@color/md_theme_surfaceContainer">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/ds_space_4">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+            <com.google.android.material.textview.MaterialTextView android:id="@+id/candidateDims" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.TitleMedium" />
+            <TextView android:id="@+id/candidateOriginalTag" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/ds_space_2" android:paddingStart="@dimen/ds_space_2" android:paddingEnd="@dimen/ds_space_2" android:paddingTop="@dimen/ds_space_1" android:paddingBottom="@dimen/ds_space_1" android:background="@drawable/aayadi_chip_neutral" android:textAppearance="@style/TextAppearance.DS.LabelMedium" android:text="ನಿಮ್ಮ ಅಳತೆ" android:visibility="gone" />
+            <TextView android:id="@+id/candidateChip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/ds_space_2" android:paddingEnd="@dimen/ds_space_2" android:paddingTop="@dimen/ds_space_1" android:paddingBottom="@dimen/ds_space_1" android:textAppearance="@style/TextAppearance.DS.LabelMedium" />
+        </LinearLayout>
+        <GridLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:columnCount="2" android:useDefaultMargins="false" android:layout_marginTop="@dimen/ds_space_3">
+            <LinearLayout android:layout_width="0dp" android:layout_columnWeight="1" android:layout_height="wrap_content" android:orientation="vertical" android:paddingEnd="@dimen/ds_space_2" android:layout_marginBottom="@dimen/ds_space_2">
+                <com.google.android.material.textview.MaterialTextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Caption" android:text="ಆಯ" />
+                <com.google.android.material.textview.MaterialTextView android:id="@+id/candidateAaya" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.BodyLarge" />
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp" android:layout_columnWeight="1" android:layout_height="wrap_content" android:orientation="vertical" android:paddingStart="@dimen/ds_space_2" android:layout_marginBottom="@dimen/ds_space_2">
+                <com.google.android.material.textview.MaterialTextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Caption" android:text="ಧನ" />
+                <com.google.android.material.textview.MaterialTextView android:id="@+id/candidateDhana" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.BodyLarge" />
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp" android:layout_columnWeight="1" android:layout_height="wrap_content" android:orientation="vertical" android:paddingEnd="@dimen/ds_space_2">
+                <com.google.android.material.textview.MaterialTextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Caption" android:text="ಋಣ / ವ್ಯಯ" />
+                <com.google.android.material.textview.MaterialTextView android:id="@+id/candidateRunaVyaya" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.BodyLarge" />
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp" android:layout_columnWeight="1" android:layout_height="wrap_content" android:orientation="vertical" android:paddingStart="@dimen/ds_space_2">
+                <com.google.android.material.textview.MaterialTextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Caption" android:text="ಆಯುಷ್ಯ" />
+                <com.google.android.material.textview.MaterialTextView android:id="@+id/candidateAyush" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.BodyLarge" />
+            </LinearLayout>
+        </GridLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

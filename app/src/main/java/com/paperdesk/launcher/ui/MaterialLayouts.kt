@@ -9,8 +9,6 @@ import kotlin.math.floor
 object MaterialLayouts {
     fun bind(root: View) {
         configure(root, R.id.aayadiGrid, 360f, 1)
-        configure(root, R.id.aayadiInputsGrid, 150f, 2, gapToken = R.dimen.ds_space_2)
-        configure(root, R.id.aayadiResultsGrid, 156f, 3, gapToken = R.dimen.ds_space_2)
         configure(root, R.id.settingsGrid, 360f, 2)
         configure(root, R.id.profileFieldsGrid, 280f, 2, gapToken = R.dimen.ds_space_2)
         fun centerIcons(view: View) {
