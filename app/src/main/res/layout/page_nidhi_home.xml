@@ -112,6 +112,14 @@
             style="@style/Widget.MadhvaNidhi.Button.Outlined"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/ds_space_2"
+            android:minHeight="@dimen/ds_touch_min" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/homeSettings"
+            style="@style/Widget.MadhvaNidhi.Button.Outlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/ds_dock_clearance"
             android:minHeight="@dimen/ds_touch_min" />
     </LinearLayout>

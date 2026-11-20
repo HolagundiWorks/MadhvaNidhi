@@ -25,12 +25,15 @@ object PracticeExport {
         return PracticeTransfer.encode(context.packageName, isoTime(nowMillis), files)
     }
 
-    /** Writes the export to the app's share folder and opens the share sheet. Returns the file name. */
-    fun share(context: Context, nowMillis: Long = System.currentTimeMillis()): String {
-        val text = build(context, nowMillis)
+    /**
+     * Encrypts the export with [passphrase], writes it to the app's share folder and opens the share sheet.
+     * The file holds personal data, so it is never written unencrypted. Returns the file name.
+     */
+    fun share(context: Context, passphrase: CharArray, nowMillis: Long = System.currentTimeMillis()): String {
+        val sealed = PracticeCrypto.seal(build(context, nowMillis).toByteArray(Charsets.UTF_8), passphrase)
         val dir = File(context.cacheDir, "share").apply { mkdirs() }
         val name = "madhva-practice-${SimpleDateFormat("yyyyMMdd-HHmmss", Locale.US).format(nowMillis)}.mnexport"
-        val file = File(dir, name).apply { writeText(text, Charsets.UTF_8) }
+        val file = File(dir, name).apply { writeBytes(sealed) }
         val uri = FileProvider.getUriForFile(context, "${context.packageName}.shareprovider", file)
         val send = Intent(Intent.ACTION_SEND).apply {
             type = "application/octet-stream"

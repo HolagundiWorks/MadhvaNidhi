@@ -5,17 +5,17 @@ import android.content.SharedPreferences
 import android.net.Uri
 import com.paperdesk.launcher.data.PracticeTransfer.Type
 import com.paperdesk.launcher.data.PracticeTransfer.TransferException
+import java.io.IOException
 
 /**
  * Imports a practice export made by Madhva Nidhi into this app's own preferences.
  *
- * Rules:
- * - The file is validated by [PracticeTransfer.decode] against the shared allow-list.
+ * Steps: read the file (size-limited), decrypt it with the passphrase, validate it with [PracticeTransfer.decode]
+ * against the shared allow-list. Then:
  * - A file already imported (same batch id) is refused.
  * - Import is allowed only when this device has no practice history yet. Defaults that the app writes on first
  *   launch (a zero best streak, the default profile, migration flags) do not count as history.
- * - Otherwise the device's practice files are replaced by the file's contents. Nothing in Madhva Nidhi is changed;
- *   its original records stay where they are until the user removes them.
+ * - Otherwise the device's practice files are replaced by the file's contents. Madhva Nidhi is not changed.
  */
 object PracticeImport {
     private const val LEDGER = "madhvadvija_transfer"
@@ -29,17 +29,26 @@ object PracticeImport {
         data class Refused(val reason: String) : Outcome()
     }
 
-    fun importFrom(context: Context, uri: Uri): Outcome {
-        val text = try {
-            context.contentResolver.openInputStream(uri)?.use { input ->
-                val bytes = input.readBytes()
-                if (bytes.size > MAX_BYTES) return Outcome.Refused("The file is too large to be a practice export.")
-                String(bytes, Charsets.UTF_8)
-            } ?: return Outcome.Refused("The file could not be opened.")
-        } catch (e: java.io.IOException) {
-            return Outcome.Refused("The file could not be read.")
+    /** Reads the picked file. Returns null when it cannot be read or is too large. */
+    fun readFile(context: Context, uri: Uri): ByteArray? = try {
+        context.contentResolver.openInputStream(uri)?.use { input ->
+            val bytes = input.readBytes()
+            if (bytes.size > MAX_BYTES) null else bytes
         }
-        return importText(context, text)
+    } catch (e: IOException) {
+        null
+    }
+
+    /** Decrypts [sealed] with [passphrase], validates it and imports it. The passphrase array is cleared afterwards. */
+    fun importSealed(context: Context, sealed: ByteArray, passphrase: CharArray): Outcome {
+        val plain = try {
+            PracticeCrypto.open(sealed, passphrase)
+        } catch (e: PracticeCrypto.CryptoException) {
+            return Outcome.Refused(e.message ?: "The passphrase is wrong.")
+        } finally {
+            passphrase.fill(' ')
+        }
+        return importText(context, String(plain, Charsets.UTF_8))
     }
 
     fun importText(context: Context, text: String): Outcome {
@@ -79,8 +88,7 @@ object PracticeImport {
 
     /** True when this device has recorded practice: a completed session or day, Japa counts, or Japa history. */
     fun hasPracticeHistory(context: Context): Boolean {
-        for (name in PracticeTransfer.PRACTICE_FILES.keys) {
-            val encrypted = PracticeTransfer.PRACTICE_FILES.getValue(name)
+        for ((name, encrypted) in PracticeTransfer.PRACTICE_FILES) {
             val all = prefsFor(context, name, encrypted).all
             for ((key, value) in all) {
                 if (key in DEFAULT_KEYS) continue

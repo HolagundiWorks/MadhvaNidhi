@@ -81,4 +81,8 @@
     <string name="dvija_import_title">ಅಭ್ಯಾಸ ದತ್ತಾಂಶ ಆಮದು</string>
     <string name="dvija_import_done">%1$d ದಾಖಲೆಗಳನ್ನು ಆಮದು ಮಾಡಲಾಗಿದೆ.</string>
     <string name="dvija_import_refused">ಆಮದು ಮಾಡಲಾಗಲಿಲ್ಲ: %1$s</string>
+    <string name="practice_passphrase">ಗುಪ್ತಪದ</string>
+    <string name="practice_passphrase_short">ಗುಪ್ತಪದ ಕನಿಷ್ಠ 6 ಅಕ್ಷರಗಳಿರಬೇಕು.</string>
+    <string name="practice_import_passphrase_note">ಫೈಲ್ ರಫ್ತು ಮಾಡುವಾಗ ಹೊಂದಿಸಿದ ಗುಪ್ತಪದವನ್ನು ನಮೂದಿಸಿ.</string>
+    <string name="practice_file_unreadable">ಫೈಲ್ ಓದಲಾಗಲಿಲ್ಲ.</string>
 </resources>

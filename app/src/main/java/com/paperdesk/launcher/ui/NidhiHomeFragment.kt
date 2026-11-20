@@ -39,7 +39,8 @@ class NidhiHomeFragment : Fragment(R.layout.page_nidhi_home) {
             R.id.homeSampada to "wiki",
             R.id.homeSangeeta to "sangeeta",
             R.id.homeSamskruti to "samskruti",
-            R.id.homePuja to "puja"
+            R.id.homePuja to "puja",
+            R.id.homeSettings to "settings"
         ).forEach { (id, page) ->
             view.findViewById<MaterialButton>(id).apply {
                 text = OsLang.ui(page, lang)

@@ -80,4 +80,9 @@
     <string name="practice_export_failed">ರಫ್ತು ಮಾಡಲಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</string>
     <string name="home_today">ಇಂದು</string>
     <string name="home_explore">ಅನ್ವೇಷಿಸಿ</string>
+    <string name="practice_passphrase">ಗುಪ್ತಪದ</string>
+    <string name="practice_passphrase_again">ಗುಪ್ತಪದವನ್ನು ಮತ್ತೆ ನಮೂದಿಸಿ</string>
+    <string name="practice_passphrase_note">ಫೈಲ್ ಗುಪ್ತಪದದಿಂದ ಎನ್‌ಕ್ರಿಪ್ಟ್ ಆಗುತ್ತದೆ. ಆಮದು ಮಾಡಲು ಅದೇ ಗುಪ್ತಪದ ಬೇಕು. ಅದನ್ನು ಮರುಪಡೆಯಲು ಸಾಧ್ಯವಿಲ್ಲ.</string>
+    <string name="practice_passphrase_short">ಗುಪ್ತಪದ ಕನಿಷ್ಠ 6 ಅಕ್ಷರಗಳಿರಬೇಕು.</string>
+    <string name="practice_passphrase_mismatch">ಗುಪ್ತಪದಗಳು ಹೊಂದುವುದಿಲ್ಲ.</string>
 </resources>
