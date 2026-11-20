@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Space kept free at the bottom of each page: the dock (ds_dock_total_height plus its margin) and the raised Home button above it. -->
+    <dimen name="dvija_dock_clearance">132dp</dimen>
+</resources>

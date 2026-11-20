@@ -11,7 +11,7 @@
         android:id="@+id/pageHost"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/ds_dock_total_height" />
+        android:layout_marginBottom="@dimen/dvija_dock_clearance" />
 
     <LinearLayout
         android:id="@+id/dvijaDock"

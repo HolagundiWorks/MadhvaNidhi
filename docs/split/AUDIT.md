@@ -259,5 +259,6 @@ Owner decision: profile, dashboard and gamification belong to Madhva Dvija. Nidh
 - Madhva Nidhi: the raised orange centre button (the dashboard entry) is removed from the shell. The dock has no Home button.
 - Madhva Dvija: the bottom navigation is replaced by a floating dock (Sandhya, Japa, Puja, Profile, Settings) with a raised Home (dashboard) button in the centre.
 - Device check (720x1560, Samsung SM-M115F): the dashboard shows the dock; tapping Japa opens the Japa page and highlights its icon; no fatal errors in logcat.
-- Open issue: on the Japa page the raised Home button covers the label of the orange count-start button. Not fixed yet; the page's bottom button needs room above the dock's centre button.
+- Fixed: pages now stop above the raised Home button (`dvija_dock_clearance` 132dp in `dvija/src/main/res/values/dock_clearance.xml`). On the device the Japa count button label is fully visible; the dashboard Share card scrolls above the button.
+- Build: `:dvija:assembleDebug` and `:dvija:testDebugUnitTest` pass; the debug build was installed over the existing data (`install -r`).
 - Not covered: the Dvija dashboard side-panel button (still a no-op), tests on other screen sizes.
