@@ -6,9 +6,9 @@ import com.paperdesk.launcher.domain.aayadi.Formula
 import com.paperdesk.launcher.domain.aayadi.FractionalPolicy
 import com.paperdesk.launcher.domain.aayadi.Operand
 import com.paperdesk.launcher.domain.aayadi.Parameter
+import com.paperdesk.launcher.domain.aayadi.Relation
 import com.paperdesk.launcher.domain.aayadi.ReviewStatus
 import com.paperdesk.launcher.domain.aayadi.RulePack
-import com.paperdesk.launcher.domain.measure.HastaStandard
 import org.json.JSONObject
 
 /**
@@ -24,8 +24,6 @@ object RulePackLoader {
     fun parse(text: String): RulePack {
         val o = JSONObject(text)
         val source = o.getJSONObject("source")
-        val hasta = o.getJSONObject("hasta")
-        val inches = hasta.getLong("inchesPerHasta")
         val params = o.getJSONArray("parameters")
         val parameters = (0 until params.length()).map { i -> parseParameter(params.getJSONObject(i)) }
         val notApplicable = o.getJSONArray("notApplicable").let { arr -> (0 until arr.length()).map { arr.getString(it) } }
@@ -39,12 +37,6 @@ object RulePackLoader {
             edition = source.getString("edition"),
             translatorOrEditor = source.getString("translatorOrEditor"),
             reviewStatus = ReviewStatus.valueOf(o.getString("reviewStatus")),
-            hastaStandard = HastaStandard(
-                id = "configured-${inches}in",
-                displayName = "1 ಹಸ್ತ = $inches ಇಂಚು",
-                inchesPerHasta = inches,
-                citation = hasta.getString("citation")
-            ),
             fractionalPolicy = FractionalPolicy.valueOf(o.getString("fractionalPolicy")),
             parameters = parameters,
             notApplicable = notApplicable
@@ -73,7 +65,9 @@ object RulePackLoader {
     private fun parseCriterion(c: JSONObject): Criterion = when (val type = c.getString("type")) {
         "in" -> c.getJSONArray("set").let { arr -> Criterion.RemainderIn((0 until arr.length()).map { arr.getLong(it) }.toSet()) }
         "above" -> Criterion.RemainderAbove(c.getLong("threshold"))
+        "compare" -> Criterion.Compare(c.getString("other"), Relation.valueOf(c.getString("relation")))
         "unsourced" -> Criterion.Unsourced(c.getString("reason"))
+        "none" -> Criterion.NoCriterion
         else -> throw IllegalArgumentException("unknown criterion type: $type")
     }
 }

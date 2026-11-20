@@ -21,6 +21,7 @@ import com.google.android.material.textview.MaterialTextView
 import com.paperdesk.launcher.R
 import com.paperdesk.launcher.data.rules.RulePackLoader
 import com.paperdesk.launcher.domain.aayadi.CandidateResult
+import com.paperdesk.launcher.domain.measure.Hasta
 import com.paperdesk.launcher.domain.aayadi.Evaluator
 import com.paperdesk.launcher.domain.aayadi.ParameterResult
 import com.paperdesk.launcher.domain.aayadi.RulePack
@@ -32,16 +33,14 @@ import java.text.DecimalFormat
 class AayadiFragment : Fragment() {
     private val fmt = DecimalFormat("0.##")
     private val inches = (0..11).map { it.toString() }
+
     /** The shipped rule pack, or null when it could not be read (then a configuration error is shown). */
     private var pack: RulePack? = null
     private var packError: String? = null
     private var sortOrder = SortOrder.VARIATION
 
-    /** Columns of the viable table, in the guide's order. Yoni, Nakṣatra, Vāra and Tithi are listed for completeness. */
-    private val tableColumns = listOf(
-        "ಉದ್ದ", "ಅಗಲ", "ವಿಸ್ತೀರ್ಣ (ಚ.ಅ.)", "ಆಯ", "ವ್ಯಯ", "ಧನ", "ಋಣ",
-        "ಯೋನಿ", "ನಕ್ಷತ್ರ", "ವಾರ", "ತಿಥಿ"
-    )
+    /** Columns of the recommended table, as the specification lists them. */
+    private val tableColumns = listOf("Length", "Breadth", "Aaya", "Dhana", "Runa / Vyaya", "Aayushu", "Result")
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, state: Bundle?): View =
         inflater.inflate(R.layout.page_aayadi, container, false)
@@ -119,7 +118,7 @@ class AayadiFragment : Fragment() {
                 text = "ನಿಯಮ ಪಟ್ಟಿ ಓದಲಾಗಲಿಲ್ಲ: ${packError ?: ""}"
                 visibility = View.VISIBLE
             }
-            fillTable(v, emptyList(), packIncomplete = true)
+            fillTable(v, emptyList(), lt, bt, packIncomplete = true)
             return
         }
 
@@ -130,38 +129,38 @@ class AayadiFragment : Fragment() {
 
         v.findViewById<TextView>(R.id.aayadiSummaryText).text = buildString {
             appendLine("ನೀಡಿದ ಅಳತೆ: ${original.length} × ${original.breadth}")
-            appendLine("ಹಸ್ತ: ${original.lengthHasta} × ${original.breadthHasta} (1 ಹಸ್ತ = ${rules.hastaStandard.inchesPerHasta} ಇಂಚು)")
+            appendLine("ಹಸ್ತ: ${original.lengthHasta} × ${original.breadthHasta} (1 ಹಸ್ತ = ${Hasta.INCHES_PER_HASTA} ಇಂಚು)")
             appendLine("ಹುಡುಕಾಟ ವ್ಯಾಪ್ತಿ: ±1 ಅಡಿ, ${all.size} ಅಳತೆ")
-            append("ಮೌಲ್ಯಮಾಪನ: ${all.size} · ಶುಭ: ${viable.size} · ತೀರ್ಮಾನ ಬಾಕಿ: ${all.count { it.verdict == Verdict.UNDETERMINED }}")
+            append("ಮೌಲ್ಯಮಾಪನ: ${all.size} · Pass: ${viable.size} · ಬಾಕಿ: ${all.count { it.verdict == Verdict.UNDETERMINED }}")
         }
         val configError = v.findViewById<TextView>(R.id.aayadiConfigError)
         configError.text = if (problems.isEmpty()) "" else "ನಿಯಮ ಪಟ್ಟಿ ಅಪೂರ್ಣ: ${problems.joinToString("; ")}"
         configError.visibility = if (problems.isEmpty()) View.GONE else View.VISIBLE
 
         fillOriginal(v, original)
-        fillTable(v, viable, problems.isNotEmpty())
+        fillTable(v, viable, lt, bt, packIncomplete = problems.isNotEmpty())
     }
 
     private fun fillOriginal(v: View, r: CandidateResult) {
         val p = r.parameters
         v.findViewById<TextView>(R.id.aayadiSummary).text = when (r.verdict) {
-            Verdict.PASS -> "ಎಲ್ಲಾ ಅಂಶಗಳೂ ಅನುಕೂಲ"
-            Verdict.FAIL -> "ಪರಿಶೀಲಿಸಿ: " + p.values.filter { it.mandatory && it.verdict == Verdict.FAIL }.joinToString(", ") { it.displayName }
-            Verdict.UNDETERMINED -> "ತೀರ್ಮಾನ ಬಾಕಿ: ${r.reason ?: ""}"
+            Verdict.PASS -> "Pass: all mandatory conditions are met"
+            Verdict.FAIL -> "Fail: " + p.values.filter { it.mandatory && it.verdict == Verdict.FAIL }.joinToString(", ") { it.displayName }
+            Verdict.UNDETERMINED -> "Undetermined: ${r.reason ?: ""}"
         }
         v.findViewById<TextView>(R.id.aayadiAaya).text = tileText(p["aaya"])
         v.findViewById<TextView>(R.id.aayadiVyaya).text = tileText(p["vyaya"])
         v.findViewById<TextView>(R.id.aayadiAyush).text = tileText(p["ayush"])
-        v.findViewById<TextView>(R.id.aayadiDhana).text = "ಧನ: ${p["dhana"]?.remainder ?: "—"} (${verdictWord(p["dhana"])})"
-        v.findViewById<TextView>(R.id.aayadiRuna).text = "ಋಣ: ${p["runa"]?.remainder ?: "—"} (${verdictWord(p["runa"])})"
-        v.findViewById<TextView>(R.id.aayadiPadam).text = "${(r.lengthHasta * r.breadthHasta)} ಚದರ ಹಸ್ತ"
+        v.findViewById<TextView>(R.id.aayadiDhana).text = "Dhana: ${p["dhana"]?.remainder ?: "—"} (${verdictWord(p["dhana"])})"
+        v.findViewById<TextView>(R.id.aayadiRuna).text = "Runa: ${p["runa"]?.remainder ?: "—"} (${verdictWord(p["runa"])})"
+        v.findViewById<TextView>(R.id.aayadiPadam).text = "${r.lengthHasta * r.breadthHasta} ಚದರ ಹಸ್ತ"
         alertColour(v.findViewById(R.id.aayadiAaya), p["aaya"]?.verdict != Verdict.FAIL)
         alertColour(v.findViewById(R.id.aayadiVyaya), p["vyaya"]?.verdict != Verdict.FAIL)
         alertColour(v.findViewById(R.id.aayadiAyush), p["ayush"]?.verdict != Verdict.FAIL)
         alertColour(v.findViewById(R.id.aayadiSummary), r.verdict != Verdict.FAIL)
     }
 
-    /** Remainder, the traditional name when the pack gives one, and a word for the verdict. */
+    /** Remainder, the traditional name when the pack gives one, and the verdict word. */
     private fun tileText(p: ParameterResult?): String {
         if (p == null) return "—"
         val rem = p.remainder?.toString() ?: "—"
@@ -170,86 +169,83 @@ class AayadiFragment : Fragment() {
     }
 
     private fun verdictWord(p: ParameterResult?): String = when (p?.verdict) {
-        Verdict.PASS -> "ಶುಭ"
-        Verdict.FAIL -> "ಅಶುಭ"
-        Verdict.UNDETERMINED, null -> "ಬಾಕಿ"
+        Verdict.PASS -> "Pass"
+        Verdict.FAIL -> "Fail"
+        Verdict.UNDETERMINED, null -> "Undetermined"
     }
 
-    /** Shows the viable rows, or the empty state, or the configuration error. */
-    private fun fillTable(v: View, viable: List<CandidateResult>, packIncomplete: Boolean) {
+    /** Lists the sizes that pass every mandatory condition, or the empty and configuration states. */
+    private fun fillTable(v: View, viable: List<CandidateResult>, originalLt: Long, originalBt: Long, packIncomplete: Boolean) {
         val grid = v.findViewById<GridLayout>(R.id.aayadiTableGrid)
         val scroll = v.findViewById<View>(R.id.aayadiTableScroll)
         val empty = v.findViewById<TextView>(R.id.aayadiTableEmpty)
         grid.removeAllViews()
         when {
             packIncomplete -> {
-                empty.text = "ನಿಯಮ ಪಟ್ಟಿ ಪರಿಶೀಲನೆಗೆ ಬಾಕಿ: ಶುಭ ಅಳತೆಗಳನ್ನು ತೋರಿಸಲಾಗುವುದಿಲ್ಲ"
+                empty.text = "ನಿಯಮ ಪಟ್ಟಿ ಅಪೂರ್ಣ: No valid combinations can be shown"
                 scroll.visibility = View.GONE
             }
             viable.isEmpty() -> {
-                empty.text = "ಈ ವ್ಯಾಪ್ತಿಯಲ್ಲಿ ಎಲ್ಲಾ ಮುಖ್ಯ ನಿಯಮಗಳನ್ನು ಪೂರೈಸುವ ಅಳತೆ ಇಲ್ಲ"
+                empty.text = "No valid combinations found within ±1 foot."
                 scroll.visibility = View.GONE
             }
             else -> {
                 empty.text = ""
                 scroll.visibility = View.VISIBLE
                 grid.columnCount = tableColumns.size
-                tableColumns.forEach { addCell(grid, it, header = true, onClick = null) }
+                tableColumns.forEach { addCell(grid, it, header = true, bold = false, onClick = null) }
                 viable.forEach { c ->
+                    val isOriginal = c.length.totalInches == originalLt && c.breadth.totalInches == originalBt
                     val open = { showDetail(c) }
-                    addCell(grid, "${c.length}", header = false, onClick = open)
-                    addCell(grid, "${c.breadth}", header = false, onClick = open)
-                    addCell(grid, fmt.format(c.areaSqFt.toDouble()), header = false, onClick = open)
-                    addCell(grid, cell(c, "aaya"), header = false, onClick = open)
-                    addCell(grid, cell(c, "vyaya"), header = false, onClick = open)
-                    addCell(grid, cell(c, "dhana"), header = false, onClick = open)
-                    addCell(grid, cell(c, "runa"), header = false, onClick = open)
-                    addCell(grid, cell(c, "yoni"), header = false, onClick = open)
-                    addCell(grid, cell(c, "nakshatra"), header = false, onClick = open)
-                    addCell(grid, cell(c, "vara"), header = false, onClick = open)
-                    addCell(grid, cell(c, "tithi"), header = false, onClick = open)
+                    addCell(grid, "${c.length}", header = false, bold = isOriginal, onClick = open)
+                    addCell(grid, "${c.breadth}", header = false, bold = isOriginal, onClick = open)
+                    addCell(grid, cell(c, "aaya"), header = false, bold = isOriginal, onClick = open)
+                    addCell(grid, cell(c, "dhana"), header = false, bold = isOriginal, onClick = open)
+                    addCell(grid, "${cell(c, "runa")} / ${cell(c, "vyaya")}", header = false, bold = isOriginal, onClick = open)
+                    addCell(grid, cell(c, "ayush"), header = false, bold = isOriginal, onClick = open)
+                    addCell(grid, if (isOriginal) "Pass (original)" else "Pass", header = false, bold = isOriginal, onClick = open)
                 }
             }
         }
     }
 
-    /** Remainder and classification, or "Not applicable" when the pack has no formula for it. */
+    /** The remainder, with the traditional name for aaya. */
     private fun cell(c: CandidateResult, key: String): String {
-        val p = c.parameters[key] ?: return "Not applicable"
-        if (p.classification == "Not applicable") return "Not applicable"
-        return p.remainder?.toString() ?: "—"
+        val p = c.parameters[key] ?: return "—"
+        val rem = p.remainder?.toString() ?: "—"
+        return if (key == "aaya" && p.classification != null) "$rem ${p.classification}" else rem
     }
 
-    private fun addCell(grid: GridLayout, text: String, header: Boolean, onClick: (() -> Unit)?) {
+    private fun addCell(grid: GridLayout, text: String, header: Boolean, bold: Boolean, onClick: (() -> Unit)?) {
         val tv = MaterialTextView(requireContext())
         TextViewCompat.setTextAppearance(tv, if (header) R.style.TextAppearance_DS_Caption else R.style.TextAppearance_DS_Body)
         tv.text = text
         tv.gravity = Gravity.CENTER
         tv.setPadding(16, 12, 16, 12)
-        if (header) tv.setTypeface(tv.typeface, Typeface.BOLD)
+        if (header || bold) tv.setTypeface(tv.typeface, Typeface.BOLD)
         if (onClick != null) {
             tv.isClickable = true
             tv.isFocusable = true
             tv.setOnClickListener { onClick() }
-            tv.contentDescription = "ವಿವರ ತೋರಿಸಿ: $text"
+            tv.contentDescription = "Details: $text"
         }
         grid.addView(tv)
     }
 
-    /** Derivation, classification and source notes for one viable row. */
+    /** Derivation, classification and source notes for one passing row. */
     private fun showDetail(c: CandidateResult) {
         val text = buildString {
-            appendLine("ಉದ್ದ ${c.length} × ಅಗಲ ${c.breadth}")
-            appendLine("ಹಸ್ತ: ${c.lengthHasta} × ${c.breadthHasta}; ವಿಸ್ತೀರ್ಣ ${c.areaSqFt} ಚ.ಅ.")
+            appendLine("Length ${c.length} × Breadth ${c.breadth}")
+            appendLine("Hasta: ${c.lengthHasta} × ${c.breadthHasta}; area ${c.areaSqFt} sq ft")
             appendLine()
             for (p in c.parameters.values) {
-                appendLine("${p.displayName}: ${p.exactValue ?: "—"}  →  ಶೇಷ ${p.remainder ?: "—"}  ${p.classification ?: ""}  (${verdictWord(p)})")
+                appendLine("${p.displayName}: ${p.exactValue ?: "—"}  →  remainder ${p.remainder ?: "—"}  ${p.classification ?: ""}  (${verdictWord(p)})")
                 appendLine("   ${p.explanation}")
-                appendLine("   ಮೂಲ: ${p.sourceRef}")
+                appendLine("   Source: ${p.sourceRef}")
             }
         }
         MaterialAlertDialogBuilder(requireContext())
-            .setTitle("ವಿವರ")
+            .setTitle("Details")
             .setMessage(text)
             .setPositiveButton(android.R.string.ok, null)
             .show()

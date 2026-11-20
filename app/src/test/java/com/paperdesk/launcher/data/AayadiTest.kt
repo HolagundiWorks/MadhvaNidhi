@@ -1,12 +1,14 @@
 package com.paperdesk.launcher.data
 
 import com.paperdesk.launcher.data.rules.RulePackLoader
+import com.paperdesk.launcher.domain.aayadi.CandidateResult
 import com.paperdesk.launcher.domain.aayadi.Criterion
 import com.paperdesk.launcher.domain.aayadi.Evaluator
 import com.paperdesk.launcher.domain.aayadi.ReviewStatus
 import com.paperdesk.launcher.domain.aayadi.RulePack
 import com.paperdesk.launcher.domain.aayadi.Verdict
 import com.paperdesk.launcher.domain.measure.FeetInches
+import com.paperdesk.launcher.domain.measure.Hasta
 import com.paperdesk.launcher.domain.measure.Rational
 import com.paperdesk.launcher.domain.search.Search
 import com.paperdesk.launcher.domain.search.SortOrder
@@ -16,12 +18,14 @@ import org.junit.Assert.assertNull
 import org.junit.Assert.assertThrows
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import java.io.File
 
 class AayadiTest {
     // Read from the same JSON asset the app ships, so the tests check the real pack.
-    private val draft: RulePack = RulePackLoader.parse(java.io.File("src/main/assets/rules/karnataka-shodashavarga.json").readText())
+    private val pack: RulePack = RulePackLoader.parse(File("src/main/assets/rules/karnataka-shodashavarga.json").readText())
+    private val draft: RulePack = pack.copy(reviewStatus = ReviewStatus.DRAFT)
 
-    /** Book table rows (length x breadth, as whole hasta): aaya, name, dhana, runa, ayush. */
+    /** Book table rows (length x breadth, as whole hasta): aaya, dhana, runa, ayush. */
     private data class Row(val l: Int, val b: Int, val aaya: Long, val dhana: Long, val runa: Long, val ayush: Long)
 
     private val table = listOf(
@@ -35,12 +39,10 @@ class AayadiTest {
         Row(35, 43, 1, 4, 3, 105), Row(29, 45, 1, 12, 3, 105),
     )
 
-    /** A pack with every criterion sourced, used only to test the judgment logic (not a real pack). */
-    private val testPack: RulePack = draft.copy(
-        reviewStatus = ReviewStatus.REVIEWED,
-        translatorOrEditor = "test",
-        parameters = draft.parameters.filter { it.key == "aaya" || it.key == "ayush" }
-    )
+    private fun hasta(h: Int): Long = h * 18L
+
+    /** The whole-number remainder for [key]; fails the test if the remainder is fractional. */
+    private fun whole(r: CandidateResult, key: String): Long? = r.parameters.getValue(key).remainder?.integerOrNull()
 
     // ---- measurement -------------------------------------------------------
 
@@ -59,9 +61,9 @@ class AayadiTest {
     }
 
     @Test fun hastaIsExactNotRounded() {
-        assertEquals(Rational.of(80, 3), draft.hastaStandard.hastaOf(480))
-        assertEquals("80/3", draft.hastaStandard.hastaOf(480).toString())
-        assertEquals("20", draft.hastaStandard.hastaOf(360).toString())
+        assertEquals(Rational.of(80, 3), Hasta.hastaOf(480))
+        assertEquals("80/3", Hasta.hastaOf(480).toString())
+        assertEquals("20", Hasta.hastaOf(360).toString())
     }
 
     @Test fun rationalReducesAndKeepsDenominatorPositive() {
@@ -71,8 +73,10 @@ class AayadiTest {
 
     // ---- search ------------------------------------------------------------
 
-    @Test fun searchHas625CandidatesWhenAllPositive() {
-        assertEquals(625, Search.candidates(360, 480).size)
+    @Test fun searchHas625DistinctCandidatesWhenAllPositive() {
+        val c = Search.candidates(360, 480)
+        assertEquals(625, c.size)
+        assertEquals(625, c.toSet().size)
     }
 
     @Test fun searchBoundsAreInclusive() {
@@ -99,14 +103,19 @@ class AayadiTest {
     }
 
     @Test fun sortByVariationPutsTheInputFirst() {
-        val all = Search.evaluateAll(360, 480, draft)
-        val sorted = Search.sort(all, 360, 480, SortOrder.VARIATION)
+        val sorted = Search.sort(Search.evaluateAll(360, 480, pack), 360, 480, SortOrder.VARIATION)
         assertEquals(360L, sorted.first().length.totalInches)
         assertEquals(480L, sorted.first().breadth.totalInches)
     }
 
+    @Test fun sortByVariationPutsCloserCandidatesFirst() {
+        val sorted = Search.sort(Search.evaluateAll(360, 480, pack), 360, 480, SortOrder.VARIATION)
+        val deviations = sorted.map { Math.abs(it.length.totalInches - 360) + Math.abs(it.breadth.totalInches - 480) }
+        assertEquals(deviations.sorted(), deviations)
+    }
+
     @Test fun sortByLargestAreaPutsTheBiggestFirst() {
-        val sorted = Search.sort(Search.evaluateAll(360, 480, draft), 360, 480, SortOrder.LARGEST_AREA)
+        val sorted = Search.sort(Search.evaluateAll(360, 480, pack), 360, 480, SortOrder.LARGEST_AREA)
         assertEquals(sorted.maxOf { it.areaSqFt.toDouble() }, sorted.first().areaSqFt.toDouble(), 0.0001)
     }
 
@@ -115,94 +124,115 @@ class AayadiTest {
     @Test fun draftPackNeverGivesPassOrFail() {
         for (c in Search.evaluateAll(360, 480, draft)) {
             assertEquals(Verdict.UNDETERMINED, c.verdict)
-            for (p in c.parameters.values) {
-                assertTrue("${p.key} must not judge", p.verdict == Verdict.UNDETERMINED)
-                assertNull("${p.key} must not classify", p.classification.takeIf { it != "Not applicable" })
-            }
+            for (p in c.parameters.values) assertFalse("${p.key} must not judge", p.verdict == Verdict.PASS || p.verdict == Verdict.FAIL)
         }
     }
 
     @Test fun draftPackStillShowsTheRemainder() {
         // 20 x 27 hasta = 540 sq hasta; 540 x 9 mod 8 = 4.
-        val r = Evaluator.evaluate(20 * 18L, 27 * 18L, draft)
-        assertEquals(4L, r.parameters.getValue("aaya").remainder)
+        val r = Evaluator.evaluate(hasta(20), hasta(27), draft)
+        assertEquals(4L, whole(r, "aaya"))
         assertEquals(Verdict.UNDETERMINED, r.parameters.getValue("aaya").verdict)
     }
 
-    @Test fun fractionalSizeShowsNoRemainder() {
-        // 360 x 480 inches: 480 in is 80/3 hasta, so the area has no whole remainder.
-        val r = Evaluator.evaluate(360, 480, draft)
-        assertNull(r.parameters.getValue("aaya").remainder)
+    @Test fun fractionalSizeUsesTheExactRemainder() {
+        // 360 x 480 inches = 20 x 80/3 hasta = 1600/3 sq hasta. x 9 = 4800, and 4800 mod 8 = 0, so aaya is 8 (kaaka).
+        val r = Evaluator.evaluate(360, 480, pack)
+        assertEquals(Rational.of(8), r.parameters.getValue("aaya").remainder)
+        assertEquals(Verdict.FAIL, r.parameters.getValue("aaya").verdict)
+        assertEquals(Verdict.FAIL, r.verdict)
     }
 
-    @Test fun draftPackReportsItsProblems() {
+    @Test fun fractionalRemaindersAreExactNotRounded() {
+        // dhana for 20 x 80/3 hasta: (1600/3 x 8) mod 12 = 20/3, kept exact.
+        val r = Evaluator.evaluate(360, 480, pack)
+        assertEquals(Rational.of(20, 3), r.parameters.getValue("dhana").remainder)
+    }
+
+    @Test fun incompletePackReportsItsProblems() {
         assertTrue(draft.validate().isNotEmpty())
+        assertTrue(pack.validate().isEmpty())
     }
 
-    @Test fun notApplicableParametersAreMarkedNotApplicable() {
-        val r = Evaluator.evaluate(360, 480, draft)
-        for (key in listOf("yoni", "nakshatra", "vara", "tithi")) {
-            val p = r.parameters.getValue(key)
-            assertEquals("Not applicable", p.classification)
-            assertNull(p.exactValue)
-            assertFalse(p.mandatory)
-        }
-    }
-
-    // ---- formulas on the book table, read from the working ---------------
+    // ---- the book table, read from the working -----------------------------
 
     @Test fun everyTableRowMatchesAayaAyushRunaAndDhana() {
         for (row in table) {
-            val r = Evaluator.evaluate(row.l * 18L, row.b * 18L, draft)
+            val r = Evaluator.evaluate(hasta(row.l), hasta(row.b), pack)
             val tag = "${row.l}x${row.b}"
-            assertEquals(tag, row.aaya, r.parameters.getValue("aaya").remainder)
-            assertEquals(tag, row.ayush, r.parameters.getValue("ayush").remainder)
-            assertEquals(tag, row.runa, r.parameters.getValue("runa").remainder)
-            if (!(row.l == 29 && row.b == 43)) assertEquals(tag, row.dhana, r.parameters.getValue("dhana").remainder)
+            assertEquals(tag, row.aaya, whole(r, "aaya"))
+            assertEquals(tag, row.ayush, whole(r, "ayush"))
+            assertEquals(tag, row.runa, whole(r, "runa"))
+            if (!(row.l == 29 && row.b == 43)) assertEquals(tag, row.dhana, whole(r, "dhana"))
         }
     }
 
-    // ---- judgment logic on a sourced test pack ------------------------------
+    // ---- the filter: every mandatory parameter must pass --------------------
 
-    @Test fun passWhenAllMandatoryParametersPass() {
-        // 17 x 21 hasta: aaya 5 (auspicious), ayush 93 (above 60).
-        assertEquals(Verdict.PASS, Evaluator.evaluate(17 * 18L, 21 * 18L, testPack).verdict)
+    @Test fun originalDimensionsPassWhenAllMandatoryParametersPass() {
+        // 17 x 21 hasta: aaya 5 (auspicious), dhana 12 > runa 7, vyaya 3 < aaya 5, ayush 93 > 60.
+        val r = Evaluator.evaluate(hasta(17), hasta(21), pack)
+        assertEquals(Verdict.PASS, r.verdict)
+        assertEquals("ವೃಷಭ", r.parameters.getValue("aaya").classification)
     }
 
-    @Test fun failWhenAMandatoryParameterFails() {
-        // 13 x 21 hasta: ayush 57 (not above 60).
-        assertEquals(Verdict.FAIL, Evaluator.evaluate(13 * 18L, 21 * 18L, testPack).verdict)
+    @Test fun failsWhenAyushFailsEvenIfTheOthersPass() {
+        // 13 x 21 hasta: aaya 1 (auspicious), dhana 12 > runa 3, ayush 57 (not above 60); vyaya 7 is not less than 1.
+        val r = Evaluator.evaluate(hasta(13), hasta(21), pack)
+        assertEquals(Verdict.PASS, r.parameters.getValue("aaya").verdict)
+        assertEquals(Verdict.FAIL, r.parameters.getValue("ayush").verdict)
+        assertEquals(Verdict.FAIL, r.verdict)
     }
 
-    @Test fun fractionalHastaIsUndeterminedUnderWholeHastaPolicy() {
-        // 361 inches is 20.06 hasta: not whole, so the policy refuses to judge it.
-        val r = Evaluator.evaluate(361, 21 * 18L, testPack)
+    @Test fun failsWhenVyayaIsNotLessThanAaya() {
+        // 15 x 21 hasta: aaya 3, vyaya 5 (not less than 3).
+        val r = Evaluator.evaluate(hasta(15), hasta(21), pack)
+        assertEquals(Verdict.FAIL, r.parameters.getValue("vyaya").verdict)
+        assertEquals(Verdict.FAIL, r.verdict)
+    }
+
+    @Test fun failsWhenDhanaIsNotGreaterThanRuna() {
+        // 29 x 43 hasta: dhana 4, runa 5.
+        val r = Evaluator.evaluate(hasta(29), hasta(43), pack)
+        assertEquals(Verdict.FAIL, r.parameters.getValue("dhana").verdict)
+        assertEquals(Verdict.FAIL, r.verdict)
+    }
+
+    @Test fun runaIsReportedButNotJudgedOnItsOwn() {
+        val r = Evaluator.evaluate(hasta(17), hasta(21), pack).parameters.getValue("runa")
+        assertEquals(Verdict.UNDETERMINED, r.verdict)
+        assertFalse(r.mandatory)
+    }
+
+    @Test fun fractionalHastaIsEvaluatedUnderTheExactPolicy() {
+        // 361 inches is 361/18 hasta: the pack's policy is exact, so the candidate is judged, not refused.
+        val r = Evaluator.evaluate(361, hasta(21), pack)
+        assertFalse(r.lengthHasta.isInteger)
+        assertTrue(r.reason == null)
+    }
+
+    @Test fun fractionalHastaIsUndeterminedUnderAWholeHastaPolicy() {
+        // The same size under a whole-hasta policy is refused, with the reason given.
+        val wholeOnly = pack.copy(fractionalPolicy = com.paperdesk.launcher.domain.aayadi.FractionalPolicy.WHOLE_HASTA_ONLY)
+        val r = Evaluator.evaluate(361, hasta(21), wholeOnly)
         assertEquals(Verdict.UNDETERMINED, r.verdict)
         assertTrue(r.reason!!.contains("ಭಿನ್ನ"))
     }
 
-    @Test fun unsourcedCriterionBlocksPass() {
-        // The real pack's vyaya and dhana/runa criteria are unsourced, so even a reviewed copy cannot PASS.
-        val reviewed = draft.copy(reviewStatus = ReviewStatus.REVIEWED, translatorOrEditor = "test")
-        assertEquals(Verdict.UNDETERMINED, Evaluator.evaluate(17 * 18L, 21 * 18L, reviewed).verdict)
-        assertTrue(reviewed.parameters.any { it.criterion is Criterion.Unsourced })
+    @Test fun zeroOrNegativeCandidateIsRejected() {
+        assertThrows(IllegalArgumentException::class.java) { Evaluator.evaluate(0, 360, pack) }
+        assertThrows(IllegalArgumentException::class.java) { Evaluator.evaluate(360, -1, pack) }
     }
 
-    @Test fun jsonPackMatchesTheDraftRules() {
-        assertEquals(ReviewStatus.DRAFT, draft.reviewStatus)
-        assertEquals(18L, draft.hastaStandard.inchesPerHasta)
-        assertEquals(listOf("aaya", "dhana", "runa", "ayush", "vyaya"), draft.parameters.map { it.key })
-        assertEquals(listOf("yoni", "nakshatra", "vara", "tithi"), draft.notApplicable)
-        val aaya = draft.parameters.first { it.key == "aaya" }
-        assertEquals(9L, aaya.formula.multiplier)
+    @Test fun jsonPackMatchesTheApplicationStandard() {
+        assertEquals(ReviewStatus.APPLICATION_STANDARD, pack.reviewStatus)
+        assertEquals(18L, Hasta.INCHES_PER_HASTA)
+        assertEquals(listOf("aaya", "dhana", "runa", "ayush", "vyaya"), pack.parameters.map { it.key })
+        assertTrue(pack.notApplicable.isEmpty())
+        val aaya = pack.parameters.first { it.key == "aaya" }
         assertEquals(8L, aaya.formula.modulus)
         assertEquals("ಕಾಕ", aaya.labels[8L])
         assertEquals(Criterion.RemainderIn(setOf(1L, 3L, 5L, 7L)), aaya.criterion)
-        assertTrue(draft.validate().isNotEmpty())
-    }
-
-    @Test fun zeroOrNegativeCandidateIsRejected() {
-        assertThrows(IllegalArgumentException::class.java) { Evaluator.evaluate(0, 360, draft) }
-        assertThrows(IllegalArgumentException::class.java) { Evaluator.evaluate(360, -1, draft) }
+        assertEquals(Criterion.Compare("aaya", com.paperdesk.launcher.domain.aayadi.Relation.LESS), pack.parameters.first { it.key == "vyaya" }.criterion)
     }
 }

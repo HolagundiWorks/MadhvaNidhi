@@ -30,6 +30,9 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Section A: the entered dimensions and their own results -->
+            <com.google.android.material.textview.MaterialTextView android:id="@+id/aayadiSectionA" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Title" android:text="A · ನೀಡಿದ ಅಳತೆ (Original dimensions)" android:layout_marginBottom="@dimen/ds_space_2" />
+
             <!-- Summary: the conversion, the search range and the counts -->
             <com.google.android.material.card.MaterialCardView android:id="@+id/aayadiSummaryCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ds_space_4" app:cardCornerRadius="@dimen/md_corner_radius" app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four" app:cardBackgroundColor="@color/md_theme_surfaceContainer">
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/ds_space_4">
@@ -94,7 +97,7 @@
             </LinearLayout>
 
             <!-- Step 3: sizes within one foot either side of the entered size that pass every mandatory rule -->
-            <com.google.android.material.textview.MaterialTextView android:id="@+id/aayadiTableTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Title" android:text="ಶುಭ ಅಳತೆಗಳು (ಉದ್ದ ಮತ್ತು ಅಗಲ ±1 ಅಡಿ)" android:layout_marginBottom="@dimen/ds_space_2" android:visibility="gone" />
+            <com.google.android.material.textview.MaterialTextView android:id="@+id/aayadiTableTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.Title" android:text="B · ಶಿಫಾರಸು ಮಾಡಿದ ಅಳತೆ (Recommended dimensions, ±1 ft)" android:layout_marginBottom="@dimen/ds_space_2" android:visibility="gone" />
             <com.google.android.material.materialswitch.MaterialSwitch android:id="@+id/aayadiSortSwitch" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:text="ದೊಡ್ಡ ವಿಸ್ತೀರ್ಣ ಮೊದಲು" android:layout_marginBottom="@dimen/ds_space_2" android:visibility="gone" />
             <com.google.android.material.card.MaterialCardView android:id="@+id/aayadiTableCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ds_space_4" app:cardCornerRadius="@dimen/md_corner_radius" app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MadhvaNidhi.Four" app:cardBackgroundColor="@color/md_theme_surfaceContainer">
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/ds_space_4">

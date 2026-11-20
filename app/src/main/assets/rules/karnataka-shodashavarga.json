@@ -1,7 +1,7 @@
 {
   "id": "karnataka-shodashavarga",
   "displayName": "ಷೋಡಶವರ್ಗ (ಕರ್ನಾಟಕ)",
-  "version": "0.1-draft",
+  "version": "0.2-application-standard",
   "source": {
     "title": "Kannada book, Shodashavarga table",
     "chapter": "not recorded",
@@ -9,12 +9,8 @@
     "edition": "not recorded",
     "translatorOrEditor": ""
   },
-  "reviewStatus": "DRAFT",
-  "hasta": {
-    "inchesPerHasta": 18,
-    "citation": "Conventional configuration; not a universal textual standard"
-  },
-  "fractionalPolicy": "WHOLE_HASTA_ONLY",
+  "reviewStatus": "APPLICATION_STANDARD",
+  "fractionalPolicy": "EXACT_FRACTION",
   "parameters": [
     {
       "key": "aaya",
@@ -26,25 +22,25 @@
       },
       "criterion": { "type": "in", "set": [1, 3, 5, 7] },
       "mandatory": true,
-      "sourceRef": "Kannada book, Shodashavarga table, p.97: auspicious set 1,3,5,7 not yet verified"
+      "sourceRef": "Application standard: aaya 1,3,5,7 (Kannada book p.97 table; set not yet checked against the printed book)"
     },
     {
       "key": "dhana",
       "displayName": "ಧನ",
       "formula": { "operand": "PADAM", "multiplier": 8, "modulus": 12 },
       "labels": {},
-      "criterion": { "type": "unsourced", "reason": "ಧನ ಮತ್ತು ಋಣ ಹೋಲಿಕೆಯ ನಿಯಮ ಮೂಲದಲ್ಲಿ ದೃಢಪಟ್ಟಿಲ್ಲ" },
+      "criterion": { "type": "compare", "other": "runa", "relation": "GREATER" },
       "mandatory": true,
-      "sourceRef": "Kannada book, Shodashavarga table, p.97: value column; comparison not verified"
+      "sourceRef": "Application standard: dhana > runa (Kannada book p.97 table; not yet checked against the printed book)"
     },
     {
       "key": "runa",
       "displayName": "ಋಣ",
       "formula": { "operand": "PADAM", "multiplier": 3, "modulus": 8 },
       "labels": {},
-      "criterion": { "type": "unsourced", "reason": "ಧನ ಮತ್ತು ಋಣ ಹೋಲಿಕೆಯ ನಿಯಮ ಮೂಲದಲ್ಲಿ ದೃಢಪಟ್ಟಿಲ್ಲ" },
-      "mandatory": true,
-      "sourceRef": "Kannada book, Shodashavarga table, p.97: value column; comparison not verified"
+      "criterion": { "type": "none" },
+      "mandatory": false,
+      "sourceRef": "Kannada book p.97 table; value only, its comparison is with dhana"
     },
     {
       "key": "ayush",
@@ -53,17 +49,17 @@
       "labels": {},
       "criterion": { "type": "above", "threshold": 60 },
       "mandatory": true,
-      "sourceRef": "Kannada book, Shodashavarga table, p.97: ಆಯವರ್ಗದಲ್ಲಿ 60 ಮೇಲ್ಪಟ್ಟು ಆಯಸ್ಸು"
+      "sourceRef": "Kannada book p.97: ಆಯವರ್ಗದಲ್ಲಿ 60 ಮೇಲ್ಪಟ್ಟು ಆಯಸ್ಸು"
     },
     {
       "key": "vyaya",
       "displayName": "ವ್ಯಯ",
       "formula": { "operand": "LENGTH_HASTA", "multiplier": 9, "modulus": 10 },
       "labels": {},
-      "criterion": { "type": "unsourced", "reason": "ವ್ಯಯ < ಆಯ ನಿಯಮ ಮೂಲ ಗ್ರಂಥದಲ್ಲಿ ಇಲ್ಲ" },
+      "criterion": { "type": "compare", "other": "aaya", "relation": "LESS" },
       "mandatory": true,
-      "sourceRef": "Kannada book, Shodashavarga table, p.97: value column; vyaya < aaya not in the book"
+      "sourceRef": "Application standard: vyaya < aaya (Vastu convention; not in the Kannada book p.97)"
     }
   ],
-  "notApplicable": ["yoni", "nakshatra", "vara", "tithi"]
+  "notApplicable": []
 }

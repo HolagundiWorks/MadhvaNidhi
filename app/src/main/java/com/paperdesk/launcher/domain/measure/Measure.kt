@@ -33,6 +33,24 @@ class Rational private constructor(val numerator: BigInteger, val denominator: B
         return of(numerator * other.denominator, denominator * other.numerator)
     }
 
+    operator fun minus(other: Rational): Rational =
+        of(numerator * other.denominator - other.numerator * denominator, denominator * other.denominator)
+
+    val isZero: Boolean get() = numerator.signum() == 0
+
+    /** This value reduced into [0, m): exact, with no rounding. Used for the remainder in the Aayadi formulas. */
+    fun modulo(m: Long): Rational {
+        require(m > 0) { "modulus must be positive" }
+        val mm = of(m)
+        // floor(this / m) for a positive denominator
+        val (q0, r0) = (this / mm).let { it.numerator.divideAndRemainder(it.denominator) }
+        val q = if (r0.signum() < 0) q0 - BigInteger.ONE else q0
+        return this - mm * of(q, BigInteger.ONE)
+    }
+
+    /** The whole number when this is an integer, otherwise null. */
+    fun integerOrNull(): Long? = if (isInteger) numerator.toLong() else null
+
     override fun compareTo(other: Rational): Int = (numerator * other.denominator).compareTo(other.numerator * denominator)
 
     override fun equals(other: Any?): Boolean =
@@ -58,20 +76,13 @@ class Rational private constructor(val numerator: BigInteger, val denominator: B
 }
 
 /**
- * A selectable hasta standard: how many inches make one hasta, with its citation.
- * The guide notes 18 inches is a conventional configuration, not a universal text standard.
+ * The fixed hasta standard: 1 hasta = 24 angula = 18 inches. Not configurable.
+ * Every conversion in the application uses this one factor.
  */
-data class HastaStandard(val id: String, val displayName: String, val inchesPerHasta: Long, val citation: String) {
-    /** Exact hasta for a total in inches. Never rounded. */
-    fun hastaOf(totalInches: Long): Rational = Rational.of(totalInches, inchesPerHasta)
+object Hasta {
+    const val INCHES_PER_HASTA: Long = 18
+    const val ANGULA_PER_HASTA: Int = 24
 
-    companion object {
-        /** 1 hasta = 24 angula = 18 inches. Conventional; the Karnataka pack records its own citation. */
-        val CONVENTIONAL_18 = HastaStandard(
-            id = "conventional-18in",
-            displayName = "1 ಹಸ್ತ = 18 ಇಂಚು (24 ಅಂಗುಲ)",
-            inchesPerHasta = 18,
-            citation = "Conventional configuration; not a universal textual standard"
-        )
-    }
+    /** Exact hasta for a total in inches. Never rounded. */
+    fun hastaOf(totalInches: Long): Rational = Rational.of(totalInches, INCHES_PER_HASTA)
 }

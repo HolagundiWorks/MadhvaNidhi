@@ -1,11 +1,14 @@
 package com.paperdesk.launcher.domain.aayadi
 
-import com.paperdesk.launcher.domain.measure.HastaStandard
 
 enum class Verdict { PASS, FAIL, UNDETERMINED }
 
-/** DRAFT packs never produce PASS or FAIL judgments. Only REVIEWED packs can. */
-enum class ReviewStatus { DRAFT, REVIEWED }
+/**
+ * DRAFT packs never produce PASS or FAIL judgments.
+ * APPLICATION_STANDARD packs use the criteria the application documents, but the source has not been
+ * checked against the printed book yet. REVIEWED packs have been checked against the source.
+ */
+enum class ReviewStatus { DRAFT, APPLICATION_STANDARD, REVIEWED }
 
 /** How a fractional hasta is treated. Chosen by the rule pack, never globally. */
 enum class FractionalPolicy { WHOLE_HASTA_ONLY, EXACT_FRACTION }
@@ -16,6 +19,8 @@ enum class Operand { PADAM, LENGTH_HASTA, BREADTH_HASTA }
 /** result = (operand x multiplier) mod modulus. A zero remainder is reported as the modulus, as in the book. */
 data class Formula(val operand: Operand, val multiplier: Long, val modulus: Long)
 
+enum class Relation { GREATER, LESS }
+
 /** How a parameter's value becomes a favourable or unfavourable judgment. */
 sealed interface Criterion {
     /** Favourable when the remainder is one of [favourable]. */
@@ -24,8 +29,14 @@ sealed interface Criterion {
     /** Favourable when the remainder is above [threshold]. */
     data class RemainderAbove(val threshold: Long) : Criterion
 
-    /** Stated in the guide as needing a source. Gives UNDETERMINED, never PASS, until the source is supplied. */
+    /** Favourable when this remainder is [relation] the remainder of the parameter [other]. */
+    data class Compare(val other: String, val relation: Relation) : Criterion
+
+    /** Stated as needing a source. Gives UNDETERMINED, never PASS, until the source is supplied. */
     data class Unsourced(val reason: String) : Criterion
+
+    /** No favourable test; the value is reported only. */
+    object NoCriterion : Criterion
 }
 
 data class Parameter(
@@ -50,7 +61,6 @@ data class RulePack(
     val edition: String,
     val translatorOrEditor: String,
     val reviewStatus: ReviewStatus,
-    val hastaStandard: HastaStandard,
     val fractionalPolicy: FractionalPolicy,
     val parameters: List<Parameter>,
     /** Parameters the guide lists that this pack does not define. Shown as "Not applicable". */
@@ -60,11 +70,12 @@ data class RulePack(
     fun validate(): List<String> = buildList {
         if (sourceTitle.isBlank()) add("ಮೂಲ ಗ್ರಂಥದ ಹೆಸರು ದಾಖಲಾಗಿಲ್ಲ")
         if (verseOrPage.isBlank()) add("ಪುಟ ಸಂಖ್ಯೆ ದಾಖಲಾಗಿಲ್ಲ")
-        if (translatorOrEditor.isBlank()) add("ಸಂಪಾದಕ / ಅನುವಾದಕ ದಾಖಲಾಗಿಲ್ಲ")
-        if (reviewStatus != ReviewStatus.REVIEWED) add("ನಿಯಮ ಪಟ್ಟಿ ಇನ್ನೂ ಪರಿಶೀಲನೆಯಲ್ಲಿದೆ (DRAFT)")
+        if (reviewStatus == ReviewStatus.DRAFT) add("ನಿಯಮ ಪಟ್ಟಿ ಇನ್ನೂ ಪರಿಶೀಲನೆಯಲ್ಲಿದೆ (DRAFT)")
         for (p in parameters) {
             if (p.criterion is Criterion.RemainderIn && p.labels.isEmpty()) add("${p.displayName}: ಶೇಷ ವರ್ಗ ಕೋಷ್ಟಕ ಇಲ್ಲ")
-            if (p.criterion is Criterion.Unsourced) add("${p.displayName}: ${(p.criterion as Criterion.Unsourced).reason}")
+            val c = p.criterion
+            if (c is Criterion.Unsourced) add("${p.displayName}: ${c.reason}")
+            if (c is Criterion.Compare && parameters.none { it.key == c.other }) add("${p.displayName}: ಹೋಲಿಕೆ ನಿಯತಾಂಕ ${c.other} ಇಲ್ಲ")
         }
     }
 }
