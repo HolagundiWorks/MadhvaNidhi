@@ -14,3 +14,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "MadhvaNidhi"
 include(":app")
+include(":designsystem")
+project(":designsystem").projectDir = file("../DesignSystem/designsystem")
+include(":shared:core")

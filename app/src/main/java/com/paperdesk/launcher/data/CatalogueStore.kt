@@ -3,28 +3,6 @@ package com.paperdesk.launcher.data
 import android.content.Context
 import org.json.JSONObject
 
-data class CatalogueGroup(
-    val id: String,
-    val kn: String,
-    val sa: String,
-    val en: String,
-    val collection: String = ""
-)
-
-data class CatalogueItem(
-    val id: String,
-    val group: String,
-    val kn: String,
-    val sa: String,
-    val en: String,
-    val type: String,
-    val deity: String,
-    val author: String,
-    val file: String,
-    val script: String,
-    val url: String
-)
-
 /** Madhwa Festivals master catalogue. Titles from the catalogue; bodies from local texts only. */
 object CatalogueStore {
     @Volatile private var loaded = false
